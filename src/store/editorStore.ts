@@ -7,8 +7,8 @@
 
 import { create } from 'zustand';
 import { subscribeWithSelector, devtools } from 'zustand/middleware';
-import type { Canvas as FabricCanvas } from 'fabric';
 import type {
+  FabricCanvas,
   EditorState,
   EditorActions,
   EditorStore,
