@@ -246,7 +246,6 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   const {
     addMessage,
     setLoading,
-    isLoading,
     currentDiagram,
     messages
   } = useAgentStore();

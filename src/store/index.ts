@@ -5,6 +5,22 @@
  * @module store
  */
 
+// Import functions that will be used locally in utility functions
+import {
+  resetEditorStore as _resetEditorStore,
+  getEditorState as _getEditorState,
+} from './editorStore.js';
+
+import {
+  resetConversationStore as _resetConversationStore,
+  getConversationState as _getConversationState,
+} from './conversationStore.js';
+
+import {
+  resetExportStore as _resetExportStore,
+  getExportState as _getExportState,
+} from './exportStore.js';
+
 // ============================================================================
 // Store Exports
 // ============================================================================
@@ -132,16 +148,16 @@ export type { ToolType as ToolTypeEnum } from '../types/index.js';
  * Useful for testing or complete app reset
  */
 export const resetAllStores = (): void => {
-  resetEditorStore();
-  resetConversationStore();
-  resetExportStore();
+  _resetEditorStore();
+  _resetConversationStore();
+  _resetExportStore();
 };
 
 /**
  * Get combined state from all stores (for debugging)
  */
 export const getAllStoreState = () => ({
-  editor: getEditorState(),
-  conversation: getConversationState(),
-  export: getExportState(),
+  editor: _getEditorState(),
+  conversation: _getConversationState(),
+  export: _getExportState(),
 });

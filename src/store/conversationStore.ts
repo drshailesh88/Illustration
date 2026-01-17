@@ -10,12 +10,10 @@ import { subscribeWithSelector, devtools, persist } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
 import type {
   ConversationState,
-  ConversationActions,
   ConversationStore,
   Message,
   DiagramGeneration,
   MessageRole,
-  MessageContent,
 } from '../types/index.js';
 
 // ============================================================================
@@ -75,7 +73,7 @@ const initialState: ConversationState = {
 export const useConversationStore = create<ConversationStore>()(
   devtools(
     persist(
-      subscribeWithSelector((set, get) => ({
+      subscribeWithSelector((set, _get) => ({
         ...initialState,
 
         // ========================================================================

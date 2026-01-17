@@ -1,0 +1,608 @@
+/**
+ * MenuBar Component
+ * Top menu bar with File, Edit, View, Help dropdowns
+ *
+ * @module pages/EditorMode/MenuBar
+ */
+
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useEditorStore, useHistoryState, useViewport, useGridState } from '../../store/editorStore';
+import { useCanvas } from '../../components/Canvas/CanvasContext';
+import './MenuBar.css';
+
+// ============================================================================
+// Types
+// ============================================================================
+
+interface MenuItem {
+  id: string;
+  label: string;
+  shortcut?: string;
+  divider?: boolean;
+  disabled?: boolean;
+  checked?: boolean;
+  action?: () => void;
+  submenu?: MenuItem[];
+}
+
+interface MenuDefinition {
+  id: string;
+  label: string;
+  items: MenuItem[];
+}
+
+// ============================================================================
+// Component
+// ============================================================================
+
+export function MenuBar() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const menuBarRef = useRef<HTMLDivElement>(null);
+
+  // Store hooks
+  const undo = useEditorStore((state) => state.undo);
+  const redo = useEditorStore((state) => state.redo);
+  const toggleGrid = useEditorStore((state) => state.toggleGrid);
+  const toggleSnap = useEditorStore((state) => state.toggleSnap);
+  const setZoom = useEditorStore((state) => state.setZoom);
+  const resetViewport = useEditorStore((state) => state.resetViewport);
+  const clearSelection = useEditorStore((state) => state.clearSelection);
+  const canvas = useEditorStore((state) => state.canvas);
+
+  const { canUndo, canRedo } = useHistoryState();
+  const { zoom } = useViewport();
+  const { gridVisible, snapToGrid } = useGridState();
+
+  // Canvas context
+  const {
+    clearCanvas,
+    exportSVG,
+    exportPNG,
+    exportJSON,
+    selectAll,
+    deleteSelected,
+    copy,
+    paste,
+    cut,
+    groupSelected,
+    ungroupSelected,
+    bringToFront,
+    sendToBack,
+    bringForward,
+    sendBackward,
+    zoomToFit,
+  } = useCanvas();
+
+  // ========================================================================
+  // Menu Definitions
+  // ========================================================================
+
+  const menus: MenuDefinition[] = [
+    {
+      id: 'file',
+      label: 'File',
+      items: [
+        {
+          id: 'new',
+          label: 'New',
+          shortcut: 'Ctrl+N',
+          action: () => {
+            if (confirm('Create new document? Unsaved changes will be lost.')) {
+              clearCanvas();
+            }
+          },
+        },
+        {
+          id: 'open',
+          label: 'Open...',
+          shortcut: 'Ctrl+O',
+          action: () => handleOpen(),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'save',
+          label: 'Save',
+          shortcut: 'Ctrl+S',
+          action: () => handleSave(),
+        },
+        {
+          id: 'save-as',
+          label: 'Save As...',
+          shortcut: 'Ctrl+Shift+S',
+          action: () => handleSaveAs(),
+        },
+        { id: 'divider2', label: '', divider: true },
+        {
+          id: 'export',
+          label: 'Export',
+          submenu: [
+            {
+              id: 'export-svg',
+              label: 'Export as SVG',
+              action: () => handleExport('svg'),
+            },
+            {
+              id: 'export-png',
+              label: 'Export as PNG',
+              action: () => handleExport('png'),
+            },
+            {
+              id: 'export-png-2x',
+              label: 'Export as PNG @2x',
+              action: () => handleExport('png-2x'),
+            },
+          ],
+        },
+        { id: 'divider3', label: '', divider: true },
+        {
+          id: 'recent',
+          label: 'Recent Files',
+          submenu: [
+            { id: 'recent-1', label: 'diagram-1.finnish', disabled: true },
+            { id: 'recent-2', label: 'flowchart.finnish', disabled: true },
+            { id: 'recent-3', label: 'No recent files', disabled: true },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'edit',
+      label: 'Edit',
+      items: [
+        {
+          id: 'undo',
+          label: 'Undo',
+          shortcut: 'Ctrl+Z',
+          disabled: !canUndo,
+          action: () => undo(),
+        },
+        {
+          id: 'redo',
+          label: 'Redo',
+          shortcut: 'Ctrl+Y',
+          disabled: !canRedo,
+          action: () => redo(),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'cut',
+          label: 'Cut',
+          shortcut: 'Ctrl+X',
+          action: () => cut(),
+        },
+        {
+          id: 'copy',
+          label: 'Copy',
+          shortcut: 'Ctrl+C',
+          action: () => copy(),
+        },
+        {
+          id: 'paste',
+          label: 'Paste',
+          shortcut: 'Ctrl+V',
+          action: () => paste(),
+        },
+        {
+          id: 'delete',
+          label: 'Delete',
+          shortcut: 'Del',
+          action: () => deleteSelected(),
+        },
+        { id: 'divider2', label: '', divider: true },
+        {
+          id: 'select-all',
+          label: 'Select All',
+          shortcut: 'Ctrl+A',
+          action: () => selectAll(),
+        },
+        {
+          id: 'deselect',
+          label: 'Deselect',
+          shortcut: 'Esc',
+          action: () => clearSelection(),
+        },
+        { id: 'divider3', label: '', divider: true },
+        {
+          id: 'group',
+          label: 'Group',
+          shortcut: 'Ctrl+G',
+          action: () => groupSelected(),
+        },
+        {
+          id: 'ungroup',
+          label: 'Ungroup',
+          shortcut: 'Ctrl+Shift+G',
+          action: () => ungroupSelected(),
+        },
+      ],
+    },
+    {
+      id: 'view',
+      label: 'View',
+      items: [
+        {
+          id: 'zoom-in',
+          label: 'Zoom In',
+          shortcut: '+',
+          action: () => setZoom(zoom + 10),
+        },
+        {
+          id: 'zoom-out',
+          label: 'Zoom Out',
+          shortcut: '-',
+          action: () => setZoom(zoom - 10),
+        },
+        {
+          id: 'zoom-100',
+          label: 'Zoom to 100%',
+          shortcut: 'Ctrl+0',
+          action: () => resetViewport(),
+        },
+        {
+          id: 'zoom-fit',
+          label: 'Fit to Window',
+          shortcut: 'Ctrl+1',
+          action: () => zoomToFit(),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'zoom-50',
+          label: '50%',
+          action: () => setZoom(50),
+        },
+        {
+          id: 'zoom-100-option',
+          label: '100%',
+          action: () => setZoom(100),
+        },
+        {
+          id: 'zoom-150',
+          label: '150%',
+          action: () => setZoom(150),
+        },
+        {
+          id: 'zoom-200',
+          label: '200%',
+          action: () => setZoom(200),
+        },
+        { id: 'divider2', label: '', divider: true },
+        {
+          id: 'show-grid',
+          label: 'Show Grid',
+          shortcut: "Ctrl+'",
+          checked: gridVisible,
+          action: () => toggleGrid(),
+        },
+        {
+          id: 'snap-to-grid',
+          label: 'Snap to Grid',
+          shortcut: 'Ctrl+Shift+;',
+          checked: snapToGrid,
+          action: () => toggleSnap(),
+        },
+        {
+          id: 'show-rulers',
+          label: 'Show Rulers',
+          shortcut: 'Ctrl+R',
+          checked: false,
+          disabled: true,
+        },
+      ],
+    },
+    {
+      id: 'object',
+      label: 'Object',
+      items: [
+        {
+          id: 'bring-to-front',
+          label: 'Bring to Front',
+          shortcut: 'Ctrl+Shift+]',
+          action: () => bringToFront(),
+        },
+        {
+          id: 'bring-forward',
+          label: 'Bring Forward',
+          shortcut: 'Ctrl+]',
+          action: () => bringForward(),
+        },
+        {
+          id: 'send-backward',
+          label: 'Send Backward',
+          shortcut: 'Ctrl+[',
+          action: () => sendBackward(),
+        },
+        {
+          id: 'send-to-back',
+          label: 'Send to Back',
+          shortcut: 'Ctrl+Shift+[',
+          action: () => sendToBack(),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'group',
+          label: 'Group',
+          shortcut: 'Ctrl+G',
+          action: () => groupSelected(),
+        },
+        {
+          id: 'ungroup',
+          label: 'Ungroup',
+          shortcut: 'Ctrl+Shift+G',
+          action: () => ungroupSelected(),
+        },
+      ],
+    },
+    {
+      id: 'help',
+      label: 'Help',
+      items: [
+        {
+          id: 'keyboard-shortcuts',
+          label: 'Keyboard Shortcuts',
+          shortcut: 'Ctrl+/',
+          action: () => handleShowShortcuts(),
+        },
+        {
+          id: 'documentation',
+          label: 'Documentation',
+          action: () => window.open('https://finnish.dev/docs', '_blank'),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'about',
+          label: 'About FINNISH',
+          action: () => handleShowAbout(),
+        },
+      ],
+    },
+  ];
+
+  // ========================================================================
+  // Handlers
+  // ========================================================================
+
+  const handleOpen = useCallback(() => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.finnish,.json,.svg';
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        const text = await file.text();
+        try {
+          const json = JSON.parse(text);
+          if (canvas) {
+            canvas.loadFromJSON(json, () => {
+              canvas.renderAll();
+            });
+          }
+        } catch {
+          alert('Invalid file format');
+        }
+      }
+    };
+    input.click();
+  }, [canvas]);
+
+  const handleSave = useCallback(() => {
+    const json = exportJSON();
+    const blob = new Blob([JSON.stringify(json, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'diagram.finnish';
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [exportJSON]);
+
+  const handleSaveAs = useCallback(() => {
+    const filename = prompt('Enter filename:', 'diagram.finnish');
+    if (filename) {
+      const json = exportJSON();
+      const blob = new Blob([JSON.stringify(json, null, 2)], {
+        type: 'application/json',
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename.endsWith('.finnish') ? filename : `${filename}.finnish`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  }, [exportJSON]);
+
+  const handleExport = useCallback(
+    (format: 'svg' | 'png' | 'png-2x') => {
+      if (format === 'svg') {
+        const svg = exportSVG();
+        const blob = new Blob([svg], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'diagram.svg';
+        a.click();
+        URL.revokeObjectURL(url);
+      } else if (format === 'png' || format === 'png-2x') {
+        const multiplier = format === 'png-2x' ? 2 : 1;
+        const dataUrl = exportPNG(multiplier);
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `diagram${format === 'png-2x' ? '@2x' : ''}.png`;
+        a.click();
+      }
+    },
+    [exportSVG, exportPNG]
+  );
+
+  const handleShowShortcuts = useCallback(() => {
+    alert(
+      'Keyboard Shortcuts:\n\n' +
+        'V - Select Tool\n' +
+        'H - Hand Tool\n' +
+        'R - Rectangle Tool\n' +
+        'E - Ellipse Tool\n' +
+        'L - Line Tool\n' +
+        'T - Text Tool\n\n' +
+        'Ctrl+Z - Undo\n' +
+        'Ctrl+Y - Redo\n' +
+        'Ctrl+C - Copy\n' +
+        'Ctrl+V - Paste\n' +
+        'Ctrl+X - Cut\n' +
+        'Ctrl+A - Select All\n' +
+        'Ctrl+G - Group\n' +
+        'Ctrl+Shift+G - Ungroup\n' +
+        'Del/Backspace - Delete\n\n' +
+        '+/- - Zoom In/Out\n' +
+        'Space+Drag - Pan'
+    );
+  }, []);
+
+  const handleShowAbout = useCallback(() => {
+    alert(
+      'FINNISH - AI-Powered Scientific Illustration Tool\n\n' +
+        'Version: 0.1.0\n\n' +
+        'Kill Adobe Illustrator, BioRender, and Napkin.AI for academics.\n\n' +
+        'Built with React, Fabric.js, and Zustand.'
+    );
+  }, []);
+
+  // ========================================================================
+  // Click Outside Handler
+  // ========================================================================
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        menuBarRef.current &&
+        !menuBarRef.current.contains(e.target as Node)
+      ) {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // ========================================================================
+  // Render Menu Item
+  // ========================================================================
+
+  const renderMenuItem = (item: MenuItem) => {
+    if (item.divider) {
+      return <div key={item.id} className="menu-divider" />;
+    }
+
+    if (item.submenu) {
+      return (
+        <div key={item.id} className="menu-item has-submenu">
+          <span className="menu-item-label">{item.label}</span>
+          <span className="menu-item-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12">
+              <path
+                d="M4 2L8 6L4 10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+            </svg>
+          </span>
+          <div className="submenu">
+            {item.submenu.map((subItem) => renderMenuItem(subItem))}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <button
+        key={item.id}
+        className={`menu-item ${item.disabled ? 'disabled' : ''} ${
+          item.checked ? 'checked' : ''
+        }`}
+        onClick={() => {
+          if (!item.disabled && item.action) {
+            item.action();
+            setActiveMenu(null);
+          }
+        }}
+        disabled={item.disabled}
+      >
+        {item.checked !== undefined && (
+          <span className="menu-item-check">
+            {item.checked && (
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <path
+                  d="M2 6L5 9L10 3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+              </svg>
+            )}
+          </span>
+        )}
+        <span className="menu-item-label">{item.label}</span>
+        {item.shortcut && (
+          <span className="menu-item-shortcut">{item.shortcut}</span>
+        )}
+      </button>
+    );
+  };
+
+  // ========================================================================
+  // Render
+  // ========================================================================
+
+  return (
+    <div className="menu-bar" ref={menuBarRef}>
+      {menus.map((menu) => (
+        <div
+          key={menu.id}
+          className={`menu-trigger ${activeMenu === menu.id ? 'active' : ''}`}
+          onMouseEnter={() => activeMenu && setActiveMenu(menu.id)}
+          onClick={() =>
+            setActiveMenu(activeMenu === menu.id ? null : menu.id)
+          }
+        >
+          <span>{menu.label}</span>
+          {activeMenu === menu.id && (
+            <div className="menu-dropdown">
+              {menu.items.map((item) => renderMenuItem(item))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      <div className="menu-bar-spacer" />
+
+      {/* Quick action buttons */}
+      <button
+        className="menu-action-btn"
+        onClick={() => canUndo && undo()}
+        disabled={!canUndo}
+        title="Undo (Ctrl+Z)"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 7v6h6" />
+          <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+        </svg>
+      </button>
+      <button
+        className="menu-action-btn"
+        onClick={() => canRedo && redo()}
+        disabled={!canRedo}
+        title="Redo (Ctrl+Y)"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M21 7v6h-6" />
+          <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+export default MenuBar;
