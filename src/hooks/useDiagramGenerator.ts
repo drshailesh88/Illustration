@@ -13,11 +13,8 @@ import {
   type RefineOptions,
   type ExtendedGenerationResult,
 } from '../services/ai/DiagramGenerator';
-import type {
-  ConversationContext,
-  DiagramVersion,
-} from '../services/ai/ConversationManager';
-import type { ParsedPrompt } from '../services/ai/types';
+import type { ConversationContext } from '../services/ai/ConversationManager';
+import type { ParsedPrompt, DiagramVersion } from '../services/ai/types';
 
 // =============================================================================
 // TYPES
@@ -527,7 +524,7 @@ export function useDiagramGenerator(
 
       const success = generatorRef.current
         .getConversationHistory(state.conversationId)
-        ?.diagramHistory.find((v) => v.version === version);
+        ?.diagramHistory.find((v: DiagramVersion) => v.version === version);
 
       if (success) {
         setState((prev) => ({

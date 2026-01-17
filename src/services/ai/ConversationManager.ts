@@ -8,7 +8,6 @@
 
 import type {
   GenerationResult,
-  ConversationMessage,
   DiagramVersion,
   DiagramType,
   DiagramDomain,

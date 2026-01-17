@@ -86,7 +86,7 @@ export class ContextBuilder {
       diagramType,
       domain = 'general',
       entities,
-      includeFewShot = true,
+      includeFewShot: _includeFewShot = true,
       maxLength = this.defaultMaxLength,
       verbosity = 'standard',
     } = options;
