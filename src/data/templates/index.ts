@@ -285,7 +285,7 @@ export function fillTemplate(
   // Handle conditional blocks
   // Pattern: {{#key}}content{{/key}}
   const conditionalRegex = /\{\{#(\w+)\}\}([\s\S]*?)\{\{\/\1\}\}/g;
-  filledPrompt = filledPrompt.replace(conditionalRegex, (match, key, content) => {
+  filledPrompt = filledPrompt.replace(conditionalRegex, (_match, key, content) => {
     const value = values[key];
     if (value && value.trim()) {
       // Replace the placeholder within the conditional block

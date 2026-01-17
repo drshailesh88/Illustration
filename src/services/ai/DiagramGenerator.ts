@@ -15,14 +15,13 @@ import type {
   AIBackend,
   GenerationRequest,
   GenerationResult,
-  GenerationMetadata,
   ParsedPrompt,
   DiagramType,
   DiagramDomain,
   Logger,
-  ConversationContext,
 } from './types';
 import { createLogger, AIServiceError } from './types';
+import type { ConversationContext } from './ConversationManager';
 
 // =============================================================================
 // TYPES
@@ -89,7 +88,7 @@ export class DiagramGenerator {
     this.parser = new PromptParser();
     this.contextBuilder = new ContextBuilder();
     this.conversationManager = new ConversationManager();
-    this.backends = new Map([
+    this.backends = new Map<string, AIBackend>([
       ['mermaid', new MermaidBackend()],
       ['svg', new SVGBackend()],
     ]);
@@ -529,7 +528,7 @@ export class DiagramGenerator {
    */
   private generateSuggestions(
     parsedPrompt: ParsedPrompt,
-    result: GenerationResult
+    _result: GenerationResult
   ): string[] {
     const suggestions: string[] = [];
 

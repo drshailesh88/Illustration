@@ -7,6 +7,17 @@
  */
 
 // =============================================================================
+// IMPORTS FOR INTERNAL USE
+// =============================================================================
+
+import { DiagramGenerator, diagramGenerator as _diagramGenerator } from './DiagramGenerator';
+import { PromptParser, promptParser as _promptParser } from './PromptParser';
+import { ConversationManager, conversationManager as _conversationManager } from './ConversationManager';
+import { ContextBuilder, contextBuilder as _contextBuilder } from './ContextBuilder';
+import { MermaidBackend, mermaidBackend as _mermaidBackend } from './backends/MermaidBackend';
+import { SVGBackend, svgBackend as _svgBackend } from './backends/SVGBackend';
+
+// =============================================================================
 // CORE SERVICES
 // =============================================================================
 
@@ -105,7 +116,7 @@ export { AIServiceError, createLogger } from './types';
  * Creates a diagram from a prompt using default settings
  */
 export async function generateDiagram(prompt: string): Promise<string> {
-  const result = await diagramGenerator.generate(prompt);
+  const result = await _diagramGenerator.generate(prompt);
   return result.svg;
 }
 
@@ -117,7 +128,7 @@ export async function refineDiagram(
   existingSvg: string,
   refinementPrompt: string
 ): Promise<string> {
-  const result = await diagramGenerator.refine(existingSvg, refinementPrompt);
+  const result = await _diagramGenerator.refine(existingSvg, refinementPrompt);
   return result.svg;
 }
 
@@ -130,7 +141,7 @@ export function parsePrompt(prompt: string): {
   confidence: number;
   isModification: boolean;
 } {
-  const parsed = promptParser.parse(prompt);
+  const parsed = _promptParser.parse(prompt);
   return {
     diagramType: parsed.diagramType,
     domain: parsed.domain,
@@ -143,8 +154,8 @@ export function parsePrompt(prompt: string): {
  * Get suggested backend for a prompt
  */
 export function suggestBackend(prompt: string): string {
-  const parsed = promptParser.parse(prompt);
-  return promptParser.suggestBackend(parsed);
+  const parsed = _promptParser.parse(prompt);
+  return _promptParser.suggestBackend(parsed);
 }
 
 // =============================================================================
@@ -158,6 +169,12 @@ export default {
   ContextBuilder,
   MermaidBackend,
   SVGBackend,
+  diagramGenerator: _diagramGenerator,
+  promptParser: _promptParser,
+  conversationManager: _conversationManager,
+  contextBuilder: _contextBuilder,
+  mermaidBackend: _mermaidBackend,
+  svgBackend: _svgBackend,
   generateDiagram,
   refineDiagram,
   parsePrompt,
