@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="16" rx="1"/>
+  <path d="M3 9h18"/>
+  <path d="M3 14h18"/>
+  <path d="M8 4v16"/>
+  <path d="M13 4v16"/>
+  <text x="5.5" y="7.5" font-size="3" font-family="sans-serif" fill="currentColor" stroke="none">H</text>
+  <text x="10" y="12.5" font-size="3" font-family="sans-serif" fill="currentColor" stroke="none">Fe</text>
+</svg>
