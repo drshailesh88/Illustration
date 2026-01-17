@@ -1,0 +1,174 @@
+%% Forest Plot Structure Template
+%% NOTE: Mermaid has limitations for true forest plots
+%% This template provides the structural layout only
+%%
+%% For publication-quality forest plots, use:
+%% - DiagramRouter to redirect to Plotly/D3.js implementation
+%% - Custom SVG generation with ForestPlotService
+%% - R's metafor/forestplot packages (export SVG)
+%%
+%% This Mermaid version shows study structure and can be
+%% used as a planning/mockup tool
+
+flowchart LR
+    %% ============================================
+    %% FOREST PLOT STRUCTURE
+    %% ============================================
+
+    subgraph header["<b>Forest Plot: {{title|Meta-Analysis Results}}</b>"]
+        direction TB
+        h1["<b>Study</b>"]
+        h2["<b>n/N</b>"]
+        h3["<b>Weight</b>"]
+        h4["<b>Effect [95% CI]</b>"]
+    end
+
+    %% ============================================
+    %% STUDY DATA ROWS
+    %% ============================================
+    subgraph studies["<b>Individual Studies</b>"]
+        direction TB
+
+        s1["{{study1|Author 2020}}"]
+        s1n["{{s1Events|__}}/{{s1Total|__}}"]
+        s1w["{{s1Weight|__}}%"]
+        s1e["{{s1Effect|__}} [{{s1CILow|__}}, {{s1CIHigh|__}}]"]
+
+        s2["{{study2|Author 2021}}"]
+        s2n["{{s2Events|__}}/{{s2Total|__}}"]
+        s2w["{{s2Weight|__}}%"]
+        s2e["{{s2Effect|__}} [{{s2CILow|__}}, {{s2CIHigh|__}}]"]
+
+        s3["{{study3|Author 2022}}"]
+        s3n["{{s3Events|__}}/{{s3Total|__}}"]
+        s3w["{{s3Weight|__}}%"]
+        s3e["{{s3Effect|__}} [{{s3CILow|__}}, {{s3CIHigh|__}}]"]
+
+        s4["{{study4|Author 2023}}"]
+        s4n["{{s4Events|__}}/{{s4Total|__}}"]
+        s4w["{{s4Weight|__}}%"]
+        s4e["{{s4Effect|__}} [{{s4CILow|__}}, {{s4CIHigh|__}}]"]
+
+        s5["{{study5|Author 2024}}"]
+        s5n["{{s5Events|__}}/{{s5Total|__}}"]
+        s5w["{{s5Weight|__}}%"]
+        s5e["{{s5Effect|__}} [{{s5CILow|__}}, {{s5CIHigh|__}}]"]
+    end
+
+    %% ============================================
+    %% SUBGROUP HEADERS (Optional)
+    %% ============================================
+    subgraph subgroups["<b>Subgroup Analysis</b>"]
+        direction TB
+
+        sg1["<b>{{subgroup1|Subgroup A}}</b>"]
+        sg1summary["Subtotal: {{sg1Effect|__}} [{{sg1CILow|__}}, {{sg1CIHigh|__}}]"]
+
+        sg2["<b>{{subgroup2|Subgroup B}}</b>"]
+        sg2summary["Subtotal: {{sg2Effect|__}} [{{sg2CILow|__}}, {{sg2CIHigh|__}}]"]
+    end
+
+    %% ============================================
+    %% OVERALL EFFECT
+    %% ============================================
+    subgraph overall["<b>Overall Effect</b>"]
+        direction TB
+
+        pooled["<b>Overall ({{model|Random Effects}})</b>"]
+        pooledEffect["{{pooledEffect|__}} [{{pooledCILow|__}}, {{pooledCIHigh|__}}]"]
+    end
+
+    %% ============================================
+    %% HETEROGENEITY STATISTICS
+    %% ============================================
+    subgraph heterogeneity["<b>Heterogeneity Statistics</b>"]
+        direction TB
+
+        het1["I<sup>2</sup> = {{I2|__}}%"]
+        het2["Q = {{Q|__}}, df = {{df|__}}, p = {{pHet|__}}"]
+        het3["Tau<sup>2</sup> = {{tau2|__}}"]
+    end
+
+    %% ============================================
+    %% TEST FOR OVERALL EFFECT
+    %% ============================================
+    subgraph test["<b>Test for Overall Effect</b>"]
+        direction TB
+
+        zTest["Z = {{Z|__}}, p = {{pEffect|__}}"]
+    end
+
+    %% ============================================
+    %% PLOT AREA REPRESENTATION
+    %% ============================================
+    subgraph plotArea["<b>Effect Estimates (Visual)</b>"]
+        direction TB
+
+        nullLine["| Null Effect ({{nullValue|1.0 or 0}}) |"]
+
+        plotNote["NOTE: For actual forest plot graphics,<br/>
+        use ForestPlotService or Plotly integration<br/>
+        via DiagramRouter"]
+
+        favorsLeft["<-- Favors {{favorsLeft|Control}}"]
+        favorsRight["Favors {{favorsRight|Treatment}} -->"]
+    end
+
+    %% ============================================
+    %% STYLING
+    %% ============================================
+    classDef headerStyle fill:#1e40af,stroke:#1e3a8a,stroke-width:2px,color:#ffffff
+    classDef studyStyle fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#1e293b
+    classDef summaryStyle fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,color:#1e40af
+    classDef overallStyle fill:#7c3aed,stroke:#5b21b6,stroke-width:2px,color:#ffffff
+    classDef statStyle fill:#fef3c7,stroke:#d97706,stroke-width:1px,color:#78350f
+    classDef plotStyle fill:#f0fdf4,stroke:#16a34a,stroke-width:1px,color:#166534
+
+    class h1,h2,h3,h4 headerStyle
+    class s1,s2,s3,s4,s5,s1n,s2n,s3n,s4n,s5n,s1w,s2w,s3w,s4w,s5w,s1e,s2e,s3e,s4e,s5e studyStyle
+    class sg1,sg2,sg1summary,sg2summary summaryStyle
+    class pooled,pooledEffect overallStyle
+    class het1,het2,het3,zTest statStyle
+    class nullLine,plotNote,favorsLeft,favorsRight plotStyle
+
+%% ============================================
+%% FOREST PLOT IMPLEMENTATION NOTES
+%% ============================================
+%%
+%% LIMITATIONS OF MERMAID FOR FOREST PLOTS:
+%% - Cannot draw proportional squares for study weights
+%% - Cannot draw confidence interval lines
+%% - Cannot draw diamond for pooled effect
+%% - Cannot position elements on continuous scale
+%%
+%% RECOMMENDED ALTERNATIVES:
+%% 1. ForestPlotService (custom SVG generation)
+%%    - Full control over graphics
+%%    - Proper scaling and positioning
+%%    - Interactive features
+%%
+%% 2. Plotly.js Integration
+%%    - Use DiagramRouter to redirect
+%%    - Scatter plot with error bars
+%%    - Shapes for diamond and reference line
+%%
+%% 3. D3.js Custom Implementation
+%%    - Maximum flexibility
+%%    - Animation support
+%%    - Publication quality
+%%
+%% 4. R Export (metafor/forestplot)
+%%    - Generate in R, export as SVG
+%%    - Import via MermaidService
+%%
+%% USAGE WITH DIAGRAMROUTER:
+%% When user requests "forest plot", DiagramRouter should:
+%% 1. Detect forest plot intent
+%% 2. Route to ForestPlotService or Plotly
+%% 3. NOT use this Mermaid template for final output
+%%
+%% This template is useful for:
+%% - Planning forest plot structure
+%% - Mockups and wireframes
+%% - Documentation purposes
+%% ============================================

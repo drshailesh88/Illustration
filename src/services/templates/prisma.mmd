@@ -1,0 +1,201 @@
+%% PRISMA 2020 Flow Diagram
+%% Preferred Reporting Items for Systematic Reviews and Meta-Analyses
+%% Template for systematic review article screening
+%%
+%% Usage: Import this template and replace placeholder values
+%% Variables use {{variableName|defaultValue}} syntax
+
+flowchart TB
+    %% ============================================
+    %% IDENTIFICATION - Previous Studies
+    %% ============================================
+    subgraph prevStudies["<b>Identification of new studies via databases and registers</b>"]
+        direction TB
+
+        dbRecords["<b>Records identified from databases</b><br/>(n={{dbRecords|___}})<br/>
+        {{db1Name|Database 1}} (n={{db1Count|___}})<br/>
+        {{db2Name|Database 2}} (n={{db2Count|___}})<br/>
+        {{db3Name|Database 3}} (n={{db3Count|___}})"]
+
+        registerRecords["<b>Records identified from registers</b><br/>(n={{registerRecords|___}})<br/>
+        {{register1|Register 1}} (n={{reg1Count|___}})"]
+    end
+
+    %% ============================================
+    %% IDENTIFICATION - Other Methods
+    %% ============================================
+    subgraph otherMethods["<b>Identification of new studies via other methods</b>"]
+        direction TB
+
+        otherRecords["<b>Records identified from:</b><br/>
+        <i>Websites</i> (n={{websiteRecords|___}})<br/>
+        <i>Organisations</i> (n={{orgRecords|___}})<br/>
+        <i>Citation searching</i> (n={{citationRecords|___}})<br/>
+        <i>Other</i> (n={{otherSourceRecords|___}})"]
+    end
+
+    %% ============================================
+    %% DUPLICATE REMOVAL
+    %% ============================================
+    duplicatesRemoved["<b>Records removed before screening:</b><br/>
+    <i>Duplicate records</i> (n={{duplicates|___}})<br/>
+    <i>Records marked as ineligible by automation tools</i> (n={{autoIneligible|___}})<br/>
+    <i>Records removed for other reasons</i> (n={{otherRemoved|___}})"]
+
+    %% ============================================
+    %% SCREENING PHASE
+    %% ============================================
+    subgraph screening["<b>Screening</b>"]
+        direction TB
+
+        screened["<b>Records screened</b><br/>(n={{screened|___}})"]
+
+        screenExcluded["<b>Records excluded</b><br/>(n={{screenExcluded|___}})"]
+    end
+
+    %% ============================================
+    %% RETRIEVAL PHASE
+    %% ============================================
+    subgraph retrieval["<b>Retrieval</b>"]
+        direction TB
+
+        soughtRetrieval["<b>Reports sought for retrieval</b><br/>(n={{soughtRetrieval|___}})"]
+
+        notRetrieved["<b>Reports not retrieved</b><br/>(n={{notRetrieved|___}})"]
+    end
+
+    %% Other methods retrieval
+    subgraph otherRetrieval["<b>Other Methods Retrieval</b>"]
+        direction TB
+
+        otherSought["<b>Reports sought for retrieval</b><br/>(n={{otherSought|___}})"]
+
+        otherNotRetrieved["<b>Reports not retrieved</b><br/>(n={{otherNotRetrieved|___}})"]
+    end
+
+    %% ============================================
+    %% ELIGIBILITY PHASE
+    %% ============================================
+    subgraph eligibility["<b>Eligibility</b>"]
+        direction TB
+
+        assessed["<b>Reports assessed for eligibility</b><br/>(n={{assessed|___}})"]
+
+        excludedReasons["<b>Reports excluded:</b><br/>
+        <i>{{reason1|Reason 1}}</i> (n={{reason1Count|___}})<br/>
+        <i>{{reason2|Reason 2}}</i> (n={{reason2Count|___}})<br/>
+        <i>{{reason3|Reason 3}}</i> (n={{reason3Count|___}})<br/>
+        <i>{{reason4|Reason 4}}</i> (n={{reason4Count|___}})<br/>
+        <i>{{reason5|Other}}</i> (n={{reason5Count|___}})"]
+    end
+
+    %% Other methods eligibility
+    subgraph otherEligibility["<b>Other Methods Eligibility</b>"]
+        direction TB
+
+        otherAssessed["<b>Reports assessed for eligibility</b><br/>(n={{otherAssessed|___}})"]
+
+        otherExcluded["<b>Reports excluded:</b><br/>
+        <i>{{otherReason1|Reason 1}}</i> (n={{otherReason1Count|___}})<br/>
+        <i>{{otherReason2|Reason 2}}</i> (n={{otherReason2Count|___}})"]
+    end
+
+    %% ============================================
+    %% INCLUDED PHASE
+    %% ============================================
+    subgraph included["<b>Included</b>"]
+        direction TB
+
+        studiesIncluded["<b>Studies included in review</b><br/>(n={{studiesIncluded|___}})<br/>
+        <i>Reports of included studies</i><br/>(n={{reportsIncluded|___}})"]
+
+        subgraph synthesis["Synthesis"]
+            metaAnalysis["<b>Studies included in<br/>quantitative synthesis<br/>(meta-analysis)</b><br/>(n={{metaAnalysisStudies|___}})"]
+        end
+    end
+
+    %% ============================================
+    %% PREVIOUS STUDIES (Optional)
+    %% ============================================
+    subgraph previousReview["<b>Previous studies</b>"]
+        direction TB
+
+        prevIncluded["<b>Studies included in<br/>previous version of review</b><br/>(n={{prevIncluded|___}})"]
+
+        prevReports["<b>Reports of studies included<br/>in previous version of review</b><br/>(n={{prevReports|___}})"]
+    end
+
+    %% ============================================
+    %% FLOW CONNECTIONS - Main Path
+    %% ============================================
+    dbRecords --> duplicatesRemoved
+    registerRecords --> duplicatesRemoved
+    duplicatesRemoved --> screened
+    screened --> screenExcluded
+    screened --> soughtRetrieval
+    soughtRetrieval --> notRetrieved
+    soughtRetrieval --> assessed
+    assessed --> excludedReasons
+    assessed --> studiesIncluded
+
+    %% ============================================
+    %% FLOW CONNECTIONS - Other Methods Path
+    %% ============================================
+    otherRecords --> otherSought
+    otherSought --> otherNotRetrieved
+    otherSought --> otherAssessed
+    otherAssessed --> otherExcluded
+    otherAssessed --> studiesIncluded
+
+    %% ============================================
+    %% FLOW CONNECTIONS - Previous Studies
+    %% ============================================
+    prevIncluded --> prevReports
+    prevReports --> studiesIncluded
+
+    %% ============================================
+    %% FLOW CONNECTIONS - Synthesis
+    %% ============================================
+    studiesIncluded --> metaAnalysis
+
+    %% ============================================
+    %% STYLING
+    %% ============================================
+
+    %% Phase styling
+    classDef identificationStyle fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    classDef screeningStyle fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
+    classDef eligibilityStyle fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843
+    classDef includedStyle fill:#d1fae5,stroke:#059669,stroke-width:2px,color:#064e3b
+
+    %% Node styling
+    classDef recordNode fill:#ffffff,stroke:#374151,stroke-width:1px,color:#111827
+    classDef excludedNode fill:#fee2e2,stroke:#dc2626,stroke-width:1px,color:#7f1d1d
+    classDef includedNode fill:#d1fae5,stroke:#059669,stroke-width:2px,color:#064e3b
+
+    %% Apply styles
+    class dbRecords,registerRecords,otherRecords,duplicatesRemoved recordNode
+    class screened,soughtRetrieval,otherSought,assessed,otherAssessed recordNode
+    class screenExcluded,notRetrieved,otherNotRetrieved,excludedReasons,otherExcluded excludedNode
+    class studiesIncluded,metaAnalysis,prevIncluded,prevReports includedNode
+
+%% ============================================
+%% PRISMA 2020 REFERENCE
+%% ============================================
+%%
+%% This diagram follows the PRISMA 2020 flow diagram structure
+%% for systematic reviews which may or may not include
+%% synthesis (e.g., meta-analysis)
+%%
+%% Four main sections:
+%% 1. Identification - Records from databases, registers, other methods
+%% 2. Screening - Title/abstract screening
+%% 3. Eligibility - Full-text assessment
+%% 4. Included - Final studies in review
+%%
+%% Reference: Page MJ, McKenzie JE, Bossuyt PM, et al.
+%% The PRISMA 2020 statement: an updated guideline for
+%% reporting systematic reviews. BMJ 2021;372:n71.
+%%
+%% PRISMA Flow Diagram Generator: http://prisma-statement.org/
+%% ============================================

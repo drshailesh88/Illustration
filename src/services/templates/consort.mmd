@@ -1,0 +1,137 @@
+%% CONSORT 2010 Flow Diagram
+%% Consolidated Standards of Reporting Trials
+%% Template for randomized controlled trials
+%%
+%% Usage: Import this template and replace placeholder values
+%% Variables use {{variableName|defaultValue}} syntax
+
+flowchart TB
+    %% ============================================
+    %% ENROLLMENT PHASE
+    %% ============================================
+    subgraph enrollment["<b>Enrollment</b>"]
+        direction TB
+
+        assessed["<b>Assessed for eligibility</b><br/>(n={{totalAssessed|___}})"]
+
+        excluded["<b>Excluded</b> (n={{totalExcluded|___}})<br/>
+        <i>Not meeting inclusion criteria</i> (n={{notMeetingCriteria|___}})<br/>
+        <i>Declined to participate</i> (n={{declined|___}})<br/>
+        <i>Other reasons</i> (n={{otherExcluded|___}})"]
+    end
+
+    %% ============================================
+    %% RANDOMIZATION
+    %% ============================================
+    randomized["<b>Randomized</b><br/>(n={{totalRandomized|___}})"]
+
+    %% ============================================
+    %% ALLOCATION PHASE
+    %% ============================================
+    subgraph allocation["<b>Allocation</b>"]
+        direction LR
+
+        subgraph interventionAlloc["Intervention Group"]
+            allocIntervention["<b>Allocated to intervention</b><br/>(n={{allocatedIntervention|___}})<br/>
+            <i>Received allocated intervention</i><br/>(n={{receivedIntervention|___}})<br/>
+            <i>Did not receive allocated intervention</i><br/>(n={{notReceivedIntervention|___}})<br/>
+            <i>Reason:</i> {{notReceivedReasonI|___}}"]
+        end
+
+        subgraph controlAlloc["Control Group"]
+            allocControl["<b>Allocated to control</b><br/>(n={{allocatedControl|___}})<br/>
+            <i>Received allocated intervention</i><br/>(n={{receivedControl|___}})<br/>
+            <i>Did not receive allocated intervention</i><br/>(n={{notReceivedControl|___}})<br/>
+            <i>Reason:</i> {{notReceivedReasonC|___}}"]
+        end
+    end
+
+    %% ============================================
+    %% FOLLOW-UP PHASE
+    %% ============================================
+    subgraph followup["<b>Follow-Up</b>"]
+        direction LR
+
+        subgraph interventionFU["Intervention Group"]
+            fuIntervention["<b>Lost to follow-up</b><br/>(n={{lostIntervention|___}})<br/>
+            <i>Reason:</i> {{lostReasonI|___}}<br/><br/>
+            <b>Discontinued intervention</b><br/>(n={{discontinuedIntervention|___}})<br/>
+            <i>Reason:</i> {{discontinuedReasonI|___}}"]
+        end
+
+        subgraph controlFU["Control Group"]
+            fuControl["<b>Lost to follow-up</b><br/>(n={{lostControl|___}})<br/>
+            <i>Reason:</i> {{lostReasonC|___}}<br/><br/>
+            <b>Discontinued intervention</b><br/>(n={{discontinuedControl|___}})<br/>
+            <i>Reason:</i> {{discontinuedReasonC|___}}"]
+        end
+    end
+
+    %% ============================================
+    %% ANALYSIS PHASE
+    %% ============================================
+    subgraph analysis["<b>Analysis</b>"]
+        direction LR
+
+        subgraph interventionAn["Intervention Group"]
+            anIntervention["<b>Analysed</b> (n={{analysedIntervention|___}})<br/>
+            <i>Excluded from analysis</i><br/>(n={{excludedIntervention|___}})<br/>
+            <i>Reason:</i> {{excludedReasonI|___}}"]
+        end
+
+        subgraph controlAn["Control Group"]
+            anControl["<b>Analysed</b> (n={{analysedControl|___}})<br/>
+            <i>Excluded from analysis</i><br/>(n={{excludedControl|___}})<br/>
+            <i>Reason:</i> {{excludedReasonC|___}}"]
+        end
+    end
+
+    %% ============================================
+    %% FLOW CONNECTIONS
+    %% ============================================
+    assessed --> excluded
+    assessed --> randomized
+    randomized --> allocIntervention
+    randomized --> allocControl
+    allocIntervention --> fuIntervention
+    allocControl --> fuControl
+    fuIntervention --> anIntervention
+    fuControl --> anControl
+
+    %% ============================================
+    %% STYLING
+    %% ============================================
+
+    %% Phase container styling
+    classDef enrollmentStyle fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
+    classDef allocationStyle fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    classDef followupStyle fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef analysisStyle fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843
+
+    %% Node styling
+    classDef mainNode fill:#ffffff,stroke:#374151,stroke-width:2px,color:#111827
+    classDef excludedNode fill:#fee2e2,stroke:#dc2626,stroke-width:1px,color:#7f1d1d
+    classDef randomNode fill:#ddd6fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95
+
+    %% Apply styles
+    class assessed,allocIntervention,allocControl,fuIntervention,fuControl,anIntervention,anControl mainNode
+    class excluded excludedNode
+    class randomized randomNode
+
+%% ============================================
+%% CONSORT 2010 CHECKLIST REFERENCE
+%% ============================================
+%%
+%% This diagram addresses CONSORT items:
+%% - 13a: Flow of participants through each stage
+%% - 13b: Losses and exclusions after randomization
+%%
+%% Required reporting for each stage:
+%% 1. Enrollment: Number assessed, excluded (with reasons)
+%% 2. Allocation: Number allocated to each group
+%% 3. Follow-up: Losses and discontinuations (with reasons)
+%% 4. Analysis: Number analyzed, exclusions (with reasons)
+%%
+%% Reference: Schulz KF, Altman DG, Moher D, for the CONSORT Group.
+%% CONSORT 2010 Statement. BMJ 2010;340:c332.
+%% ============================================
