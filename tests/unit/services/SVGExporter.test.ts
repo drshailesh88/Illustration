@@ -80,8 +80,8 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any);
-      const svgContent = await result.blob.text();
+      // Use exportAsString instead of blob.text() for testing content
+      const svgContent = await exporter.exportAsString(mockCanvas as any);
 
       expect(svgContent).toContain('<svg');
       expect(svgContent).toContain('</svg>');
@@ -149,8 +149,8 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg"><!-- comment --><g></g></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any, { optimize: true });
-      const svgContent = await result.blob.text();
+      // Use exportAsString instead of blob.text()
+      const svgContent = await exporter.exportAsString(mockCanvas as any, { optimize: true });
 
       // Comments should be removed
       expect(svgContent).not.toContain('<!-- comment -->');
@@ -161,8 +161,7 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg"><g></g><rect/></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any, { optimize: true });
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any, { optimize: true });
 
       expect(svgContent).not.toContain('<g></g>');
     });
@@ -172,8 +171,7 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg"><rect data-fabric-id="123"/></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any, { optimize: true });
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any, { optimize: true });
 
       expect(svgContent).not.toContain('data-fabric-id');
     });
@@ -182,8 +180,7 @@ describe('SVGExporter', () => {
       const originalSvg = '<svg xmlns="http://www.w3.org/2000/svg"><!-- comment --></svg>';
       mockCanvas.toSVG.mockReturnValue(originalSvg);
 
-      const result = await exporter.export(mockCanvas as any, { optimize: false });
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any, { optimize: false });
 
       // Comment should be preserved when not optimizing
       expect(svgContent).toContain('<!-- comment -->');
@@ -200,8 +197,7 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg">\n  <rect/>\n</svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any, { minify: true });
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any, { minify: true });
 
       // Should remove newlines
       expect(svgContent).not.toMatch(/\n\s+\n/);
@@ -223,8 +219,7 @@ describe('SVGExporter', () => {
     it('should ensure xmlns is present', async () => {
       mockCanvas.toSVG.mockReturnValue('<svg><rect/></svg>');
 
-      const result = await exporter.export(mockCanvas as any);
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any);
 
       expect(svgContent).toContain('xmlns="http://www.w3.org/2000/svg"');
     });
@@ -234,8 +229,7 @@ describe('SVGExporter', () => {
         '<svg xmlns="http://www.w3.org/2000/svg"><rect/></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any);
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any);
 
       const xmlnsCount = (svgContent.match(/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/g) || []).length;
       expect(xmlnsCount).toBe(1);
@@ -250,8 +244,7 @@ describe('SVGExporter', () => {
     it('should add XML declaration if not present', async () => {
       mockCanvas.toSVG.mockReturnValue('<svg xmlns="http://www.w3.org/2000/svg"></svg>');
 
-      const result = await exporter.export(mockCanvas as any);
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any);
 
       expect(svgContent).toMatch(/^<\?xml version="1\.0" encoding="UTF-8"\?>/);
     });
@@ -261,8 +254,7 @@ describe('SVGExporter', () => {
         '<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg"></svg>'
       );
 
-      const result = await exporter.export(mockCanvas as any);
-      const svgContent = await result.blob.text();
+      const svgContent = await exporter.exportAsString(mockCanvas as any);
 
       const xmlDeclCount = (svgContent.match(/<\?xml/g) || []).length;
       expect(xmlDeclCount).toBe(1);
