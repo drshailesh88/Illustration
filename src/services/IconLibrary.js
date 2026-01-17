@@ -352,6 +352,62 @@ export async function initializeIconLibrary() {
     { name: 'Blood Drop', filename: 'blood-drop.svg', tags: ['blood', 'donation', 'hematology', 'transfusion'] }
   ]);
 
+  // Register biology icons
+  registerCategoryIcons('biology', [
+    { name: 'DNA Helix', filename: 'dna-helix.svg', tags: ['genetics', 'double helix', 'molecular', 'gene', 'chromosome'] },
+    { name: 'Cell Membrane', filename: 'cell-membrane.svg', tags: ['lipid bilayer', 'phospholipid', 'cellular', 'plasma membrane'] },
+    { name: 'Mitochondria', filename: 'mitochondria.svg', tags: ['organelle', 'powerhouse', 'ATP', 'cellular respiration', 'energy'] },
+    { name: 'Chloroplast', filename: 'chloroplast.svg', tags: ['organelle', 'photosynthesis', 'plant cell', 'thylakoid', 'green'] },
+    { name: 'Neuron', filename: 'neuron.svg', tags: ['nerve cell', 'brain', 'synapse', 'axon', 'dendrite', 'neuroscience'] },
+    { name: 'Protein', filename: 'protein.svg', tags: ['amino acid', 'polypeptide', 'folding', 'structure', 'biochemistry'] },
+    { name: 'RNA', filename: 'rna.svg', tags: ['ribonucleic acid', 'mRNA', 'transcription', 'genetic', 'single strand'] },
+    { name: 'Enzyme', filename: 'enzyme.svg', tags: ['catalyst', 'active site', 'substrate', 'biochemistry', 'reaction'] },
+    { name: 'Antibody', filename: 'antibody.svg', tags: ['immunoglobulin', 'immune', 'Y-shape', 'antigen', 'immunology'] },
+    { name: 'Receptor', filename: 'receptor.svg', tags: ['cell surface', 'signal', 'ligand', 'membrane protein', 'binding'] }
+  ]);
+
+  // Register chemistry icons
+  registerCategoryIcons('chemistry', [
+    { name: 'Atom', filename: 'atom.svg', tags: ['electron', 'nucleus', 'orbital', 'particle', 'atomic'] },
+    { name: 'Molecule', filename: 'molecule.svg', tags: ['compound', 'bond', 'structure', 'chemical'] },
+    { name: 'Benzene', filename: 'benzene.svg', tags: ['aromatic', 'ring', 'organic', 'hexagon', 'carbon'] },
+    { name: 'Flask', filename: 'flask.svg', tags: ['erlenmeyer', 'laboratory', 'glassware', 'experiment', 'conical'] },
+    { name: 'Beaker', filename: 'beaker.svg', tags: ['laboratory', 'glassware', 'container', 'measurement', 'liquid'] },
+    { name: 'Burette', filename: 'burette.svg', tags: ['titration', 'laboratory', 'measurement', 'volumetric', 'precision'] },
+    { name: 'Periodic Table', filename: 'periodic-table.svg', tags: ['elements', 'chemistry', 'atomic', 'Mendeleev'] },
+    { name: 'Bond', filename: 'bond.svg', tags: ['covalent', 'double bond', 'chemical bond', 'molecular'] },
+    { name: 'Reaction', filename: 'reaction.svg', tags: ['arrow', 'chemical reaction', 'equilibrium', 'transformation'] },
+    { name: 'Crystal', filename: 'crystal.svg', tags: ['lattice', 'solid', 'structure', 'crystallography', 'mineral'] }
+  ]);
+
+  // Register physics icons
+  registerCategoryIcons('physics', [
+    { name: 'Wave', filename: 'wave.svg', tags: ['sine', 'oscillation', 'frequency', 'amplitude', 'wavelength'] },
+    { name: 'Magnet', filename: 'magnet.svg', tags: ['magnetic field', 'poles', 'electromagnetism', 'attraction'] },
+    { name: 'Circuit', filename: 'circuit.svg', tags: ['electrical', 'current', 'voltage', 'electronics'] },
+    { name: 'Lens', filename: 'lens.svg', tags: ['optics', 'convex', 'refraction', 'focus', 'light'] },
+    { name: 'Prism', filename: 'prism.svg', tags: ['optics', 'spectrum', 'refraction', 'dispersion', 'rainbow'] },
+    { name: 'Pendulum', filename: 'pendulum.svg', tags: ['oscillation', 'gravity', 'period', 'mechanics', 'swing'] },
+    { name: 'Force', filename: 'force.svg', tags: ['vector', 'Newton', 'mechanics', 'arrow', 'direction'] },
+    { name: 'Electron', filename: 'electron.svg', tags: ['particle', 'negative charge', 'lepton', 'quantum'] },
+    { name: 'Laser', filename: 'laser.svg', tags: ['light', 'coherent', 'beam', 'optics', 'photon'] },
+    { name: 'Thermometer', filename: 'thermometer.svg', tags: ['temperature', 'heat', 'measurement', 'thermal', 'mercury'] }
+  ]);
+
+  // Register engineering icons
+  registerCategoryIcons('engineering', [
+    { name: 'Gear', filename: 'gear.svg', tags: ['cog', 'mechanical', 'rotation', 'machine', 'teeth'] },
+    { name: 'Circuit Board', filename: 'circuit-board.svg', tags: ['PCB', 'electronics', 'chip', 'traces', 'components'] },
+    { name: 'Resistor', filename: 'resistor.svg', tags: ['electronic', 'component', 'ohm', 'resistance', 'circuit'] },
+    { name: 'Capacitor', filename: 'capacitor.svg', tags: ['electronic', 'component', 'storage', 'charge', 'farad'] },
+    { name: 'Transistor', filename: 'transistor.svg', tags: ['semiconductor', 'amplifier', 'switch', 'electronic', 'BJT'] },
+    { name: 'Motor', filename: 'motor.svg', tags: ['electric', 'rotation', 'mechanical', 'electromagnetic', 'drive'] },
+    { name: 'Bridge', filename: 'bridge.svg', tags: ['structure', 'civil', 'arch', 'span', 'construction'] },
+    { name: 'Beam', filename: 'beam.svg', tags: ['I-beam', 'structural', 'steel', 'support', 'construction'] },
+    { name: 'Pipe', filename: 'pipe.svg', tags: ['tube', 'plumbing', 'fluid', 'conduit', 'flow'] },
+    { name: 'Valve', filename: 'valve.svg', tags: ['flow control', 'gate', 'plumbing', 'regulation', 'fluid'] }
+  ]);
+
   console.log(`Icon library initialized with ${iconRegistry.size} icons`);
 }
 

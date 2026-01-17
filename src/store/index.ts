@@ -66,7 +66,6 @@ export {
 
 export type {
   // Tool types
-  ToolType,
   ToolCategory,
   ToolMetadata,
 
@@ -122,6 +121,7 @@ export type {
 
 // Re-export ToolType enum value for use in components
 export { ToolType } from '../types/index.js';
+export type { ToolType as ToolTypeEnum } from '../types/index.js';
 
 // ============================================================================
 // Store Reset Utility

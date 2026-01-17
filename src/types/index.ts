@@ -5,7 +5,9 @@
  * @module types
  */
 
-import type { Canvas as FabricCanvas } from 'fabric';
+// Fabric.js Canvas type - using interface declaration for better compatibility
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type FabricCanvas = any;
 
 // ============================================================================
 // Tool Types
