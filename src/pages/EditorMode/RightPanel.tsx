@@ -1,0 +1,223 @@
+/**
+ * RightPanel Component
+ * Tabbed panel with Layers, Properties, and Icons tabs
+ *
+ * @module pages/EditorMode/RightPanel
+ */
+
+import React, { useState } from 'react';
+import { LayersPanel } from '../../components/LayersPanel';
+import PropertiesPanel from '../../components/PropertiesPanel';
+import IconPicker from '../../components/IconPicker';
+
+// ============================================================================
+// Types
+// ============================================================================
+
+type TabId = 'layers' | 'properties' | 'icons';
+
+interface Tab {
+  id: TabId;
+  label: string;
+  icon: React.ReactNode;
+}
+
+// ============================================================================
+// Styles
+// ============================================================================
+
+const styles: Record<string, React.CSSProperties> = {
+  panel: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 'var(--sidebar-width, 280px)',
+    backgroundColor: 'var(--bg-secondary)',
+    borderLeft: '1px solid var(--border-primary)',
+    overflow: 'hidden',
+  },
+  tabBar: {
+    display: 'flex',
+    alignItems: 'center',
+    height: 'var(--panel-header-height, 32px)',
+    borderBottom: '1px solid var(--border-primary)',
+    backgroundColor: 'var(--bg-tertiary)',
+    padding: '0 4px',
+  },
+  tab: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '6px',
+    height: '100%',
+    padding: '0 12px',
+    border: 'none',
+    backgroundColor: 'transparent',
+    color: 'var(--text-secondary)',
+    fontSize: '11px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    transition: 'all 150ms ease',
+    borderBottom: '2px solid transparent',
+    marginBottom: '-1px',
+  },
+  tabActive: {
+    color: 'var(--text-primary)',
+    borderBottomColor: 'var(--accent-primary)',
+    backgroundColor: 'var(--bg-secondary)',
+  },
+  tabHover: {
+    color: 'var(--text-primary)',
+    backgroundColor: 'var(--bg-hover)',
+  },
+  tabIcon: {
+    width: '14px',
+    height: '14px',
+    opacity: 0.8,
+  },
+  content: {
+    flex: 1,
+    overflow: 'auto',
+  },
+  emptyState: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    padding: '32px',
+    color: 'var(--text-muted)',
+    textAlign: 'center',
+  },
+  emptyIcon: {
+    width: '48px',
+    height: '48px',
+    marginBottom: '16px',
+    opacity: 0.4,
+  },
+  emptyText: {
+    fontSize: '12px',
+    lineHeight: 1.5,
+  },
+};
+
+// ============================================================================
+// Icons
+// ============================================================================
+
+const LayersIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+    <polyline points="2 17 12 22 22 17" />
+    <polyline points="2 12 12 17 22 12" />
+  </svg>
+);
+
+const PropertiesIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+  </svg>
+);
+
+const IconsIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7" />
+    <rect x="14" y="3" width="7" height="7" />
+    <rect x="14" y="14" width="7" height="7" />
+    <rect x="3" y="14" width="7" height="7" />
+  </svg>
+);
+
+// ============================================================================
+// Tabs Configuration
+// ============================================================================
+
+const tabs: Tab[] = [
+  { id: 'layers', label: 'Layers', icon: <LayersIcon /> },
+  { id: 'properties', label: 'Properties', icon: <PropertiesIcon /> },
+  { id: 'icons', label: 'Icons', icon: <IconsIcon /> },
+];
+
+// ============================================================================
+// Tab Button Component
+// ============================================================================
+
+interface TabButtonProps {
+  tab: Tab;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+function TabButton({ tab, isActive, onClick }: TabButtonProps): JSX.Element {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <button
+      style={{
+        ...styles.tab,
+        ...(isActive ? styles.tabActive : {}),
+        ...(!isActive && isHovered ? styles.tabHover : {}),
+      }}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={`panel-${tab.id}`}
+      id={`tab-${tab.id}`}
+    >
+      <span style={styles.tabIcon}>{tab.icon}</span>
+      <span>{tab.label}</span>
+    </button>
+  );
+}
+
+// ============================================================================
+// RightPanel Component
+// ============================================================================
+
+export function RightPanel(): JSX.Element {
+  const [activeTab, setActiveTab] = useState<TabId>('layers');
+
+  // Render content based on active tab
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'layers':
+        return <LayersPanel />;
+      case 'properties':
+        return <PropertiesPanel />;
+      case 'icons':
+        return <IconPicker />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <aside style={styles.panel}>
+      {/* Tab Bar */}
+      <div style={styles.tabBar} role="tablist" aria-label="Panel tabs">
+        {tabs.map((tab) => (
+          <TabButton
+            key={tab.id}
+            tab={tab}
+            isActive={activeTab === tab.id}
+            onClick={() => setActiveTab(tab.id)}
+          />
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div
+        style={styles.content}
+        role="tabpanel"
+        id={`panel-${activeTab}`}
+        aria-labelledby={`tab-${activeTab}`}
+      >
+        {renderContent()}
+      </div>
+    </aside>
+  );
+}
+
+export default RightPanel;
