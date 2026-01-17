@@ -9,7 +9,6 @@ import { create } from 'zustand';
 import { subscribeWithSelector, devtools } from 'zustand/middleware';
 import type {
   ExportState,
-  ExportActions,
   ExportStore,
   ExportFormat,
   ExportDPI,
