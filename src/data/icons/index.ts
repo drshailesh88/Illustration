@@ -75,6 +75,7 @@ import { biologyIcons } from './biology';
 import { chemistryIcons } from './chemistry';
 import { physicsIcons } from './physics';
 import { engineeringIcons } from './engineering';
+import { cardiologyIcons } from './cardiology';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -85,6 +86,7 @@ import { engineeringIcons } from './engineering';
  */
 export const allIcons: IconDefinition[] = [
   ...medicineIcons,
+  ...cardiologyIcons,
   ...biologyIcons,
   ...chemistryIcons,
   ...physicsIcons,
@@ -95,7 +97,7 @@ export const allIcons: IconDefinition[] = [
  * Icons organized by domain for quick access
  */
 export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
-  medicine: medicineIcons,
+  medicine: [...medicineIcons, ...cardiologyIcons],
   biology: biologyIcons,
   chemistry: chemistryIcons,
   physics: physicsIcons,
@@ -110,8 +112,8 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
   medicine: {
     id: 'medicine',
     name: 'Medicine',
-    description: 'Medical, clinical, and healthcare icons',
-    iconCount: medicineIcons.length,
+    description: 'Medical, clinical, and healthcare icons including cardiology',
+    iconCount: medicineIcons.length + cardiologyIcons.length,
     color: '#ef4444', // Red
   },
   biology: {
@@ -369,7 +371,7 @@ export function getIconStats(): {
   return {
     totalIcons: allIcons.length,
     byDomain: {
-      medicine: medicineIcons.length,
+      medicine: medicineIcons.length + cardiologyIcons.length,
       biology: biologyIcons.length,
       chemistry: chemistryIcons.length,
       physics: physicsIcons.length,
@@ -427,6 +429,7 @@ export function iconToBase64(icon: IconDefinition): string {
 // =============================================================================
 
 export { medicineIcons } from './medicine';
+export { cardiologyIcons } from './cardiology';
 export { biologyIcons } from './biology';
 export { chemistryIcons } from './chemistry';
 export { physicsIcons } from './physics';

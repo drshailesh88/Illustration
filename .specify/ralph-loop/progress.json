@@ -4,28 +4,50 @@
   "blockedSpecialties": [],
   "progress": {
     "cardiology": {
-      "iterations": 0,
-      "currentScore": 1.43,
-      "lastCheckpoint": null,
+      "iterations": 1,
+      "currentScore": 65.83,
+      "lastCheckpoint": "CLINICAL_75",
       "startedAt": "2026-01-17T00:00:00Z",
       "completedAt": null,
       "metrics": {
         "icons": {
-          "current": 2,
+          "current": 69,
           "target": 120,
-          "percentage": 1.67
+          "percentage": 57.5
         },
         "templates": {
-          "current": 0,
+          "current": 17,
           "target": 25,
-          "percentage": 0
+          "percentage": 68
         },
         "prompts": {
-          "current": 1,
+          "current": 17,
           "target": 20,
-          "percentage": 5
+          "percentage": 85
         },
-        "colorScheme": false
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "cardiac-anatomy": 6,
+          "cardiac-valves": 5,
+          "coronary": 5,
+          "conduction": 6,
+          "great-vessels": 4,
+          "pathology-cad": 7,
+          "pathology-mi": 6,
+          "pathology-arrhythmia": 6,
+          "pathology-structural": 6,
+          "equipment-diagnostic": 6,
+          "equipment-interventional": 6,
+          "equipment-implantable": 6
+        },
+        "templates": {
+          "decision-trees": 7,
+          "anatomical-diagrams": 4,
+          "procedure-illustrations": 3,
+          "data-visualization": 3
+        }
       }
     }
   },
@@ -37,7 +59,9 @@
     "notStarted": 34,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
-    "totalTargetPrompts": 525
+    "totalTargetPrompts": 525,
+    "currentTotalIcons": 169,
+    "currentTotalTemplates": 42
   },
   "executionOrder": [
     "cardiology",

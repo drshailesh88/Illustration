@@ -14,6 +14,7 @@
 // =============================================================================
 
 export * from './medicine';
+export * from './cardiology';
 export * from './biology';
 export * from './chemistry';
 export * from './physics';
@@ -102,6 +103,7 @@ export interface TemplateSearchOptions {
 // =============================================================================
 
 import { medicineTemplates } from './medicine';
+import { cardiologyTemplates } from './cardiology';
 import { biologyTemplates } from './biology';
 import { chemistryTemplates } from './chemistry';
 import { physicsTemplates } from './physics';
@@ -116,6 +118,7 @@ import { engineeringTemplates } from './engineering';
  */
 export const allTemplates: DiagramTemplate[] = [
   ...medicineTemplates,
+  ...cardiologyTemplates,
   ...biologyTemplates,
   ...chemistryTemplates,
   ...physicsTemplates,
@@ -126,7 +129,7 @@ export const allTemplates: DiagramTemplate[] = [
  * Templates organized by domain
  */
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
-  medicine: medicineTemplates,
+  medicine: [...medicineTemplates, ...cardiologyTemplates],
   biology: biologyTemplates,
   chemistry: chemistryTemplates,
   physics: physicsTemplates,
@@ -239,7 +242,7 @@ export function getTemplateStats(): {
   return {
     total: allTemplates.length,
     byDomain: {
-      medicine: medicineTemplates.length,
+      medicine: medicineTemplates.length + cardiologyTemplates.length,
       biology: biologyTemplates.length,
       chemistry: chemistryTemplates.length,
       physics: physicsTemplates.length,
