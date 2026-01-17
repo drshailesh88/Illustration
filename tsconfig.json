@@ -38,7 +38,14 @@
       "@editor/*": ["src/editor/*"],
       "@agent/*": ["src/agent/*"],
       "@services/*": ["src/services/*"],
-      "@utils/*": ["src/utils/*"]
+      "@store/*": ["src/store/*"],
+      "@stores/*": ["src/stores/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"],
+      "@styles/*": ["src/styles/*"],
+      "@config/*": ["src/config/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src"],
