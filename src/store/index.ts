@@ -21,6 +21,11 @@ import {
   getExportState as _getExportState,
 } from './exportStore.js';
 
+import {
+  resetLayerStore as _resetLayerStore,
+  getLayerState as _getLayerState,
+} from './layerStore.js';
+
 // ============================================================================
 // Store Exports
 // ============================================================================
@@ -76,6 +81,26 @@ export {
   generateExportFilename,
 } from './exportStore.js';
 
+// Layer Store - Layer management state
+export {
+  useLayerStore,
+  useLayers,
+  useActiveLayer,
+  useActiveLayerId,
+  useLayerCount,
+  useLayerById,
+  useVisibleLayers,
+  useUnlockedLayers,
+  useIsLayerActive,
+  useLayerPanelState,
+  useActiveLayerObjects,
+  resetLayerStore,
+  getLayerState,
+  subscribeToLayers,
+  createLayer,
+  clearPersistedLayers,
+} from './layerStore.js';
+
 // ============================================================================
 // Type Re-exports
 // ============================================================================
@@ -128,6 +153,18 @@ export type {
   ExportState,
   ExportActions,
   ExportStore,
+} from '../types/index.js';
+
+// Layer store types
+export type {
+  StoreLayer,
+  LayerState,
+  LayerActions,
+  LayerStore,
+} from './layerStore.js';
+
+// Re-export continued from types
+export type {
 
   // Utility types
   DeepPartial,
@@ -151,6 +188,7 @@ export const resetAllStores = (): void => {
   _resetEditorStore();
   _resetConversationStore();
   _resetExportStore();
+  _resetLayerStore();
 };
 
 /**
@@ -160,4 +198,5 @@ export const getAllStoreState = () => ({
   editor: _getEditorState(),
   conversation: _getConversationState(),
   export: _getExportState(),
+  layer: _getLayerState(),
 });

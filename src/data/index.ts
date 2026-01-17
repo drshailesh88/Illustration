@@ -3,7 +3,7 @@
  * Data module exports for FINNISH
  *
  * Central export point for all data modules including templates,
- * configuration data, and static assets.
+ * icons, configuration data, and static assets.
  *
  * @module data
  */
@@ -46,3 +46,43 @@ export {
   physicsTemplates,
   engineeringTemplates,
 } from './templates';
+
+// =============================================================================
+// ICON LIBRARY EXPORTS
+// =============================================================================
+
+export * from './icons';
+
+// Re-export commonly used icon items at the top level
+export {
+  // Types
+  type IconDefinition,
+  type IconDomain,
+  type DomainMetadata as IconDomainMetadata,
+  type IconSearchOptions,
+
+  // Collections
+  allIcons,
+  iconsByDomain,
+  domainMetadata as iconDomainMetadata,
+
+  // Functions
+  getAllIcons,
+  getIconsByDomain,
+  getIconById,
+  getIconsByCategory,
+  getCategories,
+  searchIcons,
+  getAvailableDomains as getAvailableIconDomains,
+  getIconStats,
+  parseSvgDimensions,
+  iconToDataUrl,
+  iconToBase64,
+
+  // Domain-specific icon arrays
+  medicineIcons,
+  biologyIcons,
+  chemistryIcons,
+  physicsIcons,
+  engineeringIcons,
+} from './icons';

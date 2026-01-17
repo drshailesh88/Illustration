@@ -6,3 +6,39 @@ export { LayerItem } from './LayerItem.js';
 export { default as ColorPicker } from './ColorPicker.js';
 export { default as IconPicker } from './IconPicker.js';
 export { default as PropertiesPanel } from './PropertiesPanel.js';
+
+// Error Handling
+export { ErrorBoundary } from './ErrorBoundary.js';
+
+// Keyboard Shortcuts
+export {
+  ShortcutsHelp,
+  useShortcuts,
+  type Shortcut,
+  type ShortcutCategory,
+  type ShortcutsHelpProps,
+} from './ShortcutsHelp.js';
+
+// Loading States
+export {
+  LoadingSpinner,
+  DotSpinner,
+  PulseSpinner,
+  BarSpinner,
+  Skeleton,
+  SkeletonText,
+  SkeletonCircle,
+  type SpinnerSize,
+  type SpinnerVariant,
+  type LoadingSpinnerProps,
+} from './LoadingSpinner.js';
+
+// Icon Browser
+export {
+  IconBrowser,
+  IconSearch,
+  IconGrid,
+  type IconBrowserProps,
+  type IconSearchProps,
+  type IconGridProps,
+} from './IconBrowser';

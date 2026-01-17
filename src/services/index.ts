@@ -4,6 +4,24 @@
  */
 
 // =============================================================================
+// LAYER MANAGEMENT
+// =============================================================================
+
+export {
+  LayerManager,
+  layerManager,
+  LayerError,
+} from './LayerManager.js';
+
+export type {
+  Layer,
+  LayerEventType,
+  LayerEvent,
+  LayerEventCallback,
+  LayerErrorCode,
+} from './LayerManager.js';
+
+// =============================================================================
 // AI SERVICES
 // =============================================================================
 
