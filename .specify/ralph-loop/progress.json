@@ -1,0 +1,79 @@
+{
+  "currentSpecialty": "cardiology",
+  "completedSpecialties": [],
+  "blockedSpecialties": [],
+  "progress": {
+    "cardiology": {
+      "iterations": 0,
+      "currentScore": 1.43,
+      "lastCheckpoint": null,
+      "startedAt": "2026-01-17T00:00:00Z",
+      "completedAt": null,
+      "metrics": {
+        "icons": {
+          "current": 2,
+          "target": 120,
+          "percentage": 1.67
+        },
+        "templates": {
+          "current": 0,
+          "target": 25,
+          "percentage": 0
+        },
+        "prompts": {
+          "current": 1,
+          "target": 20,
+          "percentage": 5
+        },
+        "colorScheme": false
+      }
+    }
+  },
+  "globalStats": {
+    "totalSpecialties": 35,
+    "completed": 0,
+    "inProgress": 1,
+    "blocked": 0,
+    "notStarted": 34,
+    "totalTargetIcons": 3180,
+    "totalTargetTemplates": 709,
+    "totalTargetPrompts": 525
+  },
+  "executionOrder": [
+    "cardiology",
+    "neurology",
+    "pulmonology",
+    "gastroenterology",
+    "emergency-medicine",
+    "hematology-oncology",
+    "infectious-disease",
+    "nephrology",
+    "endocrinology",
+    "orthopedics",
+    "anesthesiology",
+    "radiology",
+    "ophthalmology",
+    "dermatology",
+    "ent",
+    "pediatrics",
+    "ob-gyn",
+    "psychiatry",
+    "rheumatology",
+    "pathology",
+    "anatomy",
+    "physiology",
+    "biochemistry",
+    "pharmacology",
+    "cell-biology",
+    "molecular-biology",
+    "microbiology",
+    "physics",
+    "chemistry",
+    "mathematics",
+    "biology-general",
+    "neuroscience-research",
+    "biomedical-engineering",
+    "engineering",
+    "computer-science"
+  ]
+}
