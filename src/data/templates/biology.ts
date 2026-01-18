@@ -3,10 +3,17 @@
  * Biology diagram templates for FINNISH
  *
  * Contains templates for biological pathways, cellular processes,
- * and molecular biology diagrams.
+ * molecular biology, genetics, ecology, evolution, and life sciences diagrams.
+ *
+ * Ralph Loop Iteration 1 - PATHOLOGY_50 checkpoint
+ * Expanded from 7 to 22 templates
  */
 
 import type { DiagramTemplate } from './index';
+
+// =============================================================================
+// CELLULAR & MOLECULAR TEMPLATES
+// =============================================================================
 
 /**
  * Cell Signaling Pathway template
@@ -269,6 +276,80 @@ export const proteinStructure: DiagramTemplate = {
 };
 
 /**
+ * Cell Cycle template
+ */
+export const cellCycle: DiagramTemplate = {
+  id: 'bio-cell-cycle',
+  name: 'Cell Cycle',
+  description:
+    'Cell division cycle showing phases, checkpoints, and regulatory proteins',
+  domain: 'biology',
+  promptTemplate: `Create a cell cycle diagram:
+- Cell type: {{cellType}}
+- G1 phase details: {{g1Phase}}
+- S phase details: {{sPhase}}
+- G2 phase details: {{g2Phase}}
+- M phase (mitosis) stages: {{mPhase}}
+- Checkpoints: {{checkpoints}}
+- Cyclin-CDK complexes: {{cyclinCDK}}
+- Regulatory proteins: {{regulatoryProteins}}
+- Duration estimates: {{duration}}`,
+  placeholders: [
+    'cellType',
+    'g1Phase',
+    'sPhase',
+    'g2Phase',
+    'mPhase',
+    'checkpoints',
+    'cyclinCDK',
+    'regulatoryProteins',
+    'duration',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph interphase["Interphase"]
+        g1["G1 Phase<br/>Cell Growth<br/>(Cyclin D-CDK4/6)"]
+        s["S Phase<br/>DNA Replication<br/>(Cyclin E/A-CDK2)"]
+        g2["G2 Phase<br/>Preparation<br/>(Cyclin A-CDK2)"]
+    end
+
+    subgraph mitosis["M Phase"]
+        prophase["Prophase"]
+        metaphase["Metaphase"]
+        anaphase["Anaphase"]
+        telophase["Telophase"]
+        cytokinesis["Cytokinesis"]
+    end
+
+    check1{"G1/S<br/>Checkpoint"}
+    check2{"G2/M<br/>Checkpoint"}
+    check3{"Spindle<br/>Checkpoint"}
+
+    g1 --> check1
+    check1 -->|Pass| s
+    s --> g2
+    g2 --> check2
+    check2 -->|Pass| prophase
+    prophase --> metaphase
+    metaphase --> check3
+    check3 -->|Pass| anaphase
+    anaphase --> telophase
+    telophase --> cytokinesis
+    cytokinesis --> g1
+
+    classDef phase fill:#dbeafe,stroke:#2563eb
+    classDef checkpoint fill:#fee2e2,stroke:#dc2626
+    classDef mitotic fill:#dcfce7,stroke:#16a34a
+
+    class g1,s,g2 phase
+    class check1,check2,check3 checkpoint
+    class prophase,metaphase,anaphase,telophase,cytokinesis mitotic`,
+};
+
+// =============================================================================
+// EVOLUTION & PHYLOGENETICS TEMPLATES
+// =============================================================================
+
+/**
  * Phylogenetic Tree template
  */
 export const phylogeneticTree: DiagramTemplate = {
@@ -328,6 +409,128 @@ export const phylogeneticTree: DiagramTemplate = {
     class sp1,sp2,sp3,sp4 species
     class sp5 outgroup`,
 };
+
+/**
+ * Cladogram template
+ */
+export const cladogram: DiagramTemplate = {
+  id: 'bio-cladogram',
+  name: 'Cladogram',
+  description:
+    'Branching diagram showing shared derived characteristics (synapomorphies)',
+  domain: 'biology',
+  promptTemplate: `Create a cladogram:
+- Taxa to include: {{taxa}}
+- Shared derived traits (synapomorphies): {{synapomorphies}}
+- Outgroup: {{outgroup}}
+- Monophyletic groups: {{monophyleticGroups}}
+- Key character transitions: {{characterTransitions}}
+- Classification level: {{classificationLevel}}
+{{#annotations}}Additional annotations: {{annotations}}{{/annotations}}`,
+  placeholders: [
+    'taxa',
+    'synapomorphies',
+    'outgroup',
+    'monophyleticGroups',
+    'characterTransitions',
+    'classificationLevel',
+    'annotations',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph traits["Character Traits"]
+        t1["Vertebral column"]
+        t2["Jaws"]
+        t3["Four limbs"]
+        t4["Amniotic egg"]
+        t5["Hair/Mammary glands"]
+    end
+
+    root["Ancestor"] --> lamprey["Lamprey"]
+    root --> n1["Node"]
+    n1 --> shark["Shark"]
+    n1 --> n2["Node"]
+    n2 --> salamander["Salamander"]
+    n2 --> n3["Node"]
+    n3 --> lizard["Lizard"]
+    n3 --> n4["Node"]
+    n4 --> cat["Cat"]
+    n4 --> human["Human"]
+
+    t1 -.-> root
+    t2 -.-> n1
+    t3 -.-> n2
+    t4 -.-> n3
+    t5 -.-> n4`,
+};
+
+/**
+ * Natural Selection Process template
+ */
+export const naturalSelectionProcess: DiagramTemplate = {
+  id: 'bio-natural-selection',
+  name: 'Natural Selection Process',
+  description:
+    'Diagram showing the mechanism of natural selection and adaptation',
+  domain: 'biology',
+  promptTemplate: `Create a natural selection diagram:
+- Initial population variation: {{populationVariation}}
+- Environmental pressure: {{environmentalPressure}}
+- Selected trait: {{selectedTrait}}
+- Fitness advantage: {{fitnessAdvantage}}
+- Differential reproduction: {{differentialReproduction}}
+- Generations shown: {{generations}}
+- Final population composition: {{finalPopulation}}
+{{#examples}}Real-world examples: {{examples}}{{/examples}}`,
+  placeholders: [
+    'populationVariation',
+    'environmentalPressure',
+    'selectedTrait',
+    'fitnessAdvantage',
+    'differentialReproduction',
+    'generations',
+    'finalPopulation',
+    'examples',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph gen1["Generation 1"]
+        p1["Population with<br/>trait variation"]
+    end
+
+    subgraph pressure["Selection Pressure"]
+        env["Environmental<br/>Challenge"]
+    end
+
+    subgraph selection["Differential Survival"]
+        fit["Fit individuals<br/>survive & reproduce"]
+        unfit["Less fit individuals<br/>reduced reproduction"]
+    end
+
+    subgraph gen2["Generation 2"]
+        p2["Increased frequency<br/>of favorable trait"]
+    end
+
+    subgraph gen3["Generation N"]
+        p3["Trait becomes<br/>common in population"]
+    end
+
+    p1 --> env
+    env --> fit
+    env --> unfit
+    fit --> p2
+    p2 --> p3
+
+    classDef initial fill:#e0f2fe,stroke:#0284c7
+    classDef pressure fill:#fef3c7,stroke:#d97706
+    classDef outcome fill:#dcfce7,stroke:#16a34a
+
+    class p1 initial
+    class env,unfit pressure
+    class fit,p2,p3 outcome`,
+};
+
+// =============================================================================
+// ECOLOGY TEMPLATES
+// =============================================================================
 
 /**
  * Food Web template
@@ -404,89 +607,813 @@ export const foodWeb: DiagramTemplate = {
     fox --> hawk
 
     hawk -.-> decomp
-    all -.-> decomp
     decomp -.-> producers`,
 };
 
 /**
- * Cell Cycle template
+ * Ecosystem Energy Flow template
  */
-export const cellCycle: DiagramTemplate = {
-  id: 'bio-cell-cycle',
-  name: 'Cell Cycle',
+export const ecosystemEnergyFlow: DiagramTemplate = {
+  id: 'bio-ecosystem-energy',
+  name: 'Ecosystem Energy Flow',
   description:
-    'Cell division cycle showing phases, checkpoints, and regulatory proteins',
+    'Diagram showing energy transfer through trophic levels with efficiency losses',
   domain: 'biology',
-  promptTemplate: `Create a cell cycle diagram:
-- Cell type: {{cellType}}
-- G1 phase details: {{g1Phase}}
-- S phase details: {{sPhase}}
-- G2 phase details: {{g2Phase}}
-- M phase (mitosis) stages: {{mPhase}}
-- Checkpoints: {{checkpoints}}
-- Cyclin-CDK complexes: {{cyclinCDK}}
-- Regulatory proteins: {{regulatoryProteins}}
-- Duration estimates: {{duration}}`,
+  promptTemplate: `Create an ecosystem energy flow diagram:
+- Ecosystem name: {{ecosystemName}}
+- Solar energy input: {{solarInput}}
+- Primary productivity: {{primaryProductivity}}
+- Trophic levels: {{trophicLevels}}
+- Energy transfer efficiency: {{transferEfficiency}}
+- Heat loss at each level: {{heatLoss}}
+- Biomass pyramid: {{biomassPyramid}}
+{{#humanImpact}}Human impact: {{humanImpact}}{{/humanImpact}}`,
   placeholders: [
-    'cellType',
-    'g1Phase',
-    'sPhase',
-    'g2Phase',
-    'mPhase',
-    'checkpoints',
-    'cyclinCDK',
-    'regulatoryProteins',
-    'duration',
+    'ecosystemName',
+    'solarInput',
+    'primaryProductivity',
+    'trophicLevels',
+    'transferEfficiency',
+    'heatLoss',
+    'biomassPyramid',
+    'humanImpact',
   ],
   mermaidExample: `flowchart TB
-    subgraph interphase["Interphase"]
-        g1["G1 Phase<br/>Cell Growth<br/>(Cyclin D-CDK4/6)"]
-        s["S Phase<br/>DNA Replication<br/>(Cyclin E/A-CDK2)"]
-        g2["G2 Phase<br/>Preparation<br/>(Cyclin A-CDK2)"]
+    subgraph sun["Solar Energy"]
+        solar["1,000,000 kcal"]
     end
 
-    subgraph mitosis["M Phase"]
-        prophase["Prophase"]
-        metaphase["Metaphase"]
-        anaphase["Anaphase"]
-        telophase["Telophase"]
-        cytokinesis["Cytokinesis"]
+    subgraph producers["Producers (1%)"]
+        plants["10,000 kcal"]
     end
 
-    check1{"G1/S<br/>Checkpoint"}
-    check2{"G2/M<br/>Checkpoint"}
-    check3{"Spindle<br/>Checkpoint"}
+    subgraph primary["Primary Consumers (10%)"]
+        herbivores["1,000 kcal"]
+    end
 
-    g1 --> check1
-    check1 -->|Pass| s
-    s --> g2
-    g2 --> check2
-    check2 -->|Pass| prophase
-    prophase --> metaphase
-    metaphase --> check3
-    check3 -->|Pass| anaphase
-    anaphase --> telophase
-    telophase --> cytokinesis
-    cytokinesis --> g1
+    subgraph secondary["Secondary Consumers (10%)"]
+        carnivores["100 kcal"]
+    end
 
-    classDef phase fill:#dbeafe,stroke:#2563eb
-    classDef checkpoint fill:#fee2e2,stroke:#dc2626
-    classDef mitotic fill:#dcfce7,stroke:#16a34a
+    subgraph tertiary["Tertiary Consumers (10%)"]
+        apex["10 kcal"]
+    end
 
-    class g1,s,g2 phase
-    class check1,check2,check3 checkpoint
-    class prophase,metaphase,anaphase,telophase,cytokinesis mitotic`,
+    solar -->|"1% captured"| plants
+    plants -->|"90% lost as heat"| herbivores
+    herbivores -->|"90% lost as heat"| carnivores
+    carnivores -->|"90% lost as heat"| apex
+
+    classDef energy fill:#fef3c7,stroke:#d97706
+    classDef producer fill:#dcfce7,stroke:#16a34a
+    classDef consumer fill:#dbeafe,stroke:#2563eb`,
 };
+
+/**
+ * Biogeochemical Cycle template
+ */
+export const biogeochemicalCycle: DiagramTemplate = {
+  id: 'bio-biogeochemical-cycle',
+  name: 'Biogeochemical Cycle',
+  description:
+    'Cycle diagram showing element movement through biotic and abiotic components',
+  domain: 'biology',
+  promptTemplate: `Create a biogeochemical cycle diagram:
+- Element/compound: {{element}}
+- Atmospheric reservoir: {{atmosphericReservoir}}
+- Terrestrial reservoir: {{terrestrialReservoir}}
+- Aquatic reservoir: {{aquaticReservoir}}
+- Biological processes: {{biologicalProcesses}}
+- Geological processes: {{geologicalProcesses}}
+- Human impacts: {{humanImpacts}}
+- Time scales: {{timeScales}}`,
+  placeholders: [
+    'element',
+    'atmosphericReservoir',
+    'terrestrialReservoir',
+    'aquaticReservoir',
+    'biologicalProcesses',
+    'geologicalProcesses',
+    'humanImpacts',
+    'timeScales',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph atmosphere["Atmosphere"]
+        co2["CO2 in Air"]
+    end
+
+    subgraph biosphere["Biosphere"]
+        plants["Plants<br/>(Photosynthesis)"]
+        animals["Animals<br/>(Respiration)"]
+        decomp["Decomposers"]
+    end
+
+    subgraph lithosphere["Lithosphere"]
+        fossil["Fossil Fuels"]
+        sediment["Sediments"]
+    end
+
+    subgraph hydrosphere["Hydrosphere"]
+        ocean["Ocean CO2"]
+        marine["Marine Organisms"]
+    end
+
+    co2 -->|"Photosynthesis"| plants
+    plants -->|"Consumption"| animals
+    animals -->|"Respiration"| co2
+    animals -->|"Death"| decomp
+    decomp -->|"Decomposition"| co2
+    decomp -->|"Burial"| sediment
+    sediment -->|"Millions of years"| fossil
+    fossil -->|"Combustion"| co2
+    co2 <-->|"Gas exchange"| ocean
+    ocean --> marine`,
+};
+
+/**
+ * Population Dynamics template
+ */
+export const populationDynamics: DiagramTemplate = {
+  id: 'bio-population-dynamics',
+  name: 'Population Dynamics',
+  description:
+    'Diagram showing population growth patterns and limiting factors',
+  domain: 'biology',
+  promptTemplate: `Create a population dynamics diagram:
+- Species: {{species}}
+- Initial population size: {{initialPopulation}}
+- Growth model: {{growthModel}}
+- Birth rate: {{birthRate}}
+- Death rate: {{deathRate}}
+- Carrying capacity: {{carryingCapacity}}
+- Limiting factors: {{limitingFactors}}
+- Time period: {{timePeriod}}
+{{#predatorPrey}}Predator-prey dynamics: {{predatorPrey}}{{/predatorPrey}}`,
+  placeholders: [
+    'species',
+    'initialPopulation',
+    'growthModel',
+    'birthRate',
+    'deathRate',
+    'carryingCapacity',
+    'limitingFactors',
+    'timePeriod',
+    'predatorPrey',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph factors["Growth Factors"]
+        birth["Birth Rate"]
+        immig["Immigration"]
+    end
+
+    subgraph population["Population Size (N)"]
+        pop["Current<br/>Population"]
+    end
+
+    subgraph decline["Decline Factors"]
+        death["Death Rate"]
+        emig["Emigration"]
+    end
+
+    subgraph limit["Limiting Factors"]
+        food["Food Availability"]
+        space["Space/Territory"]
+        disease["Disease"]
+        predation["Predation"]
+    end
+
+    subgraph capacity["Carrying Capacity (K)"]
+        k["Maximum<br/>Sustainable<br/>Population"]
+    end
+
+    birth --> pop
+    immig --> pop
+    pop --> death
+    pop --> emig
+    limit --> k
+    k -.->|"Limits growth"| pop`,
+};
+
+// =============================================================================
+// GENETICS TEMPLATES
+// =============================================================================
+
+/**
+ * Mendelian Inheritance template
+ */
+export const mendelianInheritance: DiagramTemplate = {
+  id: 'bio-mendelian-inheritance',
+  name: 'Mendelian Inheritance',
+  description:
+    'Punnett square and inheritance pattern diagram for genetic crosses',
+  domain: 'biology',
+  promptTemplate: `Create a Mendelian inheritance diagram:
+- Trait being studied: {{trait}}
+- Parent 1 genotype: {{parent1Genotype}}
+- Parent 2 genotype: {{parent2Genotype}}
+- Dominant allele: {{dominantAllele}}
+- Recessive allele: {{recessiveAllele}}
+- Expected genotype ratios: {{genotypeRatios}}
+- Expected phenotype ratios: {{phenotypeRatios}}
+- Type of cross: {{crossType}}
+{{#testCross}}Test cross results: {{testCross}}{{/testCross}}`,
+  placeholders: [
+    'trait',
+    'parent1Genotype',
+    'parent2Genotype',
+    'dominantAllele',
+    'recessiveAllele',
+    'genotypeRatios',
+    'phenotypeRatios',
+    'crossType',
+    'testCross',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph parents["Parents (P Generation)"]
+        p1["Parent 1<br/>Aa (Heterozygous)"]
+        p2["Parent 2<br/>Aa (Heterozygous)"]
+    end
+
+    subgraph gametes["Gametes"]
+        g1["A or a"]
+        g2["A or a"]
+    end
+
+    subgraph punnett["Punnett Square"]
+        f1["AA<br/>(25%)"]
+        f2["Aa<br/>(25%)"]
+        f3["Aa<br/>(25%)"]
+        f4["aa<br/>(25%)"]
+    end
+
+    subgraph ratios["Offspring Ratios"]
+        geno["Genotype: 1:2:1"]
+        pheno["Phenotype: 3:1"]
+    end
+
+    p1 --> g1
+    p2 --> g2
+    g1 --> punnett
+    g2 --> punnett
+    punnett --> ratios
+
+    classDef dominant fill:#dcfce7,stroke:#16a34a
+    classDef recessive fill:#fee2e2,stroke:#dc2626
+    classDef hetero fill:#fef3c7,stroke:#d97706
+
+    class f1 dominant
+    class f4 recessive
+    class f2,f3 hetero`,
+};
+
+/**
+ * DNA Replication Mechanism template
+ */
+export const dnaReplicationMechanism: DiagramTemplate = {
+  id: 'bio-dna-replication-mechanism',
+  name: 'DNA Replication Mechanism',
+  description:
+    'Diagram showing the molecular mechanism of DNA replication',
+  domain: 'biology',
+  promptTemplate: `Create a DNA replication diagram:
+- Origin of replication: {{origin}}
+- Helicase activity: {{helicase}}
+- Leading strand synthesis: {{leadingStrand}}
+- Lagging strand synthesis: {{laggingStrand}}
+- Primase function: {{primase}}
+- DNA polymerase: {{polymerase}}
+- Okazaki fragments: {{okazakiFragments}}
+- DNA ligase: {{ligase}}
+{{#proofreading}}Proofreading mechanism: {{proofreading}}{{/proofreading}}`,
+  placeholders: [
+    'origin',
+    'helicase',
+    'leadingStrand',
+    'laggingStrand',
+    'primase',
+    'polymerase',
+    'okazakiFragments',
+    'ligase',
+    'proofreading',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph origin["Origin"]
+        ori["Replication<br/>Origin"]
+    end
+
+    subgraph fork["Replication Fork"]
+        helicase["Helicase<br/>(Unwinds DNA)"]
+        ssb["SSB Proteins"]
+    end
+
+    subgraph leading["Leading Strand (5' to 3')"]
+        lead["Continuous<br/>Synthesis"]
+        pol3a["DNA Pol III"]
+    end
+
+    subgraph lagging["Lagging Strand (3' to 5')"]
+        primase["Primase<br/>(RNA primers)"]
+        okazaki["Okazaki<br/>Fragments"]
+        pol3b["DNA Pol III"]
+        pol1["DNA Pol I<br/>(Removes primers)"]
+        ligase["DNA Ligase<br/>(Joins fragments)"]
+    end
+
+    ori --> helicase
+    helicase --> ssb
+    ssb --> lead
+    ssb --> primase
+    primase --> okazaki
+    okazaki --> pol1
+    pol1 --> ligase`,
+};
+
+/**
+ * Transcription Process template
+ */
+export const transcriptionProcess: DiagramTemplate = {
+  id: 'bio-transcription',
+  name: 'Transcription Process',
+  description:
+    'Diagram showing the steps of gene transcription from DNA to mRNA',
+  domain: 'biology',
+  promptTemplate: `Create a transcription diagram:
+- Gene being transcribed: {{gene}}
+- Promoter sequence: {{promoter}}
+- Transcription factors: {{transcriptionFactors}}
+- RNA polymerase: {{rnaPolymerase}}
+- Template strand: {{templateStrand}}
+- Coding strand: {{codingStrand}}
+- Termination signal: {{terminationSignal}}
+- Post-transcriptional modifications: {{modifications}}`,
+  placeholders: [
+    'gene',
+    'promoter',
+    'transcriptionFactors',
+    'rnaPolymerase',
+    'templateStrand',
+    'codingStrand',
+    'terminationSignal',
+    'modifications',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph initiation["Initiation"]
+        promoter["Promoter<br/>(TATA box)"]
+        tf["Transcription<br/>Factors Bind"]
+        rnap["RNA Polymerase<br/>Recruitment"]
+    end
+
+    subgraph elongation["Elongation"]
+        unwind["DNA Unwinding"]
+        synth["mRNA Synthesis<br/>(5' to 3')"]
+        rewind["DNA Rewinding"]
+    end
+
+    subgraph termination["Termination"]
+        term["Termination<br/>Signal"]
+        release["mRNA Release"]
+    end
+
+    subgraph processing["Post-transcriptional Processing"]
+        cap["5' Cap Added"]
+        splice["Introns Spliced"]
+        polya["3' Poly-A Tail"]
+        mature["Mature mRNA"]
+    end
+
+    promoter --> tf
+    tf --> rnap
+    rnap --> unwind
+    unwind --> synth
+    synth --> rewind
+    rewind --> term
+    term --> release
+    release --> cap
+    cap --> splice
+    splice --> polya
+    polya --> mature`,
+};
+
+/**
+ * Translation Process template
+ */
+export const translationProcess: DiagramTemplate = {
+  id: 'bio-translation',
+  name: 'Translation Process',
+  description:
+    'Diagram showing protein synthesis from mRNA by ribosomes',
+  domain: 'biology',
+  promptTemplate: `Create a translation diagram:
+- mRNA sequence: {{mrnaSequence}}
+- Start codon: {{startCodon}}
+- Stop codons: {{stopCodons}}
+- Ribosome structure: {{ribosomeStructure}}
+- tRNA and aminoacyl-tRNA synthetases: {{tRNA}}
+- Initiation factors: {{initiationFactors}}
+- Elongation cycle: {{elongationCycle}}
+- Termination: {{termination}}`,
+  placeholders: [
+    'mrnaSequence',
+    'startCodon',
+    'stopCodons',
+    'ribosomeStructure',
+    'tRNA',
+    'initiationFactors',
+    'elongationCycle',
+    'termination',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph initiation["Initiation"]
+        mrna["mRNA + Small<br/>Ribosomal Subunit"]
+        start["AUG (Start Codon)"]
+        met["Met-tRNA Binds"]
+        large["Large Subunit<br/>Joins"]
+    end
+
+    subgraph elongation["Elongation Cycle"]
+        asite["A Site:<br/>New tRNA Enters"]
+        peptide["Peptide Bond<br/>Formation"]
+        trans["Translocation"]
+    end
+
+    subgraph termination["Termination"]
+        stop["Stop Codon<br/>(UAA, UAG, UGA)"]
+        release["Release Factors"]
+        dissoc["Ribosome<br/>Dissociates"]
+        protein["Complete<br/>Polypeptide"]
+    end
+
+    mrna --> start
+    start --> met
+    met --> large
+    large --> asite
+    asite --> peptide
+    peptide --> trans
+    trans -->|"Repeat"| asite
+    trans --> stop
+    stop --> release
+    release --> dissoc
+    dissoc --> protein`,
+};
+
+// =============================================================================
+// PLANT BIOLOGY TEMPLATES
+// =============================================================================
+
+/**
+ * Light and Dark Reactions template (Photosynthesis Detailed)
+ */
+export const lightDarkReactions: DiagramTemplate = {
+  id: 'bio-light-dark-reactions',
+  name: 'Light and Dark Reactions',
+  description:
+    'Comprehensive diagram of light and dark reactions in photosynthesis',
+  domain: 'biology',
+  promptTemplate: `Create a photosynthesis diagram:
+- Chloroplast structure: {{chloroplastStructure}}
+- Light reactions location: {{lightReactionsLocation}}
+- Photosystem II: {{photosystemII}}
+- Photosystem I: {{photosystemI}}
+- Electron transport chain: {{electronTransport}}
+- ATP synthase: {{atpSynthase}}
+- Calvin cycle steps: {{calvinCycle}}
+- Products: {{products}}`,
+  placeholders: [
+    'chloroplastStructure',
+    'lightReactionsLocation',
+    'photosystemII',
+    'photosystemI',
+    'electronTransport',
+    'atpSynthase',
+    'calvinCycle',
+    'products',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph thylakoid["Thylakoid Membrane (Light Reactions)"]
+        ps2["Photosystem II"]
+        etc["Electron<br/>Transport Chain"]
+        ps1["Photosystem I"]
+        atpsynth["ATP Synthase"]
+    end
+
+    subgraph inputs["Inputs"]
+        light["Light Energy"]
+        water["H2O"]
+    end
+
+    subgraph outputs1["Light Reaction Products"]
+        atp["ATP"]
+        nadph["NADPH"]
+        o2["O2"]
+    end
+
+    subgraph stroma["Stroma (Calvin Cycle)"]
+        fix["CO2 Fixation"]
+        reduce["Reduction"]
+        regen["RuBP Regeneration"]
+    end
+
+    subgraph outputs2["Final Products"]
+        g3p["G3P"]
+        glucose["Glucose"]
+    end
+
+    light --> ps2
+    water --> ps2
+    ps2 -->|"Electrons"| etc
+    ps2 --> o2
+    etc --> ps1
+    etc --> atpsynth
+    atpsynth --> atp
+    ps1 --> nadph
+    atp --> fix
+    nadph --> reduce
+    fix --> reduce
+    reduce --> regen
+    reduce --> g3p
+    g3p --> glucose`,
+};
+
+/**
+ * Plant Vascular System template
+ */
+export const plantVascularSystem: DiagramTemplate = {
+  id: 'bio-plant-vascular',
+  name: 'Plant Vascular System',
+  description:
+    'Diagram of xylem and phloem transport in plants',
+  domain: 'biology',
+  promptTemplate: `Create a plant vascular system diagram:
+- Xylem structure: {{xylemStructure}}
+- Phloem structure: {{phloemStructure}}
+- Water transport mechanism: {{waterTransport}}
+- Sugar transport mechanism: {{sugarTransport}}
+- Root uptake: {{rootUptake}}
+- Transpiration: {{transpiration}}
+- Source-sink relationship: {{sourceSink}}
+{{#cavitation}}Cavitation and repair: {{cavitation}}{{/cavitation}}`,
+  placeholders: [
+    'xylemStructure',
+    'phloemStructure',
+    'waterTransport',
+    'sugarTransport',
+    'rootUptake',
+    'transpiration',
+    'sourceSink',
+    'cavitation',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph root["Root"]
+        rootHair["Root Hairs"]
+        rootXylem["Root Xylem"]
+        rootPhloem["Root Phloem"]
+    end
+
+    subgraph stem["Stem"]
+        stemXylem["Stem Xylem"]
+        stemPhloem["Stem Phloem"]
+    end
+
+    subgraph leaf["Leaf"]
+        stomata["Stomata"]
+        mesophyll["Mesophyll<br/>(Photosynthesis)"]
+        leafXylem["Leaf Xylem"]
+        leafPhloem["Leaf Phloem"]
+    end
+
+    subgraph external["External"]
+        soil["Soil Water"]
+        atmosphere["Atmosphere"]
+    end
+
+    soil -->|"Osmosis"| rootHair
+    rootHair --> rootXylem
+    rootXylem -->|"Cohesion-Tension"| stemXylem
+    stemXylem --> leafXylem
+    leafXylem --> mesophyll
+    mesophyll -->|"Transpiration"| stomata
+    stomata --> atmosphere
+    mesophyll -->|"Sugars"| leafPhloem
+    leafPhloem -->|"Pressure Flow"| stemPhloem
+    stemPhloem --> rootPhloem
+    rootPhloem -->|"Growth/Storage"| root`,
+};
+
+// =============================================================================
+// CELL STRUCTURE TEMPLATES
+// =============================================================================
+
+/**
+ * Animal Cell Structure template
+ */
+export const animalCellStructure: DiagramTemplate = {
+  id: 'bio-animal-cell',
+  name: 'Animal Cell Structure',
+  description:
+    'Detailed diagram of animal cell with all major organelles',
+  domain: 'biology',
+  promptTemplate: `Create an animal cell diagram:
+- Cell membrane: {{cellMembrane}}
+- Nucleus and nucleolus: {{nucleus}}
+- Mitochondria: {{mitochondria}}
+- Endoplasmic reticulum (rough and smooth): {{er}}
+- Golgi apparatus: {{golgi}}
+- Lysosomes: {{lysosomes}}
+- Cytoskeleton: {{cytoskeleton}}
+- Centrosomes: {{centrosomes}}
+{{#specializedFeatures}}Specialized features: {{specializedFeatures}}{{/specializedFeatures}}`,
+  placeholders: [
+    'cellMembrane',
+    'nucleus',
+    'mitochondria',
+    'er',
+    'golgi',
+    'lysosomes',
+    'cytoskeleton',
+    'centrosomes',
+    'specializedFeatures',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph cell["Animal Cell"]
+        membrane["Cell Membrane"]
+
+        subgraph nucleus["Nucleus"]
+            nucleolus["Nucleolus"]
+            chromatin["Chromatin"]
+        end
+
+        mito["Mitochondria"]
+        rer["Rough ER"]
+        ser["Smooth ER"]
+        golgi["Golgi Apparatus"]
+        lyso["Lysosomes"]
+        centro["Centrosomes"]
+        cyto["Cytoplasm"]
+    end
+
+    membrane --> cyto
+    cyto --> nucleus
+    cyto --> mito
+    cyto --> rer
+    cyto --> ser
+    rer --> golgi
+    golgi --> lyso
+    centro -.-> nucleus`,
+};
+
+/**
+ * Plant Cell Structure template
+ */
+export const plantCellStructure: DiagramTemplate = {
+  id: 'bio-plant-cell',
+  name: 'Plant Cell Structure',
+  description:
+    'Detailed diagram of plant cell with all major organelles including chloroplasts',
+  domain: 'biology',
+  promptTemplate: `Create a plant cell diagram:
+- Cell wall: {{cellWall}}
+- Cell membrane: {{cellMembrane}}
+- Nucleus: {{nucleus}}
+- Chloroplasts: {{chloroplasts}}
+- Central vacuole: {{centralVacuole}}
+- Mitochondria: {{mitochondria}}
+- Endoplasmic reticulum: {{er}}
+- Golgi apparatus: {{golgi}}
+- Plasmodesmata: {{plasmodesmata}}`,
+  placeholders: [
+    'cellWall',
+    'cellMembrane',
+    'nucleus',
+    'chloroplasts',
+    'centralVacuole',
+    'mitochondria',
+    'er',
+    'golgi',
+    'plasmodesmata',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph cell["Plant Cell"]
+        wall["Cell Wall"]
+        membrane["Cell Membrane"]
+
+        subgraph nucleus["Nucleus"]
+            nucleolus["Nucleolus"]
+        end
+
+        chloro["Chloroplasts"]
+        vacuole["Central Vacuole<br/>(Large)"]
+        mito["Mitochondria"]
+        rer["Rough ER"]
+        golgi["Golgi Apparatus"]
+        plasmo["Plasmodesmata"]
+    end
+
+    wall --> membrane
+    membrane --> vacuole
+    vacuole --> nucleus
+    chloro --> vacuole
+    mito --> vacuole
+    rer --> golgi
+    plasmo -.-> wall`,
+};
+
+/**
+ * Mitosis Stages template
+ */
+export const mitosisStages: DiagramTemplate = {
+  id: 'bio-mitosis-stages',
+  name: 'Mitosis Stages',
+  description:
+    'Step-by-step diagram of mitotic cell division stages',
+  domain: 'biology',
+  promptTemplate: `Create a mitosis stages diagram:
+- Interphase preparation: {{interphase}}
+- Prophase events: {{prophase}}
+- Prometaphase events: {{prometaphase}}
+- Metaphase alignment: {{metaphase}}
+- Anaphase separation: {{anaphase}}
+- Telophase reformation: {{telophase}}
+- Cytokinesis: {{cytokinesis}}
+- Resulting cells: {{resultingCells}}`,
+  placeholders: [
+    'interphase',
+    'prophase',
+    'prometaphase',
+    'metaphase',
+    'anaphase',
+    'telophase',
+    'cytokinesis',
+    'resultingCells',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph interphase["Interphase"]
+        i1["DNA Replication<br/>Cell Growth"]
+    end
+
+    subgraph prophase["Prophase"]
+        p1["Chromosomes Condense<br/>Nuclear Envelope<br/>Begins to Break"]
+    end
+
+    subgraph metaphase["Metaphase"]
+        m1["Chromosomes Align<br/>at Metaphase Plate"]
+    end
+
+    subgraph anaphase["Anaphase"]
+        a1["Sister Chromatids<br/>Separate"]
+    end
+
+    subgraph telophase["Telophase"]
+        t1["Nuclear Envelopes<br/>Reform"]
+    end
+
+    subgraph cytokinesis["Cytokinesis"]
+        c1["Cell Divides<br/>into Two"]
+    end
+
+    i1 --> p1
+    p1 --> m1
+    m1 --> a1
+    a1 --> t1
+    t1 --> c1
+
+    classDef phase fill:#dbeafe,stroke:#2563eb`,
+};
+
+// =============================================================================
+// EXPORT ALL TEMPLATES
+// =============================================================================
 
 /**
  * All biology templates exported as an array
  */
 export const biologyTemplates: DiagramTemplate[] = [
+  // Cellular & Molecular
   cellSignalingPathway,
   metabolicPathway,
   geneExpression,
   proteinStructure,
-  phylogeneticTree,
-  foodWeb,
   cellCycle,
+  // Evolution & Phylogenetics
+  phylogeneticTree,
+  cladogram,
+  naturalSelectionProcess,
+  // Ecology
+  foodWeb,
+  ecosystemEnergyFlow,
+  biogeochemicalCycle,
+  populationDynamics,
+  // Genetics
+  mendelianInheritance,
+  dnaReplicationMechanism,
+  transcriptionProcess,
+  translationProcess,
+  // Plant Biology
+  lightDarkReactions,
+  plantVascularSystem,
+  // Cell Structure
+  animalCellStructure,
+  plantCellStructure,
+  mitosisStages,
 ];
+
+export default biologyTemplates;
