@@ -792,6 +792,512 @@ export const neckMassEvaluation: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL CLINICAL TEMPLATES
+// =============================================================================
+
+/**
+ * Facial Nerve Paralysis Evaluation template
+ */
+export const facialNerveParalysis: DiagramTemplate = {
+  id: 'ent-facial-nerve-paralysis',
+  name: 'Facial Nerve Paralysis Algorithm',
+  description: 'House-Brackmann grading and Bell palsy workup',
+  domain: 'medicine',
+  promptTemplate: `Create a facial nerve paralysis evaluation flowchart:
+- Onset and duration: {{onsetDuration}}
+- Complete vs incomplete: {{severity}}
+- House-Brackmann grade: {{hbGrade}}
+- Associated symptoms: {{associatedSymptoms}}
+- Ramsay Hunt syndrome signs: {{ramsayHunt}}
+- Imaging indications: {{imagingIndications}}
+- Medical treatment: {{medicalTreatment}}
+- Eye protection: {{eyeProtection}}
+{{#additionalNotes}}Surgical considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'onsetDuration',
+    'severity',
+    'hbGrade',
+    'associatedSymptoms',
+    'ramsayHunt',
+    'imagingIndications',
+    'medicalTreatment',
+    'eyeProtection',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Facial\\nWeakness")] --> B{"Complete\\nor Partial?"}
+    B -->|"Partial"| C["Favorable\\nPrognosis"]
+    B -->|"Complete"| D{"Vesicles?"}
+    D -->|"Yes"| E["Ramsay Hunt\\nValacyclovir + Steroids"]
+    D -->|"No"| F["Bell's Palsy\\nSteroids +/- Antivirals"]
+    F --> G{"HB Grade?"}
+    G -->|"I-III"| H["Observe\\nPT"]
+    G -->|"IV-VI"| I["Aggressive Rx\\nConsider Decompression"]
+    subgraph HB["House-Brackmann"]
+        H1["I: Normal"]
+        H2["II: Slight"]
+        H3["III: Moderate"]
+        H4["IV: Mod-Severe"]
+        H5["V: Severe"]
+        H6["VI: Total"]
+    end
+    style E fill:#DC143C,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * Tinnitus Evaluation template
+ */
+export const tinnitusEvaluation: DiagramTemplate = {
+  id: 'ent-tinnitus-evaluation',
+  name: 'Tinnitus Evaluation Algorithm',
+  description: 'Systematic workup of subjective and objective tinnitus',
+  domain: 'medicine',
+  promptTemplate: `Create a tinnitus evaluation flowchart:
+- Type (subjective/objective): {{tinnitusType}}
+- Pulsatile vs non-pulsatile: {{pulsatile}}
+- Associated hearing loss: {{hearingLoss}}
+- Unilateral vs bilateral: {{laterality}}
+- Red flag symptoms: {{redFlags}}
+- Audiogram findings: {{audiogramFindings}}
+- Imaging indications: {{imagingIndications}}
+- Treatment options: {{treatmentOptions}}
+{{#additionalNotes}}Additional workup: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'tinnitusType',
+    'pulsatile',
+    'hearingLoss',
+    'laterality',
+    'redFlags',
+    'audiogramFindings',
+    'imagingIndications',
+    'treatmentOptions',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Tinnitus")] --> B{"Pulsatile?"}
+    B -->|"Yes"| C["Vascular Workup\\nCT/MRA"]
+    B -->|"No"| D{"Unilateral?"}
+    D -->|"Yes"| E["Audiogram"]
+    D -->|"Bilateral"| F["Audiogram\\nSymmetric SNHL"]
+    E --> G{"Asymmetric\\nHearing?"}
+    G -->|"Yes"| H["MRI IAC\\nR/O Schwannoma"]
+    G -->|"No"| I["Age-related\\nNoise-induced"]
+    C --> J{"Source?"}
+    J -->|"Arterial"| K["Dural Fistula\\nParaganglioma"]
+    J -->|"Venous"| L["Benign IH\\nPosition-dependent"]
+    subgraph Treatment["Management"]
+        T1["Sound Therapy"]
+        T2["CBT"]
+        T3["Hearing Aids"]
+        T4["Avoid Ototoxins"]
+    end
+    style H fill:#FFA500,color:#000
+    style K fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Thyroid Nodule Evaluation template
+ */
+export const entThyroidNoduleEvaluation: DiagramTemplate = {
+  id: 'ent-thyroid-nodule-evaluation',
+  name: 'Thyroid Nodule Evaluation Algorithm',
+  description: 'TI-RADS based approach to thyroid nodule workup',
+  domain: 'medicine',
+  promptTemplate: `Create a thyroid nodule evaluation flowchart:
+- Nodule size: {{noduleSize}}
+- TSH level: {{tshLevel}}
+- Ultrasound features: {{usFeatures}}
+- TI-RADS category: {{tirads}}
+- FNA indications: {{fnaIndications}}
+- Bethesda classification: {{bethesda}}
+- Molecular testing: {{molecularTesting}}
+- Surgical indications: {{surgicalIndications}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'noduleSize',
+    'tshLevel',
+    'usFeatures',
+    'tirads',
+    'fnaIndications',
+    'bethesda',
+    'molecularTesting',
+    'surgicalIndications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Thyroid\\nNodule")] --> B["Check TSH"]
+    B -->|"Low TSH"| C["Thyroid Scan\\nHot Nodule"]
+    B -->|"Normal/High"| D["Ultrasound\\nTI-RADS"]
+    D --> E{"TI-RADS?"}
+    E -->|"TR1-2"| F["No FNA\\nFollow US"]
+    E -->|"TR3 >2.5cm"| G["FNA"]
+    E -->|"TR4 >1.5cm"| G
+    E -->|"TR5 >1cm"| G
+    G --> H{"Bethesda?"}
+    H -->|"I"| I["Repeat FNA"]
+    H -->|"II"| J["Follow"]
+    H -->|"III-IV"| K["Molecular Test\\nor Lobectomy"]
+    H -->|"V-VI"| L["Surgery"]
+    C -->|"Hot"| M["Likely Benign\\nTreat Hyperthyroidism"]
+    style L fill:#DC143C,color:#fff
+    style K fill:#FFA500,color:#000`,
+};
+
+/**
+ * Pediatric Stridor Evaluation template
+ */
+export const pediatricStridorEvaluation: DiagramTemplate = {
+  id: 'ent-pediatric-stridor',
+  name: 'Pediatric Stridor Evaluation Algorithm',
+  description: 'Systematic approach to stridor in children',
+  domain: 'medicine',
+  promptTemplate: `Create a pediatric stridor evaluation flowchart:
+- Age of onset: {{ageOnset}}
+- Inspiratory vs expiratory: {{stridorPhase}}
+- Feeding difficulties: {{feedingIssues}}
+- Position dependency: {{positionDependent}}
+- Severity and distress: {{severity}}
+- Red flag symptoms: {{redFlags}}
+- Imaging findings: {{imaging}}
+- Laryngoscopy indications: {{laryngoscopy}}
+{{#additionalNotes}}Differential diagnosis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ageOnset',
+    'stridorPhase',
+    'feedingIssues',
+    'positionDependent',
+    'severity',
+    'redFlags',
+    'imaging',
+    'laryngoscopy',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Pediatric\\nStridor")] --> B{"Acute or\\nChronic?"}
+    B -->|"Acute"| C{"Fever?\\nDrooling?"}
+    C -->|"Yes"| D["Epiglottitis\\nEmergency"]
+    C -->|"Barking Cough"| E["Croup\\nDexamethasone"]
+    C -->|"Choking Hx"| F["Foreign Body\\nEmergent Bronch"]
+    B -->|"Chronic"| G{"Age?"}
+    G -->|"<6 months"| H["Laryngomalacia\\nMost Common"]
+    G -->|">6 months"| I["Subglottic Stenosis\\nVocal Cord Paralysis"]
+    H --> J{"Severe?"}
+    J -->|"Mild"| K["Observe\\nOutgrow by 18mo"]
+    J -->|"Severe"| L["Supraglottoplasty"]
+    subgraph Emergency["Red Flags"]
+        E1["Cyanosis"]
+        E2["Altered LOC"]
+        E3["Complete Obstruction"]
+    end
+    style D fill:#DC143C,color:#fff
+    style F fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Otitis Externa Management template
+ */
+export const otitisExternaManagement: DiagramTemplate = {
+  id: 'ent-otitis-externa-management',
+  name: 'Otitis Externa Management Algorithm',
+  description: 'Systematic approach to swimmer ear and external ear infections',
+  domain: 'medicine',
+  promptTemplate: `Create an otitis externa management flowchart:
+- Symptom duration: {{symptomDuration}}
+- Pain severity: {{painSeverity}}
+- Canal edema: {{canalEdema}}
+- Discharge type: {{dischargeType}}
+- Diabetic/immunocompromised: {{riskFactors}}
+- Treatment selection: {{treatment}}
+- Wick placement indications: {{wickIndications}}
+- Follow-up criteria: {{followUp}}
+{{#additionalNotes}}Malignant OE considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'symptomDuration',
+    'painSeverity',
+    'canalEdema',
+    'dischargeType',
+    'riskFactors',
+    'treatment',
+    'wickIndications',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Otitis\\nExterna")] --> B{"Risk Factors?\\nDM, Immunocomp"}
+    B -->|"Yes"| C["Rule Out\\nMalignant OE"]
+    B -->|"No"| D{"Canal\\nOpen?"}
+    C --> E["CT Temporal\\nBone + ESR"]
+    E -->|"Skull Base Erosion"| F["IV Antibiotics\\nENT Urgent"]
+    D -->|"Yes"| G["Topical Drops\\nCipro-Dex"]
+    D -->|"No (Edema)"| H["Place Wick\\nThen Drops"]
+    G --> I["Water Precautions\\nPain Control"]
+    H --> I
+    I --> J{"Better in\\n48-72h?"}
+    J -->|"No"| K["Reculture\\nOral Abx"]
+    J -->|"Yes"| L["Complete\\n7-10d Course"]
+    style F fill:#DC143C,color:#fff
+    style C fill:#FFA500,color:#000`,
+};
+
+/**
+ * BPPV Management template
+ */
+export const bppvManagement: DiagramTemplate = {
+  id: 'ent-bppv-management',
+  name: 'BPPV Diagnosis and Treatment Algorithm',
+  description: 'Canal-specific approach to benign paroxysmal positional vertigo',
+  domain: 'medicine',
+  promptTemplate: `Create a BPPV management flowchart:
+- Symptom characteristics: {{symptoms}}
+- Dix-Hallpike result: {{dixHallpike}}
+- Affected canal: {{affectedCanal}}
+- Nystagmus direction: {{nystagmusDirection}}
+- Treatment maneuver: {{treatmentManeuver}}
+- Post-treatment instructions: {{postTreatment}}
+- Recurrence management: {{recurrenceManagement}}
+- Refractory cases: {{refractoryCases}}
+{{#additionalNotes}}Variant BPPV: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'symptoms',
+    'dixHallpike',
+    'affectedCanal',
+    'nystagmusDirection',
+    'treatmentManeuver',
+    'postTreatment',
+    'recurrenceManagement',
+    'refractoryCases',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Positional\\nVertigo")] --> B["Dix-Hallpike\\nTest"]
+    B --> C{"Positive?"}
+    C -->|"No"| D["Supine Roll Test\\n(Horizontal Canal)"]
+    C -->|"Yes"| E{"Which\\nSide?"}
+    D -->|"Positive"| F["Horizontal\\nCanal BPPV"]
+    E -->|"Right"| G["Right Posterior\\nCanal BPPV"]
+    E -->|"Left"| H["Left Posterior\\nCanal BPPV"]
+    G --> I["Epley Maneuver\\n(Right)"]
+    H --> J["Epley Maneuver\\n(Left)"]
+    F --> K["BBQ Roll or\\nLempert Maneuver"]
+    I --> L{"Resolution?"}
+    L -->|"Yes"| M["Post-Maneuver\\nInstructions"]
+    L -->|"No"| N["Repeat x3\\nor Semont"]
+    N -->|"Still Refractory"| O["Brandt-Daroff\\nVestibular PT"]
+    style I fill:#22C55E,color:#fff
+    style J fill:#22C55E,color:#fff`,
+};
+
+/**
+ * Allergic Rhinitis Management template
+ */
+export const allergicRhinitisManagement: DiagramTemplate = {
+  id: 'ent-allergic-rhinitis-management',
+  name: 'Allergic Rhinitis Management Algorithm',
+  description: 'ARIA guideline-based approach to allergic rhinitis treatment',
+  domain: 'medicine',
+  promptTemplate: `Create an allergic rhinitis management flowchart:
+- Symptom pattern: {{symptomPattern}}
+- Severity classification: {{severity}}
+- Trigger identification: {{triggers}}
+- First-line treatment: {{firstLine}}
+- Step-up therapy: {{stepUp}}
+- Immunotherapy criteria: {{immunotherapy}}
+- Comorbidity assessment: {{comorbidities}}
+- Environmental controls: {{environmentalControls}}
+{{#additionalNotes}}Pediatric considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'symptomPattern',
+    'severity',
+    'triggers',
+    'firstLine',
+    'stepUp',
+    'immunotherapy',
+    'comorbidities',
+    'environmentalControls',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Allergic\\nRhinitis")] --> B{"ARIA\\nClassification"}
+    B -->|"Intermittent\\nMild"| C["2nd Gen Antihistamine\\nPRN"]
+    B -->|"Persistent or\\nModerate-Severe"| D["Intranasal\\nCorticosteroid"]
+    D --> E{"Controlled?"}
+    E -->|"Yes"| F["Continue\\nStep Down"]
+    E -->|"No"| G["Add INAH\\nor Antileukotriene"]
+    G --> H{"Controlled?"}
+    H -->|"No"| I["Allergy Testing"]
+    I --> J{"Candidate for\\nImmunotherapy?"}
+    J -->|"Yes"| K["SCIT or SLIT\\n3-5 years"]
+    J -->|"No"| L["Maximize Medical\\nConsider Surgery"]
+    subgraph Comorbid["Check Comorbidities"]
+        CO1["Asthma"]
+        CO2["Sinusitis"]
+        CO3["Conjunctivitis"]
+    end
+    style D fill:#4169E1,color:#fff
+    style K fill:#22C55E,color:#fff`,
+};
+
+/**
+ * Dysphagia Evaluation template
+ */
+export const entDysphagiaEvaluation: DiagramTemplate = {
+  id: 'ent-dysphagia-evaluation',
+  name: 'Dysphagia Evaluation Algorithm',
+  description: 'Systematic approach to oropharyngeal and esophageal dysphagia',
+  domain: 'medicine',
+  promptTemplate: `Create a dysphagia evaluation flowchart:
+- Dysphagia type: {{dysphagiaType}}
+- Solids vs liquids: {{solidVsLiquid}}
+- Progressive vs intermittent: {{progression}}
+- Associated symptoms: {{associatedSymptoms}}
+- Red flag symptoms: {{redFlags}}
+- MBSS vs FEES: {{swallowStudy}}
+- Treatment approach: {{treatment}}
+- Diet modifications: {{dietModifications}}
+{{#additionalNotes}}Neurological workup: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'dysphagiaType',
+    'solidVsLiquid',
+    'progression',
+    'associatedSymptoms',
+    'redFlags',
+    'swallowStudy',
+    'treatment',
+    'dietModifications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Dysphagia")] --> B{"Location?"}
+    B -->|"Throat/Transfer"| C["Oropharyngeal"]
+    B -->|"Chest/Sticking"| D["Esophageal"]
+    C --> E["MBSS or FEES"]
+    E --> F{"Aspiration?"}
+    F -->|"Yes"| G["Speech Therapy\\nDiet Modification"]
+    F -->|"No"| H["Structural Cause?"]
+    H -->|"Zenker's"| I["Surgery"]
+    H -->|"Neurological"| J["Treat Underlying"]
+    D --> K{"Solids Only?"}
+    K -->|"Yes"| L["EGD\\nMechanical Cause"]
+    K -->|"Both"| M["Motility Study\\nEsophageal Dysmotility"]
+    L -->|"Stricture"| N["Dilation"]
+    L -->|"Mass"| O["Biopsy"]
+    subgraph RedFlags["Red Flags"]
+        R1["Weight Loss"]
+        R2["Odynophagia"]
+        R3["Regurgitation"]
+    end
+    style O fill:#DC143C,color:#fff
+    style G fill:#FFA500,color:#000`,
+};
+
+/**
+ * Head and Neck Cancer Staging template
+ */
+export const headNeckCancerStaging: DiagramTemplate = {
+  id: 'ent-head-neck-cancer-staging',
+  name: 'Head and Neck Cancer Staging Algorithm',
+  description: 'TNM staging and treatment pathway for head and neck SCC',
+  domain: 'medicine',
+  promptTemplate: `Create a head and neck cancer staging flowchart:
+- Primary site: {{primarySite}}
+- T stage criteria: {{tStage}}
+- N stage criteria: {{nStage}}
+- M stage: {{mStage}}
+- HPV status: {{hpvStatus}}
+- Imaging workup: {{imaging}}
+- Treatment modalities: {{treatment}}
+- Surveillance protocol: {{surveillance}}
+{{#additionalNotes}}Multidisciplinary approach: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'primarySite',
+    'tStage',
+    'nStage',
+    'mStage',
+    'hpvStatus',
+    'imaging',
+    'treatment',
+    'surveillance',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Head & Neck\\nMass")] --> B["Biopsy\\nConfirm SCC"]
+    B --> C["Staging Workup\\nCT/MRI + PET"]
+    C --> D{"HPV Status?\\n(Oropharynx)"}
+    D -->|"HPV+"| E["Better Prognosis\\nDeintensification Trials"]
+    D -->|"HPV-"| F["Standard Staging"]
+    F --> G{"Stage?"}
+    G -->|"I-II"| H["Single Modality\\nSurgery OR RT"]
+    G -->|"III-IVA"| I["Combined\\nSurgery + RT/CRT"]
+    G -->|"IVB-IVC"| J["Palliative\\nSystemic Therapy"]
+    I --> K["Neck Dissection\\nif N+"]
+    subgraph MDT["Tumor Board"]
+        M1["ENT Surgery"]
+        M2["Radiation Oncology"]
+        M3["Medical Oncology"]
+        M4["Pathology"]
+    end
+    H --> MDT
+    I --> MDT
+    style J fill:#DC143C,color:#fff
+    style E fill:#22C55E,color:#fff`,
+};
+
+/**
+ * Obstructive Sleep Apnea Treatment template
+ */
+export const osatreatmentPathway: DiagramTemplate = {
+  id: 'ent-osa-treatment-pathway',
+  name: 'OSA Treatment Pathway Algorithm',
+  description: 'Comprehensive approach to obstructive sleep apnea management',
+  domain: 'medicine',
+  promptTemplate: `Create an OSA treatment pathway flowchart:
+- AHI severity: {{ahiSeverity}}
+- BMI and anatomy: {{anatomy}}
+- Symptoms: {{symptoms}}
+- CPAP trial outcome: {{cpapTrial}}
+- Alternative therapies: {{alternatives}}
+- Surgical options: {{surgicalOptions}}
+- Follow-up monitoring: {{followUp}}
+- Cardiovascular risk: {{cvRisk}}
+{{#additionalNotes}}Pediatric OSA: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ahiSeverity',
+    'anatomy',
+    'symptoms',
+    'cpapTrial',
+    'alternatives',
+    'surgicalOptions',
+    'followUp',
+    'cvRisk',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Confirmed OSA\\nPSG/HST")] --> B{"AHI?"}
+    B -->|"5-15 Mild"| C["Lifestyle\\nWeight Loss\\nPositional"]
+    B -->|"15-30 Moderate"| D["CPAP Trial"]
+    B -->|">30 Severe"| E["CPAP\\nFirst Line"]
+    D --> F{"Tolerant?"}
+    E --> F
+    F -->|"Yes"| G["Continue CPAP\\nF/U in 3mo"]
+    F -->|"No"| H["CPAP Alternatives"]
+    H --> I{"Anatomic\\nObstruction?"}
+    I -->|"Palate"| J["UPPP"]
+    I -->|"Tongue Base"| K["TORS/HNS"]
+    I -->|"Multilevel"| L["MMA Surgery"]
+    C --> M["Oral Appliance\\nMAD"]
+    subgraph HNS["Hypoglossal Nerve Stim"]
+        HN1["AHI 15-65"]
+        HN2["CPAP Intolerant"]
+        HN3["BMI <32"]
+        HN4["No CCC"]
+    end
+    K --> HNS
+    style E fill:#4169E1,color:#fff
+    style L fill:#8B5CF6,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -817,6 +1323,20 @@ export const entTemplates: DiagramTemplate[] = [
   // Data Visualization (2)
   audiogramInterpretation,
   sleepStudyResults,
+  // Additional Clinical (2)
+  epistaxisManagement,
+  neckMassEvaluation,
+  // New Templates (10)
+  facialNerveParalysis,
+  tinnitusEvaluation,
+  entThyroidNoduleEvaluation,
+  pediatricStridorEvaluation,
+  otitisExternaManagement,
+  bppvManagement,
+  allergicRhinitisManagement,
+  entDysphagiaEvaluation,
+  headNeckCancerStaging,
+  osatreatmentPathway,
 ];
 
 export default entTemplates;

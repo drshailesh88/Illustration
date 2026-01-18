@@ -1362,6 +1362,499 @@ export const entIcons: IconDefinition[] = [
       <circle cx="16" cy="8" r="3"/>
       <circle cx="48" cy="8" r="3"/>
     </svg>`
+  },
+
+  // ===========================================================================
+  // SURGICAL PROCEDURES (12 icons)
+  // ===========================================================================
+  {
+    id: 'ent-fess-procedure',
+    name: 'FESS (Functional Endoscopic Sinus Surgery)',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['FESS', 'sinus surgery', 'endoscopic', 'sinusotomy', 'polypectomy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="16" rx="20" ry="8" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="16" rx="20" ry="8"/>
+      <ellipse cx="20" cy="36" rx="10" ry="14" fill="#22c55e" opacity="0.2"/>
+      <ellipse cx="20" cy="36" rx="10" ry="14"/>
+      <ellipse cx="44" cy="36" rx="10" ry="14"/>
+      <path d="M8 32h12" stroke="#3b82f6" stroke-width="2"/>
+      <circle cx="4" cy="32" r="2" fill="#3b82f6"/>
+      <path d="M20 28l0-8" stroke="#22c55e" stroke-width="2"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">FESS</text>
+    </svg>`
+  },
+  {
+    id: 'ent-septoplasty',
+    name: 'Septoplasty',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['septoplasty', 'deviated septum', 'nasal surgery', 'SMR'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 56V20c0-8 8-12 20-12s20 4 20 12v36"/>
+      <path d="M32 8c-4 16 4 32-2 48" stroke="#ef4444" stroke-dasharray="3 2"/>
+      <path d="M32 8v48" stroke="#22c55e" stroke-width="2"/>
+      <path d="M24 28l-8 4 8 4" stroke="#3b82f6"/>
+      <path d="M40 28l8 4-8 4" stroke="#3b82f6"/>
+      <text x="8" y="58" font-size="4" fill="#22c55e" stroke="none">Corrected</text>
+    </svg>`
+  },
+  {
+    id: 'ent-stapedectomy',
+    name: 'Stapedectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['stapedectomy', 'otosclerosis', 'stapes surgery', 'prosthesis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="20" ry="24"/>
+      <path d="M24 20l8 12"/>
+      <circle cx="32" cy="12" r="4" stroke-dasharray="2 2"/>
+      <path d="M28 32l-6 16"/>
+      <path d="M36 32l6 16"/>
+      <ellipse cx="32" cy="52" rx="10" ry="4" stroke-dasharray="2 2"/>
+      <rect x="28" y="28" width="8" height="20" rx="1" fill="#3b82f6" opacity="0.3"/>
+      <text x="40" y="40" font-size="3" fill="#3b82f6" stroke="none">Prosthesis</text>
+    </svg>`
+  },
+  {
+    id: 'ent-tonsillectomy',
+    name: 'Tonsillectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['tonsillectomy', 'adenoidectomy', 'T&A', 'tonsil removal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 8h48v48H8z" fill="currentColor" opacity="0.05"/>
+      <ellipse cx="16" cy="32" rx="8" ry="14" stroke-dasharray="3 2"/>
+      <ellipse cx="48" cy="32" rx="8" ry="14" stroke-dasharray="3 2"/>
+      <path d="M24 20c4 4 4 20 0 24"/>
+      <path d="M40 20c-4 4-4 20 0 24"/>
+      <ellipse cx="32" cy="52" rx="8" ry="4"/>
+      <path d="M8 32l8 0" stroke="#ef4444" stroke-width="2"/>
+      <path d="M48 32l8 0" stroke="#ef4444" stroke-width="2"/>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">Removed</text>
+    </svg>`
+  },
+  {
+    id: 'ent-myringotomy',
+    name: 'Myringotomy & Tubes',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['myringotomy', 'PE tubes', 'tympanostomy', 'grommets', 'ventilation tubes'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="20" ry="24"/>
+      <path d="M20 16c6 1 10 3 12 8"/>
+      <circle cx="32" cy="40" r="2" fill="currentColor"/>
+      <ellipse cx="28" cy="44" rx="6" ry="3" fill="#3b82f6" opacity="0.3"/>
+      <ellipse cx="28" cy="44" rx="6" ry="3"/>
+      <circle cx="28" cy="44" r="2" fill="#3b82f6"/>
+      <path d="M22 44h12"/>
+      <text x="36" y="48" font-size="3" fill="#3b82f6" stroke="none">PE Tube</text>
+    </svg>`
+  },
+  {
+    id: 'ent-mastoidectomy',
+    name: 'Mastoidectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['mastoidectomy', 'canal wall up', 'canal wall down', 'mastoid surgery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8h24c8 0 12 8 12 20 0 16-8 28-24 28-12 0-20-12-20-28 0-12 4-20 8-20z" fill="currentColor" opacity="0.1"/>
+      <path d="M20 8h24c8 0 12 8 12 20 0 16-8 28-24 28-12 0-20-12-20-28 0-12 4-20 8-20z"/>
+      <path d="M24 20c8 4 16 4 24 0" stroke="#ef4444" stroke-width="2"/>
+      <ellipse cx="36" cy="36" rx="12" ry="16" fill="#22c55e" opacity="0.2" stroke-dasharray="3 2"/>
+      <circle cx="28" cy="44" r="2" stroke-dasharray="2 1"/>
+      <circle cx="40" cy="40" r="2" stroke-dasharray="2 1"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Cavity</text>
+    </svg>`
+  },
+  {
+    id: 'ent-parotidectomy',
+    name: 'Parotidectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['parotidectomy', 'parotid gland', 'facial nerve', 'superficial', 'total'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="18" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="28" rx="18" ry="20"/>
+      <ellipse cx="32" cy="28" rx="10" ry="12" fill="#f59e0b" opacity="0.3" stroke-dasharray="3 2"/>
+      <path d="M32 16v24" stroke="#ef4444" stroke-width="2"/>
+      <path d="M22 24l20 8" stroke="#ef4444"/>
+      <path d="M22 32l20-8" stroke="#ef4444"/>
+      <path d="M32 48v8"/>
+      <text x="38" y="20" font-size="3" fill="#ef4444" stroke="none">CN VII</text>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Parotid</text>
+    </svg>`
+  },
+  {
+    id: 'ent-thyroidectomy',
+    name: 'Thyroidectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['thyroidectomy', 'thyroid surgery', 'lobectomy', 'total thyroidectomy', 'RLN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v48H24z" fill="currentColor" opacity="0.1"/>
+      <path d="M24 8h16"/>
+      <path d="M24 8v48"/>
+      <path d="M40 8v48"/>
+      <ellipse cx="16" cy="32" rx="8" ry="16" fill="#ef4444" opacity="0.3" stroke-dasharray="3 2"/>
+      <ellipse cx="48" cy="32" rx="8" ry="16" fill="#ef4444" opacity="0.3" stroke-dasharray="3 2"/>
+      <rect x="24" y="28" width="16" height="8" fill="#ef4444" opacity="0.3" stroke-dasharray="3 2"/>
+      <path d="M8 40l8-8" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M56 40l-8-8" stroke="#f59e0b" stroke-width="2"/>
+      <text x="4" y="58" font-size="3" fill="#f59e0b" stroke="none">RLN</text>
+    </svg>`
+  },
+  {
+    id: 'ent-laryngectomy',
+    name: 'Laryngectomy',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['laryngectomy', 'total laryngectomy', 'partial laryngectomy', 'voice box removal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8l12 8 12-8" stroke-dasharray="3 2"/>
+      <ellipse cx="32" cy="32" rx="16" ry="12" stroke-dasharray="3 2"/>
+      <path d="M16 44v12c0 4 8 4 16 4s16 0 16-4v-12"/>
+      <circle cx="32" cy="52" r="6" fill="#ef4444" opacity="0.3"/>
+      <circle cx="32" cy="52" r="6"/>
+      <path d="M26 52h12"/>
+      <text x="38" y="54" font-size="3" fill="currentColor" stroke="none">Stoma</text>
+      <text x="8" y="24" font-size="4" fill="currentColor" stroke="none">Removed</text>
+    </svg>`
+  },
+  {
+    id: 'ent-neck-dissection',
+    name: 'Neck Dissection',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['neck dissection', 'radical', 'modified radical', 'selective', 'lymph nodes'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="28" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="28"/>
+      <circle cx="24" cy="16" r="4" fill="#ef4444" opacity="0.4"/>
+      <circle cx="40" cy="16" r="4" fill="#ef4444" opacity="0.4"/>
+      <circle cx="20" cy="28" r="4" fill="#ef4444" opacity="0.4"/>
+      <circle cx="44" cy="28" r="4" fill="#ef4444" opacity="0.4"/>
+      <circle cx="18" cy="42" r="4" fill="#ef4444" opacity="0.4"/>
+      <circle cx="46" cy="42" r="4" fill="#ef4444" opacity="0.4"/>
+      <path d="M32 4v56"/>
+      <path d="M24 16l-4 12-4 14"/>
+      <path d="M40 16l4 12 4 14"/>
+      <text x="8" y="58" font-size="4" fill="#ef4444" stroke="none">Levels I-V</text>
+    </svg>`
+  },
+  {
+    id: 'ent-rhinoplasty',
+    name: 'Rhinoplasty',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['rhinoplasty', 'nose job', 'nasal reconstruction', 'cosmetic', 'functional'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-6 0-10 8-10 20 0 8 2 16 4 20h12c2-4 4-12 4-20 0-12-4-20-10-20z" fill="currentColor" opacity="0.1" stroke-dasharray="3 2"/>
+      <path d="M32 8c-4 0-8 8-8 20 0 8 2 16 4 20h8c2-4 4-12 4-20 0-12-4-20-8-20z"/>
+      <ellipse cx="26" cy="52" rx="4" ry="3"/>
+      <ellipse cx="38" cy="52" rx="4" ry="3"/>
+      <path d="M28 28l-4 8 4 8" stroke="#3b82f6"/>
+      <path d="M36 28l4 8-4 8" stroke="#3b82f6"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Reshape</text>
+    </svg>`
+  },
+  {
+    id: 'ent-uvulopalatopharyngoplasty',
+    name: 'UPPP (Uvulopalatopharyngoplasty)',
+    domain: 'medicine',
+    category: 'ent-procedures',
+    tags: ['UPPP', 'uvulopalatopharyngoplasty', 'sleep apnea surgery', 'palate surgery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 8h48v24c0 8-8 16-24 16s-24-8-24-16V8z" fill="currentColor" opacity="0.1"/>
+      <path d="M8 8h48v24c0 8-8 16-24 16s-24-8-24-16V8z"/>
+      <ellipse cx="20" cy="24" rx="6" ry="10" stroke-dasharray="3 2"/>
+      <ellipse cx="44" cy="24" rx="6" ry="10" stroke-dasharray="3 2"/>
+      <path d="M32 24v12" stroke-dasharray="3 2"/>
+      <ellipse cx="32" cy="40" rx="4" ry="6" stroke-dasharray="3 2"/>
+      <path d="M16 40c8 8 24 8 32 0" stroke="#22c55e" stroke-width="2"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Airway Open</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL DIAGNOSTIC ICONS (8 icons)
+  // ===========================================================================
+  {
+    id: 'ent-weber-test',
+    name: 'Weber Test',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['Weber test', 'tuning fork', 'hearing test', 'lateralization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="16" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="24" r="16"/>
+      <path d="M28 8v-4"/>
+      <path d="M36 8v-4"/>
+      <path d="M28 4h8"/>
+      <rect x="30" y="40" width="4" height="16" rx="1"/>
+      <path d="M24 20l4 4-4 4" stroke="#22c55e" stroke-width="2"/>
+      <path d="M40 20l-4 4 4 4" stroke="#ef4444" stroke-width="2"/>
+      <circle cx="32" cy="24" r="4" fill="currentColor"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Midline</text>
+    </svg>`
+  },
+  {
+    id: 'ent-rinne-test',
+    name: 'Rinne Test',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['Rinne test', 'tuning fork', 'air conduction', 'bone conduction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 12c8 4 12 12 10 24-2 10-8 18-14 20"/>
+      <path d="M32 20c-2 1-4 4-4 8"/>
+      <path d="M24 8v16"/>
+      <path d="M20 8h8"/>
+      <path d="M20 24h8"/>
+      <rect x="20" y="24" width="8" height="20" rx="1" fill="currentColor" opacity="0.2"/>
+      <path d="M12 32h8" stroke="#3b82f6" stroke-width="2"/>
+      <text x="4" y="36" font-size="3" fill="#3b82f6" stroke="none">BC</text>
+      <path d="M36 24l8 4-8 4" stroke="#22c55e" stroke-width="2"/>
+      <text x="44" y="32" font-size="3" fill="#22c55e" stroke="none">AC</text>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">AC>BC Normal</text>
+    </svg>`
+  },
+  {
+    id: 'ent-dix-hallpike',
+    name: 'Dix-Hallpike Test',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['Dix-Hallpike', 'BPPV', 'vertigo', 'nystagmus', 'positional'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="12" ry="10" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="24" rx="12" ry="10"/>
+      <circle cx="28" cy="22" r="3"/>
+      <circle cx="36" cy="22" r="3"/>
+      <path d="M28 30c2 2 6 2 8 0"/>
+      <path d="M32 34v8"/>
+      <path d="M24 42h16v12H24z" fill="currentColor" opacity="0.1"/>
+      <path d="M20 34l-8 8" stroke-width="2"/>
+      <path d="M44 34l8 8" stroke-width="2"/>
+      <path d="M12 42l4-4"/>
+      <path d="M52 42l-4-4"/>
+      <path d="M24 20l-4-4" stroke="#ef4444"/>
+      <path d="M28 18l4-6" stroke="#ef4444"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Head Hanging</text>
+    </svg>`
+  },
+  {
+    id: 'ent-epley-maneuver',
+    name: 'Epley Maneuver',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['Epley maneuver', 'CRP', 'BPPV treatment', 'canalith repositioning'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="16" r="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="16" cy="16" r="6"/>
+      <path d="M22 16h8"/>
+      <circle cx="36" cy="12" r="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="36" cy="12" r="6"/>
+      <path d="M42 12l6 8"/>
+      <circle cx="52" cy="24" r="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="52" cy="24" r="6"/>
+      <path d="M52 30v8"/>
+      <circle cx="52" cy="44" r="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="52" cy="44" r="6"/>
+      <path d="M46 44l-8 6"/>
+      <circle cx="32" cy="52" r="6" fill="#22c55e" opacity="0.3"/>
+      <circle cx="32" cy="52" r="6"/>
+      <text x="12" y="32" font-size="3" fill="currentColor" stroke="none">1</text>
+      <text x="36" y="24" font-size="3" fill="currentColor" stroke="none">2</text>
+      <text x="56" y="32" font-size="3" fill="currentColor" stroke="none">3</text>
+      <text x="56" y="52" font-size="3" fill="currentColor" stroke="none">4</text>
+      <text x="20" y="56" font-size="3" fill="#22c55e" stroke="none">5</text>
+    </svg>`
+  },
+  {
+    id: 'ent-flexible-laryngoscopy',
+    name: 'Flexible Laryngoscopy',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['flexible laryngoscopy', 'nasolaryngoscopy', 'FNL', 'vocal cord exam'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8c0-2 4-4 8-4s8 2 8 4v16"/>
+      <ellipse cx="32" cy="24" rx="8" ry="4"/>
+      <path d="M24 24v16c0 4 4 8 8 8s8-4 8-8v-16"/>
+      <ellipse cx="32" cy="40" rx="6" ry="3" fill="currentColor" opacity="0.2"/>
+      <path d="M8 8c4 0 8 4 8 12v12" stroke="#3b82f6" stroke-width="2"/>
+      <circle cx="8" cy="8" r="3" fill="#3b82f6"/>
+      <circle cx="16" cy="32" r="2" fill="#3b82f6"/>
+      <path d="M18 32l8 8"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">View Cords</text>
+    </svg>`
+  },
+  {
+    id: 'ent-stroboscopy',
+    name: 'Stroboscopy',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['stroboscopy', 'videostroboscopy', 'vocal cord vibration', 'mucosal wave'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <path d="M12 30c14 6 28 6 40 0"/>
+      <path d="M12 34c14-6 28-6 40 0"/>
+      <path d="M16 30c4 2 8 2 12 0" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M36 30c4 2 8 2 12 0" stroke="#f59e0b" stroke-width="2"/>
+      <circle cx="32" cy="12" r="4" fill="#ffeb3b"/>
+      <path d="M28 12l-4-4"/>
+      <path d="M36 12l4-4"/>
+      <path d="M32 8v-4"/>
+      <text x="8" y="58" font-size="4" fill="#f59e0b" stroke="none">Mucosal Wave</text>
+    </svg>`
+  },
+  {
+    id: 'ent-ct-temporal-bone',
+    name: 'CT Temporal Bone',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['CT temporal bone', 'imaging', 'HRCT', 'cholesteatoma', 'mastoid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <ellipse cx="32" cy="32" rx="16" ry="20" fill="currentColor" opacity="0.2"/>
+      <path d="M24 24c-4 0-8 4-8 8s4 8 8 8"/>
+      <circle cx="28" cy="32" r="3" fill="currentColor"/>
+      <ellipse cx="38" cy="28" rx="6" ry="4" stroke-dasharray="2 2"/>
+      <path d="M38 32v8"/>
+      <circle cx="38" cy="44" r="2"/>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">Axial View</text>
+    </svg>`
+  },
+  {
+    id: 'ent-mri-iac',
+    name: 'MRI IAC (Internal Auditory Canal)',
+    domain: 'medicine',
+    category: 'ent-diagnostic',
+    tags: ['MRI IAC', 'acoustic neuroma', 'vestibular schwannoma', 'CPA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="#1a1a2e" opacity="0.8"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <ellipse cx="32" cy="32" rx="18" ry="20" fill="#2d2d44"/>
+      <path d="M20 32h8" stroke="#ffffff" stroke-width="2"/>
+      <path d="M36 32h8" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="32" cy="32" r="8" fill="#ffffff" opacity="0.3"/>
+      <circle cx="40" cy="28" r="4" fill="#ffffff"/>
+      <text x="44" y="24" font-size="3" fill="#ef4444" stroke="none">Tumor</text>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">T2 CISS</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // TREATMENT & THERAPEUTIC ICONS (5 icons)
+  // ===========================================================================
+  {
+    id: 'ent-nasal-spray',
+    name: 'Nasal Spray',
+    domain: 'medicine',
+    category: 'ent-treatment',
+    tags: ['nasal spray', 'intranasal', 'corticosteroid', 'decongestant', 'saline'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="20" width="24" height="36" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="20" y="20" width="24" height="36" rx="4"/>
+      <path d="M28 20v-8c0-2 2-4 4-4s4 2 4 4v8"/>
+      <ellipse cx="32" cy="10" rx="6" ry="3"/>
+      <path d="M32 7v-3"/>
+      <path d="M28 4l4-2 4 2"/>
+      <path d="M24 32h16"/>
+      <path d="M24 40h16"/>
+      <path d="M24 48h16"/>
+      <circle cx="44" cy="8" r="2" fill="#3b82f6"/>
+      <path d="M44 10v4" stroke="#3b82f6"/>
+    </svg>`
+  },
+  {
+    id: 'ent-ear-drops',
+    name: 'Ear Drops',
+    domain: 'medicine',
+    category: 'ent-treatment',
+    tags: ['ear drops', 'otic drops', 'antibiotic', 'cerumenolytic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 16c0-4 4-8 8-8s8 4 8 8v32c0 4-4 8-8 8s-8-4-8-8V16z" fill="currentColor" opacity="0.1"/>
+      <path d="M24 16c0-4 4-8 8-8s8 4 8 8v32c0 4-4 8-8 8s-8-4-8-8V16z"/>
+      <ellipse cx="32" cy="8" rx="4" ry="2"/>
+      <path d="M28 8v-4"/>
+      <path d="M36 8v-4"/>
+      <ellipse cx="32" cy="4" rx="6" ry="2"/>
+      <path d="M28 28h8"/>
+      <path d="M28 36h8"/>
+      <circle cx="32" cy="52" r="3" fill="#3b82f6"/>
+      <path d="M32 49v-4" stroke="#3b82f6"/>
+    </svg>`
+  },
+  {
+    id: 'ent-voice-therapy',
+    name: 'Voice Therapy',
+    domain: 'medicine',
+    category: 'ent-treatment',
+    tags: ['voice therapy', 'speech therapy', 'vocal hygiene', 'rehabilitation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="20" r="12"/>
+      <circle cx="28" cy="18" r="2"/>
+      <circle cx="36" cy="18" r="2"/>
+      <path d="M28 24c2 2 6 2 8 0"/>
+      <path d="M32 32v8"/>
+      <path d="M24 40h16"/>
+      <path d="M40 20c4-4 8-4 12-2"/>
+      <path d="M52 18c2 1 4 3 4 6"/>
+      <path d="M44 20c2-2 4-2 6-1"/>
+      <path d="M50 19c1 0 2 1 2 3"/>
+      <path d="M48 20c1-1 2-1 3 0"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Vocal Training</text>
+    </svg>`
+  },
+  {
+    id: 'ent-vestibular-rehab',
+    name: 'Vestibular Rehabilitation',
+    domain: 'medicine',
+    category: 'ent-treatment',
+    tags: ['vestibular rehab', 'VRT', 'balance therapy', 'gaze stabilization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="12"/>
+      <circle cx="32" cy="32" r="4"/>
+      <path d="M32 12v8"/>
+      <path d="M32 44v8"/>
+      <path d="M12 32h8"/>
+      <path d="M44 32h8"/>
+      <path d="M18 18l6 6"/>
+      <path d="M40 40l6 6"/>
+      <path d="M18 46l6-6"/>
+      <path d="M40 24l6-6"/>
+      <circle cx="32" cy="32" r="2" fill="#22c55e"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Gaze Target</text>
+    </svg>`
+  },
+  {
+    id: 'ent-allergy-testing',
+    name: 'Allergy Testing',
+    domain: 'medicine',
+    category: 'ent-treatment',
+    tags: ['allergy testing', 'skin prick', 'immunotherapy', 'allergen'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="48" rx="4"/>
+      <circle cx="24" cy="20" r="4"/>
+      <circle cx="40" cy="20" r="4" fill="#ef4444" opacity="0.5"/>
+      <circle cx="24" cy="36" r="4" fill="#ef4444" opacity="0.3"/>
+      <circle cx="40" cy="36" r="4"/>
+      <circle cx="24" cy="48" r="4" fill="#ef4444"/>
+      <circle cx="40" cy="48" r="4"/>
+      <text x="16" y="16" font-size="3" fill="currentColor" stroke="none">A</text>
+      <text x="32" y="16" font-size="3" fill="currentColor" stroke="none">B</text>
+      <text x="16" y="32" font-size="3" fill="currentColor" stroke="none">C</text>
+      <text x="32" y="32" font-size="3" fill="currentColor" stroke="none">D</text>
+      <text x="16" y="56" font-size="3" fill="#ef4444" stroke="none">+</text>
+    </svg>`
   }
 ];
 

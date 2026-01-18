@@ -1431,6 +1431,236 @@ export const radiologyIcons: IconDefinition[] = [
       <text x="45" y="28" font-size="3" fill="currentColor" stroke="none">50</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADVANCED IMAGING & PACS
+  // ===========================================================================
+  {
+    id: 'rad-pacs-workstation',
+    name: 'PACS Workstation',
+    domain: 'medicine',
+    category: 'imaging-systems',
+    tags: ['PACS', 'workstation', 'RIS', 'radiology', 'computer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="24" height="20" rx="2"/>
+      <rect x="36" y="8" width="24" height="20" rx="2"/>
+      <rect x="8" y="12" width="16" height="12" rx="1" fill="currentColor" opacity="0.1"/>
+      <rect x="40" y="12" width="16" height="12" rx="1" fill="currentColor" opacity="0.1"/>
+      <rect x="20" y="32" width="24" height="16" rx="2"/>
+      <path d="M32 48v8"/>
+      <path d="M24 56h16"/>
+      <ellipse cx="16" cy="18" rx="4" ry="3" fill="#4169E1" opacity="0.5"/>
+      <ellipse cx="48" cy="18" rx="4" ry="3" fill="#4169E1" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'rad-3d-reconstruction',
+    name: '3D Reconstruction',
+    domain: 'medicine',
+    category: 'imaging-systems',
+    tags: ['3D', 'reconstruction', 'VRT', 'MIP', 'MPR'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8l20 12v24l-20 12-20-12V20z"/>
+      <path d="M32 8v24"/>
+      <path d="M12 20l20 12"/>
+      <path d="M52 20l-20 12"/>
+      <path d="M32 32v24"/>
+      <ellipse cx="32" cy="28" rx="8" ry="4" fill="#87CEEB" opacity="0.5"/>
+      <path d="M24 28c0 8 4 12 8 12s8-4 8-12" stroke-dasharray="2 2"/>
+      <text x="20" y="58" font-size="4" fill="currentColor" stroke="none">3D VRT</text>
+    </svg>`
+  },
+  {
+    id: 'rad-ai-detection',
+    name: 'AI Detection',
+    domain: 'medicine',
+    category: 'imaging-systems',
+    tags: ['AI', 'artificial intelligence', 'CAD', 'detection', 'machine learning'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="40" rx="2"/>
+      <rect x="12" y="12" width="40" height="28" rx="1" fill="currentColor" opacity="0.1"/>
+      <circle cx="28" cy="28" r="8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M28 20v-4"/>
+      <path d="M28 36v4"/>
+      <path d="M20 28h-4"/>
+      <path d="M36 28h4"/>
+      <circle cx="44" cy="20" r="4" fill="#32CD32"/>
+      <text x="41" y="22" font-size="6" fill="white" stroke="none">AI</text>
+      <rect x="20" y="52" width="24" height="8" rx="2"/>
+      <text x="23" y="58" font-size="4" fill="currentColor" stroke="none">Nodule</text>
+    </svg>`
+  },
+  {
+    id: 'rad-dicom-transfer',
+    name: 'DICOM Transfer',
+    domain: 'medicine',
+    category: 'imaging-systems',
+    tags: ['DICOM', 'transfer', 'network', 'HL7', 'interoperability'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="20" height="24" rx="2"/>
+      <rect x="40" y="20" width="20" height="24" rx="2"/>
+      <path d="M24 32h16"/>
+      <path d="M36 28l4 4-4 4"/>
+      <path d="M28 28l-4 4 4 4"/>
+      <rect x="8" y="24" width="12" height="8" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="44" y="24" width="12" height="8" rx="1" fill="currentColor" opacity="0.2"/>
+      <text x="7" y="42" font-size="3" fill="currentColor" stroke="none">DICOM</text>
+      <text x="43" y="42" font-size="3" fill="currentColor" stroke="none">PACS</text>
+    </svg>`
+  },
+  {
+    id: 'rad-contrast-injector',
+    name: 'Contrast Injector',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['contrast', 'injector', 'power', 'IV', 'injection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="8" width="32" height="40" rx="4"/>
+      <circle cx="32" cy="24" r="8"/>
+      <path d="M32 16v16"/>
+      <path d="M24 24h16"/>
+      <rect x="20" y="36" width="24" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <path d="M20 48h24"/>
+      <path d="M28 48v12"/>
+      <path d="M36 48v12"/>
+      <circle cx="28" cy="60" r="2"/>
+      <circle cx="36" cy="60" r="2"/>
+      <text x="22" y="42" font-size="4" fill="currentColor" stroke="none">350 HU</text>
+    </svg>`
+  },
+  {
+    id: 'rad-bolus-tracking',
+    name: 'Bolus Tracking',
+    domain: 'medicine',
+    category: 'techniques',
+    tags: ['bolus', 'tracking', 'timing', 'trigger', 'contrast'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="40" rx="2"/>
+      <path d="M16 40c0-16 8-24 16-24s16 8 16 24"/>
+      <circle cx="32" cy="24" r="4" fill="#DC143C"/>
+      <path d="M32 28v-12" stroke="#DC143C" stroke-width="2"/>
+      <path d="M20 32h24" stroke-dasharray="2 2"/>
+      <text x="36" y="34" font-size="4" fill="#DC143C" stroke="none">Trigger</text>
+      <rect x="12" y="52" width="40" height="8" rx="2"/>
+      <rect x="16" y="54" width="16" height="4" fill="#4169E1"/>
+      <text x="34" y="58" font-size="3" fill="currentColor" stroke="none">100 HU</text>
+    </svg>`
+  },
+  {
+    id: 'rad-dual-energy-ct',
+    name: 'Dual Energy CT',
+    domain: 'medicine',
+    category: 'imaging-modalities',
+    tags: ['dual energy', 'DECT', 'spectral', 'material decomposition', 'gout'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <path d="M32 12c-8 0-16 8-16 20s8 20 16 20" stroke="#4169E1" stroke-width="2"/>
+      <path d="M32 12c8 0 16 8 16 20s-8 20-16 20" stroke="#32CD32" stroke-width="2"/>
+      <circle cx="32" cy="32" r="8" fill="currentColor" opacity="0.2"/>
+      <text x="16" y="34" font-size="4" fill="#4169E1" stroke="none">80kV</text>
+      <text x="40" y="34" font-size="3" fill="#32CD32" stroke="none">140kV</text>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">Dual Energy</text>
+    </svg>`
+  },
+  {
+    id: 'rad-perfusion-imaging',
+    name: 'Perfusion Imaging',
+    domain: 'medicine',
+    category: 'techniques',
+    tags: ['perfusion', 'CBF', 'CBV', 'MTT', 'penumbra'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24"/>
+      <path d="M16 32c4-8 12-12 16-12" stroke="#228B22" stroke-width="3"/>
+      <path d="M32 20c4 0 12 4 16 12" stroke="#FFD700" stroke-width="3"/>
+      <path d="M48 32c-4 8-12 12-16 12" stroke="#DC143C" stroke-width="3"/>
+      <path d="M32 44c-4 0-12-4-16-12" stroke="#FF8C00" stroke-width="3"/>
+      <circle cx="32" cy="32" r="8" fill="#9370DB" opacity="0.5"/>
+      <text x="24" y="12" font-size="3" fill="currentColor" stroke="none">CBF</text>
+      <text x="44" y="24" font-size="3" fill="currentColor" stroke="none">CBV</text>
+      <text x="44" y="44" font-size="3" fill="currentColor" stroke="none">MTT</text>
+    </svg>`
+  },
+  {
+    id: 'rad-structured-report',
+    name: 'Structured Report',
+    domain: 'medicine',
+    category: 'reporting',
+    tags: ['structured', 'report', 'template', 'findings', 'impression'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="4" width="48" height="56" rx="2"/>
+      <path d="M16 12h32"/>
+      <path d="M16 20h24"/>
+      <path d="M16 28h28"/>
+      <path d="M16 36h20"/>
+      <path d="M16 44h32" stroke-dasharray="4 2"/>
+      <rect x="16" y="48" width="32" height="8" rx="1" fill="currentColor" opacity="0.1"/>
+      <text x="18" y="54" font-size="4" fill="currentColor" stroke="none">IMPRESSION:</text>
+      <circle cx="12" cy="12" r="2" fill="#228B22"/>
+      <circle cx="12" cy="20" r="2" fill="#228B22"/>
+      <circle cx="12" cy="28" r="2" fill="#FFD700"/>
+      <circle cx="12" cy="36" r="2" fill="#DC143C"/>
+    </svg>`
+  },
+  {
+    id: 'rad-critical-finding',
+    name: 'Critical Finding Alert',
+    domain: 'medicine',
+    category: 'reporting',
+    tags: ['critical', 'finding', 'alert', 'communication', 'urgent'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4L4 56h56L32 4z" fill="#DC143C" opacity="0.2"/>
+      <path d="M32 4L4 56h56L32 4z"/>
+      <path d="M32 20v20" stroke-width="3"/>
+      <circle cx="32" cy="48" r="3" fill="currentColor"/>
+      <rect x="40" y="8" width="20" height="16" rx="2" fill="#FF4500"/>
+      <text x="44" y="18" font-size="5" fill="white" stroke="none">STAT</text>
+      <circle cx="56" cy="12" r="4" fill="#FFD700"/>
+      <text x="54" y="14" font-size="4" fill="#8B0000" stroke="none">!</text>
+    </svg>`
+  },
+  {
+    id: 'rad-measurement-tool',
+    name: 'Measurement Tool',
+    domain: 'medicine',
+    category: 'tools',
+    tags: ['measurement', 'ruler', 'caliper', 'dimension', 'size'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2" fill="currentColor" opacity="0.05"/>
+      <path d="M16 32h32" stroke-width="2"/>
+      <path d="M16 28v8"/>
+      <path d="M48 28v8"/>
+      <path d="M24 30v4"/>
+      <path d="M32 30v4"/>
+      <path d="M40 30v4"/>
+      <circle cx="28" cy="20" r="8" stroke-dasharray="2 2"/>
+      <path d="M28 12v16"/>
+      <path d="M20 20h16"/>
+      <text x="20" y="44" font-size="4" fill="currentColor" stroke="none">2.4 cm</text>
+      <text x="20" y="52" font-size="3" fill="currentColor" stroke="none">RECIST: +15%</text>
+    </svg>`
+  },
+  {
+    id: 'rad-teleradiology',
+    name: 'Teleradiology',
+    domain: 'medicine',
+    category: 'imaging-systems',
+    tags: ['teleradiology', 'remote', 'reading', 'network', 'communication'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="24" width="20" height="16" rx="2"/>
+      <rect x="40" y="24" width="20" height="16" rx="2"/>
+      <circle cx="32" cy="32" r="8"/>
+      <path d="M24 32h-4"/>
+      <path d="M44 32h-4"/>
+      <path d="M32 24v-8"/>
+      <path d="M28 12h8"/>
+      <circle cx="14" cy="32" r="4" fill="currentColor" opacity="0.2"/>
+      <circle cx="50" cy="32" r="4" fill="currentColor" opacity="0.2"/>
+      <path d="M28 28l8 8"/>
+      <path d="M36 28l-8 8"/>
+      <text x="10" y="52" font-size="3" fill="currentColor" stroke="none">Hospital</text>
+      <text x="42" y="52" font-size="3" fill="currentColor" stroke="none">Remote</text>
+    </svg>`
+  },
 ];
 
 export default radiologyIcons;

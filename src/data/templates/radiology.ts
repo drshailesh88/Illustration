@@ -808,6 +808,369 @@ export const imagingReportTemplate: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL CLINICAL TEMPLATES
+// =============================================================================
+
+/**
+ * Liver Lesion Characterization template
+ */
+export const liverLesionCharacterization: DiagramTemplate = {
+  id: 'rad-liver-lesion',
+  name: 'Liver Lesion Characterization',
+  description: 'LI-RADS based liver lesion characterization algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a liver lesion characterization flowchart:
+- Lesion size: {{lesionSize}}
+- Enhancement pattern: {{enhancementPattern}}
+- Washout characteristics: {{washout}}
+- Capsule appearance: {{capsule}}
+- Threshold growth: {{thresholdGrowth}}
+- LI-RADS category: {{liradsCategory}}
+- Management recommendation: {{management}}
+{{#additionalNotes}}Additional features: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'lesionSize',
+    'enhancementPattern',
+    'washout',
+    'capsule',
+    'thresholdGrowth',
+    'liradsCategory',
+    'management',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Liver Observation\\nin At-Risk Patient")] --> B{"Arterial Phase\\nHyperenhancement?"}
+    B -->|"Yes"| C{"Size?"}
+    B -->|"No"| D["LR-3 or LR-4\\n(Intermediate)"]
+    C -->|"<10mm"| E["LR-3\\nIntermediate"]
+    C -->|"10-19mm"| F{"Washout OR\\nCapsule?"}
+    C -->|"≥20mm"| G{"Washout AND\\nCapsule?"}
+    F -->|"Neither"| H["LR-4\\nProbably HCC"]
+    F -->|"One"| I["LR-5\\nDefinite HCC"]
+    G -->|"Neither"| H
+    G -->|"One or Both"| I
+    style I fill:#DC143C,color:#fff
+    style H fill:#FFA500,color:#000
+    style E fill:#FFD700,color:#000`,
+};
+
+/**
+ * Breast Imaging Assessment template
+ */
+export const breastImagingAssessment: DiagramTemplate = {
+  id: 'rad-breast-birads',
+  name: 'Breast Imaging Assessment (BI-RADS)',
+  description: 'ACR BI-RADS assessment and management algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a breast imaging assessment flowchart:
+- Finding type: {{findingType}}
+- Mass characteristics: {{massCharacteristics}}
+- Calcification morphology: {{calcifications}}
+- Associated features: {{associatedFeatures}}
+- BI-RADS category: {{biradsCategory}}
+- Management: {{management}}
+- Follow-up interval: {{followUp}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'findingType',
+    'massCharacteristics',
+    'calcifications',
+    'associatedFeatures',
+    'biradsCategory',
+    'management',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Mammographic\\nFinding")] --> B{"Finding Type?"}
+    B -->|"Mass"| C{"Shape &\\nMargins?"}
+    B -->|"Calcifications"| D{"Morphology?"}
+    B -->|"Asymmetry"| E{"Focal or\\nGlobal?"}
+    C -->|"Oval, Circumscribed"| F["BI-RADS 2-3"]
+    C -->|"Irregular, Spiculated"| G["BI-RADS 4-5"]
+    D -->|"Punctate, Round"| H["BI-RADS 2"]
+    D -->|"Amorphous"| I["BI-RADS 4A"]
+    D -->|"Fine Linear"| J["BI-RADS 4C-5"]
+    E -->|"Global"| K["BI-RADS 2"]
+    E -->|"Focal/Developing"| L["BI-RADS 3-4"]
+    F --> M["Routine F/U\\nor Short-term"]
+    G --> N["Biopsy\\nRecommended"]
+    style N fill:#DC143C,color:#fff
+    style F fill:#228B22,color:#fff`,
+};
+
+/**
+ * Renal Mass Evaluation template
+ */
+export const renalMassEvaluation: DiagramTemplate = {
+  id: 'rad-renal-mass',
+  name: 'Renal Mass Evaluation (Bosniak)',
+  description: 'Bosniak classification for cystic renal masses',
+  domain: 'medicine',
+  promptTemplate: `Create a renal mass evaluation flowchart:
+- Mass type: {{massType}}
+- Wall characteristics: {{wallCharacteristics}}
+- Septations: {{septations}}
+- Enhancement: {{enhancement}}
+- Bosniak category: {{bosniakCategory}}
+- Malignancy risk: {{malignancyRisk}}
+- Management: {{management}}
+{{#additionalNotes}}Size and location: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'massType',
+    'wallCharacteristics',
+    'septations',
+    'enhancement',
+    'bosniakCategory',
+    'malignancyRisk',
+    'management',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Renal Cystic\\nMass")] --> B{"Simple Cyst\\nCriteria?"}
+    B -->|"Yes\\nWater density\\nNo enhancement"| C["Bosniak I\\n0% malignancy"]
+    C --> D["No Follow-up"]
+    B -->|"No"| E{"Septa or\\nCalcification?"}
+    E -->|"Thin septa\\nFine calcification"| F["Bosniak II\\n0% malignancy"]
+    F --> D
+    E -->|"Minimal complexity"| G["Bosniak IIF\\n5% malignancy"]
+    G --> H["6-month F/U CT"]
+    E -->|"Thick septa\\nIrregular wall"| I["Bosniak III\\n50% malignancy"]
+    I --> J["Surgery or\\nActive Surveillance"]
+    E -->|"Enhancing\\nSoft tissue"| K["Bosniak IV\\n90% malignancy"]
+    K --> L["Surgical Resection"]
+    style D fill:#228B22,color:#fff
+    style L fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Thyroid Nodule Evaluation template
+ */
+export const thyroidNoduleEvaluation: DiagramTemplate = {
+  id: 'rad-thyroid-tirads',
+  name: 'Thyroid Nodule Evaluation (TI-RADS)',
+  description: 'ACR TI-RADS thyroid nodule assessment algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a thyroid nodule evaluation flowchart:
+- Composition: {{composition}}
+- Echogenicity: {{echogenicity}}
+- Shape: {{shape}}
+- Margins: {{margins}}
+- Echogenic foci: {{echogenicFoci}}
+- TI-RADS score: {{tiradsScore}}
+- FNA threshold: {{fnaThreshold}}
+{{#additionalNotes}}Nodule size: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'composition',
+    'echogenicity',
+    'shape',
+    'margins',
+    'echogenicFoci',
+    'tiradsScore',
+    'fnaThreshold',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Thyroid\\nNodule")] --> B["Calculate\\nTI-RADS Score"]
+    B --> C{"Total\\nPoints?"}
+    C -->|"0 points"| D["TR1 Benign\\nNo FNA"]
+    C -->|"2 points"| E["TR2 Not Suspicious\\nNo FNA"]
+    C -->|"3 points"| F["TR3 Mildly Suspicious\\nFNA if ≥2.5cm"]
+    C -->|"4-6 points"| G["TR4 Moderately Suspicious\\nFNA if ≥1.5cm"]
+    C -->|"≥7 points"| H["TR5 Highly Suspicious\\nFNA if ≥1cm"]
+    subgraph Points["Scoring System"]
+        P1["Composition: 0-2 pts"]
+        P2["Echogenicity: 0-3 pts"]
+        P3["Shape: 0-3 pts"]
+        P4["Margin: 0-3 pts"]
+        P5["Echogenic foci: 0-3 pts"]
+    end
+    style D fill:#228B22,color:#fff
+    style H fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Prostate MRI Evaluation template
+ */
+export const prostateMriEvaluation: DiagramTemplate = {
+  id: 'rad-prostate-pirads',
+  name: 'Prostate MRI Evaluation (PI-RADS)',
+  description: 'PI-RADS v2.1 prostate lesion assessment algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a prostate MRI evaluation flowchart:
+- Lesion location: {{lesionLocation}}
+- T2W signal: {{t2Signal}}
+- DWI/ADC findings: {{dwiFindings}}
+- DCE enhancement: {{dceEnhancement}}
+- PI-RADS category: {{piradsCategory}}
+- Biopsy recommendation: {{biopsyRecommendation}}
+{{#additionalNotes}}PSA and clinical context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'lesionLocation',
+    't2Signal',
+    'dwiFindings',
+    'dceEnhancement',
+    'piradsCategory',
+    'biopsyRecommendation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Prostate MRI\\nLesion")] --> B{"Lesion\\nLocation?"}
+    B -->|"Peripheral Zone"| C["DWI is\\nDominant"]
+    B -->|"Transition Zone"| D["T2W is\\nDominant"]
+    C --> E{"DWI Score?"}
+    E -->|"1-2"| F["PI-RADS 1-2"]
+    E -->|"3"| G{"DCE+?"}
+    E -->|"4-5"| H["PI-RADS 4-5"]
+    G -->|"No"| I["PI-RADS 3"]
+    G -->|"Yes"| J["PI-RADS 4"]
+    D --> K{"T2 Score?"}
+    K -->|"1-2"| F
+    K -->|"3"| L{"DWI Score?"}
+    K -->|"4-5"| H
+    L -->|"≤4"| I
+    L -->|"5"| J
+    style F fill:#228B22,color:#fff
+    style H fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Abdominal Aortic Aneurysm Surveillance template
+ */
+export const aaaaSurveillance: DiagramTemplate = {
+  id: 'rad-aaa-surveillance',
+  name: 'AAA Surveillance Protocol',
+  description: 'Abdominal aortic aneurysm surveillance and intervention guidelines',
+  domain: 'medicine',
+  promptTemplate: `Create an AAA surveillance flowchart:
+- Aortic diameter: {{aorticDiameter}}
+- Growth rate: {{growthRate}}
+- Patient symptoms: {{symptoms}}
+- Surgical risk: {{surgicalRisk}}
+- Surveillance interval: {{surveillanceInterval}}
+- Intervention threshold: {{interventionThreshold}}
+{{#additionalNotes}}Patient factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'aorticDiameter',
+    'growthRate',
+    'symptoms',
+    'surgicalRisk',
+    'surveillanceInterval',
+    'interventionThreshold',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Abdominal Aortic\\nAneurysm")] --> B{"Symptomatic?"}
+    B -->|"Yes\\n(Pain, rupture)"| C["EMERGENT\\nRepair"]
+    B -->|"No"| D{"Diameter?"}
+    D -->|"<3.0 cm"| E["No surveillance\\nneeded"]
+    D -->|"3.0-3.9 cm"| F["Surveillance\\nq3 years"]
+    D -->|"4.0-4.9 cm"| G["Surveillance\\nq12 months"]
+    D -->|"5.0-5.4 cm"| H["Surveillance\\nq6 months"]
+    D -->|"≥5.5 cm (M)\\n≥5.0 cm (F)"| I["Elective\\nRepair"]
+    H --> J{"Growth\\n>1cm/year?"}
+    J -->|"Yes"| I
+    J -->|"No"| H
+    I --> K{"EVAR\\nCandidate?"}
+    K -->|"Yes"| L["Endovascular\\nRepair"]
+    K -->|"No"| M["Open Surgical\\nRepair"]
+    style C fill:#DC143C,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * Pediatric Imaging Selection template
+ */
+export const pediatricImagingSelection: DiagramTemplate = {
+  id: 'rad-pediatric-imaging',
+  name: 'Pediatric Imaging Selection',
+  description: 'Age-appropriate imaging modality selection for pediatric patients',
+  domain: 'medicine',
+  promptTemplate: `Create a pediatric imaging selection flowchart:
+- Clinical indication: {{clinicalIndication}}
+- Patient age: {{patientAge}}
+- Radiation considerations: {{radiationConsiderations}}
+- Sedation requirements: {{sedationRequirements}}
+- Preferred modality: {{preferredModality}}
+- Alternative options: {{alternativeOptions}}
+{{#additionalNotes}}ALARA principles: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'clinicalIndication',
+    'patientAge',
+    'radiationConsiderations',
+    'sedationRequirements',
+    'preferredModality',
+    'alternativeOptions',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Pediatric\\nImaging Need")] --> B{"Clinical\\nQuestion?"}
+    B -->|"Appendicitis"| C["US First-line"]
+    C --> D{"Equivocal?"}
+    D -->|"Yes"| E["MRI or\\nLow-dose CT"]
+    D -->|"No"| F["Diagnosis\\nMade"]
+    B -->|"Intussusception"| G["US Diagnostic\\n+ Therapeutic"]
+    B -->|"Pyloric Stenosis"| H["US Preferred"]
+    B -->|"Head Trauma"| I{"Age?"}
+    I -->|"<2 years"| J["Apply PECARN\\nCT if indicated"]
+    I -->|"≥2 years"| K["Clinical criteria\\nfor CT"]
+    B -->|"Musculoskeletal"| L["X-ray First\\nMRI if needed"]
+    subgraph ALARA["ALARA Principles"]
+        A1["Size-based protocols"]
+        A2["Limit radiation dose"]
+        A3["Consider US/MRI first"]
+    end
+    style C fill:#228B22,color:#fff
+    style E fill:#9370DB,color:#fff`,
+};
+
+/**
+ * Trauma Imaging Protocol template
+ */
+export const traumaImagingProtocol: DiagramTemplate = {
+  id: 'rad-trauma-imaging',
+  name: 'Trauma Imaging Protocol',
+  description: 'ATLS-based trauma imaging algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a trauma imaging protocol flowchart:
+- Mechanism of injury: {{mechanism}}
+- Primary survey findings: {{primarySurvey}}
+- Hemodynamic status: {{hemodynamicStatus}}
+- Initial imaging: {{initialImaging}}
+- Secondary imaging: {{secondaryImaging}}
+- CT indications: {{ctIndications}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'mechanism',
+    'primarySurvey',
+    'hemodynamicStatus',
+    'initialImaging',
+    'secondaryImaging',
+    'ctIndications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Trauma\\nPatient")] --> B["Primary Survey\\nABCDE"]
+    B --> C{"Hemodynamically\\nStable?"}
+    C -->|"No"| D["Resuscitation\\neFAST"]
+    D --> E{"eFAST\\nPositive?"}
+    E -->|"Yes"| F["OR for\\nExploratory Lap"]
+    E -->|"No"| G["Continue\\nResuscitation"]
+    C -->|"Yes"| H["Pan-Scan CT"]
+    H --> I["CT Head"]
+    H --> J["CT C-Spine"]
+    H --> K["CT Chest/Abd/Pelvis"]
+    subgraph Secondary["Secondary Survey Imaging"]
+        L["Extremity X-rays"]
+        M["Focused CT cuts"]
+        N["CTA if vascular injury"]
+    end
+    I & J & K --> Secondary
+    style D fill:#DC143C,color:#fff
+    style H fill:#4169E1,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -837,6 +1200,15 @@ export const radiologyTemplates: DiagramTemplate[] = [
   acrAppropriateness,
   radiationDoseComparison,
   imagingReportTemplate,
+  // Additional Clinical Templates (8)
+  liverLesionCharacterization,
+  breastImagingAssessment,
+  renalMassEvaluation,
+  thyroidNoduleEvaluation,
+  prostateMriEvaluation,
+  aaaaSurveillance,
+  pediatricImagingSelection,
+  traumaImagingProtocol,
 ];
 
 export default radiologyTemplates;
