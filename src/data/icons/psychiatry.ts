@@ -1238,6 +1238,698 @@ export const psychiatryIcons: IconDefinition[] = [
       <path d="M26 44h12"/>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADHD & NEURODEVELOPMENTAL
+  // ===========================================================================
+  {
+    id: 'psych-adhd-brain',
+    name: 'ADHD Brain',
+    domain: 'medicine',
+    category: 'neurodevelopmental',
+    tags: ['ADHD', 'attention', 'hyperactivity', 'impulsivity', 'executive function'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <circle cx="24" cy="28" r="4" fill="#FF6B6B" opacity="0.5"/>
+      <circle cx="40" cy="28" r="4" fill="#FFD93D" opacity="0.5"/>
+      <path d="M16 36c6 4 18 4 24 0"/>
+      <path d="M28 16l2-4 2 4"/>
+      <path d="M34 16l2-4 2 4"/>
+      <path d="M22 20l-4-4"/>
+      <path d="M42 20l4-4"/>
+      <text x="18" y="56" font-size="4" fill="currentColor" stroke="none">ADHD</text>
+    </svg>`
+  },
+  {
+    id: 'psych-attention-deficit',
+    name: 'Attention Deficit',
+    domain: 'medicine',
+    category: 'neurodevelopmental',
+    tags: ['attention', 'deficit', 'focus', 'concentration', 'distraction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="16"/>
+      <circle cx="32" cy="32" r="8" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <path d="M8 20l8 4"/>
+      <path d="M56 20l-8 4"/>
+      <path d="M8 44l8-4"/>
+      <path d="M56 44l-8-4"/>
+      <path d="M32 8v8"/>
+      <path d="M32 48v8"/>
+      <text x="18" y="60" font-size="4" fill="currentColor" stroke="none">Distracted</text>
+    </svg>`
+  },
+  {
+    id: 'psych-hyperactivity',
+    name: 'Hyperactivity',
+    domain: 'medicine',
+    category: 'neurodevelopmental',
+    tags: ['hyperactivity', 'restlessness', 'energy', 'motor', 'ADHD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6"/>
+      <path d="M32 18v8"/>
+      <path d="M24 36l8-10 8 10"/>
+      <path d="M20 44l12-8"/>
+      <path d="M44 44l-12-8"/>
+      <path d="M16 52l8-8"/>
+      <path d="M48 52l-8-8"/>
+      <path d="M8 16l4 4"/>
+      <path d="M56 16l-4 4"/>
+      <path d="M8 32l4-4"/>
+      <path d="M56 32l-4-4"/>
+      <circle cx="12" cy="24" r="2" fill="#FFD93D"/>
+      <circle cx="52" cy="24" r="2" fill="#FFD93D"/>
+    </svg>`
+  },
+  {
+    id: 'psych-autism-spectrum',
+    name: 'Autism Spectrum',
+    domain: 'medicine',
+    category: 'neurodevelopmental',
+    tags: ['autism', 'ASD', 'spectrum', 'neurodevelopmental', 'social'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="8" fill="currentColor" opacity="0.05"/>
+      <path d="M8 32h48" stroke="url(#spectrum)" stroke-width="6"/>
+      <defs>
+        <linearGradient id="spectrum" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF6B6B"/>
+          <stop offset="25%" stop-color="#FFD93D"/>
+          <stop offset="50%" stop-color="#4ECDC4"/>
+          <stop offset="75%" stop-color="#4169E1"/>
+          <stop offset="100%" stop-color="#9B59B6"/>
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="32" r="4"/>
+      <circle cx="32" cy="32" r="4"/>
+      <circle cx="44" cy="32" r="4"/>
+      <text x="14" y="54" font-size="4" fill="currentColor" stroke="none">Spectrum</text>
+    </svg>`
+  },
+  {
+    id: 'psych-executive-function',
+    name: 'Executive Function',
+    domain: 'medicine',
+    category: 'neurodevelopmental',
+    tags: ['executive', 'function', 'planning', 'organization', 'working memory'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="12" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="12" y="8" width="40" height="12" rx="2"/>
+      <text x="22" y="17" font-size="5" fill="currentColor" stroke="none">PLAN</text>
+      <rect x="8" y="28" width="16" height="12" rx="2"/>
+      <rect x="28" y="28" width="16" height="12" rx="2"/>
+      <rect x="48" y="28" width="8" height="12" rx="2"/>
+      <path d="M24 20v8"/>
+      <path d="M36 20v8"/>
+      <path d="M52 20v8"/>
+      <path d="M16 40v8"/>
+      <path d="M36 40v8"/>
+      <path d="M52 40v8"/>
+      <circle cx="16" cy="52" r="4"/>
+      <circle cx="36" cy="52" r="4"/>
+      <circle cx="52" cy="52" r="4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CRISIS & EMERGENCY
+  // ===========================================================================
+  {
+    id: 'psych-crisis-intervention',
+    name: 'Crisis Intervention',
+    domain: 'medicine',
+    category: 'crisis',
+    tags: ['crisis', 'intervention', 'emergency', 'acute', 'stabilization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" fill="#FF6B6B" opacity="0.2"/>
+      <circle cx="32" cy="32" r="24"/>
+      <path d="M32 16v16" stroke-width="3"/>
+      <path d="M24 32h16" stroke-width="3"/>
+      <circle cx="32" cy="32" r="8" fill="currentColor" opacity="0.3"/>
+      <path d="M8 8l8 8"/>
+      <path d="M56 8l-8 8"/>
+      <path d="M8 56l8-8"/>
+      <path d="M56 56l-8-8"/>
+    </svg>`
+  },
+  {
+    id: 'psych-psych-hold',
+    name: 'Psychiatric Hold',
+    domain: 'medicine',
+    category: 'crisis',
+    tags: ['5150', 'hold', 'involuntary', 'commitment', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="48" rx="4"/>
+      <path d="M20 16h24"/>
+      <path d="M20 24h24"/>
+      <path d="M20 32h12"/>
+      <path d="M32 40c-8 0-12 8-12 8h24s-4-8-12-8z" fill="#FF6B6B" opacity="0.3"/>
+      <circle cx="32" cy="36" r="4"/>
+      <text x="26" y="52" font-size="4" fill="currentColor" stroke="none">72hr</text>
+    </svg>`
+  },
+  {
+    id: 'psych-deescalation',
+    name: 'De-escalation',
+    domain: 'medicine',
+    category: 'crisis',
+    tags: ['deescalation', 'calm', 'crisis', 'verbal', 'intervention'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 48l16-32 16 16 16-24" stroke-width="2"/>
+      <circle cx="8" cy="48" r="4" fill="#FF6B6B"/>
+      <circle cx="24" cy="16" r="4" fill="#FFA500"/>
+      <circle cx="40" cy="32" r="4" fill="#FFD93D"/>
+      <circle cx="56" cy="8" r="4" fill="#4ECDC4"/>
+      <path d="M4 52l4-4"/>
+      <path d="M20 12l4 4"/>
+      <path d="M36 28l4 4"/>
+      <path d="M52 4l4 4"/>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">De-escalate</text>
+    </svg>`
+  },
+  {
+    id: 'psych-restraint',
+    name: 'Restraint',
+    domain: 'medicine',
+    category: 'crisis',
+    tags: ['restraint', 'physical', 'chemical', 'safety', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6"/>
+      <rect x="20" y="20" width="24" height="36" rx="4"/>
+      <path d="M20 28h-12"/>
+      <path d="M44 28h12"/>
+      <path d="M8 28c0-4 4-4 4 0"/>
+      <path d="M52 28c0-4 4-4 4 0"/>
+      <path d="M24 56h-8c-4 0-4-4 0-4"/>
+      <path d="M40 56h8c4 0 4-4 0-4"/>
+      <circle cx="28" cy="32" r="2"/>
+      <circle cx="36" cy="32" r="2"/>
+      <path d="M28 40h8"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // THERAPY MODALITIES
+  // ===========================================================================
+  {
+    id: 'psych-group-therapy',
+    name: 'Group Therapy',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['group', 'therapy', 'support', 'peers', 'counseling'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6"/>
+      <circle cx="16" cy="28" r="6"/>
+      <circle cx="48" cy="28" r="6"/>
+      <circle cx="12" cy="48" r="6"/>
+      <circle cx="32" cy="52" r="6"/>
+      <circle cx="52" cy="48" r="6"/>
+      <path d="M26 16l-6 8"/>
+      <path d="M38 16l6 8"/>
+      <path d="M16 34l-2 8"/>
+      <path d="M26 48l-8-8"/>
+      <path d="M38 48l8-8"/>
+      <path d="M48 34l2 8"/>
+      <circle cx="32" cy="32" r="8" fill="currentColor" opacity="0.1"/>
+    </svg>`
+  },
+  {
+    id: 'psych-family-therapy',
+    name: 'Family Therapy',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['family', 'therapy', 'systems', 'relationships', 'counseling'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="16" r="6"/>
+      <circle cx="44" cy="16" r="6"/>
+      <circle cx="32" cy="44" r="6"/>
+      <circle cx="16" cy="52" r="4"/>
+      <circle cx="48" cy="52" r="4"/>
+      <path d="M20 22v8"/>
+      <path d="M44 22v8"/>
+      <path d="M32 38v-8"/>
+      <path d="M24 30h16"/>
+      <path d="M20 52h-4"/>
+      <path d="M44 52h4"/>
+      <path d="M26 48l-6 4"/>
+      <path d="M38 48l6 4"/>
+      <rect x="24" y="28" width="16" height="8" rx="2" fill="currentColor" opacity="0.1"/>
+    </svg>`
+  },
+  {
+    id: 'psych-emdr',
+    name: 'EMDR',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['EMDR', 'eye movement', 'trauma', 'desensitization', 'reprocessing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="10" ry="8"/>
+      <ellipse cx="40" cy="32" rx="10" ry="8"/>
+      <circle cx="24" cy="32" r="4"/>
+      <circle cx="40" cy="32" r="4"/>
+      <circle cx="22" cy="32" r="2" fill="currentColor"/>
+      <circle cx="42" cy="32" r="2" fill="currentColor"/>
+      <path d="M12 32h-4"/>
+      <path d="M56 32h-4"/>
+      <path d="M8 32l48 0" stroke-dasharray="4 4" opacity="0.5"/>
+      <path d="M24 20l16 0" stroke-width="2"/>
+      <path d="M32 16v8"/>
+      <text x="20" y="54" font-size="4" fill="currentColor" stroke="none">EMDR</text>
+    </svg>`
+  },
+  {
+    id: 'psych-mindfulness',
+    name: 'Mindfulness',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['mindfulness', 'meditation', 'awareness', 'present', 'DBT'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.05"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="12" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="32" r="4" fill="#4ECDC4" opacity="0.5"/>
+      <path d="M32 12v8"/>
+      <path d="M32 44v8"/>
+      <path d="M12 32h8"/>
+      <path d="M44 32h8"/>
+      <path d="M18 18l6 6"/>
+      <path d="M40 40l6 6"/>
+      <path d="M46 18l-6 6"/>
+      <path d="M18 46l6-6"/>
+    </svg>`
+  },
+  {
+    id: 'psych-exposure-therapy',
+    name: 'Exposure Therapy',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['exposure', 'therapy', 'anxiety', 'phobia', 'habituation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 56l12-16 12 8 12-24 12 16"/>
+      <circle cx="8" cy="56" r="3" fill="#4169E1"/>
+      <circle cx="20" cy="40" r="3" fill="#4ECDC4"/>
+      <circle cx="32" cy="48" r="3" fill="#FFD93D"/>
+      <circle cx="44" cy="24" r="3" fill="#FFA500"/>
+      <circle cx="56" cy="40" r="3" fill="#228B22"/>
+      <path d="M56 8l-4 4 4 4" stroke-width="2"/>
+      <path d="M52 12h8"/>
+      <text x="14" y="12" font-size="4" fill="currentColor" stroke="none">Exposure</text>
+    </svg>`
+  },
+  {
+    id: 'psych-motivational-interviewing',
+    name: 'Motivational Interviewing',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['MI', 'motivational', 'interviewing', 'ambivalence', 'change'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="20" r="8"/>
+      <circle cx="40" cy="20" r="8"/>
+      <path d="M24 28v8"/>
+      <path d="M40 28v8"/>
+      <path d="M20 44l-8 12"/>
+      <path d="M28 44l8 12"/>
+      <path d="M36 44l-8 12"/>
+      <path d="M44 44l8 12"/>
+      <rect x="16" y="36" width="16" height="12" rx="2"/>
+      <rect x="32" y="36" width="16" height="12" rx="2"/>
+      <path d="M28 40h8"/>
+      <path d="M32 38v4"/>
+      <text x="20" y="60" font-size="4" fill="currentColor" stroke="none">MI</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CHILD & ADOLESCENT
+  // ===========================================================================
+  {
+    id: 'psych-child-development',
+    name: 'Child Development',
+    domain: 'medicine',
+    category: 'child-psych',
+    tags: ['child', 'development', 'milestones', 'pediatric', 'growth'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="48" r="4"/>
+      <circle cx="32" cy="36" r="5"/>
+      <circle cx="48" cy="20" r="6"/>
+      <path d="M16 44v-8"/>
+      <path d="M32 31v-8"/>
+      <path d="M48 14v-6"/>
+      <path d="M12 52l-4 4"/>
+      <path d="M20 52l4 4"/>
+      <path d="M28 40l-4 4"/>
+      <path d="M36 40l4 4"/>
+      <path d="M44 24l-4 4"/>
+      <path d="M52 24l4 4"/>
+      <path d="M8 52h48" stroke-dasharray="2 2"/>
+      <text x="12" y="62" font-size="4" fill="currentColor" stroke="none">Growth</text>
+    </svg>`
+  },
+  {
+    id: 'psych-play-therapy',
+    name: 'Play Therapy',
+    domain: 'medicine',
+    category: 'child-psych',
+    tags: ['play', 'therapy', 'child', 'toys', 'expression'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="28" width="20" height="20" rx="2" fill="#FFD93D" opacity="0.3"/>
+      <rect x="8" y="28" width="20" height="20" rx="2"/>
+      <circle cx="44" cy="38" r="10" fill="#4ECDC4" opacity="0.3"/>
+      <circle cx="44" cy="38" r="10"/>
+      <circle cx="32" cy="12" r="6"/>
+      <path d="M32 18v6"/>
+      <path d="M28 28l-8 8"/>
+      <path d="M36 28l8 8"/>
+      <path d="M16 36l4 4"/>
+      <path d="M22 36l-4 4"/>
+      <path d="M40 34l4 4"/>
+      <path d="M48 34l-4 4"/>
+    </svg>`
+  },
+  {
+    id: 'psych-school-refusal',
+    name: 'School Refusal',
+    domain: 'medicine',
+    category: 'child-psych',
+    tags: ['school', 'refusal', 'anxiety', 'avoidance', 'child'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 28l20-16 20 16"/>
+      <rect x="16" y="28" width="32" height="24" rx="2"/>
+      <rect x="28" y="36" width="8" height="16"/>
+      <rect x="20" y="32" width="6" height="6"/>
+      <rect x="38" y="32" width="6" height="6"/>
+      <path d="M32 12v-4"/>
+      <path d="M28 8h8"/>
+      <line x1="8" y1="56" x2="56" y2="8" stroke-width="3" stroke="#FF6B6B"/>
+      <circle cx="32" cy="56" r="4"/>
+      <path d="M32 52v-4"/>
+    </svg>`
+  },
+  {
+    id: 'psych-separation-anxiety',
+    name: 'Separation Anxiety',
+    domain: 'medicine',
+    category: 'child-psych',
+    tags: ['separation', 'anxiety', 'attachment', 'child', 'distress'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="24" r="8"/>
+      <circle cx="44" cy="24" r="6"/>
+      <path d="M20 32v8"/>
+      <path d="M44 30v6"/>
+      <rect x="12" y="40" width="16" height="16" rx="2"/>
+      <rect x="38" y="36" width="12" height="12" rx="2"/>
+      <path d="M28 44h10" stroke-dasharray="4 2"/>
+      <circle cx="44" cy="22" r="1" fill="currentColor"/>
+      <path d="M42 28c1 1 3 1 4 0"/>
+      <path d="M48 36l8-8"/>
+      <path d="M56 28l-4 4"/>
+      <text x="8" y="62" font-size="4" fill="currentColor" stroke="none">Separation</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // COGNITIVE & DEMENTIA
+  // ===========================================================================
+  {
+    id: 'psych-cognitive-decline',
+    name: 'Cognitive Decline',
+    domain: 'medicine',
+    category: 'cognitive',
+    tags: ['cognitive', 'decline', 'dementia', 'memory', 'aging'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 16l12 8 12-4 12 12 12-8"/>
+      <circle cx="8" cy="16" r="3" fill="#228B22"/>
+      <circle cx="20" cy="24" r="3" fill="#4ECDC4"/>
+      <circle cx="32" cy="20" r="3" fill="#FFD93D"/>
+      <circle cx="44" cy="32" r="3" fill="#FFA500"/>
+      <circle cx="56" cy="24" r="3" fill="#FF6B6B"/>
+      <path d="M8 48l48 0" stroke-dasharray="2 2"/>
+      <ellipse cx="32" cy="48" rx="20" ry="8" fill="currentColor" opacity="0.1"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Decline</text>
+    </svg>`
+  },
+  {
+    id: 'psych-delirium',
+    name: 'Delirium',
+    domain: 'medicine',
+    category: 'cognitive',
+    tags: ['delirium', 'confusion', 'acute', 'encephalopathy', 'fluctuating'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="26" cy="28" r="3"/>
+      <circle cx="38" cy="28" r="3"/>
+      <path d="M24 38c4 4 12 4 16 0"/>
+      <path d="M16 16l8 4"/>
+      <path d="M48 16l-8 4"/>
+      <path d="M12 28l-4-4"/>
+      <path d="M52 28l4-4"/>
+      <path d="M8 20l4 0"/>
+      <path d="M52 20l4 0"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Confused</text>
+    </svg>`
+  },
+  {
+    id: 'psych-memory-loss',
+    name: 'Memory Loss',
+    domain: 'medicine',
+    category: 'cognitive',
+    tags: ['memory', 'loss', 'amnesia', 'forgetfulness', 'cognitive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="20" ry="16" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="28" rx="20" ry="16"/>
+      <rect x="20" y="20" width="8" height="8" rx="1" fill="currentColor" opacity="0.3"/>
+      <rect x="32" y="20" width="8" height="8" rx="1" stroke-dasharray="2 2"/>
+      <rect x="20" y="32" width="8" height="8" rx="1" stroke-dasharray="2 2"/>
+      <rect x="32" y="32" width="8" height="8" rx="1"/>
+      <path d="M44 24l8-8"/>
+      <path d="M52 16l-4 4"/>
+      <path d="M44 36l8 8"/>
+      <path d="M52 44l-4-4"/>
+      <text x="16" y="56" font-size="4" fill="currentColor" stroke="none">Memory</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // FORENSIC & LEGAL
+  // ===========================================================================
+  {
+    id: 'psych-competency-eval',
+    name: 'Competency Evaluation',
+    domain: 'medicine',
+    category: 'forensic',
+    tags: ['competency', 'evaluation', 'legal', 'forensic', 'court'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="48" rx="4"/>
+      <circle cx="32" cy="24" r="8"/>
+      <path d="M20 40h24"/>
+      <path d="M20 48h16"/>
+      <path d="M44 44l6 6"/>
+      <path d="M50 44l-6 6"/>
+      <path d="M28 22l2 4 6-6"/>
+      <text x="18" y="18" font-size="4" fill="currentColor" stroke="none">Competent?</text>
+    </svg>`
+  },
+  {
+    id: 'psych-insanity-defense',
+    name: 'Insanity Defense',
+    domain: 'medicine',
+    category: 'forensic',
+    tags: ['insanity', 'defense', 'legal', 'forensic', 'not guilty'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <path d="M32 8v12"/>
+      <path d="M20 20h24"/>
+      <path d="M20 20v24l12 12 12-12v-24"/>
+      <circle cx="32" cy="36" r="6"/>
+      <path d="M29 34l3 4 4-6"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">NGRI</text>
+    </svg>`
+  },
+  {
+    id: 'psych-malingering',
+    name: 'Malingering',
+    domain: 'medicine',
+    category: 'forensic',
+    tags: ['malingering', 'feigning', 'fabrication', 'secondary gain', 'forensic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="16"/>
+      <path d="M24 24c0-2 2-4 4-4"/>
+      <path d="M36 24c0-2 2-4 4-4"/>
+      <circle cx="26" cy="26" r="2"/>
+      <circle cx="38" cy="26" r="2"/>
+      <path d="M26 34c3 2 9 2 12 0"/>
+      <rect x="20" y="48" width="24" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <text x="24" y="55" font-size="5" fill="currentColor" stroke="none">????</text>
+      <path d="M16 16l-4-4"/>
+      <path d="M48 16l4-4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL MEDICATIONS
+  // ===========================================================================
+  {
+    id: 'psych-benzodiazepine',
+    name: 'Benzodiazepine',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['benzodiazepine', 'anxiolytic', 'GABA', 'medication', 'sedative'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="12" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="16" ry="12"/>
+      <path d="M20 32c4-4 8-4 12 0s8 4 12 0"/>
+      <circle cx="32" cy="24" r="4" fill="currentColor" opacity="0.3"/>
+      <text x="20" y="36" font-size="5" fill="currentColor" stroke="none">GABA</text>
+      <path d="M16 20l-4-4"/>
+      <path d="M48 20l4-4"/>
+      <text x="18" y="54" font-size="4" fill="currentColor" stroke="none">Benzo</text>
+    </svg>`
+  },
+  {
+    id: 'psych-stimulant-med',
+    name: 'Stimulant Medication',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['stimulant', 'methylphenidate', 'amphetamine', 'ADHD', 'medication'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="10" fill="#FF6B6B" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="16" ry="10"/>
+      <path d="M24 28l4 8-4 8"/>
+      <path d="M32 28l4 8-4 8"/>
+      <path d="M40 28l-4 8 4 8"/>
+      <path d="M32 22v-10"/>
+      <path d="M28 14l4-4 4 4"/>
+      <text x="12" y="54" font-size="4" fill="currentColor" stroke="none">Stimulant</text>
+    </svg>`
+  },
+  {
+    id: 'psych-ketamine',
+    name: 'Ketamine/Esketamine',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['ketamine', 'esketamine', 'NMDA', 'depression', 'treatment-resistant'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8l-16 24 16 24 16-24z" fill="currentColor" opacity="0.1"/>
+      <path d="M32 8l-16 24 16 24 16-24z"/>
+      <circle cx="32" cy="32" r="8" fill="#4ECDC4" opacity="0.5"/>
+      <path d="M28 28l4 8 4-8"/>
+      <path d="M24 32h16"/>
+      <text x="24" y="48" font-size="4" fill="currentColor" stroke="none">NMDA</text>
+      <path d="M8 32l8-4"/>
+      <path d="M56 32l-8-4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL SYMPTOMS
+  // ===========================================================================
+  {
+    id: 'psych-dissociation',
+    name: 'Dissociation',
+    domain: 'medicine',
+    category: 'other',
+    tags: ['dissociation', 'depersonalization', 'derealization', 'detachment', 'trauma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="32" r="12" fill="currentColor" opacity="0.1"/>
+      <circle cx="24" cy="32" r="12"/>
+      <circle cx="40" cy="32" r="12" stroke-dasharray="4 2" opacity="0.5"/>
+      <circle cx="20" cy="28" r="2"/>
+      <circle cx="28" cy="28" r="2"/>
+      <path d="M20 36c2 2 8 2 8 0"/>
+      <circle cx="36" cy="28" r="2" opacity="0.3"/>
+      <circle cx="44" cy="28" r="2" opacity="0.3"/>
+      <path d="M36 36c2 2 8 2 8 0" opacity="0.3"/>
+      <path d="M32 20v-8"/>
+      <path d="M28 14l4-4 4 4"/>
+    </svg>`
+  },
+  {
+    id: 'psych-somatization',
+    name: 'Somatization',
+    domain: 'medicine',
+    category: 'other',
+    tags: ['somatization', 'somatic', 'physical', 'symptoms', 'psychosomatic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="16" r="8"/>
+      <path d="M24 24v12"/>
+      <path d="M16 40l8-4 8 4"/>
+      <path d="M16 40l-4 16"/>
+      <path d="M32 40l4 16"/>
+      <ellipse cx="24" cy="32" rx="6" ry="4" fill="#FF6B6B" opacity="0.3"/>
+      <ellipse cx="24" cy="44" rx="4" ry="3" fill="#FFD93D" opacity="0.3"/>
+      <path d="M40 20c4-4 8-4 12 0"/>
+      <path d="M44 16v8"/>
+      <path d="M40 28h12"/>
+      <path d="M48 24v8"/>
+      <text x="36" y="44" font-size="4" fill="currentColor" stroke="none">Mind</text>
+      <text x="36" y="52" font-size="4" fill="currentColor" stroke="none">Body</text>
+    </svg>`
+  },
+  {
+    id: 'psych-psychomotor-agitation',
+    name: 'Psychomotor Agitation',
+    domain: 'medicine',
+    category: 'other',
+    tags: ['agitation', 'psychomotor', 'restlessness', 'pacing', 'anxiety'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6"/>
+      <path d="M32 18v10"/>
+      <path d="M24 28l8 8 8-8"/>
+      <path d="M20 36l-8 20"/>
+      <path d="M44 36l8 20"/>
+      <path d="M28 36l4 20"/>
+      <path d="M36 36l-4 20"/>
+      <path d="M8 32l4-4"/>
+      <path d="M8 40l4-4"/>
+      <path d="M56 32l-4-4"/>
+      <path d="M56 40l-4-4"/>
+      <path d="M16 24l-4-4"/>
+      <path d="M48 24l4-4"/>
+    </svg>`
+  },
+  {
+    id: 'psych-psychomotor-retardation',
+    name: 'Psychomotor Retardation',
+    domain: 'medicine',
+    category: 'other',
+    tags: ['retardation', 'psychomotor', 'slowing', 'bradykinesia', 'depression'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6"/>
+      <path d="M32 18v14"/>
+      <path d="M24 32h16"/>
+      <path d="M24 44l8-12"/>
+      <path d="M40 44l-8-12"/>
+      <path d="M20 56l4-12"/>
+      <path d="M44 56l-4-12"/>
+      <circle cx="32" cy="40" r="8" fill="currentColor" opacity="0.1" stroke="none"/>
+      <path d="M16 20l-8 4" stroke-dasharray="4 2"/>
+      <path d="M48 20l8 4" stroke-dasharray="4 2"/>
+      <text x="16" y="62" font-size="4" fill="currentColor" stroke="none">Slowed</text>
+    </svg>`
+  },
+  {
+    id: 'psych-anosognosia',
+    name: 'Anosognosia',
+    domain: 'medicine',
+    category: 'other',
+    tags: ['anosognosia', 'insight', 'awareness', 'denial', 'illness'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="16"/>
+      <circle cx="26" cy="24" r="3"/>
+      <circle cx="38" cy="24" r="3"/>
+      <path d="M26 34c3 2 9 2 12 0"/>
+      <path d="M22 20l-4-4"/>
+      <path d="M42 20l4-4"/>
+      <rect x="16" y="48" width="32" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <text x="24" y="55" font-size="6" fill="currentColor" stroke="none">?!</text>
+      <path d="M8 28h8" stroke-dasharray="2 2"/>
+      <path d="M48 28h8" stroke-dasharray="2 2"/>
+    </svg>`
+  },
 ];
 
 export default psychiatryIcons;
