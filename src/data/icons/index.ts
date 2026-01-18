@@ -275,6 +275,7 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
     ...biologyIcons, ...molecularIcons, ...geneticsIcons, ...ecologyIcons,
     ...microbiologyIcons, ...zoologyIcons, ...botanyIcons, ...cellbiologyIcons,
     ...neuroscienceIcons, ...environmentalIcons, ...oceanographyIcons, ...agricultureIcons,
+    ...anatomyIcons,
   ],
   chemistry: [
     ...chemistryIcons, ...forensicsIcons,
@@ -645,6 +646,7 @@ export { pathologyIcons } from './pathology';
 export { entIcons } from './ent';
 export { obgynIcons } from './obgyn';
 export { physiologyIcons } from './physiology';
+export { anatomyIcons } from './anatomy';
 // Drug classes
 export { analgesicsIcons } from './analgesics';
 export { antibioticsIcons } from './antibiotics';
