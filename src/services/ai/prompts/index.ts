@@ -614,3 +614,6 @@ export { default as mathematicsPrompts } from './mathematics-prompts';
 
 export * from './neuroscience-prompts';
 export { default as neurosciencePrompts } from './neuroscience-prompts';
+
+export * from './biomedical-engineering-prompts';
+export { default as biomedicalEngineeringPrompts } from './biomedical-engineering-prompts';

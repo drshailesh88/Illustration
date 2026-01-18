@@ -599,6 +599,36 @@ export {
 export type { MolecularBiologyColorScheme } from './molecular-biology';
 
 // =============================================================================
+// BIOMEDICAL ENGINEERING
+// =============================================================================
+
+export {
+  deviceColors,
+  implantColors,
+  prostheticColors,
+  orthoticColors,
+  biosensorColors,
+  signalColors,
+  scaffoldColors,
+  cellTissueColors,
+  bioreactorColors,
+  neuralInterfaceColors,
+  bciColors,
+  biomechanicsColors,
+  motionColors,
+  drugDeliveryColors,
+  microfluidicsColors,
+  imagingColors as biomedImagingColors,
+  regulatoryColors,
+  riskColors,
+  biomedicalSeverityGradient,
+  biomedicalFlowchartColors,
+  biomedicalColorScheme,
+} from './biomedical';
+
+export type { BiomedicalColorScheme } from './biomedical';
+
+// =============================================================================
 // MATHEMATICS
 // =============================================================================
 
@@ -623,3 +653,24 @@ export {
 } from './mathematics';
 
 export type { MathematicsColorScheme } from './mathematics';
+
+// =============================================================================
+// NEUROSCIENCE RESEARCH
+// =============================================================================
+
+export {
+  neuralActivityColors,
+  brainRegionColors as neuroBrainRegionColors,
+  neuroimagingColors,
+  electrophysiologyColors,
+  optogeneticsColors,
+  connectomicsColors,
+  behavioralColors,
+  plasticityColors,
+  cellTypeColors as neuroCellTypeColors,
+  significanceGradient,
+  flowchartColors as neuroscienceFlowchartColors,
+  neuroscienceColorScheme,
+} from './neuroscience';
+
+export type { NeuroscienceColorScheme } from './neuroscience';
