@@ -1,6 +1,32 @@
 {
   "currentSpecialty": null,
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology", "radiology", "ophthalmology", "dermatology", "ent", "pediatrics", "obgyn", "pathology", "psychiatry", "rheumatology", "physiology", "biochemistry", "mathematics"],
+  "completedSpecialties": [
+    "cardiology",
+    "pulmonology",
+    "emergency-medicine",
+    "gastroenterology",
+    "infectious-disease",
+    "nephrology",
+    "neurology",
+    "hematology-oncology",
+    "endocrinology",
+    "orthopedics",
+    "anesthesiology",
+    "radiology",
+    "ophthalmology",
+    "dermatology",
+    "ent",
+    "pediatrics",
+    "obgyn",
+    "pathology",
+    "psychiatry",
+    "rheumatology",
+    "physiology",
+    "biochemistry",
+    "mathematics",
+    "molecular-biology",
+    "engineering"
+  ],
   "blockedSpecialties": [],
   "progress": {
     "anesthesiology": {
@@ -575,20 +601,122 @@
           "thermoregulation": 1
         }
       }
+    },
+    "mathematics": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 99,
+          "target": 90,
+          "percentage": 110
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 27,
+          "target": 20,
+          "percentage": 135
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "algebra-equations": 10,
+          "calculus": 10,
+          "geometry": 14,
+          "trigonometry": 5,
+          "statistics-probability": 9,
+          "linear-algebra": 8,
+          "graph-theory": 6,
+          "set-theory": 7,
+          "number-theory": 9,
+          "coordinate-systems": 4,
+          "logic-proofs": 9,
+          "functions-curves": 8
+        },
+        "templates": {
+          "algebra": 2,
+          "calculus": 4,
+          "geometry": 3,
+          "trigonometry": 2,
+          "statistics": 3,
+          "linear-algebra": 3,
+          "graph-theory": 1,
+          "set-theory": 1,
+          "number-theory": 2,
+          "differential-equations": 1,
+          "sequences-series": 1,
+          "complex-analysis": 1,
+          "function-analysis": 1
+        }
+      }
+    },
+    "molecular-biology": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:55:00Z",
+      "metrics": {
+        "icons": {
+          "current": 93,
+          "target": 90,
+          "percentage": 103
+        },
+        "templates": {
+          "current": 27,
+          "target": 25,
+          "percentage": 108
+        },
+        "prompts": {
+          "current": 25,
+          "target": 20,
+          "percentage": 125
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "dna-structure": 10,
+          "rna-structure": 8,
+          "proteins": 10,
+          "gene-expression": 12,
+          "lab-techniques": 18,
+          "gene-editing": 12,
+          "epigenetics": 8,
+          "translation": 8,
+          "transcription": 7
+        },
+        "templates": {
+          "dna-rna-processes": 4,
+          "protein-structure": 2,
+          "gene-regulation": 4,
+          "lab-techniques": 10,
+          "pathways": 4,
+          "advanced-editing": 3
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 21,
+    "completed": 23,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 14,
+    "notStarted": 12,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1525,
-    "currentTotalTemplates": 380,
-    "currentTotalPrompts": 277
+    "currentTotalIcons": 1624,
+    "currentTotalTemplates": 405,
+    "currentTotalPrompts": 304
   },
   "executionOrder": [
     "cardiology",

@@ -1229,6 +1229,192 @@ export const modularArithmetic: DiagramTemplate = {
 };
 
 // =============================================================================
+// DIFFERENTIAL EQUATIONS TEMPLATES
+// =============================================================================
+
+/**
+ * Differential Equation Solution template
+ */
+export const differentialEquationSolution: DiagramTemplate = {
+  id: 'math-differential-equation',
+  name: 'Differential Equation Solution',
+  description:
+    'Step-by-step solution of ordinary differential equations with initial conditions',
+  domain: 'physics',
+  promptTemplate: `Create a differential equation solution diagram:
+- Differential equation: {{equation}}
+- Order and type: {{orderType}}
+- Solution method: {{method}}
+- Homogeneous solution: {{homogeneousSolution}}
+- Particular solution (if applicable): {{particularSolution}}
+- General solution: {{generalSolution}}
+- Initial conditions: {{initialConditions}}
+- Specific solution: {{specificSolution}}
+- Phase portrait (if applicable): {{phasePortrait}}`,
+  placeholders: [
+    'equation',
+    'orderType',
+    'method',
+    'homogeneousSolution',
+    'particularSolution',
+    'generalSolution',
+    'initialConditions',
+    'specificSolution',
+    'phasePortrait',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph problem["Problem: y'' + 4y = 0, y(0)=1, y'(0)=0"]
+        type["Type: 2nd order linear homogeneous"]
+    end
+
+    subgraph characteristic["Characteristic Equation"]
+        charEq["r² + 4 = 0"]
+        roots["r = ±2i (complex roots)"]
+    end
+
+    subgraph general["General Solution"]
+        form["y = e^(alpha*x)(C1*cos(beta*x) + C2*sin(beta*x))"]
+        values["alpha = 0, beta = 2"]
+        genSol["y = C1*cos(2x) + C2*sin(2x)"]
+    end
+
+    subgraph specific["Apply Initial Conditions"]
+        ic1["y(0) = 1: C1 = 1"]
+        ic2["y'(0) = 0: 2C2 = 0, C2 = 0"]
+        final["y = cos(2x)"]
+    end
+
+    problem --> characteristic --> general --> specific
+
+    classDef solution fill:#dcfce7,stroke:#16a34a
+    class final solution`,
+};
+
+/**
+ * Sequences and Series template
+ */
+export const sequencesAndSeries: DiagramTemplate = {
+  id: 'math-sequences-series',
+  name: 'Sequences and Series',
+  description:
+    'Analysis of sequences and infinite series including convergence tests',
+  domain: 'physics',
+  promptTemplate: `Create a sequences and series diagram:
+- Sequence/series expression: {{expression}}
+- Type: {{type}}
+- First few terms: {{firstTerms}}
+- Pattern identification: {{pattern}}
+- Convergence test applied: {{convergenceTest}}
+- Test result: {{testResult}}
+- Sum formula (if convergent): {{sumFormula}}
+- Interval of convergence (power series): {{intervalOfConvergence}}`,
+  placeholders: [
+    'expression',
+    'type',
+    'firstTerms',
+    'pattern',
+    'convergenceTest',
+    'testResult',
+    'sumFormula',
+    'intervalOfConvergence',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph series["Series: sum(n=1 to inf) 1/n²"]
+        type["Type: p-series with p = 2"]
+        terms["Terms: 1 + 1/4 + 1/9 + 1/16 + ..."]
+    end
+
+    subgraph test["Convergence Test"]
+        ptest["p-series test: converges if p > 1"]
+        check["p = 2 > 1 check"]
+        result["Series CONVERGES"]
+    end
+
+    subgraph sum["Sum Calculation"]
+        famous["Famous result: Basel Problem"]
+        value["sum(1/n²) = pi²/6 approx 1.6449"]
+    end
+
+    subgraph partial["Partial Sums"]
+        s1["S1 = 1"]
+        s2["S2 = 1.25"]
+        s3["S3 approx 1.361"]
+        s4["S4 approx 1.424"]
+    end
+
+    series --> test --> sum
+    series --> partial
+
+    classDef converge fill:#dcfce7,stroke:#16a34a
+    class result converge`,
+};
+
+/**
+ * Complex Numbers Analysis template
+ */
+export const complexNumbersAnalysis: DiagramTemplate = {
+  id: 'math-complex-analysis',
+  name: 'Complex Numbers Analysis',
+  description:
+    'Complex number operations, polar form, and geometric interpretation',
+  domain: 'physics',
+  promptTemplate: `Create a complex numbers analysis diagram:
+- Complex number(s): {{complexNumbers}}
+- Rectangular form: {{rectangularForm}}
+- Polar form: {{polarForm}}
+- Modulus: {{modulus}}
+- Argument: {{argument}}
+- Operation performed: {{operation}}
+- Result: {{result}}
+- Geometric interpretation: {{geometricInterpretation}}
+- Euler form: {{eulerForm}}`,
+  placeholders: [
+    'complexNumbers',
+    'rectangularForm',
+    'polarForm',
+    'modulus',
+    'argument',
+    'operation',
+    'result',
+    'geometricInterpretation',
+    'eulerForm',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph number["Complex Number: z = 3 + 4i"]
+        rect["Rectangular: a = 3, b = 4"]
+    end
+
+    subgraph calculations["Calculations"]
+        mod["Modulus: |z| = sqrt(3² + 4²) = 5"]
+        arg["Argument: theta = arctan(4/3) approx 53.13 deg"]
+    end
+
+    subgraph forms["Different Forms"]
+        polar["Polar: 5(cos(53.13 deg) + i*sin(53.13 deg))"]
+        euler["Euler: 5*e^(i*0.9273)"]
+    end
+
+    subgraph operations["Operations"]
+        conj["Conjugate: z* = 3 - 4i"]
+        power["z² = -7 + 24i"]
+        recip["1/z = (3 - 4i)/25"]
+    end
+
+    subgraph geometric["Geometric View"]
+        point["Point (3, 4) in complex plane"]
+        distance["Distance from origin = 5"]
+        angle["Angle from positive real axis approx 53 deg"]
+    end
+
+    number --> calculations --> forms
+    number --> operations
+    calculations --> geometric
+
+    classDef calc fill:#dbeafe,stroke:#2563eb
+    class mod,arg calc`,
+};
+
+// =============================================================================
 // FUNCTION ANALYSIS TEMPLATES
 // =============================================================================
 
@@ -1329,6 +1515,12 @@ export const mathematicsTemplates: DiagramTemplate[] = [
   // Number Theory
   primeFactorization,
   modularArithmetic,
+  // Differential Equations
+  differentialEquationSolution,
+  // Sequences and Series
+  sequencesAndSeries,
+  // Complex Analysis
+  complexNumbersAnalysis,
   // Function Analysis
   functionAnalysis,
 ];
