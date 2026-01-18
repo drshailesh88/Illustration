@@ -714,6 +714,353 @@ export const pvLoop: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL TEMPLATES - ITERATION 2
+// =============================================================================
+
+/**
+ * ACLS Cardiac Arrest Algorithm template
+ */
+export const aclsCardiacArrest: DiagramTemplate = {
+  id: 'cardio-acls-arrest',
+  name: 'ACLS Cardiac Arrest Algorithm',
+  description: 'Advanced Cardiac Life Support algorithm for cardiac arrest management',
+  domain: 'medicine',
+  promptTemplate: `Create an ACLS cardiac arrest algorithm:
+- Initial rhythm: {{initialRhythm}}
+- Shockable vs non-shockable: {{rhythmType}}
+- CPR quality metrics: {{cprMetrics}}
+- Drug dosing: {{drugDosing}}
+- Reversible causes (Hs and Ts): {{reversibleCauses}}
+- ROSC criteria: {{roscCriteria}}
+{{#additionalNotes}}Post-arrest care: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'initialRhythm',
+    'rhythmType',
+    'cprMetrics',
+    'drugDosing',
+    'reversibleCauses',
+    'roscCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["🚨 Cardiac Arrest"] --> B{"Shockable?"}
+    B -->|"VF/pVT"| C["Shock 200J"]
+    B -->|"Asystole/PEA"| D["CPR 2 min"]
+    C --> E["CPR 2 min"]
+    E --> F["Epi q3-5min"]
+    D --> F
+    F --> G{"Rhythm Check"}
+    G -->|"Shockable"| C
+    G -->|"Non-shockable"| D
+    G -->|"ROSC"| H["Post-Arrest Care"]
+    style A fill:#DC143C,color:#fff
+    style H fill:#228B22,color:#fff`,
+};
+
+/**
+ * Valvular Heart Disease Management template
+ */
+export const valvularDisease: DiagramTemplate = {
+  id: 'cardio-valve-disease',
+  name: 'Valvular Heart Disease Management',
+  description: 'Assessment and treatment algorithm for valvular heart disease',
+  domain: 'medicine',
+  promptTemplate: `Create a valvular heart disease management flowchart:
+- Valve affected: {{valveAffected}}
+- Lesion type: {{lesionType}}
+- Severity grading: {{severityGrading}}
+- Symptoms present: {{symptoms}}
+- Echo parameters: {{echoParameters}}
+- Intervention criteria: {{interventionCriteria}}
+- Treatment options: {{treatmentOptions}}
+{{#additionalNotes}}Follow-up recommendations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'valveAffected',
+    'lesionType',
+    'severityGrading',
+    'symptoms',
+    'echoParameters',
+    'interventionCriteria',
+    'treatmentOptions',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Valve Disease\\nDiagnosed"] --> B{"Severity?"}
+    B -->|"Mild"| C["Follow-up\\nAnnually"]
+    B -->|"Moderate"| D["Echo q6-12mo"]
+    B -->|"Severe"| E{"Symptomatic?"}
+    E -->|"Yes"| F["Intervention"]
+    E -->|"No"| G{"EF <50% or\\nOther Criteria?"}
+    G -->|"Yes"| F
+    G -->|"No"| H["Close Follow-up"]
+    F --> I{"SAVR vs\\nTAVR/TEER?"}
+    style F fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Anticoagulation for AFib template
+ */
+export const afibAnticoagulation: DiagramTemplate = {
+  id: 'cardio-afib-anticoag',
+  name: 'AFib Anticoagulation Decision',
+  description: 'Anticoagulation selection algorithm for atrial fibrillation',
+  domain: 'medicine',
+  promptTemplate: `Create an AFib anticoagulation decision algorithm:
+- CHA2DS2-VASc score: {{chadScore}}
+- HAS-BLED score: {{hasBledScore}}
+- Renal function: {{renalFunction}}
+- Contraindications: {{contraindications}}
+- DOAC options: {{doacOptions}}
+- Warfarin considerations: {{warfarinConsiderations}}
+- LAA closure candidacy: {{laaClosureCandidacy}}
+{{#additionalNotes}}Special populations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'chadScore',
+    'hasBledScore',
+    'renalFunction',
+    'contraindications',
+    'doacOptions',
+    'warfarinConsiderations',
+    'laaClosureCandidacy',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["AFib Confirmed"] --> B{"CHA₂DS₂-VASc"}
+    B -->|"0 (M) or 1 (F)"| C["No Anticoag"]
+    B -->|"1 (M) or 2 (F)"| D["Consider OAC"]
+    B -->|"≥2 (M) or ≥3 (F)"| E["OAC Indicated"]
+    E --> F{"Contraindications?"}
+    F -->|"No"| G{"CrCl?"}
+    G -->|"≥30"| H["DOAC Preferred"]
+    G -->|"<30"| I["Warfarin or\\nApixaban"]
+    F -->|"Yes"| J["LAA Closure?"]
+    style H fill:#228B22,color:#fff`,
+};
+
+/**
+ * Stress Test Interpretation template
+ */
+export const stressTestInterpretation: DiagramTemplate = {
+  id: 'cardio-stress-test',
+  name: 'Stress Test Interpretation',
+  description: 'Systematic interpretation of cardiac stress testing',
+  domain: 'medicine',
+  promptTemplate: `Create a stress test interpretation flowchart:
+- Test modality: {{testModality}}
+- Exercise capacity: {{exerciseCapacity}}
+- Heart rate response: {{heartRateResponse}}
+- Blood pressure response: {{bpResponse}}
+- ECG changes: {{ecgChanges}}
+- Imaging findings: {{imagingFindings}}
+- Duke Treadmill Score: {{dukeScore}}
+{{#additionalNotes}}Clinical correlation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'testModality',
+    'exerciseCapacity',
+    'heartRateResponse',
+    'bpResponse',
+    'ecgChanges',
+    'imagingFindings',
+    'dukeScore',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Stress Test\\nCompleted"] --> B["Exercise Capacity"]
+    A --> C["HR Response"]
+    A --> D["BP Response"]
+    A --> E["ECG Changes"]
+    A --> F["Imaging"]
+    B --> G{"≥85% MPHR?"}
+    E --> H{"ST Depression\\n≥1mm?"}
+    F --> I{"Perfusion\\nDefect?"}
+    H -->|"Yes"| J["⚠️ Positive"]
+    I -->|"Yes"| J
+    G & H & I -->|"Normal"| K["✓ Negative"]
+    style J fill:#FFA500,color:#000
+    style K fill:#228B22,color:#fff`,
+};
+
+/**
+ * Echo Assessment template
+ */
+export const echoAssessment: DiagramTemplate = {
+  id: 'cardio-echo-assessment',
+  name: 'Echocardiogram Assessment',
+  description: 'Systematic echocardiogram interpretation template',
+  domain: 'medicine',
+  promptTemplate: `Create an echocardiogram assessment template:
+- LV size and function: {{lvFunction}}
+- RV size and function: {{rvFunction}}
+- Wall motion abnormalities: {{wallMotion}}
+- Valvular assessment: {{valvularAssessment}}
+- Diastolic function: {{diastolicFunction}}
+- Pericardium: {{pericardium}}
+- Other findings: {{otherFindings}}
+{{#additionalNotes}}Clinical correlation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'lvFunction',
+    'rvFunction',
+    'wallMotion',
+    'valvularAssessment',
+    'diastolicFunction',
+    'pericardium',
+    'otherFindings',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph LV["LV Assessment"]
+        A["Size: Normal/Dilated"]
+        B["EF: __%"]
+        C["Wall Motion"]
+    end
+    subgraph RV["RV Assessment"]
+        D["Size: Normal/Dilated"]
+        E["TAPSE: __mm"]
+    end
+    subgraph Valves["Valves"]
+        F["MV: __"]
+        G["AV: __"]
+        H["TV: __"]
+    end
+    subgraph Other["Other"]
+        I["Diastolic: Grade __"]
+        J["Pericardium"]
+    end`,
+};
+
+/**
+ * Post-MI Care Pathway template
+ */
+export const postMICare: DiagramTemplate = {
+  id: 'cardio-post-mi-care',
+  name: 'Post-MI Care Pathway',
+  description: 'Secondary prevention and post-MI care algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a post-MI care pathway:
+- Type of MI: {{miType}}
+- Revascularization performed: {{revascularization}}
+- Medications (DAPT duration): {{medications}}
+- Risk factor modification: {{riskFactors}}
+- Cardiac rehabilitation: {{cardiacRehab}}
+- Follow-up schedule: {{followUp}}
+- Device evaluation: {{deviceEval}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'miType',
+    'revascularization',
+    'medications',
+    'riskFactors',
+    'cardiacRehab',
+    'followUp',
+    'deviceEval',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Post-MI\\nDischarge"] --> B["Medications"]
+    B --> B1["Aspirin indefinitely"]
+    B --> B2["P2Y12 12 months"]
+    B --> B3["High-intensity statin"]
+    B --> B4["Beta blocker"]
+    B --> B5["ACEi/ARB"]
+    A --> C["Risk Factors"]
+    C --> C1["BP <130/80"]
+    C --> C2["LDL <70"]
+    C --> C3["Smoking cessation"]
+    A --> D["Cardiac Rehab"]
+    A --> E{"EF ≤35%?"}
+    E -->|"Yes"| F["Reassess at 40 days\\nfor ICD"]
+    style A fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Device Selection Algorithm template
+ */
+export const deviceSelection: DiagramTemplate = {
+  id: 'cardio-device-selection',
+  name: 'Cardiac Device Selection',
+  description: 'Algorithm for selecting appropriate cardiac implantable devices',
+  domain: 'medicine',
+  promptTemplate: `Create a cardiac device selection algorithm:
+- Indication: {{indication}}
+- EF value: {{ejectionFraction}}
+- QRS duration: {{qrsDuration}}
+- LBBB present: {{lbbbPresent}}
+- NYHA class: {{nyhaClass}}
+- Rhythm: {{rhythm}}
+- Expected survival: {{expectedSurvival}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'indication',
+    'ejectionFraction',
+    'qrsDuration',
+    'lbbbPresent',
+    'nyhaClass',
+    'rhythm',
+    'expectedSurvival',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Device\\nEvaluation"] --> B{"Primary\\nPrevention?"}
+    B -->|"EF ≤35%"| C{"NYHA II-III?"}
+    C -->|"Yes"| D{"QRS ≥150ms\\n+ LBBB?"}
+    D -->|"Yes"| E["CRT-D"]
+    D -->|"No"| F["ICD"]
+    C -->|"NYHA I"| F
+    B -->|"Secondary"| G["ICD"]
+    A --> H{"Bradycardia?"}
+    H -->|"Yes"| I{"AV Block?"}
+    I -->|"Yes"| J["Dual Chamber PPM"]
+    I -->|"SND only"| K["Single Chamber PPM"]
+    style E fill:#4169E1,color:#fff
+    style F fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Cardiogenic Shock Management template
+ */
+export const cardiogenicShock: DiagramTemplate = {
+  id: 'cardio-shock-management',
+  name: 'Cardiogenic Shock Management',
+  description: 'Algorithm for managing cardiogenic shock',
+  domain: 'medicine',
+  promptTemplate: `Create a cardiogenic shock management flowchart:
+- Etiology: {{etiology}}
+- Hemodynamic parameters: {{hemodynamics}}
+- Initial stabilization: {{initialStabilization}}
+- Vasopressor/inotrope selection: {{pressors}}
+- Mechanical support options: {{mechanicalSupport}}
+- Revascularization urgency: {{revascularization}}
+- Escalation criteria: {{escalationCriteria}}
+{{#additionalNotes}}Team activation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'etiology',
+    'hemodynamics',
+    'initialStabilization',
+    'pressors',
+    'mechanicalSupport',
+    'revascularization',
+    'escalationCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["🚨 Cardiogenic\\nShock"] --> B["Initial Stabilization"]
+    B --> B1["IV Access"]
+    B --> B2["Vasopressors"]
+    B --> B3["Intubation PRN"]
+    A --> C{"AMI?"}
+    C -->|"Yes"| D["Emergent Cath"]
+    C -->|"No"| E["Echo + Workup"]
+    D --> F{"Persistent\\nShock?"}
+    F -->|"Yes"| G["Mechanical Support"]
+    G --> G1["IABP"]
+    G --> G2["Impella"]
+    G --> G3["ECMO"]
+    F -->|"No"| H["ICU Monitoring"]
+    style A fill:#DC143C,color:#fff
+    style G fill:#8B0000,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -729,6 +1076,10 @@ export const cardiologyTemplates: DiagramTemplate[] = [
   hypertensionTreatment,
   preopCardiacRisk,
   acutePEManagement,
+  aclsCardiacArrest,
+  valvularDisease,
+  afibAnticoagulation,
+  cardiogenicShock,
   // Anatomical Diagrams
   heartAnatomy,
   coronaryAnatomy,
@@ -738,10 +1089,14 @@ export const cardiologyTemplates: DiagramTemplate[] = [
   pciProcedure,
   pacemakerImplant,
   cardioversionProtocol,
+  deviceSelection,
   // Data Visualization
   ecgInterpretation,
   hemodynamicParameters,
   pvLoop,
+  stressTestInterpretation,
+  echoAssessment,
+  postMICare,
 ];
 
 export default cardiologyTemplates;

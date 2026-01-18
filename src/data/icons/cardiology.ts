@@ -1103,6 +1103,775 @@ export const cardiologyIcons: IconDefinition[] = [
       <path d="M48 40c-2-8-8-12-16-8 2 8 8 12 16 8z" fill="currentColor" opacity="0.3"/>
       <circle cx="32" cy="32" r="4"/>
     </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL CARDIAC ANATOMY - ITERATION 2
+  // ===========================================================================
+  {
+    id: 'cardio-papillary-muscle',
+    name: 'Papillary Muscles',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['papillary', 'muscle', 'chordae', 'mitral', 'tricuspid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="48" rx="8" ry="12" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="40" cy="48" rx="8" ry="12" fill="currentColor" opacity="0.3"/>
+      <path d="M24 36l-8-20"/>
+      <path d="M24 36l0-20"/>
+      <path d="M24 36l8-20"/>
+      <path d="M40 36l-8-20"/>
+      <path d="M40 36l0-20"/>
+      <path d="M40 36l8-20"/>
+      <line x1="8" y1="16" x2="56" y2="16"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-chordae-tendineae',
+    name: 'Chordae Tendineae',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['chordae', 'tendineae', 'strings', 'valve', 'attachment'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="16" rx="20" ry="6"/>
+      <path d="M16 16c2 8 4 16 8 28"/>
+      <path d="M24 16c1 8 2 16 4 28"/>
+      <path d="M32 16c0 8 0 16 0 28"/>
+      <path d="M40 16c-1 8-2 16-4 28"/>
+      <path d="M48 16c-2 8-4 16-8 28"/>
+      <ellipse cx="32" cy="52" rx="12" ry="6" fill="currentColor" opacity="0.3"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-trabeculae',
+    name: 'Trabeculae Carneae',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['trabeculae', 'carneae', 'muscle', 'ridges', 'ventricle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8v48c0 4 8 8 16 4s16-4 16-8V8"/>
+      <path d="M20 20c4 1 8 1 12 0"/>
+      <path d="M20 28c4 1 8 1 12 0"/>
+      <path d="M20 36c4 1 8 1 12 0"/>
+      <path d="M20 44c4 1 8 1 12 0"/>
+      <path d="M36 24c4 1 8 1 8 0"/>
+      <path d="M36 32c4 1 8 1 8 0"/>
+      <path d="M36 40c4 1 8 1 8 0"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-moderator-band',
+    name: 'Moderator Band',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['moderator', 'band', 'septomarginal', 'trabecula', 'RV'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 8v44c0 6 8 8 16 8"/>
+      <path d="M52 8v44c0 6-8 8-16 8"/>
+      <path d="M12 40h40" stroke-width="3" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="20" cy="52" rx="6" ry="4"/>
+      <path d="M20 40v8"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-pericardium',
+    name: 'Pericardium',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['pericardium', 'fibrous', 'serous', 'parietal', 'visceral'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z"/>
+      <path d="M32 10c-14 0-22 11-22 22 0 14 22 26 22 26s22-12 22-26c0-11-8-22-22-22z" stroke-dasharray="4 2"/>
+      <path d="M32 16c-10 0-16 8-16 16 0 10 16 20 16 20s16-10 16-20c0-8-6-16-16-16z" fill="currentColor" opacity="0.2"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-epicardium',
+    name: 'Epicardium',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['epicardium', 'visceral', 'pericardium', 'outer', 'layer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z" fill="currentColor" opacity="0.2"/>
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <path d="M32 14c-10 0-18 9-18 18 0 12 18 22 18 22s18-10 18-22c0-9-8-18-18-18z"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-myocardium',
+    name: 'Myocardium',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['myocardium', 'muscle', 'cardiac', 'wall', 'layer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <path d="M32 16c-10 0-16 8-16 16 0 10 16 20 16 20s16-10 16-20c0-8-6-16-16-16z"/>
+      <path d="M20 28h24" stroke-width="6" opacity="0.4"/>
+      <path d="M22 36h20" stroke-width="6" opacity="0.4"/>
+      <path d="M26 44h12" stroke-width="6" opacity="0.4"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-endocardium',
+    name: 'Endocardium',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['endocardium', 'inner', 'lining', 'endothelium', 'layer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <path d="M32 20c-8 0-12 6-12 12 0 8 12 16 12 16s12-8 12-16c0-6-4-12-12-12z" fill="currentColor" opacity="0.3"/>
+      <path d="M32 20c-8 0-12 6-12 12 0 8 12 16 12 16s12-8 12-16c0-6-4-12-12-12z"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-coronary-sinus',
+    name: 'Coronary Sinus',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['coronary', 'sinus', 'venous', 'drainage', 'great cardiac vein'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M12 32c8 4 16 8 28 0" stroke-width="3" stroke="blue"/>
+      <path d="M40 32l8-12"/>
+      <path d="M44 28l6-8"/>
+      <circle cx="52" cy="32" r="4" fill="blue" opacity="0.3"/>
+      <text x="8" y="50" font-size="5" fill="currentColor" stroke="none">CS</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-cardiac-veins',
+    name: 'Cardiac Veins',
+    domain: 'medicine',
+    category: 'cardiac-anatomy',
+    tags: ['cardiac', 'veins', 'great', 'middle', 'small', 'venous'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z" opacity="0.2"/>
+      <path d="M20 48c-4-12-4-24 4-32" stroke="blue" stroke-width="2"/>
+      <path d="M44 48c4-12 4-24-4-32" stroke="blue" stroke-width="2"/>
+      <path d="M32 56c0-8 4-16 8-24" stroke="blue"/>
+      <path d="M20 48h24" stroke="blue" stroke-width="2"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL PATHOLOGY - ITERATION 2
+  // ===========================================================================
+  {
+    id: 'cardio-unstable-angina',
+    name: 'Unstable Angina',
+    domain: 'medicine',
+    category: 'pathology-cad',
+    tags: ['unstable', 'angina', 'ACS', 'rest pain', 'crescendo'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <path d="M24 28l16 0" stroke="#FFA500" stroke-width="2"/>
+      <path d="M28 24l-4 4 4 4"/>
+      <path d="M36 24l4 4-4 4"/>
+      <text x="20" y="48" font-size="6" fill="#FFA500" stroke="none">UA</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-stable-angina',
+    name: 'Stable Angina',
+    domain: 'medicine',
+    category: 'pathology-cad',
+    tags: ['stable', 'angina', 'exertional', 'predictable', 'chronic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <path d="M24 32h16" stroke="#228B22" stroke-width="2"/>
+      <circle cx="32" cy="32" r="8" stroke="#228B22"/>
+      <text x="20" y="52" font-size="6" fill="#228B22" stroke="none">SA</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-myocarditis',
+    name: 'Myocarditis',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['myocarditis', 'inflammation', 'viral', 'cardiac', 'autoimmune'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <circle cx="24" cy="28" r="3" fill="#FF4500"/>
+      <circle cx="36" cy="24" r="2" fill="#FF4500"/>
+      <circle cx="40" cy="36" r="3" fill="#FF4500"/>
+      <circle cx="28" cy="40" r="2" fill="#FF4500"/>
+      <circle cx="32" cy="32" r="2" fill="#FF4500"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-pericarditis',
+    name: 'Pericarditis',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['pericarditis', 'inflammation', 'friction rub', 'chest pain', 'ST elevation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z" stroke="#FF4500" stroke-width="3"/>
+      <path d="M32 12c-12 0-20 10-20 20 0 12 20 24 20 24s20-12 20-24c0-10-8-20-20-20z"/>
+      <path d="M8 28h8M48 28h8M8 36h8M48 36h8" stroke="#FF4500"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-tamponade',
+    name: 'Cardiac Tamponade',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['tamponade', 'effusion', 'pericardial', 'emergency', 'Becks triad'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z"/>
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z" fill="#DC143C" opacity="0.3"/>
+      <path d="M32 16c-8 0-14 8-14 16 0 10 14 18 14 18s14-8 14-18c0-8-6-16-14-16z"/>
+      <path d="M28 28l8 8M36 28l-8 8" stroke="#DC143C" stroke-width="2"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-pericardial-effusion',
+    name: 'Pericardial Effusion',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['effusion', 'pericardial', 'fluid', 'echo', 'swinging heart'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z"/>
+      <path d="M32 16c-10 0-16 8-16 16 0 10 16 20 16 20s16-10 16-20c0-8-6-16-16-16z"/>
+      <path d="M10 28c4 1 8 2 10 1" fill="#4169E1" opacity="0.4"/>
+      <path d="M44 28c4-1 8-2 10-1" fill="#4169E1" opacity="0.4"/>
+      <ellipse cx="32" cy="50" rx="16" ry="6" fill="#4169E1" opacity="0.3"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-endocarditis',
+    name: 'Infective Endocarditis',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['endocarditis', 'vegetation', 'infection', 'valve', 'Duke criteria'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="8"/>
+      <path d="M20 32c4 4 8 8 12 8s8-4 12-8"/>
+      <ellipse cx="28" cy="36" rx="6" ry="4" fill="#6B8E23"/>
+      <ellipse cx="38" cy="34" rx="4" ry="3" fill="#6B8E23"/>
+      <circle cx="24" cy="38" r="2" fill="#6B8E23"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-heart-failure',
+    name: 'Heart Failure',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['heart failure', 'CHF', 'HFrEF', 'HFpEF', 'congestion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 4c-18 0-28 14-28 28 0 18 28 32 28 32s28-14 28-32c0-14-10-28-28-28z"/>
+      <path d="M20 36l6 4-6 4"/>
+      <path d="M44 36l-6 4 6 4"/>
+      <path d="M28 48v8"/>
+      <path d="M36 48v8"/>
+      <path d="M32 48v10"/>
+      <text x="24" y="30" font-size="6" fill="#DC143C" stroke="none">HF</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-lvh',
+    name: 'Left Ventricular Hypertrophy',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['LVH', 'hypertrophy', 'left ventricle', 'thickening', 'HTN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <line x1="32" y1="8" x2="32" y2="60"/>
+      <path d="M32 20h12c4 0 8 8 8 20 0 6-4 12-8 16" stroke-width="4"/>
+      <text x="8" y="36" font-size="5" fill="currentColor" stroke="none">LVH</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-rvh',
+    name: 'Right Ventricular Hypertrophy',
+    domain: 'medicine',
+    category: 'pathology-structural',
+    tags: ['RVH', 'hypertrophy', 'right ventricle', 'pulmonary HTN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <line x1="32" y1="8" x2="32" y2="60"/>
+      <path d="M32 20h-12c-4 0-8 8-8 20 0 6 4 12 8 16" stroke-width="4"/>
+      <text x="36" y="36" font-size="5" fill="currentColor" stroke="none">RVH</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-lbbb',
+    name: 'Left Bundle Branch Block',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['LBBB', 'bundle branch', 'block', 'wide QRS', 'conduction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16"/>
+      <path d="M32 24l-14 28" stroke-width="2"/>
+      <path d="M32 24l14 28"/>
+      <line x1="14" y1="40" x2="22" y2="40" stroke="#DC143C" stroke-width="3"/>
+      <text x="4" y="58" font-size="5" fill="currentColor" stroke="none">LBBB</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-rbbb',
+    name: 'Right Bundle Branch Block',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['RBBB', 'bundle branch', 'block', 'wide QRS', 'conduction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16"/>
+      <path d="M32 24l-14 28"/>
+      <path d="M32 24l14 28" stroke-width="2"/>
+      <line x1="42" y1="40" x2="50" y2="40" stroke="#DC143C" stroke-width="3"/>
+      <text x="4" y="58" font-size="5" fill="currentColor" stroke="none">RBBB</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-bifascicular',
+    name: 'Bifascicular Block',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['bifascicular', 'RBBB', 'LAF', 'LPF', 'block'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v12"/>
+      <path d="M32 20l-14 16"/>
+      <path d="M32 20l14 16"/>
+      <path d="M18 36l-6 16"/>
+      <path d="M18 36l6 16"/>
+      <line x1="42" y1="32" x2="50" y2="32" stroke="#DC143C" stroke-width="2"/>
+      <line x1="10" y1="44" x2="16" y2="44" stroke="#DC143C" stroke-width="2"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-av-block-1',
+    name: 'First Degree AV Block',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['1st degree', 'AV block', 'PR prolongation', 'conduction delay'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32h8l2 4 4-8 4 8 2-4h8"/>
+      <path d="M32 32h8l2 4 4-8 4 8 2-4h8"/>
+      <path d="M8 20l4 4"/>
+      <path d="M36 20l4 4"/>
+      <text x="4" y="50" font-size="5" fill="currentColor" stroke="none">PR &gt;200ms</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-av-block-2-mobitz1',
+    name: 'Second Degree AV Block Type I',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['2nd degree', 'Mobitz I', 'Wenckebach', 'AV block', 'PR prolongation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20l2 2M12 20l4 4M24 20l6 6M40 20" stroke="#4169E1"/>
+      <path d="M4 36h6l1 3 2-6 2 6 1-3h4l1 3 2-6 2 6 1-3h4l1 3 2-6 2 6 1-3h6"/>
+      <text x="4" y="54" font-size="4" fill="currentColor" stroke="none">Wenckebach</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-av-block-2-mobitz2',
+    name: 'Second Degree AV Block Type II',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['2nd degree', 'Mobitz II', 'AV block', 'dropped beat', 'infranodal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20l2 2M16 20l2 2M28 20M40 20l2 2M52 20l2 2" stroke="#4169E1"/>
+      <path d="M4 36h8l1 3 2-6 2 6 1-3h8l1 3 2-6 2 6 1-3h16l1 3 2-6"/>
+      <text x="4" y="54" font-size="4" fill="currentColor" stroke="none">Mobitz II</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-sinus-bradycardia',
+    name: 'Sinus Bradycardia',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['bradycardia', 'sinus', 'slow', 'HR <60', 'rhythm'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32h12l2 4 4-8 4 8 2-4h32"/>
+      <path d="M10 24l2 2"/>
+      <text x="4" y="50" font-size="6" fill="currentColor" stroke="none">&lt;60</text>
+      <text x="36" y="50" font-size="5" fill="currentColor" stroke="none">bpm</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-sinus-tachycardia',
+    name: 'Sinus Tachycardia',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['tachycardia', 'sinus', 'fast', 'HR >100', 'rhythm'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32h4l1 3 2-6 2 6 1-3h4l1 3 2-6 2 6 1-3h4l1 3 2-6 2 6 1-3h4l1 3 2-6 2 6 1-3h8"/>
+      <path d="M6 26l1 1M14 26l1 1M22 26l1 1M30 26l1 1M38 26l1 1M46 26l1 1"/>
+      <text x="4" y="50" font-size="6" fill="currentColor" stroke="none">&gt;100</text>
+      <text x="40" y="50" font-size="5" fill="currentColor" stroke="none">bpm</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-svt',
+    name: 'Supraventricular Tachycardia',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['SVT', 'supraventricular', 'tachycardia', 'narrow complex', 'AVNRT'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32h2l1 4 2-8 2 8 1-4h2l1 4 2-8 2 8 1-4h2l1 4 2-8 2 8 1-4h2l1 4 2-8 2 8 1-4h2l1 4 2-8 2 8 1-4h4"/>
+      <text x="4" y="50" font-size="5" fill="currentColor" stroke="none">SVT 150-250</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-torsades',
+    name: 'Torsades de Pointes',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['torsades', 'polymorphic VT', 'long QT', 'twisting', 'magnesium'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32c2-8 4-12 6-8 2 8 4 16 6 8 2-12 4-16 6-8 2 12 4 8 6 0 2-8 4-4 6 4 2 8 4 12 6 4 2-12 4-8 6 0 2 8 4 4 6 0" stroke="#DC143C" stroke-width="1.5"/>
+      <text x="4" y="54" font-size="5" fill="#DC143C" stroke="none">TdP</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-asystole',
+    name: 'Asystole',
+    domain: 'medicine',
+    category: 'pathology-arrhythmia',
+    tags: ['asystole', 'flatline', 'cardiac arrest', 'no rhythm', 'PEA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="32" x2="60" y2="32" stroke="#DC143C" stroke-width="2"/>
+      <text x="12" y="50" font-size="8" fill="#DC143C" stroke="none">ASYSTOLE</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL EQUIPMENT - ITERATION 2
+  // ===========================================================================
+  {
+    id: 'cardio-defibrillator',
+    name: 'External Defibrillator',
+    domain: 'medicine',
+    category: 'equipment-diagnostic',
+    tags: ['defibrillator', 'AED', 'shock', 'cardioversion', 'ACLS'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="36" rx="4"/>
+      <rect x="12" y="20" width="24" height="16" rx="2"/>
+      <path d="M18 28l4 4 6-8"/>
+      <rect x="40" y="20" width="12" height="8" rx="1" fill="currentColor" opacity="0.3"/>
+      <rect x="40" y="32" width="12" height="8" rx="1"/>
+      <path d="M8 44h20"/>
+      <path d="M36 44h20"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-stress-test',
+    name: 'Stress Test (Treadmill)',
+    domain: 'medicine',
+    category: 'equipment-diagnostic',
+    tags: ['stress test', 'treadmill', 'exercise', 'Bruce protocol', 'ischemia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="32" width="48" height="24" rx="2"/>
+      <line x1="8" y1="40" x2="56" y2="40"/>
+      <ellipse cx="20" cy="52" rx="6" ry="4"/>
+      <ellipse cx="44" cy="52" rx="6" ry="4"/>
+      <path d="M28 16c0-4 4-8 4-8s4 4 4 8"/>
+      <circle cx="32" cy="12" r="4"/>
+      <path d="M28 20v8"/>
+      <path d="M36 20v8"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-nuclear-scan',
+    name: 'Nuclear Perfusion Scan',
+    domain: 'medicine',
+    category: 'equipment-diagnostic',
+    tags: ['nuclear', 'SPECT', 'PET', 'perfusion', 'myocardial viability'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.2"/>
+      <path d="M32 20v-8"/>
+      <path d="M32 52v-8"/>
+      <path d="M20 32h-8"/>
+      <path d="M52 32h-8"/>
+      <circle cx="32" cy="32" r="4" fill="#00FF00" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-cath-lab',
+    name: 'Cardiac Catheterization Lab',
+    domain: 'medicine',
+    category: 'equipment-diagnostic',
+    tags: ['cath lab', 'angiography', 'fluoroscopy', 'interventional', 'PCI'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="32" width="32" height="24" rx="2"/>
+      <ellipse cx="32" cy="32" rx="16" ry="8"/>
+      <path d="M32 8v16"/>
+      <circle cx="32" cy="8" r="4"/>
+      <rect x="20" y="38" width="24" height="12" rx="1"/>
+      <path d="M24 44h16"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-ablation-catheter',
+    name: 'Ablation Catheter',
+    domain: 'medicine',
+    category: 'equipment-interventional',
+    tags: ['ablation', 'catheter', 'RF', 'cryoablation', 'EP'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 56c8-8 16-24 24-36"/>
+      <ellipse cx="36" cy="16" rx="6" ry="8" transform="rotate(-30 36 16)"/>
+      <path d="M40 12l8-4"/>
+      <path d="M42 16l10 0"/>
+      <path d="M40 20l8 4"/>
+      <circle cx="36" cy="16" r="2" fill="#FF4500"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-mapping-system',
+    name: 'EP Mapping System',
+    domain: 'medicine',
+    category: 'equipment-interventional',
+    tags: ['mapping', 'CARTO', 'EnSite', 'electrophysiology', '3D'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-14 0-24 12-24 24 0 16 24 28 24 28s24-12 24-28c0-12-10-24-24-24z"/>
+      <circle cx="24" cy="28" r="2" fill="#FF0000"/>
+      <circle cx="32" cy="24" r="2" fill="#FFA500"/>
+      <circle cx="40" cy="28" r="2" fill="#FFFF00"/>
+      <circle cx="28" cy="36" r="2" fill="#00FF00"/>
+      <circle cx="36" cy="36" r="2" fill="#0000FF"/>
+      <circle cx="32" cy="44" r="2" fill="#800080"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-oct',
+    name: 'OCT Catheter',
+    domain: 'medicine',
+    category: 'equipment-interventional',
+    tags: ['OCT', 'optical coherence', 'tomography', 'imaging', 'plaque'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8" y1="32" x2="40" y2="32" stroke-width="3"/>
+      <circle cx="48" cy="32" r="8"/>
+      <circle cx="48" cy="32" r="12" stroke-dasharray="2 2"/>
+      <circle cx="48" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <path d="M48 24v-8"/>
+      <path d="M48 40v8"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-impella',
+    name: 'Impella Device',
+    domain: 'medicine',
+    category: 'equipment-implantable',
+    tags: ['Impella', 'mechanical support', 'LVAD', 'temporary', 'cardiogenic shock'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 56V36c0-8 4-16 12-24"/>
+      <path d="M28 12l8 4-8 4"/>
+      <ellipse cx="16" cy="40" rx="4" ry="8"/>
+      <path d="M20 36h8"/>
+      <path d="M20 44h8"/>
+      <circle cx="32" cy="16" r="4"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-ecmo',
+    name: 'ECMO Circuit',
+    domain: 'medicine',
+    category: 'equipment-implantable',
+    tags: ['ECMO', 'extracorporeal', 'membrane', 'oxygenation', 'support'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="20" r="8"/>
+      <circle cx="44" cy="20" r="8"/>
+      <rect x="24" y="36" width="16" height="20" rx="4"/>
+      <path d="M20 28v8h8"/>
+      <path d="M44 28v8h-8"/>
+      <path d="M28 36v-4c0-2 2-4 4-4s4 2 4 4v4"/>
+      <path d="M32 48l-4 8"/>
+      <path d="M32 48l4 8"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-watchman',
+    name: 'LAA Occluder (Watchman)',
+    domain: 'medicine',
+    category: 'equipment-implantable',
+    tags: ['Watchman', 'LAA', 'occluder', 'AFib', 'stroke prevention'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 16c-8 8-8 24 0 32"/>
+      <ellipse cx="32" cy="32" rx="16" ry="20"/>
+      <ellipse cx="32" cy="32" rx="10" ry="14" fill="currentColor" opacity="0.3"/>
+      <path d="M22 24c4 1 8 1 12 0"/>
+      <path d="M22 32c4 1 8 1 12 0"/>
+      <path d="M22 40c4 1 8 1 12 0"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-mitraclip',
+    name: 'MitraClip',
+    domain: 'medicine',
+    category: 'equipment-implantable',
+    tags: ['MitraClip', 'TEER', 'mitral', 'repair', 'percutaneous'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v20"/>
+      <path d="M24 28c-4 4-4 12 0 16"/>
+      <path d="M40 28c4 4 4 12 0 16"/>
+      <path d="M24 44h16"/>
+      <ellipse cx="28" cy="36" rx="4" ry="8"/>
+      <ellipse cx="36" cy="36" rx="4" ry="8"/>
+      <path d="M28 44v8"/>
+      <path d="M36 44v8"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CLINICAL SCORES & TOOLS - ITERATION 2
+  // ===========================================================================
+  {
+    id: 'cardio-heart-score',
+    name: 'HEART Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['HEART', 'score', 'chest pain', 'risk', 'stratification'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="16" y="20" font-size="5" fill="currentColor" stroke="none">H</text>
+      <text x="16" y="28" font-size="5" fill="currentColor" stroke="none">E</text>
+      <text x="16" y="36" font-size="5" fill="currentColor" stroke="none">A</text>
+      <text x="16" y="44" font-size="5" fill="currentColor" stroke="none">R</text>
+      <text x="16" y="52" font-size="5" fill="currentColor" stroke="none">T</text>
+      <rect x="28" y="14" width="24" height="6" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="28" y="22" width="24" height="6" rx="1" fill="currentColor" opacity="0.3"/>
+      <rect x="28" y="30" width="24" height="6" rx="1" fill="currentColor" opacity="0.4"/>
+      <rect x="28" y="38" width="24" height="6" rx="1" fill="currentColor" opacity="0.5"/>
+      <rect x="28" y="46" width="24" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-chadsvasc',
+    name: 'CHA2DS2-VASc Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['CHA2DS2-VASc', 'AFib', 'stroke', 'risk', 'anticoagulation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="24" font-size="8" fill="currentColor" stroke="none">CHA₂</text>
+      <text x="12" y="40" font-size="8" fill="currentColor" stroke="none">DS₂</text>
+      <text x="12" y="52" font-size="6" fill="currentColor" stroke="none">VASc</text>
+      <circle cx="48" cy="32" r="10"/>
+      <text x="44" y="36" font-size="8" fill="currentColor" stroke="none">?</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-timi-score',
+    name: 'TIMI Risk Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['TIMI', 'score', 'ACS', 'NSTEMI', 'risk'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="16" y="36" font-size="12" fill="currentColor" stroke="none">TIMI</text>
+      <path d="M12 44h40"/>
+      <text x="20" y="54" font-size="6" fill="currentColor" stroke="none">0-7</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-grace-score',
+    name: 'GRACE Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['GRACE', 'score', 'ACS', 'mortality', 'risk'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="36" font-size="10" fill="currentColor" stroke="none">GRACE</text>
+      <path d="M12 44h40"/>
+      <rect x="12" y="48" width="10" height="4" fill="#228B22"/>
+      <rect x="24" y="48" width="10" height="4" fill="#FFA500"/>
+      <rect x="36" y="48" width="14" height="4" fill="#DC143C"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-hasbled',
+    name: 'HAS-BLED Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['HAS-BLED', 'bleeding', 'risk', 'anticoagulation', 'AFib'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="28" font-size="7" fill="currentColor" stroke="none">HAS</text>
+      <text x="12" y="44" font-size="7" fill="currentColor" stroke="none">BLED</text>
+      <path d="M44 20c0 8-4 16-4 24" stroke="#DC143C" stroke-width="2"/>
+      <ellipse cx="44" cy="46" rx="4" ry="6" fill="#DC143C" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-wellsscore-pe',
+    name: 'Wells Score for PE',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['Wells', 'PE', 'pulmonary embolism', 'probability', 'score'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="14" y="32" font-size="8" fill="currentColor" stroke="none">Wells</text>
+      <text x="20" y="46" font-size="6" fill="currentColor" stroke="none">PE</text>
+      <path d="M44 20v28" stroke-width="2"/>
+      <path d="M44 24h8"/>
+      <path d="M44 32h6"/>
+      <path d="M44 40h8"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-rcri',
+    name: 'RCRI Score',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['RCRI', 'revised cardiac', 'risk index', 'preoperative', 'surgery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="16" y="36" font-size="10" fill="currentColor" stroke="none">RCRI</text>
+      <circle cx="16" cy="48" r="3"/>
+      <circle cx="26" cy="48" r="3"/>
+      <circle cx="36" cy="48" r="3"/>
+      <circle cx="46" cy="48" r="3"/>
+    </svg>`
+  },
+  {
+    id: 'cardio-duke-criteria',
+    name: 'Duke Criteria',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['Duke', 'criteria', 'endocarditis', 'diagnosis', 'major minor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="16" y="32" font-size="8" fill="currentColor" stroke="none">Duke</text>
+      <path d="M12 38h40"/>
+      <text x="14" y="48" font-size="5" fill="currentColor" stroke="none">Major</text>
+      <text x="36" y="48" font-size="5" fill="currentColor" stroke="none">Minor</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-killip-class',
+    name: 'Killip Classification',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['Killip', 'classification', 'MI', 'heart failure', 'prognosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="14" y="28" font-size="7" fill="currentColor" stroke="none">Killip</text>
+      <rect x="14" y="34" width="8" height="16" fill="#228B22" opacity="0.5"/>
+      <rect x="24" y="38" width="8" height="12" fill="#FFA500" opacity="0.5"/>
+      <rect x="34" y="42" width="8" height="8" fill="#FF4500" opacity="0.5"/>
+      <rect x="44" y="46" width="8" height="4" fill="#DC143C" opacity="0.5"/>
+      <text x="14" y="54" font-size="4" fill="currentColor" stroke="none">I II III IV</text>
+    </svg>`
+  },
+  {
+    id: 'cardio-nyha-class',
+    name: 'NYHA Classification',
+    domain: 'medicine',
+    category: 'clinical-tools',
+    tags: ['NYHA', 'classification', 'heart failure', 'functional', 'class'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="14" y="24" font-size="6" fill="currentColor" stroke="none">NYHA</text>
+      <rect x="14" y="28" width="10" height="4" fill="#228B22"/>
+      <text x="26" y="32" font-size="4" fill="currentColor" stroke="none">I</text>
+      <rect x="14" y="34" width="10" height="4" fill="#90EE90"/>
+      <text x="26" y="38" font-size="4" fill="currentColor" stroke="none">II</text>
+      <rect x="14" y="40" width="10" height="4" fill="#FFA500"/>
+      <text x="26" y="44" font-size="4" fill="currentColor" stroke="none">III</text>
+      <rect x="14" y="46" width="10" height="4" fill="#DC143C"/>
+      <text x="26" y="50" font-size="4" fill="currentColor" stroke="none">IV</text>
+    </svg>`
   }
 ];
 

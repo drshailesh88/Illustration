@@ -1,67 +1,68 @@
 {
   "currentSpecialty": "cardiology",
-  "completedSpecialties": [],
+  "completedSpecialties": ["cardiology"],
   "blockedSpecialties": [],
   "progress": {
     "cardiology": {
-      "iterations": 1,
-      "currentScore": 65.83,
-      "lastCheckpoint": "CLINICAL_75",
+      "iterations": 2,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
       "startedAt": "2026-01-17T00:00:00Z",
-      "completedAt": null,
+      "completedAt": "2026-01-18T00:00:00Z",
       "metrics": {
         "icons": {
-          "current": 69,
+          "current": 121,
           "target": 120,
-          "percentage": 57.5
+          "percentage": 100
         },
         "templates": {
-          "current": 17,
+          "current": 25,
           "target": 25,
-          "percentage": 68
+          "percentage": 100
         },
         "prompts": {
-          "current": 17,
+          "current": 25,
           "target": 20,
-          "percentage": 85
+          "percentage": 100
         },
         "colorScheme": true
       },
       "details": {
         "icons": {
-          "cardiac-anatomy": 6,
-          "cardiac-valves": 5,
-          "coronary": 5,
-          "conduction": 6,
-          "great-vessels": 4,
-          "pathology-cad": 7,
-          "pathology-mi": 6,
-          "pathology-arrhythmia": 6,
-          "pathology-structural": 6,
-          "equipment-diagnostic": 6,
-          "equipment-interventional": 6,
-          "equipment-implantable": 6
+          "cardiac-anatomy": 12,
+          "cardiac-valves": 8,
+          "coronary": 8,
+          "conduction": 8,
+          "great-vessels": 6,
+          "pathology-cad": 10,
+          "pathology-mi": 10,
+          "pathology-arrhythmia": 12,
+          "pathology-structural": 12,
+          "equipment-diagnostic": 10,
+          "equipment-interventional": 10,
+          "equipment-implantable": 10,
+          "clinical-tools": 5
         },
         "templates": {
-          "decision-trees": 7,
+          "decision-trees": 10,
           "anatomical-diagrams": 4,
-          "procedure-illustrations": 3,
-          "data-visualization": 3
+          "procedure-illustrations": 4,
+          "data-visualization": 7
         }
       }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 0,
-    "inProgress": 1,
+    "completed": 1,
+    "inProgress": 0,
     "blocked": 0,
     "notStarted": 34,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 169,
-    "currentTotalTemplates": 42
+    "currentTotalIcons": 221,
+    "currentTotalTemplates": 50
   },
   "executionOrder": [
     "cardiology",
@@ -99,5 +100,6 @@
     "biomedical-engineering",
     "engineering",
     "computer-science"
-  ]
+  ],
+  "nextSpecialty": "neurology"
 }
