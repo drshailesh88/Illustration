@@ -94,6 +94,7 @@ import { pulmonologyIcons } from './pulmonology';
 import { entIcons } from './ent';
 import { obgynIcons } from './obgyn';
 import { physiologyIcons } from './physiology';
+import { anatomyIcons } from './anatomy';
 // Drug classes
 import { analgesicsIcons } from './analgesics';
 import { antibioticsIcons } from './antibiotics';
@@ -183,6 +184,7 @@ export const allIcons: IconDefinition[] = [
   ...entIcons,
   ...obgynIcons,
   ...physiologyIcons,
+  ...anatomyIcons,
   // Drug classes
   ...analgesicsIcons,
   ...antibioticsIcons,
