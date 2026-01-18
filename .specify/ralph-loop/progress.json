@@ -148,14 +148,14 @@
   "globalStats": {
     "totalSpecialties": 35,
     "completed": 1,
-    "inProgress": 1,
+    "inProgress": 2,
     "blocked": 0,
-    "notStarted": 33,
+    "notStarted": 32,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 346,
-    "currentTotalTemplates": 76
+    "currentTotalIcons": 442,
+    "currentTotalTemplates": 99
   },
   "executionOrder": [
     "cardiology",
