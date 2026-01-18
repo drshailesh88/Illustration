@@ -576,7 +576,7 @@ export {
   dnaColors,
   nucleotideColors,
   rnaColors,
-  proteinColors,
+  proteinColors as molBioProteinColors,
   aminoAcidColors,
   enzymeColors,
   replicationColors,
@@ -597,3 +597,29 @@ export {
 } from './molecular-biology';
 
 export type { MolecularBiologyColorScheme } from './molecular-biology';
+
+// =============================================================================
+// MATHEMATICS
+// =============================================================================
+
+export {
+  algebraColors,
+  calculusColors,
+  geometryColors,
+  trigonometryColors,
+  statisticsColors,
+  probabilityColors,
+  linearAlgebraColors,
+  graphTheoryColors,
+  setTheoryColors,
+  numberTheoryColors,
+  logicColors,
+  coordinateColors,
+  diagramElementColors as mathDiagramElementColors,
+  flowchartColors as mathFlowchartColors,
+  importanceGradient,
+  difficultyGradient,
+  mathematicsColorScheme,
+} from './mathematics';
+
+export type { MathematicsColorScheme } from './mathematics';

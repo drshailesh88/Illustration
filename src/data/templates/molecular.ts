@@ -484,6 +484,299 @@ export const apoptosisPathwayTemplate: DiagramTemplate = {
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
+// =============================================================================
+// ADDITIONAL TEMPLATES - CRISPR & GENE EDITING
+// =============================================================================
+
+export const baseEditingTemplate: DiagramTemplate = {
+  id: 'mol-base-editing',
+  name: 'Base Editing Mechanism',
+  description: 'Diagram showing cytosine or adenine base editing without double-strand breaks',
+  domain: 'biology',
+  promptTemplate: `Create a base editing diagram showing:
+- Base editor type: {{editorType}}
+- Dead Cas9 or nickase: {{cas9Variant}}
+- Deaminase domain: {{deaminase}}
+- Target base conversion: {{conversion}}
+- UGI (if CBE): {{ugi}}
+- Edit window: {{editWindow}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['editorType', 'cas9Variant', 'deaminase', 'conversion', 'ugi', 'editWindow', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph BE["Base Editor"]
+        A["dCas9/nCas9"] --> B["Deaminase"]
+        B --> C["UGI (if CBE)"]
+    end
+    D["sgRNA"] --> BE
+    BE --> E["Target DNA"]
+    E --> F["C to T conversion"]
+    E --> G["A to G conversion"]
+    style BE fill:#9B59B6,color:#fff
+    style F fill:#27AE60
+    style G fill:#3498DB`
+};
+
+export const primeEditingTemplate: DiagramTemplate = {
+  id: 'mol-prime-editing',
+  name: 'Prime Editing Mechanism',
+  description: 'Diagram showing search-and-replace genome editing with pegRNA',
+  domain: 'biology',
+  promptTemplate: `Create a prime editing diagram showing:
+- PE enzyme variant: {{peVariant}}
+- pegRNA structure: {{pegRnaStructure}}
+- PBS sequence: {{pbs}}
+- RT template: {{rtTemplate}}
+- Nick and edit mechanism: {{mechanism}}
+- Flap resolution: {{flapResolution}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['peVariant', 'pegRnaStructure', 'pbs', 'rtTemplate', 'mechanism', 'flapResolution', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph PE["Prime Editor"]
+        A["Cas9 nickase (H840A)"] --> B["RT domain"]
+    end
+    C["pegRNA"] --> |"spacer"| D["Target DNA"]
+    C --> |"PBS"| E["3' flap"]
+    C --> |"RT template"| F["New sequence"]
+    E --> G["Flap equilibration"]
+    G --> H["5' flap cleavage"]
+    H --> I["Ligation"]
+    style PE fill:#9B59B6,color:#fff
+    style I fill:#27AE60`
+};
+
+// =============================================================================
+// ADDITIONAL TEMPLATES - EPIGENETICS
+// =============================================================================
+
+export const chromatinRemodelingTemplate: DiagramTemplate = {
+  id: 'mol-chromatin-remodeling',
+  name: 'Chromatin Remodeling',
+  description: 'Diagram showing ATP-dependent chromatin remodeling complexes',
+  domain: 'biology',
+  promptTemplate: `Create a chromatin remodeling diagram showing:
+- Remodeler family: {{remodelerFamily}}
+- ATPase subunit: {{atpaseSubunit}}
+- Nucleosome substrate: {{nucleosome}}
+- Remodeling outcome: {{outcome}}
+- Histone modifications: {{histoneMods}}
+- Gene expression effect: {{expressionEffect}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['remodelerFamily', 'atpaseSubunit', 'nucleosome', 'outcome', 'histoneMods', 'expressionEffect', 'additionalNotes'],
+  mermaidExample: `flowchart LR
+    subgraph Closed["Closed Chromatin"]
+        A["Nucleosome array"]
+    end
+    B["SWI/SNF Complex"] --> |"ATP"| Closed
+    subgraph Open["Open Chromatin"]
+        C["Sliding"]
+        D["Ejection"]
+        E["Histone exchange"]
+    end
+    Closed --> Open
+    Open --> F["TF Access"]
+    F --> G["Transcription"]
+    style B fill:#E74C3C
+    style Open fill:#27AE60,color:#fff`
+};
+
+export const dnaMethylationTemplate: DiagramTemplate = {
+  id: 'mol-dna-methylation',
+  name: 'DNA Methylation Landscape',
+  description: 'Diagram showing DNA methylation patterns and their effects on gene expression',
+  domain: 'biology',
+  promptTemplate: `Create a DNA methylation diagram showing:
+- CpG island location: {{cpgIsland}}
+- Methylation status: {{methylationStatus}}
+- DNMT enzymes: {{dnmtEnzymes}}
+- TET enzymes: {{tetEnzymes}}
+- Methyl-binding proteins: {{mbdProteins}}
+- Gene expression state: {{expressionState}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['cpgIsland', 'methylationStatus', 'dnmtEnzymes', 'tetEnzymes', 'mbdProteins', 'expressionState', 'additionalNotes'],
+  mermaidExample: `flowchart TB
+    subgraph Unmethylated["Unmethylated Promoter"]
+        A["CpG Island"] --> B["TF Binding"]
+        B --> C["Active Transcription"]
+    end
+    subgraph Methylated["Methylated Promoter"]
+        D["5mC"] --> E["MBD Recruitment"]
+        E --> F["HDAC Recruitment"]
+        F --> G["Gene Silencing"]
+    end
+    DNMT["DNMT3A/3B"] --> |"de novo"| D
+    DNMT1["DNMT1"] --> |"maintenance"| D
+    TET["TET1/2/3"] --> |"oxidation"| A
+    style C fill:#27AE60
+    style G fill:#E74C3C`
+};
+
+// =============================================================================
+// ADDITIONAL TEMPLATES - RNA BIOLOGY
+// =============================================================================
+
+export const rnaiPathwayTemplate: DiagramTemplate = {
+  id: 'mol-rnai-pathway',
+  name: 'RNAi Pathway',
+  description: 'Diagram showing RNA interference mechanism from dsRNA to gene silencing',
+  domain: 'biology',
+  promptTemplate: `Create an RNAi pathway diagram showing:
+- dsRNA source: {{dsRnaSource}}
+- Dicer processing: {{dicerProcessing}}
+- siRNA/miRNA structure: {{smallRna}}
+- RISC assembly: {{riscAssembly}}
+- Argonaute protein: {{argonaute}}
+- Target silencing mechanism: {{silencingMechanism}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['dsRnaSource', 'dicerProcessing', 'smallRna', 'riscAssembly', 'argonaute', 'silencingMechanism', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["dsRNA/pre-miRNA"] --> B["Dicer"]
+    B --> C["siRNA/miRNA duplex"]
+    C --> D["RISC Loading"]
+    D --> E["Guide strand selection"]
+    E --> F["Ago2 + guide strand"]
+    F --> G{"Target match?"}
+    G --> |"Perfect"| H["mRNA cleavage"]
+    G --> |"Partial"| I["Translation repression"]
+    style B fill:#E74C3C
+    style F fill:#9B59B6
+    style H fill:#27AE60`
+};
+
+export const mirnaProcessingTemplate: DiagramTemplate = {
+  id: 'mol-mirna-processing',
+  name: 'miRNA Biogenesis',
+  description: 'Diagram showing microRNA processing from pri-miRNA to mature miRNA',
+  domain: 'biology',
+  promptTemplate: `Create a miRNA biogenesis diagram showing:
+- Pri-miRNA transcription: {{priMirna}}
+- Drosha/DGCR8 processing: {{droshaProcessing}}
+- Pre-miRNA export: {{export}}
+- Dicer processing: {{dicerProcessing}}
+- Strand selection: {{strandSelection}}
+- Target recognition: {{targetRecognition}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['priMirna', 'droshaProcessing', 'export', 'dicerProcessing', 'strandSelection', 'targetRecognition', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph Nucleus["Nucleus"]
+        A["miRNA gene"] --> |"Pol II"| B["pri-miRNA"]
+        B --> C["Drosha/DGCR8"]
+        C --> D["pre-miRNA ~70nt"]
+    end
+    D --> |"Exportin-5"| E["Cytoplasm"]
+    subgraph Cytoplasm["Cytoplasm"]
+        E --> F["Dicer"]
+        F --> G["miRNA duplex"]
+        G --> H["RISC"]
+        H --> I["Mature miRNA"]
+    end
+    I --> J["Target mRNA 3'UTR"]
+    style C fill:#E74C3C
+    style F fill:#F39C12
+    style I fill:#27AE60`
+};
+
+// =============================================================================
+// ADDITIONAL TEMPLATES - LAB TECHNIQUES
+// =============================================================================
+
+export const crisprScreenTemplate: DiagramTemplate = {
+  id: 'mol-crispr-screen',
+  name: 'CRISPR Screen Workflow',
+  description: 'Diagram showing pooled CRISPR screening methodology',
+  domain: 'biology',
+  promptTemplate: `Create a CRISPR screen diagram showing:
+- sgRNA library: {{sgrnaLibrary}}
+- Cell transduction: {{transduction}}
+- Selection pressure: {{selection}}
+- Sample collection: {{sampling}}
+- NGS analysis: {{ngsAnalysis}}
+- Hit identification: {{hitIdentification}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['sgrnaLibrary', 'transduction', 'selection', 'sampling', 'ngsAnalysis', 'hitIdentification', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["sgRNA Library"] --> B["Lentiviral packaging"]
+    B --> C["Transduce cells (MOI 0.3)"]
+    C --> D["Selection (puromycin)"]
+    D --> E{"Screen type"}
+    E --> |"Positive"| F["Drug treatment"]
+    E --> |"Negative"| G["Essential genes"]
+    F --> H["Surviving cells"]
+    G --> H
+    H --> I["Genomic DNA extraction"]
+    I --> J["PCR amplify sgRNAs"]
+    J --> K["NGS sequencing"]
+    K --> L["MAGeCK analysis"]
+    L --> M["Enriched/Depleted genes"]
+    style A fill:#9B59B6
+    style M fill:#27AE60`
+};
+
+export const chipSeqTemplate: DiagramTemplate = {
+  id: 'mol-chip-seq-workflow',
+  name: 'ChIP-seq Workflow',
+  description: 'Diagram showing chromatin immunoprecipitation sequencing workflow',
+  domain: 'biology',
+  promptTemplate: `Create a ChIP-seq diagram showing:
+- Crosslinking: {{crosslinking}}
+- Chromatin fragmentation: {{fragmentation}}
+- Immunoprecipitation: {{ip}}
+- DNA purification: {{purification}}
+- Library preparation: {{libraryPrep}}
+- Peak calling: {{peakCalling}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['crosslinking', 'fragmentation', 'ip', 'purification', 'libraryPrep', 'peakCalling', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Cells"] --> B["Crosslink (formaldehyde)"]
+    B --> C["Lyse cells"]
+    C --> D["Sonicate chromatin"]
+    D --> E["Add antibody"]
+    E --> F["Immunoprecipitate"]
+    F --> G["Wash and elute"]
+    G --> H["Reverse crosslinks"]
+    H --> I["Purify DNA"]
+    I --> J["Library prep"]
+    J --> K["Sequence (PE150)"]
+    K --> L["Align reads"]
+    L --> M["Call peaks (MACS2)"]
+    style E fill:#E74C3C
+    style M fill:#27AE60`
+};
+
+export const rnaSeqTemplate: DiagramTemplate = {
+  id: 'mol-rna-seq-workflow',
+  name: 'RNA-seq Workflow',
+  description: 'Diagram showing RNA sequencing from sample to differential expression',
+  domain: 'biology',
+  promptTemplate: `Create an RNA-seq diagram showing:
+- RNA extraction: {{rnaExtraction}}
+- Library preparation: {{libraryPrep}}
+- Sequencing platform: {{sequencing}}
+- Read alignment: {{alignment}}
+- Quantification: {{quantification}}
+- Differential expression: {{de}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['rnaExtraction', 'libraryPrep', 'sequencing', 'alignment', 'quantification', 'de', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Samples"] --> B["RNA extraction"]
+    B --> C["QC (RIN > 7)"]
+    C --> D{"Library type"}
+    D --> |"polyA"| E["Oligo-dT selection"]
+    D --> |"total"| F["rRNA depletion"]
+    E --> G["Fragmentation"]
+    F --> G
+    G --> H["cDNA synthesis"]
+    H --> I["Adapter ligation"]
+    I --> J["Amplification"]
+    J --> K["Sequencing"]
+    K --> L["FASTQ"]
+    L --> M["STAR alignment"]
+    M --> N["featureCounts"]
+    N --> O["DESeq2/edgeR"]
+    O --> P["DE genes"]
+    style K fill:#3498DB
+    style P fill:#27AE60`
+};
+
 export const molecularTemplates: DiagramTemplate[] = [
   dnaReplicationTemplate,
   transcriptionTemplate,
@@ -503,6 +796,16 @@ export const molecularTemplates: DiagramTemplate[] = [
   signalTransductionTemplate,
   cellCycleRegulationTemplate,
   apoptosisPathwayTemplate,
+  // New templates
+  baseEditingTemplate,
+  primeEditingTemplate,
+  chromatinRemodelingTemplate,
+  dnaMethylationTemplate,
+  rnaiPathwayTemplate,
+  mirnaProcessingTemplate,
+  crisprScreenTemplate,
+  chipSeqTemplate,
+  rnaSeqTemplate,
 ];
 
 export default molecularTemplates;

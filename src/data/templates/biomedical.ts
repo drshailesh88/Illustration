@@ -867,6 +867,535 @@ export const exoskeletonSystem: DiagramTemplate = {
 };
 
 // =============================================================================
+// DRUG DELIVERY SYSTEMS
+// =============================================================================
+
+/**
+ * Drug Delivery System template
+ */
+export const drugDeliverySystem: DiagramTemplate = {
+  id: 'biomed-drug-delivery',
+  name: 'Drug Delivery System Design',
+  description: 'Controlled drug release system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a drug delivery system diagram:
+- Delivery method: {{deliveryMethod}}
+- Drug reservoir: {{drugReservoir}}
+- Release mechanism: {{releaseMechanism}}
+- Control system: {{controlSystem}}
+- Target tissue: {{targetTissue}}
+- Dosing regimen: {{dosingRegimen}}
+- Biocompatibility: {{biocompatibility}}
+{{#additionalNotes}}Pharmacokinetic considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'deliveryMethod',
+    'drugReservoir',
+    'releaseMechanism',
+    'controlSystem',
+    'targetTissue',
+    'dosingRegimen',
+    'biocompatibility',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Reservoir["Drug Reservoir"]
+        DR["Drug\\nStorage"]
+        MM["Membrane"]
+    end
+    subgraph Release["Release Control"]
+        PM["Pump/\\nValve"]
+        CT["Controller"]
+        SN["Sensors"]
+    end
+    subgraph Target["Target Site"]
+        TI["Target\\nTissue"]
+        EF["Effect\\nMonitoring"]
+    end
+    DR --> MM --> PM --> TI
+    SN --> CT --> PM
+    TI --> EF --> CT
+    style CT fill:#10b981,color:#fff
+    style TI fill:#dc2626,color:#fff`,
+};
+
+/**
+ * Implantable Drug Pump template
+ */
+export const implantableDrugPump: DiagramTemplate = {
+  id: 'biomed-implant-pump',
+  name: 'Implantable Drug Pump Design',
+  description: 'Implantable infusion pump system',
+  domain: 'engineering',
+  promptTemplate: `Create an implantable drug pump diagram:
+- Pump type: {{pumpType}}
+- Reservoir capacity: {{reservoirCapacity}}
+- Flow rate range: {{flowRate}}
+- Catheter system: {{catheterSystem}}
+- Programming: {{programming}}
+- Refill mechanism: {{refill}}
+- Battery life: {{batteryLife}}
+{{#additionalNotes}}Clinical application: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'pumpType',
+    'reservoirCapacity',
+    'flowRate',
+    'catheterSystem',
+    'programming',
+    'refill',
+    'batteryLife',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Implant["Implanted Pump"]
+        RS["Drug\\nReservoir"]
+        PM["Peristaltic\\nPump"]
+        CT["Controller"]
+        BT["Battery"]
+    end
+    subgraph Delivery["Delivery"]
+        CA["Catheter"]
+        TG["Target\\nSite"]
+    end
+    subgraph External["External"]
+        PR["Programmer"]
+        RF["Refill\\nPort"]
+    end
+    RS --> PM --> CA --> TG
+    BT --> CT --> PM
+    PR --> CT
+    RF --> RS
+    style PM fill:#3b82f6,color:#fff
+    style TG fill:#dc2626,color:#fff`,
+};
+
+// =============================================================================
+// WEARABLE HEALTH DEVICES
+// =============================================================================
+
+/**
+ * Wearable Health Monitor template
+ */
+export const wearableHealthMonitor: DiagramTemplate = {
+  id: 'biomed-wearable-monitor',
+  name: 'Wearable Health Monitor Design',
+  description: 'Continuous health monitoring wearable device',
+  domain: 'engineering',
+  promptTemplate: `Create a wearable health monitor diagram:
+- Form factor: {{formFactor}}
+- Sensors: {{sensors}}
+- Signal processing: {{signalProcessing}}
+- Wireless connectivity: {{wireless}}
+- Power management: {{powerManagement}}
+- Data storage: {{dataStorage}}
+- User interface: {{userInterface}}
+{{#additionalNotes}}Health metrics monitored: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'formFactor',
+    'sensors',
+    'signalProcessing',
+    'wireless',
+    'powerManagement',
+    'dataStorage',
+    'userInterface',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Sensors["Sensor Array"]
+        PPG["PPG\\n(Heart Rate)"]
+        ACC["Accelerometer"]
+        TMP["Temperature"]
+        EDA["EDA\\n(Stress)"]
+    end
+    subgraph Processing["Processing"]
+        MCU["Microcontroller"]
+        DSP["Signal\\nProcessing"]
+        ML["ML\\nAlgorithm"]
+    end
+    subgraph Output["Output"]
+        BLE["Bluetooth"]
+        APP["Mobile\\nApp"]
+        CLD["Cloud"]
+    end
+    PPG & ACC & TMP & EDA --> MCU --> DSP --> ML
+    ML --> BLE --> APP --> CLD
+    style MCU fill:#3b82f6,color:#fff
+    style ML fill:#10b981,color:#fff`,
+};
+
+// =============================================================================
+// REGULATORY AND DESIGN CONTROLS
+// =============================================================================
+
+/**
+ * Design Controls Process template
+ */
+export const designControlsProcess: DiagramTemplate = {
+  id: 'biomed-design-controls',
+  name: 'FDA Design Controls Process',
+  description: 'Medical device design controls per 21 CFR 820.30',
+  domain: 'engineering',
+  promptTemplate: `Create a design controls process diagram:
+- User needs: {{userNeeds}}
+- Design inputs: {{designInputs}}
+- Design process: {{designProcess}}
+- Design outputs: {{designOutputs}}
+- Design verification: {{verification}}
+- Design validation: {{validation}}
+- Design transfer: {{transfer}}
+{{#additionalNotes}}Risk management integration: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'userNeeds',
+    'designInputs',
+    'designProcess',
+    'designOutputs',
+    'verification',
+    'validation',
+    'transfer',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Inputs["Design Inputs"]
+        UN["User\\nNeeds"]
+        DI["Design\\nInputs"]
+        RM["Risk\\nManagement"]
+    end
+    subgraph Development["Design & Development"]
+        DP["Design\\nProcess"]
+        DR["Design\\nReviews"]
+        DO["Design\\nOutputs"]
+    end
+    subgraph VV["V&V"]
+        VE["Verification"]
+        VA["Validation"]
+    end
+    subgraph Transfer["Transfer"]
+        TR["Design\\nTransfer"]
+        DHF["Design History\\nFile"]
+    end
+    UN --> DI --> DP
+    RM --> DP
+    DP --> DR --> DO
+    DO --> VE --> VA
+    VA --> TR --> DHF
+    style VA fill:#10b981,color:#fff
+    style DHF fill:#3b82f6,color:#fff`,
+};
+
+/**
+ * Risk Management Process template
+ */
+export const riskManagementProcess: DiagramTemplate = {
+  id: 'biomed-risk-management',
+  name: 'ISO 14971 Risk Management Process',
+  description: 'Medical device risk management per ISO 14971',
+  domain: 'engineering',
+  promptTemplate: `Create a risk management process diagram:
+- Risk analysis: {{riskAnalysis}}
+- Risk evaluation: {{riskEvaluation}}
+- Risk control: {{riskControl}}
+- Residual risk: {{residualRisk}}
+- Risk-benefit analysis: {{riskBenefit}}
+- Production monitoring: {{productionMonitoring}}
+- Post-market surveillance: {{postMarket}}
+{{#additionalNotes}}Hazard categories: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'riskAnalysis',
+    'riskEvaluation',
+    'riskControl',
+    'residualRisk',
+    'riskBenefit',
+    'productionMonitoring',
+    'postMarket',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Analysis["Risk Analysis"]
+        ID["Hazard\\nIdentification"]
+        ES["Risk\\nEstimation"]
+    end
+    subgraph Evaluation["Risk Evaluation"]
+        AC["Acceptability\\nCriteria"]
+        EV["Risk\\nEvaluation"]
+    end
+    subgraph Control["Risk Control"]
+        RC["Risk Control\\nMeasures"]
+        RR["Residual\\nRisk"]
+        RB["Risk-Benefit\\nAnalysis"]
+    end
+    subgraph Monitoring["Monitoring"]
+        PM["Production\\nMonitoring"]
+        PS["Post-Market\\nSurveillance"]
+    end
+    ID --> ES --> EV
+    AC --> EV
+    EV -->|Unacceptable| RC
+    RC --> RR --> RB
+    RB --> PM --> PS
+    style RC fill:#dc2626,color:#fff
+    style RB fill:#10b981,color:#fff`,
+};
+
+// =============================================================================
+// 3D BIOPRINTING
+// =============================================================================
+
+/**
+ * 3D Bioprinting System template
+ */
+export const bioprintingSystem: DiagramTemplate = {
+  id: 'biomed-bioprinting',
+  name: '3D Bioprinting System Design',
+  description: 'Extrusion-based bioprinting system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a 3D bioprinting system diagram:
+- Print technology: {{printTechnology}}
+- Bioink composition: {{bioinkComposition}}
+- Cell types: {{cellTypes}}
+- Crosslinking method: {{crosslinking}}
+- Print parameters: {{printParameters}}
+- Environmental control: {{environmentControl}}
+- Post-processing: {{postProcessing}}
+{{#additionalNotes}}Tissue application: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'printTechnology',
+    'bioinkComposition',
+    'cellTypes',
+    'crosslinking',
+    'printParameters',
+    'environmentControl',
+    'postProcessing',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Preparation["Preparation"]
+        BI["Bioink\\nFormulation"]
+        CL["Cell\\nLoading"]
+        GC["G-code\\nGeneration"]
+    end
+    subgraph Printing["Printing System"]
+        PH["Print\\nHead"]
+        ST["Stage\\nControl"]
+        UV["UV/Thermal\\nCrosslinking"]
+    end
+    subgraph PostProcess["Post-Processing"]
+        BR["Bioreactor\\nCulture"]
+        TM["Tissue\\nMaturation"]
+    end
+    BI --> CL --> PH
+    GC --> ST --> PH
+    PH --> UV --> BR --> TM
+    style PH fill:#3b82f6,color:#fff
+    style TM fill:#10b981,color:#fff`,
+};
+
+// =============================================================================
+// COCHLEAR AND RETINAL IMPLANTS
+// =============================================================================
+
+/**
+ * Cochlear Implant System template
+ */
+export const cochlearImplantSystem: DiagramTemplate = {
+  id: 'biomed-cochlear-implant',
+  name: 'Cochlear Implant System Design',
+  description: 'Cochlear implant system architecture for hearing restoration',
+  domain: 'engineering',
+  promptTemplate: `Create a cochlear implant system diagram:
+- External processor: {{externalProcessor}}
+- Transmitter coil: {{transmitterCoil}}
+- Internal receiver: {{internalReceiver}}
+- Electrode array: {{electrodeArray}}
+- Speech processing: {{speechProcessing}}
+- Stimulation strategy: {{stimulationStrategy}}
+- Power system: {{powerSystem}}
+{{#additionalNotes}}Audiological parameters: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'externalProcessor',
+    'transmitterCoil',
+    'internalReceiver',
+    'electrodeArray',
+    'speechProcessing',
+    'stimulationStrategy',
+    'powerSystem',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph External["External Components"]
+        MC["Microphone"]
+        SP["Speech\\nProcessor"]
+        TX["Transmitter\\nCoil"]
+    end
+    subgraph Implant["Implanted Components"]
+        RX["Receiver/\\nStimulator"]
+        EL["Electrode\\nArray"]
+    end
+    subgraph Cochlea["Cochlea"]
+        AN["Auditory\\nNerve"]
+    end
+    MC --> SP --> TX
+    TX -.->|RF| RX
+    RX --> EL --> AN
+    style SP fill:#3b82f6,color:#fff
+    style AN fill:#dc2626,color:#fff`,
+};
+
+/**
+ * Retinal Prosthesis System template
+ */
+export const retinalProsthesisSystem: DiagramTemplate = {
+  id: 'biomed-retinal-prosthesis',
+  name: 'Retinal Prosthesis System Design',
+  description: 'Bionic eye/retinal implant system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a retinal prosthesis system diagram:
+- Camera system: {{cameraSystem}}
+- Video processing: {{videoProcessing}}
+- Wireless transmission: {{wirelessTransmission}}
+- Implant electronics: {{implantElectronics}}
+- Electrode array: {{electrodeArray}}
+- Stimulation patterns: {{stimulationPatterns}}
+- Visual field: {{visualField}}
+{{#additionalNotes}}Retinal target: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'cameraSystem',
+    'videoProcessing',
+    'wirelessTransmission',
+    'implantElectronics',
+    'electrodeArray',
+    'stimulationPatterns',
+    'visualField',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph External["External System"]
+        CM["Camera\\n(Glasses)"]
+        VP["Video\\nProcessor"]
+        TX["Wireless\\nTransmitter"]
+    end
+    subgraph Implant["Implanted System"]
+        RX["Receiver\\nChip"]
+        EL["Electrode\\nArray"]
+    end
+    subgraph Retina["Retina"]
+        RG["Retinal\\nGanglion Cells"]
+        ON["Optic\\nNerve"]
+    end
+    CM --> VP --> TX
+    TX -.->|RF| RX
+    RX --> EL --> RG --> ON
+    style VP fill:#3b82f6,color:#fff
+    style RG fill:#dc2626,color:#fff`,
+};
+
+// =============================================================================
+// LIFE SUPPORT SYSTEMS
+// =============================================================================
+
+/**
+ * Mechanical Ventilator System template
+ */
+export const ventilatorSystem: DiagramTemplate = {
+  id: 'biomed-ventilator',
+  name: 'Mechanical Ventilator System Design',
+  description: 'ICU ventilator system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a mechanical ventilator system diagram:
+- Ventilation mode: {{ventilationMode}}
+- Gas delivery: {{gasDelivery}}
+- Flow sensors: {{flowSensors}}
+- Pressure control: {{pressureControl}}
+- Alarm systems: {{alarmSystems}}
+- User interface: {{userInterface}}
+- Patient circuit: {{patientCircuit}}
+{{#additionalNotes}}Clinical settings: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ventilationMode',
+    'gasDelivery',
+    'flowSensors',
+    'pressureControl',
+    'alarmSystems',
+    'userInterface',
+    'patientCircuit',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph GasSupply["Gas Supply"]
+        O2["Oxygen"]
+        AIR["Medical\\nAir"]
+        BL["Blender"]
+    end
+    subgraph Ventilator["Ventilator"]
+        VL["Flow\\nValve"]
+        SN["Sensors\\n(P, F, V)"]
+        CT["Controller"]
+        AL["Alarms"]
+    end
+    subgraph Patient["Patient Circuit"]
+        HM["Humidifier"]
+        PT["Patient\\nAirway"]
+        EX["Exhalation\\nValve"]
+    end
+    O2 & AIR --> BL --> VL --> HM --> PT
+    PT --> EX
+    SN --> CT --> VL
+    CT --> AL
+    style CT fill:#3b82f6,color:#fff
+    style AL fill:#dc2626,color:#fff`,
+};
+
+/**
+ * Hemodialysis System template
+ */
+export const hemodialysisSystem: DiagramTemplate = {
+  id: 'biomed-hemodialysis',
+  name: 'Hemodialysis System Design',
+  description: 'Hemodialysis machine system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a hemodialysis system diagram:
+- Blood circuit: {{bloodCircuit}}
+- Dialysate circuit: {{dialysateCircuit}}
+- Dialyzer: {{dialyzer}}
+- Blood pump: {{bloodPump}}
+- Safety systems: {{safetySystems}}
+- Monitoring: {{monitoring}}
+- Water treatment: {{waterTreatment}}
+{{#additionalNotes}}Treatment parameters: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'bloodCircuit',
+    'dialysateCircuit',
+    'dialyzer',
+    'bloodPump',
+    'safetySystems',
+    'monitoring',
+    'waterTreatment',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Blood["Blood Circuit"]
+        AC["Arterial\\nAccess"]
+        BP["Blood\\nPump"]
+        DZ["Dialyzer"]
+        VC["Venous\\nAccess"]
+    end
+    subgraph Dialysate["Dialysate Circuit"]
+        WT["Water\\nTreatment"]
+        MX["Mixing\\nSystem"]
+        DP["Dialysate\\nPump"]
+        DR["Drain"]
+    end
+    subgraph Safety["Safety"]
+        AD["Air\\nDetector"]
+        BD["Blood Leak\\nDetector"]
+        AL["Alarms"]
+    end
+    AC --> BP --> DZ --> VC
+    WT --> MX --> DP --> DZ --> DR
+    AD & BD --> AL
+    style DZ fill:#3b82f6,color:#fff
+    style AL fill:#dc2626,color:#fff`,
+};
+
+// =============================================================================
 // Export all templates
 // =============================================================================
 
@@ -895,4 +1424,20 @@ export const biomedicalTemplates: DiagramTemplate[] = [
   deepBrainStimulation,
   // Rehabilitation Engineering
   exoskeletonSystem,
+  // Drug Delivery
+  drugDeliverySystem,
+  implantableDrugPump,
+  // Wearables
+  wearableHealthMonitor,
+  // Regulatory
+  designControlsProcess,
+  riskManagementProcess,
+  // Bioprinting
+  bioprintingSystem,
+  // Sensory Prostheses
+  cochlearImplantSystem,
+  retinalProsthesisSystem,
+  // Life Support
+  ventilatorSystem,
+  hemodialysisSystem,
 ];

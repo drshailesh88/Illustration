@@ -608,3 +608,9 @@ export { default as engineeringPrompts } from './engineering-prompts';
 
 export * from './molecular-biology-prompts';
 export { default as molecularBiologyPrompts } from './molecular-biology-prompts';
+
+export * from './mathematics-prompts';
+export { default as mathematicsPrompts } from './mathematics-prompts';
+
+export * from './neuroscience-prompts';
+export { default as neurosciencePrompts } from './neuroscience-prompts';

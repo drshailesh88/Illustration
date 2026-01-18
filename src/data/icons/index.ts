@@ -155,6 +155,7 @@ import { forensicsIcons } from './forensics';
 import { hematologyOncologyIcons } from './hematology-oncology';
 import { dermatologyIcons } from './dermatology';
 import { pharmacologyIcons } from './pharmacology';
+import { mathematicsIcons } from './mathematics';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -249,6 +250,7 @@ export const allIcons: IconDefinition[] = [
   ...hematologyOncologyIcons,
   ...dermatologyIcons,
   ...pharmacologyIcons,
+  ...mathematicsIcons,
 ];
 
 /**
@@ -289,6 +291,8 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
     ...astrophysicsIcons, ...electromagnetismIcons, ...mechanicsIcons,
     ...nuclearIcons, ...opticsIcons, ...quantumIcons, ...solidstateIcons,
     ...thermodynamicsIcons,
+    // Mathematics
+    ...mathematicsIcons,
   ],
   engineering: [
     ...engineeringIcons, ...materialsScienceIcons,
@@ -568,7 +572,7 @@ export function getIconStats(): {
       medicine: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length + pharmacologyIcons.length,
       biology: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
       chemistry: chemistryIcons.length + forensicsIcons.length + analyticalIcons.length + biochemistryIcons.length + inorganicIcons.length + medicinalIcons.length + organicIcons.length + physicalIcons.length + polymerIcons.length,
-      physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length,
+      physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length + mathematicsIcons.length,
       engineering: engineeringIcons.length + materialsScienceIcons.length + aerospaceIcons.length + biomedicalIcons.length + chemicalIcons.length + civilIcons.length + computerIcons.length + electricalIcons.length + materialsIcons.length + mechanicalIcons.length,
       general: 0,
     },
@@ -707,6 +711,7 @@ export { agricultureIcons } from './agriculture';
 export { forensicsIcons } from './forensics';
 export { hematologyOncologyIcons } from './hematology-oncology';
 export { dermatologyIcons } from './dermatology';
+export { mathematicsIcons } from './mathematics';
 
 export default {
   allIcons,
