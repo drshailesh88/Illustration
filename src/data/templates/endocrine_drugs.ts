@@ -305,7 +305,7 @@ export const thyroidNoduleWorkup: DiagramTemplate = {
     F --> H["Bethesda Class"]`
 };
 
-export const pituitary Insufficiency: DiagramTemplate = {
+export const pituitaryInsufficiency: DiagramTemplate = {
   id: 'endo-pituitary-insufficiency',
   name: 'Pituitary Insufficiency Replacement',
   description: 'Protocol for hormone replacement in hypopituitarism',

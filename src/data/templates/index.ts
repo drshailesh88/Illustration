@@ -53,6 +53,32 @@ export * from './oceanography';
 export * from './meteorology';
 export * from './agriculture';
 export * from './forensics';
+// Physics subspecialties
+export * from './quantum';
+export * from './thermodynamics';
+export * from './electromagnetism';
+export * from './optics';
+export * from './nuclear';
+export * from './mechanics';
+export * from './astrophysics';
+// Chemistry subspecialties
+export * from './biochemistry';
+export * from './organic';
+export * from './inorganic';
+export * from './analytical';
+// Engineering subspecialties
+export * from './aerospace';
+export * from './mechanical';
+export * from './electrical';
+export * from './civil';
+export * from './chemical';
+export * from './computer';
+export * from './biomedical';
+// Pharmacology/Medicine subspecialties
+export * from './analgesics';
+export * from './antibiotics';
+export * from './psychotropics';
+export * from './endocrine_drugs';
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -176,6 +202,32 @@ import { oceanographyTemplates } from './oceanography';
 import { meteorologyTemplates } from './meteorology';
 import { agricultureTemplates } from './agriculture';
 import { forensicsTemplates } from './forensics';
+// Physics subspecialties
+import { quantumTemplates } from './quantum';
+import { thermodynamicsTemplates } from './thermodynamics';
+import { electromagnetismTemplates } from './electromagnetism';
+import { opticsTemplates } from './optics';
+import { nuclearTemplates } from './nuclear';
+import { mechanicsTemplates } from './mechanics';
+import { astrophysicsTemplates } from './astrophysics';
+// Chemistry subspecialties
+import { biochemistryTemplates } from './biochemistry';
+import { organicTemplates } from './organic';
+import { inorganicTemplates } from './inorganic';
+import { analyticalTemplates } from './analytical';
+// Engineering subspecialties
+import { aerospaceTemplates } from './aerospace';
+import { mechanicalTemplates } from './mechanical';
+import { electricalTemplates } from './electrical';
+import { civilTemplates } from './civil';
+import { chemicalTemplates } from './chemical';
+import { computerTemplates } from './computer';
+import { biomedicalTemplates } from './biomedical';
+// Pharmacology/Medicine subspecialties
+import { analgesicsTemplates } from './analgesics';
+import { antibioticsTemplates } from './antibiotics';
+import { psychotropicsTemplates } from './psychotropics';
+import { endocrineDrugsTemplates } from './endocrine_drugs';
 
 // =============================================================================
 // AGGREGATED TEMPLATE COLLECTIONS
@@ -224,6 +276,32 @@ export const allTemplates: DiagramTemplate[] = [
   ...meteorologyTemplates,
   ...agricultureTemplates,
   ...forensicsTemplates,
+  // Physics subspecialties
+  ...quantumTemplates,
+  ...thermodynamicsTemplates,
+  ...electromagnetismTemplates,
+  ...opticsTemplates,
+  ...nuclearTemplates,
+  ...mechanicsTemplates,
+  ...astrophysicsTemplates,
+  // Chemistry subspecialties
+  ...biochemistryTemplates,
+  ...organicTemplates,
+  ...inorganicTemplates,
+  ...analyticalTemplates,
+  // Engineering subspecialties
+  ...aerospaceTemplates,
+  ...mechanicalTemplates,
+  ...electricalTemplates,
+  ...civilTemplates,
+  ...chemicalTemplates,
+  ...computerTemplates,
+  ...biomedicalTemplates,
+  // Pharmacology/Medicine subspecialties
+  ...analgesicsTemplates,
+  ...antibioticsTemplates,
+  ...psychotropicsTemplates,
+  ...endocrineDrugsTemplates,
 ];
 
 /**
@@ -232,11 +310,11 @@ export const allTemplates: DiagramTemplate[] = [
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
   medicine: [...medicineTemplates, ...cardiologyTemplates,
   ...gastroenterologyTemplates,
-  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates],
+  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates],
   biology: [...biologyTemplates, ...molecularTemplates, ...geneticsTemplates, ...ecologyTemplates, ...microbiologyTemplates, ...zoologyTemplates, ...botanyTemplates, ...cellbiologyTemplates, ...neuroscienceTemplates, ...environmentalTemplates, ...oceanographyTemplates, ...agricultureTemplates],
-  chemistry: [...chemistryTemplates, ...forensicsTemplates],
-  physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates],
-  engineering: [...engineeringTemplates, ...materialsScienceTemplates],
+  chemistry: [...chemistryTemplates, ...forensicsTemplates, ...biochemistryTemplates, ...organicTemplates, ...inorganicTemplates, ...analyticalTemplates],
+  physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates, ...quantumTemplates, ...thermodynamicsTemplates, ...electromagnetismTemplates, ...opticsTemplates, ...nuclearTemplates, ...mechanicsTemplates, ...astrophysicsTemplates],
+  engineering: [...engineeringTemplates, ...materialsScienceTemplates, ...aerospaceTemplates, ...mechanicalTemplates, ...electricalTemplates, ...civilTemplates, ...chemicalTemplates, ...computerTemplates, ...biomedicalTemplates],
 };
 
 /**
@@ -345,11 +423,11 @@ export function getTemplateStats(): {
   return {
     total: allTemplates.length,
     byDomain: {
-      medicine: medicineTemplates.length + cardiologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length,
+      medicine: medicineTemplates.length + cardiologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length + analgesicsTemplates.length + antibioticsTemplates.length + psychotropicsTemplates.length + endocrineDrugsTemplates.length,
       biology: biologyTemplates.length + molecularTemplates.length + geneticsTemplates.length + ecologyTemplates.length + microbiologyTemplates.length + zoologyTemplates.length + botanyTemplates.length + cellbiologyTemplates.length + neuroscienceTemplates.length,
-      chemistry: chemistryTemplates.length,
-      physics: physicsTemplates.length,
-      engineering: engineeringTemplates.length,
+      chemistry: chemistryTemplates.length + forensicsTemplates.length + biochemistryTemplates.length + organicTemplates.length + inorganicTemplates.length + analyticalTemplates.length,
+      physics: physicsTemplates.length + geologyTemplates.length + astronomyTemplates.length + meteorologyTemplates.length + quantumTemplates.length + thermodynamicsTemplates.length + electromagnetismTemplates.length + opticsTemplates.length + nuclearTemplates.length + mechanicsTemplates.length + astrophysicsTemplates.length,
+      engineering: engineeringTemplates.length + materialsScienceTemplates.length + aerospaceTemplates.length + mechanicalTemplates.length + electricalTemplates.length + civilTemplates.length + chemicalTemplates.length + computerTemplates.length + biomedicalTemplates.length,
     },
   };
 }

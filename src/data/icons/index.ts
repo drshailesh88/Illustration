@@ -92,6 +92,19 @@ import { orthopedicsIcons } from './orthopedics';
 import { pulmonologyIcons } from './pulmonology';
 import { entIcons } from './ent';
 import { obgynIcons } from './obgyn';
+// Drug classes
+import { analgesicsIcons } from './analgesics';
+import { antibioticsIcons } from './antibiotics';
+import { anticoagulantsIcons } from './anticoagulants';
+import { antihypertensivesIcons } from './antihypertensives';
+import { antimicrobialsIcons } from './antimicrobials';
+import { endocrineDrugsIcons } from './endocrine_drugs';
+import { giDrugsIcons } from './gi_drugs';
+import { immunologyDrugsIcons } from './immunology_drugs';
+import { neuroDrugsIcons } from './neuro_drugs';
+import { oncologyDrugsIcons } from './oncology_drugs';
+import { psychotropicsIcons } from './psychotropics';
+import { respiratoryDrugsIcons } from './respiratory_drugs';
 // Biology subspecialties
 import { molecularIcons } from './molecular';
 import { geneticsIcons } from './genetics';
@@ -101,6 +114,32 @@ import { zoologyIcons } from './zoology';
 import { botanyIcons } from './botany';
 import { cellbiologyIcons } from './cellbiology';
 import { neuroscienceIcons } from './neuroscience';
+// Chemistry subspecialties
+import { analyticalIcons } from './analytical';
+import { biochemistryIcons } from './biochemistry';
+import { inorganicIcons } from './inorganic';
+import { medicinalIcons } from './medicinal';
+import { organicIcons } from './organic';
+import { physicalIcons } from './physical';
+import { polymerIcons } from './polymer';
+// Physics subspecialties
+import { astrophysicsIcons } from './astrophysics';
+import { electromagnetismIcons } from './electromagnetism';
+import { mechanicsIcons } from './mechanics';
+import { nuclearIcons } from './nuclear';
+import { opticsIcons } from './optics';
+import { quantumIcons } from './quantum';
+import { solidstateIcons } from './solidstate';
+import { thermodynamicsIcons } from './thermodynamics';
+// Engineering subspecialties
+import { aerospaceIcons } from './aerospace';
+import { biomedicalIcons } from './biomedical';
+import { chemicalIcons } from './chemical';
+import { civilIcons } from './civil';
+import { computerIcons } from './computer';
+import { electricalIcons } from './electrical';
+import { materialsIcons } from './materials';
+import { mechanicalIcons } from './mechanical';
 // Additional science branches
 import { geologyIcons } from './geology';
 import { astronomyIcons } from './astronomy';
@@ -137,6 +176,20 @@ export const allIcons: IconDefinition[] = [
   ...orthopedicsIcons,
   ...entIcons,
   ...obgynIcons,
+  // Drug classes
+  ...analgesicsIcons,
+  ...antibioticsIcons,
+  ...anticoagulantsIcons,
+  ...antihypertensivesIcons,
+  ...antimicrobialsIcons,
+  ...endocrineDrugsIcons,
+  ...giDrugsIcons,
+  ...immunologyDrugsIcons,
+  ...neuroDrugsIcons,
+  ...oncologyDrugsIcons,
+  ...psychotropicsIcons,
+  ...respiratoryDrugsIcons,
+  // Biology
   ...biologyIcons,
   ...molecularIcons,
   ...geneticsIcons,
@@ -146,9 +199,35 @@ export const allIcons: IconDefinition[] = [
   ...botanyIcons,
   ...cellbiologyIcons,
   ...neuroscienceIcons,
+  // Chemistry
   ...chemistryIcons,
+  ...analyticalIcons,
+  ...biochemistryIcons,
+  ...inorganicIcons,
+  ...medicinalIcons,
+  ...organicIcons,
+  ...physicalIcons,
+  ...polymerIcons,
+  // Physics
   ...physicsIcons,
+  ...astrophysicsIcons,
+  ...electromagnetismIcons,
+  ...mechanicsIcons,
+  ...nuclearIcons,
+  ...opticsIcons,
+  ...quantumIcons,
+  ...solidstateIcons,
+  ...thermodynamicsIcons,
+  // Engineering
   ...engineeringIcons,
+  ...aerospaceIcons,
+  ...biomedicalIcons,
+  ...chemicalIcons,
+  ...civilIcons,
+  ...computerIcons,
+  ...electricalIcons,
+  ...materialsIcons,
+  ...mechanicalIcons,
   // Additional science branches
   ...geologyIcons,
   ...astronomyIcons,
@@ -164,14 +243,42 @@ export const allIcons: IconDefinition[] = [
  * Icons organized by domain for quick access
  */
 export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
-  medicine: [...medicineIcons, ...cardiologyIcons, ...pulmonologyIcons,
-  ...gastroenterologyIcons,
-  ...nephrologyIcons, ...anesthesiologyIcons, ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
-  ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons, ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons],
-  biology: [...biologyIcons, ...molecularIcons, ...geneticsIcons, ...ecologyIcons, ...microbiologyIcons, ...zoologyIcons, ...botanyIcons, ...cellbiologyIcons, ...neuroscienceIcons, ...environmentalIcons, ...oceanographyIcons, ...agricultureIcons],
-  chemistry: [...chemistryIcons, ...forensicsIcons],
-  physics: [...physicsIcons, ...geologyIcons, ...astronomyIcons, ...meteorologyIcons],
-  engineering: [...engineeringIcons, ...materialsScienceIcons],
+  medicine: [
+    ...medicineIcons, ...cardiologyIcons, ...pulmonologyIcons,
+    ...gastroenterologyIcons, ...nephrologyIcons, ...anesthesiologyIcons,
+    ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
+    ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons,
+    ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons,
+    // Drug classes
+    ...analgesicsIcons, ...antibioticsIcons, ...anticoagulantsIcons,
+    ...antihypertensivesIcons, ...antimicrobialsIcons, ...endocrineDrugsIcons,
+    ...giDrugsIcons, ...immunologyDrugsIcons, ...neuroDrugsIcons,
+    ...oncologyDrugsIcons, ...psychotropicsIcons, ...respiratoryDrugsIcons,
+  ],
+  biology: [
+    ...biologyIcons, ...molecularIcons, ...geneticsIcons, ...ecologyIcons,
+    ...microbiologyIcons, ...zoologyIcons, ...botanyIcons, ...cellbiologyIcons,
+    ...neuroscienceIcons, ...environmentalIcons, ...oceanographyIcons, ...agricultureIcons,
+  ],
+  chemistry: [
+    ...chemistryIcons, ...forensicsIcons,
+    // Chemistry subspecialties
+    ...analyticalIcons, ...biochemistryIcons, ...inorganicIcons,
+    ...medicinalIcons, ...organicIcons, ...physicalIcons, ...polymerIcons,
+  ],
+  physics: [
+    ...physicsIcons, ...geologyIcons, ...astronomyIcons, ...meteorologyIcons,
+    // Physics subspecialties
+    ...astrophysicsIcons, ...electromagnetismIcons, ...mechanicsIcons,
+    ...nuclearIcons, ...opticsIcons, ...quantumIcons, ...solidstateIcons,
+    ...thermodynamicsIcons,
+  ],
+  engineering: [
+    ...engineeringIcons, ...materialsScienceIcons,
+    // Engineering subspecialties
+    ...aerospaceIcons, ...biomedicalIcons, ...chemicalIcons, ...civilIcons,
+    ...computerIcons, ...electricalIcons, ...materialsIcons, ...mechanicalIcons,
+  ],
   general: [], // Reserved for future general-purpose icons
 };
 
@@ -182,8 +289,8 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
   medicine: {
     id: 'medicine',
     name: 'Medicine',
-    description: 'Medical, clinical, and healthcare icons including cardiology, anesthesiology, ophthalmology, and radiology',
-    iconCount: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length,
+    description: 'Medical, clinical, and healthcare icons including cardiology, anesthesiology, ophthalmology, radiology, and pharmacology drug classes',
+    iconCount: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
     color: '#ef4444', // Red
   },
   biology: {
@@ -196,22 +303,22 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
   chemistry: {
     id: 'chemistry',
     name: 'Chemistry',
-    description: 'Chemical structures, lab equipment, reactions, and forensic science',
-    iconCount: chemistryIcons.length + forensicsIcons.length,
+    description: 'Chemical structures, lab equipment, reactions, forensic science, and chemistry subspecialties including analytical, biochemistry, inorganic, medicinal, organic, physical, and polymer chemistry',
+    iconCount: chemistryIcons.length + forensicsIcons.length + analyticalIcons.length + biochemistryIcons.length + inorganicIcons.length + medicinalIcons.length + organicIcons.length + physicalIcons.length + polymerIcons.length,
     color: '#8b5cf6', // Purple
   },
   physics: {
     id: 'physics',
     name: 'Physics',
-    description: 'Physical phenomena, optics, mechanics, geology, astronomy, and meteorology',
-    iconCount: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length,
+    description: 'Physical phenomena including astrophysics, electromagnetism, mechanics, nuclear physics, optics, quantum mechanics, solid state physics, thermodynamics, geology, astronomy, and meteorology',
+    iconCount: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length,
     color: '#3b82f6', // Blue
   },
   engineering: {
     id: 'engineering',
     name: 'Engineering',
-    description: 'Electrical, mechanical, civil engineering, and materials science',
-    iconCount: engineeringIcons.length + materialsScienceIcons.length,
+    description: 'Engineering disciplines including aerospace, biomedical, chemical, civil, computer, electrical, materials, and mechanical engineering',
+    iconCount: engineeringIcons.length + materialsScienceIcons.length + aerospaceIcons.length + biomedicalIcons.length + chemicalIcons.length + civilIcons.length + computerIcons.length + electricalIcons.length + materialsIcons.length + mechanicalIcons.length,
     color: '#f59e0b', // Orange
   },
   general: {
@@ -441,11 +548,11 @@ export function getIconStats(): {
   return {
     totalIcons: allIcons.length,
     byDomain: {
-      medicine: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length,
+      medicine: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
       biology: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
-      chemistry: chemistryIcons.length + forensicsIcons.length,
-      physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length,
-      engineering: engineeringIcons.length + materialsScienceIcons.length,
+      chemistry: chemistryIcons.length + forensicsIcons.length + analyticalIcons.length + biochemistryIcons.length + inorganicIcons.length + medicinalIcons.length + organicIcons.length + physicalIcons.length + polymerIcons.length,
+      physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length,
+      engineering: engineeringIcons.length + materialsScienceIcons.length + aerospaceIcons.length + biomedicalIcons.length + chemicalIcons.length + civilIcons.length + computerIcons.length + electricalIcons.length + materialsIcons.length + mechanicalIcons.length,
       general: 0,
     },
     byCategory,
@@ -520,6 +627,19 @@ export { endocrinologyIcons } from './endocrinology';
 export { pathologyIcons } from './pathology';
 export { entIcons } from './ent';
 export { obgynIcons } from './obgyn';
+// Drug classes
+export { analgesicsIcons } from './analgesics';
+export { antibioticsIcons } from './antibiotics';
+export { anticoagulantsIcons } from './anticoagulants';
+export { antihypertensivesIcons } from './antihypertensives';
+export { antimicrobialsIcons } from './antimicrobials';
+export { endocrineDrugsIcons } from './endocrine_drugs';
+export { giDrugsIcons } from './gi_drugs';
+export { immunologyDrugsIcons } from './immunology_drugs';
+export { neuroDrugsIcons } from './neuro_drugs';
+export { oncologyDrugsIcons } from './oncology_drugs';
+export { psychotropicsIcons } from './psychotropics';
+export { respiratoryDrugsIcons } from './respiratory_drugs';
 // Biology subspecialties
 export { molecularIcons } from './molecular';
 export { geneticsIcons } from './genetics';
@@ -529,6 +649,32 @@ export { zoologyIcons } from './zoology';
 export { botanyIcons } from './botany';
 export { cellbiologyIcons } from './cellbiology';
 export { neuroscienceIcons } from './neuroscience';
+// Chemistry subspecialties
+export { analyticalIcons } from './analytical';
+export { biochemistryIcons } from './biochemistry';
+export { inorganicIcons } from './inorganic';
+export { medicinalIcons } from './medicinal';
+export { organicIcons } from './organic';
+export { physicalIcons } from './physical';
+export { polymerIcons } from './polymer';
+// Physics subspecialties
+export { astrophysicsIcons } from './astrophysics';
+export { electromagnetismIcons } from './electromagnetism';
+export { mechanicsIcons } from './mechanics';
+export { nuclearIcons } from './nuclear';
+export { opticsIcons } from './optics';
+export { quantumIcons } from './quantum';
+export { solidstateIcons } from './solidstate';
+export { thermodynamicsIcons } from './thermodynamics';
+// Engineering subspecialties
+export { aerospaceIcons } from './aerospace';
+export { biomedicalIcons } from './biomedical';
+export { chemicalIcons } from './chemical';
+export { civilIcons } from './civil';
+export { computerIcons } from './computer';
+export { electricalIcons } from './electrical';
+export { materialsIcons } from './materials';
+export { mechanicalIcons } from './mechanical';
 // Additional science branches
 export { geologyIcons } from './geology';
 export { astronomyIcons } from './astronomy';
