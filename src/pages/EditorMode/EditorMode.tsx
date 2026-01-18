@@ -19,6 +19,8 @@ import { useToast } from '../../components/Toast';
 import { Canvas, CanvasProvider, CanvasRef } from '../../components/Canvas';
 import { IllustratorToolbar, type IllustratorTool } from '../../components/IllustratorToolbar';
 import { defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
+import { ExportDialog, type ExportFormat, type ExportSettings } from '../../components/ExportDialog';
+import { exportAsPng, exportAsPdf, exportAsSvg } from '../../lib/export';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
@@ -113,6 +115,7 @@ export function EditorMode(): JSX.Element {
   const [illustratorTool, setIllustratorTool] = useState<IllustratorTool>('select');
   const [handDrawnEnabled, setHandDrawnEnabled] = useState(false);
   const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
+  const [exportDialogOpen, setExportDialogOpen] = useState(false);
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
@@ -147,6 +150,75 @@ export function EditorMode(): JSX.Element {
     setHandDrawnSettings(prev => ({ ...prev, enabled }));
   }, []);
 
+  // Handle opening export dialog
+  const handleOpenExportDialog = useCallback(() => {
+    setExportDialogOpen(true);
+  }, []);
+
+  // Handle export from ExportDialog
+  const handleExport = useCallback(async (format: ExportFormat, settings: ExportSettings) => {
+    if (!canvas) {
+      showToast({ type: 'error', message: 'Canvas not ready' });
+      return;
+    }
+
+    try {
+      // Get SVG string from Fabric.js canvas
+      const svgString = canvas.toSVG();
+
+      // Create an SVG element from the string
+      const parser = new DOMParser();
+      const svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
+      const svgElement = svgDoc.documentElement as unknown as SVGSVGElement;
+
+      // Append to body temporarily for rendering (required by some export libs)
+      document.body.appendChild(svgElement);
+      svgElement.style.position = 'absolute';
+      svgElement.style.left = '-9999px';
+
+      const filename = 'diagram';
+
+      switch (format) {
+        case 'png': {
+          const pngSettings = settings as { dpi: number; quality: number; background: string };
+          const scale = pngSettings.dpi / 72; // Convert DPI to scale factor
+          await exportAsPng(svgElement, `${filename}.png`, {
+            scale,
+            backgroundColor: pngSettings.background === 'transparent' ? undefined : '#ffffff',
+          });
+          showToast({ type: 'success', message: 'PNG exported successfully!' });
+          break;
+        }
+        case 'pdf': {
+          const pdfSettings = settings as { pageSize: string; orientation: string; margins: { top: number; right: number; bottom: number; left: number } };
+          await exportAsPdf(svgElement, `${filename}.pdf`, {
+            pageSize: pdfSettings.pageSize as 'a4' | 'letter' | 'a3' | 'custom',
+            orientation: pdfSettings.orientation as 'portrait' | 'landscape',
+            margins: pdfSettings.margins,
+          });
+          showToast({ type: 'success', message: 'PDF exported successfully!' });
+          break;
+        }
+        case 'svg': {
+          exportAsSvg(svgElement, `${filename}.svg`);
+          showToast({ type: 'success', message: 'SVG exported successfully!' });
+          break;
+        }
+        case 'latex': {
+          // LaTeX export is handled directly in the LaTeXOptions component
+          showToast({ type: 'success', message: 'LaTeX code ready!' });
+          break;
+        }
+      }
+
+      // Clean up
+      document.body.removeChild(svgElement);
+    } catch (error) {
+      console.error('Export failed:', error);
+      showToast({ type: 'error', message: 'Export failed. Please try again.' });
+    }
+  }, [canvas, showToast]);
+
   // Initialize illustrator tools hook
   // The hook sets up event handlers and manages Paper.js integration
   useIllustratorTools({
@@ -155,6 +227,7 @@ export function EditorMode(): JSX.Element {
     handDrawnSettings: handDrawnSettings,
     strokeColor: '#000000',
     strokeWidth: 2,
+    paperCanvasRef: paperCanvasRef,
   });
 
   // ========================================================================
@@ -271,7 +344,15 @@ export function EditorMode(): JSX.Element {
     <CanvasProvider>
       <div style={styles.container}>
         {/* Top Menu Bar */}
-        <MenuBar />
+        <MenuBar onOpenExportDialog={handleOpenExportDialog} />
+
+        {/* Export Dialog */}
+        <ExportDialog
+          isOpen={exportDialogOpen}
+          onClose={() => setExportDialogOpen(false)}
+          onExport={handleExport}
+          filename="diagram"
+        />
 
         {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
         <IllustratorToolbar

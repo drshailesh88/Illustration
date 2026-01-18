@@ -33,6 +33,8 @@ export interface UseIllustratorToolsOptions {
   fillColor?: string | null;
   handDrawnSettings?: HandDrawnSettings;
   onPathComplete?: (path: FabricPath) => void;
+  /** External Paper.js canvas ref for pen tool overlay */
+  paperCanvasRef?: React.RefObject<HTMLCanvasElement | null>;
 }
 
 export interface UseIllustratorToolsReturn {
@@ -47,8 +49,8 @@ export interface UseIllustratorToolsReturn {
   isBrushToolDrawing: boolean;
 
   // Hand-drawn style
-  applyHandDrawnStyle: (object: FabricObject) => FabricObject | null;
-  applyHandDrawnToSelection: () => void;
+  applyHandDrawnStyle: (object: FabricObject) => Promise<FabricObject | null>;
+  applyHandDrawnToSelection: () => Promise<void>;
 
   // Paper.js canvas ref (for overlay)
   paperCanvasRef: React.RefObject<HTMLCanvasElement | null>;
@@ -70,10 +72,12 @@ export function useIllustratorTools(options: UseIllustratorToolsOptions): UseIll
     fillColor = null,
     handDrawnSettings,
     onPathComplete,
+    paperCanvasRef: externalPaperCanvasRef,
   } = options;
 
-  // Refs
-  const paperCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  // Refs - use external ref if provided, otherwise create internal one
+  const internalPaperCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const paperCanvasRef = externalPaperCanvasRef || internalPaperCanvasRef;
   const paperScopeRef = useRef<paper.PaperScope | null>(null);
   const penToolRef = useRef<PenTool | null>(null);
   const brushPointsRef = useRef<InputPoint[]>([]);
@@ -306,22 +310,29 @@ export function useIllustratorTools(options: UseIllustratorToolsOptions): UseIll
   // ========================================================================
 
   const applyHandDrawnStyle = useCallback(
-    (object: FabricObject): FabricObject | null => {
+    async (object: FabricObject): Promise<FabricObject | null> => {
       if (!canvas || !handDrawnSettings?.enabled) return null;
+
+      // Get object bounds for positioning
+      const bounds = object.getBoundingRect();
+      const left = object.left || 0;
+      const top = object.top || 0;
 
       // Get object's SVG representation
       const svg = object.toSVG();
       if (!svg) return null;
 
-      // Create temporary SVG element
+      // Create temporary SVG element with proper dimensions
       const parser = new DOMParser();
+      const svgWidth = bounds.width + 20;
+      const svgHeight = bounds.height + 20;
       const doc = parser.parseFromString(
-        `<svg xmlns="http://www.w3.org/2000/svg">${svg}</svg>`,
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">${svg}</svg>`,
         'image/svg+xml'
       );
       const svgElement = doc.documentElement as unknown as SVGSVGElement;
 
-      // Apply hand-drawn style
+      // Apply hand-drawn style using Rough.js
       const roughSvg = convertToHandDrawn(svgElement, {
         preset: getPresetFromSettings(handDrawnSettings),
         customOptions: {
@@ -332,34 +343,74 @@ export function useIllustratorTools(options: UseIllustratorToolsOptions): UseIll
         },
       });
 
-      // Convert back to Fabric.js (simplified - in production would need more robust conversion)
+      // Serialize back to string
       const serializer = new XMLSerializer();
       const roughSvgString = serializer.serializeToString(roughSvg);
 
-      // For now, return null - full implementation would parse the rough SVG
-      // and create new Fabric.js objects
-      console.log('Hand-drawn SVG generated:', roughSvgString.substring(0, 200));
+      // Use Fabric.js loadSVGFromString to convert back
+      try {
+        const fabric = (window as any).fabric;
+        if (!fabric?.loadSVGFromString) {
+          console.warn('Fabric.loadSVGFromString not available');
+          return null;
+        }
 
-      return null;
+        return new Promise((resolve) => {
+          fabric.loadSVGFromString(roughSvgString, (objects: FabricObject[], options: any) => {
+            if (!objects || objects.length === 0) {
+              resolve(null);
+              return;
+            }
+
+            // Group all objects if multiple
+            let result: FabricObject;
+            if (objects.length === 1) {
+              result = objects[0];
+            } else {
+              result = new fabric.Group(objects, options);
+            }
+
+            // Position at original location
+            result.set({
+              left: left,
+              top: top,
+              selectable: true,
+              evented: true,
+            });
+
+            resolve(result);
+          });
+        });
+      } catch (error) {
+        console.error('Failed to convert hand-drawn SVG to Fabric.js:', error);
+        return null;
+      }
     },
     [canvas, handDrawnSettings]
   );
 
-  const applyHandDrawnToSelection = useCallback(() => {
+  const applyHandDrawnToSelection = useCallback(async () => {
     if (!canvas || !handDrawnSettings?.enabled) return;
 
     const activeObjects = canvas.getActiveObjects();
     if (activeObjects.length === 0) return;
 
-    activeObjects.forEach((obj) => {
-      const roughObj = applyHandDrawnStyle(obj);
+    // Process each object and collect replacements
+    const replacements: Array<{ original: FabricObject; replacement: FabricObject; index: number }> = [];
+
+    for (const obj of activeObjects) {
+      const index = canvas.getObjects().indexOf(obj);
+      const roughObj = await applyHandDrawnStyle(obj);
       if (roughObj) {
-        // Replace original with rough version
-        const index = canvas.getObjects().indexOf(obj);
-        canvas.remove(obj);
-        canvas.insertAt(index, roughObj);
+        replacements.push({ original: obj, replacement: roughObj, index });
       }
-    });
+    }
+
+    // Apply replacements
+    for (const { original, replacement, index } of replacements) {
+      canvas.remove(original);
+      canvas.insertAt(index, replacement);
+    }
 
     canvas.discardActiveObject();
     canvas.renderAll();
