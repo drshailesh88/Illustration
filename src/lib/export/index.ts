@@ -14,11 +14,9 @@ import { saveSvgAsPng, svgAsPngUri, svgAsDataUri, download } from 'save-svg-as-p
 import { jsPDF } from 'jspdf';
 import { svg2pdf } from 'svg2pdf.js';
 
-// TODO: Create ExportDialog component
-// - Format selection (PNG, SVG, PDF)
-// - Quality/resolution settings
-// - Page size options for PDF
-// - Preview before export
+// ExportDialog component available at: @/components/ExportDialog
+// Features: Format selection (PNG, SVG, PDF, LaTeX), Quality/resolution settings,
+// Page size options for PDF, Preview functionality
 
 // TODO: Implement PNG export features
 // - Custom resolution (1x, 2x, 4x)

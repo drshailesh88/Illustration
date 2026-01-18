@@ -71,3 +71,21 @@ export {
   type IconGridProps as UnifiedIconGridProps,
   type IconPreviewProps,
 } from './IconPicker/index';
+
+// Export Dialog (PNG, SVG, PDF, LaTeX export)
+export {
+  ExportDialog,
+  FormatTabs,
+  PNGOptions,
+  SVGOptions,
+  PDFOptions,
+  LaTeXOptions,
+  type ExportDialogProps,
+  type ExportSettings,
+  type ExportFormat,
+  type FormatTabsProps,
+  type PNGExportSettings,
+  type SVGExportSettings,
+  type PDFExportSettings,
+  type LaTeXExportSettings,
+} from './ExportDialog';
