@@ -148,7 +148,9 @@ export function EditorMode(): JSX.Element {
   }, []);
 
   // Initialize illustrator tools hook
-  const illustratorTools = useIllustratorTools({
+  // The hook sets up event handlers and manages Paper.js integration
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _illustratorTools = useIllustratorTools({
     canvas: canvas,
     activeTool: illustratorTool,
     handDrawnSettings: handDrawnSettings,

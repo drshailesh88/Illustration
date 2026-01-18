@@ -12,10 +12,9 @@
 import { useRef, useCallback, useEffect, useState } from 'react';
 import paper from 'paper';
 import { Canvas as FabricCanvas, Path as FabricPath, FabricObject } from 'fabric';
-import { PenTool, pathToFabricSvg } from '../lib/paper/PenTool';
+import { PenTool } from '../lib/paper/PenTool';
 import { getStrokePath, strokePresets, InputPoint } from '../lib/freehand/index';
 import {
-  HandDrawnStyle,
   convertToHandDrawn,
   StylePreset,
 } from '../lib/rough/index';
@@ -257,13 +256,15 @@ export function useIllustratorTools(options: UseIllustratorToolsOptions): UseIll
   useEffect(() => {
     if (!canvas || !isBrushToolActive) return;
 
-    const handleMouseDown = (e: { e: MouseEvent; pointer?: { x: number; y: number } }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleMouseDown = (e: any) => {
       if (e.pointer) {
         startBrushStroke(e.pointer.x, e.pointer.y);
       }
     };
 
-    const handleMouseMove = (e: { e: MouseEvent; pointer?: { x: number; y: number } }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleMouseMove = (e: any) => {
       if (e.pointer) {
         continueBrushStroke(e.pointer.x, e.pointer.y);
       }
