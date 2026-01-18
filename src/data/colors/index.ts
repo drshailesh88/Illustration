@@ -313,3 +313,28 @@ export {
 } from './pediatrics';
 
 export type { PediatricsColorScheme } from './pediatrics';
+
+// =============================================================================
+// PATHOLOGY
+// =============================================================================
+
+export {
+  heStainColors,
+  specialStainColors,
+  ihcColors,
+  normalCellColors,
+  abnormalCellColors,
+  inflammatoryCellColors,
+  inflammationPatternColors,
+  tumorClassificationColors,
+  tumorTypeColors,
+  laboratoryColors,
+  microscopyColors,
+  autopsyColors,
+  hematopathologyColors,
+  flowchartColors as pathologyFlowchartColors,
+  gradingColors,
+  pathologyColorScheme,
+} from './pathology';
+
+export type { PathologyColorScheme } from './pathology';
