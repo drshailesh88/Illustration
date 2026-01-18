@@ -1,44 +1,52 @@
 {
-  "currentSpecialty": "neurology",
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology"],
+  "currentSpecialty": "hematology-oncology",
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology"],
   "blockedSpecialties": [],
   "progress": {
     "neurology": {
-      "iterations": 1,
-      "currentScore": 25,
-      "lastCheckpoint": "FOUNDATION_25",
+      "iterations": 2,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
       "startedAt": "2026-01-18T00:00:00Z",
-      "completedAt": null,
+      "completedAt": "2026-01-18T20:00:00Z",
       "metrics": {
         "icons": {
-          "current": 48,
+          "current": 110,
           "target": 90,
-          "percentage": 53
+          "percentage": 122
         },
         "templates": {
-          "current": 11,
+          "current": 25,
           "target": 25,
-          "percentage": 44
+          "percentage": 100
         },
         "prompts": {
-          "current": 15,
+          "current": 20,
           "target": 20,
-          "percentage": 75
+          "percentage": 100
         },
-        "colorScheme": false
+        "colorScheme": true
       },
       "details": {
         "icons": {
-          "brain-anatomy": 18,
+          "brain-anatomy": 20,
           "neurons-synapses": 8,
           "spinal-nerves": 14,
-          "pathology": 6,
-          "diagnostics": 6
+          "pathology": 25,
+          "diagnostics": 21,
+          "surgery": 15,
+          "movement-disorders": 8,
+          "pediatric": 8,
+          "scales": 4,
+          "vascular": 4,
+          "anatomy": 6
         },
         "templates": {
-          "clinical-decision-trees": 5,
-          "anatomical-diagrams": 4,
-          "procedure-examination": 2
+          "clinical-decision-trees": 10,
+          "anatomical-diagrams": 5,
+          "procedure-examination": 4,
+          "data-visualization": 4,
+          "additional-clinical": 2
         }
       }
     },
@@ -317,16 +325,16 @@
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 7,
-    "inProgress": 1,
+    "completed": 8,
+    "inProgress": 0,
     "blocked": 0,
     "notStarted": 27,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 792,
-    "currentTotalTemplates": 187,
-    "currentTotalPrompts": 127
+    "currentTotalIcons": 854,
+    "currentTotalTemplates": 201,
+    "currentTotalPrompts": 132
   },
   "executionOrder": [
     "cardiology",

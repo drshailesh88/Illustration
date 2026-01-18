@@ -2073,6 +2073,839 @@ export const neurologyIcons: IconDefinition[] = [
       <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">V1</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // MOVEMENT DISORDERS - COMPLETE
+  // ===========================================================================
+  {
+    id: 'neuro-essential-tremor',
+    name: 'Essential Tremor',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['tremor', 'essential', 'postural', 'kinetic', 'familial', 'benign'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M32 20v12"/>
+      <path d="M24 26l-12 20" stroke-width="2"/>
+      <path d="M40 26l12 20" stroke-width="2"/>
+      <path d="M8 46c2-2 4-2 6 0s4 2 6 0" stroke="orange" stroke-width="2"/>
+      <path d="M44 46c2-2 4-2 6 0s4 2 6 0" stroke="orange" stroke-width="2"/>
+      <path d="M10 50c2-2 4-2 6 0s4 2 6 0" stroke="orange" stroke-width="2"/>
+      <path d="M42 50c2-2 4-2 6 0s4 2 6 0" stroke="orange" stroke-width="2"/>
+      <text x="16" y="60" font-size="3" fill="orange" stroke="none">Postural tremor</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-dystonia',
+    name: 'Dystonia',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['dystonia', 'torticollis', 'sustained', 'contraction', 'twisting', 'posture'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M32 20c-8 4-12 12-8 20" stroke-width="2"/>
+      <path d="M24 26l-8 4"/>
+      <path d="M40 22c8 4 12 0 12-4" stroke-width="2" stroke="purple"/>
+      <path d="M24 40l-10 14"/>
+      <path d="M24 40c4 8 8 12 16 10"/>
+      <path d="M36 8c4-4 8-4 8 0" stroke="purple"/>
+      <path d="M28 8c-4-4-8-4-8 0" stroke="purple"/>
+      <text x="4" y="58" font-size="3" fill="purple" stroke="none">Sustained contraction</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-chorea',
+    name: 'Chorea',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['chorea', 'Huntington', 'Sydenham', 'involuntary', 'dance-like', 'random'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="12" r="6"/>
+      <path d="M32 18v10"/>
+      <path d="M24 24l-12 8"/>
+      <path d="M40 24l12 8"/>
+      <path d="M28 28l-8 20"/>
+      <path d="M36 28l8 20"/>
+      <path d="M8 32c4-4 4-8 0-8" stroke="red" stroke-dasharray="2 2"/>
+      <path d="M56 32c-4-4-4-8 0-8" stroke="red" stroke-dasharray="2 2"/>
+      <path d="M16 48c4 4 4 8 0 8" stroke="red" stroke-dasharray="2 2"/>
+      <path d="M48 48c-4 4-4 8 0 8" stroke="red" stroke-dasharray="2 2"/>
+      <path d="M30 12c-2-2-2-4 0-4" stroke="red" stroke-dasharray="2 2"/>
+      <text x="12" y="60" font-size="3" fill="red" stroke="none">Random, dance-like</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-athetosis',
+    name: 'Athetosis',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['athetosis', 'slow', 'writhing', 'sinuous', 'distal', 'CP'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v12"/>
+      <path d="M26 22l-8 8c-4 4-8 12-4 16" stroke-width="2"/>
+      <path d="M38 22l8 8c4 4 8 12 4 16" stroke-width="2"/>
+      <path d="M10 46c4 4 8 4 12-2" stroke="teal" stroke-width="2"/>
+      <path d="M54 46c-4 4-8 4-12-2" stroke="teal" stroke-width="2"/>
+      <path d="M28 28l-4 24c0 4 4 4 6 0"/>
+      <path d="M36 28l4 24c0 4-4 4-6 0"/>
+      <text x="8" y="60" font-size="3" fill="teal" stroke="none">Slow, writhing movements</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-myoclonus',
+    name: 'Myoclonus',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['myoclonus', 'jerk', 'sudden', 'brief', 'shock-like', 'epileptic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v14"/>
+      <path d="M24 24l-12 4"/>
+      <path d="M40 24l12 4"/>
+      <path d="M28 30l-4 24"/>
+      <path d="M36 30l4 24"/>
+      <path d="M8 28l4-8" stroke="yellow" stroke-width="3"/>
+      <path d="M56 28l-4-8" stroke="yellow" stroke-width="3"/>
+      <path d="M20 54l4-8" stroke="yellow" stroke-width="3"/>
+      <path d="M44 54l-4-8" stroke="yellow" stroke-width="3"/>
+      <text x="12" y="60" font-size="3" fill="currentColor" stroke="none">Sudden jerks</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-tics',
+    name: 'Tics / Tourette',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['tics', 'Tourette', 'motor', 'vocal', 'stereotyped', 'repetitive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="16" r="10"/>
+      <ellipse cx="27" cy="14" rx="2" ry="3"/>
+      <ellipse cx="37" cy="14" rx="2" ry="3"/>
+      <path d="M27 14c0-2 1-4 2-4" stroke="green" stroke-width="2"/>
+      <path d="M37 14c0-2-1-4-2-4" stroke="green" stroke-width="2"/>
+      <path d="M27 22c3 2 7 2 10 0"/>
+      <path d="M32 26v8"/>
+      <path d="M24 30l-8 4"/>
+      <path d="M40 30l8 4"/>
+      <path d="M36 8l4-4" stroke="green" stroke-width="2"/>
+      <path d="M38 12l4 0" stroke="green" stroke-width="2"/>
+      <path d="M4 44c2-2 4 0 4 2" stroke="orange"/>
+      <path d="M6 48c2 0 4-2 4 0" stroke="orange"/>
+      <text x="12" y="54" font-size="3" fill="orange" stroke="none">Vocal tic</text>
+      <text x="36" y="54" font-size="3" fill="green" stroke="none">Motor tic</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-ballismus',
+    name: 'Ballismus',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['ballismus', 'hemiballismus', 'STN', 'violent', 'flinging', 'proximal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v12"/>
+      <path d="M26 22l-18-8" stroke-width="3" stroke="red"/>
+      <path d="M38 22l8 4"/>
+      <path d="M28 28l-12 24" stroke-width="3" stroke="red"/>
+      <path d="M36 28l4 24"/>
+      <path d="M4 14l8 4" stroke="red" stroke-dasharray="3 2"/>
+      <path d="M12 52l8 4" stroke="red" stroke-dasharray="3 2"/>
+      <text x="32" y="56" font-size="3" fill="currentColor" stroke="none">Unaffected</text>
+      <text x="4" y="24" font-size="3" fill="red" stroke="none">Flinging</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-ataxic-gait',
+    name: 'Ataxic Gait',
+    domain: 'medicine',
+    category: 'movement-disorders',
+    tags: ['ataxia', 'gait', 'cerebellar', 'wide-based', 'unsteady', 'staggering'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v14"/>
+      <path d="M26 24l-6 4"/>
+      <path d="M38 24l6 4"/>
+      <path d="M28 30l-12 24" stroke-width="2"/>
+      <path d="M36 30l12 24" stroke-width="2"/>
+      <ellipse cx="16" cy="56" rx="6" ry="3"/>
+      <ellipse cx="48" cy="56" rx="6" ry="3"/>
+      <path d="M22 50l-4 4" stroke="blue" stroke-dasharray="2 2"/>
+      <path d="M42 50l4 4" stroke="blue" stroke-dasharray="2 2"/>
+      <path d="M12 46c-4 4-4 8 0 8" stroke="blue" stroke-dasharray="2 2"/>
+      <text x="16" y="44" font-size="3" fill="blue" stroke="none">Wide base</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // PEDIATRIC NEUROLOGY - COMPLETE
+  // ===========================================================================
+  {
+    id: 'neuro-febrile-seizure',
+    name: 'Febrile Seizure',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['febrile', 'seizure', 'fever', 'pediatric', 'convulsion', 'childhood'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="14" rx="12" ry="10" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="14" rx="12" ry="10"/>
+      <circle cx="27" cy="12" r="2"/>
+      <circle cx="37" cy="12" r="2"/>
+      <path d="M27 18c3 2 7 2 10 0"/>
+      <path d="M32 24v8"/>
+      <path d="M24 28l-10 6"/>
+      <path d="M40 28l10 6"/>
+      <path d="M28 32l-6 20"/>
+      <path d="M36 32l6 20"/>
+      <path d="M44 8l4-4" stroke="red" stroke-width="2"/>
+      <path d="M48 12l4 0" stroke="red" stroke-width="2"/>
+      <path d="M44 16l4 4" stroke="red" stroke-width="2"/>
+      <rect x="50" y="28" width="10" height="20" fill="red" opacity="0.2"/>
+      <text x="52" y="42" font-size="6" fill="red" stroke="none">39°</text>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Fever-induced</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-cerebral-palsy',
+    name: 'Cerebral Palsy',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['cerebral palsy', 'CP', 'spastic', 'diplegia', 'hemiplegia', 'quadriplegia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v10"/>
+      <path d="M26 22l-8 4"/>
+      <path d="M38 22l8 4"/>
+      <path d="M28 26c-4 8-6 20-4 28" stroke-width="2"/>
+      <path d="M36 26c4 8 6 20 4 28" stroke-width="2"/>
+      <path d="M22 54c-2 4 0 6 4 6" fill="currentColor" opacity="0.2"/>
+      <path d="M42 54c2 4 0 6-4 6" fill="currentColor" opacity="0.2"/>
+      <path d="M14 26c0 4 4 4 4 0" stroke="purple" stroke-width="2"/>
+      <path d="M46 26c0 4 4 4 4 0" stroke="purple" stroke-width="2"/>
+      <path d="M20 46c0 4 4 4 4 0" stroke="purple" stroke-width="2"/>
+      <path d="M40 46c0 4 4 4 4 0" stroke="purple" stroke-width="2"/>
+      <text x="4" y="40" font-size="3" fill="purple" stroke="none">Spasticity</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-hydrocephalus-pediatric',
+    name: 'Pediatric Hydrocephalus',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['hydrocephalus', 'macrocephaly', 'fontanelle', 'shunt', 'pediatric', 'infant'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="24" rx="24" ry="20"/>
+      <ellipse cx="32" cy="8" rx="6" ry="4" fill="blue" opacity="0.3" stroke="blue"/>
+      <ellipse cx="24" cy="24" rx="8" ry="10" fill="blue" opacity="0.2"/>
+      <ellipse cx="40" cy="24" rx="8" ry="10" fill="blue" opacity="0.2"/>
+      <circle cx="26" cy="30" r="3"/>
+      <circle cx="38" cy="30" r="3"/>
+      <path d="M28 38c2 2 6 2 8 0"/>
+      <path d="M32 44v8"/>
+      <path d="M26 48l-8 4"/>
+      <path d="M38 48l8 4"/>
+      <text x="26" y="10" font-size="3" fill="blue" stroke="none">Bulging</text>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Enlarged head</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-neural-tube-defect',
+    name: 'Neural Tube Defect',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['neural tube', 'spina bifida', 'myelomeningocele', 'anencephaly', 'congenital'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="4" width="16" height="20" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="4" width="16" height="20" rx="2"/>
+      <rect x="22" y="26" width="20" height="6" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="22" y="26" width="20" height="6" rx="1"/>
+      <rect x="22" y="34" width="20" height="6" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="22" y="34" width="20" height="6" rx="1"/>
+      <path d="M26 42c-2 8 0 16 6 18"/>
+      <path d="M38 42c2 8 0 16-6 18"/>
+      <ellipse cx="32" cy="46" rx="8" ry="6" fill="red" opacity="0.3" stroke="red"/>
+      <path d="M28 42v8" stroke="red"/>
+      <path d="M36 42v8" stroke="red"/>
+      <text x="4" y="50" font-size="3" fill="red" stroke="none">Myelomeningocele</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-infantile-spasms',
+    name: 'Infantile Spasms',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['infantile spasms', 'West syndrome', 'hypsarrhythmia', 'epilepsy', 'flexor', 'clusters'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="16" rx="10" ry="8" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="16" rx="10" ry="8"/>
+      <circle cx="28" cy="14" r="2" fill="currentColor"/>
+      <circle cx="36" cy="14" r="2" fill="currentColor"/>
+      <path d="M28 20c2 1 6 1 8 0"/>
+      <ellipse cx="32" cy="36" rx="12" ry="10" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="36" rx="12" ry="10"/>
+      <path d="M20 24c-4 4-8 8-8 16" stroke-width="2"/>
+      <path d="M44 24c4 4 8 8 8 16" stroke-width="2"/>
+      <path d="M24 46c-4 4-4 8-8 12"/>
+      <path d="M40 46c4 4 4 8 8 12"/>
+      <path d="M28 24c4 4 4 8 4 12" stroke="red"/>
+      <path d="M36 24c-4 4-4 8-4 12" stroke="red"/>
+      <text x="4" y="58" font-size="3" fill="red" stroke="none">Flexor spasms</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-developmental-delay',
+    name: 'Developmental Delay',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['developmental delay', 'milestone', 'motor', 'cognitive', 'speech', 'pediatric'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.05"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <line x1="8" y1="20" x2="56" y2="20"/>
+      <line x1="8" y1="32" x2="56" y2="32"/>
+      <line x1="8" y1="44" x2="56" y2="44"/>
+      <text x="10" y="16" font-size="3" fill="currentColor" stroke="none">Motor</text>
+      <text x="10" y="28" font-size="3" fill="currentColor" stroke="none">Speech</text>
+      <text x="10" y="40" font-size="3" fill="currentColor" stroke="none">Social</text>
+      <circle cx="30" cy="26" r="3" fill="green"/>
+      <circle cx="38" cy="38" r="3" fill="yellow"/>
+      <circle cx="44" cy="50" r="3" fill="red"/>
+      <path d="M30 26l8 12" stroke="orange" stroke-width="2"/>
+      <path d="M38 38l6 12" stroke="orange" stroke-width="2"/>
+      <text x="12" y="52" font-size="3" fill="currentColor" stroke="none">Expected</text>
+      <text x="40" y="52" font-size="3" fill="red" stroke="none">Delayed</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-autism-spectrum',
+    name: 'Autism Spectrum',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['autism', 'ASD', 'spectrum', 'neurodevelopmental', 'social', 'communication'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="12" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="24" r="12"/>
+      <circle cx="28" cy="22" r="2"/>
+      <circle cx="36" cy="22" r="2"/>
+      <path d="M27 22l-4-4" stroke="blue" stroke-dasharray="2 2"/>
+      <path d="M37 22l4-4" stroke="blue" stroke-dasharray="2 2"/>
+      <path d="M28 30h8"/>
+      <path d="M32 36v8"/>
+      <ellipse cx="16" cy="44" rx="8" ry="6" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="48" cy="44" rx="8" ry="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="16" cy="44" r="3" fill="purple" opacity="0.4"/>
+      <circle cx="48" cy="44" r="3" fill="purple" opacity="0.4"/>
+      <path d="M24 44h-8" stroke-dasharray="3 2"/>
+      <path d="M40 44h8" stroke-dasharray="3 2"/>
+      <text x="4" y="56" font-size="3" fill="blue" stroke="none">Social interaction</text>
+      <text x="36" y="56" font-size="3" fill="purple" stroke="none">Repetitive</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-muscular-dystrophy',
+    name: 'Muscular Dystrophy',
+    domain: 'medicine',
+    category: 'pediatric',
+    tags: ['muscular dystrophy', 'Duchenne', 'DMD', 'Gower', 'weakness', 'dystrophin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="10" r="6"/>
+      <path d="M32 16v10"/>
+      <path d="M26 22l-8 4"/>
+      <path d="M38 22l8 4"/>
+      <path d="M28 26c-2 8-2 16-6 22" stroke-width="2"/>
+      <path d="M36 26c2 8 2 16 6 22" stroke-width="2"/>
+      <ellipse cx="22" cy="38" rx="6" ry="10" fill="red" opacity="0.2" stroke="red"/>
+      <ellipse cx="42" cy="38" rx="6" ry="10" fill="red" opacity="0.2" stroke="red"/>
+      <path d="M18 48l4 8"/>
+      <path d="M46 48l-4 8"/>
+      <text x="4" y="58" font-size="3" fill="red" stroke="none">Pseudohypertrophy</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL PATHOLOGY - COMPLETE
+  // ===========================================================================
+  {
+    id: 'neuro-lacunar-stroke',
+    name: 'Lacunar Stroke',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['lacunar', 'stroke', 'small vessel', 'basal ganglia', 'thalamus', 'pure motor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z" fill="currentColor" opacity="0.1"/>
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z"/>
+      <circle cx="28" cy="36" r="4" fill="red" opacity="0.5" stroke="red"/>
+      <circle cx="38" cy="32" r="3" fill="red" opacity="0.5" stroke="red"/>
+      <circle cx="32" cy="28" r="2" fill="red" opacity="0.5" stroke="red"/>
+      <path d="M24 24c4 2 8 2 12 0" opacity="0.5"/>
+      <path d="M26 40c3 1 6 1 9 0" opacity="0.5"/>
+      <text x="8" y="56" font-size="3" fill="red" stroke="none">Small lacunar infarcts</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-watershed-infarct',
+    name: 'Watershed Infarct',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['watershed', 'infarct', 'border zone', 'hypotension', 'ACA-MCA', 'MCA-PCA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="26" ry="22" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="26" ry="22"/>
+      <line x1="32" y1="10" x2="32" y2="54"/>
+      <path d="M20 16c0 8 4 24 0 32" stroke="red" stroke-width="2" fill="red" opacity="0.2"/>
+      <path d="M44 16c0 8-4 24 0 32" stroke="red" stroke-width="2" fill="red" opacity="0.2"/>
+      <text x="8" y="34" font-size="3" fill="currentColor" stroke="none">ACA</text>
+      <text x="24" y="34" font-size="3" fill="currentColor" stroke="none">MCA</text>
+      <text x="44" y="34" font-size="3" fill="currentColor" stroke="none">PCA</text>
+      <text x="4" y="56" font-size="3" fill="red" stroke="none">Border zones</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-glioblastoma',
+    name: 'Glioblastoma',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['glioblastoma', 'GBM', 'grade IV', 'glioma', 'butterfly', 'necrosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z" fill="currentColor" opacity="0.1"/>
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z"/>
+      <path d="M20 28c4-4 12-4 16 0 4-4 8-4 12 0 0 8-8 16-14 16s-14-8-14-16z" fill="purple" opacity="0.4" stroke="purple" stroke-width="2"/>
+      <circle cx="28" cy="32" r="4" fill="black" opacity="0.3"/>
+      <circle cx="38" cy="30" r="3" fill="black" opacity="0.3"/>
+      <path d="M32 20v8" stroke="purple" stroke-dasharray="2 2"/>
+      <text x="4" y="56" font-size="3" fill="purple" stroke="none">Butterfly glioma</text>
+      <text x="32" y="56" font-size="3" fill="currentColor" stroke="none">Necrosis</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-pituitary-adenoma',
+    name: 'Pituitary Adenoma',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['pituitary', 'adenoma', 'sella', 'prolactinoma', 'chiasm compression', 'hormone'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 16c0-6 6-10 12-10s12 4 12 10" fill="currentColor" opacity="0.1"/>
+      <path d="M20 16c0-6 6-10 12-10s12 4 12 10"/>
+      <path d="M20 16l-8 8h8"/>
+      <path d="M44 16l8 8h-8"/>
+      <rect x="18" y="24" width="28" height="8" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="18" y="24" width="28" height="8" rx="2"/>
+      <ellipse cx="32" cy="44" rx="14" ry="12" fill="purple" opacity="0.3" stroke="purple" stroke-width="2"/>
+      <path d="M20 32v12" stroke="purple"/>
+      <path d="M44 32v12" stroke="purple"/>
+      <path d="M32 28v4" stroke-dasharray="2 2"/>
+      <text x="24" y="48" font-size="4" fill="purple" stroke="none">Adenoma</text>
+      <text x="18" y="22" font-size="3" fill="currentColor" stroke="none">Chiasm</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-acoustic-neuroma',
+    name: 'Acoustic Neuroma',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['acoustic neuroma', 'vestibular schwannoma', 'CPA', 'hearing loss', 'tinnitus', 'CN VIII'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M12 32h40" stroke-dasharray="2 2"/>
+      <ellipse cx="18" cy="32" rx="8" ry="10" fill="orange" opacity="0.3" stroke="orange" stroke-width="2"/>
+      <circle cx="18" cy="32" r="3" fill="orange"/>
+      <path d="M10 32h-6"/>
+      <path d="M4 28c-2 4-2 4 0 8"/>
+      <path d="M26 32h8" stroke="orange" stroke-width="2"/>
+      <text x="4" y="48" font-size="3" fill="orange" stroke="none">CN VIII tumor</text>
+      <text x="4" y="54" font-size="3" fill="currentColor" stroke="none">CPA</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-cavernoma',
+    name: 'Cavernous Malformation',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['cavernoma', 'cavernous malformation', 'CCM', 'vascular', 'popcorn', 'hemosiderin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z" fill="currentColor" opacity="0.1"/>
+      <path d="M12 32c0-14 10-24 22-24s18 8 18 20c0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-12-10-12-18z"/>
+      <circle cx="36" cy="28" r="4" fill="purple" opacity="0.4"/>
+      <circle cx="40" cy="32" r="3" fill="purple" opacity="0.5"/>
+      <circle cx="34" cy="34" r="3" fill="purple" opacity="0.5"/>
+      <circle cx="38" cy="26" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="42" cy="28" r="2" fill="purple" opacity="0.4"/>
+      <circle cx="36" cy="28" r="8" stroke="brown" stroke-width="2" fill="none"/>
+      <text x="4" y="56" font-size="3" fill="purple" stroke="none">Popcorn lesion</text>
+      <text x="32" y="56" font-size="3" fill="brown" stroke="none">Hemosiderin</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-transverse-myelitis',
+    name: 'Transverse Myelitis',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['transverse myelitis', 'spinal cord', 'inflammation', 'demyelination', 'paraplegia', 'sensory level'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="4" width="16" height="56" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="24" y="4" width="16" height="56" rx="4"/>
+      <rect x="24" y="24" width="16" height="16" fill="red" opacity="0.3" stroke="red" stroke-width="2"/>
+      <path d="M16 32h8"/>
+      <path d="M40 32h8"/>
+      <path d="M16 28h4"/>
+      <path d="M44 28h4"/>
+      <path d="M16 36h4"/>
+      <path d="M44 36h4"/>
+      <line x1="8" y1="24" x2="8" y2="40" stroke="blue" stroke-width="3"/>
+      <text x="4" y="48" font-size="3" fill="blue" stroke="none">Level</text>
+      <text x="42" y="52" font-size="3" fill="red" stroke="none">Inflamed</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-syringomyelia',
+    name: 'Syringomyelia',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['syringomyelia', 'syrinx', 'spinal cord', 'cavity', 'Chiari', 'cape distribution'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="4" width="16" height="56" rx="4" fill="currentColor" opacity="0.15"/>
+      <rect x="24" y="4" width="16" height="56" rx="4"/>
+      <ellipse cx="32" cy="32" rx="4" ry="20" fill="blue" opacity="0.3" stroke="blue" stroke-width="1.5"/>
+      <path d="M16 16h8"/>
+      <path d="M40 16h8"/>
+      <path d="M16 48h8"/>
+      <path d="M40 48h8"/>
+      <path d="M28 32h8" stroke-dasharray="2 2"/>
+      <text x="4" y="34" font-size="3" fill="blue" stroke="none">Syrinx</text>
+      <text x="44" y="34" font-size="3" fill="currentColor" stroke="none">Cavity</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-chiari-malformation',
+    name: 'Chiari Malformation',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['Chiari', 'malformation', 'tonsillar herniation', 'foramen magnum', 'syrinx', 'headache'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 24c0-10 8-18 20-18s20 8 20 18" fill="currentColor" opacity="0.1"/>
+      <path d="M12 24c0-10 8-18 20-18s20 8 20 18"/>
+      <ellipse cx="32" cy="28" rx="8" ry="6" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="28" rx="8" ry="6"/>
+      <line x1="8" y1="32" x2="56" y2="32" stroke-width="2"/>
+      <ellipse cx="26" cy="40" rx="4" ry="8" fill="purple" opacity="0.3" stroke="purple"/>
+      <ellipse cx="38" cy="40" rx="4" ry="8" fill="purple" opacity="0.3" stroke="purple"/>
+      <rect x="28" y="48" width="8" height="12" rx="2" fill="currentColor" opacity="0.15"/>
+      <text x="4" y="34" font-size="3" fill="currentColor" stroke="none">FM</text>
+      <text x="4" y="48" font-size="3" fill="purple" stroke="none">Herniated tonsils</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL DIAGNOSTIC EQUIPMENT - COMPLETE
+  // ===========================================================================
+  {
+    id: 'neuro-eeg-montage',
+    name: 'EEG Montage Setup',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['EEG', 'montage', '10-20 system', 'electrodes', 'scalp', 'placement'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="28" rx="24" ry="20"/>
+      <circle cx="32" cy="10" r="2" fill="blue"/>
+      <circle cx="20" cy="16" r="2" fill="blue"/>
+      <circle cx="44" cy="16" r="2" fill="blue"/>
+      <circle cx="12" cy="28" r="2" fill="blue"/>
+      <circle cx="52" cy="28" r="2" fill="blue"/>
+      <circle cx="20" cy="40" r="2" fill="blue"/>
+      <circle cx="44" cy="40" r="2" fill="blue"/>
+      <circle cx="32" cy="28" r="2" fill="red"/>
+      <circle cx="24" cy="24" r="2" fill="green"/>
+      <circle cx="40" cy="24" r="2" fill="green"/>
+      <circle cx="24" cy="32" r="2" fill="green"/>
+      <circle cx="40" cy="32" r="2" fill="green"/>
+      <text x="28" y="52" font-size="3" fill="currentColor" stroke="none">Fp-Fz-Cz-Pz-Oz</text>
+      <text x="4" y="58" font-size="3" fill="blue" stroke="none">10-20 System</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-continuous-eeg',
+    name: 'Continuous EEG Monitoring',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['cEEG', 'continuous', 'ICU', 'monitoring', 'seizure detection', 'status'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="40" rx="4" fill="currentColor" opacity="0.05"/>
+      <rect x="4" y="4" width="56" height="40" rx="4"/>
+      <path d="M8 16h48" stroke-dasharray="2 2" opacity="0.3"/>
+      <path d="M8 24h48" stroke-dasharray="2 2" opacity="0.3"/>
+      <path d="M8 32h48" stroke-dasharray="2 2" opacity="0.3"/>
+      <path d="M10 16c2-4 4 4 6 0s4 4 6 0 4 4 6 0 4 4 6 0 4 4 6 0 4 4 6 0" stroke="blue"/>
+      <path d="M10 24c2-2 4 2 6 0s4 2 6 0 4 2 6 0 4 2 6 0 4 2 6 0 4 2 6 0" stroke="green"/>
+      <path d="M10 32c1-1 2 1 3 0s2 1 3 0 2 1 3 0 2 1 3 0 2 1 3 0 2 1 3 0 2 1 3 0 2 1 3 0" stroke="purple"/>
+      <circle cx="50" cy="8" r="3" fill="green"/>
+      <text x="4" y="12" font-size="3" fill="currentColor" stroke="none">Fp1-F3</text>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">F3-C3</text>
+      <text x="4" y="28" font-size="3" fill="currentColor" stroke="none">C3-P3</text>
+      <rect x="8" y="48" width="16" height="12" rx="2" fill="red" opacity="0.2"/>
+      <text x="10" y="56" font-size="3" fill="red" stroke="none">SEIZURE</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-video-eeg',
+    name: 'Video EEG',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['video EEG', 'VEEG', 'epilepsy monitoring', 'seizure', 'localization', 'presurgical'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="32" y="4" width="28" height="20" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="32" y="4" width="28" height="20" rx="2"/>
+      <circle cx="46" cy="14" r="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="46" cy="14" r="3"/>
+      <rect x="4" y="28" width="56" height="32" rx="2" fill="currentColor" opacity="0.05"/>
+      <rect x="4" y="28" width="56" height="32" rx="2"/>
+      <path d="M8 40h20"/>
+      <path d="M8 40c2-4 4 4 6 0s4 4 6 0 2 4 4 0" stroke="blue"/>
+      <path d="M8 48h20"/>
+      <path d="M8 48c2-2 4 2 6 0s4 2 6 0 2 2 4 0" stroke="green"/>
+      <rect x="34" y="32" width="22" height="16" rx="1" fill="currentColor" opacity="0.1"/>
+      <circle cx="45" cy="40" r="4"/>
+      <text x="4" y="36" font-size="3" fill="currentColor" stroke="none">EEG</text>
+      <text x="34" y="54" font-size="3" fill="currentColor" stroke="none">Video sync</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-transcranial-doppler',
+    name: 'Transcranial Doppler',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['TCD', 'transcranial doppler', 'cerebral blood flow', 'vasospasm', 'MCA velocity'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="20" ry="16" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="24" rx="20" ry="16"/>
+      <path d="M20 24h24" stroke="red" stroke-width="2"/>
+      <path d="M8 24l8-4v8z" fill="currentColor" opacity="0.3"/>
+      <path d="M8 24l-4 0"/>
+      <path d="M4 20v8"/>
+      <path d="M4 44h56"/>
+      <path d="M8 44c4-8 8-8 12 0s8 8 12 0 8-8 12 0 8 8 12 0" stroke="blue" stroke-width="2"/>
+      <text x="4" y="36" font-size="3" fill="currentColor" stroke="none">Probe</text>
+      <text x="28" y="20" font-size="3" fill="red" stroke="none">MCA</text>
+      <text x="4" y="58" font-size="3" fill="blue" stroke="none">Flow velocity</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-mri-spectroscopy',
+    name: 'MR Spectroscopy',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['MRS', 'spectroscopy', 'NAA', 'choline', 'creatine', 'lactate', 'metabolites'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.05"/>
+      <rect x="4" y="4" width="56" height="56" rx="4"/>
+      <line x1="8" y1="48" x2="56" y2="48"/>
+      <line x1="8" y1="48" x2="8" y2="8"/>
+      <path d="M16 44v-20" stroke="blue" stroke-width="3"/>
+      <path d="M26 44v-16" stroke="green" stroke-width="3"/>
+      <path d="M36 44v-12" stroke="purple" stroke-width="3"/>
+      <path d="M46 44v-8" stroke="orange" stroke-width="3"/>
+      <text x="14" y="56" font-size="3" fill="blue" stroke="none">NAA</text>
+      <text x="23" y="56" font-size="3" fill="green" stroke="none">Cho</text>
+      <text x="33" y="56" font-size="3" fill="purple" stroke="none">Cr</text>
+      <text x="43" y="56" font-size="3" fill="orange" stroke="none">Lac</text>
+      <text x="8" y="12" font-size="3" fill="currentColor" stroke="none">Amplitude</text>
+      <text x="48" y="52" font-size="3" fill="currentColor" stroke="none">ppm</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-functional-mri',
+    name: 'Functional MRI',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['fMRI', 'BOLD', 'functional', 'activation', 'motor cortex', 'language'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.05"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <ellipse cx="32" cy="32" rx="18" ry="16" fill="currentColor" opacity="0.15"/>
+      <ellipse cx="32" cy="32" rx="18" ry="16"/>
+      <line x1="32" y1="16" x2="32" y2="48" stroke-dasharray="2 2"/>
+      <ellipse cx="22" cy="28" rx="6" ry="4" fill="red" opacity="0.5"/>
+      <ellipse cx="42" cy="28" rx="6" ry="4" fill="orange" opacity="0.5"/>
+      <ellipse cx="32" cy="40" rx="4" ry="3" fill="yellow" opacity="0.5"/>
+      <text x="16" y="24" font-size="3" fill="red" stroke="none">Motor</text>
+      <text x="38" y="24" font-size="3" fill="orange" stroke="none">Sensory</text>
+      <text x="26" y="48" font-size="3" fill="yellow" stroke="none">Language</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-intraoperative-monitoring',
+    name: 'Intraoperative Monitoring',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['IOM', 'IONM', 'MEP', 'SSEP', 'EMG', 'surgery', 'neuromonitoring'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.05"/>
+      <rect x="4" y="4" width="56" height="56" rx="4"/>
+      <rect x="8" y="8" width="24" height="20" rx="2" fill="currentColor" opacity="0.1"/>
+      <text x="10" y="14" font-size="3" fill="currentColor" stroke="none">MEP</text>
+      <path d="M10 20c2-4 4 4 6 0s4 4 6 0" stroke="red"/>
+      <rect x="36" y="8" width="24" height="20" rx="2" fill="currentColor" opacity="0.1"/>
+      <text x="38" y="14" font-size="3" fill="currentColor" stroke="none">SSEP</text>
+      <path d="M38 20c2-2 4 2 6 0s4 2 6 0 4-2 6 0" stroke="blue"/>
+      <rect x="8" y="32" width="24" height="20" rx="2" fill="currentColor" opacity="0.1"/>
+      <text x="10" y="38" font-size="3" fill="currentColor" stroke="none">EMG</text>
+      <path d="M10 44h20"/>
+      <path d="M14 44v-4"/>
+      <path d="M20 44v-6"/>
+      <path d="M26 44v-3"/>
+      <circle cx="48" cy="42" r="10" fill="green" opacity="0.2"/>
+      <text x="44" y="44" font-size="4" fill="green" stroke="none">OK</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL SURGICAL PROCEDURES - COMPLETE
+  // ===========================================================================
+  {
+    id: 'neuro-microvascular-decompression',
+    name: 'Microvascular Decompression',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['MVD', 'microvascular', 'decompression', 'trigeminal', 'hemifacial', 'Teflon'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="16" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="28" r="16"/>
+      <circle cx="32" cy="28" r="4" fill="currentColor" opacity="0.3"/>
+      <path d="M28 28l-12 8" stroke="red" stroke-width="2"/>
+      <path d="M16 36c-4 4-8 8-4 12" stroke="red" stroke-width="2"/>
+      <path d="M22 32c-2 2-4 6-2 10" stroke="blue" stroke-width="1.5"/>
+      <rect x="18" y="36" width="6" height="4" fill="white" stroke="gray"/>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">Teflon pad</text>
+      <text x="8" y="30" font-size="3" fill="red" stroke="none">Artery</text>
+      <text x="8" y="48" font-size="3" fill="blue" stroke="none">CN V</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-stereotactic-biopsy',
+    name: 'Stereotactic Biopsy',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['stereotactic', 'biopsy', 'brain', 'frame', 'coordinates', 'lesion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="20" ry="16" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="28" rx="20" ry="16"/>
+      <rect x="8" y="8" width="48" height="40" rx="2" fill="none" stroke="blue"/>
+      <line x1="8" y1="28" x2="56" y2="28" stroke="blue" stroke-dasharray="2 2"/>
+      <line x1="32" y1="8" x2="32" y2="48" stroke="blue" stroke-dasharray="2 2"/>
+      <circle cx="40" cy="24" r="4" fill="purple" opacity="0.4" stroke="purple"/>
+      <path d="M40 8v12" stroke-width="2"/>
+      <circle cx="40" cy="8" r="2" fill="currentColor"/>
+      <text x="44" y="26" font-size="3" fill="purple" stroke="none">Target</text>
+      <text x="4" y="56" font-size="3" fill="blue" stroke="none">Frame coordinates</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-awake-craniotomy',
+    name: 'Awake Craniotomy',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['awake', 'craniotomy', 'eloquent cortex', 'mapping', 'language', 'motor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="22" ry="18" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="24" rx="22" ry="18"/>
+      <path d="M18 12a18 14 0 0 1 28 0" stroke="red" stroke-width="2"/>
+      <ellipse cx="32" cy="20" rx="10" ry="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="26" cy="18" r="2" fill="blue"/>
+      <circle cx="38" cy="18" r="2" fill="green"/>
+      <circle cx="32" cy="24" r="2" fill="orange"/>
+      <path d="M26 18l-4-8" stroke="blue"/>
+      <path d="M38 18l4-8" stroke="green"/>
+      <path d="M24 44l4-4 4 4"/>
+      <path d="M36 44l4-4 4 4"/>
+      <ellipse cx="30" cy="52" rx="4" ry="2"/>
+      <path d="M28 50c2 2 2 4 0 4"/>
+      <text x="4" y="10" font-size="3" fill="blue" stroke="none">Motor</text>
+      <text x="46" y="10" font-size="3" fill="green" stroke="none">Sensory</text>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">Patient awake</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-lumboperitoneal-shunt',
+    name: 'LP Shunt',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['LP shunt', 'lumboperitoneal', 'pseudotumor', 'IIH', 'CSF', 'drainage'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="4" width="16" height="24" rx="2" fill="currentColor" opacity="0.15"/>
+      <rect x="24" y="4" width="16" height="24" rx="2"/>
+      <rect x="22" y="28" width="20" height="8" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="28" width="20" height="8" rx="1"/>
+      <path d="M32 36v4"/>
+      <rect x="28" y="40" width="8" height="6" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="28" y="40" width="8" height="6" rx="1"/>
+      <path d="M32 46c8 4 16 4 20 8"/>
+      <ellipse cx="52" cy="56" rx="6" ry="4" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="52" cy="56" rx="6" ry="4"/>
+      <circle cx="32" cy="32" r="2" fill="blue" opacity="0.5"/>
+      <text x="4" y="36" font-size="3" fill="currentColor" stroke="none">L3-L4</text>
+      <text x="4" y="44" font-size="3" fill="currentColor" stroke="none">Valve</text>
+      <text x="44" y="52" font-size="3" fill="currentColor" stroke="none">Peritoneum</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-vagal-nerve-stimulator',
+    name: 'Vagal Nerve Stimulator',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['VNS', 'vagal', 'stimulator', 'epilepsy', 'refractory', 'neuromodulation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M32 20v8"/>
+      <path d="M28 28l-8 4v16"/>
+      <path d="M36 28l8 4"/>
+      <ellipse cx="20" cy="50" rx="6" ry="4" fill="blue" opacity="0.2"/>
+      <ellipse cx="20" cy="50" rx="6" ry="4" stroke="blue"/>
+      <path d="M20 46v-8" stroke="blue" stroke-width="2"/>
+      <path d="M20 38c-4 0-8-4-8-8" stroke="blue"/>
+      <rect x="4" y="28" width="10" height="14" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="4" y="28" width="10" height="14" rx="2"/>
+      <path d="M9 28v-4"/>
+      <path d="M9 24l11 14" stroke="blue"/>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">IPG</text>
+      <text x="14" y="56" font-size="3" fill="blue" stroke="none">CN X</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-responsive-neurostimulation',
+    name: 'Responsive Neurostimulation',
+    domain: 'medicine',
+    category: 'surgery',
+    tags: ['RNS', 'responsive', 'neurostimulation', 'epilepsy', 'closed-loop', 'seizure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="22" ry="18" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="24" rx="22" ry="18"/>
+      <rect x="24" y="8" width="16" height="8" rx="2" fill="currentColor" opacity="0.3"/>
+      <rect x="24" y="8" width="16" height="8" rx="2"/>
+      <path d="M28 16v8"/>
+      <path d="M36 16v8"/>
+      <circle cx="28" cy="28" r="3" fill="green"/>
+      <circle cx="36" cy="28" r="3" fill="green"/>
+      <path d="M28 28c2-4 4-4 8 0" stroke="red" stroke-width="2"/>
+      <path d="M26 32c4 4 10 4 12 0" stroke="blue" stroke-width="2"/>
+      <path d="M4 48h12l2-4 2 8 2-12 2 10 2-2h6" stroke="red"/>
+      <path d="M32 48h4l2-2 2 4 2-6 2 4h8" stroke="blue"/>
+      <text x="4" y="58" font-size="3" fill="red" stroke="none">Detect</text>
+      <text x="32" y="58" font-size="3" fill="blue" stroke="none">Stimulate</text>
+    </svg>`
+  },
 ];
 
 export default neurologyIcons;
