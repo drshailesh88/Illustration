@@ -92,6 +92,24 @@ import { orthopedicsIcons } from './orthopedics';
 import { pulmonologyIcons } from './pulmonology';
 import { entIcons } from './ent';
 import { obgynIcons } from './obgyn';
+// Biology subspecialties
+import { molecularIcons } from './molecular';
+import { geneticsIcons } from './genetics';
+import { ecologyIcons } from './ecology';
+import { microbiologyIcons } from './microbiology';
+import { zoologyIcons } from './zoology';
+import { botanyIcons } from './botany';
+import { cellbiologyIcons } from './cellbiology';
+import { neuroscienceIcons } from './neuroscience';
+// Additional science branches
+import { geologyIcons } from './geology';
+import { astronomyIcons } from './astronomy';
+import { environmentalIcons } from './environmental';
+import { materialsScienceIcons } from './materials_science';
+import { oceanographyIcons } from './oceanography';
+import { meteorologyIcons } from './meteorology';
+import { agricultureIcons } from './agriculture';
+import { forensicsIcons } from './forensics';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -120,9 +138,26 @@ export const allIcons: IconDefinition[] = [
   ...entIcons,
   ...obgynIcons,
   ...biologyIcons,
+  ...molecularIcons,
+  ...geneticsIcons,
+  ...ecologyIcons,
+  ...microbiologyIcons,
+  ...zoologyIcons,
+  ...botanyIcons,
+  ...cellbiologyIcons,
+  ...neuroscienceIcons,
   ...chemistryIcons,
   ...physicsIcons,
   ...engineeringIcons,
+  // Additional science branches
+  ...geologyIcons,
+  ...astronomyIcons,
+  ...environmentalIcons,
+  ...materialsScienceIcons,
+  ...oceanographyIcons,
+  ...meteorologyIcons,
+  ...agricultureIcons,
+  ...forensicsIcons,
 ];
 
 /**
@@ -133,10 +168,10 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
   ...gastroenterologyIcons,
   ...nephrologyIcons, ...anesthesiologyIcons, ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
   ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons, ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons],
-  biology: biologyIcons,
-  chemistry: chemistryIcons,
-  physics: physicsIcons,
-  engineering: engineeringIcons,
+  biology: [...biologyIcons, ...molecularIcons, ...geneticsIcons, ...ecologyIcons, ...microbiologyIcons, ...zoologyIcons, ...botanyIcons, ...cellbiologyIcons, ...neuroscienceIcons, ...environmentalIcons, ...oceanographyIcons, ...agricultureIcons],
+  chemistry: [...chemistryIcons, ...forensicsIcons],
+  physics: [...physicsIcons, ...geologyIcons, ...astronomyIcons, ...meteorologyIcons],
+  engineering: [...engineeringIcons, ...materialsScienceIcons],
   general: [], // Reserved for future general-purpose icons
 };
 
@@ -154,29 +189,29 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
   biology: {
     id: 'biology',
     name: 'Biology',
-    description: 'Biological sciences, cells, and organisms',
-    iconCount: biologyIcons.length,
+    description: 'Biological sciences including molecular biology, genetics, ecology, microbiology, zoology, botany, cell biology, neuroscience, environmental science, oceanography, and agriculture',
+    iconCount: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
     color: '#22c55e', // Green
   },
   chemistry: {
     id: 'chemistry',
     name: 'Chemistry',
-    description: 'Chemical structures, lab equipment, and reactions',
-    iconCount: chemistryIcons.length,
+    description: 'Chemical structures, lab equipment, reactions, and forensic science',
+    iconCount: chemistryIcons.length + forensicsIcons.length,
     color: '#8b5cf6', // Purple
   },
   physics: {
     id: 'physics',
     name: 'Physics',
-    description: 'Physical phenomena, optics, and mechanics',
-    iconCount: physicsIcons.length,
+    description: 'Physical phenomena, optics, mechanics, geology, astronomy, and meteorology',
+    iconCount: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length,
     color: '#3b82f6', // Blue
   },
   engineering: {
     id: 'engineering',
     name: 'Engineering',
-    description: 'Electrical, mechanical, and civil engineering',
-    iconCount: engineeringIcons.length,
+    description: 'Electrical, mechanical, civil engineering, and materials science',
+    iconCount: engineeringIcons.length + materialsScienceIcons.length,
     color: '#f59e0b', // Orange
   },
   general: {
@@ -407,10 +442,10 @@ export function getIconStats(): {
     totalIcons: allIcons.length,
     byDomain: {
       medicine: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length,
-      biology: biologyIcons.length,
-      chemistry: chemistryIcons.length,
-      physics: physicsIcons.length,
-      engineering: engineeringIcons.length,
+      biology: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
+      chemistry: chemistryIcons.length + forensicsIcons.length,
+      physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length,
+      engineering: engineeringIcons.length + materialsScienceIcons.length,
       general: 0,
     },
     byCategory,
@@ -485,6 +520,24 @@ export { endocrinologyIcons } from './endocrinology';
 export { pathologyIcons } from './pathology';
 export { entIcons } from './ent';
 export { obgynIcons } from './obgyn';
+// Biology subspecialties
+export { molecularIcons } from './molecular';
+export { geneticsIcons } from './genetics';
+export { ecologyIcons } from './ecology';
+export { microbiologyIcons } from './microbiology';
+export { zoologyIcons } from './zoology';
+export { botanyIcons } from './botany';
+export { cellbiologyIcons } from './cellbiology';
+export { neuroscienceIcons } from './neuroscience';
+// Additional science branches
+export { geologyIcons } from './geology';
+export { astronomyIcons } from './astronomy';
+export { environmentalIcons } from './environmental';
+export { materialsScienceIcons } from './materials_science';
+export { oceanographyIcons } from './oceanography';
+export { meteorologyIcons } from './meteorology';
+export { agricultureIcons } from './agriculture';
+export { forensicsIcons } from './forensics';
 
 export default {
   allIcons,

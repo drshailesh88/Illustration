@@ -35,6 +35,24 @@ export * from './pulmonology';
 export * from './pathology';
 export * from './ent';
 export * from './obgyn';
+// Biology subspecialties
+export * from './molecular';
+export * from './genetics';
+export * from './ecology';
+export * from './microbiology';
+export * from './zoology';
+export * from './botany';
+export * from './cellbiology';
+export * from './neuroscience';
+// Additional science branches
+export * from './geology';
+export * from './astronomy';
+export * from './environmental';
+export * from './materials_science';
+export * from './oceanography';
+export * from './meteorology';
+export * from './agriculture';
+export * from './forensics';
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -140,6 +158,24 @@ import { pulmonologyTemplates } from './pulmonology';
 import { pathologyTemplates } from './pathology';
 import { entTemplates } from './ent';
 import { obgynTemplates } from './obgyn';
+// Biology subspecialties
+import { molecularTemplates } from './molecular';
+import { geneticsTemplates } from './genetics';
+import { ecologyTemplates } from './ecology';
+import { microbiologyTemplates } from './microbiology';
+import { zoologyTemplates } from './zoology';
+import { botanyTemplates } from './botany';
+import { cellbiologyTemplates } from './cellbiology';
+import { neuroscienceTemplates } from './neuroscience';
+// Additional science branches
+import { geologyTemplates } from './geology';
+import { astronomyTemplates } from './astronomy';
+import { environmentalTemplates } from './environmental';
+import { materialsScienceTemplates } from './materials_science';
+import { oceanographyTemplates } from './oceanography';
+import { meteorologyTemplates } from './meteorology';
+import { agricultureTemplates } from './agriculture';
+import { forensicsTemplates } from './forensics';
 
 // =============================================================================
 // AGGREGATED TEMPLATE COLLECTIONS
@@ -159,6 +195,14 @@ export const allTemplates: DiagramTemplate[] = [
   ...rheumatologyTemplates,
   ...endocrinologyTemplates,
   ...biologyTemplates,
+  ...molecularTemplates,
+  ...geneticsTemplates,
+  ...ecologyTemplates,
+  ...microbiologyTemplates,
+  ...zoologyTemplates,
+  ...botanyTemplates,
+  ...cellbiologyTemplates,
+  ...neuroscienceTemplates,
   ...chemistryTemplates,
   ...physicsTemplates,
   ...engineeringTemplates,
@@ -171,6 +215,15 @@ export const allTemplates: DiagramTemplate[] = [
   ...pathologyTemplates,
   ...entTemplates,
   ...obgynTemplates,
+  // Additional science branches
+  ...geologyTemplates,
+  ...astronomyTemplates,
+  ...environmentalTemplates,
+  ...materialsScienceTemplates,
+  ...oceanographyTemplates,
+  ...meteorologyTemplates,
+  ...agricultureTemplates,
+  ...forensicsTemplates,
 ];
 
 /**
@@ -180,10 +233,10 @@ export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
   medicine: [...medicineTemplates, ...cardiologyTemplates,
   ...gastroenterologyTemplates,
   ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates],
-  biology: biologyTemplates,
-  chemistry: chemistryTemplates,
-  physics: physicsTemplates,
-  engineering: engineeringTemplates,
+  biology: [...biologyTemplates, ...molecularTemplates, ...geneticsTemplates, ...ecologyTemplates, ...microbiologyTemplates, ...zoologyTemplates, ...botanyTemplates, ...cellbiologyTemplates, ...neuroscienceTemplates, ...environmentalTemplates, ...oceanographyTemplates, ...agricultureTemplates],
+  chemistry: [...chemistryTemplates, ...forensicsTemplates],
+  physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates],
+  engineering: [...engineeringTemplates, ...materialsScienceTemplates],
 };
 
 /**
@@ -293,7 +346,7 @@ export function getTemplateStats(): {
     total: allTemplates.length,
     byDomain: {
       medicine: medicineTemplates.length + cardiologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length,
-      biology: biologyTemplates.length,
+      biology: biologyTemplates.length + molecularTemplates.length + geneticsTemplates.length + ecologyTemplates.length + microbiologyTemplates.length + zoologyTemplates.length + botanyTemplates.length + cellbiologyTemplates.length + neuroscienceTemplates.length,
       chemistry: chemistryTemplates.length,
       physics: physicsTemplates.length,
       engineering: engineeringTemplates.length,
