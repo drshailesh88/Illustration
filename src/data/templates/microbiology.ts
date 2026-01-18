@@ -459,27 +459,286 @@ export const antibioticMechanismTemplate: DiagramTemplate = {
 };
 
 // =============================================================================
+// MOLECULAR TECHNIQUES
+// =============================================================================
+
+export const pcrWorkflowTemplate: DiagramTemplate = {
+  id: 'micro-pcr-workflow',
+  name: 'PCR Workflow',
+  description: 'Polymerase chain reaction procedure and applications',
+  domain: 'biology',
+  promptTemplate: `Create a PCR workflow diagram showing:
+- Sample preparation: {{samplePreparation}}
+- Denaturation step: {{denaturation}}
+- Annealing step: {{annealing}}
+- Extension step: {{extension}}
+- Cycle parameters: {{cycleParameters}}
+- Detection method: {{detectionMethod}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['samplePreparation', 'denaturation', 'annealing', 'extension', 'cycleParameters', 'detectionMethod', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph Cycle["PCR Cycle (25-40x)"]
+        A["Denaturation 94-98°C"]
+        B["Annealing 50-65°C"]
+        C["Extension 72°C"]
+    end
+    D["Template DNA"] --> A
+    A --> B --> C --> A
+    C --> E["Amplified Product"]
+    E --> F["Gel Electrophoresis"]`
+};
+
+export const elisaProcedureTemplate: DiagramTemplate = {
+  id: 'micro-elisa-procedure',
+  name: 'ELISA Procedure',
+  description: 'Enzyme-linked immunosorbent assay workflow',
+  domain: 'biology',
+  promptTemplate: `Create an ELISA procedure diagram showing:
+- ELISA type: {{elisaType}}
+- Coating/capture: {{coating}}
+- Blocking step: {{blocking}}
+- Sample incubation: {{sampleIncubation}}
+- Detection antibody: {{detectionAntibody}}
+- Substrate reaction: {{substrateReaction}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['elisaType', 'coating', 'blocking', 'sampleIncubation', 'detectionAntibody', 'substrateReaction', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Coat Well with Capture Ab"] --> B["Block Non-specific Sites"]
+    B --> C["Add Sample/Antigen"]
+    C --> D["Add Detection Antibody"]
+    D --> E["Add Enzyme Conjugate"]
+    E --> F["Add Substrate"]
+    F --> G["Color Development"]
+    G --> H["Read Absorbance"]`
+};
+
+// =============================================================================
+// BIOFILM & RESISTANCE
+// =============================================================================
+
+export const biofilmFormationTemplate: DiagramTemplate = {
+  id: 'micro-biofilm-formation',
+  name: 'Biofilm Formation',
+  description: 'Stages of bacterial biofilm development',
+  domain: 'biology',
+  promptTemplate: `Create a biofilm formation diagram showing:
+- Initial attachment: {{initialAttachment}}
+- Irreversible attachment: {{irreversibleAttachment}}
+- Maturation stages: {{maturationStages}}
+- EPS matrix: {{epsMatrix}}
+- Dispersal: {{dispersal}}
+- Clinical significance: {{clinicalSignificance}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['initialAttachment', 'irreversibleAttachment', 'maturationStages', 'epsMatrix', 'dispersal', 'clinicalSignificance', 'additionalNotes'],
+  mermaidExample: `flowchart LR
+    A["1. Initial Attachment"] --> B["2. Irreversible Attachment"]
+    B --> C["3. Microcolony Formation"]
+    C --> D["4. Biofilm Maturation"]
+    D --> E["5. Dispersal"]
+    subgraph Matrix["EPS Matrix"]
+        D
+    end
+    E --> F["Planktonic Cells"]
+    F --> A`
+};
+
+export const antimicrobialResistanceTemplate: DiagramTemplate = {
+  id: 'micro-amr-mechanism',
+  name: 'Antimicrobial Resistance Mechanisms',
+  description: 'Bacterial resistance strategies and mechanisms',
+  domain: 'biology',
+  promptTemplate: `Create an antimicrobial resistance diagram showing:
+- Resistance type: {{resistanceType}}
+- Target modification: {{targetModification}}
+- Drug inactivation: {{drugInactivation}}
+- Efflux pumps: {{effluxPumps}}
+- Reduced permeability: {{reducedPermeability}}
+- Horizontal gene transfer: {{horizontalGeneTransfer}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['resistanceType', 'targetModification', 'drugInactivation', 'effluxPumps', 'reducedPermeability', 'horizontalGeneTransfer', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph Mechanisms["Resistance Mechanisms"]
+        A["Target Modification"]
+        B["Drug Inactivation (β-lactamase)"]
+        C["Efflux Pumps"]
+        D["Reduced Permeability"]
+    end
+    subgraph Transfer["Gene Transfer"]
+        E["Conjugation"]
+        F["Transformation"]
+        G["Transduction"]
+    end
+    Transfer --> H["Resistance Spread"]`
+};
+
+// =============================================================================
+// INFECTION & IMMUNITY
+// =============================================================================
+
+export const chainOfInfectionTemplate: DiagramTemplate = {
+  id: 'micro-chain-infection',
+  name: 'Chain of Infection',
+  description: 'Links in disease transmission cycle',
+  domain: 'biology',
+  promptTemplate: `Create a chain of infection diagram showing:
+- Infectious agent: {{infectiousAgent}}
+- Reservoir: {{reservoir}}
+- Portal of exit: {{portalOfExit}}
+- Mode of transmission: {{modeOfTransmission}}
+- Portal of entry: {{portalOfEntry}}
+- Susceptible host: {{susceptibleHost}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['infectiousAgent', 'reservoir', 'portalOfExit', 'modeOfTransmission', 'portalOfEntry', 'susceptibleHost', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Infectious Agent"] --> B["Reservoir"]
+    B --> C["Portal of Exit"]
+    C --> D["Mode of Transmission"]
+    D --> E["Portal of Entry"]
+    E --> F["Susceptible Host"]
+    F --> A
+    style A fill:#ef4444
+    style F fill:#3b82f6`
+};
+
+export const vaccineMechanismTemplate: DiagramTemplate = {
+  id: 'micro-vaccine-mechanism',
+  name: 'Vaccine Mechanism',
+  description: 'How vaccines induce protective immunity',
+  domain: 'biology',
+  promptTemplate: `Create a vaccine mechanism diagram showing:
+- Vaccine type: {{vaccineType}}
+- Antigen presentation: {{antigenPresentation}}
+- B cell response: {{bCellResponse}}
+- T cell response: {{tCellResponse}}
+- Memory formation: {{memoryFormation}}
+- Protection outcome: {{protectionOutcome}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['vaccineType', 'antigenPresentation', 'bCellResponse', 'tCellResponse', 'memoryFormation', 'protectionOutcome', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Vaccine Administration"] --> B["Antigen Recognition"]
+    B --> C["APC Processing"]
+    C --> D["T Helper Activation"]
+    D --> E["B Cell Activation"]
+    E --> F["Antibody Production"]
+    D --> G["CTL Activation"]
+    F --> H["Memory B Cells"]
+    G --> I["Memory T Cells"]
+    H & I --> J["Long-term Protection"]`
+};
+
+// =============================================================================
+// PARASITOLOGY
+// =============================================================================
+
+export const parasiticLifeCycleTemplate: DiagramTemplate = {
+  id: 'micro-parasitic-lifecycle',
+  name: 'Parasitic Life Cycle',
+  description: 'Complex life cycles of parasitic organisms',
+  domain: 'biology',
+  promptTemplate: `Create a parasitic life cycle diagram showing:
+- Parasite species: {{parasiteSpecies}}
+- Definitive host: {{definitiveHost}}
+- Intermediate host: {{intermediateHost}}
+- Life stages: {{lifeStages}}
+- Transmission route: {{transmissionRoute}}
+- Geographic distribution: {{geographicDistribution}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['parasiteSpecies', 'definitiveHost', 'intermediateHost', 'lifeStages', 'transmissionRoute', 'geographicDistribution', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph Definitive["Definitive Host (Human)"]
+        A["Adult Worm"]
+        B["Eggs Released"]
+    end
+    subgraph Environment["Environment"]
+        C["Egg Development"]
+        D["Larval Stage"]
+    end
+    subgraph Intermediate["Intermediate Host"]
+        E["Larval Development"]
+        F["Infective Stage"]
+    end
+    A --> B --> C --> D --> E --> F
+    F --> A`
+};
+
+// =============================================================================
+// MICROBIOME
+// =============================================================================
+
+export const microbiomeDysbiosisTemplate: DiagramTemplate = {
+  id: 'micro-microbiome-dysbiosis',
+  name: 'Microbiome & Dysbiosis',
+  description: 'Normal microbiome vs dysbiosis states',
+  domain: 'biology',
+  promptTemplate: `Create a microbiome/dysbiosis diagram showing:
+- Body site: {{bodySite}}
+- Normal flora composition: {{normalFlora}}
+- Dysbiosis triggers: {{dysbiosisTriggers}}
+- Altered composition: {{alteredComposition}}
+- Health consequences: {{healthConsequences}}
+- Restoration strategies: {{restorationStrategies}}
+{{#additionalNotes}}Additional details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['bodySite', 'normalFlora', 'dysbiosisTriggers', 'alteredComposition', 'healthConsequences', 'restorationStrategies', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    subgraph Healthy["Healthy Microbiome"]
+        A["Diverse Community"]
+        B["Beneficial Species"]
+        C["Immune Homeostasis"]
+    end
+    subgraph Triggers["Dysbiosis Triggers"]
+        D["Antibiotics"]
+        E["Diet Changes"]
+        F["Stress"]
+    end
+    subgraph Dysbiosis["Dysbiosis State"]
+        G["Reduced Diversity"]
+        H["Pathogen Overgrowth"]
+        I["Inflammation"]
+    end
+    Healthy --> Triggers --> Dysbiosis
+    J["Probiotics/Diet"] --> Healthy`
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
 export const microbiologyTemplates: DiagramTemplate[] = [
+  // Bacterial biology
   bacterialStructureTemplate,
   gramStainTemplate,
   bacterialGrowthTemplate,
   bacterialMetabolismTemplate,
+  // Viral biology
   viralStructureTemplate,
   lyticCycleTemplate,
   lysogenicCycleTemplate,
   viralClassificationTemplate,
+  // Fungal biology
   fungalStructureTemplate,
   fungalReproductionTemplate,
+  // Laboratory techniques
   asepticTechniqueTemplate,
   streakPlateTemplate,
   antibioticSensitivityTemplate,
   sterilizationMethodsTemplate,
   microscopeTechniqueTemplate,
+  // Infectious disease
   pathogenesisTemplate,
   antibioticMechanismTemplate,
+  // Molecular techniques
+  pcrWorkflowTemplate,
+  elisaProcedureTemplate,
+  // Biofilm & resistance
+  biofilmFormationTemplate,
+  antimicrobialResistanceTemplate,
+  // Infection & immunity
+  chainOfInfectionTemplate,
+  vaccineMechanismTemplate,
+  // Parasitology
+  parasiticLifeCycleTemplate,
+  // Microbiome
+  microbiomeDysbiosisTemplate,
 ];
 
 export default microbiologyTemplates;

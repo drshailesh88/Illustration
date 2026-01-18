@@ -1937,24 +1937,6 @@ export const neuroscienceIcons: IconDefinition[] = [
   // NEUROPLASTICITY
   // ===========================================================================
   {
-    id: 'neuro-stdp',
-    name: 'Spike-Timing Dependent Plasticity',
-    domain: 'biology',
-    category: 'plasticity',
-    tags: ['STDP', 'spike timing', 'Hebbian', 'pre-post', 'plasticity window'],
-    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="8" y1="32" x2="56" y2="32"/>
-      <line x1="32" y1="8" x2="32" y2="56"/>
-      <path d="M8 32c4 0 8-20 12-20s8 20 12 0" stroke="#27AE60" stroke-width="2"/>
-      <path d="M44 32c4 0 8 16 12 16" stroke="#E74C3C" stroke-width="2"/>
-      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">LTP</text>
-      <text x="48" y="52" font-size="3" fill="currentColor" stroke="none">LTD</text>
-      <text x="34" y="58" font-size="3" fill="currentColor" stroke="none">+Δt</text>
-      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">-Δt</text>
-      <text x="4" y="36" font-size="3" fill="currentColor" stroke="none">ΔW</text>
-    </svg>`
-  },
-  {
     id: 'neuro-dendritic-spine',
     name: 'Dendritic Spine',
     domain: 'biology',
@@ -2006,25 +1988,6 @@ export const neuroscienceIcons: IconDefinition[] = [
   // ===========================================================================
   // ADDITIONAL RESEARCH TOOLS
   // ===========================================================================
-  {
-    id: 'neuro-miniscope',
-    name: 'Miniscope',
-    domain: 'biology',
-    category: 'equipment',
-    tags: ['miniscope', 'calcium imaging', 'freely moving', 'GRIN lens', 'endoscope'],
-    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <ellipse cx="32" cy="48" rx="16" ry="10" fill="#E8E8E8" opacity="0.3"/>
-      <path d="M16 44c0-16 6-28 16-28s16 12 16 28"/>
-      <rect x="24" y="4" width="16" height="16" rx="2" fill="#2C3E50" opacity="0.3"/>
-      <circle cx="32" cy="12" r="4" fill="#27AE60"/>
-      <path d="M28 20v8l4 4"/>
-      <path d="M36 20v8l-4 4"/>
-      <rect x="28" y="32" width="8" height="8" rx="1" fill="#3498DB" opacity="0.3"/>
-      <circle cx="32" cy="36" r="2" fill="#87CEEB"/>
-      <path d="M24 4v-2h16v2"/>
-      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">Miniscope</text>
-    </svg>`
-  },
   {
     id: 'neuro-fiber-photometry',
     name: 'Fiber Photometry',

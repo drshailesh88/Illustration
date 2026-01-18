@@ -720,7 +720,7 @@ export {
   particleColors,
   astrophysicsColors,
   solidStateColors,
-  laboratoryColors,
+  laboratoryColors as physicsLaboratoryColors,
   magnitudeGradient,
   flowchartColors as physicsFlowchartColors,
   physicsColorScheme,
