@@ -530,3 +530,13 @@ export function isValidDSL(content: string): { valid: boolean; type: 'mermaid' |
 
   return { valid: false, type: 'unknown' };
 }
+
+// =============================================================================
+// SPECIALTY PROMPTS EXPORTS
+// =============================================================================
+
+export * from './pulmonology-prompts';
+export { default as pulmonologyPrompts } from './pulmonology-prompts';
+
+export * from './emergency-medicine-prompts';
+export { default as emergencyMedicinePrompts } from './emergency-medicine-prompts';
