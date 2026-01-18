@@ -602,3 +602,9 @@ export { default as psychiatryPrompts } from './psychiatry-prompts';
 
 export * from './computer-science-prompts';
 export { default as computerSciencePrompts } from './computer-science-prompts';
+
+export * from './engineering-prompts';
+export { default as engineeringPrompts } from './engineering-prompts';
+
+export * from './molecular-biology-prompts';
+export { default as molecularBiologyPrompts } from './molecular-biology-prompts';

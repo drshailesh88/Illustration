@@ -535,3 +535,65 @@ export {
 } from './computer-science';
 
 export type { ComputerScienceColorScheme } from './computer-science';
+
+// =============================================================================
+// ENGINEERING
+// =============================================================================
+
+export {
+  mechanicalColors,
+  gearColors,
+  bearingColors,
+  electricalColors,
+  electronicColors,
+  controlColors,
+  hydraulicColors as engineeringHydraulicColors,
+  pneumaticColors,
+  manufacturingColors,
+  machiningColors,
+  spcColors,
+  qualityStatusColors,
+  stressColors,
+  loadColors,
+  ganttColors,
+  resourceColors,
+  cadLayerColors,
+  gdtColors,
+  fmeaColors,
+  safetyColors,
+  flowchartColors as engineeringFlowchartColors,
+  engineeringSeverityGradient,
+  engineeringColorScheme,
+} from './engineering';
+
+export type { EngineeringColorScheme } from './engineering';
+
+// =============================================================================
+// MOLECULAR BIOLOGY
+// =============================================================================
+
+export {
+  dnaColors,
+  nucleotideColors,
+  rnaColors,
+  proteinColors,
+  aminoAcidColors,
+  enzymeColors,
+  replicationColors,
+  transcriptionColors,
+  translationColors,
+  regulationColors,
+  crisprColors,
+  epigeneticsColors,
+  histoneColors,
+  labTechniqueColors as molBioLabTechniqueColors,
+  sequencingColors,
+  blottingColors,
+  expressionGradient,
+  activityGradient as molBioActivityGradient,
+  severityGradient as molBioSeverityGradient,
+  flowchartColors as molBioFlowchartColors,
+  molecularBiologyColorScheme,
+} from './molecular-biology';
+
+export type { MolecularBiologyColorScheme } from './molecular-biology';
