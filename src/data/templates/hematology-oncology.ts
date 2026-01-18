@@ -857,6 +857,181 @@ export const hemophiliaBleed: DiagramTemplate = {
     style E fill:#DC143C,color:#fff`,
 };
 
+/**
+ * CAR-T Cell Therapy Pathway template
+ */
+export const carTCellTherapy: DiagramTemplate = {
+  id: 'hemeonc-car-t-therapy',
+  name: 'CAR-T Cell Therapy Pathway',
+  description: 'Complete CAR-T cell therapy timeline from collection to monitoring',
+  domain: 'medicine',
+  promptTemplate: `Create a CAR-T cell therapy pathway:
+- Indication and eligibility: {{indication}}
+- Leukapheresis process: {{leukapheresis}}
+- Manufacturing timeline: {{manufacturing}}
+- Lymphodepleting chemotherapy: {{lymphodepletion}}
+- CAR-T infusion: {{infusion}}
+- CRS/ICANS monitoring: {{toxicityMonitoring}}
+- Response assessment: {{responseAssessment}}
+{{#additionalNotes}}Long-term follow-up: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'indication',
+    'leukapheresis',
+    'manufacturing',
+    'lymphodepletion',
+    'infusion',
+    'toxicityMonitoring',
+    'responseAssessment',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Prep["Preparation"]
+        A["Patient Selection\\n& Eligibility"] --> B["Leukapheresis\\nT-cell collection"]
+    end
+    subgraph Mfg["Manufacturing"]
+        B --> C["CAR-T Manufacturing\\n(3-4 weeks)"]
+    end
+    subgraph Tx["Treatment"]
+        C --> D["Bridging Therapy\\n(if needed)"]
+        D --> E["Lymphodepletion\\nFlu/Cy D-5 to D-3"]
+        E --> F["CAR-T Infusion\\nDay 0"]
+    end
+    subgraph Monitor["Monitoring"]
+        F --> G["CRS Watch\\nDays 1-14"]
+        G --> H["ICANS Watch\\nDays 5-21"]
+        H --> I["Response\\nDay +28"]
+    end
+    style F fill:#9B59B6,color:#fff
+    style G fill:#E74C3C,color:#fff
+    style I fill:#28A745,color:#fff`,
+};
+
+/**
+ * DIC Management Algorithm template
+ */
+export const dicManagement: DiagramTemplate = {
+  id: 'hemeonc-dic-management',
+  name: 'DIC Management Algorithm',
+  description: 'Diagnosis and treatment of disseminated intravascular coagulation',
+  domain: 'medicine',
+  promptTemplate: `Create a DIC management algorithm:
+- Diagnostic criteria (ISTH): {{diagnosticCriteria}}
+- Underlying cause identification: {{underlyingCause}}
+- Laboratory monitoring: {{labMonitoring}}
+- Blood product replacement: {{bloodProducts}}
+- Anticoagulation role: {{anticoagulation}}
+- Treatment of underlying cause: {{treatCause}}
+{{#additionalNotes}}Special situations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'diagnosticCriteria',
+    'underlyingCause',
+    'labMonitoring',
+    'bloodProducts',
+    'anticoagulation',
+    'treatCause',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Suspected DIC"] --> B["ISTH DIC Score"]
+    B --> C{"Score ≥5?"}
+    C -->|"Yes"| D["Overt DIC"]
+    C -->|"No"| E["Non-overt\\nRepeat in 24h"]
+    D --> F["Identify & Treat\\nUnderlying Cause"]
+    F --> G["Sepsis\\nMalignancy\\nTrauma\\nObstetric"]
+    D --> H{"Active Bleeding?"}
+    H -->|"Yes"| I["Transfuse:\\nPLT if <50k\\nFFP if INR >1.5\\nCryo if Fib <100"]
+    H -->|"No, Thrombosis"| J["Consider\\nHeparin"]
+    D --> K["Monitor q6-12h:\\nPLT, PT, Fib, D-dimer"]
+    style D fill:#DC143C,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * MDS Classification and Risk Stratification template
+ */
+export const mdsClassification: DiagramTemplate = {
+  id: 'hemeonc-mds-classification',
+  name: 'MDS Classification and Risk Stratification',
+  description: 'WHO classification and IPSS-R risk stratification for MDS',
+  domain: 'medicine',
+  promptTemplate: `Create an MDS classification and risk stratification diagram:
+- WHO classification: {{whoClassification}}
+- Cytogenetic findings: {{cytogenetics}}
+- Blast percentage: {{blastPercentage}}
+- IPSS-R scoring: {{ipssR}}
+- Cytopenias: {{cytopenias}}
+- Treatment implications: {{treatmentImplications}}
+{{#additionalNotes}}Molecular markers: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'whoClassification',
+    'cytogenetics',
+    'blastPercentage',
+    'ipssR',
+    'cytopenias',
+    'treatmentImplications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["MDS Diagnosis"] --> B["WHO Classification"]
+    B --> C["MDS-SLD\\n(single lineage)"]
+    B --> D["MDS-MLD\\n(multilineage)"]
+    B --> E["MDS-RS\\n(ring sideroblasts)"]
+    B --> F["MDS-EB\\n(excess blasts)"]
+    A --> G["IPSS-R Score"]
+    G --> H{"Risk Category?"}
+    H -->|"Very Low/Low"| I["Watch & Wait\\nor ESA/Luspatercept"]
+    H -->|"Intermediate"| J["HMA (Aza/Dac)\\nor Clinical Trial"]
+    H -->|"High/Very High"| K["Allo-SCT evaluation\\n+ HMA"]
+    F --> L{"Blasts?"}
+    L -->|"5-9%"| F1["EB-1"]
+    L -->|"10-19%"| F2["EB-2"]
+    style K fill:#DC143C,color:#fff
+    style I fill:#28A745,color:#fff`,
+};
+
+/**
+ * Myeloproliferative Neoplasm Management template
+ */
+export const mpnManagement: DiagramTemplate = {
+  id: 'hemeonc-mpn-management',
+  name: 'Myeloproliferative Neoplasm Management',
+  description: 'Diagnosis and treatment algorithm for PV, ET, and myelofibrosis',
+  domain: 'medicine',
+  promptTemplate: `Create an MPN management algorithm:
+- MPN subtype diagnosis: {{mpnSubtype}}
+- JAK2/CALR/MPL mutations: {{mutations}}
+- Risk stratification: {{riskStratification}}
+- Thrombosis prevention: {{thrombosisPrevention}}
+- Cytoreductive therapy: {{cytoreduction}}
+- Disease transformation monitoring: {{transformationMonitoring}}
+{{#additionalNotes}}Symptom management: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'mpnSubtype',
+    'mutations',
+    'riskStratification',
+    'thrombosisPrevention',
+    'cytoreduction',
+    'transformationMonitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Suspected MPN"] --> B["CBC + Smear\\nJAK2 V617F"]
+    B --> C{"Mutation?"}
+    C -->|"JAK2+"| D["Check EPO level"]
+    D -->|"Low EPO"| E["Polycythemia Vera"]
+    D -->|"Normal EPO"| F["ET or MF"]
+    C -->|"JAK2-"| G["Check CALR/MPL"]
+    G --> F
+    E --> H{"High Risk?\\n(Age >60 or prior Thrombosis)"}
+    H -->|"Yes"| I["Phlebotomy +\\nHydroxyurea +\\nAspirin"]
+    H -->|"No"| J["Phlebotomy +\\nAspirin"]
+    F --> K{"Myelofibrosis?"}
+    K -->|"Yes"| L["DIPSS Score\\nRuxolitinib/Fedratinib"]
+    K -->|"No - ET"| M["IPSET Score\\n± Hydroxyurea"]
+    style E fill:#DC143C,color:#fff
+    style L fill:#9B59B6,color:#fff`,
+};
+
 // =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
@@ -891,6 +1066,11 @@ export const hematologyOncologyTemplates: DiagramTemplate[] = [
   sickleCellCrisis,
   anticoagulationReversal,
   hemophiliaBleed,
+  // Advanced Therapies & Complex Disorders
+  carTCellTherapy,
+  dicManagement,
+  mdsClassification,
+  mpnManagement,
 ];
 
 export default hematologyOncologyTemplates;
