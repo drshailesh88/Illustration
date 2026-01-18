@@ -2,6 +2,63 @@
 
 > **CRITICAL: Read this file at the start of EVERY session. This captures the persistent expansion plan.**
 
+---
+
+## SESSION CONTINUITY LOG
+
+> **READ THIS FIRST** - Resume from where the last session ended
+
+### Last Session: 2026-01-18
+
+**Session Status**: IN PROGRESS
+
+### Completed This Session:
+- [x] Updated CLAUDE.md with Kill BioRender strategy
+- [x] Researched all open-source icon libraries (Bioicons, SciDraw, Servier)
+- [x] Confirmed licensing for commercial use (all safe)
+- [x] Created versioned feature roadmap (v1.0, v1.5, v2.0)
+- [x] Identified AI image generation options (fal.ai FLUX at $0.008/image)
+- [x] Identified browser-based background removal (@imgly/background-removal-js)
+
+### In Progress (Continue These):
+- [ ] **PPTX Export** - Install pptxgenjs, implement in src/lib/export/pptx.ts
+- [ ] **Background Removal** - Install @imgly/background-removal, create UI component
+- [ ] **Bioicons Integration** - Download/integrate 2,700+ icons
+- [ ] **Anatomy Specialty** - Ralph Loop to completion
+- [ ] **Biology General Specialty** - Ralph Loop to completion
+
+### Next Session Should:
+1. Check if npm packages were installed (pptxgenjs, @imgly/background-removal)
+2. Check if export/pptx.ts was created
+3. Check if Bioicons were downloaded to src/assets/bioicons/
+4. Check progress.json for Anatomy and Biology General status
+5. Continue with pending tasks
+
+### Blocking Issues:
+- None currently
+
+---
+
+## QUICK START FOR NEW SESSION
+
+```bash
+# 1. Check what was installed
+cat package.json | grep -E "pptxgenjs|background-removal|fal-ai"
+
+# 2. Check Ralph Loop progress
+cat .specify/ralph-loop/progress.json | grep -E "anatomy|biology-general"
+
+# 3. Check if export files exist
+ls -la src/lib/export/
+
+# 4. Check if bioicons were integrated
+ls -la src/assets/bioicons/ 2>/dev/null || echo "Bioicons not yet downloaded"
+```
+
+**Then immediately launch parallel agents for unfinished work!**
+
+---
+
 ## Mission
 
 FINNISH is an AI-powered scientific illustration **web app** killing BioRender for academics. We're building the **free/affordable alternative** ($20-25/month vs BioRender's $38-39) with comprehensive icon and template libraries for **35 scientific specialties**.
@@ -76,6 +133,48 @@ FINNISH is an AI-powered scientific illustration **web app** killing BioRender f
 - Natural language to complex diagram generation
 - Template generation from prompts
 - Advanced AI style transfer
+
+---
+
+## PARALLEL AGENT LAUNCH TEMPLATE
+
+When starting a session, launch these agents simultaneously:
+
+```
+Agent 1: PPTX Export
+- Install pptxgenjs if not installed
+- Create src/lib/export/pptx.ts
+- Add exportAsPptx function
+- Update ExportDialog component
+- Test export functionality
+
+Agent 2: Background Removal
+- Install @imgly/background-removal if not installed
+- Create src/lib/image/background-removal.ts
+- Create BackgroundRemovalTool component
+- Wire to toolbar
+- Test with sample images
+
+Agent 3: Bioicons Integration
+- Clone/download bioicons from GitHub
+- Convert to FINNISH icon format
+- Add to src/data/icons/bioicons.ts
+- Update icons/index.ts
+- Create unified search
+
+Agent 4: Anatomy Specialty (Ralph Loop)
+- Create src/data/icons/anatomy.ts (if needed)
+- Add 90+ anatomy icons
+- Create src/data/templates/anatomy.ts
+- Create src/data/colors/anatomy.ts
+- Update progress.json
+
+Agent 5: Biology General Specialty (Ralph Loop)
+- Create src/data/icons/biology-general.ts
+- Add 90+ general biology icons
+- Create templates and colors
+- Update progress.json
+```
 
 ---
 
@@ -201,64 +300,39 @@ export function searchAllIcons(query: string): UnifiedIcon[] {
 
 ---
 
-## SIMPLE INTERACTIVITY (v1.5)
+## RALPH LOOP FOR REMAINING SPECIALTIES
 
-```typescript
-// Clickable regions with tooltips
-interface InteractiveRegion {
-  id: string;
-  bounds: { x: number; y: number; width: number; height: number };
-  tooltip: string;
-  onClick?: () => void;
-  link?: string;
-}
+### Anatomy (Target: 90+ icons, 25+ templates)
 
-// Add to canvas objects
-fabricObject.set('interactiveData', {
-  tooltip: 'Click to learn more about EGFR',
-  link: 'https://en.wikipedia.org/wiki/EGFR'
-});
-```
+Categories needed:
+- Skeletal system (bones, joints, spine)
+- Muscular system (major muscle groups)
+- Nervous system (brain regions, nerves)
+- Cardiovascular system (heart, vessels)
+- Respiratory system (lungs, airways)
+- Digestive system (organs, GI tract)
+- Urinary system (kidneys, bladder)
+- Reproductive system (male/female)
+- Endocrine system (glands)
+- Lymphatic system (nodes, vessels)
+- Integumentary system (skin layers)
+- Special senses (eye, ear anatomy)
 
----
+### Biology General (Target: 90+ icons, 25+ templates)
 
-## INPAINTING (v1.5)
-
-```typescript
-// Option 1: fal.ai (API-based)
-const result = await fal.subscribe('fal-ai/flux/inpaint', {
-  input: {
-    image_url: originalImage,
-    mask_url: maskImage,
-    prompt: 'Replace with mitochondria illustration',
-  },
-});
-
-// Option 2: Browser-based (future - when models get smaller)
-// Using transformers.js or similar
-```
-
----
-
-## PEN TOOL WIRING (Paper.js)
-
-The pen tool is installed but needs UI wiring:
-
-```typescript
-// src/lib/paper/index.ts - EXISTS
-// Need to wire to: src/components/Toolbar/PenTool.tsx
-
-// Key functionality to expose:
-export interface PenToolAPI {
-  startPath(): void;
-  addPoint(x: number, y: number): void;
-  addBezierPoint(x: number, y: number, handleIn: Point, handleOut: Point): void;
-  closePath(): void;
-  editNode(nodeIndex: number, position: Point): void;
-  deleteNode(nodeIndex: number): void;
-  convertToFabric(): fabric.Path;
-}
-```
+Categories needed:
+- Cell structure (membrane, organelles)
+- DNA/RNA (helix, transcription, translation)
+- Proteins (structure, folding)
+- Ecosystems (food webs, biomes)
+- Evolution (phylogenetic trees, fossils)
+- Plant biology (photosynthesis, structure)
+- Animal diversity (phyla representatives)
+- Microbiology (bacteria, viruses, fungi)
+- Biochemistry (pathways, enzymes)
+- Genetics (Punnett squares, chromosomes)
+- Laboratory (equipment, techniques)
+- Scientific method (hypothesis, experiments)
 
 ---
 
@@ -289,15 +363,12 @@ export interface PenToolAPI {
 
 When starting a new session:
 
-1. **Read this file** (CLAUDE.md)
-2. **Check progress**: Read `.specify/ralph-loop/progress.json`
-3. **Priority 1**: PPTX export implementation
-4. **Priority 2**: Background removal implementation
-5. **Priority 3**: Bioicons + SciDraw integration
-6. **Priority 4**: Pen tool UI wiring
-7. **Priority 5**: Complete remaining 2 specialties
-8. **Launch parallel agents** for all workstreams
-9. **Commit frequently** with clear messages
+1. **Read SESSION CONTINUITY LOG** at top of this file
+2. **Run quick status checks** (see commands above)
+3. **Check progress.json** for specialty status
+4. **Launch parallel agents** for unfinished work
+5. **Update SESSION CONTINUITY LOG** before ending session
+6. **Commit frequently** with clear messages
 
 ---
 
@@ -365,7 +436,8 @@ Scientific illustrations from:
 8. **DEFER NAPKIN.AI** - Complex AI features are v2.0
 9. **TEST EVERYTHING** - Ralph Loop until 100% functional
 10. **NEVER REMOVE FEATURES** - Always fix instead
+11. **UPDATE SESSION LOG** - Before ending each session
 
 ---
 
-*Last Updated: 2026-01-18 | Version: 2.1.0 - Kill BioRender Edition*
+*Last Updated: 2026-01-18 | Version: 2.2.0 - Kill BioRender Edition*
