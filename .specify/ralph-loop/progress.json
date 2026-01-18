@@ -1,8 +1,101 @@
 {
-  "currentSpecialty": "cardiology",
+  "currentSpecialty": "emergency-medicine",
   "completedSpecialties": ["cardiology"],
   "blockedSpecialties": [],
   "progress": {
+    "pulmonology": {
+      "iterations": 1,
+      "currentScore": 72,
+      "lastCheckpoint": "PATHOLOGY_50",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": null,
+      "metrics": {
+        "icons": {
+          "current": 96,
+          "target": 90,
+          "percentage": 100
+        },
+        "templates": {
+          "current": 23,
+          "target": 25,
+          "percentage": 92
+        },
+        "prompts": {
+          "current": 15,
+          "target": 20,
+          "percentage": 75
+        },
+        "colorScheme": false
+      },
+      "details": {
+        "icons": {
+          "lung-anatomy": 12,
+          "airways": 10,
+          "pathology-obstructive": 12,
+          "pathology-restrictive": 10,
+          "pathology-infectious": 10,
+          "pathology-vascular": 8,
+          "pathology-malignancy": 6,
+          "equipment": 12,
+          "procedures": 10,
+          "sleep-medicine": 6
+        },
+        "templates": {
+          "clinical-decision-trees": 7,
+          "anatomical-diagrams": 4,
+          "procedure-illustrations": 3,
+          "data-visualization": 4,
+          "additional-clinical": 5
+        }
+      }
+    },
+    "emergency-medicine": {
+      "iterations": 1,
+      "currentScore": 90,
+      "lastCheckpoint": "PATHOLOGY_50",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": null,
+      "metrics": {
+        "icons": {
+          "current": 125,
+          "target": 120,
+          "percentage": 104
+        },
+        "templates": {
+          "current": 26,
+          "target": 25,
+          "percentage": 104
+        },
+        "prompts": {
+          "current": 0,
+          "target": 20,
+          "percentage": 0
+        },
+        "colorScheme": false
+      },
+      "details": {
+        "icons": {
+          "trauma": 15,
+          "resuscitation": 12,
+          "toxicology": 12,
+          "environmental": 10,
+          "shock": 10,
+          "procedures": 15,
+          "monitoring": 10,
+          "triage": 16,
+          "neuro-emergency": 8,
+          "abdominal-emergency": 6,
+          "pediatric-emergency": 6,
+          "acls-rhythms": 5
+        },
+        "templates": {
+          "decision-trees": 14,
+          "anatomical-diagrams": 4,
+          "procedure-checklists": 4,
+          "data-visualization": 4
+        }
+      }
+    },
     "cardiology": {
       "iterations": 2,
       "currentScore": 100,
@@ -55,14 +148,14 @@
   "globalStats": {
     "totalSpecialties": 35,
     "completed": 1,
-    "inProgress": 0,
+    "inProgress": 1,
     "blocked": 0,
-    "notStarted": 34,
+    "notStarted": 33,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 221,
-    "currentTotalTemplates": 50
+    "currentTotalIcons": 346,
+    "currentTotalTemplates": 76
   },
   "executionOrder": [
     "cardiology",
