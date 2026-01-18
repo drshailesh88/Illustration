@@ -6,9 +6,11 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { loadSVGFromString, util, FabricObject } from 'fabric';
 import { LayersPanel } from '../../components/LayersPanel';
 import PropertiesPanel from '../../components/PropertiesPanel';
 import IconPicker from '../../components/IconPicker';
+import type { UnifiedIconResult } from '../../lib/icons';
 import { StylePanel, defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
 import { useEditorStore } from '../../store/editorStore';
 
@@ -221,6 +223,55 @@ export function RightPanel({
     }
   }, [canvas, hasSelection, onApplyHandDrawnToSelection]);
 
+  // Handle icon selection from IconPicker - adds icon SVG to canvas
+  const handleIconSelect = useCallback(async (icon: UnifiedIconResult, svgContent: string) => {
+    if (!canvas || !svgContent) {
+      console.warn('Cannot add icon: canvas not ready or no SVG content');
+      return;
+    }
+
+    try {
+      // Parse and add SVG to canvas using Fabric.js
+      const { objects, options } = await loadSVGFromString(svgContent);
+      const filteredObjects = objects.filter((obj): obj is FabricObject => obj !== null);
+
+      if (filteredObjects.length === 0) {
+        console.warn('No valid objects found in SVG');
+        return;
+      }
+
+      // Group all SVG elements together
+      const group = util.groupSVGElements(filteredObjects, options);
+
+      // Scale icon to reasonable size (64px default)
+      const targetSize = 64;
+      const currentWidth = group.width || 1;
+      const currentHeight = group.height || 1;
+      const scale = targetSize / Math.max(currentWidth, currentHeight);
+      group.scale(scale);
+
+      // Position in center of canvas
+      const canvasWidth = canvas.width || 800;
+      const canvasHeight = canvas.height || 600;
+      group.set({
+        left: (canvasWidth - targetSize) / 2,
+        top: (canvasHeight - targetSize) / 2,
+        // Add metadata for identification
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        name: icon.name,
+      });
+
+      // Add to canvas and select it
+      canvas.add(group);
+      canvas.setActiveObject(group);
+      canvas.renderAll();
+
+      console.log(`Added icon "${icon.name}" to canvas`);
+    } catch (error) {
+      console.error('Failed to add icon to canvas:', error);
+    }
+  }, [canvas]);
+
   // Render content based on active tab
   const renderContent = () => {
     switch (activeTab) {
@@ -229,7 +280,7 @@ export function RightPanel({
       case 'properties':
         return <PropertiesPanel />;
       case 'icons':
-        return <IconPicker />;
+        return <IconPicker onSelectIcon={handleIconSelect} />;
       case 'style':
         return (
           <div style={{ padding: '16px' }}>

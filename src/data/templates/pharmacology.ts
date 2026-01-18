@@ -10,8 +10,10 @@
  * - Therapeutic drug monitoring
  * - Clinical prescribing algorithms
  * - Adverse drug reaction pathways
+ * - Pharmacogenomics and precision medicine
+ * - Drug development pipeline
  *
- * Total: 25 templates
+ * Total: 25 templates (COMPLETE)
  */
 
 import type { DiagramTemplate } from './index';
@@ -983,6 +985,163 @@ export const pregnancyDrugSafety: DiagramTemplate = {
 };
 
 // =============================================================================
+// PHARMACOGENOMICS & PRECISION MEDICINE
+// =============================================================================
+
+/**
+ * Pharmacogenomics Dosing template
+ */
+export const pharmacogenomicsDosing: DiagramTemplate = {
+  id: 'pharma-pharmacogenomics-dosing',
+  name: 'Pharmacogenomics Dosing Algorithm',
+  description: 'Genotype-guided drug dosing based on CYP450 and other pharmacogenomic variants',
+  domain: 'medicine',
+  promptTemplate: `Create a pharmacogenomics dosing algorithm diagram:
+- Drug name: {{drugName}}
+- Gene(s) tested: {{genes}}
+- Metabolizer phenotypes: {{phenotypes}}
+- Normal metabolizer dose: {{normalDose}}
+- Poor metabolizer adjustment: {{poorMetabolizer}}
+- Intermediate metabolizer adjustment: {{intermediateMetabolizer}}
+- Ultra-rapid metabolizer adjustment: {{ultraRapidMetabolizer}}
+- CPIC guideline reference: {{cpicGuideline}}
+{{#additionalNotes}}Implementation notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'drugName',
+    'genes',
+    'phenotypes',
+    'normalDose',
+    'poorMetabolizer',
+    'intermediateMetabolizer',
+    'ultraRapidMetabolizer',
+    'cpicGuideline',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Prescribe\\nCodeine")] --> B["Order CYP2D6\\nGenotyping"]
+    B --> C{"Metabolizer\\nPhenotype?"}
+    C -->|"Normal (EM)"| D["Standard Dose\\n30-60mg q4-6h"]
+    C -->|"Poor (PM)"| E["⚠️ AVOID\\nNo Conversion to Morphine"]
+    C -->|"Intermediate (IM)"| F["Use Alternative\\nor Reduce Dose"]
+    C -->|"Ultra-rapid (UM)"| G["⚠️ AVOID\\nToxicity Risk"]
+    D --> H["Monitor Response"]
+    E --> I["Use Alternative\\n(Morphine, Hydromorphone)"]
+    G --> I
+    style E fill:#ef4444,color:#fff
+    style G fill:#ef4444,color:#fff
+    style D fill:#22c55e,color:#fff`,
+};
+
+/**
+ * Polypharmacy Management template
+ */
+export const polypharmacyManagement: DiagramTemplate = {
+  id: 'pharma-polypharmacy-management',
+  name: 'Polypharmacy Assessment and Deprescribing',
+  description: 'Algorithm for managing multiple medications and deprescribing',
+  domain: 'medicine',
+  promptTemplate: `Create a polypharmacy management algorithm:
+- Patient age: {{patientAge}}
+- Number of medications: {{medicationCount}}
+- Conditions being treated: {{conditions}}
+- High-risk medications: {{highRiskMeds}}
+- Potentially inappropriate medications (Beers): {{beersListMeds}}
+- Drug-drug interactions identified: {{interactions}}
+- Deprescribing candidates: {{deprescribingCandidates}}
+- Monitoring plan: {{monitoringPlan}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'patientAge',
+    'medicationCount',
+    'conditions',
+    'highRiskMeds',
+    'beersListMeds',
+    'interactions',
+    'deprescribingCandidates',
+    'monitoringPlan',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Medication\\nReview")] --> B["List All\\nMedications"]
+    B --> C{"≥5 Meds?\\n(Polypharmacy)"}
+    C -->|"Yes"| D["Screen for:\\n• Beers List\\n• Interactions\\n• Duplications"]
+    C -->|"No"| E["Standard Review"]
+    D --> F{"Issues\\nFound?"}
+    F -->|"PIMs"| G["Deprescribing\\nCandidates"]
+    F -->|"Interactions"| H["Adjust or\\nSubstitute"]
+    F -->|"Duplications"| I["Consolidate\\nTherapy"]
+    G --> J["Taper Plan\\n+ Monitoring"]
+    H --> K["Optimize\\nRegimen"]
+    I --> K
+    J --> L["Follow-up\\n2-4 weeks"]
+    style D fill:#f59e0b,color:#000
+    style G fill:#22c55e,color:#fff`,
+};
+
+/**
+ * Drug Development Pipeline template
+ */
+export const drugDevelopmentPipeline: DiagramTemplate = {
+  id: 'pharma-drug-development-pipeline',
+  name: 'Drug Development Pipeline',
+  description: 'Complete drug development process from discovery to market approval',
+  domain: 'medicine',
+  promptTemplate: `Create a drug development pipeline diagram:
+- Compound/drug name: {{compoundName}}
+- Target indication: {{indication}}
+- Discovery phase findings: {{discoveryFindings}}
+- Preclinical results: {{preclinicalResults}}
+- Phase I design: {{phase1Design}}
+- Phase II design: {{phase2Design}}
+- Phase III design: {{phase3Design}}
+- Regulatory pathway: {{regulatoryPathway}}
+- Estimated timeline: {{timeline}}
+{{#additionalNotes}}Development challenges: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'compoundName',
+    'indication',
+    'discoveryFindings',
+    'preclinicalResults',
+    'phase1Design',
+    'phase2Design',
+    'phase3Design',
+    'regulatoryPathway',
+    'timeline',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Discovery["Discovery (2-4 years)"]
+        A["Target ID"] --> B["Lead Optimization"]
+        B --> C["Candidate Selection"]
+    end
+    subgraph Preclinical["Preclinical (1-2 years)"]
+        D["Safety Studies"] --> E["PK/PD Studies"]
+        E --> F["IND Application"]
+    end
+    subgraph Clinical["Clinical Trials (6-7 years)"]
+        G["Phase I\\n(Safety, n=20-100)"]
+        H["Phase II\\n(Efficacy, n=100-500)"]
+        I["Phase III\\n(Confirmatory, n=1000+)"]
+    end
+    subgraph Approval["Approval (1-2 years)"]
+        J["NDA/BLA\\nSubmission"]
+        K["FDA Review"]
+        L["✓ Market\\nApproval"]
+    end
+    C --> D
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    style L fill:#22c55e,color:#fff
+    style G fill:#3b82f6,color:#fff
+    style H fill:#f59e0b,color:#000
+    style I fill:#ef4444,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -1020,6 +1179,10 @@ export const pharmacologyTemplates: DiagramTemplate[] = [
   renalDosing,
   hepaticDosing,
   pregnancyDrugSafety,
+  // Pharmacogenomics & Advanced
+  pharmacogenomicsDosing,
+  polypharmacyManagement,
+  drugDevelopmentPipeline,
 ];
 
 export default pharmacologyTemplates;

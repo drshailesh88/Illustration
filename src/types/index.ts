@@ -391,8 +391,8 @@ export interface EditorActions {
   setGridSize: (size: number) => void;
 
   // History management
-  undo: () => void;
-  redo: () => void;
+  undo: () => Promise<void>;
+  redo: () => Promise<void>;
   pushHistory: (state: string) => void;
   clearHistory: () => void;
 

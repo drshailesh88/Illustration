@@ -1203,6 +1203,303 @@ export const collisionDiagram: DiagramTemplate = {
 /**
  * All physics templates exported as an array
  */
+/**
+ * Particle Physics Diagram template
+ */
+export const particlePhysicsDiagram: DiagramTemplate = {
+  id: 'phys-particle-physics',
+  name: 'Particle Physics Diagram',
+  description:
+    'Feynman diagram or particle interaction representation',
+  domain: 'physics',
+  promptTemplate: `Create a particle physics diagram:
+- Interaction type: {{interactionType}}
+- Incoming particles: {{incomingParticles}}
+- Outgoing particles: {{outgoingParticles}}
+- Mediator boson: {{mediatorBoson}}
+- Vertex representation: {{vertexRepresentation}}
+- Momentum labels: {{momentumLabels}}
+- Conservation laws: {{conservationLaws}}
+- Cross section (if applicable): {{crossSection}}`,
+  placeholders: [
+    'interactionType',
+    'incomingParticles',
+    'outgoingParticles',
+    'mediatorBoson',
+    'vertexRepresentation',
+    'momentumLabels',
+    'conservationLaws',
+    'crossSection',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph incoming["Incoming"]
+        e1["e⁻"]
+        e2["e⁺"]
+    end
+
+    subgraph vertex["Interaction"]
+        gamma["γ (photon)"]
+    end
+
+    subgraph outgoing["Outgoing"]
+        mu1["μ⁻"]
+        mu2["μ⁺"]
+    end
+
+    subgraph conservation["Conservation"]
+        charge["Charge: -1 + 1 = -1 + 1 ✓"]
+        lepton["Lepton number: 1 + (-1) = 1 + (-1) ✓"]
+    end
+
+    e1 --> gamma
+    e2 --> gamma
+    gamma --> mu1
+    gamma --> mu2
+
+    classDef electron fill:#dbeafe,stroke:#2563eb
+    classDef muon fill:#dcfce7,stroke:#16a34a
+    classDef photon fill:#fef3c7,stroke:#d97706
+
+    class e1,e2 electron
+    class mu1,mu2 muon
+    class gamma photon`,
+};
+
+/**
+ * Astrophysics Diagram template
+ */
+export const astrophysicsDiagram: DiagramTemplate = {
+  id: 'phys-astrophysics',
+  name: 'Astrophysics Diagram',
+  description:
+    'Stellar evolution, galaxy structure, or cosmological diagram',
+  domain: 'physics',
+  promptTemplate: `Create an astrophysics diagram:
+- Diagram type: {{diagramType}}
+- Celestial objects: {{celestialObjects}}
+- Physical scales: {{physicalScales}}
+- Key processes: {{keyProcesses}}
+- Time evolution: {{timeEvolution}}
+- Observable quantities: {{observables}}
+- Theoretical framework: {{theory}}
+- Data source (if applicable): {{dataSource}}`,
+  placeholders: [
+    'diagramType',
+    'celestialObjects',
+    'physicalScales',
+    'keyProcesses',
+    'timeEvolution',
+    'observables',
+    'theory',
+    'dataSource',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph evolution["Stellar Evolution"]
+        protostar["Protostar<br/>T ~ 10⁴ K"]
+        mainseq["Main Sequence<br/>H → He fusion"]
+        redgiant["Red Giant<br/>He burning"]
+    end
+
+    subgraph endpoints["Stellar Endpoints"]
+        whitedwarf["White Dwarf<br/>M < 1.4 M☉"]
+        neutronstar["Neutron Star<br/>1.4 < M < 3 M☉"]
+        blackhole["Black Hole<br/>M > 3 M☉"]
+    end
+
+    protostar -->|"gravitational collapse"| mainseq
+    mainseq -->|"H exhaustion"| redgiant
+    redgiant -->|"low mass"| whitedwarf
+    redgiant -->|"supernova"| neutronstar
+    redgiant -->|"massive star"| blackhole
+
+    classDef early fill:#fef3c7,stroke:#d97706
+    classDef late fill:#fee2e2,stroke:#dc2626
+    classDef remnant fill:#dbeafe,stroke:#2563eb
+
+    class protostar,mainseq early
+    class redgiant late
+    class whitedwarf,neutronstar,blackhole remnant`,
+};
+
+/**
+ * Solid State Physics Diagram template
+ */
+export const solidStateDiagram: DiagramTemplate = {
+  id: 'phys-solid-state',
+  name: 'Solid State Physics Diagram',
+  description:
+    'Crystal structure, band diagram, or condensed matter representation',
+  domain: 'physics',
+  promptTemplate: `Create a solid state physics diagram:
+- Material type: {{materialType}}
+- Crystal structure: {{crystalStructure}}
+- Band structure: {{bandStructure}}
+- Fermi level position: {{fermiLevel}}
+- Dopants (if semiconductor): {{dopants}}
+- Temperature effects: {{temperatureEffects}}
+- Physical properties: {{physicalProperties}}
+- Device application: {{deviceApplication}}`,
+  placeholders: [
+    'materialType',
+    'crystalStructure',
+    'bandStructure',
+    'fermiLevel',
+    'dopants',
+    'temperatureEffects',
+    'physicalProperties',
+    'deviceApplication',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph bands["Band Structure"]
+        conduction["Conduction Band<br/>Empty states"]
+        gap["Band Gap (Eg)"]
+        valence["Valence Band<br/>Filled states"]
+    end
+
+    subgraph doping["Doping Effects"]
+        ntype["n-type: Donor levels<br/>near conduction band"]
+        ptype["p-type: Acceptor levels<br/>near valence band"]
+    end
+
+    subgraph device["Device Applications"]
+        diode["p-n Junction Diode"]
+        transistor["MOSFET"]
+    end
+
+    conduction --> gap
+    gap --> valence
+    ntype --> diode
+    ptype --> diode
+    diode --> transistor
+
+    classDef cond fill:#dbeafe,stroke:#2563eb
+    classDef val fill:#dcfce7,stroke:#16a34a
+    classDef gap fill:#f3f4f6,stroke:#6b7280
+
+    class conduction cond
+    class valence val
+    class gap gap`,
+};
+
+/**
+ * Electrostatics Diagram template
+ */
+export const electrostaticsDiagram: DiagramTemplate = {
+  id: 'phys-electrostatics',
+  name: 'Electrostatics Diagram',
+  description:
+    'Electric charge distribution, potential, and field configuration',
+  domain: 'physics',
+  promptTemplate: `Create an electrostatics diagram:
+- Charge configuration: {{chargeConfiguration}}
+- Charge magnitudes: {{chargeMagnitudes}}
+- Electric field representation: {{fieldRepresentation}}
+- Equipotential surfaces: {{equipotentials}}
+- Gauss surface (if applicable): {{gaussSurface}}
+- Boundary conditions: {{boundaryConditions}}
+- Potential calculation: {{potentialCalculation}}
+- Applications: {{applications}}`,
+  placeholders: [
+    'chargeConfiguration',
+    'chargeMagnitudes',
+    'fieldRepresentation',
+    'equipotentials',
+    'gaussSurface',
+    'boundaryConditions',
+    'potentialCalculation',
+    'applications',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph charges["Charge Distribution"]
+        pos["+q (positive)"]
+        neg["-q (negative)"]
+    end
+
+    subgraph field["Electric Field"]
+        direction["E points: + → -"]
+        magnitude["E = kq/r²"]
+    end
+
+    subgraph potential["Electric Potential"]
+        work["V = -∫E·dr"]
+        reference["V(∞) = 0"]
+    end
+
+    subgraph gauss["Gauss's Law"]
+        flux["Φ = ∮E·dA = q_enc/ε₀"]
+    end
+
+    pos -->|"field lines"| neg
+    field --> potential
+    potential --> gauss
+
+    classDef positive fill:#fee2e2,stroke:#dc2626
+    classDef negative fill:#dbeafe,stroke:#2563eb
+
+    class pos positive
+    class neg negative`,
+};
+
+/**
+ * Rotational Mechanics Diagram template
+ */
+export const rotationalMechanicsDiagram: DiagramTemplate = {
+  id: 'phys-rotational-mechanics',
+  name: 'Rotational Mechanics Diagram',
+  description:
+    'Rotational motion, torque, and angular momentum representation',
+  domain: 'physics',
+  promptTemplate: `Create a rotational mechanics diagram:
+- Rotating object: {{rotatingObject}}
+- Axis of rotation: {{axisOfRotation}}
+- Angular velocity: {{angularVelocity}}
+- Moment of inertia: {{momentOfInertia}}
+- Applied torques: {{appliedTorques}}
+- Angular momentum: {{angularMomentum}}
+- Energy considerations: {{energyConsiderations}}
+- Precession (if applicable): {{precession}}`,
+  placeholders: [
+    'rotatingObject',
+    'axisOfRotation',
+    'angularVelocity',
+    'momentOfInertia',
+    'appliedTorques',
+    'angularMomentum',
+    'energyConsiderations',
+    'precession',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph kinematics["Rotational Kinematics"]
+        omega["ω = dθ/dt<br/>(angular velocity)"]
+        alpha["α = dω/dt<br/>(angular acceleration)"]
+    end
+
+    subgraph dynamics["Rotational Dynamics"]
+        torque["τ = r × F<br/>(torque)"]
+        inertia["I = Σmr²<br/>(moment of inertia)"]
+        newton["τ = Iα<br/>(Newton's 2nd for rotation)"]
+    end
+
+    subgraph conservation["Conservation Laws"]
+        L["L = Iω<br/>(angular momentum)"]
+        KE["KE = ½Iω²<br/>(rotational kinetic energy)"]
+    end
+
+    omega --> alpha
+    torque --> newton
+    inertia --> newton
+    newton --> L
+    newton --> KE
+
+    classDef kinematic fill:#dbeafe,stroke:#2563eb
+    classDef dynamic fill:#dcfce7,stroke:#16a34a
+    classDef conserv fill:#fef3c7,stroke:#d97706
+
+    class omega,alpha kinematic
+    class torque,inertia,newton dynamic
+    class L,KE conserv`,
+};
+
 export const physicsTemplates: DiagramTemplate[] = [
   // Mechanics
   forceDiagram,
@@ -1210,11 +1507,13 @@ export const physicsTemplates: DiagramTemplate[] = [
   projectileMotion,
   simpleHarmonicMotion,
   collisionDiagram,
+  rotationalMechanicsDiagram,
   // Electromagnetism
   circuitDiagram,
   electricFieldDiagram,
   magneticFieldDiagram,
   emWaveDiagram,
+  electrostaticsDiagram,
   // Waves & Optics
   waveDiagram,
   opticsRayDiagram,
@@ -1227,6 +1526,11 @@ export const physicsTemplates: DiagramTemplate[] = [
   quantumStateDiagram,
   spacetimeDiagram,
   nuclearDecayDiagram,
+  particlePhysicsDiagram,
+  // Condensed Matter
+  solidStateDiagram,
+  // Astrophysics
+  astrophysicsDiagram,
   // Laboratory
   experimentSetup,
   dataAnalysisGraph,

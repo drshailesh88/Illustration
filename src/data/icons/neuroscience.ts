@@ -1773,6 +1773,302 @@ export const neuroscienceIcons: IconDefinition[] = [
       <text x="14" y="52" font-size="3" fill="currentColor" stroke="none">Neural Decoding</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // ION CHANNELS
+  // ===========================================================================
+  {
+    id: 'neuro-sodium-channel',
+    name: 'Voltage-Gated Na+ Channel',
+    domain: 'biology',
+    category: 'ion-channels',
+    tags: ['sodium channel', 'Nav', 'voltage-gated', 'action potential', 'inactivation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="24" fill="#F39C12" opacity="0.2"/>
+      <rect x="20" y="16" width="24" height="32" fill="#E74C3C" opacity="0.3"/>
+      <path d="M28 16v32" stroke="#E74C3C"/>
+      <path d="M36 16v32" stroke="#E74C3C"/>
+      <ellipse cx="32" cy="32" rx="6" ry="8" fill="#FFFFFF"/>
+      <circle cx="32" cy="24" r="2" fill="#3498DB"/>
+      <circle cx="32" cy="32" r="2" fill="#3498DB"/>
+      <circle cx="32" cy="40" r="2" fill="#3498DB"/>
+      <path d="M32 12v4" stroke="#27AE60" stroke-width="2"/>
+      <path d="M32 48v4" stroke="#27AE60" stroke-width="2"/>
+      <text x="4" y="32" font-size="3" fill="currentColor" stroke="none">OUT</text>
+      <text x="52" y="32" font-size="3" fill="currentColor" stroke="none">IN</text>
+      <text x="24" y="58" font-size="3" fill="currentColor" stroke="none">Nav</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-potassium-channel',
+    name: 'Voltage-Gated K+ Channel',
+    domain: 'biology',
+    category: 'ion-channels',
+    tags: ['potassium channel', 'Kv', 'voltage-gated', 'repolarization', 'delayed rectifier'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="24" fill="#F39C12" opacity="0.2"/>
+      <rect x="20" y="16" width="24" height="32" fill="#9B59B6" opacity="0.3"/>
+      <path d="M28 16v32" stroke="#9B59B6"/>
+      <path d="M36 16v32" stroke="#9B59B6"/>
+      <ellipse cx="32" cy="32" rx="6" ry="8" fill="#FFFFFF"/>
+      <circle cx="32" cy="40" r="2" fill="#27AE60"/>
+      <circle cx="32" cy="32" r="2" fill="#27AE60"/>
+      <path d="M32 48v4" stroke="#27AE60" stroke-width="2"/>
+      <path d="M32 12v4" stroke="#E74C3C" stroke-width="2"/>
+      <text x="4" y="32" font-size="3" fill="currentColor" stroke="none">OUT</text>
+      <text x="52" y="32" font-size="3" fill="currentColor" stroke="none">IN</text>
+      <text x="24" y="58" font-size="3" fill="currentColor" stroke="none">Kv</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-calcium-channel',
+    name: 'Voltage-Gated Ca2+ Channel',
+    domain: 'biology',
+    category: 'ion-channels',
+    tags: ['calcium channel', 'Cav', 'L-type', 'T-type', 'neurotransmitter release'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="24" fill="#F39C12" opacity="0.2"/>
+      <rect x="20" y="16" width="24" height="32" fill="#3498DB" opacity="0.3"/>
+      <path d="M28 16v32" stroke="#3498DB"/>
+      <path d="M36 16v32" stroke="#3498DB"/>
+      <ellipse cx="32" cy="32" rx="6" ry="8" fill="#FFFFFF"/>
+      <circle cx="32" cy="24" r="2" fill="#27AE60"/>
+      <circle cx="32" cy="32" r="2" fill="#27AE60"/>
+      <path d="M32 12v4" stroke="#27AE60" stroke-width="2"/>
+      <text x="27" y="50" font-size="3" fill="currentColor" stroke="none">2+</text>
+      <text x="4" y="32" font-size="3" fill="currentColor" stroke="none">OUT</text>
+      <text x="52" y="32" font-size="3" fill="currentColor" stroke="none">IN</text>
+      <text x="22" y="58" font-size="3" fill="currentColor" stroke="none">Cav</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-nmda-receptor',
+    name: 'NMDA Receptor',
+    domain: 'biology',
+    category: 'ion-channels',
+    tags: ['NMDA', 'glutamate receptor', 'Mg2+ block', 'LTP', 'coincidence detector'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="24" width="48" height="20" fill="#F39C12" opacity="0.2"/>
+      <rect x="16" y="20" width="32" height="28" fill="#27AE60" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="8" ry="10" fill="#FFFFFF"/>
+      <circle cx="32" cy="32" r="3" fill="#95A5A6"/>
+      <text x="30" y="35" font-size="4" fill="currentColor" stroke="none">Mg</text>
+      <circle cx="24" cy="16" r="3" fill="#E74C3C"/>
+      <text x="20" y="12" font-size="3" fill="currentColor" stroke="none">Glu</text>
+      <circle cx="40" cy="16" r="3" fill="#3498DB"/>
+      <text x="38" y="12" font-size="3" fill="currentColor" stroke="none">Gly</text>
+      <path d="M24 19v1"/>
+      <path d="M40 19v1"/>
+      <text x="16" y="56" font-size="3" fill="currentColor" stroke="none">NMDA Receptor</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // COGNITIVE NETWORKS
+  // ===========================================================================
+  {
+    id: 'neuro-default-mode-network',
+    name: 'Default Mode Network',
+    domain: 'biology',
+    category: 'networks',
+    tags: ['DMN', 'default mode', 'resting state', 'self-referential', 'mind-wandering'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="24" ry="18" fill="#E8E8E8" opacity="0.3"/>
+      <circle cx="32" cy="16" r="6" fill="#9B59B6" opacity="0.5"/>
+      <text x="28" y="18" font-size="3" fill="currentColor" stroke="none">mPFC</text>
+      <circle cx="20" cy="32" r="5" fill="#9B59B6" opacity="0.5"/>
+      <text x="16" y="34" font-size="3" fill="currentColor" stroke="none">PCC</text>
+      <circle cx="44" cy="32" r="5" fill="#9B59B6" opacity="0.5"/>
+      <text x="40" y="34" font-size="3" fill="currentColor" stroke="none">IPL</text>
+      <circle cx="32" cy="44" r="5" fill="#9B59B6" opacity="0.5"/>
+      <text x="28" y="46" font-size="3" fill="currentColor" stroke="none">Hip</text>
+      <path d="M32 22v16" stroke="#9B59B6"/>
+      <path d="M25 32h14" stroke="#9B59B6"/>
+      <path d="M26 20l-4 8" stroke="#9B59B6"/>
+      <path d="M38 20l4 8" stroke="#9B59B6"/>
+      <text x="20" y="58" font-size="3" fill="currentColor" stroke="none">DMN</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-attention-network',
+    name: 'Attention Network',
+    domain: 'biology',
+    category: 'networks',
+    tags: ['attention', 'dorsal attention', 'DAN', 'FEF', 'IPS', 'top-down'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="24" ry="18" fill="#E8E8E8" opacity="0.3"/>
+      <circle cx="20" cy="20" r="5" fill="#3498DB" opacity="0.5"/>
+      <text x="16" y="22" font-size="3" fill="currentColor" stroke="none">FEF</text>
+      <circle cx="44" cy="20" r="5" fill="#3498DB" opacity="0.5"/>
+      <text x="40" y="22" font-size="3" fill="currentColor" stroke="none">FEF</text>
+      <circle cx="16" cy="36" r="5" fill="#27AE60" opacity="0.5"/>
+      <text x="12" y="38" font-size="3" fill="currentColor" stroke="none">IPS</text>
+      <circle cx="48" cy="36" r="5" fill="#27AE60" opacity="0.5"/>
+      <text x="44" y="38" font-size="3" fill="currentColor" stroke="none">IPS</text>
+      <path d="M25 20h14" stroke="#3498DB"/>
+      <path d="M21 36h22" stroke="#27AE60"/>
+      <path d="M20 25v6" stroke="#E74C3C"/>
+      <path d="M44 25v6" stroke="#E74C3C"/>
+      <text x="14" y="56" font-size="3" fill="currentColor" stroke="none">Dorsal Attention</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-salience-network',
+    name: 'Salience Network',
+    domain: 'biology',
+    category: 'networks',
+    tags: ['salience', 'anterior insula', 'ACC', 'switching', 'arousal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="24" ry="18" fill="#E8E8E8" opacity="0.3"/>
+      <circle cx="32" cy="16" r="6" fill="#E74C3C" opacity="0.5"/>
+      <text x="28" y="18" font-size="3" fill="currentColor" stroke="none">ACC</text>
+      <circle cx="16" cy="32" r="5" fill="#F39C12" opacity="0.5"/>
+      <text x="14" y="34" font-size="2" fill="currentColor" stroke="none">AI</text>
+      <circle cx="48" cy="32" r="5" fill="#F39C12" opacity="0.5"/>
+      <text x="46" y="34" font-size="2" fill="currentColor" stroke="none">AI</text>
+      <path d="M26 20l-8 8" stroke="#E74C3C"/>
+      <path d="M38 20l8 8" stroke="#E74C3C"/>
+      <path d="M21 32h22" stroke="#F39C12"/>
+      <text x="14" y="56" font-size="3" fill="currentColor" stroke="none">Salience Network</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // NEUROPLASTICITY
+  // ===========================================================================
+  {
+    id: 'neuro-stdp',
+    name: 'Spike-Timing Dependent Plasticity',
+    domain: 'biology',
+    category: 'plasticity',
+    tags: ['STDP', 'spike timing', 'Hebbian', 'pre-post', 'plasticity window'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8" y1="32" x2="56" y2="32"/>
+      <line x1="32" y1="8" x2="32" y2="56"/>
+      <path d="M8 32c4 0 8-20 12-20s8 20 12 0" stroke="#27AE60" stroke-width="2"/>
+      <path d="M44 32c4 0 8 16 12 16" stroke="#E74C3C" stroke-width="2"/>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">LTP</text>
+      <text x="48" y="52" font-size="3" fill="currentColor" stroke="none">LTD</text>
+      <text x="34" y="58" font-size="3" fill="currentColor" stroke="none">+Δt</text>
+      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">-Δt</text>
+      <text x="4" y="36" font-size="3" fill="currentColor" stroke="none">ΔW</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-dendritic-spine',
+    name: 'Dendritic Spine',
+    domain: 'biology',
+    category: 'plasticity',
+    tags: ['spine', 'mushroom spine', 'thin spine', 'stubby', 'plasticity'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 56h48" stroke-width="4" fill="#9B59B6" opacity="0.3"/>
+      <path d="M16 56v-16"/>
+      <circle cx="16" cy="36" r="4" fill="#E74C3C" opacity="0.5"/>
+      <text x="12" y="28" font-size="3" fill="currentColor" stroke="none">Thin</text>
+      <path d="M32 56v-12"/>
+      <ellipse cx="32" cy="36" rx="6" ry="8" fill="#27AE60" opacity="0.5"/>
+      <text x="24" y="24" font-size="3" fill="currentColor" stroke="none">Mushroom</text>
+      <path d="M48 56v-6"/>
+      <rect x="44" y="46" width="8" height="4" rx="1" fill="#3498DB" opacity="0.5"/>
+      <text x="42" y="42" font-size="3" fill="currentColor" stroke="none">Stubby</text>
+      <text x="16" y="62" font-size="3" fill="currentColor" stroke="none">Spine Morphology</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-neurogenesis',
+    name: 'Adult Neurogenesis',
+    domain: 'biology',
+    category: 'plasticity',
+    tags: ['neurogenesis', 'hippocampus', 'dentate gyrus', 'SVZ', 'new neurons'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="16" fill="#E8E8E8" opacity="0.2"/>
+      <circle cx="16" cy="32" r="4" fill="#3498DB" opacity="0.5"/>
+      <text x="12" y="42" font-size="3" fill="currentColor" stroke="none">NSC</text>
+      <path d="M20 32h6" stroke="#9B59B6"/>
+      <circle cx="28" cy="32" r="3" fill="#9B59B6" opacity="0.5"/>
+      <path d="M31 32h6" stroke="#27AE60"/>
+      <circle cx="40" cy="32" r="4" fill="#27AE60" opacity="0.5"/>
+      <path d="M40 32l-3-4"/>
+      <path d="M40 32l3-4"/>
+      <path d="M40 32l4 1"/>
+      <path d="M44 32h6" stroke="#E74C3C"/>
+      <circle cx="52" cy="32" r="5" fill="#E74C3C" opacity="0.5"/>
+      <path d="M52 32l-4-6"/>
+      <path d="M52 32l4-5"/>
+      <path d="M52 32l-3-2"/>
+      <path d="M52 32l5 3"/>
+      <path d="M52 37v4"/>
+      <text x="48" y="48" font-size="3" fill="currentColor" stroke="none">Mature</text>
+      <text x="14" y="56" font-size="3" fill="currentColor" stroke="none">Adult Neurogenesis</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL RESEARCH TOOLS
+  // ===========================================================================
+  {
+    id: 'neuro-miniscope',
+    name: 'Miniscope',
+    domain: 'biology',
+    category: 'equipment',
+    tags: ['miniscope', 'calcium imaging', 'freely moving', 'GRIN lens', 'endoscope'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="48" rx="16" ry="10" fill="#E8E8E8" opacity="0.3"/>
+      <path d="M16 44c0-16 6-28 16-28s16 12 16 28"/>
+      <rect x="24" y="4" width="16" height="16" rx="2" fill="#2C3E50" opacity="0.3"/>
+      <circle cx="32" cy="12" r="4" fill="#27AE60"/>
+      <path d="M28 20v8l4 4"/>
+      <path d="M36 20v8l-4 4"/>
+      <rect x="28" y="32" width="8" height="8" rx="1" fill="#3498DB" opacity="0.3"/>
+      <circle cx="32" cy="36" r="2" fill="#87CEEB"/>
+      <path d="M24 4v-2h16v2"/>
+      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">Miniscope</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-fiber-photometry',
+    name: 'Fiber Photometry',
+    domain: 'biology',
+    category: 'equipment',
+    tags: ['fiber photometry', 'calcium signal', 'bulk fluorescence', 'GCaMP'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="20" height="12" rx="2" fill="#3498DB" opacity="0.3"/>
+      <text x="8" y="16" font-size="3" fill="currentColor" stroke="none">LED</text>
+      <rect x="40" y="8" width="20" height="12" rx="2" fill="#27AE60" opacity="0.3"/>
+      <text x="42" y="16" font-size="3" fill="currentColor" stroke="none">PMT</text>
+      <path d="M24 14h4"/>
+      <path d="M36 14h4"/>
+      <rect x="28" y="10" width="8" height="8" rx="1" fill="#9B59B6" opacity="0.3"/>
+      <path d="M32 18v20" stroke="#9B59B6" stroke-width="2"/>
+      <ellipse cx="32" cy="44" rx="12" ry="8" fill="#E8E8E8" opacity="0.3"/>
+      <circle cx="32" cy="44" r="4" fill="#27AE60" opacity="0.5"/>
+      <path d="M14 14l14 4" stroke="#3498DB" stroke-dasharray="2 2"/>
+      <path d="M32 38l18-20" stroke="#27AE60" stroke-dasharray="2 2"/>
+      <text x="14" y="58" font-size="3" fill="currentColor" stroke="none">Fiber Photometry</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-head-direction-cell',
+    name: 'Head Direction Cell',
+    domain: 'biology',
+    category: 'circuits',
+    tags: ['head direction', 'navigation', 'postsubiculum', 'compass', 'Taube'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" fill="#E8E8E8" opacity="0.2"/>
+      <circle cx="32" cy="32" r="24"/>
+      <line x1="32" y1="8" x2="32" y2="14"/>
+      <line x1="32" y1="50" x2="32" y2="56"/>
+      <line x1="8" y1="32" x2="14" y2="32"/>
+      <line x1="50" y1="32" x2="56" y2="32"/>
+      <text x="30" y="6" font-size="3" fill="currentColor" stroke="none">N</text>
+      <text x="30" y="62" font-size="3" fill="currentColor" stroke="none">S</text>
+      <text x="2" y="34" font-size="3" fill="currentColor" stroke="none">W</text>
+      <text x="58" y="34" font-size="3" fill="currentColor" stroke="none">E</text>
+      <path d="M32 32l12-12" stroke="#E74C3C" stroke-width="3"/>
+      <circle cx="44" cy="20" r="3" fill="#E74C3C"/>
+      <ellipse cx="44" cy="20" rx="8" ry="6" fill="#E74C3C" opacity="0.3" transform="rotate(-45 44 20)"/>
+    </svg>`
+  },
 ];
 
 export default neuroscienceIcons;

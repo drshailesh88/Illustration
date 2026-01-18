@@ -1350,6 +1350,576 @@ export const physicsIcons: IconDefinition[] = [
       <text x="28" y="36" font-size="5" fill="currentColor" stroke="none">W</text>
     </svg>`,
   },
+
+  // ===========================================================================
+  // PARTICLE PHYSICS
+  // ===========================================================================
+  {
+    id: 'phys-quark',
+    name: 'Quark',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['quark', 'fundamental', 'strong force', 'flavor', 'color charge'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="32" r="12"/>
+      <text x="26" y="36" font-size="10" font-weight="bold" fill="currentColor" stroke="none">q</text>
+      <path d="M20 20l-8-8"/>
+      <path d="M44 20l8-8"/>
+      <path d="M32 48v8"/>
+      <circle cx="12" cy="12" r="3" fill="#EF4444"/>
+      <circle cx="52" cy="12" r="3" fill="#22C55E"/>
+      <circle cx="32" cy="56" r="3" fill="#3B82F6"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-gluon',
+    name: 'Gluon',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['gluon', 'boson', 'strong force', 'QCD', 'color charge'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c4-8 8-8 12 0s8 8 12 0 8-8 12 0 8 8 12 0"/>
+      <circle cx="8" cy="32" r="4" fill="#EF4444"/>
+      <circle cx="56" cy="32" r="4" fill="#3B82F6"/>
+      <text x="28" y="52" font-size="8" fill="currentColor" stroke="none">g</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-neutrino',
+    name: 'Neutrino',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['neutrino', 'lepton', 'weak force', 'oscillation', 'flavor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="8" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="32" r="3"/>
+      <path d="M40 32h16"/>
+      <path d="M52 28l4 4-4 4"/>
+      <path d="M8 32h16"/>
+      <text x="26" y="56" font-size="10" fill="currentColor" stroke="none">ν</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-higgs-boson',
+    name: 'Higgs Boson',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['Higgs', 'boson', 'mass', 'field', 'scalar'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="32" r="16"/>
+      <circle cx="32" cy="32" r="8"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+      <text x="24" y="56" font-size="10" fill="currentColor" stroke="none">H</text>
+      <path d="M32 8v8"/>
+      <path d="M32 48v8"/>
+      <path d="M8 32h8"/>
+      <path d="M48 32h8"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-w-boson',
+    name: 'W Boson',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['W boson', 'weak force', 'beta decay', 'massive', 'charged'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14"/>
+      <text x="22" y="38" font-size="14" font-weight="bold" fill="currentColor" stroke="none">W</text>
+      <text x="38" y="28" font-size="8" fill="currentColor" stroke="none">±</text>
+      <path d="M8 32c4-4 8-4 12 0"/>
+      <path d="M44 32c4-4 8-4 12 0"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-z-boson',
+    name: 'Z Boson',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['Z boson', 'weak force', 'neutral current', 'massive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14"/>
+      <text x="24" y="38" font-size="14" font-weight="bold" fill="currentColor" stroke="none">Z</text>
+      <text x="38" y="28" font-size="8" fill="currentColor" stroke="none">0</text>
+      <path d="M8 32c4-4 8-4 12 0"/>
+      <path d="M44 32c4-4 8-4 12 0"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-muon',
+    name: 'Muon',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['muon', 'lepton', 'heavy electron', 'decay', 'cosmic ray'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="32" r="12"/>
+      <text x="26" y="38" font-size="14" fill="currentColor" stroke="none">μ</text>
+      <text x="40" y="28" font-size="8" fill="currentColor" stroke="none">-</text>
+      <path d="M32 8v12"/>
+      <path d="M32 44v12"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-positron',
+    name: 'Positron',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['positron', 'antiparticle', 'antimatter', 'positronium', 'annihilation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="32" r="12"/>
+      <text x="25" y="38" font-size="14" fill="currentColor" stroke="none">e</text>
+      <text x="38" y="28" font-size="8" fill="currentColor" stroke="none">+</text>
+      <path d="M16 16l6 6"/>
+      <path d="M42 42l6 6"/>
+      <path d="M16 48l6-6"/>
+      <path d="M42 22l6-6"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-pion',
+    name: 'Pion',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['pion', 'meson', 'strong force', 'Yukawa', 'nuclear'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14"/>
+      <text x="24" y="38" font-size="14" fill="currentColor" stroke="none">π</text>
+      <circle cx="24" cy="28" r="4" fill="#EF4444" opacity="0.5"/>
+      <circle cx="40" cy="36" r="4" fill="#3B82F6" opacity="0.5"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-proton-structure',
+    name: 'Proton Structure',
+    domain: 'physics',
+    category: 'particles',
+    tags: ['proton', 'quark structure', 'uud', 'hadron', 'baryon'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="24" cy="28" r="6" fill="#EF4444" opacity="0.5"/>
+      <circle cx="40" cy="28" r="6" fill="#EF4444" opacity="0.5"/>
+      <circle cx="32" cy="40" r="6" fill="#3B82F6" opacity="0.5"/>
+      <text x="22" y="30" font-size="6" fill="currentColor" stroke="none">u</text>
+      <text x="38" y="30" font-size="6" fill="currentColor" stroke="none">u</text>
+      <text x="30" y="42" font-size="6" fill="currentColor" stroke="none">d</text>
+      <text x="28" y="58" font-size="6" fill="currentColor" stroke="none">p+</text>
+    </svg>`,
+  },
+
+  // ===========================================================================
+  // ASTROPHYSICS & COSMOLOGY
+  // ===========================================================================
+  {
+    id: 'phys-galaxy',
+    name: 'Galaxy',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['galaxy', 'spiral', 'dark matter', 'rotation curve', 'cosmology'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="8" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="8"/>
+      <path d="M32 32c-8-4-12-8-16-16"/>
+      <path d="M32 32c8 4 12 8 16 16"/>
+      <path d="M32 32c-4 8-8 12-16 16"/>
+      <path d="M32 32c4-8 8-12 16-16"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-neutron-star',
+    name: 'Neutron Star',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['neutron star', 'pulsar', 'degenerate matter', 'magnetar', 'dense'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="32" r="16"/>
+      <path d="M32 8v8"/>
+      <path d="M32 48v8"/>
+      <ellipse cx="32" cy="32" rx="24" ry="4" stroke-dasharray="4 2"/>
+      <path d="M16 28l-8-4"/>
+      <path d="M16 36l-8 4"/>
+      <path d="M48 28l8-4"/>
+      <path d="M48 36l8 4"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-supernova',
+    name: 'Supernova',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['supernova', 'explosion', 'stellar death', 'nucleosynthesis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="8" fill="currentColor"/>
+      <path d="M32 8v12"/>
+      <path d="M32 44v12"/>
+      <path d="M8 32h12"/>
+      <path d="M44 32h12"/>
+      <path d="M15 15l8 8"/>
+      <path d="M41 41l8 8"/>
+      <path d="M15 49l8-8"/>
+      <path d="M41 23l8-8"/>
+      <circle cx="32" cy="32" r="20" stroke-dasharray="4 2"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-big-bang',
+    name: 'Big Bang',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['big bang', 'cosmology', 'expansion', 'CMB', 'origin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="32" r="4" fill="currentColor"/>
+      <path d="M12 32l40 0"/>
+      <path d="M12 32c8-16 20-20 40-24"/>
+      <path d="M12 32c8 16 20 20 40 24"/>
+      <path d="M20 32c8-8 16-12 32-12"/>
+      <path d="M20 32c8 8 16 12 32 12"/>
+      <path d="M48 28l4 4-4 4"/>
+      <text x="48" y="60" font-size="5" fill="currentColor" stroke="none">time</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-dark-matter',
+    name: 'Dark Matter',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['dark matter', 'halo', 'WIMP', 'gravitational', 'invisible'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" stroke-dasharray="4 2" opacity="0.5"/>
+      <circle cx="32" cy="32" r="16" stroke-dasharray="4 2" opacity="0.7"/>
+      <circle cx="32" cy="32" r="8" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <circle cx="20" cy="24" r="2" fill="currentColor" opacity="0.2"/>
+      <circle cx="44" cy="28" r="2" fill="currentColor" opacity="0.2"/>
+      <circle cx="36" cy="44" r="2" fill="currentColor" opacity="0.2"/>
+      <text x="48" y="56" font-size="5" fill="currentColor" stroke="none">DM</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-redshift',
+    name: 'Redshift',
+    domain: 'physics',
+    category: 'astrophysics',
+    tags: ['redshift', 'Doppler', 'expansion', 'cosmological', 'wavelength'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24c4-4 8-4 12 0s8 4 12 0 8-4 12 0" stroke="#3B82F6"/>
+      <path d="M8 40c6-6 12-6 18 0s12 6 18 0" stroke="#EF4444"/>
+      <path d="M4 32h8"/>
+      <path d="M52 32h8"/>
+      <path d="M28 32l8 0"/>
+      <path d="M32 28l4 4-4 4"/>
+      <text x="4" y="20" font-size="5" fill="#3B82F6" stroke="none">λ₀</text>
+      <text x="4" y="52" font-size="5" fill="#EF4444" stroke="none">λ</text>
+    </svg>`,
+  },
+
+  // ===========================================================================
+  // SOLID STATE PHYSICS
+  // ===========================================================================
+  {
+    id: 'phys-crystal-lattice',
+    name: 'Crystal Lattice',
+    domain: 'physics',
+    category: 'solid-state',
+    tags: ['crystal', 'lattice', 'unit cell', 'periodic', 'structure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="16" r="4" fill="currentColor"/>
+      <circle cx="48" cy="16" r="4" fill="currentColor"/>
+      <circle cx="16" cy="48" r="4" fill="currentColor"/>
+      <circle cx="48" cy="48" r="4" fill="currentColor"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.5"/>
+      <path d="M16 16h32"/>
+      <path d="M16 16v32"/>
+      <path d="M48 16v32"/>
+      <path d="M16 48h32"/>
+      <path d="M16 16l16 16"/>
+      <path d="M48 16l-16 16"/>
+      <path d="M16 48l16-16"/>
+      <path d="M48 48l-16-16"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-band-gap',
+    name: 'Band Gap',
+    domain: 'physics',
+    category: 'solid-state',
+    tags: ['band gap', 'conductor', 'insulator', 'semiconductor', 'Fermi level'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="16" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="40" width="48" height="16" fill="currentColor" opacity="0.3"/>
+      <path d="M8 24h48"/>
+      <path d="M8 40h48"/>
+      <line x1="32" y1="24" x2="32" y2="40" stroke-dasharray="4 2"/>
+      <path d="M36 28l-4 4 4 4"/>
+      <path d="M28 36l4-4-4-4"/>
+      <text x="8" y="18" font-size="5" fill="currentColor" stroke="none">Conduction</text>
+      <text x="8" y="52" font-size="5" fill="currentColor" stroke="none">Valence</text>
+      <text x="36" y="34" font-size="5" fill="currentColor" stroke="none">Eg</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-phonon',
+    name: 'Phonon',
+    domain: 'physics',
+    category: 'solid-state',
+    tags: ['phonon', 'lattice vibration', 'quantum', 'thermal', 'acoustical'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="32" r="4"/>
+      <circle cx="28" cy="28" r="4"/>
+      <circle cx="44" cy="32" r="4"/>
+      <circle cx="28" cy="40" r="4"/>
+      <path d="M16 32h8"/>
+      <path d="M32 28h8"/>
+      <path d="M28 32v4"/>
+      <path d="M8 20c4-4 8-4 12 0s8 4 12 0 8-4 12 0 8 4 12 0"/>
+      <text x="24" y="56" font-size="5" fill="currentColor" stroke="none">phonon</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-superconductor',
+    name: 'Superconductor',
+    domain: 'physics',
+    category: 'solid-state',
+    tags: ['superconductor', 'Cooper pair', 'Meissner effect', 'BCS', 'zero resistance'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="28" width="32" height="8" rx="4" fill="currentColor" opacity="0.3"/>
+      <rect x="16" y="28" width="32" height="8" rx="4"/>
+      <path d="M8 32h8"/>
+      <path d="M48 32h8"/>
+      <path d="M12 24l-4-4"/>
+      <path d="M12 40l-4 4"/>
+      <path d="M52 24l4-4"/>
+      <path d="M52 40l4 4"/>
+      <circle cx="24" cy="32" r="2" fill="currentColor"/>
+      <circle cx="28" cy="32" r="2" fill="currentColor"/>
+      <circle cx="36" cy="32" r="2" fill="currentColor"/>
+      <circle cx="40" cy="32" r="2" fill="currentColor"/>
+      <text x="16" y="52" font-size="5" fill="currentColor" stroke="none">T < Tc, R = 0</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-fermi-surface',
+    name: 'Fermi Surface',
+    domain: 'physics',
+    category: 'solid-state',
+    tags: ['Fermi surface', 'momentum space', 'electrons', 'metal', 'band structure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <path d="M32 12c12 0 20 8 20 20s-8 20-20 20"/>
+      <path d="M32 12c-12 0-20 8-20 20s8 20 20 20"/>
+      <path d="M32 12c0 12-8 20-8 20s8 8 8 20"/>
+      <path d="M32 12c0 12 8 20 8 20s-8 8-8 20"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+      <text x="24" y="58" font-size="5" fill="currentColor" stroke="none">k-space</text>
+    </svg>`,
+  },
+
+  // ===========================================================================
+  // ADDITIONAL MECHANICS
+  // ===========================================================================
+  {
+    id: 'phys-angular-momentum',
+    name: 'Angular Momentum',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['angular momentum', 'rotation', 'conservation', 'spin', 'L = r x p'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+      <circle cx="48" cy="32" r="5" fill="currentColor" opacity="0.3"/>
+      <path d="M32 32h16"/>
+      <path d="M48 24c8 8 8 16 0 24"/>
+      <path d="M52 44l-4 4-4-4"/>
+      <path d="M32 8v8"/>
+      <path d="M28 12l4-4 4 4"/>
+      <text x="24" y="56" font-size="6" fill="currentColor" stroke="none">L = r×p</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-rotational-motion',
+    name: 'Rotational Motion',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['rotation', 'angular velocity', 'omega', 'moment of inertia', 'torque'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+      <path d="M32 12v8"/>
+      <path d="M32 44v8"/>
+      <path d="M12 32h8"/>
+      <path d="M44 32h8"/>
+      <path d="M44 20c8 4 8 12 4 20"/>
+      <path d="M44 36l4 4 4-4"/>
+      <text x="8" y="16" font-size="6" fill="currentColor" stroke="none">ω</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-gyroscope',
+    name: 'Gyroscope',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['gyroscope', 'precession', 'angular momentum', 'stability', 'spinning'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="40" rx="20" ry="8"/>
+      <ellipse cx="32" cy="40" rx="12" ry="4" fill="currentColor" opacity="0.2"/>
+      <path d="M32 8v24"/>
+      <circle cx="32" cy="8" r="4"/>
+      <path d="M20 40l-8 8"/>
+      <path d="M44 40l8 8"/>
+      <path d="M24 36c4 4 12 4 16 0"/>
+      <path d="M36 32l4 4 4-4"/>
+    </svg>`,
+  },
+  {
+    id: 'phys-simple-machine',
+    name: 'Simple Machine',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['simple machine', 'mechanical advantage', 'wheel', 'axle', 'efficiency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="32" r="16"/>
+      <circle cx="24" cy="32" r="4" fill="currentColor"/>
+      <path d="M40 32h16"/>
+      <path d="M24 8v8"/>
+      <path d="M20 12l4-4 4 4"/>
+      <rect x="52" y="24" width="8" height="16"/>
+      <text x="48" y="56" font-size="5" fill="currentColor" stroke="none">MA</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-friction',
+    name: 'Friction',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['friction', 'static', 'kinetic', 'coefficient', 'normal force'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="24" width="20" height="16" fill="currentColor" opacity="0.2"/>
+      <rect x="16" y="24" width="20" height="16"/>
+      <line x1="8" y1="40" x2="56" y2="40"/>
+      <path d="M36 32h16"/>
+      <path d="M48 28l4 4-4 4"/>
+      <path d="M16 32h-8"/>
+      <path d="M12 28l-4 4 4 4" stroke="#EF4444"/>
+      <text x="8" y="24" font-size="5" fill="#EF4444" stroke="none">f</text>
+      <text x="48" y="24" font-size="5" fill="currentColor" stroke="none">F</text>
+      <text x="20" y="56" font-size="5" fill="currentColor" stroke="none">f = μN</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-elastic-collision',
+    name: 'Elastic Collision',
+    domain: 'physics',
+    category: 'mechanics',
+    tags: ['elastic', 'collision', 'kinetic energy', 'momentum', 'conservation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="32" r="8" fill="currentColor" opacity="0.3"/>
+      <circle cx="44" cy="32" r="8" fill="currentColor" opacity="0.3"/>
+      <circle cx="20" cy="32" r="8"/>
+      <circle cx="44" cy="32" r="8"/>
+      <path d="M12 32h-4"/>
+      <path d="M56 32h4"/>
+      <path d="M12 28l-4 4 4 4"/>
+      <path d="M56 28l4 4-4 4"/>
+      <path d="M28 32h8" stroke-dasharray="2 2"/>
+      <text x="20" y="52" font-size="5" fill="currentColor" stroke="none">KE conserved</text>
+    </svg>`,
+  },
+
+  // ===========================================================================
+  // ADDITIONAL WAVES & OSCILLATIONS
+  // ===========================================================================
+  {
+    id: 'phys-superposition',
+    name: 'Wave Superposition',
+    domain: 'physics',
+    category: 'waves',
+    tags: ['superposition', 'interference', 'waves', 'addition', 'principle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 16c4-4 8-4 12 0s8 4 12 0 8-4 12 0 8 4 12 0 8-4 12 0"/>
+      <path d="M4 32c4 4 8 4 12 0s8-4 12 0 8 4 12 0 8-4 12 0 8 4 12 0"/>
+      <path d="M4 48c4-8 8-8 12 0s8 8 12 0 8-8 12 0 8 8 12 0 8-8 12 0" stroke-width="2"/>
+      <text x="4" y="12" font-size="5" fill="currentColor" stroke="none">ψ₁</text>
+      <text x="4" y="28" font-size="5" fill="currentColor" stroke="none">ψ₂</text>
+      <text x="4" y="58" font-size="5" fill="currentColor" stroke="none">ψ₁+ψ₂</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-damped-oscillation',
+    name: 'Damped Oscillation',
+    domain: 'physics',
+    category: 'waves',
+    tags: ['damped', 'oscillation', 'decay', 'exponential', 'amplitude'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32c4-16 8-16 12 0s8 12 12 0 8-8 12 0 8 4 12 0 8 2 12 0"/>
+      <path d="M4 16c0 8 56 24 56 16" stroke-dasharray="3 2"/>
+      <path d="M4 48c0-8 56-24 56-16" stroke-dasharray="3 2"/>
+      <path d="M4 8v48"/>
+      <text x="48" y="56" font-size="5" fill="currentColor" stroke="none">t</text>
+      <text x="28" y="12" font-size="5" fill="currentColor" stroke="none">e^(-γt)</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-driven-oscillation',
+    name: 'Driven Oscillation',
+    domain: 'physics',
+    category: 'waves',
+    tags: ['driven', 'forced', 'oscillation', 'resonance', 'frequency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 56V12"/>
+      <path d="M8 56h48"/>
+      <path d="M12 48c4-4 8-16 12-32 4 24 8 24 12 0 4 8 8 20 12 32"/>
+      <line x1="32" y1="56" x2="32" y2="16" stroke-dasharray="3 2"/>
+      <text x="28" y="12" font-size="5" fill="currentColor" stroke="none">ω₀</text>
+      <text x="52" y="60" font-size="5" fill="currentColor" stroke="none">ω</text>
+      <text x="4" y="12" font-size="5" fill="currentColor" stroke="none">A</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-transverse-wave',
+    name: 'Transverse Wave',
+    domain: 'physics',
+    category: 'waves',
+    tags: ['transverse', 'wave', 'perpendicular', 'light', 'string'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 32c8-16 16-16 24 0s16 16 24 0 16-16 24 0"/>
+      <path d="M4 32h56" stroke-dasharray="3 2"/>
+      <path d="M28 16v32"/>
+      <path d="M24 20l4-4 4 4"/>
+      <path d="M24 44l4 4 4-4"/>
+      <path d="M48 28l4 4-4 4"/>
+      <text x="48" y="24" font-size="5" fill="currentColor" stroke="none">v</text>
+    </svg>`,
+  },
+  {
+    id: 'phys-longitudinal-wave',
+    name: 'Longitudinal Wave',
+    domain: 'physics',
+    category: 'waves',
+    tags: ['longitudinal', 'wave', 'compression', 'sound', 'parallel'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8" y1="28" x2="8" y2="36"/>
+      <line x1="12" y1="28" x2="12" y2="36"/>
+      <line x1="14" y1="28" x2="14" y2="36"/>
+      <line x1="16" y1="28" x2="16" y2="36"/>
+      <line x1="22" y1="28" x2="22" y2="36"/>
+      <line x1="28" y1="28" x2="28" y2="36"/>
+      <line x1="34" y1="28" x2="34" y2="36"/>
+      <line x1="36" y1="28" x2="36" y2="36"/>
+      <line x1="38" y1="28" x2="38" y2="36"/>
+      <line x1="40" y1="28" x2="40" y2="36"/>
+      <line x1="46" y1="28" x2="46" y2="36"/>
+      <line x1="52" y1="28" x2="52" y2="36"/>
+      <line x1="56" y1="28" x2="56" y2="36"/>
+      <path d="M4 48h56"/>
+      <path d="M52 44l4 4-4 4"/>
+      <text x="8" y="56" font-size="5" fill="currentColor" stroke="none">compression</text>
+      <text x="44" y="56" font-size="5" fill="currentColor" stroke="none">v</text>
+    </svg>`,
+  },
 ];
 
 export default physicsIcons;

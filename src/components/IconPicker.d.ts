@@ -1,14 +1,13 @@
-import { FC } from 'react';
+/**
+ * IconPicker Type Declarations
+ *
+ * Re-exports types from the IconPicker directory module.
+ * The actual component implementation is in ./IconPicker/IconPicker.tsx
+ */
 
-export interface IconPickerOptions {
-  container?: HTMLElement;
-  onSelect?: (icon: unknown) => void;
-}
+export { IconPicker, IconPickerProps } from './IconPicker/IconPicker';
+export { IconSearch, IconSearchProps } from './IconPicker/IconSearch';
+export { IconGrid, IconGridProps, IconCardProps } from './IconPicker/IconGrid';
+export { IconPreview, IconPreviewProps } from './IconPicker/IconPreview';
 
-// The component can be used both as a class and as a React component
-declare const IconPicker: FC<Record<string, never>>;
-
-export function createIconPicker(options?: IconPickerOptions): Promise<unknown>;
-
-export { IconPicker };
-export default IconPicker;
+export { default } from './IconPicker/IconPicker';

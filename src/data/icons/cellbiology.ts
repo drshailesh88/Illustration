@@ -1490,6 +1490,392 @@ export const cellbiologyIcons: IconDefinition[] = [
       <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Plasmodesmata</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // PROTEIN DEGRADATION
+  // ===========================================================================
+  {
+    id: 'cell-ubiquitin',
+    name: 'Ubiquitin Tag',
+    domain: 'biology',
+    category: 'protein-degradation',
+    tags: ['ubiquitin', 'protein degradation', 'E1', 'E2', 'E3', 'polyubiquitin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="24" height="24" rx="4" fill="#3498DB" opacity="0.3"/>
+      <rect x="8" y="20" width="24" height="24" rx="4"/>
+      <text x="14" y="36" font-size="6" fill="currentColor" stroke="none">P</text>
+      <circle cx="40" cy="24" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="48" cy="20" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="52" cy="28" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="48" cy="36" r="6" fill="#F39C12" opacity="0.5"/>
+      <path d="M32 32l8-8"/>
+      <text x="36" y="56" font-size="4" fill="currentColor" stroke="none">Ub chain</text>
+    </svg>`
+  },
+  {
+    id: 'cell-proteasome',
+    name: 'Proteasome',
+    domain: 'biology',
+    category: 'protein-degradation',
+    tags: ['proteasome', '26S', 'protein degradation', 'ubiquitin', 'barrel'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="12" ry="6" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="12" rx="12" ry="6"/>
+      <rect x="20" y="12" width="24" height="32" fill="#E74C3C" opacity="0.2"/>
+      <ellipse cx="32" cy="44" rx="12" ry="6" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="44" rx="12" ry="6"/>
+      <path d="M20 12v32"/>
+      <path d="M44 12v32"/>
+      <path d="M24 20h16"/>
+      <path d="M24 28h16"/>
+      <path d="M24 36h16"/>
+      <circle cx="32" cy="6" r="3" fill="#F39C12"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">26S Proteasome</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // DNA REPAIR
+  // ===========================================================================
+  {
+    id: 'cell-dna-repair',
+    name: 'DNA Repair',
+    domain: 'biology',
+    category: 'dna-processes',
+    tags: ['DNA repair', 'double strand break', 'NHEJ', 'homologous recombination'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 8c8 8 8-8 16 0s8 8 16 0" stroke="#3498DB" stroke-width="2"/>
+      <path d="M8 16c8 8 8-8 16 0s8 8 16 0" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M40 8v16" stroke="#F39C12" stroke-width="2" stroke-dasharray="2 2"/>
+      <path d="M8 36c8 8 8-8 16 0s8 8 16 0s8-8 16 0" stroke="#3498DB" stroke-width="2"/>
+      <path d="M8 44c8 8 8-8 16 0s8 8 16 0s8-8 16 0" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M32 28v8"/>
+      <path d="M28 32l4 4 4-4"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">DSB Repair</text>
+    </svg>`
+  },
+  {
+    id: 'cell-base-excision',
+    name: 'Base Excision Repair',
+    domain: 'biology',
+    category: 'dna-processes',
+    tags: ['BER', 'DNA glycosylase', 'AP endonuclease', 'DNA repair'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24h48" stroke="#3498DB" stroke-width="3"/>
+      <path d="M8 40h48" stroke="#E74C3C" stroke-width="3"/>
+      <rect x="24" y="20" width="8" height="8" fill="#F39C12"/>
+      <text x="26" y="30" font-size="4" fill="currentColor" stroke="none">X</text>
+      <path d="M28 36v-4"/>
+      <circle cx="28" cy="44" r="4" fill="#27AE60" opacity="0.5"/>
+      <path d="M36 40l8-8"/>
+      <path d="M44 32l4 4-4 4"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Base Excision</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ER STRESS & QUALITY CONTROL
+  // ===========================================================================
+  {
+    id: 'cell-upr',
+    name: 'Unfolded Protein Response',
+    domain: 'biology',
+    category: 'cell-stress',
+    tags: ['UPR', 'ER stress', 'PERK', 'IRE1', 'ATF6', 'misfolded protein'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="16" fill="#3498DB" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="24" ry="16"/>
+      <path d="M20 28c4 4 8-4 12 0s8 4 12 0" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M20 36c4-4 8 4 12 0s8-4 12 0" stroke="#E74C3C" stroke-width="2"/>
+      <circle cx="20" cy="20" r="3" fill="#F39C12"/>
+      <circle cx="44" cy="20" r="3" fill="#F39C12"/>
+      <circle cx="32" cy="12" r="3" fill="#F39C12"/>
+      <text x="14" y="56" font-size="3" fill="currentColor" stroke="none">ER Stress - UPR</text>
+    </svg>`
+  },
+  {
+    id: 'cell-erad',
+    name: 'ER-Associated Degradation',
+    domain: 'biology',
+    category: 'protein-degradation',
+    tags: ['ERAD', 'ER', 'retrotranslocation', 'quality control', 'misfolded'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="24" rx="16" ry="12" fill="#3498DB" opacity="0.2"/>
+      <ellipse cx="24" cy="24" rx="16" ry="12"/>
+      <path d="M24 24c4 4 8-4 8 0" stroke="#E74C3C"/>
+      <path d="M32 24h8"/>
+      <path d="M40 20l4 4-4 4"/>
+      <rect x="44" y="36" width="12" height="20" fill="#E74C3C" opacity="0.2"/>
+      <path d="M48 28v8"/>
+      <circle cx="50" cy="46" r="4" fill="#F39C12" opacity="0.5"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">ERAD Pathway</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // TELOMERE & REPLICATION
+  // ===========================================================================
+  {
+    id: 'cell-telomere',
+    name: 'Telomere',
+    domain: 'biology',
+    category: 'dna-processes',
+    tags: ['telomere', 'chromosome end', 'TTAGGG', 'shelterin', 'aging'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="24" width="36" height="16" fill="#3498DB" opacity="0.2"/>
+      <rect x="8" y="24" width="36" height="16" rx="2"/>
+      <path d="M44 32c8 0 8-8 12-8" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M44 32c8 0 8 8 12 8" stroke="#E74C3C" stroke-width="2"/>
+      <circle cx="56" cy="24" r="3" fill="#F39C12"/>
+      <circle cx="56" cy="40" r="3" fill="#F39C12"/>
+      <text x="16" y="36" font-size="4" fill="currentColor" stroke="none">Chr</text>
+      <text x="12" y="56" font-size="3" fill="currentColor" stroke="none">Telomere Cap</text>
+    </svg>`
+  },
+  {
+    id: 'cell-telomerase',
+    name: 'Telomerase',
+    domain: 'biology',
+    category: 'dna-processes',
+    tags: ['telomerase', 'TERT', 'TERC', 'telomere extension', 'immortality'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24h32" stroke="#3498DB" stroke-width="2"/>
+      <path d="M8 32h32" stroke="#E74C3C" stroke-width="2"/>
+      <ellipse cx="48" cy="28" rx="10" ry="12" fill="#27AE60" opacity="0.3"/>
+      <ellipse cx="48" cy="28" rx="10" ry="12"/>
+      <path d="M40 28h16" stroke="#F39C12" stroke-width="2"/>
+      <path d="M48 40v8"/>
+      <path d="M44 48l4 4 4-4"/>
+      <text x="44" y="58" font-size="3" fill="currentColor" stroke="none">TERT</text>
+      <text x="8" y="48" font-size="3" fill="currentColor" stroke="none">Telomerase</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL ADHESION & ECM
+  // ===========================================================================
+  {
+    id: 'cell-integrin',
+    name: 'Integrin Receptor',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['integrin', 'cell adhesion', 'ECM', 'focal adhesion', 'alpha beta'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="12" fill="#3498DB" opacity="0.2"/>
+      <path d="M24 20v-12c-4 0-8 4-8 8" fill="#27AE60" opacity="0.3"/>
+      <path d="M40 20v-12c4 0 8 4 8 8" fill="#9B59B6" opacity="0.3"/>
+      <rect x="4" y="48" width="56" height="8" fill="#F39C12" opacity="0.2"/>
+      <path d="M32 32v16"/>
+      <circle cx="32" cy="56" r="3" fill="#E74C3C"/>
+      <text x="16" y="14" font-size="3" fill="currentColor" stroke="none">alpha</text>
+      <text x="40" y="14" font-size="3" fill="currentColor" stroke="none">beta</text>
+      <text x="20" y="62" font-size="3" fill="currentColor" stroke="none">ECM</text>
+    </svg>`
+  },
+  {
+    id: 'cell-focal-adhesion',
+    name: 'Focal Adhesion',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['focal adhesion', 'FAK', 'talin', 'vinculin', 'stress fiber'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="8" fill="#3498DB" opacity="0.2"/>
+      <rect x="24" y="24" width="16" height="16" fill="#9B59B6" opacity="0.3"/>
+      <rect x="24" y="24" width="16" height="16"/>
+      <path d="M32 8v8"/>
+      <path d="M24 40l-12 16" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M40 40l12 16" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M32 40v16" stroke="#E74C3C" stroke-width="2"/>
+      <rect x="4" y="56" width="56" height="4" fill="#F39C12" opacity="0.3"/>
+      <text x="26" y="34" font-size="3" fill="currentColor" stroke="none">FAK</text>
+    </svg>`
+  },
+  {
+    id: 'cell-ecm-collagen',
+    name: 'Collagen Fiber',
+    domain: 'biology',
+    category: 'ecm',
+    tags: ['collagen', 'ECM', 'triple helix', 'fibril', 'structural'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 16c8 8 8-8 16 0s8 8 16 0s8-8 16 0" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M8 24c8 8 8-8 16 0s8 8 16 0s8-8 16 0" stroke="#F39C12" stroke-width="2"/>
+      <path d="M8 32c8 8 8-8 16 0s8 8 16 0s8-8 16 0" stroke="#27AE60" stroke-width="2"/>
+      <rect x="8" y="44" width="48" height="8" fill="#3498DB" opacity="0.2"/>
+      <path d="M8 48h48" stroke-dasharray="4 4"/>
+      <text x="16" y="60" font-size="3" fill="currentColor" stroke="none">Collagen Triple Helix</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // RNA PROCESSING
+  // ===========================================================================
+  {
+    id: 'cell-spliceosome',
+    name: 'Spliceosome',
+    domain: 'biology',
+    category: 'rna-processing',
+    tags: ['spliceosome', 'splicing', 'snRNP', 'intron', 'exon'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="28" width="16" height="8" fill="#3498DB"/>
+      <rect x="44" y="28" width="16" height="8" fill="#3498DB"/>
+      <path d="M20 32c8-16 16-16 24 0" stroke="#E74C3C" stroke-width="2" stroke-dasharray="2 2"/>
+      <circle cx="32" cy="20" r="10" fill="#F39C12" opacity="0.3"/>
+      <circle cx="32" cy="20" r="10"/>
+      <text x="26" y="24" font-size="4" fill="currentColor" stroke="none">U2</text>
+      <path d="M32 40v8"/>
+      <path d="M28 48l4 4 4-4"/>
+      <rect x="16" y="52" width="32" height="6" fill="#27AE60" opacity="0.5"/>
+      <text x="8" y="32" font-size="3" fill="currentColor" stroke="none">E1</text>
+      <text x="48" y="32" font-size="3" fill="currentColor" stroke="none">E2</text>
+    </svg>`
+  },
+  {
+    id: 'cell-mrna-export',
+    name: 'mRNA Export',
+    domain: 'biology',
+    category: 'rna-processing',
+    tags: ['mRNA export', 'nuclear pore', 'TREX', 'NXF1', 'nuclear transport'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="32" r="16" fill="#9B59B6" opacity="0.2"/>
+      <circle cx="24" cy="32" r="16"/>
+      <path d="M20 28c4 4 4-4 8 0" stroke="#27AE60" stroke-width="2"/>
+      <circle cx="16" cy="32" r="3" fill="#F39C12"/>
+      <rect x="36" y="28" width="4" height="8" fill="#3498DB"/>
+      <path d="M40 32h16" stroke="#27AE60" stroke-width="2"/>
+      <path d="M56 28l4 4-4 4"/>
+      <circle cx="56" cy="32" r="3" fill="#F39C12"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">mRNA Export</text>
+    </svg>`
+  },
+  {
+    id: 'cell-ribosome-biogenesis',
+    name: 'Ribosome Biogenesis',
+    domain: 'biology',
+    category: 'rna-processing',
+    tags: ['ribosome biogenesis', 'nucleolus', 'rRNA', 'assembly', '40S', '60S'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="20" r="12" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="20" cy="20" r="12"/>
+      <circle cx="20" cy="20" r="6" fill="#9B59B6"/>
+      <path d="M32 20h8"/>
+      <path d="M40 16l4 4-4 4"/>
+      <ellipse cx="52" cy="16" rx="6" ry="4" fill="#3498DB" opacity="0.5"/>
+      <ellipse cx="52" cy="24" rx="8" ry="5" fill="#E74C3C" opacity="0.5"/>
+      <path d="M32 32l8 16"/>
+      <ellipse cx="44" cy="52" rx="6" ry="4" fill="#3498DB" opacity="0.5"/>
+      <ellipse cx="44" cy="56" rx="8" ry="5" fill="#E74C3C" opacity="0.5"/>
+      <text x="46" y="12" font-size="3" fill="currentColor" stroke="none">40S</text>
+      <text x="46" y="28" font-size="3" fill="currentColor" stroke="none">60S</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL SIGNALING
+  // ===========================================================================
+  {
+    id: 'cell-wnt-pathway',
+    name: 'Wnt Signaling',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['Wnt', 'beta-catenin', 'Frizzled', 'LRP', 'development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="8" fill="#3498DB" opacity="0.2"/>
+      <circle cx="20" cy="12" r="5" fill="#E74C3C"/>
+      <text x="16" y="16" font-size="4" fill="currentColor" stroke="none">W</text>
+      <path d="M20 17v3"/>
+      <ellipse cx="20" cy="24" rx="6" ry="4" fill="#27AE60" opacity="0.4"/>
+      <path d="M20 28v8"/>
+      <circle cx="20" cy="40" r="4" fill="#F39C12"/>
+      <path d="M20 44v4"/>
+      <rect x="12" y="52" width="16" height="6" fill="#9B59B6" opacity="0.3"/>
+      <text x="14" y="58" font-size="3" fill="currentColor" stroke="none">Gene</text>
+      <text x="36" y="40" font-size="3" fill="currentColor" stroke="none">beta-cat</text>
+    </svg>`
+  },
+  {
+    id: 'cell-notch-pathway',
+    name: 'Notch Signaling',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['Notch', 'Delta', 'NICD', 'lateral inhibition', 'development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="24" height="32" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="36" y="4" width="24" height="32" fill="#87CEEB" opacity="0.3"/>
+      <path d="M28 16v8c4 0 8 0 8-4v-4" fill="#E74C3C" opacity="0.3"/>
+      <path d="M28 20h8"/>
+      <circle cx="32" cy="20" r="3" fill="#F39C12"/>
+      <path d="M32 36v8"/>
+      <path d="M28 44l4 4 4-4"/>
+      <rect x="24" y="52" width="16" height="6" fill="#9B59B6" opacity="0.3"/>
+      <text x="12" y="24" font-size="3" fill="currentColor" stroke="none">Delta</text>
+      <text x="40" y="24" font-size="3" fill="currentColor" stroke="none">Notch</text>
+    </svg>`
+  },
+  {
+    id: 'cell-tgfb-pathway',
+    name: 'TGF-beta Signaling',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['TGF-beta', 'SMAD', 'receptor', 'growth factor', 'differentiation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="8" fill="#3498DB" opacity="0.2"/>
+      <circle cx="32" cy="12" r="5" fill="#27AE60"/>
+      <text x="26" y="16" font-size="3" fill="currentColor" stroke="none">TGFb</text>
+      <rect x="24" y="20" width="16" height="12" fill="#E74C3C" opacity="0.3"/>
+      <path d="M32 32v8"/>
+      <circle cx="28" cy="44" r="4" fill="#F39C12" opacity="0.5"/>
+      <circle cx="36" cy="44" r="4" fill="#9B59B6" opacity="0.5"/>
+      <path d="M32 48v4"/>
+      <rect x="24" y="54" width="16" height="6" fill="#3498DB" opacity="0.3"/>
+      <text x="24" y="44" font-size="3" fill="currentColor" stroke="none">R</text>
+      <text x="32" y="44" font-size="3" fill="currentColor" stroke="none">S</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL DIFFERENTIATION
+  // ===========================================================================
+  {
+    id: 'cell-ips-cell',
+    name: 'Induced Pluripotent Stem Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['iPSC', 'induced pluripotent', 'Yamanaka factors', 'reprogramming'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="20" height="20" fill="#E74C3C" opacity="0.3"/>
+      <rect x="8" y="8" width="20" height="20"/>
+      <text x="12" y="22" font-size="4" fill="currentColor" stroke="none">Fib</text>
+      <path d="M28 18h8"/>
+      <path d="M36 14l4 4-4 4"/>
+      <circle cx="48" cy="18" r="10" fill="#27AE60" opacity="0.3"/>
+      <circle cx="48" cy="18" r="10"/>
+      <circle cx="48" cy="18" r="4" fill="#27AE60"/>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Oct4 Sox2</text>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">Klf4 cMyc</text>
+      <text x="40" y="40" font-size="3" fill="currentColor" stroke="none">iPSC</text>
+    </svg>`
+  },
+  {
+    id: 'cell-lineage-commitment',
+    name: 'Lineage Commitment',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['lineage', 'commitment', 'differentiation', 'transcription factors'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="#27AE60" opacity="0.3"/>
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M24 20l-8 16"/>
+      <path d="M32 20v16"/>
+      <path d="M40 20l8 16"/>
+      <circle cx="16" cy="44" r="6" fill="#E74C3C" opacity="0.3"/>
+      <circle cx="32" cy="44" r="6" fill="#3498DB" opacity="0.3"/>
+      <circle cx="48" cy="44" r="6" fill="#9B59B6" opacity="0.3"/>
+      <text x="28" y="16" font-size="3" fill="currentColor" stroke="none">SC</text>
+      <text x="12" y="46" font-size="3" fill="currentColor" stroke="none">M</text>
+      <text x="28" y="46" font-size="3" fill="currentColor" stroke="none">N</text>
+      <text x="44" y="46" font-size="3" fill="currentColor" stroke="none">E</text>
+    </svg>`
+  },
 ];
 
 export default cellbiologyIcons;

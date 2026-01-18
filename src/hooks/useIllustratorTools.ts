@@ -11,7 +11,7 @@
 
 import { useRef, useCallback, useEffect, useState } from 'react';
 import paper from 'paper';
-import { Canvas as FabricCanvas, Path as FabricPath, FabricObject } from 'fabric';
+import { Canvas as FabricCanvas, Path as FabricPath, FabricObject, loadSVGFromString, util } from 'fabric';
 import { PenTool } from '../lib/paper/PenTool';
 import { getStrokePath, strokePresets, InputPoint } from '../lib/freehand/index';
 import {
@@ -349,38 +349,30 @@ export function useIllustratorTools(options: UseIllustratorToolsOptions): UseIll
 
       // Use Fabric.js loadSVGFromString to convert back
       try {
-        const fabric = (window as any).fabric;
-        if (!fabric?.loadSVGFromString) {
-          console.warn('Fabric.loadSVGFromString not available');
+        const { objects, options } = await loadSVGFromString(roughSvgString);
+        const filteredObjects = objects.filter((obj): obj is FabricObject => obj !== null);
+
+        if (filteredObjects.length === 0) {
           return null;
         }
 
-        return new Promise((resolve) => {
-          fabric.loadSVGFromString(roughSvgString, (objects: FabricObject[], options: any) => {
-            if (!objects || objects.length === 0) {
-              resolve(null);
-              return;
-            }
+        // Group all objects if multiple
+        let result: FabricObject;
+        if (filteredObjects.length === 1) {
+          result = filteredObjects[0];
+        } else {
+          result = util.groupSVGElements(filteredObjects, options);
+        }
 
-            // Group all objects if multiple
-            let result: FabricObject;
-            if (objects.length === 1) {
-              result = objects[0];
-            } else {
-              result = new fabric.Group(objects, options);
-            }
-
-            // Position at original location
-            result.set({
-              left: left,
-              top: top,
-              selectable: true,
-              evented: true,
-            });
-
-            resolve(result);
-          });
+        // Position at original location
+        result.set({
+          left: left,
+          top: top,
+          selectable: true,
+          evented: true,
         });
+
+        return result;
       } catch (error) {
         console.error('Failed to convert hand-drawn SVG to Fabric.js:', error);
         return null;

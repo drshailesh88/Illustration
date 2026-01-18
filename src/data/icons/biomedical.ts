@@ -1703,6 +1703,95 @@ export const biomedicalIcons: IconDefinition[] = [
       <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.2"/>
       <path d="M32 28v8"/>
     </svg>`
+  },
+
+  // ===========================================================================
+  // ORGAN-ON-CHIP AND MICROPHYSIOLOGICAL SYSTEMS
+  // ===========================================================================
+  {
+    id: 'biomed-organ-on-chip',
+    name: 'Organ-on-Chip',
+    domain: 'engineering',
+    category: 'microfluidics',
+    tags: ['organ-on-chip', 'microphysiological', 'organoid', 'microfluidic', 'tissue model'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="24" rx="2"/>
+      <path d="M16 20v-8"/>
+      <path d="M32 20v-8"/>
+      <path d="M48 20v-8"/>
+      <circle cx="16" cy="8" r="4"/>
+      <circle cx="32" cy="8" r="4"/>
+      <circle cx="48" cy="8" r="4"/>
+      <path d="M16 24h8v8h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M28 24h8v8h-8z" fill="currentColor" opacity="0.3"/>
+      <path d="M40 24h8v8h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 32c0 4 4 4 8 0"/>
+      <path d="M36 32c0 4 4 4 8 0"/>
+      <path d="M16 44v8"/>
+      <path d="M48 44v8"/>
+    </svg>`
+  },
+  {
+    id: 'biomed-force-plate',
+    name: 'Force Plate',
+    domain: 'engineering',
+    category: 'biomechanics',
+    tags: ['force plate', 'biomechanics', 'gait', 'kinetics', 'ground reaction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="36" width="48" height="8" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="36" width="48" height="8" rx="2"/>
+      <rect x="12" y="44" width="8" height="8"/>
+      <rect x="44" y="44" width="8" height="8"/>
+      <rect x="12" y="28" width="8" height="8"/>
+      <rect x="44" y="28" width="8" height="8"/>
+      <path d="M32 20v-8"/>
+      <path d="M28 12h8"/>
+      <path d="M32 20l-4 8h8z" fill="currentColor"/>
+      <path d="M24 40h16" stroke-dasharray="2 2"/>
+    </svg>`
+  },
+  {
+    id: 'biomed-bioprinter-head',
+    name: 'Bioprinter Printhead',
+    domain: 'engineering',
+    category: 'tissue-engineering',
+    tags: ['bioprinting', '3D printing', 'extrusion', 'tissue engineering', 'additive manufacturing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="20" rx="2"/>
+      <path d="M24 12h16"/>
+      <path d="M24 16h16"/>
+      <path d="M32 28v8"/>
+      <path d="M28 36l4 8 4-8z"/>
+      <path d="M32 44v4"/>
+      <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.3"/>
+      <path d="M16 52h8"/>
+      <path d="M40 52h8"/>
+      <path d="M20 56h24"/>
+      <path d="M16 8v20"/>
+      <path d="M48 8v20"/>
+      <circle cx="28" cy="20" r="2" fill="currentColor"/>
+      <circle cx="36" cy="20" r="2" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'biomed-motion-capture',
+    name: 'Motion Capture Marker',
+    domain: 'engineering',
+    category: 'biomechanics',
+    tags: ['motion capture', 'kinematics', 'marker', 'tracking', 'gait analysis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="12"/>
+      <circle cx="32" cy="32" r="6" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="32" r="2" fill="currentColor"/>
+      <path d="M32 8v12"/>
+      <path d="M32 44v12"/>
+      <path d="M8 32h12"/>
+      <path d="M44 32h12"/>
+      <path d="M16 16l8 8"/>
+      <path d="M40 40l8 8"/>
+      <path d="M48 16l-8 8"/>
+      <path d="M24 40l-8 8"/>
+    </svg>`
   }
 ];
 

@@ -13,7 +13,7 @@ import {
   useMemo,
   ReactNode,
 } from 'react';
-import { Canvas as FabricCanvas, FabricObject, loadSVGFromString, util, Point } from 'fabric';
+import { Canvas as FabricCanvas, FabricObject, loadSVGFromString, util, Point, Group, ActiveSelection } from 'fabric';
 
 // ============================================================================
 // Types
@@ -67,7 +67,7 @@ export interface CanvasContextValue {
   copy: () => void;
 
   /** Paste copied objects */
-  paste: () => void;
+  paste: () => Promise<void>;
 
   /** Cut selected objects */
   cut: () => void;
@@ -236,8 +236,7 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
       .getObjects()
       .filter((obj) => !(obj as FabricObject & { isGrid?: boolean }).isGrid);
     if (objects.length > 0) {
-      // @ts-expect-error ActiveSelection may not be in types
-      const selection = new window.fabric.ActiveSelection(objects, { canvas });
+      const selection = new ActiveSelection(objects, { canvas });
       canvas.setActiveObject(selection);
       canvas.renderAll();
     }
@@ -261,13 +260,13 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
   }, [canvas]);
 
   // Paste
-  const paste = useCallback(() => {
+  const paste = useCallback(async () => {
     if (!canvas || clipboard.length === 0) return;
 
-    clipboard.forEach((objData) => {
-      // @ts-expect-error fabric util types
-      window.fabric.util.enlivenObjects([objData], (objects: FabricObject[]) => {
-        objects.forEach((obj) => {
+    for (const objData of clipboard) {
+      try {
+        const objects = await util.enlivenObjects([objData]);
+        objects.forEach((obj: FabricObject) => {
           obj.set({
             left: (obj.left || 0) + 20,
             top: (obj.top || 0) + 20,
@@ -275,8 +274,10 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
           canvas.add(obj);
         });
         canvas.renderAll();
-      });
-    });
+      } catch (error) {
+        console.error('Failed to paste object:', error);
+      }
+    }
   }, [canvas, clipboard]);
 
   // Cut
@@ -291,10 +292,7 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
     const activeObjects = canvas.getActiveObjects();
     if (activeObjects.length < 2) return;
 
-    // @ts-expect-error fabric Group may not be in types
-    const group = new window.fabric.Group(activeObjects, {
-      name: 'Group',
-    });
+    const group = new Group(activeObjects);
 
     activeObjects.forEach((obj) => canvas.remove(obj));
     canvas.add(group);
@@ -308,12 +306,35 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
     const activeObject = canvas.getActiveObject();
     if (!activeObject || activeObject.type !== 'group') return;
 
-    // @ts-expect-error fabric types
-    const items = activeObject._objects.slice();
-    // @ts-expect-error fabric types
-    activeObject._restoreObjectsState();
-    canvas.remove(activeObject);
-    items.forEach((item: FabricObject) => canvas.add(item));
+    const group = activeObject as Group;
+    const items = group.getObjects();
+
+    // Get transform of group to apply to items
+    const groupCenter = group.getCenterPoint();
+    const groupAngle = group.angle || 0;
+    const groupScaleX = group.scaleX || 1;
+    const groupScaleY = group.scaleY || 1;
+
+    canvas.remove(group);
+
+    items.forEach((item: FabricObject) => {
+      // Apply group transforms to item
+      const itemCenter = item.getCenterPoint();
+      const angle = (item.angle || 0) + groupAngle;
+      const scaleX = (item.scaleX || 1) * groupScaleX;
+      const scaleY = (item.scaleY || 1) * groupScaleY;
+
+      item.set({
+        left: groupCenter.x + (itemCenter.x - groupCenter.x) * groupScaleX,
+        top: groupCenter.y + (itemCenter.y - groupCenter.y) * groupScaleY,
+        angle,
+        scaleX,
+        scaleY,
+      });
+      item.setCoords();
+      canvas.add(item);
+    });
+
     canvas.discardActiveObject();
     canvas.renderAll();
   }, [canvas]);

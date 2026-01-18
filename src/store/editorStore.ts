@@ -272,7 +272,7 @@ export const useEditorStore = create<EditorStore>()(
        * Undo the last action
        * Moves the current state to future and restores previous state
        */
-      undo: () => {
+      undo: async () => {
         const { history, canvas } = get();
         const { past, future } = history;
 
@@ -297,17 +297,20 @@ export const useEditorStore = create<EditorStore>()(
           'undo'
         );
 
-        // Restore canvas state
-        canvas.loadFromJSON(JSON.parse(previousState), () => {
+        // Restore canvas state (Fabric.js 6 uses Promise)
+        try {
+          await canvas.loadFromJSON(JSON.parse(previousState));
           canvas.requestRenderAll();
-        });
+        } catch (error) {
+          console.error('Failed to undo:', error);
+        }
       },
 
       /**
        * Redo the last undone action
        * Moves the current state to past and restores future state
        */
-      redo: () => {
+      redo: async () => {
         const { history, canvas } = get();
         const { past, future } = history;
 
@@ -332,10 +335,13 @@ export const useEditorStore = create<EditorStore>()(
           'redo'
         );
 
-        // Restore canvas state
-        canvas.loadFromJSON(JSON.parse(nextState), () => {
+        // Restore canvas state (Fabric.js 6 uses Promise)
+        try {
+          await canvas.loadFromJSON(JSON.parse(nextState));
           canvas.requestRenderAll();
-        });
+        } catch (error) {
+          console.error('Failed to redo:', error);
+        }
       },
 
       /**
