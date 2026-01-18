@@ -25,6 +25,10 @@ export type { StrokeOptions, StrokePoint } from 'perfect-freehand';
 // @see https://github.com/Qix-/color
 export { default as Color } from 'color';
 
+// Color.js - Advanced color space support (OKLCH, P3, wide gamut)
+// @see https://colorjs.io/
+export { default as ColorJS } from 'colorjs.io';
+
 // Save SVG as PNG - Export SVG elements as PNG images
 // @see https://github.com/exupero/saveSvgAsPng
 // @ts-expect-error - save-svg-as-png doesn't have TypeScript definitions
@@ -51,6 +55,7 @@ export * from './paper';
 export * from './rough';
 export * from './freehand';
 export * from './color';
+export * from './color/useColorManager';
 export * from './export';
 export * from './icons';
 export * from './glfx';

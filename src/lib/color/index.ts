@@ -2,18 +2,23 @@
  * Color Manipulation Module
  *
  * Provides color conversion, manipulation, and palette generation
- * using the 'color' library for immutable color operations.
+ * using the 'color' library for immutable color operations and
+ * Color.js for advanced color space support (OKLCH, P3, CMYK).
  *
  * Features:
- * - Color space conversions (RGB, HSL, LAB, LCH)
+ * - Color space conversions (RGB, HSL, LAB, LCH, OKLCH, P3)
  * - WCAG contrast ratio calculation (AA/AAA compliance)
  * - Palette generation (complementary, analogous, triadic, etc.)
  * - Scientific domain color schemes
+ * - CMYK conversion for print workflows
+ * - Perceptually uniform color scales
  *
  * @see https://github.com/Qix-/color
+ * @see https://colorjs.io/
  */
 
 import Color from 'color';
+import ColorJS from 'colorjs.io';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -50,6 +55,36 @@ export interface LCHColor {
   h: number;
   alpha?: number;
 }
+
+/** OKLCH color representation (perceptually uniform) */
+export interface OKLCHColor {
+  l: number;
+  c: number;
+  h: number;
+  alpha?: number;
+}
+
+/** Display P3 color representation (wide gamut) */
+export interface P3Color {
+  r: number;
+  g: number;
+  b: number;
+  alpha?: number;
+}
+
+/** CMYK color representation (for print) */
+export interface CMYKColor {
+  c: number;
+  m: number;
+  y: number;
+  k: number;
+}
+
+/** Color space types supported by Color.js */
+export type ColorSpace = 'srgb' | 'lab' | 'lch' | 'oklch' | 'p3' | 'hsl' | 'hwb' | 'oklab';
+
+/** Palette type for generation */
+export type PaletteType = 'complementary' | 'triadic' | 'analogous' | 'split-complementary' | 'tetradic' | 'square';
 
 /** WCAG compliance levels */
 export type WCAGLevel = 'AAA' | 'AA' | 'AA-large' | 'fail';
@@ -600,4 +635,364 @@ export function invert(color: string): string {
   return Color(color).negate().hex();
 }
 
-export { Color };
+// ============================================================================
+// COLOR.JS ADVANCED COLOR SPACE SUPPORT
+// ============================================================================
+
+/**
+ * Convert a color to a specified color space using Color.js
+ * Supports wide gamut spaces like P3 and perceptually uniform OKLCH
+ *
+ * @param color - Input color string (hex, rgb, hsl, etc.)
+ * @param toSpace - Target color space
+ * @returns Color string in the target space
+ */
+export function convertColor(
+  color: string,
+  toSpace: ColorSpace
+): string {
+  try {
+    const c = new ColorJS(color);
+    const converted = c.to(toSpace);
+    return converted.toString({ format: 'hex' });
+  } catch {
+    // Fallback to original color if conversion fails
+    return color;
+  }
+}
+
+/**
+ * Convert a color to OKLCH color space
+ * OKLCH provides perceptually uniform lightness, chroma, and hue
+ *
+ * @param color - Input color string
+ * @returns OKLCH color components
+ */
+export function toOKLCH(color: string): OKLCHColor {
+  const c = new ColorJS(color);
+  const oklch = c.to('oklch');
+  const coords = oklch.coords;
+  return {
+    l: coords[0],
+    c: coords[1],
+    h: coords[2] || 0,
+    alpha: oklch.alpha,
+  };
+}
+
+/**
+ * Create a color from OKLCH values
+ *
+ * @param l - Lightness (0-1)
+ * @param c - Chroma (0-0.4 typical)
+ * @param h - Hue (0-360)
+ * @param alpha - Optional alpha (0-1)
+ * @returns Hex color string
+ */
+export function fromOKLCH(l: number, c: number, h: number, alpha?: number): string {
+  const color = new ColorJS('oklch', [l, c, h], alpha);
+  return color.to('srgb').toString({ format: 'hex' });
+}
+
+/**
+ * Convert a color to Display P3 color space (wide gamut)
+ *
+ * @param color - Input color string
+ * @returns P3 color components
+ */
+export function toP3(color: string): P3Color {
+  const c = new ColorJS(color);
+  const p3 = c.to('p3');
+  const coords = p3.coords;
+  return {
+    r: coords[0],
+    g: coords[1],
+    b: coords[2],
+    alpha: p3.alpha,
+  };
+}
+
+/**
+ * Convert a color to CMYK for print workflows
+ * Uses a simple conversion algorithm (not ICC profile based)
+ *
+ * @param color - Input color string
+ * @returns CMYK color components (0-100 scale)
+ */
+export function toCMYK(color: string): CMYKColor {
+  const rgb = toRGB(color);
+  const r = rgb.r / 255;
+  const g = rgb.g / 255;
+  const b = rgb.b / 255;
+
+  const k = 1 - Math.max(r, g, b);
+
+  if (k === 1) {
+    return { c: 0, m: 0, y: 0, k: 100 };
+  }
+
+  const c = (1 - r - k) / (1 - k);
+  const m = (1 - g - k) / (1 - k);
+  const y = (1 - b - k) / (1 - k);
+
+  return {
+    c: Math.round(c * 100),
+    m: Math.round(m * 100),
+    y: Math.round(y * 100),
+    k: Math.round(k * 100),
+  };
+}
+
+/**
+ * Create a color from CMYK values
+ *
+ * @param c - Cyan (0-100)
+ * @param m - Magenta (0-100)
+ * @param y - Yellow (0-100)
+ * @param k - Key/Black (0-100)
+ * @returns Hex color string
+ */
+export function fromCMYK(c: number, m: number, y: number, k: number): string {
+  const cyan = c / 100;
+  const magenta = m / 100;
+  const yellow = y / 100;
+  const key = k / 100;
+
+  const r = Math.round(255 * (1 - cyan) * (1 - key));
+  const g = Math.round(255 * (1 - magenta) * (1 - key));
+  const b = Math.round(255 * (1 - yellow) * (1 - key));
+
+  return fromRGB(r, g, b);
+}
+
+/**
+ * Generate an accessible color palette using Color.js
+ *
+ * @param baseColor - Base color for palette generation
+ * @param type - Type of color harmony
+ * @returns Array of hex color strings
+ */
+export function generatePalette(
+  baseColor: string,
+  type: PaletteType
+): string[] {
+  switch (type) {
+    case 'complementary':
+      return [baseColor, getComplementary(baseColor)];
+    case 'triadic':
+      return getTriadic(baseColor);
+    case 'analogous':
+      return getAnalogous(baseColor, 5);
+    case 'split-complementary':
+      return getSplitComplementary(baseColor);
+    case 'tetradic':
+      return getTetradic(baseColor);
+    case 'square':
+      return getSquare(baseColor);
+    default:
+      return [baseColor];
+  }
+}
+
+/**
+ * Check WCAG contrast ratio using Color.js
+ * Provides more accurate contrast calculation
+ *
+ * @param foreground - Foreground color
+ * @param background - Background color
+ * @returns Contrast result with ratio and compliance levels
+ */
+export function checkContrast(
+  foreground: string,
+  background: string
+): { ratio: number; aa: boolean; aaa: boolean; aaLarge: boolean } {
+  try {
+    const fg = new ColorJS(foreground);
+    const bg = new ColorJS(background);
+    const ratio = fg.contrast(bg, 'WCAG21');
+
+    return {
+      ratio: Math.round(ratio * 100) / 100,
+      aa: ratio >= 4.5,
+      aaa: ratio >= 7,
+      aaLarge: ratio >= 3,
+    };
+  } catch {
+    // Fallback to basic contrast check
+    const result = checkWCAGCompliance(foreground, background);
+    return {
+      ratio: result.ratio,
+      aa: result.passesAA,
+      aaa: result.passesAAA,
+      aaLarge: result.passesAALarge,
+    };
+  }
+}
+
+/**
+ * Mix two colors using Color.js interpolation
+ * Uses OKLCH color space for perceptually uniform mixing
+ *
+ * @param color1 - First color
+ * @param color2 - Second color
+ * @param ratio - Mix ratio (0 = color1, 1 = color2, 0.5 = equal mix)
+ * @returns Mixed color as hex string
+ */
+export function mixColorsOKLCH(
+  color1: string,
+  color2: string,
+  ratio: number = 0.5
+): string {
+  try {
+    const c1 = new ColorJS(color1);
+    const c2 = new ColorJS(color2);
+    const mixed = c1.mix(c2, ratio, { space: 'oklch' });
+    return mixed.to('srgb').toString({ format: 'hex' });
+  } catch {
+    // Fallback to basic mixing
+    return mixColors(color1, color2, ratio);
+  }
+}
+
+/**
+ * Create a perceptually uniform color scale using OKLCH
+ * Ideal for data visualization where each step should look equally different
+ *
+ * @param start - Start color
+ * @param end - End color
+ * @param steps - Number of colors in the scale
+ * @returns Array of hex color strings
+ */
+export function createColorScale(
+  start: string,
+  end: string,
+  steps: number
+): string[] {
+  if (steps < 2) return [start];
+
+  try {
+    const c1 = new ColorJS(start);
+    const c2 = new ColorJS(end);
+    const colors: string[] = [];
+
+    for (let i = 0; i < steps; i++) {
+      const t = i / (steps - 1);
+      const interpolated = c1.mix(c2, t, { space: 'oklch' });
+      colors.push(interpolated.to('srgb').toString({ format: 'hex' }));
+    }
+
+    return colors;
+  } catch {
+    // Fallback to basic interpolation
+    return getDivergingScale(start, end, steps);
+  }
+}
+
+/**
+ * Check if a color is within the sRGB gamut
+ *
+ * @param color - Color string to check
+ * @returns True if color is within sRGB gamut
+ */
+export function isInGamut(color: string): boolean {
+  try {
+    const c = new ColorJS(color);
+    return c.inGamut('srgb');
+  } catch {
+    return true;
+  }
+}
+
+/**
+ * Clamp a color to the sRGB gamut
+ * Useful when working with wide gamut colors that need to display on standard monitors
+ *
+ * @param color - Color string to clamp
+ * @returns Gamut-mapped color as hex string
+ */
+export function toGamut(color: string): string {
+  try {
+    const c = new ColorJS(color);
+    const gamutMapped = c.toGamut('srgb');
+    return gamutMapped.toString({ format: 'hex' });
+  } catch {
+    return color;
+  }
+}
+
+/**
+ * Calculate Delta E (color difference) using OKLCH
+ * More accurate than CIE76 for perceptual color difference
+ *
+ * @param color1 - First color
+ * @param color2 - Second color
+ * @returns Delta E value (0 = identical)
+ */
+export function deltaE(color1: string, color2: string): number {
+  try {
+    const c1 = new ColorJS(color1);
+    const c2 = new ColorJS(color2);
+    return c1.deltaE(c2, 'OK');
+  } catch {
+    return getColorDifference(color1, color2);
+  }
+}
+
+/**
+ * Get color in CSS format for the specified color space
+ *
+ * @param color - Input color string
+ * @param space - Target color space
+ * @returns CSS color string
+ */
+export function toCSSColor(color: string, space: ColorSpace = 'srgb'): string {
+  try {
+    const c = new ColorJS(color);
+    const converted = c.to(space);
+    return converted.toString();
+  } catch {
+    return color;
+  }
+}
+
+/**
+ * Parse any color format and return normalized hex
+ *
+ * @param color - Input color in any format
+ * @returns Normalized hex color string
+ */
+export function parseColor(color: string): string {
+  try {
+    const c = new ColorJS(color);
+    return c.to('srgb').toString({ format: 'hex' });
+  } catch {
+    return toHex(color);
+  }
+}
+
+/**
+ * Get the relative luminance of a color (0-1)
+ * Used for WCAG contrast calculations
+ *
+ * @param color - Input color string
+ * @returns Relative luminance value
+ */
+export function getLuminance(color: string): number {
+  try {
+    const c = new ColorJS(color);
+    return c.luminance;
+  } catch {
+    const rgb = toRGB(color);
+    const r = rgb.r / 255;
+    const g = rgb.g / 255;
+    const b = rgb.b / 255;
+
+    const toLinear = (c: number) =>
+      c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+
+    return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+  }
+}
+
+// Export Color.js for direct use
+export { Color, ColorJS };

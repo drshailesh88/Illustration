@@ -18,6 +18,7 @@
     "@tabler/icons-react": "^3.36.1",
     "clsx": "^2.1.1",
     "color": "^5.0.3",
+    "colorjs.io": "^0.6.1",
     "fabric": "^6.5.1",
     "glfx": "^0.0.4",
     "healthicons-react": "^3.5.0",
