@@ -200,7 +200,11 @@ export function EditorMode(): JSX.Element {
           break;
         }
         case 'svg': {
-          exportAsSvg(svgElement, `${filename}.svg`);
+          const svgSettings = settings as { optimize: boolean; minify: boolean; embedFonts: boolean };
+          exportAsSvg(svgElement, `${filename}.svg`, {
+            minify: svgSettings.minify,
+            embedFonts: svgSettings.embedFonts,
+          });
           showToast({ type: 'success', message: 'SVG exported successfully!' });
           break;
         }
