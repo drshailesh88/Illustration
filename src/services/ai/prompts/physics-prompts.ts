@@ -276,7 +276,7 @@ Stellar Evolution requirements:
 
 export const PHYSICS_FEW_SHOT_EXAMPLES: FewShotExample[] = [
   {
-    input: 'Create a free body diagram for a block on an inclined plane',
+    prompt: 'Create a free body diagram for a block on an inclined plane',
     output: `Here's a free body diagram for a block on an inclined plane:
 
 **Setup:**
@@ -301,7 +301,7 @@ export const PHYSICS_FEW_SHOT_EXAMPLES: FewShotExample[] = [
 Block starts sliding when: tan(theta_c) = mu_s`,
   },
   {
-    input: 'Explain the photoelectric effect with an energy diagram',
+    prompt: 'Explain the photoelectric effect with an energy diagram',
     output: `Here's an energy diagram for the photoelectric effect:
 
 **Energy Level Representation:**
@@ -328,7 +328,7 @@ KE_max = hf - phi
 - Stopping potential: V_s = (hf - phi) / e`,
   },
   {
-    input: 'Draw a PV diagram for a Carnot cycle',
+    prompt: 'Draw a PV diagram for a Carnot cycle',
     output: `Here's a PV diagram for a Carnot cycle:
 
 **Cycle States:**

@@ -115,7 +115,7 @@ import { ecologyIcons } from './ecology';
 import { microbiologyIcons } from './microbiology';
 import { zoologyIcons } from './zoology';
 import { botanyIcons } from './botany';
-import { cellbiologyIcons } from './cellbiology';
+import { cellbiologyIcons } from './cell-biology';
 import { neuroscienceIcons } from './neuroscience';
 // Chemistry subspecialties
 import { analyticalIcons } from './analytical';
@@ -672,7 +672,7 @@ export { ecologyIcons } from './ecology';
 export { microbiologyIcons } from './microbiology';
 export { zoologyIcons } from './zoology';
 export { botanyIcons } from './botany';
-export { cellbiologyIcons } from './cellbiology';
+export { cellbiologyIcons } from './cell-biology';
 export { neuroscienceIcons } from './neuroscience';
 // Chemistry subspecialties
 export { analyticalIcons } from './analytical';

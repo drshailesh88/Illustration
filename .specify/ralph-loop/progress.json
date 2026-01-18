@@ -962,20 +962,68 @@
           "research-focused": 8
         }
       }
+    },
+    "chemistry": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 97,
+          "target": 90,
+          "percentage": 108
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "laboratory-glassware": 15,
+          "laboratory-apparatus": 12,
+          "molecular-structures": 14,
+          "periodic-table": 10,
+          "chemical-reactions": 12,
+          "spectroscopy": 10,
+          "chromatography": 8,
+          "electrochemistry": 8,
+          "safety-equipment": 8
+        },
+        "templates": {
+          "reaction-mechanisms": 5,
+          "molecular-structures": 4,
+          "thermodynamics-kinetics": 3,
+          "analytical-chemistry": 4,
+          "laboratory-procedures": 4,
+          "electrochemistry": 2,
+          "equilibrium-acids-bases": 2,
+          "periodic-trends": 1
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 30,
+    "completed": 31,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 5,
+    "notStarted": 4,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1998,
-    "currentTotalTemplates": 510,
-    "currentTotalPrompts": 389
+    "currentTotalIcons": 2095,
+    "currentTotalTemplates": 535,
+    "currentTotalPrompts": 409
   },
   "executionOrder": [
     "cardiology",

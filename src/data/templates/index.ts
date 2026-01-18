@@ -71,7 +71,7 @@ export * from './ecology';
 export * from './microbiology';
 export * from './zoology';
 export * from './botany';
-export { cellbiologyTemplates } from './cellbiology';
+export { cellbiologyTemplates } from './cell-biology';
 export * from './neuroscience';
 // Additional science branches - use explicit exports to avoid duplicates
 export * from './geology';
@@ -246,7 +246,7 @@ import { ecologyTemplates } from './ecology';
 import { microbiologyTemplates } from './microbiology';
 import { zoologyTemplates } from './zoology';
 import { botanyTemplates } from './botany';
-import { cellbiologyTemplates } from './cellbiology';
+import { cellbiologyTemplates } from './cell-biology';
 import { neuroscienceTemplates } from './neuroscience';
 // Additional science branches
 import { geologyTemplates } from './geology';

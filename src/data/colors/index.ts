@@ -706,3 +706,24 @@ export {
 } from './chemistry';
 
 export type { ChemistryColorScheme } from './chemistry';
+
+// =============================================================================
+// PHYSICS
+// =============================================================================
+
+export {
+  mechanicsColors,
+  electromagnetismColors,
+  thermodynamicsColors,
+  wavesOpticsColors,
+  quantumColors,
+  particleColors,
+  astrophysicsColors,
+  solidStateColors,
+  laboratoryColors,
+  magnitudeGradient,
+  flowchartColors as physicsFlowchartColors,
+  physicsColorScheme,
+} from './physics';
+
+export type { PhysicsColorScheme } from './physics';
