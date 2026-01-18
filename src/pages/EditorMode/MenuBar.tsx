@@ -32,10 +32,19 @@ interface MenuDefinition {
 }
 
 // ============================================================================
+// Props
+// ============================================================================
+
+interface MenuBarProps {
+  /** Callback to open the export dialog */
+  onOpenExportDialog?: () => void;
+}
+
+// ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar() {
+export function MenuBar({ onOpenExportDialog }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuBarRef = useRef<HTMLDivElement>(null);
 
@@ -113,8 +122,14 @@ export function MenuBar() {
         },
         { id: 'divider2', label: '', divider: true },
         {
+          id: 'export-dialog',
+          label: 'Export...',
+          shortcut: 'Ctrl+E',
+          action: () => onOpenExportDialog?.(),
+        },
+        {
           id: 'export',
-          label: 'Export',
+          label: 'Quick Export',
           submenu: [
             {
               id: 'export-svg',
