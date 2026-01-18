@@ -8,8 +8,9 @@
  * - Procedure illustrations (3)
  * - Data visualization templates (4)
  * - Additional clinical templates (5)
+ * - Advanced clinical templates (2)
  *
- * Total: 23 templates
+ * Total: 25 templates
  */
 
 import type { DiagramTemplate } from './index';
@@ -1066,6 +1067,107 @@ export const ventilatorWeaning: DiagramTemplate = {
 };
 
 /**
+ * Ventilator Waveform Troubleshooting template
+ */
+export const ventilatorWaveformTroubleshooting: DiagramTemplate = {
+  id: 'pulm-vent-waveform-troubleshooting',
+  name: 'Ventilator Waveform Troubleshooting',
+  description: 'Systematic approach to identifying and correcting ventilator waveform abnormalities',
+  domain: 'medicine',
+  promptTemplate: `Create a ventilator waveform troubleshooting flowchart:
+- Waveform abnormality: {{waveformAbnormality}}
+- Pressure waveform findings: {{pressureFindings}}
+- Flow waveform findings: {{flowFindings}}
+- Volume waveform findings: {{volumeFindings}}
+- Asynchrony type: {{asynchronyType}}
+- Patient factors: {{patientFactors}}
+- Ventilator adjustments: {{ventAdjustments}}
+- Clinical response: {{clinicalResponse}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'waveformAbnormality',
+    'pressureFindings',
+    'flowFindings',
+    'volumeFindings',
+    'asynchronyType',
+    'patientFactors',
+    'ventAdjustments',
+    'clinicalResponse',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Waveform\\nAbnormality")] --> B{"Type?"}
+    B -->|"High Peak\\nPressure"| C{"Pplat?"}
+    C -->|"Pplat High"| D["Low Compliance\\n• ARDS\\n• Effusion\\n• Pneumothorax"]
+    C -->|"Pplat Normal"| E["High Resistance\\n• Secretions\\n• Bronchospasm\\n• Kinked tube"]
+    B -->|"Auto-PEEP"| F["Flow not\\nreaching zero"]
+    F --> G["Increase I:E\\nBronchodilators\\nDecrease RR"]
+    B -->|"Double\\nTriggering"| H["Vt too low\\nor Ti too short"]
+    H --> I["Increase Vt\\nor Increase Ti"]
+    B -->|"Ineffective\\nTrigger"| J["Trigger too\\ninsensitive"]
+    J --> K["Increase trigger\\nsensitivity"]
+    D --> L["Address cause\\nConsider prone"]
+    E --> M["Suction\\nBronchodilators"]
+    style D fill:#DC143C,color:#fff
+    style E fill:#FFA500,color:#000
+    style G fill:#4169E1,color:#fff`,
+};
+
+/**
+ * ABG Mixed Acid-Base Disorders template
+ */
+export const abgMixedDisorders: DiagramTemplate = {
+  id: 'pulm-abg-mixed-disorders',
+  name: 'ABG Mixed Acid-Base Disorders',
+  description: 'Systematic interpretation of complex mixed acid-base disturbances',
+  domain: 'medicine',
+  promptTemplate: `Create an ABG mixed disorders interpretation flowchart:
+- Initial pH: {{initialPH}}
+- Primary disorder: {{primaryDisorder}}
+- Expected compensation: {{expectedCompensation}}
+- Actual compensation: {{actualCompensation}}
+- Anion gap: {{anionGap}}
+- Delta-delta ratio: {{deltaDelta}}
+- Secondary disorder: {{secondaryDisorder}}
+- Clinical correlation: {{clinicalCorrelation}}
+{{#additionalNotes}}Additional context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'initialPH',
+    'primaryDisorder',
+    'expectedCompensation',
+    'actualCompensation',
+    'anionGap',
+    'deltaDelta',
+    'secondaryDisorder',
+    'clinicalCorrelation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["ABG + BMP"] --> B{"Anion Gap?"}
+    B -->|"AG >12"| C["HAGMA Present"]
+    B -->|"AG Normal"| D["NAGMA or\\nNo Met Acidosis"]
+    C --> E["Calculate Delta Gap\\nΔAG = AG - 12"]
+    E --> F["Calculate Delta-Delta\\nΔAG / ΔHCO3"]
+    F --> G{"Ratio?"}
+    G -->|"<1"| H["HAGMA +\\nNAGMA"]
+    G -->|"1-2"| I["Pure HAGMA"]
+    G -->|">2"| J["HAGMA +\\nMet Alkalosis"]
+    D --> K{"pH?"}
+    K -->|"<7.35"| L["Check Urine AG"]
+    K -->|">7.45"| M["Met Alkalosis"]
+    L -->|"Positive"| N["RTA Type 1 or 4"]
+    L -->|"Negative"| O["GI losses\\nDiarrhea"]
+    subgraph Mixed["Common Mixed Disorders"]
+        X1["DKA + Vomiting:\\nHAGMA + Met Alk"]
+        X2["Sepsis + Renal:\\nHAGMA + NAGMA"]
+        X3["COPD + Diuretic:\\nResp Acid + Met Alk"]
+    end
+    style H fill:#DC143C,color:#fff
+    style J fill:#FFA500,color:#000
+    style I fill:#228B22,color:#fff`,
+};
+
+/**
  * All pulmonology templates
  */
 export const pulmonologyTemplates: DiagramTemplate[] = [
@@ -1097,6 +1199,9 @@ export const pulmonologyTemplates: DiagramTemplate[] = [
   sleepApneaManagement,
   ildWorkup,
   ventilatorWeaning,
+  // Advanced Clinical Templates (2)
+  ventilatorWaveformTroubleshooting,
+  abgMixedDisorders,
 ];
 
 export default pulmonologyTemplates;

@@ -8,8 +8,10 @@
  * - Pulmonary function test interpretation
  * - Ventilator management and weaning
  * - Respiratory procedures
+ * - Advanced diagnostic interpretation
+ * - Sleep medicine analysis
  *
- * Total: 15 specialized prompts
+ * Total: 20 specialized prompts
  */
 
 import type { FewShotExample } from './index';
@@ -192,6 +194,57 @@ Ventilator Weaning Protocol requirements:
 - Show extubation checklist
 - Include post-extubation monitoring
 - Reference high-risk patient considerations`,
+
+  // Additional prompts for complete coverage
+  lungFunctionTestingDiagrams: `
+Lung Function Testing Diagram requirements:
+- Include spirometry flow-volume loop visualization
+- Show normal vs obstructive vs restrictive patterns
+- Include body plethysmography interpretation
+- Reference DLCO and its clinical significance
+- Include bronchial challenge testing pathways
+- Show pre/post bronchodilator comparisons
+- Include 6-minute walk test interpretation`,
+
+  bronchoscopyProcedureIllustration: `
+Bronchoscopy Procedure Illustration requirements:
+- Show complete airway anatomy visualization
+- Include flexible vs rigid bronchoscopy indications
+- Reference standard bronchial segment nomenclature
+- Include biopsy and sampling site illustrations
+- Show EBUS-TBNA technique and landmarks
+- Include navigation bronchoscopy concepts
+- Reference complication prevention strategies`,
+
+  ventilatorWaveformAnalysis: `
+Ventilator Waveform Analysis requirements:
+- Include pressure-time, flow-time, volume-time curves
+- Show auto-PEEP detection on flow waveform
+- Reference patient-ventilator asynchrony patterns
+- Include compliance and resistance calculations from waveforms
+- Show troubleshooting algorithm for abnormal waveforms
+- Include optimal PEEP titration using waveforms
+- Reference esophageal pressure monitoring concepts`,
+
+  chestImagingPatternRecognition: `
+Chest Imaging Pattern Recognition requirements:
+- Include systematic CXR review approach (ABCDEFGHI)
+- Show HRCT patterns: UIP, NSIP, OP, HP, DAD
+- Reference distribution patterns (upper vs lower, central vs peripheral)
+- Include nodule characterization (solid, subsolid, ground-glass)
+- Show mediastinal compartment anatomy and masses
+- Include pleural disease patterns and loculations
+- Reference COVID-19 and post-COVID imaging findings`,
+
+  polysomnographyInterpretation: `
+Polysomnography Interpretation requirements:
+- Include sleep architecture visualization (N1, N2, N3, REM)
+- Show AHI calculation and severity grading
+- Reference respiratory event classification (apnea, hypopnea, RERA)
+- Include oxygen desaturation index interpretation
+- Show arousal patterns and sleep fragmentation
+- Include periodic limb movement analysis
+- Reference split-night study indications and interpretation`,
 };
 
 // =============================================================================
