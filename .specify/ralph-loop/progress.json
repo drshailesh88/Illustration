@@ -30,7 +30,8 @@
     "computer-science",
     "pharmacology",
     "neuroscience-research",
-    "cell-biology"
+    "cell-biology",
+    "chemistry"
   ],
   "blockedSpecialties": [],
   "progress": {
@@ -972,9 +973,9 @@
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1901,
-    "currentTotalTemplates": 485,
-    "currentTotalPrompts": 367
+    "currentTotalIcons": 1998,
+    "currentTotalTemplates": 510,
+    "currentTotalPrompts": 389
   },
   "executionOrder": [
     "cardiology",
