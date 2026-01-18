@@ -558,3 +558,6 @@ export { default as infectiousDiseasePrompts } from './infectious-disease-prompt
 
 export * from './hematology-oncology-prompts';
 export { default as hematologyOncologyPrompts } from './hematology-oncology-prompts';
+
+export * from './orthopedics-prompts';
+export { default as orthopedicsPrompts } from './orthopedics-prompts';

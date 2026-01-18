@@ -780,6 +780,324 @@ export const romAssessment: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL TEMPLATES - COMPLETE CHECKPOINT
+// =============================================================================
+
+/**
+ * Hip Fracture Classification template
+ */
+export const hipFractureClassification: DiagramTemplate = {
+  id: 'ortho-hip-fracture-classification',
+  name: 'Hip Fracture Classification',
+  description: 'Classification system for femoral neck and intertrochanteric fractures',
+  domain: 'medicine',
+  promptTemplate: `Create a hip fracture classification diagram:
+- Fracture location: {{fractureLocation}}
+- Garden classification (FN): {{gardenClass}}
+- AO/OTA classification: {{aoOta}}
+- Stability assessment: {{stability}}
+- Treatment implications: {{treatmentImplications}}
+- Surgical options: {{surgicalOptions}}
+{{#additionalNotes}}Patient factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'fractureLocation',
+    'gardenClass',
+    'aoOta',
+    'stability',
+    'treatmentImplications',
+    'surgicalOptions',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Hip Fracture"] --> B{"Location?"}
+    B -->|"Femoral Neck"| C{"Garden Class"}
+    B -->|"Intertrochanteric"| D{"Stability"}
+    B -->|"Subtrochanteric"| E["IM Nail"]
+    C -->|"I-II Non-displaced"| F["Screws vs Arthroplasty"]
+    C -->|"III-IV Displaced"| G["Arthroplasty"]
+    D -->|"Stable 2-part"| H["Sliding Hip Screw"]
+    D -->|"Unstable 3-4 part"| I["IM Nail"]
+    G --> G1["THA vs Hemi"]
+    style A fill:#DC143C,color:#fff
+    style G fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Shoulder Instability Algorithm template
+ */
+export const shoulderInstability: DiagramTemplate = {
+  id: 'ortho-shoulder-instability',
+  name: 'Shoulder Instability Algorithm',
+  description: 'Evaluation and management of glenohumeral instability',
+  domain: 'medicine',
+  promptTemplate: `Create a shoulder instability management flowchart:
+- Type of instability: {{instabilityType}}
+- Direction (anterior/posterior/multi): {{direction}}
+- First episode vs recurrent: {{recurrence}}
+- Imaging findings: {{imagingFindings}}
+- Bone loss assessment: {{boneLoss}}
+- Surgical options: {{surgicalOptions}}
+- Rehabilitation protocol: {{rehabilitation}}
+{{#additionalNotes}}Sport-specific factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'instabilityType',
+    'direction',
+    'recurrence',
+    'imagingFindings',
+    'boneLoss',
+    'surgicalOptions',
+    'rehabilitation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Shoulder Instability"] --> B{"First Episode\\nor Recurrent?"}
+    B -->|"First"| C["Sling + PT"]
+    B -->|"Recurrent"| D["MRI Arthrogram"]
+    C --> E{"Recurrence?"}
+    E -->|"Yes"| D
+    E -->|"No"| F["Continue PT"]
+    D --> G{"Bone Loss\\n>20%?"}
+    G -->|"Yes"| H["Latarjet Procedure"]
+    G -->|"No"| I["Arthroscopic Bankart"]
+    I --> J["Post-Op Rehab"]
+    H --> J
+    style A fill:#FFA500,color:#000
+    style I fill:#4169E1,color:#fff`,
+};
+
+/**
+ * ACL Injury Management template
+ */
+export const aclInjuryManagement: DiagramTemplate = {
+  id: 'ortho-acl-management',
+  name: 'ACL Injury Management Algorithm',
+  description: 'Evaluation and treatment pathway for ACL injuries',
+  domain: 'medicine',
+  promptTemplate: `Create an ACL injury management flowchart:
+- Injury mechanism: {{mechanism}}
+- Clinical examination: {{clinicalExam}}
+- MRI findings: {{mriFindings}}
+- Associated injuries: {{associatedInjuries}}
+- Patient factors: {{patientFactors}}
+- Graft options: {{graftOptions}}
+- Rehabilitation timeline: {{rehabTimeline}}
+{{#additionalNotes}}Return to sport criteria: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'mechanism',
+    'clinicalExam',
+    'mriFindings',
+    'associatedInjuries',
+    'patientFactors',
+    'graftOptions',
+    'rehabTimeline',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Suspected ACL Tear"] --> B["Lachman + Pivot Shift"]
+    B -->|"Positive"| C["MRI Knee"]
+    C --> D{"ACL Tear\\nConfirmed"}
+    D --> E{"Activity Level"}
+    E -->|"High Demand\\nSports"| F["ACL Reconstruction"]
+    E -->|"Low Demand\\nSedentary"| G["Consider Non-Op"]
+    F --> H{"Graft Choice"}
+    H --> H1["BTB Autograft"]
+    H --> H2["Hamstring"]
+    H --> H3["Quad Tendon"]
+    H --> H4["Allograft"]
+    H1 & H2 & H3 & H4 --> I["Rehab 9-12 months"]
+    I --> J["RTS Testing"]
+    style F fill:#4169E1,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Spine Surgical Approach Selection template
+ */
+export const spineSurgicalApproach: DiagramTemplate = {
+  id: 'ortho-spine-surgical-approach',
+  name: 'Spine Surgical Approach Selection',
+  description: 'Decision algorithm for selecting spine surgical approach',
+  domain: 'medicine',
+  promptTemplate: `Create a spine surgical approach selection flowchart:
+- Pathology type: {{pathologyType}}
+- Spinal level: {{spinalLevel}}
+- Anterior vs posterior pathology: {{apLocation}}
+- Deformity considerations: {{deformity}}
+- Approach options: {{approachOptions}}
+- Instrumentation needs: {{instrumentation}}
+- Complications to consider: {{complications}}
+{{#additionalNotes}}Patient factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'pathologyType',
+    'spinalLevel',
+    'apLocation',
+    'deformity',
+    'approachOptions',
+    'instrumentation',
+    'complications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Spine Surgery\\nIndicated"] --> B{"Pathology\\nLocation?"}
+    B -->|"Anterior\\n(Disc, Body)"| C{"Level?"}
+    B -->|"Posterior\\n(Lamina, Facets)"| D["Posterior Approach"]
+    B -->|"Circumferential"| E["Combined Approach"]
+    C -->|"Cervical"| F["ACDF / Corpectomy"]
+    C -->|"Thoracic"| G["Transthoracic"]
+    C -->|"Lumbar"| H["ALIF / LLIF / OLIF"]
+    D --> I["Laminectomy\\n+ Fusion"]
+    E --> J["Staged or\\nSame Day"]
+    H --> K{"Fusion Level"}
+    K -->|"L5-S1"| L["ALIF"]
+    K -->|"L2-L5"| M["LLIF/OLIF"]
+    style A fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Carpal Tunnel Syndrome Management template
+ */
+export const carpalTunnelManagement: DiagramTemplate = {
+  id: 'ortho-carpal-tunnel',
+  name: 'Carpal Tunnel Syndrome Management',
+  description: 'Evaluation and treatment algorithm for CTS',
+  domain: 'medicine',
+  promptTemplate: `Create a carpal tunnel syndrome management flowchart:
+- Symptom severity: {{severity}}
+- Clinical examination: {{clinicalExam}}
+- Electrodiagnostic findings: {{emgNcs}}
+- Conservative treatment: {{conservativeTreatment}}
+- Injection therapy: {{injectionTherapy}}
+- Surgical indications: {{surgicalIndications}}
+- Surgical technique: {{surgicalTechnique}}
+{{#additionalNotes}}Work-related factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'severity',
+    'clinicalExam',
+    'emgNcs',
+    'conservativeTreatment',
+    'injectionTherapy',
+    'surgicalIndications',
+    'surgicalTechnique',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Suspected CTS"] --> B["History + Physical"]
+    B --> C{"Phalen's\\nTinel's\\nPositive?"}
+    C -->|"Yes"| D{"Severity?"}
+    C -->|"Unclear"| E["EMG/NCS"]
+    E --> D
+    D -->|"Mild"| F["Night Splinting\\nNSAIDs"]
+    D -->|"Moderate"| G["Splint + Injection"]
+    D -->|"Severe\\nThenar Atrophy"| H["Surgical Release"]
+    F --> I{"Improved?"}
+    I -->|"No 6-12 wks"| G
+    G --> J{"Improved?"}
+    J -->|"No"| H
+    J -->|"Yes"| K["Continue\\nConservative"]
+    H --> L["Open vs Endoscopic"]
+    style H fill:#4169E1,color:#fff
+    style K fill:#228B22,color:#fff`,
+};
+
+/**
+ * Pediatric Fracture Salter-Harris template
+ */
+export const salterHarrisClassification: DiagramTemplate = {
+  id: 'ortho-salter-harris',
+  name: 'Salter-Harris Classification',
+  description: 'Classification and management of pediatric physeal fractures',
+  domain: 'medicine',
+  promptTemplate: `Create a Salter-Harris classification diagram:
+- Fracture type (I-V): {{type}}
+- Location: {{location}}
+- Mechanism: {{mechanism}}
+- Growth plate involvement: {{physealInvolvement}}
+- Prognosis: {{prognosis}}
+- Treatment approach: {{treatment}}
+- Follow-up protocol: {{followUp}}
+{{#additionalNotes}}Growth disturbance risk: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'type',
+    'location',
+    'mechanism',
+    'physealInvolvement',
+    'prognosis',
+    'treatment',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Pediatric Fracture\\nInvolving Physis"] --> B{"Salter-Harris\\nType?"}
+    B -->|"Type I"| C["Through Physis\\nOnly"]
+    B -->|"Type II"| D["Physis +\\nMetaphysis"]
+    B -->|"Type III"| E["Physis +\\nEpiphysis"]
+    B -->|"Type IV"| F["Metaphysis +\\nPhysis + Epiphysis"]
+    B -->|"Type V"| G["Crush Injury\\nto Physis"]
+    C --> H["Cast\\nGood Prognosis"]
+    D --> H
+    E --> I["ORIF if Displaced\\nFair Prognosis"]
+    F --> I
+    G --> J["Poor Prognosis\\nGrowth Arrest Risk"]
+    subgraph Risk["Growth Arrest Risk"]
+        R1["I-II: Low"]
+        R2["III-IV: Moderate"]
+        R3["V: High"]
+    end
+    style G fill:#DC143C,color:#fff
+    style H fill:#228B22,color:#fff`,
+};
+
+/**
+ * Total Knee Arthroplasty Pathway template
+ */
+export const tkrPathway: DiagramTemplate = {
+  id: 'ortho-tkr-pathway',
+  name: 'Total Knee Replacement Pathway',
+  description: 'Comprehensive pathway for TKA from indication to recovery',
+  domain: 'medicine',
+  promptTemplate: `Create a total knee replacement pathway flowchart:
+- Indications: {{indications}}
+- Preoperative optimization: {{preopOptimization}}
+- Implant selection: {{implantSelection}}
+- Surgical approach: {{surgicalApproach}}
+- VTE prophylaxis: {{vteProphylaxis}}
+- Rehabilitation protocol: {{rehabProtocol}}
+- Milestones and discharge: {{milestones}}
+{{#additionalNotes}}Complications to monitor: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'indications',
+    'preopOptimization',
+    'implantSelection',
+    'surgicalApproach',
+    'vteProphylaxis',
+    'rehabProtocol',
+    'milestones',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Knee OA\\nFailed Conservative Tx"] --> B["Preop Evaluation"]
+    B --> B1["Medical Clearance"]
+    B --> B2["Dental Clearance"]
+    B --> B3["MRSA Screening"]
+    B --> B4["PT Prehab"]
+    B1 & B2 & B3 & B4 --> C["Surgery Day"]
+    C --> D["TKA Performed"]
+    D --> E["Post-Op Day 0"]
+    E --> E1["Pain Management"]
+    E --> E2["DVT Prophylaxis"]
+    E --> E3["PT: Ambulation"]
+    E1 & E2 & E3 --> F["POD 1-2"]
+    F --> G{"Discharge\\nCriteria Met?"}
+    G -->|"Yes"| H["Home vs SNF"]
+    G -->|"No"| I["Continue Inpatient"]
+    H --> J["Outpatient PT\\n6-12 weeks"]
+    J --> K["ROM Goal: 0-120°"]
+    K --> L["Return to Activities\\n3-6 months"]
+    style D fill:#4169E1,color:#fff
+    style L fill:#228B22,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -809,6 +1127,14 @@ export const orthopedicsTemplates: DiagramTemplate[] = [
   fractureHealingTimeline,
   ottawaRules,
   romAssessment,
+  // Additional Templates - COMPLETE Checkpoint (7)
+  hipFractureClassification,
+  shoulderInstability,
+  aclInjuryManagement,
+  spineSurgicalApproach,
+  carpalTunnelManagement,
+  salterHarrisClassification,
+  tkrPathway,
 ];
 
 export default orthopedicsTemplates;

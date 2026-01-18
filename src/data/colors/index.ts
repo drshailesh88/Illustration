@@ -30,6 +30,9 @@ export { default as endocrinologyColorScheme } from './endocrinology';
 export * from './hematology-oncology';
 export { default as hematologyOncologyColorScheme } from './hematology-oncology';
 
+export * from './orthopedics';
+export { default as orthopedicsColorScheme } from './orthopedics';
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -41,3 +44,4 @@ export type { NephrologyColorScheme } from './nephrology';
 export type { InfectiousDiseaseColorScheme } from './infectious-disease';
 export type { EndocrinologyColorScheme } from './endocrinology';
 export type { HematologyOncologyColorScheme } from './hematology-oncology';
+export type { OrthopedicsColorScheme } from './orthopedics';
