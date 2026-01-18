@@ -337,19 +337,19 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     // View shortcuts
     {
       key: '+',
-      handler: () => setZoom(zoom + 10),
+      handler: () => setZoom(zoom + 0.1),
       description: 'Zoom In',
       category: 'view',
     },
     {
       key: '=',
-      handler: () => setZoom(zoom + 10),
+      handler: () => setZoom(zoom + 0.1),
       description: 'Zoom In',
       category: 'view',
     },
     {
       key: '-',
-      handler: () => setZoom(zoom - 10),
+      handler: () => setZoom(zoom - 0.1),
       description: 'Zoom Out',
       category: 'view',
     },

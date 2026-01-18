@@ -239,13 +239,13 @@ export function MenuBar({ onOpenExportDialog }: MenuBarProps) {
           id: 'zoom-in',
           label: 'Zoom In',
           shortcut: '+',
-          action: () => setZoom(zoom + 10),
+          action: () => setZoom(zoom + 0.1),
         },
         {
           id: 'zoom-out',
           label: 'Zoom Out',
           shortcut: '-',
-          action: () => setZoom(zoom - 10),
+          action: () => setZoom(zoom - 0.1),
         },
         {
           id: 'zoom-100',
@@ -263,22 +263,22 @@ export function MenuBar({ onOpenExportDialog }: MenuBarProps) {
         {
           id: 'zoom-50',
           label: '50%',
-          action: () => setZoom(50),
+          action: () => setZoom(0.5),
         },
         {
           id: 'zoom-100-option',
           label: '100%',
-          action: () => setZoom(100),
+          action: () => setZoom(1),
         },
         {
           id: 'zoom-150',
           label: '150%',
-          action: () => setZoom(150),
+          action: () => setZoom(1.5),
         },
         {
           id: 'zoom-200',
           label: '200%',
-          action: () => setZoom(200),
+          action: () => setZoom(2),
         },
         { id: 'divider2', label: '', divider: true },
         {
