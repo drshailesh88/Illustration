@@ -11,7 +11,7 @@ import React from 'react';
 // Types
 // ============================================================================
 
-export type ExportFormat = 'png' | 'svg' | 'pdf' | 'latex';
+export type ExportFormat = 'png' | 'svg' | 'pdf' | 'pptx' | 'latex';
 
 export interface FormatTabsProps {
   /** Currently selected format */
@@ -65,6 +65,16 @@ const LaTeXIcon = () => (
   </svg>
 );
 
+const PPTXIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="2" y="4" width="20" height="14" rx="2" />
+    <path d="M8 18v2" />
+    <path d="M16 18v2" />
+    <path d="M6 20h12" />
+    <circle cx="12" cy="11" r="3" />
+  </svg>
+);
+
 // ============================================================================
 // Format Options
 // ============================================================================
@@ -87,6 +97,12 @@ const formatOptions: FormatOption[] = [
     label: 'PDF',
     description: 'Document',
     icon: <PDFIcon />,
+  },
+  {
+    id: 'pptx',
+    label: 'PPTX',
+    description: 'PowerPoint',
+    icon: <PPTXIcon />,
   },
   {
     id: 'latex',

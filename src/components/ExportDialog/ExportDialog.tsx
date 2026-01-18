@@ -10,6 +10,7 @@ import { FormatTabs, ExportFormat } from './FormatTabs';
 import { PNGOptions, PNGExportSettings } from './PNGOptions';
 import { SVGOptions, SVGExportSettings } from './SVGOptions';
 import { PDFOptions, PDFExportSettings } from './PDFOptions';
+import { PPTXOptions, PPTXExportSettings } from './PPTXOptions';
 import { LaTeXOptions, LaTeXExportSettings } from './LaTeXOptions';
 
 // ============================================================================
@@ -33,6 +34,7 @@ export type ExportSettings =
   | PNGExportSettings
   | SVGExportSettings
   | PDFExportSettings
+  | PPTXExportSettings
   | LaTeXExportSettings;
 
 // ============================================================================
@@ -55,6 +57,13 @@ const defaultPDFSettings: PDFExportSettings = {
   pageSize: 'a4',
   orientation: 'portrait',
   margins: { top: 20, right: 20, bottom: 20, left: 20 },
+};
+
+const defaultPPTXSettings: PPTXExportSettings = {
+  layout: '16x9',
+  resolution: 2,
+  background: 'white',
+  centerImage: true,
 };
 
 const defaultLaTeXSettings: LaTeXExportSettings = {
@@ -195,6 +204,7 @@ export function ExportDialog({
   const [pngSettings, setPngSettings] = useState<PNGExportSettings>(defaultPNGSettings);
   const [svgSettings, setSvgSettings] = useState<SVGExportSettings>(defaultSVGSettings);
   const [pdfSettings, setPdfSettings] = useState<PDFExportSettings>(defaultPDFSettings);
+  const [pptxSettings, setPptxSettings] = useState<PPTXExportSettings>(defaultPPTXSettings);
   const [latexSettings, setLatexSettings] = useState<LaTeXExportSettings>(defaultLaTeXSettings);
 
   // Reset filename when dialog opens
@@ -229,6 +239,9 @@ export function ExportDialog({
       case 'pdf':
         settings = pdfSettings;
         break;
+      case 'pptx':
+        settings = pptxSettings;
+        break;
       case 'latex':
         settings = latexSettings;
         break;
@@ -238,7 +251,7 @@ export function ExportDialog({
 
     onExport(selectedFormat, settings);
     onClose();
-  }, [selectedFormat, pngSettings, svgSettings, pdfSettings, latexSettings, onExport, onClose]);
+  }, [selectedFormat, pngSettings, svgSettings, pdfSettings, pptxSettings, latexSettings, onExport, onClose]);
 
   const handleOverlayClick = useCallback(
     (e: React.MouseEvent) => {
@@ -254,6 +267,7 @@ export function ExportDialog({
       png: '.png',
       svg: '.svg',
       pdf: '.pdf',
+      pptx: '.pptx',
       latex: '.tex',
     };
     return extensions[format];
@@ -328,6 +342,9 @@ export function ExportDialog({
             )}
             {selectedFormat === 'pdf' && (
               <PDFOptions settings={pdfSettings} onChange={setPdfSettings} />
+            )}
+            {selectedFormat === 'pptx' && (
+              <PPTXOptions settings={pptxSettings} onChange={setPptxSettings} />
             )}
             {selectedFormat === 'latex' && (
               <LaTeXOptions

@@ -2,11 +2,12 @@
  * Export Module
  *
  * Provides comprehensive export functionality for illustrations,
- * supporting PNG, SVG, and PDF formats with various options.
+ * supporting PNG, SVG, PDF, and PPTX formats with various options.
  *
  * @see save-svg-as-png: https://github.com/exupero/saveSvgAsPng
  * @see jspdf: https://github.com/parallax/jsPDF
  * @see svg2pdf.js: https://github.com/yWorks/svg2pdf.js
+ * @see pptxgenjs: https://github.com/gitbrent/PptxGenJS
  */
 
 // @ts-expect-error - save-svg-as-png doesn't have TypeScript definitions
@@ -236,3 +237,17 @@ export async function copyAsPngToClipboard(svg: SVGSVGElement, scale: number = 2
 }
 
 export { saveSvgAsPng, svgAsPngUri, svgAsDataUri, download, jsPDF, svg2pdf };
+
+// PPTX export
+export {
+  exportAsPptx,
+  exportMultipleAsPptx,
+  getPptxBlob,
+  getPptxBase64,
+} from './pptx';
+
+export type {
+  PptxExportOptions,
+  SlideLayout,
+  Artboard,
+} from './pptx';

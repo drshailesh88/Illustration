@@ -31,6 +31,15 @@ export type {
   Margins,
 } from './PDFOptions';
 
+// PPTX options component
+export { PPTXOptions } from './PPTXOptions';
+export type {
+  PPTXExportSettings,
+  PPTXOptionsProps,
+  SlideLayout,
+  Resolution,
+} from './PPTXOptions';
+
 // LaTeX options component
 export { LaTeXOptions } from './LaTeXOptions';
 export type { LaTeXExportSettings, LaTeXOptionsProps } from './LaTeXOptions';
