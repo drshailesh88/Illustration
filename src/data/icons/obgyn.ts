@@ -11,6 +11,12 @@
  * - Reproductive (10 icons)
  * - Equipment (10 icons)
  * - Contraception (7 icons)
+ * - Fetal Monitoring (8 icons)
+ * - Gynecologic Procedures (10 icons)
+ * - Prenatal Screening (8 icons)
+ * - Postpartum (6 icons)
+ *
+ * Total: 122 icons - COMPLETE checkpoint (90%+)
  */
 
 import type { IconDefinition } from './index';
@@ -1575,6 +1581,571 @@ export const obgynIcons: IconDefinition[] = [
       <path d="M10 24l6 0" stroke="red" stroke-width="2"/>
       <path d="M48 24l6 0" stroke="red" stroke-width="2"/>
       <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Tubal Ligation</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // FETAL MONITORING (8 icons)
+  // ===========================================================================
+  {
+    id: 'obgyn-nst-tracing',
+    name: 'NST Tracing',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['NST', 'non-stress test', 'fetal heart rate', 'tracing', 'reactivity'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="48" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="4" y="8" width="56" height="48" rx="2"/>
+      <path d="M8 32h8l2-8 4 16 4-12 4 8 4-4 4 8 4-16 4 12 4-4h8" stroke="#FF1493" stroke-width="2"/>
+      <line x1="8" y1="20" x2="56" y2="20" stroke-dasharray="2 2" opacity="0.5"/>
+      <line x1="8" y1="44" x2="56" y2="44" stroke-dasharray="2 2" opacity="0.5"/>
+      <text x="8" y="18" font-size="3" fill="currentColor" stroke="none">160 bpm</text>
+      <text x="8" y="50" font-size="3" fill="currentColor" stroke="none">110 bpm</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-ctg-cardiotocography',
+    name: 'CTG Cardiotocography',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['CTG', 'cardiotocography', 'contraction', 'fetal heart', 'monitoring'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="28" rx="2" fill="currentColor" opacity="0.1"/>
+      <path d="M8 18h6l2-6 3 12 3-8 3 4 3-2 3 6 3-10 3 8 3-4h6" stroke="#FF69B4" stroke-width="1.5"/>
+      <rect x="4" y="34" width="56" height="26" rx="2" fill="currentColor" opacity="0.1"/>
+      <path d="M8 47h12c4 0 4 8 8 8s4-8 8-8 4 8 8 8h12" stroke="#4169E1" stroke-width="1.5"/>
+      <text x="8" y="12" font-size="3" fill="#FF69B4" stroke="none">FHR</text>
+      <text x="8" y="42" font-size="3" fill="#4169E1" stroke="none">UC</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-biophysical-profile',
+    name: 'Biophysical Profile',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['BPP', 'biophysical', 'profile', 'score', 'fetal wellbeing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="4" width="48" height="56" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="4" width="48" height="56" rx="2"/>
+      <text x="14" y="16" font-size="4" fill="currentColor" stroke="none">BPP Score</text>
+      <line x1="12" y1="20" x2="52" y2="20"/>
+      <text x="12" y="28" font-size="3" fill="currentColor" stroke="none">NST: 2/2</text>
+      <text x="12" y="34" font-size="3" fill="currentColor" stroke="none">Breathing: 2/2</text>
+      <text x="12" y="40" font-size="3" fill="currentColor" stroke="none">Movement: 2/2</text>
+      <text x="12" y="46" font-size="3" fill="currentColor" stroke="none">Tone: 2/2</text>
+      <text x="12" y="52" font-size="3" fill="currentColor" stroke="none">AFI: 2/2</text>
+      <rect x="38" y="22" width="12" height="32" fill="#90EE90" opacity="0.5"/>
+      <text x="40" y="42" font-size="6" fill="#228B22" stroke="none">8/8</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-fhr-variability',
+    name: 'FHR Variability',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['variability', 'heart rate', 'fetal', 'beat-to-beat', 'baseline'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+      <line x1="8" y1="32" x2="56" y2="32" stroke-dasharray="4 2" opacity="0.5"/>
+      <path d="M8 32l2-2 2 4 2-3 2 2 2-4 2 5 2-3 2 2 2-2 2 3 2-4 2 2 2-1 2 3 2-2 2 4 2-3 2 1 2-2 2 3" stroke="#FF1493" stroke-width="2"/>
+      <text x="8" y="10" font-size="3" fill="currentColor" stroke="none">Moderate Variability (6-25 bpm)</text>
+      <text x="8" y="58" font-size="3" fill="#228B22" stroke="none">Reassuring Pattern</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-fhr-acceleration',
+    name: 'FHR Acceleration',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['acceleration', 'reactive', 'heart rate', 'fetal', 'reassuring'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+      <line x1="8" y1="36" x2="56" y2="36" stroke-dasharray="4 2" opacity="0.5"/>
+      <path d="M8 36h8l4-16c2-4 4-4 6 0l4 16h26" stroke="#FF1493" stroke-width="2"/>
+      <path d="M16 36l4-16" stroke="#228B22" stroke-width="1" stroke-dasharray="2 2"/>
+      <text x="18" y="16" font-size="3" fill="#228B22" stroke="none">+15 bpm</text>
+      <text x="22" y="46" font-size="3" fill="currentColor" stroke="none">15 sec</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Acceleration: ≥15 bpm x 15 sec</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-fhr-deceleration',
+    name: 'FHR Deceleration',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['deceleration', 'early', 'late', 'variable', 'heart rate'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="24" rx="2" fill="currentColor" opacity="0.1"/>
+      <path d="M8 20h8l6 8 6-8h28" stroke="#FF1493" stroke-width="1.5"/>
+      <text x="8" y="14" font-size="3" fill="currentColor" stroke="none">Late Decel</text>
+      <rect x="4" y="34" width="56" height="12" rx="2" fill="currentColor" opacity="0.05"/>
+      <path d="M8 40h12c4 0 4 4 8 4s4-4 8-4h20" stroke="#4169E1" stroke-width="1.5"/>
+      <text x="8" y="54" font-size="3" fill="#DC143C" stroke="none">Nadir after contraction peak</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-contraction-pattern',
+    name: 'Contraction Pattern',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['contraction', 'tocometry', 'uterine', 'labor', 'frequency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+      <path d="M8 44c4 0 4-24 8-24s4 24 8 24 4-24 8-24 4 24 8 24 4-24 8-24 4 24 8 24" stroke="#4169E1" stroke-width="2"/>
+      <line x1="8" y1="44" x2="56" y2="44" stroke-dasharray="2 2" opacity="0.3"/>
+      <text x="10" y="24" font-size="3" fill="currentColor" stroke="none">60 mmHg</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">q2-3 min contractions</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-toco-placement',
+    name: 'Tocodynamometer Placement',
+    domain: 'medicine',
+    category: 'fetal-monitoring',
+    tags: ['toco', 'tocodynamometer', 'external', 'monitoring', 'belt'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="24" ry="20" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="36" rx="24" ry="20"/>
+      <rect x="24" y="20" width="16" height="10" rx="2" fill="#87CEEB" opacity="0.7"/>
+      <rect x="24" y="20" width="16" height="10" rx="2"/>
+      <path d="M8 36h16"/>
+      <path d="M40 36h16"/>
+      <circle cx="32" cy="46" r="8" fill="#FFB6C1" opacity="0.5"/>
+      <text x="18" y="60" font-size="3" fill="currentColor" stroke="none">Fundal Placement</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // GYNECOLOGIC PROCEDURES (10 icons)
+  // ===========================================================================
+  {
+    id: 'obgyn-dnc-procedure',
+    name: 'D&C Procedure',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['D&C', 'dilation', 'curettage', 'uterine', 'procedure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8h24c6 0 10 8 10 20s-4 20-10 20H20c-6 0-10-8-10-20s4-20 10-20z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 8h24c6 0 10 8 10 20s-4 20-10 20H20c-6 0-10-8-10-20s4-20 10-20z"/>
+      <path d="M32 48v12" stroke-width="2"/>
+      <ellipse cx="32" cy="28" rx="6" ry="4" fill="currentColor" opacity="0.3"/>
+      <path d="M26 28c0-12 12-12 12 0" stroke-width="2" stroke="#DC143C"/>
+      <text x="12" y="62" font-size="3" fill="currentColor" stroke="none">Curettage</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-leep-procedure',
+    name: 'LEEP Procedure',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['LEEP', 'LLETZ', 'loop excision', 'cervical', 'dysplasia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="16" ry="12" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="36" rx="16" ry="12"/>
+      <ellipse cx="32" cy="36" rx="6" ry="4"/>
+      <path d="M32 8v20" stroke="#FFD700" stroke-width="2"/>
+      <ellipse cx="32" cy="8" rx="8" ry="4" fill="#C0C0C0"/>
+      <path d="M26 36a6 4 0 0 1 12 0" stroke="#FFD700" stroke-width="2"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Loop Electrosurgical Excision</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-myomectomy',
+    name: 'Myomectomy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['myomectomy', 'fibroid', 'removal', 'uterine', 'surgery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c-4 0-8 8-8 16s4 16 8 16h32c4 0 8-8 8-16s-4-16-8-16H16z" fill="currentColor" opacity="0.2"/>
+      <path d="M16 16c-4 0-8 8-8 16s4 16 8 16h32c4 0 8-8 8-16s-4-16-8-16H16z"/>
+      <circle cx="24" cy="28" r="6" fill="#DEB887" stroke="#8B4513" stroke-dasharray="2 2"/>
+      <circle cx="40" cy="32" r="8" fill="#DEB887" stroke="#8B4513" stroke-dasharray="2 2"/>
+      <path d="M18 28l12 0" stroke="#DC143C" stroke-width="1"/>
+      <path d="M32 32l16 0" stroke="#DC143C" stroke-width="1"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">Fibroid Removal</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-hysterectomy',
+    name: 'Hysterectomy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['hysterectomy', 'uterus removal', 'total', 'subtotal', 'surgery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 16c-8 0-12 8-12 16s4 16 12 16h24c8 0 12-8 12-16s-4-16-12-16H20z" fill="currentColor" opacity="0.2" stroke-dasharray="4 4"/>
+      <path d="M8 20l-4-8"/>
+      <path d="M56 20l4-8"/>
+      <ellipse cx="4" cy="10" rx="3" ry="4"/>
+      <ellipse cx="60" cy="10" rx="3" ry="4"/>
+      <path d="M32 48v8"/>
+      <line x1="8" y1="48" x2="56" y2="48" stroke="#DC143C" stroke-width="2"/>
+      <text x="14" y="60" font-size="3" fill="currentColor" stroke="none">Total Hysterectomy</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-laparoscopy-gyn',
+    name: 'Gynecologic Laparoscopy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['laparoscopy', 'minimally invasive', 'surgery', 'ports', 'camera'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="40" rx="24" ry="16" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="40" rx="24" ry="16"/>
+      <circle cx="32" cy="28" r="4" fill="#C0C0C0"/>
+      <path d="M32 24v-16" stroke-width="2"/>
+      <circle cx="20" cy="36" r="3" fill="#C0C0C0"/>
+      <path d="M20 33v-10" stroke-width="1.5"/>
+      <circle cx="44" cy="36" r="3" fill="#C0C0C0"/>
+      <path d="M44 33v-10" stroke-width="1.5"/>
+      <text x="10" y="60" font-size="3" fill="currentColor" stroke="none">Laparoscopic Ports</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-pap-smear',
+    name: 'Pap Smear',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['pap', 'smear', 'cytology', 'cervical', 'screening'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="12" ry="8" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8"/>
+      <ellipse cx="32" cy="32" rx="4" ry="2"/>
+      <path d="M32 8v16" stroke-width="2"/>
+      <path d="M28 8h8" stroke-width="2"/>
+      <path d="M30 24c0 4 4 4 4 0"/>
+      <rect x="44" y="44" width="12" height="16" rx="1" fill="#E6E6FA"/>
+      <rect x="44" y="44" width="12" height="16" rx="1"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Cervical Cytology</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-colposcopy-procedure',
+    name: 'Colposcopy Procedure',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['colposcopy', 'biopsy', 'cervical', 'magnification', 'acetic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="44" rx="14" ry="10" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="44" rx="14" ry="10"/>
+      <ellipse cx="32" cy="44" rx="5" ry="3"/>
+      <circle cx="32" cy="16" r="8" fill="#87CEEB" opacity="0.3"/>
+      <circle cx="32" cy="16" r="8"/>
+      <circle cx="32" cy="16" r="4"/>
+      <path d="M32 24v12"/>
+      <path d="M24 16h-8"/>
+      <path d="M40 16h8"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Colposcopic Exam</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-endometrial-biopsy',
+    name: 'Endometrial Biopsy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['endometrial', 'biopsy', 'pipelle', 'sampling', 'uterine'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 20c-4 0-8 6-8 12s4 12 8 12h24c4 0 8-6 8-12s-4-12-8-12H20z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 20c-4 0-8 6-8 12s4 12 8 12h24c4 0 8-6 8-12s-4-12-8-12H20z"/>
+      <path d="M32 44v12" stroke-width="1.5"/>
+      <path d="M32 8v28" stroke="#C0C0C0" stroke-width="3"/>
+      <circle cx="32" cy="8" r="4" fill="#C0C0C0"/>
+      <path d="M30 32l4 4" stroke="#DC143C"/>
+      <path d="M34 32l-4 4" stroke="#DC143C"/>
+      <text x="14" y="62" font-size="3" fill="currentColor" stroke="none">Pipelle Biopsy</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-saline-sonohysterography',
+    name: 'Saline Sonohysterography',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['SIS', 'sonohysterography', 'saline', 'infusion', 'ultrasound'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 20c-4 0-8 6-8 12s4 12 8 12h24c4 0 8-6 8-12s-4-12-8-12H20z" fill="#87CEEB" opacity="0.4"/>
+      <path d="M20 20c-4 0-8 6-8 12s4 12 8 12h24c4 0 8-6 8-12s-4-12-8-12H20z"/>
+      <path d="M32 44v12" stroke-width="1.5"/>
+      <path d="M32 56l-4 4h8l-4-4" fill="#C0C0C0"/>
+      <circle cx="20" cy="30" r="3" fill="#87CEEB"/>
+      <circle cx="44" cy="28" r="4" fill="#87CEEB"/>
+      <text x="10" y="10" font-size="3" fill="currentColor" stroke="none">Saline-enhanced US</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-hysterosalpingography',
+    name: 'Hysterosalpingography',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['HSG', 'hysterosalpingography', 'tubal patency', 'contrast', 'fertility'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 24c-4 0-6 4-6 8s2 8 6 8h16c4 0 6-4 6-8s-2-8-6-8H24z" fill="#FFD700" opacity="0.4"/>
+      <path d="M24 24c-4 0-6 4-6 8s2 8 6 8h16c4 0 6-4 6-8s-2-8-6-8H24z"/>
+      <path d="M18 28l-10-8" stroke="#FFD700" stroke-width="2"/>
+      <path d="M46 28l10-8" stroke="#FFD700" stroke-width="2"/>
+      <ellipse cx="8" cy="18" rx="4" ry="5" fill="#FFD700" opacity="0.5"/>
+      <ellipse cx="56" cy="18" rx="4" ry="5" fill="#FFD700" opacity="0.5"/>
+      <path d="M32 40v16"/>
+      <text x="6" y="58" font-size="3" fill="currentColor" stroke="none">Contrast-enhanced Imaging</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // PRENATAL SCREENING (8 icons)
+  // ===========================================================================
+  {
+    id: 'obgyn-nuchal-translucency',
+    name: 'Nuchal Translucency',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['NT', 'nuchal', 'translucency', 'Down syndrome', 'first trimester'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="28" r="12" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="28" r="12"/>
+      <path d="M24 32c0 8 16 8 16 0" fill="#FFB6C1" opacity="0.5"/>
+      <rect x="26" y="40" width="12" height="4" fill="#87CEEB" opacity="0.7"/>
+      <line x1="26" y1="42" x2="38" y2="42" stroke="#4169E1" stroke-width="2"/>
+      <text x="42" y="44" font-size="3" fill="#4169E1" stroke="none">NT</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">NT Measurement</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-quad-screen',
+    name: 'Quad Screen',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['quad screen', 'AFP', 'hCG', 'estriol', 'inhibin', 'second trimester'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="14" y="20" font-size="4" fill="currentColor" stroke="none">Quad Screen</text>
+      <line x1="12" y1="24" x2="52" y2="24"/>
+      <circle cx="20" cy="34" r="6" fill="#FF6347"/>
+      <circle cx="44" cy="34" r="6" fill="#4169E1"/>
+      <circle cx="20" cy="50" r="6" fill="#32CD32"/>
+      <circle cx="44" cy="50" r="6" fill="#FFD700"/>
+      <text x="17" y="36" font-size="3" fill="white" stroke="none">AFP</text>
+      <text x="40" y="36" font-size="3" fill="white" stroke="none">hCG</text>
+      <text x="18" y="52" font-size="3" fill="white" stroke="none">E3</text>
+      <text x="42" y="52" font-size="3" fill="white" stroke="none">Inh</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-cvs-sampling',
+    name: 'Chorionic Villus Sampling',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['CVS', 'chorionic villus', 'sampling', 'genetic', 'first trimester'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="20" ry="16" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="36" rx="20" ry="16"/>
+      <circle cx="32" cy="32" r="8" fill="#FFB6C1" opacity="0.5"/>
+      <path d="M24 44c4 4 12 4 16 0" fill="#DC143C" opacity="0.4"/>
+      <path d="M8 24l16 12" stroke="#C0C0C0" stroke-width="2"/>
+      <circle cx="8" cy="22" r="4" fill="#C0C0C0"/>
+      <path d="M24 36l-6 4" stroke="#DC143C" stroke-width="1"/>
+      <text x="12" y="60" font-size="3" fill="currentColor" stroke="none">Placental Biopsy</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-amniocentesis-procedure',
+    name: 'Amniocentesis Procedure',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['amniocentesis', 'amniotic', 'fluid', 'genetic', 'testing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="22" ry="18" fill="#87CEEB" opacity="0.3"/>
+      <ellipse cx="32" cy="36" rx="22" ry="18"/>
+      <ellipse cx="32" cy="40" rx="10" ry="8" fill="#FFB6C1" opacity="0.5"/>
+      <ellipse cx="32" cy="40" rx="10" ry="8"/>
+      <path d="M44 16l-8 14" stroke="#C0C0C0" stroke-width="2"/>
+      <circle cx="44" cy="14" r="4" fill="#C0C0C0"/>
+      <circle cx="36" cy="30" r="2" fill="#87CEEB"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Fluid Aspiration</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-nipt-testing',
+    name: 'NIPT Testing',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['NIPT', 'cell-free DNA', 'cfDNA', 'genetic', 'non-invasive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="48" rx="4"/>
+      <text x="18" y="20" font-size="4" fill="currentColor" stroke="none">NIPT</text>
+      <path d="M20 28c2-4 4-4 6 0s4 4 6 0 4-4 6 0 4 4 6 0" stroke="#FF69B4" stroke-width="2"/>
+      <path d="M20 36c2-4 4-4 6 0s4 4 6 0 4-4 6 0 4 4 6 0" stroke="#4169E1" stroke-width="2"/>
+      <circle cx="24" cy="48" r="4" fill="#DC143C"/>
+      <text x="30" y="50" font-size="3" fill="currentColor" stroke="none">cfDNA</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-glucose-tolerance-test',
+    name: 'Glucose Tolerance Test',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['GTT', 'glucose', 'tolerance', 'gestational diabetes', 'screening'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="12" width="48" height="40" rx="2"/>
+      <line x1="12" y1="44" x2="52" y2="44" stroke-dasharray="2 2" opacity="0.5"/>
+      <path d="M12 36l8-8 8 4 8-12 8 8 8-4" stroke="#FF6347" stroke-width="2"/>
+      <circle cx="12" cy="36" r="2" fill="#FF6347"/>
+      <circle cx="20" cy="28" r="2" fill="#FF6347"/>
+      <circle cx="28" cy="32" r="2" fill="#FF6347"/>
+      <circle cx="36" cy="20" r="2" fill="#FF6347"/>
+      <circle cx="44" cy="28" r="2" fill="#FF6347"/>
+      <circle cx="52" cy="24" r="2" fill="#FF6347"/>
+      <text x="12" y="22" font-size="3" fill="currentColor" stroke="none">0h</text>
+      <text x="28" y="22" font-size="3" fill="currentColor" stroke="none">1h</text>
+      <text x="44" y="22" font-size="3" fill="currentColor" stroke="none">2h</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-anatomy-scan',
+    name: 'Anatomy Scan',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['anatomy scan', 'level II', 'ultrasound', 'morphology', '20 week'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="40" rx="4" fill="#1a1a2e" opacity="0.9"/>
+      <rect x="4" y="8" width="56" height="40" rx="4"/>
+      <ellipse cx="32" cy="28" rx="18" ry="14" fill="currentColor" opacity="0.2"/>
+      <circle cx="28" cy="22" r="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="36" cy="32" rx="8" ry="6" fill="currentColor" opacity="0.2"/>
+      <path d="M24 28c2 4 8 4 10 0"/>
+      <circle cx="26" cy="20" r="1" fill="currentColor"/>
+      <circle cx="30" cy="20" r="1" fill="currentColor"/>
+      <text x="8" y="56" font-size="3" fill="currentColor" stroke="none">20-Week Anatomy Scan</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-doppler-velocimetry',
+    name: 'Doppler Velocimetry',
+    domain: 'medicine',
+    category: 'prenatal-screening',
+    tags: ['doppler', 'velocimetry', 'umbilical artery', 'blood flow', 'IUGR'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="48" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="4" y="8" width="56" height="48" rx="2"/>
+      <path d="M8 32h48" stroke-dasharray="2 2" opacity="0.3"/>
+      <path d="M8 32l4-12 4 12 4-16 4 16 4-12 4 12 4-16 4 16 4-12 4 12" stroke="#FF1493" stroke-width="2"/>
+      <path d="M8 40l4 4 4-4 4 6 4-6 4 4 4-4 4 6 4-6 4 4 4-4" stroke="#4169E1" stroke-width="1.5"/>
+      <text x="8" y="18" font-size="3" fill="#FF1493" stroke="none">Systolic</text>
+      <text x="8" y="54" font-size="3" fill="#4169E1" stroke="none">Diastolic</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // POSTPARTUM (6 icons)
+  // ===========================================================================
+  {
+    id: 'obgyn-breastfeeding',
+    name: 'Breastfeeding',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['breastfeeding', 'lactation', 'nursing', 'infant', 'latch'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="16" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="24" cy="16" r="8"/>
+      <path d="M16 24c-4 4-8 12-8 20v12h32v-12c0-8-4-16-8-20" fill="currentColor" opacity="0.1"/>
+      <path d="M16 24c-4 4-8 12-8 20v12h32v-12c0-8-4-16-8-20"/>
+      <circle cx="48" cy="40" r="8" fill="#FFB6C1" opacity="0.5"/>
+      <circle cx="48" cy="40" r="8"/>
+      <path d="M40 40c4-2 4-4 4-8"/>
+      <circle cx="48" cy="38" r="2"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Nursing</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-uterine-involution',
+    name: 'Uterine Involution',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['involution', 'postpartum', 'uterus', 'recovery', 'fundal height'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8c-6 0-10 8-10 16s4 16 10 16h24c6 0 10-8 10-16s-4-16-10-16H20z" fill="currentColor" opacity="0.3" stroke-dasharray="4 4"/>
+      <path d="M24 20c-4 0-6 4-6 8s2 8 6 8h16c4 0 6-4 6-8s-2-8-6-8H24z" fill="currentColor" opacity="0.2"/>
+      <path d="M24 20c-4 0-6 4-6 8s2 8 6 8h16c4 0 6-4 6-8s-2-8-6-8H24z"/>
+      <path d="M10 24l8 4" stroke="#228B22" stroke-width="1" stroke-dasharray="2 2"/>
+      <path d="M54 24l-8 4" stroke="#228B22" stroke-width="1" stroke-dasharray="2 2"/>
+      <path d="M32 36v20"/>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Day 1 → Week 6</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-postpartum-hemorrhage',
+    name: 'Postpartum Hemorrhage',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['PPH', 'hemorrhage', 'bleeding', 'postpartum', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12c-6 0-10 6-10 12s4 12 10 12h24c6 0 10-6 10-12s-4-12-10-12H20z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 12c-6 0-10 6-10 12s4 12 10 12h24c6 0 10-6 10-12s-4-12-10-12H20z"/>
+      <path d="M32 36v8"/>
+      <path d="M28 44c-4 8-8 12-8 16" stroke="#DC143C" stroke-width="2"/>
+      <path d="M32 44c0 8 0 12 0 16" stroke="#DC143C" stroke-width="2"/>
+      <path d="M36 44c4 8 8 12 8 16" stroke="#DC143C" stroke-width="2"/>
+      <circle cx="20" cy="60" r="3" fill="#DC143C"/>
+      <circle cx="32" cy="60" r="3" fill="#DC143C"/>
+      <circle cx="44" cy="60" r="3" fill="#DC143C"/>
+      <text x="18" y="10" font-size="3" fill="#DC143C" stroke="none">PPH >500ml</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-lochia',
+    name: 'Lochia',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['lochia', 'rubra', 'serosa', 'alba', 'postpartum discharge'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="16" height="48" rx="2" fill="#DC143C" opacity="0.6"/>
+      <rect x="24" y="8" width="16" height="48" rx="2" fill="#FFA07A" opacity="0.6"/>
+      <rect x="40" y="8" width="16" height="48" rx="2" fill="#FFFACD" opacity="0.6"/>
+      <rect x="8" y="8" width="16" height="48" rx="2"/>
+      <rect x="24" y="8" width="16" height="48" rx="2"/>
+      <rect x="40" y="8" width="16" height="48" rx="2"/>
+      <text x="10" y="36" font-size="4" fill="white" stroke="none">Rubra</text>
+      <text x="26" y="36" font-size="4" fill="currentColor" stroke="none">Serosa</text>
+      <text x="44" y="36" font-size="4" fill="currentColor" stroke="none">Alba</text>
+      <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">D1-4</text>
+      <text x="26" y="62" font-size="3" fill="currentColor" stroke="none">D4-10</text>
+      <text x="42" y="62" font-size="3" fill="currentColor" stroke="none">D10+</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-perineal-repair',
+    name: 'Perineal Repair',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['perineal', 'laceration', 'repair', 'suture', 'episiotomy repair'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="16" ry="12" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="24" rx="16" ry="12"/>
+      <path d="M32 36v20" stroke="#DC143C" stroke-width="2"/>
+      <path d="M28 40l8 0" stroke="#4169E1" stroke-width="1"/>
+      <path d="M28 44l8 0" stroke="#4169E1" stroke-width="1"/>
+      <path d="M28 48l8 0" stroke="#4169E1" stroke-width="1"/>
+      <path d="M28 52l8 0" stroke="#4169E1" stroke-width="1"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Suture Repair</text>
+    </svg>`
+  },
+  {
+    id: 'obgyn-kangaroo-care',
+    name: 'Kangaroo Care',
+    domain: 'medicine',
+    category: 'postpartum',
+    tags: ['kangaroo', 'skin-to-skin', 'bonding', 'newborn', 'thermoregulation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M20 20c-4 4-8 12-8 24v12h40v-12c0-12-4-20-8-24" fill="currentColor" opacity="0.1"/>
+      <path d="M20 20c-4 4-8 12-8 24v12h40v-12c0-12-4-20-8-24"/>
+      <ellipse cx="32" cy="36" rx="8" ry="6" fill="#FFB6C1" opacity="0.5"/>
+      <ellipse cx="32" cy="36" rx="8" ry="6"/>
+      <circle cx="32" cy="32" r="3"/>
+      <path d="M28 38c2 2 6 2 8 0"/>
+      <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">Skin-to-Skin</text>
     </svg>`
   }
 ];
