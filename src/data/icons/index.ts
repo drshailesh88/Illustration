@@ -150,6 +150,7 @@ import { oceanographyIcons } from './oceanography';
 import { meteorologyIcons } from './meteorology';
 import { agricultureIcons } from './agriculture';
 import { forensicsIcons } from './forensics';
+import { hematologyOncologyIcons } from './hematology-oncology';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -239,6 +240,7 @@ export const allIcons: IconDefinition[] = [
   ...meteorologyIcons,
   ...agricultureIcons,
   ...forensicsIcons,
+  ...hematologyOncologyIcons,
 ];
 
 /**
@@ -251,6 +253,7 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
     ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
     ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons,
     ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons,
+    ...hematologyOncologyIcons,
     // Drug classes
     ...analgesicsIcons, ...antibioticsIcons, ...anticoagulantsIcons,
     ...antihypertensivesIcons, ...antimicrobialsIcons, ...endocrineDrugsIcons,
@@ -687,6 +690,7 @@ export { oceanographyIcons } from './oceanography';
 export { meteorologyIcons } from './meteorology';
 export { agricultureIcons } from './agriculture';
 export { forensicsIcons } from './forensics';
+export { hematologyOncologyIcons } from './hematology-oncology';
 
 export default {
   allIcons,

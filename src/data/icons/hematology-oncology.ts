@@ -1431,6 +1431,322 @@ export const hematologyOncologyIcons: IconDefinition[] = [
       <path d="M56 16h-4"/>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADDITIONAL ICONS - EXPANSION TO 100+
+  // ===========================================================================
+  {
+    id: 'hemeonc-stem-cell',
+    name: 'Hematopoietic Stem Cell',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['stem cell', 'HSC', 'CD34', 'progenitor', 'pluripotent'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16"/>
+      <circle cx="32" cy="32" r="10" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="32" r="4"/>
+      <path d="M32 16v-8"/>
+      <path d="M32 56v-8"/>
+      <path d="M16 32h-8"/>
+      <path d="M56 32h-8"/>
+      <path d="M20 20l-4-4"/>
+      <path d="M44 20l4-4"/>
+      <path d="M20 44l-4 4"/>
+      <path d="M44 44l4 4"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-myeloblast',
+    name: 'Myeloblast',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['myeloblast', 'AML', 'myeloid progenitor', 'granulocyte precursor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="18"/>
+      <circle cx="32" cy="30" r="12" fill="currentColor" opacity="0.4"/>
+      <circle cx="32" cy="30" r="8"/>
+      <circle cx="28" cy="28" r="2" fill="currentColor"/>
+      <circle cx="36" cy="32" r="2" fill="currentColor"/>
+      <path d="M24 44c4-2 12-2 16 0"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-promyelocyte',
+    name: 'Promyelocyte',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['promyelocyte', 'APL', 'M3', 'azurophilic granules'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="18"/>
+      <ellipse cx="32" cy="28" rx="10" ry="8" fill="currentColor" opacity="0.4"/>
+      <circle cx="20" cy="36" r="2" fill="currentColor"/>
+      <circle cx="26" cy="40" r="2" fill="currentColor"/>
+      <circle cx="38" cy="38" r="2" fill="currentColor"/>
+      <circle cx="44" cy="34" r="2" fill="currentColor"/>
+      <circle cx="32" cy="44" r="2" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-polychromasia',
+    name: 'Polychromasia',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['polychromasia', 'reticulocyte', 'bluish RBC', 'hemolysis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="20" cy="24" rx="12" ry="8"/>
+      <ellipse cx="44" cy="24" rx="12" ry="8" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="20" cy="44" rx="12" ry="8" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="44" cy="44" rx="12" ry="8" fill="currentColor" opacity="0.1"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-howell-jolly',
+    name: 'Howell-Jolly Body',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['Howell-Jolly', 'nuclear remnant', 'asplenia', 'functional asplenia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="22" ry="14"/>
+      <circle cx="40" cy="30" r="4" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-basophilic-stippling',
+    name: 'Basophilic Stippling',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['basophilic stippling', 'lead poisoning', 'thalassemia', 'ribosome aggregates'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="22" ry="14"/>
+      <circle cx="24" cy="28" r="1" fill="currentColor"/>
+      <circle cx="30" cy="32" r="1" fill="currentColor"/>
+      <circle cx="36" cy="28" r="1" fill="currentColor"/>
+      <circle cx="28" cy="36" r="1" fill="currentColor"/>
+      <circle cx="40" cy="34" r="1" fill="currentColor"/>
+      <circle cx="34" cy="30" r="1" fill="currentColor"/>
+      <circle cx="38" cy="36" r="1" fill="currentColor"/>
+      <circle cx="26" cy="32" r="1" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-heinz-body',
+    name: 'Heinz Body',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['Heinz body', 'G6PD deficiency', 'oxidative stress', 'denatured hemoglobin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="22" ry="14"/>
+      <circle cx="44" cy="30" r="5" fill="currentColor" opacity="0.5"/>
+      <circle cx="42" cy="34" r="3" fill="currentColor" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-myeloma-protein',
+    name: 'M-Protein/Paraprotein',
+    domain: 'medicine',
+    category: 'malignancy',
+    tags: ['M-protein', 'paraprotein', 'monoclonal', 'SPEP', 'myeloma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="32" rx="2"/>
+      <path d="M12 48c4-8 8-4 12-12s8-4 12-8 8 4 12 8 4-4 8-8"/>
+      <path d="M36 28v16" stroke-width="3" fill="currentColor" opacity="0.4"/>
+      <text x="12" y="18" font-size="6" fill="currentColor" stroke="none">SPEP</text>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-cryoglobulin',
+    name: 'Cryoglobulin',
+    domain: 'medicine',
+    category: 'pathology',
+    tags: ['cryoglobulin', 'cold', 'precipitate', 'vasculitis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v12l4 4v24l-4 4v8h-16v-8l4-4V24l-4-4V8z"/>
+      <rect x="28" y="32" width="8" height="16" fill="currentColor" opacity="0.3"/>
+      <path d="M28 12h8"/>
+      <path d="M20 16l-4 4"/>
+      <path d="M44 16l4 4"/>
+      <path d="M18 22l-4 0"/>
+      <path d="M50 22l4 0"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-bone-lesion',
+    name: 'Lytic Bone Lesion',
+    domain: 'medicine',
+    category: 'malignancy',
+    tags: ['lytic lesion', 'bone', 'myeloma', 'metastasis', 'punched out'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="4"/>
+      <rect x="16" y="12" width="32" height="40" fill="currentColor" opacity="0.1"/>
+      <circle cx="24" cy="24" r="6"/>
+      <circle cx="40" cy="32" r="5"/>
+      <circle cx="28" cy="42" r="4"/>
+      <circle cx="38" cy="20" r="3"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-bence-jones',
+    name: 'Bence Jones Protein',
+    domain: 'medicine',
+    category: 'malignancy',
+    tags: ['Bence Jones', 'light chain', 'urine', 'myeloma', 'UPEP'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v8l4 8v24c0 4-4 8-12 8s-12-4-12-8V24l4-8V8z"/>
+      <rect x="24" y="32" width="16" height="16" fill="currentColor" opacity="0.2"/>
+      <path d="M28 12h8"/>
+      <text x="25" y="44" font-size="6" fill="currentColor" stroke="none">BJP</text>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-fish-analysis',
+    name: 'FISH Analysis',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['FISH', 'fluorescence', 'cytogenetics', 'translocation', 'chromosomes'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <ellipse cx="32" cy="32" rx="14" ry="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="24" cy="28" r="4" fill="currentColor" opacity="0.6"/>
+      <circle cx="40" cy="28" r="4" fill="currentColor" opacity="0.4"/>
+      <circle cx="28" cy="36" r="3" fill="currentColor" opacity="0.6"/>
+      <circle cx="38" cy="38" r="3" fill="currentColor" opacity="0.4"/>
+      <path d="M24 28l4 8"/>
+      <path d="M40 28l-2 10"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-karyotype',
+    name: 'Karyotype',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['karyotype', 'cytogenetics', 'chromosomes', 'translocation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2"/>
+      <path d="M16 20v12c0 2 2 4 4 4h0c2 0 4-2 4-4V20c0-2-2-4-4-4h0c-2 0-4 2-4 4z"/>
+      <path d="M28 20v12c0 2 2 4 4 4h0c2 0 4-2 4-4V20c0-2-2-4-4-4h0c-2 0-4 2-4 4z"/>
+      <path d="M40 20v12c0 2 2 4 4 4h0c2 0 4-2 4-4V20c0-2-2-4-4-4h0c-2 0-4 2-4 4z"/>
+      <path d="M16 44v8"/>
+      <path d="M28 44v8"/>
+      <path d="M40 44v8"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-molecular-testing',
+    name: 'Molecular Testing',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['molecular', 'PCR', 'NGS', 'mutation', 'genetics'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8v48"/>
+      <path d="M44 8v48"/>
+      <path d="M20 16c8 4 16-4 24 0"/>
+      <path d="M20 28c8-4 16 4 24 0"/>
+      <path d="M20 40c8 4 16-4 24 0"/>
+      <path d="M20 52c8-4 16 4 24 0"/>
+      <circle cx="32" cy="22" r="2" fill="currentColor"/>
+      <circle cx="32" cy="34" r="2" fill="currentColor"/>
+      <circle cx="32" cy="46" r="2" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-nk-cell',
+    name: 'NK Cell',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['NK cell', 'natural killer', 'CD56', 'innate immunity', 'cytotoxic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="18"/>
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.3"/>
+      <circle cx="28" cy="28" r="3" fill="currentColor"/>
+      <circle cx="36" cy="36" r="2" fill="currentColor"/>
+      <path d="M24 44l-8 8"/>
+      <path d="M40 44l8 8"/>
+      <path d="M16 52l-4 0"/>
+      <path d="M48 52l4 0"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-dendritic-cell',
+    name: 'Dendritic Cell',
+    domain: 'medicine',
+    category: 'blood-cells',
+    tags: ['dendritic cell', 'APC', 'antigen presenting', 'immunology'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="12"/>
+      <circle cx="32" cy="32" r="6" fill="currentColor" opacity="0.3"/>
+      <path d="M32 20v-12"/>
+      <path d="M32 44v12"/>
+      <path d="M20 32h-12"/>
+      <path d="M44 32h12"/>
+      <path d="M23 23l-8-8"/>
+      <path d="M41 23l8-8"/>
+      <path d="M23 41l-8 8"/>
+      <path d="M41 41l8 8"/>
+      <path d="M26 20l-4-8"/>
+      <path d="M38 20l4-8"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-erythropoietin',
+    name: 'Erythropoietin (EPO)',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['EPO', 'erythropoietin', 'ESA', 'anemia', 'kidney'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="12" ry="16"/>
+      <ellipse cx="24" cy="32" rx="8" ry="12" fill="currentColor" opacity="0.2"/>
+      <path d="M36 32h12"/>
+      <path d="M44 28l4 4-4 4"/>
+      <ellipse cx="56" cy="32" rx="6" ry="4" fill="currentColor" opacity="0.3"/>
+      <text x="18" y="36" font-size="6" fill="currentColor" stroke="none">EPO</text>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-gcsf',
+    name: 'G-CSF',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['G-CSF', 'filgrastim', 'neutropenia', 'growth factor', 'mobilization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="32" r="12"/>
+      <circle cx="24" cy="32" r="6" fill="currentColor" opacity="0.3"/>
+      <path d="M36 32h8"/>
+      <path d="M40 28l4 4-4 4"/>
+      <circle cx="52" cy="28" r="6"/>
+      <circle cx="52" cy="40" r="5"/>
+      <circle cx="56" cy="34" r="4"/>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-warfarin',
+    name: 'Warfarin/Vitamin K Antagonist',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['warfarin', 'coumadin', 'VKA', 'anticoagulant', 'INR'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="14" stroke-dasharray="4 2"/>
+      <path d="M32 18v14l10 6"/>
+      <circle cx="32" cy="32" r="2" fill="currentColor"/>
+      <text x="12" y="56" font-size="6" fill="currentColor" stroke="none">INR</text>
+    </svg>`
+  },
+  {
+    id: 'hemeonc-doac',
+    name: 'DOAC',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['DOAC', 'direct oral anticoagulant', 'rivaroxaban', 'apixaban', 'factor Xa'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="20" width="32" height="24" rx="4"/>
+      <rect x="20" y="24" width="24" height="16" fill="currentColor" opacity="0.2"/>
+      <path d="M24 32h16"/>
+      <path d="M32 28v8"/>
+      <text x="24" y="18" font-size="6" fill="currentColor" stroke="none">Xa</text>
+      <path d="M20 44l-4 8"/>
+      <path d="M44 44l4 8"/>
+    </svg>`
+  },
 ];
 
 export default hematologyOncologyIcons;

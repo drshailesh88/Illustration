@@ -24,6 +24,12 @@ export { default as nephrologyColorScheme } from './nephrology';
 export * from './infectious-disease';
 export { default as infectiousDiseaseColorScheme } from './infectious-disease';
 
+export * from './endocrinology';
+export { default as endocrinologyColorScheme } from './endocrinology';
+
+export * from './hematology-oncology';
+export { default as hematologyOncologyColorScheme } from './hematology-oncology';
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -33,3 +39,5 @@ export type { EmergencyMedicineColorScheme } from './emergency-medicine';
 export type { GastroenterologyColorScheme } from './gastroenterology';
 export type { NephrologyColorScheme } from './nephrology';
 export type { InfectiousDiseaseColorScheme } from './infectious-disease';
+export type { EndocrinologyColorScheme } from './endocrinology';
+export type { HematologyOncologyColorScheme } from './hematology-oncology';

@@ -8,8 +8,11 @@
  * - Seizure and epilepsy evaluation
  * - Neurodegenerative disease workup
  * - Neurological examination workflows
+ * - Movement disorders and neuroimmunology
+ * - Neurocritical care and neurogenetics
+ * - Pediatric neurology
  *
- * Total: 15 specialized prompts
+ * Total: 20 specialized prompts
  */
 
 import type { FewShotExample } from './index';
@@ -192,6 +195,57 @@ Neurological Examination requirements:
 - Show deep tendon reflex grading (0-4+)
 - Include cerebellar function tests
 - Reference gait assessment components`,
+
+  // Advanced Clinical Topics (COMPLETE checkpoint additions)
+  movementDisorders: `
+Movement Disorder Evaluation requirements:
+- Classify hypokinetic (parkinsonism) vs hyperkinetic (tremor, chorea, dystonia, myoclonus, tics)
+- Differentiate idiopathic PD from atypical parkinsonism (PSP, MSA, CBD, DLB)
+- Characterize tremor: rest vs postural vs intention, frequency analysis
+- Include red flags for atypical parkinsonism (early falls, autonomic, gaze palsy)
+- Reference MDS-UPDRS for PD staging
+- Show DaTscan indications and interpretation
+- Include medication-induced movement disorders (tardive, drug-induced parkinsonism)`,
+
+  neurocriticalCare: `
+Neurocritical Care requirements:
+- Reference ICP management tiers (Tier 1: positioning, sedation, osmotherapy; Tier 2: decompression)
+- Include CPP target calculation (MAP - ICP, goal >60)
+- Show EVD management and CSF drainage protocols
+- Include status epilepticus escalation in ICU setting
+- Reference neuroprognostication after cardiac arrest (72 hours, multimodal)
+- Show brain death determination criteria (prerequisites, clinical exam, ancillary tests)
+- Include targeted temperature management protocols`,
+
+  neuroimmunology: `
+Neuroimmunology requirements:
+- Reference McDonald 2017 criteria for MS diagnosis
+- Include autoimmune encephalitis workup (anti-NMDAR, LGI1, CASPR2)
+- Differentiate NMOSD from MS (AQP4-IgG, LETM, optic neuritis)
+- Show DMT selection for MS (platform vs high-efficacy)
+- Include acute relapse management (IV methylprednisolone, PLEX)
+- Reference paraneoplastic syndromes and antibody associations
+- Show MOGAD diagnostic criteria and management`,
+
+  neurogenetics: `
+Neurogenetics requirements:
+- Include indications for genetic testing (early-onset, family history, atypical)
+- Reference hereditary neuropathy classification (CMT1A, CMT2, HNPP)
+- Show hereditary ataxia workup (Friedreich, SCAs, AOA)
+- Include muscular dystrophy genetic testing pathway (DMD, FSHD, myotonic)
+- Reference genetic counseling principles and anticipation
+- Show trinucleotide repeat disorders (Huntington, SCAs, myotonic)
+- Include mitochondrial disease manifestations and genetic testing`,
+
+  pediatricNeuro: `
+Pediatric Neurology requirements:
+- Include developmental milestone screening and red flags
+- Reference pediatric epilepsy syndromes (infantile spasms, Lennox-Gastaut, CAE, JME)
+- Show febrile seizure management and counseling
+- Include cerebral palsy classification (spastic, dyskinetic, ataxic)
+- Reference neurocutaneous syndromes (NF1, TSC, Sturge-Weber)
+- Show neonatal seizure workup and etiology
+- Include pediatric headache evaluation (migraine variants, secondary causes)`,
 };
 
 // =============================================================================

@@ -555,3 +555,6 @@ export { default as nephrologyPrompts } from './nephrology-prompts';
 
 export * from './infectious-disease-prompts';
 export { default as infectiousDiseasePrompts } from './infectious-disease-prompts';
+
+export * from './hematology-oncology-prompts';
+export { default as hematologyOncologyPrompts } from './hematology-oncology-prompts';

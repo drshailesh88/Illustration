@@ -828,6 +828,435 @@ export const electrolyteReplacement: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL CLINICAL DECISION TREES - ITERATION 2
+// =============================================================================
+
+/**
+ * Metabolic Acidosis Workup template
+ */
+export const metabolicAcidosisWorkup: DiagramTemplate = {
+  id: 'nephro-metabolic-acidosis-workup',
+  name: 'Metabolic Acidosis Workup Algorithm',
+  description: 'Systematic approach to metabolic acidosis with anion gap calculation',
+  domain: 'medicine',
+  promptTemplate: `Create a metabolic acidosis workup flowchart:
+- Arterial blood gas: {{abgValues}}
+- Anion gap calculated: {{anionGap}}
+- Delta-delta ratio: {{deltaDelta}}
+- Urine anion gap: {{urineAnionGap}}
+- HAGMA causes: {{hagmaCauses}}
+- NAGMA causes: {{nagmaCauses}}
+- Compensation assessment: {{compensation}}
+- Treatment approach: {{treatment}}
+{{#additionalNotes}}Clinical context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'abgValues',
+    'anionGap',
+    'deltaDelta',
+    'urineAnionGap',
+    'hagmaCauses',
+    'nagmaCauses',
+    'compensation',
+    'treatment',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Metabolic Acidosis\\npH <7.35, HCO3 <22")] --> B["Calculate Anion Gap\\nAG = Na - (Cl + HCO3)"]
+    B --> C{"AG > 12?"}
+    C -->|"Yes"| D["HAGMA\\nMUDPILES"]
+    C -->|"No"| E["NAGMA\\nCheck Urine AG"]
+    D --> D1["Methanol, Uremia, DKA"]
+    D --> D2["Propylene glycol, INH"]
+    D --> D3["Lactic acidosis, Ethylene glycol"]
+    D --> D4["Salicylates"]
+    E --> F{"Urine AG?"}
+    F -->|"Negative\\n(UAG <0)"| G["GI HCO3 loss\\nDiarrhea"]
+    F -->|"Positive\\n(UAG >0)"| H["RTA\\nType 1, 2, or 4"]
+    subgraph Compensation["Check Compensation"]
+        I["Expected pCO2 =\\n1.5(HCO3) + 8 ± 2"]
+    end
+    style D fill:#DC143C,color:#fff
+    style H fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Renal Tubular Acidosis template
+ */
+export const renalTubularAcidosis: DiagramTemplate = {
+  id: 'nephro-rta-workup',
+  name: 'Renal Tubular Acidosis Classification',
+  description: 'Differentiation and management of RTA types 1, 2, and 4',
+  domain: 'medicine',
+  promptTemplate: `Create an RTA classification flowchart:
+- Urine pH: {{urinePH}}
+- Serum potassium: {{serumPotassium}}
+- Serum bicarbonate: {{serumBicarb}}
+- Urine anion gap: {{urineAnionGap}}
+- Associated conditions: {{associatedConditions}}
+- Type 1 features: {{type1Features}}
+- Type 2 features: {{type2Features}}
+- Type 4 features: {{type4Features}}
+{{#additionalNotes}}Treatment considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'urinePH',
+    'serumPotassium',
+    'serumBicarb',
+    'urineAnionGap',
+    'associatedConditions',
+    'type1Features',
+    'type2Features',
+    'type4Features',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("NAGMA with\\nPositive UAG")] --> B{"Serum K+?"}
+    B -->|"Low/Normal"| C{"Urine pH?"}
+    B -->|"High"| D["Type 4 RTA"]
+    C -->|">5.5"| E["Type 1 - Distal"]
+    C -->|"<5.5"| F["Type 2 - Proximal"]
+    subgraph Type1["Type 1 - Distal RTA"]
+        E1["Cannot secrete H+"]
+        E2["Severe acidosis (HCO3 <10)"]
+        E3["Nephrocalcinosis, stones"]
+        E4["Sjögren's, SLE, drugs"]
+    end
+    subgraph Type2["Type 2 - Proximal RTA"]
+        F1["Cannot reabsorb HCO3"]
+        F2["Moderate acidosis (HCO3 12-20)"]
+        F3["Fanconi syndrome"]
+        F4["Multiple myeloma, drugs"]
+    end
+    subgraph Type4["Type 4 RTA"]
+        D1["Low aldosterone/resistance"]
+        D2["Hyperkalemia"]
+        D3["Diabetes, ACEi/ARB"]
+    end
+    E --> Type1
+    F --> Type2
+    D --> Type4
+    style E fill:#4169E1,color:#fff
+    style F fill:#228B22,color:#fff
+    style D fill:#FFA500,color:#000`,
+};
+
+/**
+ * Diabetic Kidney Disease Management template
+ */
+export const diabeticKidneyDisease: DiagramTemplate = {
+  id: 'nephro-dkd-management',
+  name: 'Diabetic Kidney Disease Management',
+  description: 'Comprehensive DKD screening, staging, and treatment pathway',
+  domain: 'medicine',
+  promptTemplate: `Create a diabetic kidney disease management flowchart:
+- Diabetes type and duration: {{diabetesType}}
+- Current eGFR: {{currentEGFR}}
+- Albuminuria level: {{albuminuriaLevel}}
+- HbA1c target: {{hba1cTarget}}
+- Blood pressure target: {{bpTarget}}
+- RAAS blockade: {{raasBlockade}}
+- SGLT2i indication: {{sglt2iIndication}}
+- Additional therapies: {{additionalTherapies}}
+{{#additionalNotes}}Monitoring schedule: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'diabetesType',
+    'currentEGFR',
+    'albuminuriaLevel',
+    'hba1cTarget',
+    'bpTarget',
+    'raasBlockade',
+    'sglt2iIndication',
+    'additionalTherapies',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Diabetes Mellitus")] --> B["Screen annually\\nUACR + eGFR"]
+    B --> C{"Albuminuria?"}
+    C -->|"A1: <30 mg/g"| D["Continue annual screening"]
+    C -->|"A2: 30-300 mg/g"| E["Start RAAS blockade"]
+    C -->|"A3: >300 mg/g"| F["Nephrology referral"]
+    E & F --> G["Optimize Therapy"]
+    G --> G1["ACEi or ARB\\nTitrate to max"]
+    G --> G2["SGLT2i\\n(empagliflozin, dapa)"]
+    G --> G3["BP <130/80"]
+    G --> G4["HbA1c individualized"]
+    G --> G5["Finerenone if persistent albuminuria"]
+    G --> G6["GLP-1 RA consideration"]
+    subgraph Monitoring["Monitoring"]
+        M1["eGFR + UACR q3-6mo"]
+        M2["K+ 1-2wk after RAAS change"]
+        M3["Allow 30% Cr rise with SGLT2i"]
+    end
+    style G2 fill:#228B22,color:#fff
+    style G5 fill:#9370DB,color:#fff`,
+};
+
+/**
+ * Contrast-Induced AKI Prevention template
+ */
+export const contrastAKIPrevention: DiagramTemplate = {
+  id: 'nephro-ci-aki-prevention',
+  name: 'Contrast-Induced AKI Prevention',
+  description: 'Risk stratification and prevention protocol for contrast nephropathy',
+  domain: 'medicine',
+  promptTemplate: `Create a contrast-induced AKI prevention flowchart:
+- Baseline eGFR: {{baselineEGFR}}
+- Risk factors: {{riskFactors}}
+- Mehran score: {{mehranScore}}
+- Hydration protocol: {{hydrationProtocol}}
+- Contrast volume limit: {{contrastLimit}}
+- Nephrotoxin hold: {{nephrotoxinHold}}
+- NAC consideration: {{nacConsideration}}
+- Post-procedure monitoring: {{postMonitoring}}
+{{#additionalNotes}}Alternative imaging: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'baselineEGFR',
+    'riskFactors',
+    'mehranScore',
+    'hydrationProtocol',
+    'contrastLimit',
+    'nephrotoxinHold',
+    'nacConsideration',
+    'postMonitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Contrast Procedure\\nPlanned")] --> B{"eGFR?"}
+    B -->|"≥60"| C["Low risk\\nStandard care"]
+    B -->|"30-59"| D["Moderate risk"]
+    B -->|"<30 or AKI"| E["High risk"]
+    D & E --> F["Risk Assessment"]
+    F --> F1["DM, CHF, age >75"]
+    F --> F2["Hypotension, IABP"]
+    F --> F3["Anemia, contrast volume"]
+    F --> G["Prevention Protocol"]
+    G --> G1["IV NS 1-1.5 mL/kg/hr\\n3-12h pre + 6-24h post"]
+    G --> G2["Limit contrast volume\\n<100mL or <3x eGFR"]
+    G --> G3["Hold nephrotoxins\\n(NSAIDs, metformin)"]
+    G --> G4["Use iso-osmolar contrast"]
+    G --> G5["Consider NAC 1200mg BID\\n(benefit unclear)"]
+    subgraph PostProc["Post-Procedure"]
+        P1["Cr at 48-72 hours"]
+        P2["Resume metformin if Cr stable"]
+    end
+    style E fill:#DC143C,color:#fff
+    style G1 fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Glomerulonephritis Workup template
+ */
+export const glomerulonephritisWorkup: DiagramTemplate = {
+  id: 'nephro-gn-workup',
+  name: 'Glomerulonephritis Workup Algorithm',
+  description: 'Systematic evaluation of nephritic syndrome and glomerulonephritis',
+  domain: 'medicine',
+  promptTemplate: `Create a glomerulonephritis workup flowchart:
+- Clinical presentation: {{presentation}}
+- Urinalysis findings: {{urinalysis}}
+- Complement levels: {{complementLevels}}
+- Serologic markers: {{serologies}}
+- ANCA status: {{ancaStatus}}
+- Hepatitis/HIV screening: {{infectionScreen}}
+- Biopsy indications: {{biopsyIndications}}
+- Histologic patterns: {{histologicPatterns}}
+{{#additionalNotes}}Urgent considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'urinalysis',
+    'complementLevels',
+    'serologies',
+    'ancaStatus',
+    'infectionScreen',
+    'biopsyIndications',
+    'histologicPatterns',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Nephritic Syndrome\\nHematuria + RBC casts\\n± Proteinuria, HTN, AKI")] --> B["Serologic Workup"]
+    B --> B1["C3, C4 complement"]
+    B --> B2["ANA, dsDNA, anti-GBM"]
+    B --> B3["ANCA (PR3, MPO)"]
+    B --> B4["Hep B/C, HIV"]
+    B --> B5["SPEP/UPEP, free light chains"]
+    B --> C{"Complement?"}
+    C -->|"Low C3/C4"| D["Post-infectious GN\\nLupus nephritis\\nMPGN, Cryo"]
+    C -->|"Normal"| E["IgA nephropathy\\nANCA vasculitis\\nAnti-GBM disease"]
+    D & E --> F{"ANCA?"}
+    F -->|"Positive"| G["RPGN - urgent biopsy"]
+    F -->|"Negative"| H["Schedule biopsy"]
+    G --> I["Pulse steroids + rituximab\\nor cyclophosphamide"]
+    subgraph Biopsy["Biopsy Findings"]
+        J["Light: crescents, proliferation"]
+        K["IF: IgG linear vs granular"]
+        L["EM: deposits, podocyte injury"]
+    end
+    style G fill:#DC143C,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * Polycystic Kidney Disease Management template
+ */
+export const polycysticKidneyDisease: DiagramTemplate = {
+  id: 'nephro-pkd-management',
+  name: 'Polycystic Kidney Disease Management',
+  description: 'ADPKD diagnosis, monitoring, and treatment with tolvaptan',
+  domain: 'medicine',
+  promptTemplate: `Create a PKD management flowchart:
+- Age of diagnosis: {{ageOfDiagnosis}}
+- Family history: {{familyHistory}}
+- Diagnostic criteria: {{diagnosticCriteria}}
+- Total kidney volume: {{kidneyVolume}}
+- Mayo classification: {{mayoClassification}}
+- Tolvaptan eligibility: {{tolvaptanEligibility}}
+- Blood pressure management: {{bpManagement}}
+- Extrarenal manifestations: {{extrarenalManifestations}}
+{{#additionalNotes}}Genetic counseling: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ageOfDiagnosis',
+    'familyHistory',
+    'diagnosticCriteria',
+    'kidneyVolume',
+    'mayoClassification',
+    'tolvaptanEligibility',
+    'bpManagement',
+    'extrarenalManifestations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected ADPKD")] --> B{"Family Hx\\n+ Imaging?"}
+    B -->|"FHx +"| C["US criteria by age"]
+    B -->|"FHx -"| D["≥10 cysts bilateral"]
+    C --> C1["15-39yo: ≥3 cysts"]
+    C --> C2["40-59yo: ≥2 cysts/kidney"]
+    C --> C3["≥60yo: ≥4 cysts/kidney"]
+    C & D --> E["Confirmed ADPKD"]
+    E --> F["Risk Stratification"]
+    F --> F1["MRI: Total Kidney Volume"]
+    F --> F2["htTKV = TKV/height"]
+    F --> F3["Mayo Classification 1A-1E"]
+    F --> G{"Tolvaptan Candidate?"}
+    G -->|"CKD 1-4, age <55\\nRapid progression"| H["Start Tolvaptan"]
+    G -->|"Low risk"| I["Conservative management"]
+    H --> H1["Monitor LFTs monthly x18mo"]
+    H --> H2["Ensure water intake"]
+    subgraph Management["General Management"]
+        M1["BP <110/75 if tolerated"]
+        M2["Avoid caffeine, high sodium"]
+        M3["Screen: brain aneurysm if FHx"]
+        M4["Screen: liver cysts, valves"]
+    end
+    style H fill:#228B22,color:#fff`,
+};
+
+/**
+ * Peritoneal Dialysis Management template
+ */
+export const peritonealDialysisManagement: DiagramTemplate = {
+  id: 'nephro-pd-management',
+  name: 'Peritoneal Dialysis Management',
+  description: 'PD prescription, adequacy monitoring, and complication management',
+  domain: 'medicine',
+  promptTemplate: `Create a peritoneal dialysis management flowchart:
+- PD modality: {{pdModality}}
+- Prescription details: {{prescriptionDetails}}
+- Adequacy targets: {{adequacyTargets}}
+- PET category: {{petCategory}}
+- Fluid management: {{fluidManagement}}
+- Exit site care: {{exitSiteCare}}
+- Peritonitis protocol: {{peritonitisProtocol}}
+- Membrane assessment: {{membraneAssessment}}
+{{#additionalNotes}}Patient training: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'pdModality',
+    'prescriptionDetails',
+    'adequacyTargets',
+    'petCategory',
+    'fluidManagement',
+    'exitSiteCare',
+    'peritonitisProtocol',
+    'membraneAssessment',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Peritoneal Dialysis")] --> B{"Modality?"}
+    B -->|"CAPD"| C["4 exchanges/day\\n2L each, 4-6h dwell"]
+    B -->|"APD/CCPD"| D["Cycler overnight\\n8-10h, ± day dwell"]
+    C & D --> E["Adequacy Assessment"]
+    E --> E1["Weekly Kt/V ≥1.7"]
+    E --> E2["Weekly CrCl ≥50 L/1.73m²"]
+    E --> E3["Fluid removal adequate"]
+    A --> F["PET Testing"]
+    F --> F1["High transporter: short dwells"]
+    F --> F2["Low transporter: long dwells"]
+    F --> F3["Adjust prescription"]
+    A --> G{"Cloudy Effluent?"}
+    G -->|"Yes"| H["Peritonitis Protocol"]
+    H --> H1["Cell count >100, >50% PMN"]
+    H --> H2["Gram stain, culture"]
+    H --> H3["IP vanc + aminoglycoside\\nor ceftazidime"]
+    H --> I{"Response?"}
+    I -->|"No improvement 5d"| J["Catheter removal"]
+    I -->|"Resolving"| K["Complete 14-21d"]
+    style H fill:#DC143C,color:#fff
+    style J fill:#8B0000,color:#fff`,
+};
+
+/**
+ * Hemodialysis Adequacy Assessment template
+ */
+export const hemodialysisAdequacy: DiagramTemplate = {
+  id: 'nephro-hd-adequacy',
+  name: 'Hemodialysis Adequacy Assessment',
+  description: 'Kt/V measurement and optimization strategies for hemodialysis',
+  domain: 'medicine',
+  promptTemplate: `Create a hemodialysis adequacy assessment flowchart:
+- Current prescription: {{currentPrescription}}
+- Kt/V measurement: {{ktv}}
+- URR calculation: {{urr}}
+- Access blood flow: {{accessFlow}}
+- Treatment time: {{treatmentTime}}
+- Intradialytic weight gain: {{idwg}}
+- Dry weight assessment: {{dryWeight}}
+- Optimization strategies: {{optimizationStrategies}}
+{{#additionalNotes}}Frequent/nocturnal options: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'currentPrescription',
+    'ktv',
+    'urr',
+    'accessFlow',
+    'treatmentTime',
+    'idwg',
+    'dryWeight',
+    'optimizationStrategies',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("HD Adequacy\\nAssessment")] --> B["Monthly Labs"]
+    B --> B1["Pre/Post BUN"]
+    B --> B2["Calculate Kt/V"]
+    B --> B3["Calculate URR"]
+    B --> C{"Kt/V ≥1.4?\\nURR ≥70%?"}
+    C -->|"Yes"| D["Adequate - Continue"]
+    C -->|"No"| E["Optimize"]
+    E --> E1["Increase time\\n4h minimum"]
+    E --> E2["Increase blood flow\\n350-450 mL/min"]
+    E --> E3["Increase dialyzer size\\nKoA"]
+    E --> E4["Check access function"]
+    E4 --> F{"Access Flow\\nAdequate?"}
+    F -->|"<600 mL/min"| G["Fistulaogram\\nIntervention"]
+    F -->|"Adequate"| H["Consider frequent\\nor nocturnal HD"]
+    subgraph FluidMgmt["Fluid Management"]
+        I["IDWG <4% dry weight"]
+        J["UF rate <13 mL/kg/hr"]
+        K["Monthly dry weight review"]
+    end
+    A --> FluidMgmt
+    style E fill:#FFA500,color:#000
+    style G fill:#DC143C,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -835,7 +1264,7 @@ export const electrolyteReplacement: DiagramTemplate = {
  * All nephrology templates
  */
 export const nephrologyTemplates: DiagramTemplate[] = [
-  // Clinical Decision Trees (6)
+  // Clinical Decision Trees (7)
   akiWorkupAlgorithm,
   ckdManagementAlgorithm,
   hyponatremiaAlgorithm,
@@ -843,6 +1272,15 @@ export const nephrologyTemplates: DiagramTemplate[] = [
   proteinuriaEvaluation,
   hematuriaWorkup,
   dialysisInitiation,
+  // Additional Clinical Decision Trees (8)
+  metabolicAcidosisWorkup,
+  renalTubularAcidosis,
+  diabeticKidneyDisease,
+  contrastAKIPrevention,
+  glomerulonephritisWorkup,
+  polycysticKidneyDisease,
+  peritonealDialysisManagement,
+  hemodialysisAdequacy,
   // Anatomical Diagrams (4)
   nephronStructure,
   glomerulusDetail,

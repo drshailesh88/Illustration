@@ -1469,6 +1469,495 @@ export const endocrinologyIcons: IconDefinition[] = [
       <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">Paget's Disease - Enlarged Skull</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // FEEDBACK LOOPS & REGULATION
+  // ===========================================================================
+  {
+    id: 'endo-negative-feedback-loop',
+    name: 'Negative Feedback Loop',
+    domain: 'medicine',
+    category: 'regulation',
+    tags: ['negative feedback', 'homeostasis', 'regulation', 'axis', 'inhibition'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="32" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="52" r="8" fill="currentColor" opacity="0.2"/>
+      <path d="M32 20v4" marker-end="url(#arrow)"/>
+      <path d="M32 40v4" marker-end="url(#arrow)"/>
+      <path d="M24 52c-12 0-16-20-16-40h4"/>
+      <path d="M8 12l-4 4 4 4"/>
+      <text x="26" y="14" font-size="4" fill="currentColor" stroke="none">H</text>
+      <text x="26" y="34" font-size="4" fill="currentColor" stroke="none">P</text>
+      <text x="26" y="54" font-size="4" fill="currentColor" stroke="none">T</text>
+      <text x="48" y="32" font-size="6" fill="#E74C3C" stroke="none">−</text>
+    </svg>`
+  },
+  {
+    id: 'endo-positive-feedback-loop',
+    name: 'Positive Feedback Loop',
+    domain: 'medicine',
+    category: 'regulation',
+    tags: ['positive feedback', 'amplification', 'LH surge', 'ovulation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="32" r="10" fill="currentColor" opacity="0.2"/>
+      <circle cx="44" cy="32" r="10" fill="currentColor" opacity="0.2"/>
+      <path d="M30 28c4-4 4-4 8 0"/>
+      <path d="M30 36c4 4 4 4 8 0"/>
+      <path d="M44 22v-10h-28v10"/>
+      <text x="14" y="34" font-size="5" fill="currentColor" stroke="none">E2</text>
+      <text x="38" y="34" font-size="5" fill="currentColor" stroke="none">LH</text>
+      <text x="28" y="58" font-size="6" fill="#27AE60" stroke="none">+</text>
+      <text x="14" y="58" font-size="3" fill="currentColor" stroke="none">Positive Feedback</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hpa-axis',
+    name: 'HPA Axis',
+    domain: 'medicine',
+    category: 'regulation',
+    tags: ['HPA', 'hypothalamic pituitary adrenal', 'CRH', 'ACTH', 'cortisol', 'stress'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="10" rx="12" ry="6" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="28" rx="8" ry="5" fill="#F39C12" opacity="0.3"/>
+      <path d="M24 44c-4 4-4 12 4 12h8c8 0 8-8 4-12"/>
+      <path d="M24 44l16 0" fill="#FFD700" opacity="0.3"/>
+      <path d="M32 16v6"/>
+      <path d="M32 33v6"/>
+      <path d="M20 44c-8-8-8-24 0-34"/>
+      <text x="38" y="12" font-size="3" fill="currentColor" stroke="none">CRH</text>
+      <text x="38" y="30" font-size="3" fill="currentColor" stroke="none">ACTH</text>
+      <text x="38" y="48" font-size="3" fill="currentColor" stroke="none">Cortisol</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hpt-axis',
+    name: 'HPT Axis',
+    domain: 'medicine',
+    category: 'regulation',
+    tags: ['HPT', 'hypothalamic pituitary thyroid', 'TRH', 'TSH', 'T3', 'T4'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="10" rx="12" ry="6" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="28" rx="8" ry="5" fill="#F39C12" opacity="0.3"/>
+      <path d="M20 44c-4 6-4 12 4 14 4 2 8 2 16 0 8-2 8-8 4-14"/>
+      <ellipse cx="32" cy="48" rx="12" ry="8" fill="#E74C3C" opacity="0.2"/>
+      <path d="M32 16v6"/>
+      <path d="M32 33v6"/>
+      <path d="M20 44c-8-8-8-24 0-34"/>
+      <text x="38" y="12" font-size="3" fill="currentColor" stroke="none">TRH</text>
+      <text x="38" y="30" font-size="3" fill="currentColor" stroke="none">TSH</text>
+      <text x="38" y="50" font-size="3" fill="currentColor" stroke="none">T3/T4</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hpg-axis',
+    name: 'HPG Axis',
+    domain: 'medicine',
+    category: 'regulation',
+    tags: ['HPG', 'hypothalamic pituitary gonadal', 'GnRH', 'FSH', 'LH', 'testosterone', 'estrogen'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="10" rx="12" ry="6" fill="#9B59B6" opacity="0.3"/>
+      <ellipse cx="32" cy="28" rx="8" ry="5" fill="#F39C12" opacity="0.3"/>
+      <ellipse cx="24" cy="50" rx="6" ry="8" fill="#FF69B4" opacity="0.3"/>
+      <ellipse cx="40" cy="50" rx="6" ry="8" fill="#FF69B4" opacity="0.3"/>
+      <path d="M32 16v6"/>
+      <path d="M28 33l-4 10"/>
+      <path d="M36 33l4 10"/>
+      <path d="M18 50c-8-12-8-28 0-40"/>
+      <text x="38" y="12" font-size="3" fill="currentColor" stroke="none">GnRH</text>
+      <text x="38" y="30" font-size="3" fill="currentColor" stroke="none">FSH/LH</text>
+      <text x="26" y="62" font-size="3" fill="currentColor" stroke="none">Gonads</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // METABOLIC & SYNDROME DISORDERS
+  // ===========================================================================
+  {
+    id: 'endo-metabolic-syndrome',
+    name: 'Metabolic Syndrome',
+    domain: 'medicine',
+    category: 'metabolic',
+    tags: ['metabolic syndrome', 'insulin resistance', 'obesity', 'dyslipidemia', 'hypertension'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="36" rx="16" ry="12" fill="#E67E22" opacity="0.3"/>
+      <circle cx="20" cy="16" r="6"/>
+      <text x="16" y="18" font-size="4" fill="currentColor" stroke="none">BP</text>
+      <circle cx="44" cy="16" r="6"/>
+      <text x="39" y="18" font-size="4" fill="currentColor" stroke="none">TG</text>
+      <circle cx="16" cy="48" r="6"/>
+      <text x="11" y="50" font-size="4" fill="currentColor" stroke="none">FG</text>
+      <circle cx="48" cy="48" r="6"/>
+      <text x="42" y="50" font-size="4" fill="currentColor" stroke="none">HDL</text>
+      <text x="26" y="38" font-size="5" fill="currentColor" stroke="none">WC</text>
+    </svg>`
+  },
+  {
+    id: 'endo-pcos',
+    name: 'Polycystic Ovary Syndrome',
+    domain: 'medicine',
+    category: 'metabolic',
+    tags: ['PCOS', 'polycystic ovary', 'hyperandrogenism', 'anovulation', 'infertility'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <circle cx="20" cy="28" r="3" fill="#FFD700"/>
+      <circle cx="44" cy="28" r="3" fill="#FFD700"/>
+      <circle cx="26" cy="40" r="3" fill="#FFD700"/>
+      <circle cx="38" cy="40" r="3" fill="#FFD700"/>
+      <circle cx="32" cy="24" r="3" fill="#FFD700"/>
+      <circle cx="18" cy="36" r="2" fill="#FFD700"/>
+      <circle cx="46" cy="36" r="2" fill="#FFD700"/>
+      <text x="20" y="58" font-size="4" fill="currentColor" stroke="none">PCOS</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hirsutism',
+    name: 'Hirsutism',
+    domain: 'medicine',
+    category: 'metabolic',
+    tags: ['hirsutism', 'hyperandrogenism', 'excess hair', 'Ferriman-Gallwey', 'testosterone'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="16"/>
+      <circle cx="26" cy="20" r="2" fill="currentColor"/>
+      <circle cx="38" cy="20" r="2" fill="currentColor"/>
+      <path d="M26 28c4 4 8 4 12 0"/>
+      <path d="M24 32l-2 4"/>
+      <path d="M28 34l-1 4"/>
+      <path d="M32 34v4"/>
+      <path d="M36 34l1 4"/>
+      <path d="M40 32l2 4"/>
+      <path d="M32 44v8"/>
+      <path d="M24 48h16"/>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">Hirsutism</text>
+    </svg>`
+  },
+  {
+    id: 'endo-men-syndrome',
+    name: 'MEN Syndrome',
+    domain: 'medicine',
+    category: 'metabolic',
+    tags: ['MEN', 'multiple endocrine neoplasia', 'MEN1', 'MEN2', 'familial', 'tumor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="#DC143C" opacity="0.3"/>
+      <circle cx="16" cy="36" r="8" fill="#DC143C" opacity="0.3"/>
+      <circle cx="48" cy="36" r="8" fill="#DC143C" opacity="0.3"/>
+      <circle cx="32" cy="52" r="8" fill="#DC143C" opacity="0.3"/>
+      <path d="M32 20v24"/>
+      <path d="M24 36h16"/>
+      <text x="28" y="14" font-size="4" fill="currentColor" stroke="none">Pit</text>
+      <text x="10" y="38" font-size="4" fill="currentColor" stroke="none">Para</text>
+      <text x="42" y="38" font-size="4" fill="currentColor" stroke="none">Thy</text>
+      <text x="26" y="54" font-size="4" fill="currentColor" stroke="none">Panc</text>
+      <text x="18" y="62" font-size="4" fill="currentColor" stroke="none">MEN Syndrome</text>
+    </svg>`
+  },
+  {
+    id: 'endo-carcinoid-syndrome',
+    name: 'Carcinoid Syndrome',
+    domain: 'medicine',
+    category: 'metabolic',
+    tags: ['carcinoid', 'serotonin', 'flushing', 'diarrhea', '5-HIAA', 'neuroendocrine'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <path d="M26 18c2 2 6 2 8 0" fill="#FF6B6B"/>
+      <path d="M26 16c0-2 2-4 3-4"/>
+      <path d="M38 16c0-2-2-4-3-4"/>
+      <path d="M20 20c-4 1-4 4-2 6"/>
+      <path d="M44 20c4 1 4 4 2 6"/>
+      <circle cx="32" cy="44" r="10"/>
+      <path d="M28 42c0 4 8 4 8 0"/>
+      <path d="M24 48l-4 8"/>
+      <path d="M40 48l4 8"/>
+      <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">Carcinoid: Flush+Diarrhea</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // GROWTH & DEVELOPMENT
+  // ===========================================================================
+  {
+    id: 'endo-growth-chart',
+    name: 'Growth Chart',
+    domain: 'medicine',
+    category: 'growth',
+    tags: ['growth chart', 'percentile', 'height', 'weight', 'pediatric', 'development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="40" rx="2"/>
+      <path d="M16 12v32"/>
+      <path d="M12 40h40"/>
+      <path d="M20 36c8-4 16-8 24-20" stroke-dasharray="4 2"/>
+      <path d="M20 32c8-4 16-8 24-16"/>
+      <path d="M20 28c8-4 16-8 24-12" stroke-dasharray="4 2"/>
+      <text x="44" y="18" font-size="3" fill="currentColor" stroke="none">97th</text>
+      <text x="44" y="24" font-size="3" fill="currentColor" stroke="none">50th</text>
+      <text x="44" y="30" font-size="3" fill="currentColor" stroke="none">3rd</text>
+      <circle cx="36" cy="24" r="2" fill="currentColor"/>
+      <text x="18" y="56" font-size="4" fill="currentColor" stroke="none">Growth Chart</text>
+    </svg>`
+  },
+  {
+    id: 'endo-short-stature',
+    name: 'Short Stature',
+    domain: 'medicine',
+    category: 'growth',
+    tags: ['short stature', 'growth hormone deficiency', 'dwarfism', 'achondroplasia', 'height'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 56v-40"/>
+      <path d="M8 56h48"/>
+      <path d="M8 16h8"/>
+      <path d="M8 56h4"/>
+      <circle cx="32" cy="44" r="8"/>
+      <path d="M32 52v4"/>
+      <path d="M28 56h8"/>
+      <circle cx="52" cy="28" r="8" stroke-dasharray="3 2"/>
+      <path d="M52 36v20" stroke-dasharray="3 2"/>
+      <path d="M48 56h8" stroke-dasharray="3 2"/>
+      <text x="16" y="62" font-size="4" fill="currentColor" stroke="none">Short Stature</text>
+    </svg>`
+  },
+  {
+    id: 'endo-acromegaly-features',
+    name: 'Acromegaly Features',
+    domain: 'medicine',
+    category: 'growth',
+    tags: ['acromegaly', 'growth hormone excess', 'enlarged hands', 'enlarged feet', 'prognathism'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="14" ry="16"/>
+      <path d="M24 32c0 4 4 8 8 10s8-2 8-6"/>
+      <circle cx="26" cy="20" r="2" fill="currentColor"/>
+      <circle cx="38" cy="20" r="2" fill="currentColor"/>
+      <path d="M28 24h8"/>
+      <path d="M20 8l-4-4h-4"/>
+      <path d="M44 8l4-4h4"/>
+      <ellipse cx="16" cy="52" rx="8" ry="4"/>
+      <ellipse cx="48" cy="52" rx="8" ry="4"/>
+      <text x="12" y="62" font-size="3" fill="currentColor" stroke="none">Acromegaly Features</text>
+    </svg>`
+  },
+  {
+    id: 'endo-gigantism',
+    name: 'Gigantism',
+    domain: 'medicine',
+    category: 'growth',
+    tags: ['gigantism', 'GH excess', 'tall stature', 'childhood', 'pituitary adenoma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 56v-40"/>
+      <path d="M8 56h48"/>
+      <path d="M8 16h8"/>
+      <circle cx="32" cy="20" r="8"/>
+      <path d="M32 28v28"/>
+      <path d="M28 56h8"/>
+      <path d="M24 36l-4 8"/>
+      <path d="M40 36l4 8"/>
+      <circle cx="52" cy="36" r="6" stroke-dasharray="3 2"/>
+      <path d="M52 42v14" stroke-dasharray="3 2"/>
+      <text x="18" y="62" font-size="4" fill="currentColor" stroke="none">Gigantism</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // DIABETIC COMPLICATIONS
+  // ===========================================================================
+  {
+    id: 'endo-diabetic-retinopathy',
+    name: 'Diabetic Retinopathy',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['diabetic retinopathy', 'microaneurysm', 'hemorrhage', 'neovascularization', 'blindness'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="8" fill="currentColor"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.5"/>
+      <circle cx="42" cy="24" r="2" fill="#DC143C"/>
+      <circle cx="24" cy="40" r="2" fill="#DC143C"/>
+      <circle cx="40" cy="40" r="1" fill="#DC143C"/>
+      <path d="M44 32c4 4 4 8 0 8" stroke="#DC143C"/>
+      <path d="M20 28c-4 0-4 4 0 8" stroke="#DC143C"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Diabetic Retinopathy</text>
+    </svg>`
+  },
+  {
+    id: 'endo-diabetic-nephropathy',
+    name: 'Diabetic Nephropathy',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['diabetic nephropathy', 'CKD', 'proteinuria', 'microalbuminuria', 'ESRD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12c-8 12-8 32 0 44 4 4 8 4 12 0"/>
+      <path d="M44 12c8 12 8 32 0 44-4 4-8 4-12 0"/>
+      <circle cx="24" cy="28" r="4" fill="#CD853F" opacity="0.5"/>
+      <circle cx="24" cy="40" r="4" fill="#CD853F" opacity="0.5"/>
+      <circle cx="40" cy="28" r="4" fill="#CD853F" opacity="0.5"/>
+      <circle cx="40" cy="40" r="4" fill="#CD853F" opacity="0.5"/>
+      <path d="M32 48v8"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Diabetic Nephropathy</text>
+    </svg>`
+  },
+  {
+    id: 'endo-diabetic-neuropathy',
+    name: 'Diabetic Neuropathy',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['diabetic neuropathy', 'peripheral neuropathy', 'numbness', 'tingling', 'stocking glove'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8v20"/>
+      <path d="M44 8v20"/>
+      <ellipse cx="20" cy="38" rx="8" ry="16" fill="#DAA520" opacity="0.3"/>
+      <ellipse cx="44" cy="38" rx="8" ry="16" fill="#DAA520" opacity="0.3"/>
+      <path d="M16 48l-4 8h16l-4-8"/>
+      <path d="M40 48l-4 8h16l-4-8"/>
+      <path d="M14 40c-2-2-2-4 0-4"/>
+      <path d="M26 36c2 2 2 4 0 4"/>
+      <path d="M50 40c2-2 2-4 0-4"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Diabetic Neuropathy</text>
+    </svg>`
+  },
+  {
+    id: 'endo-diabetic-foot',
+    name: 'Diabetic Foot',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['diabetic foot', 'ulcer', 'gangrene', 'amputation', 'Charcot foot', 'wound'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8v24"/>
+      <path d="M12 32c-4 8-4 16 4 20h24c8-4 8-12 4-20"/>
+      <ellipse cx="24" cy="44" rx="12" ry="8"/>
+      <circle cx="20" cy="44" r="4" fill="#8B0000" opacity="0.5"/>
+      <circle cx="28" cy="46" r="2" fill="#8B0000" opacity="0.5"/>
+      <path d="M32 36c4-4 8-4 12 0"/>
+      <path d="M36 40c2-2 4-2 6 0"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">Diabetic Foot</text>
+    </svg>`
+  },
+  {
+    id: 'endo-dka',
+    name: 'DKA - Diabetic Ketoacidosis',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['DKA', 'diabetic ketoacidosis', 'acidosis', 'ketones', 'dehydration', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="#DC143C" opacity="0.2"/>
+      <circle cx="32" cy="32" r="20"/>
+      <text x="22" y="28" font-size="8" fill="currentColor" stroke="none">DKA</text>
+      <text x="18" y="38" font-size="4" fill="currentColor" stroke="none">pH <7.3</text>
+      <text x="16" y="46" font-size="4" fill="currentColor" stroke="none">Ketones+</text>
+      <path d="M8 56l48 0"/>
+      <path d="M16 52v4"/>
+      <path d="M32 52v4"/>
+      <path d="M48 52v4"/>
+      <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">Emergency!</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hhs',
+    name: 'HHS - Hyperosmolar Hyperglycemic State',
+    domain: 'medicine',
+    category: 'diabetes-complications',
+    tags: ['HHS', 'hyperosmolar', 'hyperglycemic state', 'dehydration', 'type 2', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="#E67E22" opacity="0.2"/>
+      <circle cx="32" cy="32" r="20"/>
+      <text x="22" y="28" font-size="8" fill="currentColor" stroke="none">HHS</text>
+      <text x="14" y="38" font-size="3" fill="currentColor" stroke="none">Gluc >600</text>
+      <text x="12" y="46" font-size="3" fill="currentColor" stroke="none">Osm >320</text>
+      <path d="M20 52c4-4 8 0 12 0s8 4 12 0"/>
+      <text x="10" y="62" font-size="3" fill="currentColor" stroke="none">Severe Dehydration</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // AUTOIMMUNE & THYROID DISEASES
+  // ===========================================================================
+  {
+    id: 'endo-graves-ophthalmopathy',
+    name: 'Graves Ophthalmopathy',
+    domain: 'medicine',
+    category: 'thyroid-autoimmune',
+    tags: ['Graves ophthalmopathy', 'thyroid eye disease', 'exophthalmos', 'proptosis', 'diplopia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="20" ry="16"/>
+      <ellipse cx="22" cy="26" rx="8" ry="10"/>
+      <ellipse cx="42" cy="26" rx="8" ry="10"/>
+      <circle cx="22" cy="26" r="4" fill="currentColor"/>
+      <circle cx="42" cy="26" r="4" fill="currentColor"/>
+      <path d="M14" y="26" cx="12" cy="26" r="2"/>
+      <path d="M50 26" cx="52" cy="26" r="2"/>
+      <path d="M28 40c4 4 8 4 8 0"/>
+      <text x="6" y="56" font-size="3" fill="currentColor" stroke="none">Graves Ophthalmopathy</text>
+      <text x="20" y="62" font-size="3" fill="currentColor" stroke="none">Exophthalmos</text>
+    </svg>`
+  },
+  {
+    id: 'endo-hashimotos-thyroiditis',
+    name: 'Hashimotos Thyroiditis',
+    domain: 'medicine',
+    category: 'thyroid-autoimmune',
+    tags: ['Hashimoto', 'autoimmune thyroiditis', 'TPO antibody', 'hypothyroid', 'lymphocytic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v48" stroke-dasharray="4 2"/>
+      <path d="M16 20c-4 8-4 20 4 28 4 4 8 4 12 0" fill="#708090" opacity="0.3"/>
+      <path d="M48 20c4 8 4 20-4 28-4 4-8 4-12 0" fill="#708090" opacity="0.3"/>
+      <path d="M16 20c-4 8-4 20 4 28 4 4 8 4 12 0"/>
+      <path d="M48 20c4 8 4 20-4 28-4 4-8 4-12 0"/>
+      <circle cx="20" cy="32" r="2" fill="#4169E1"/>
+      <circle cx="24" cy="40" r="2" fill="#4169E1"/>
+      <circle cx="40" cy="28" r="2" fill="#4169E1"/>
+      <circle cx="44" cy="36" r="2" fill="#4169E1"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Hashimoto's + TPO Ab</text>
+    </svg>`
+  },
+  {
+    id: 'endo-thyroid-storm',
+    name: 'Thyroid Storm',
+    domain: 'medicine',
+    category: 'thyroid-autoimmune',
+    tags: ['thyroid storm', 'thyrotoxicosis', 'hyperthyroid crisis', 'emergency', 'fever', 'tachycardia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 24c-4 8-4 16 4 24 4 4 8 4 12 0"/>
+      <path d="M48 24c4 8 4 16-4 24-4 4-8 4-12 0"/>
+      <path d="M28 36h8" fill="#FF0000"/>
+      <path d="M32 12l-4 8 8-4-4 8" fill="#FF6347" stroke="#FF0000" stroke-width="2"/>
+      <circle cx="32" cy="36" r="4" fill="#FF0000" opacity="0.5"/>
+      <path d="M8 52l6-8 6 8 6-8 6 8 6-8 6 8 6-8 6 8" stroke="#DC143C"/>
+      <text x="12" y="62" font-size="4" fill="#DC143C" stroke="none">THYROID STORM</text>
+    </svg>`
+  },
+  {
+    id: 'endo-myxedema-coma',
+    name: 'Myxedema Coma',
+    domain: 'medicine',
+    category: 'thyroid-autoimmune',
+    tags: ['myxedema coma', 'severe hypothyroid', 'hypothermia', 'emergency', 'altered mental status'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="16" ry="14" fill="#4682B4" opacity="0.3"/>
+      <ellipse cx="32" cy="28" rx="16" ry="14"/>
+      <path d="M24 24c0 2 1 3 2 3"/>
+      <path d="M40 24c0 2-1 3-2 3"/>
+      <path d="M28 32c4 0 8 0 8 0"/>
+      <path d="M16 40c4 4 12 8 16 8s12-4 16-8"/>
+      <path d="M8 52l4-4 4 4 4-4 4 4 4-4 4 4 4-4 4 4 4-4 4 4" stroke="#4682B4"/>
+      <text x="8" y="62" font-size="4" fill="#4682B4" stroke="none">MYXEDEMA COMA</text>
+      <text x="28" y="12" font-size="6" fill="currentColor" stroke="none">Z</text>
+    </svg>`
+  },
+  {
+    id: 'endo-adrenal-crisis',
+    name: 'Adrenal Crisis',
+    domain: 'medicine',
+    category: 'adrenal-emergency',
+    tags: ['adrenal crisis', 'Addisonian crisis', 'hypotension', 'shock', 'emergency', 'cortisol'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 24c2-6 8-10 12-10h8c4 0 10 4 12 10"/>
+      <path d="M12 24c-2 6 2 12 8 12h24c6 0 10-6 8-12" fill="#8B4513" opacity="0.4"/>
+      <text x="22" y="32" font-size="6" fill="currentColor" stroke="none">↓↓↓</text>
+      <path d="M8 44l48 0"/>
+      <path d="M32 44v12"/>
+      <path d="M24 48l8 8 8-8"/>
+      <text x="10" y="62" font-size="4" fill="#DC143C" stroke="none">ADRENAL CRISIS</text>
+    </svg>`
+  },
 ];
 
 export default endocrinologyIcons;

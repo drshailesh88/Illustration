@@ -892,6 +892,343 @@ export const boneDensityScoring: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL CLINICAL ALGORITHMS
+// =============================================================================
+
+/**
+ * DKA/HHS Management Algorithm template
+ */
+export const dkaHhsManagement: DiagramTemplate = {
+  id: 'endo-dka-hhs-management',
+  name: 'DKA/HHS Management Algorithm',
+  description: 'Emergency management protocol for diabetic ketoacidosis and hyperosmolar hyperglycemic state',
+  domain: 'medicine',
+  promptTemplate: `Create a DKA/HHS management algorithm:
+- Initial presentation: {{presentation}}
+- Diagnostic criteria: {{diagnosticCriteria}}
+- Fluid resuscitation protocol: {{fluidProtocol}}
+- Insulin infusion: {{insulinInfusion}}
+- Potassium management: {{potassiumManagement}}
+- Bicarbonate criteria: {{bicarbonateCriteria}}
+- Monitoring parameters: {{monitoring}}
+- Transition to subcutaneous: {{transitionCriteria}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'diagnosticCriteria',
+    'fluidProtocol',
+    'insulinInfusion',
+    'potassiumManagement',
+    'bicarbonateCriteria',
+    'monitoring',
+    'transitionCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("DKA/HHS\\nPresentation")] --> B{"Diagnosis?"}
+    B -->|"pH<7.3, Ketones+"| C["DKA"]
+    B -->|"Osm>320, No Ketones"| D["HHS"]
+    C & D --> E["IV Fluid Bolus\\n1-1.5L NS"]
+    E --> F{"K+ Level?"}
+    F -->|"<3.3"| G["Hold Insulin\\nGive K+ First"]
+    F -->|"3.3-5.3"| H["Insulin 0.1U/kg/hr\\n+ K+ 20-40 mEq/L"]
+    F -->|">5.3"| I["Insulin 0.1U/kg/hr\\nNo K+ initially"]
+    G --> H
+    H & I --> J{"BG <200-250?"}
+    J -->|"Yes"| K["Switch to D5 + NS\\nReduce Insulin"]
+    J -->|"No"| L["Continue Protocol"]
+    K --> M{"Gap Closed?\\npH >7.3?"}
+    M -->|"Yes"| N["Transition to SQ\\nOverlap 1-2hr"]
+    style C fill:#DC143C,color:#fff
+    style D fill:#E67E22,color:#fff
+    style N fill:#228B22,color:#fff`,
+};
+
+/**
+ * Primary Aldosteronism Workup template
+ */
+export const primaryAldosteronismWorkup: DiagramTemplate = {
+  id: 'endo-primary-aldosteronism',
+  name: 'Primary Aldosteronism Workup',
+  description: 'Diagnostic algorithm for primary aldosteronism evaluation and subtype differentiation',
+  domain: 'medicine',
+  promptTemplate: `Create a primary aldosteronism workup flowchart:
+- Screening indication: {{screeningIndication}}
+- ARR calculation: {{arrCalculation}}
+- Confirmatory testing: {{confirmatoryTest}}
+- Subtype differentiation: {{subtypeDifferentiation}}
+- AVS protocol: {{avsProtocol}}
+- Imaging approach: {{imagingApproach}}
+- Treatment options: {{treatmentOptions}}
+- Medical vs surgical: {{medicalVsSurgical}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'screeningIndication',
+    'arrCalculation',
+    'confirmatoryTest',
+    'subtypeDifferentiation',
+    'avsProtocol',
+    'imagingApproach',
+    'treatmentOptions',
+    'medicalVsSurgical',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected\\nPrimary Aldo")] --> B["Screen:\\nARR >30\\nAldo >15"]
+    B -->|"Negative"| C["PA Unlikely"]
+    B -->|"Positive"| D["Confirmatory Test\\nSalt Loading or\\nFludrocortisone"]
+    D -->|"Negative"| C
+    D -->|"Positive"| E["CT Adrenals"]
+    E --> F{"Findings?"}
+    F -->|"Unilateral >1cm\\nAge <35"| G["Adrenalectomy"]
+    F -->|"Bilateral or\\nAge >35"| H["Adrenal Vein\\nSampling"]
+    H -->|"Unilateral"| G
+    H -->|"Bilateral"| I["MRA:\\nSpironolactone\\nor Eplerenone"]
+    style G fill:#DC143C,color:#fff
+    style I fill:#228B22,color:#fff`,
+};
+
+/**
+ * Cushing Syndrome Diagnostic Algorithm template
+ */
+export const cushingSyndromeDiagnosis: DiagramTemplate = {
+  id: 'endo-cushing-syndrome-dx',
+  name: 'Cushing Syndrome Diagnostic Algorithm',
+  description: 'Step-by-step diagnostic approach for Cushing syndrome with localization',
+  domain: 'medicine',
+  promptTemplate: `Create a Cushing syndrome diagnostic algorithm:
+- Clinical features: {{clinicalFeatures}}
+- Screening tests: {{screeningTests}}
+- Confirmatory approach: {{confirmatoryApproach}}
+- ACTH interpretation: {{acthInterpretation}}
+- Localization studies: {{localizationStudies}}
+- IPSS protocol: {{ipssProtocol}}
+- Imaging modalities: {{imagingModalities}}
+- Treatment pathway: {{treatmentPathway}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'clinicalFeatures',
+    'screeningTests',
+    'confirmatoryApproach',
+    'acthInterpretation',
+    'localizationStudies',
+    'ipssProtocol',
+    'imagingModalities',
+    'treatmentPathway',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected\\nCushing's")] --> B["Screen (2 of 3):\\n1mg DST, UFC,\\nMidnight Salivary"]
+    B -->|"Normal"| C["Cushing's\\nUnlikely"]
+    B -->|"Abnormal"| D["Confirm with\\n2nd Test"]
+    D -->|"Normal"| C
+    D -->|"Abnormal"| E["Cushing's\\nConfirmed"]
+    E --> F{"Plasma ACTH?"}
+    F -->|"<5 pg/mL"| G["ACTH-Independent\\nAdrenal CT"]
+    F -->|">20 pg/mL"| H["ACTH-Dependent"]
+    H --> I["Pituitary MRI +\\nHigh-Dose DST"]
+    I -->|"Lesion +\\nSuppression"| J["Cushing's\\nDisease"]
+    I -->|"Equivocal"| K["IPSS"]
+    K -->|"Central"| J
+    K -->|"Peripheral"| L["Ectopic ACTH\\nCT Chest/Abd"]
+    G --> M["Adenoma vs\\nCarcinoma"]
+    style J fill:#DC143C,color:#fff
+    style L fill:#FFA500,color:#000`,
+};
+
+/**
+ * Acromegaly Management Algorithm template
+ */
+export const acromegalyManagement: DiagramTemplate = {
+  id: 'endo-acromegaly-management',
+  name: 'Acromegaly Management Algorithm',
+  description: 'Treatment pathway for acromegaly including surgical and medical options',
+  domain: 'medicine',
+  promptTemplate: `Create an acromegaly management algorithm:
+- Diagnostic criteria: {{diagnosticCriteria}}
+- IGF-1 and GH targets: {{biochemicalTargets}}
+- Surgical approach: {{surgicalApproach}}
+- First-line medical therapy: {{firstLineMedical}}
+- Second-line options: {{secondLineOptions}}
+- Combination therapy: {{combinationTherapy}}
+- Comorbidity screening: {{comorbidityScreening}}
+- Follow-up protocol: {{followUpProtocol}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'diagnosticCriteria',
+    'biochemicalTargets',
+    'surgicalApproach',
+    'firstLineMedical',
+    'secondLineOptions',
+    'combinationTherapy',
+    'comorbidityScreening',
+    'followUpProtocol',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Acromegaly\\nDiagnosed")] --> B["Transsphenoidal\\nSurgery"]
+    B --> C{"Biochemical\\nRemission?"}
+    C -->|"Yes\\nIGF-1 Normal\\nGH <1"| D["Surveillance\\nq6-12 months"]
+    C -->|"No"| E{"Residual\\nTumor?"}
+    E -->|"Significant"| F["Somatostatin Analog\\nOctreotide/Lanreotide"]
+    E -->|"Minimal"| G["Consider\\nRadiation"]
+    F --> H{"Response?"}
+    H -->|"Partial"| I["Add Cabergoline\\nor Pegvisomant"]
+    H -->|"None"| J["Pegvisomant"]
+    G --> F
+    subgraph Monitoring["Comorbidity Screening"]
+        K["Sleep Apnea"]
+        L["Colonoscopy"]
+        M["Echo/Cardiac"]
+        N["Glucose"]
+    end
+    style D fill:#228B22,color:#fff
+    style B fill:#4169E1,color:#fff`,
+};
+
+/**
+ * MEN Syndrome Screening Algorithm template
+ */
+export const menSyndromeScreening: DiagramTemplate = {
+  id: 'endo-men-syndrome-screening',
+  name: 'MEN Syndrome Screening Algorithm',
+  description: 'Screening protocol for Multiple Endocrine Neoplasia syndromes',
+  domain: 'medicine',
+  promptTemplate: `Create a MEN syndrome screening algorithm:
+- MEN type: {{menType}}
+- Index case presentation: {{indexPresentation}}
+- Genetic testing: {{geneticTesting}}
+- Biochemical screening: {{biochemicalScreening}}
+- Imaging protocol: {{imagingProtocol}}
+- Age-based screening: {{ageBasedScreening}}
+- Family screening: {{familyScreening}}
+- Prophylactic surgery criteria: {{prophylacticSurgery}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'menType',
+    'indexPresentation',
+    'geneticTesting',
+    'biochemicalScreening',
+    'imagingProtocol',
+    'ageBasedScreening',
+    'familyScreening',
+    'prophylacticSurgery',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("MEN Syndrome\\nSuspected")] --> B{"Clinical\\nPresentation?"}
+    B -->|"Pituitary +\\nParathyroid +\\nPancreatic"| C["MEN1\\nMenin Gene"]
+    B -->|"MTC +\\nPheo +/-\\nHPT"| D["MEN2A\\nRET Gene"]
+    B -->|"MTC +\\nPheo +\\nMarfanoid"| E["MEN2B\\nRET Gene"]
+    C --> F["Screen:\\nCa, PTH, Prolactin\\nGastrin, Insulin"]
+    D --> G["Screen:\\nCalcitonin, Metas\\nCa, PTH yearly"]
+    E --> H["Prophylactic\\nThyroidectomy\\n<1 year old"]
+    F --> I["Annual Biochem\\n+ MRI q3-5yr"]
+    G --> J{"RET Codon?"}
+    J -->|"High Risk"| K["Thyroidectomy\\n<5 years"]
+    J -->|"Moderate"| L["Thyroidectomy\\nwhen Calcitonin+"]
+    style H fill:#DC143C,color:#fff
+    style K fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Hypogonadism Evaluation Algorithm template
+ */
+export const hypogonadismEvaluation: DiagramTemplate = {
+  id: 'endo-hypogonadism-evaluation',
+  name: 'Hypogonadism Evaluation Algorithm',
+  description: 'Diagnostic approach for male and female hypogonadism',
+  domain: 'medicine',
+  promptTemplate: `Create a hypogonadism evaluation algorithm:
+- Patient sex: {{patientSex}}
+- Clinical presentation: {{clinicalPresentation}}
+- Initial labs: {{initialLabs}}
+- Primary vs secondary differentiation: {{primarySecondary}}
+- Additional workup: {{additionalWorkup}}
+- Karyotype indications: {{karyotypeIndications}}
+- Treatment options: {{treatmentOptions}}
+- Fertility considerations: {{fertilityConsiderations}}
+{{#additionalNotes}}Additional context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'patientSex',
+    'clinicalPresentation',
+    'initialLabs',
+    'primarySecondary',
+    'additionalWorkup',
+    'karyotypeIndications',
+    'treatmentOptions',
+    'fertilityConsiderations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Male\\nHypogonadism")] --> B["AM Testosterone\\n(8-10 AM)"]
+    B -->|"Low (<300)"| C["Repeat + LH/FSH"]
+    B -->|"Normal"| D["Hypogonadism\\nUnlikely"]
+    C --> E{"LH/FSH?"}
+    E -->|"High"| F["Primary\\nHypogonadism"]
+    E -->|"Low/Normal"| G["Secondary\\nHypogonadism"]
+    F --> H["Karyotype\\n(if young)"]
+    H -->|"47,XXY"| I["Klinefelter"]
+    G --> J["Pituitary MRI\\nProlactin, Iron"]
+    J --> K{"Cause?"}
+    K -->|"Tumor"| L["Treat Tumor"]
+    K -->|"Hemochromatosis"| M["Phlebotomy"]
+    K -->|"Idiopathic"| N["TRT or\\nGonadotropins"]
+    style F fill:#E67E22,color:#fff
+    style G fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Hyperprolactinemia Workup Algorithm template
+ */
+export const hyperprolactinemiaWorkup: DiagramTemplate = {
+  id: 'endo-hyperprolactinemia-workup',
+  name: 'Hyperprolactinemia Workup Algorithm',
+  description: 'Diagnostic and treatment approach for elevated prolactin',
+  domain: 'medicine',
+  promptTemplate: `Create a hyperprolactinemia workup algorithm:
+- Prolactin level: {{prolactinLevel}}
+- Clinical symptoms: {{clinicalSymptoms}}
+- Medication review: {{medicationReview}}
+- MRI findings: {{mriFindings}}
+- Hook effect consideration: {{hookEffect}}
+- Treatment options: {{treatmentOptions}}
+- Cabergoline vs bromocriptine: {{dopamineAgonist}}
+- Surgical indications: {{surgicalIndications}}
+{{#additionalNotes}}Additional considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'prolactinLevel',
+    'clinicalSymptoms',
+    'medicationReview',
+    'mriFindings',
+    'hookEffect',
+    'treatmentOptions',
+    'dopamineAgonist',
+    'surgicalIndications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Elevated\\nProlactin")] --> B{"Level?"}
+    B -->|"<100"| C["R/O Medications\\nHypothyroidism\\nStalk Effect"]
+    B -->|"100-200"| D["Likely\\nMicroprolactinoma"]
+    B -->|">200"| E["Macroprolactinoma\\n(consider hook)"]
+    C --> F{"Cause Found?"}
+    F -->|"Yes"| G["Treat Cause"]
+    F -->|"No"| H["Pituitary MRI"]
+    D & E --> H
+    H --> I{"Tumor Size?"}
+    I -->|"Micro <10mm"| J["Cabergoline"]
+    I -->|"Macro >10mm"| K{"Vision\\nLoss?"}
+    K -->|"Yes"| L["Urgent Surgery\\nor High-dose DA"]
+    K -->|"No"| J
+    J --> M{"Response?"}
+    M -->|"Normalized"| N["Continue +\\nMonitor"]
+    M -->|"Resistant"| O["Surgery or\\nRadiation"]
+    style J fill:#228B22,color:#fff
+    style L fill:#DC143C,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -907,6 +1244,13 @@ export const endocrinologyTemplates: DiagramTemplate[] = [
   obesityManagement,
   pituitaryTumorApproach,
   osteoporosisTreatment,
+  dkaHhsManagement,
+  primaryAldosteronismWorkup,
+  cushingSyndromeDiagnosis,
+  acromegalyManagement,
+  menSyndromeScreening,
+  hypogonadismEvaluation,
+  hyperprolactinemiaWorkup,
   // Anatomical Diagrams
   endocrineSystemOverview,
   hpaAxes,

@@ -1654,6 +1654,143 @@ export const nephrologyIcons: IconDefinition[] = [
       <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Low EPO -> anemia</text>
     </svg>`
   },
+  // ===========================================================================
+  // ADDITIONAL ICONS - ITERATION 2
+  // ===========================================================================
+  {
+    id: 'nephro-urine-anion-gap',
+    name: 'Urine Anion Gap',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['urine anion gap', 'RTA', 'acid-base', 'metabolic acidosis', 'UAG'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <text x="12" y="20" font-size="5" fill="#4169E1" stroke="none">Na+</text>
+      <text x="36" y="20" font-size="5" fill="#FFD700" stroke="none">K+</text>
+      <line x1="32" y1="24" x2="32" y2="40" stroke-width="2"/>
+      <text x="12" y="50" font-size="5" fill="#20B2AA" stroke="none">Cl-</text>
+      <text x="14" y="36" font-size="4" fill="currentColor" stroke="none">UAG = (Na + K) - Cl</text>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Neg: GI loss | Pos: RTA</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-fena-calculation',
+    name: 'FeNa Calculation',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['FeNa', 'fractional excretion', 'sodium', 'AKI', 'prerenal', 'intrinsic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.1"/>
+      <text x="8" y="18" font-size="4" fill="currentColor" stroke="none">FeNa = (UNa x PCr) / (PNa x UCr)</text>
+      <line x1="8" y1="24" x2="56" y2="24"/>
+      <rect x="8" y="28" width="20" height="12" fill="#228B22" opacity="0.3" rx="2"/>
+      <text x="10" y="36" font-size="4" fill="currentColor" stroke="none">&lt;1%</text>
+      <text x="10" y="48" font-size="3" fill="currentColor" stroke="none">Prerenal</text>
+      <rect x="36" y="28" width="20" height="12" fill="#DC143C" opacity="0.3" rx="2"/>
+      <text x="38" y="36" font-size="4" fill="currentColor" stroke="none">&gt;2%</text>
+      <text x="38" y="48" font-size="3" fill="currentColor" stroke="none">Intrinsic</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-winters-formula',
+    name: 'Winters Formula',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['Winters formula', 'compensation', 'metabolic acidosis', 'respiratory', 'acid-base'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.1"/>
+      <text x="8" y="18" font-size="4" fill="currentColor" stroke="none">Metabolic Acidosis</text>
+      <text x="8" y="32" font-size="3" fill="currentColor" stroke="none">Expected pCO2 =</text>
+      <text x="8" y="42" font-size="4" fill="#4169E1" stroke="none">(1.5 x HCO3) + 8 +/- 2</text>
+      <line x1="8" y1="48" x2="56" y2="48"/>
+      <text x="8" y="56" font-size="3" fill="currentColor" stroke="none">If pCO2 different: mixed disorder</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-egfr-mdrd',
+    name: 'eGFR MDRD/CKD-EPI',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['eGFR', 'MDRD', 'CKD-EPI', 'creatinine', 'GFR estimation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.1"/>
+      <text x="8" y="16" font-size="5" fill="currentColor" stroke="none">eGFR</text>
+      <text x="8" y="26" font-size="3" fill="currentColor" stroke="none">CKD-EPI 2021</text>
+      <line x1="8" y1="30" x2="56" y2="30"/>
+      <path d="M12 40h8v12h-8z" fill="#28A745" opacity="0.5"/>
+      <path d="M22 38h8v14h-8z" fill="#9ACD32" opacity="0.5"/>
+      <path d="M32 42h8v10h-8z" fill="#FFD700" opacity="0.5"/>
+      <path d="M42 44h8v8h-8z" fill="#FFA500" opacity="0.5"/>
+      <path d="M52 48h6v4h-6z" fill="#DC143C" opacity="0.5"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">G1 G2 G3a G3b G4 G5</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-cockcroft-gault',
+    name: 'Cockcroft-Gault Formula',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['Cockcroft-Gault', 'CrCl', 'creatinine clearance', 'drug dosing', 'renal function'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="currentColor" opacity="0.1"/>
+      <text x="8" y="16" font-size="4" fill="currentColor" stroke="none">Cockcroft-Gault</text>
+      <text x="8" y="28" font-size="3" fill="currentColor" stroke="none">CrCl = (140 - age) x wt</text>
+      <line x1="8" y1="32" x2="48" y2="32"/>
+      <text x="12" y="40" font-size="3" fill="currentColor" stroke="none">72 x SCr</text>
+      <text x="8" y="52" font-size="3" fill="currentColor" stroke="none">x 0.85 if female</text>
+      <circle cx="52" cy="48" r="8" fill="#9370DB" opacity="0.3"/>
+      <text x="48" y="50" font-size="4" fill="currentColor" stroke="none">Rx</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-proteinuria-quantification',
+    name: 'Proteinuria Quantification',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['UPCR', 'UACR', '24h protein', 'proteinuria', 'albuminuria', 'nephrotic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8h32l8 48H8L16 8z" fill="#FFFF99" opacity="0.3"/>
+      <path d="M16 8h32l8 48H8L16 8z"/>
+      <line x1="12" y1="24" x2="52" y2="24" stroke-dasharray="2 2"/>
+      <text x="14" y="20" font-size="3" fill="currentColor" stroke="none">&lt;150mg - Normal</text>
+      <line x1="12" y1="36" x2="52" y2="36" stroke-dasharray="2 2"/>
+      <text x="14" y="32" font-size="3" fill="currentColor" stroke="none">150-3500mg - Proteinuria</text>
+      <line x1="12" y1="48" x2="52" y2="48" stroke-dasharray="2 2"/>
+      <text x="14" y="44" font-size="3" fill="currentColor" stroke="none">&gt;3500mg - Nephrotic</text>
+      <text x="18" y="56" font-size="3" fill="#DC143C" stroke="none">UPCR or 24h collection</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-cystatin-c',
+    name: 'Cystatin C',
+    domain: 'medicine',
+    category: 'diagnostics',
+    tags: ['cystatin C', 'GFR', 'biomarker', 'creatinine alternative', 'kidney function'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="16" fill="#9370DB" opacity="0.2"/>
+      <circle cx="32" cy="28" r="16"/>
+      <text x="22" y="32" font-size="6" fill="currentColor" stroke="none">Cys-C</text>
+      <path d="M32 44v8"/>
+      <path d="M28 48h8"/>
+      <rect x="16" y="52" width="32" height="8" rx="2" fill="currentColor" opacity="0.1"/>
+      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">Muscle-independent</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-renal-doppler',
+    name: 'Renal Doppler Ultrasound',
+    domain: 'medicine',
+    category: 'imaging',
+    tags: ['renal doppler', 'resistive index', 'RAS', 'ultrasound', 'vasculature'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8c-12 0-16 12-16 24s4 24 16 24c6 0 8-6 8-24s-2-24-8-24z" fill="currentColor" opacity="0.1"/>
+      <path d="M24 8c-12 0-16 12-16 24s4 24 16 24c6 0 8-6 8-24s-2-24-8-24z"/>
+      <path d="M32 32h24" stroke="#DC143C"/>
+      <path d="M36 28c4 4 8-8 12 0s8-4 8 0" stroke="#DC143C"/>
+      <text x="36" y="44" font-size="3" fill="currentColor" stroke="none">RI = (PSV-EDV)/PSV</text>
+      <text x="36" y="52" font-size="3" fill="currentColor" stroke="none">Normal &lt;0.70</text>
+    </svg>`
+  },
 ];
 
 export default nephrologyIcons;

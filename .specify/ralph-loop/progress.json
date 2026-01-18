@@ -1,6 +1,6 @@
 {
   "currentSpecialty": "neurology",
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease"],
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology"],
   "blockedSpecialties": [],
   "progress": {
     "neurology": {
@@ -270,20 +270,63 @@
           "additional-clinical": 7
         }
       }
+    },
+    "nephrology": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T18:00:00Z",
+      "metrics": {
+        "icons": {
+          "current": 104,
+          "target": 100,
+          "percentage": 104
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "kidney-anatomy": 12,
+          "glomerular-structures": 10,
+          "pathology-aki": 12,
+          "pathology-ckd": 14,
+          "electrolytes-acidbase": 16,
+          "dialysis-transplant": 20,
+          "equipment-procedures": 12,
+          "diagnostics": 8
+        },
+        "templates": {
+          "clinical-decision-trees": 15,
+          "anatomical-diagrams": 4,
+          "procedure-illustrations": 3,
+          "data-visualization": 3
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 5,
+    "completed": 7,
     "inProgress": 1,
     "blocked": 0,
-    "notStarted": 29,
+    "notStarted": 27,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 688,
-    "currentTotalTemplates": 162,
-    "currentTotalPrompts": 107
+    "currentTotalIcons": 792,
+    "currentTotalTemplates": 187,
+    "currentTotalPrompts": 127
   },
   "executionOrder": [
     "cardiology",
