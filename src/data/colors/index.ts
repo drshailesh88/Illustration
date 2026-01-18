@@ -176,3 +176,90 @@ export {
 } from './orthopedics';
 
 export type { OrthopedicsColorScheme } from './orthopedics';
+
+// =============================================================================
+// ANESTHESIOLOGY
+// =============================================================================
+
+export {
+  airwayColors as anesthesiaAirwayColors,
+  monitoringColors,
+  anestheticAgentColors,
+  regionalColors,
+  vascularAccessColors,
+  painManagementColors,
+  asaStatusColors,
+  mallampatiColors,
+  sedationDepthColors,
+  complicationColors as anesthesiaComplicationColors,
+  equipmentColors as anesthesiaEquipmentColors,
+  flowchartColors as anesthesiaFlowchartColors,
+  anesthesiologyColorScheme,
+} from './anesthesiology';
+
+export type { AnesthesiologyColorScheme } from './anesthesiology';
+
+// =============================================================================
+// RADIOLOGY
+// =============================================================================
+
+export {
+  modalityColors,
+  ctDensityColors,
+  mriSignalColors,
+  pathologyColors as radioPathologyColors,
+  contrastPhaseColors,
+  radiationColors,
+  nuclearColors,
+  ultrasoundColors,
+  anatomyColors as radioAnatomyColors,
+  workflowColors,
+  reportingColors,
+  interventionalColors,
+  flowchartColors as radioFlowchartColors,
+  severityGradient as radioSeverityGradient,
+  radiologyColorScheme,
+} from './radiology';
+
+export type { RadiologyColorScheme } from './radiology';
+
+// =============================================================================
+// OPHTHALMOLOGY
+// =============================================================================
+
+export {
+  eyeAnatomyColors,
+  anteriorSegmentColors,
+  posteriorSegmentColors,
+  vasculatureColors as ophthoVasculatureColors,
+  pathologyAnteriorColors,
+  pathologyPosteriorColors,
+  severityColors as ophthoSeverityColors,
+  diagnosticsColors as ophthoDiagnosticsColors,
+  surgicalColors as ophthoSurgicalColors,
+  laserColors,
+  ophthalmologyColorScheme,
+} from './ophthalmology';
+
+export type { OphthalmologyColorScheme } from './ophthalmology';
+
+// =============================================================================
+// ENT (Otolaryngology)
+// =============================================================================
+
+export {
+  earColors,
+  innerEarColors,
+  nasalColors,
+  throatColors,
+  entPathologyColors,
+  entSeverityGradient,
+  hearingColors,
+  equipmentColors as entEquipmentColors,
+  entFlowchartColors,
+  vestibularColors,
+  sleepApneaColors,
+  entColorScheme,
+} from './ent';
+
+export type { ENTColorScheme } from './ent';

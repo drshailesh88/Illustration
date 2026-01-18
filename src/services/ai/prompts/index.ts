@@ -563,3 +563,15 @@ export { default as hematologyOncologyPrompts } from './hematology-oncology-prom
 
 export * from './orthopedics-prompts';
 export { default as orthopedicsPrompts } from './orthopedics-prompts';
+
+export * from './anesthesiology-prompts';
+export { default as anesthesiologyPrompts } from './anesthesiology-prompts';
+
+export * from './radiology-prompts';
+export { default as radiologyPrompts } from './radiology-prompts';
+
+export * from './ophthalmology-prompts';
+export { default as ophthalmologyPrompts } from './ophthalmology-prompts';
+
+export * from './ent-prompts';
+export { default as entPrompts } from './ent-prompts';
