@@ -175,10 +175,23 @@ When starting a new session:
 
 1. **Read this file** (CLAUDE.md)
 2. **Check progress**: Read `.specify/ralph-loop/progress.json`
-3. **Identify pending specialties**: See execution order below
-4. **Launch parallel agents**: Use Task tool for 4-8 specialties
-5. **Apply Ralph Loop**: Iterate until 90% completeness
-6. **Commit frequently**: Use "feat: Ralph Loop Iteration N - {specialty}" format
+3. **Check Illustrator status**: Review Feature 006 implementation gaps
+4. **Identify pending specialties**: See execution order below
+5. **Launch parallel agents**: Use Task tool for 4-8 specialties
+6. **Apply Ralph Loop**: Iterate until 90% completeness
+7. **Commit frequently**: Use "feat: Ralph Loop Iteration N - {specialty}" format
+
+### TWO PARALLEL WORKSTREAMS
+
+```
+Workstream A: Content Expansion (Ralph Loop)
+├── 35 specialties with icons, templates, prompts
+└── Currently: 8 agents running in parallel
+
+Workstream B: Editor Features (Illustrator Integration)
+├── Pen tool, hand-drawn styles, icon libraries
+└── Spec: .specify/features/006-illustrator-integration/spec.md
+```
 
 ---
 
@@ -245,6 +258,68 @@ feat: Ralph Loop Iteration {N} - {Specialty} {checkpoint}
 
 ---
 
+## ILLUSTRATOR INTEGRATION PLAN (Feature 006)
+
+> **DO NOT FORGET THIS PLAN** - See full spec at `.specify/features/006-illustrator-integration/spec.md`
+
+### Goal
+Transform FINNISH into an Adobe Illustrator-like experience with professional SVG editing capabilities.
+
+### Library Stack (MIT/Apache 2.0 Licensed)
+
+| Component | Library | Status | Priority |
+|-----------|---------|--------|----------|
+| Canvas Engine | Fabric.js 6.x | ✅ Working | P0 |
+| Path/Bezier | Paper.js | ✅ Installed | P1 |
+| Hand-drawn Style | Rough.js | ✅ Installed | P2 |
+| Freehand Drawing | perfect-freehand | ⚠️ Partial | P2 |
+| Color Management | Color.js | ✅ Installed | P1 |
+| Export PNG | saveSvgAsPng | ⚠️ Verify | P1 |
+| Export PDF | jsPDF + svg2pdf | ✅ Working | P1 |
+| Image Filters | glfx.js | ❌ Missing | P2 |
+| General Icons | Tabler Icons | ❌ Missing | P1 |
+| Medical Icons | Health Icons | ❌ Missing | P1 |
+| Scientific Icons | Bioicons | ❌ Missing | P1 |
+
+### Missing Features to Implement
+
+1. **Professional Pen Tool** (P1)
+   - Bezier curves with control handles
+   - Anchor point editing
+   - Path closing
+
+2. **Hand-drawn Style Toggle** (P2)
+   - Apply Rough.js sketchy effects
+   - One-click style switching
+
+3. **External Icon Libraries** (P1)
+   - Install: `npm install @tabler/icons healthicons bioicons`
+   - Create unified search across libraries
+
+4. **WebGL Image Filters** (P2)
+   - Install: `npm install glfx`
+   - Real-time filter preview
+
+### Integration Files
+
+```
+src/lib/
+├── paper/      # ✅ Paper.js wrapper
+├── rough/      # ✅ Rough.js wrapper
+├── freehand/   # ✅ Freehand drawing
+├── color/      # ✅ Color management
+├── export/     # ✅ Export pipeline
+└── icons/      # ⚠️ Needs external libs
+```
+
+### Session Task: Check Illustrator Progress
+When starting a session, also check:
+- Are external icon libraries installed?
+- Is pen tool node editing working?
+- Are hand-drawn styles accessible in UI?
+
+---
+
 ## Remember
 
 1. **PARALLEL EXPANSION** - Launch multiple agents, don't work sequentially
@@ -252,7 +327,8 @@ feat: Ralph Loop Iteration {N} - {Specialty} {checkpoint}
 3. **RALPH LOOP** - Iterate until 90% completeness
 4. **SPEC-KIT** - Use methodology for planning
 5. **COMMIT OFTEN** - Track progress with clear messages
+6. **ILLUSTRATOR INTEGRATION** - Don't forget Feature 006 (pen tool, hand-drawn, icons)
 
 ---
 
-*Last Updated: 2026-01-18 | Version: 1.0.0*
+*Last Updated: 2026-01-18 | Version: 1.1.0*
