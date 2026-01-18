@@ -1594,6 +1594,193 @@ export const physiologyIcons: IconDefinition[] = [
       <text x="22" y="52" font-size="3" fill="currentColor" stroke="none">CO=VO₂/(CaO₂-CvO₂)</text>
     </svg>`
   },
+  {
+    id: 'physio-nernst-equation',
+    name: 'Nernst Equation',
+    domain: 'biology',
+    category: 'neurophysiology',
+    tags: ['Nernst', 'equilibrium potential', 'ion', 'membrane potential', 'equation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="36" font-size="5" fill="currentColor" stroke="none">E = RT/zF × ln([out]/[in])</text>
+      <text x="16" y="56" font-size="4" fill="currentColor" stroke="none">Equilibrium Potential</text>
+    </svg>`
+  },
+  {
+    id: 'physio-goldman-equation',
+    name: 'Goldman Equation',
+    domain: 'biology',
+    category: 'neurophysiology',
+    tags: ['Goldman', 'resting potential', 'permeability', 'membrane potential'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="28" font-size="4" fill="currentColor" stroke="none">Vm = 61 × log</text>
+      <path d="M8 36h48"/>
+      <text x="12" y="34" font-size="3" fill="currentColor" stroke="none">PK[K]o + PNa[Na]o + PCl[Cl]i</text>
+      <text x="12" y="48" font-size="3" fill="currentColor" stroke="none">PK[K]i + PNa[Na]i + PCl[Cl]o</text>
+    </svg>`
+  },
+  {
+    id: 'physio-ventilation-equation',
+    name: 'Alveolar Ventilation Equation',
+    domain: 'biology',
+    category: 'respiratory-physiology',
+    tags: ['ventilation', 'alveolar', 'dead space', 'tidal volume', 'respiratory rate'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="32" font-size="4" fill="currentColor" stroke="none">VA = (VT - VD) × RR</text>
+      <text x="8" y="44" font-size="3" fill="currentColor" stroke="none">Alveolar = (Tidal - Dead) × Rate</text>
+    </svg>`
+  },
+  {
+    id: 'physio-laplace-law',
+    name: 'Laplace Law',
+    domain: 'biology',
+    category: 'cardiovascular-physiology',
+    tags: ['Laplace', 'wall tension', 'pressure', 'radius', 'ventricle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="16"/>
+      <path d="M32 12v-8"/>
+      <path d="M32 44v8"/>
+      <path d="M16 28h-8"/>
+      <path d="M48 28h8"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">T = P × r / 2h</text>
+      <text x="28" y="30" font-size="4" fill="currentColor" stroke="none">P</text>
+    </svg>`
+  },
+  {
+    id: 'physio-poiseuille-law',
+    name: 'Poiseuille Law',
+    domain: 'biology',
+    category: 'cardiovascular-physiology',
+    tags: ['Poiseuille', 'blood flow', 'resistance', 'viscosity', 'radius'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="16" rx="8"/>
+      <path d="M4 28h8"/>
+      <path d="M52 28h8"/>
+      <path d="M16 28h32" stroke-width="2"/>
+      <text x="8" y="48" font-size="3" fill="currentColor" stroke="none">Q = ΔP × π × r⁴ / 8ηL</text>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Flow ∝ Radius⁴</text>
+    </svg>`
+  },
+  {
+    id: 'physio-alveolar-gas-equation',
+    name: 'Alveolar Gas Equation',
+    domain: 'biology',
+    category: 'respiratory-physiology',
+    tags: ['alveolar gas', 'PAO2', 'FiO2', 'PaCO2', 'respiratory quotient'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="28" font-size="4" fill="currentColor" stroke="none">PAO₂ = FiO₂(Patm-47)</text>
+      <text x="16" y="40" font-size="4" fill="currentColor" stroke="none">- PaCO₂/RQ</text>
+      <text x="8" y="56" font-size="3" fill="currentColor" stroke="none">~100 mmHg at sea level</text>
+    </svg>`
+  },
+  {
+    id: 'physio-henderson-hasselbalch',
+    name: 'Henderson-Hasselbalch Equation',
+    domain: 'biology',
+    category: 'acid-base',
+    tags: ['Henderson-Hasselbalch', 'pH', 'bicarbonate', 'pKa', 'buffer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="32" font-size="4" fill="currentColor" stroke="none">pH = 6.1 + log</text>
+      <path d="M40 24v16"/>
+      <text x="42" y="30" font-size="3" fill="currentColor" stroke="none">[HCO₃⁻]</text>
+      <text x="42" y="42" font-size="3" fill="currentColor" stroke="none">0.03×PCO₂</text>
+    </svg>`
+  },
+  {
+    id: 'physio-winters-formula',
+    name: 'Winters Formula',
+    domain: 'biology',
+    category: 'acid-base',
+    tags: ['Winters', 'metabolic acidosis', 'compensation', 'PCO2', 'expected'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="32" font-size="4" fill="currentColor" stroke="none">PCO₂ = 1.5×[HCO₃⁻]+8±2</text>
+      <text x="8" y="48" font-size="3" fill="currentColor" stroke="none">Expected compensation</text>
+    </svg>`
+  },
+  {
+    id: 'physio-anion-gap',
+    name: 'Anion Gap',
+    domain: 'biology',
+    category: 'acid-base',
+    tags: ['anion gap', 'metabolic acidosis', 'sodium', 'chloride', 'bicarbonate'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="32" font-size="4" fill="currentColor" stroke="none">AG = Na⁺ - (Cl⁻ + HCO₃⁻)</text>
+      <text x="12" y="48" font-size="4" fill="currentColor" stroke="none">Normal: 8-12 mEq/L</text>
+    </svg>`
+  },
+  {
+    id: 'physio-osmolality-calculation',
+    name: 'Serum Osmolality',
+    domain: 'biology',
+    category: 'fluid-balance',
+    tags: ['osmolality', 'serum', 'sodium', 'glucose', 'BUN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="28" font-size="3" fill="currentColor" stroke="none">Osm = 2×Na + Glu/18 + BUN/2.8</text>
+      <text x="12" y="42" font-size="4" fill="currentColor" stroke="none">Normal: 285-295</text>
+      <text x="18" y="54" font-size="3" fill="currentColor" stroke="none">mOsm/kg</text>
+    </svg>`
+  },
+  {
+    id: 'physio-gfr-calculation',
+    name: 'GFR Calculation',
+    domain: 'biology',
+    category: 'renal-physiology',
+    tags: ['GFR', 'creatinine clearance', 'Cockcroft-Gault', 'kidney function'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="26" font-size="3" fill="currentColor" stroke="none">CrCl = (140-age)×wt</text>
+      <path d="M8 32h48"/>
+      <text x="12" y="44" font-size="3" fill="currentColor" stroke="none">72 × Cr (×0.85 if female)</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Cockcroft-Gault</text>
+    </svg>`
+  },
+  {
+    id: 'physio-fena-calculation',
+    name: 'Fractional Excretion of Sodium',
+    domain: 'biology',
+    category: 'renal-physiology',
+    tags: ['FeNa', 'sodium', 'fractional excretion', 'prerenal', 'ATN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="26" font-size="3" fill="currentColor" stroke="none">FeNa = (UNa × PCr)</text>
+      <path d="M8 32h48"/>
+      <text x="14" y="44" font-size="3" fill="currentColor" stroke="none">(PNa × UCr) × 100</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none"><1% prerenal, >2% ATN</text>
+    </svg>`
+  },
+  {
+    id: 'physio-cardiac-index',
+    name: 'Cardiac Index',
+    domain: 'biology',
+    category: 'cardiovascular-physiology',
+    tags: ['cardiac index', 'CO', 'BSA', 'body surface area', 'cardiac output'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="32" rx="4"/>
+      <text x="8" y="28" font-size="4" fill="currentColor" stroke="none">CI = CO / BSA</text>
+      <text x="8" y="44" font-size="4" fill="currentColor" stroke="none">Normal: 2.5-4.0 L/min/m²</text>
+    </svg>`
+  },
+  {
+    id: 'physio-svr-calculation',
+    name: 'Systemic Vascular Resistance',
+    domain: 'biology',
+    category: 'cardiovascular-physiology',
+    tags: ['SVR', 'vascular resistance', 'MAP', 'CVP', 'cardiac output'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="56" height="40" rx="4"/>
+      <text x="8" y="26" font-size="3" fill="currentColor" stroke="none">SVR = (MAP - CVP)</text>
+      <path d="M8 32h48"/>
+      <text x="20" y="44" font-size="3" fill="currentColor" stroke="none">CO × 80</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Normal: 800-1200 dyn·s/cm⁵</text>
+    </svg>`
+  },
 ];
 
 export default physiologyIcons;

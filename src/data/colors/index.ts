@@ -362,3 +362,24 @@ export {
 } from './physiology';
 
 export type { PhysiologyColorScheme } from './physiology';
+
+// =============================================================================
+// PHARMACOLOGY
+// =============================================================================
+
+export {
+  drugClassColors,
+  admeColors,
+  receptorColors,
+  interactionColors,
+  cyp450Colors,
+  tdmColors,
+  adrColors,
+  doseResponseColors,
+  deliveryRouteColors,
+  severityGradient as pharmacologySeverityGradient,
+  flowchartColors as pharmacologyFlowchartColors,
+  pharmacologyColorScheme,
+} from './pharmacology';
+
+export type { PharmacologyColorScheme } from './pharmacology';
