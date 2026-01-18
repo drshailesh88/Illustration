@@ -76,7 +76,25 @@ export * from './neuroscience';
 // Additional science branches - use explicit exports to avoid duplicates
 export * from './geology';
 export { astronomyTemplates } from './astronomy';
-export * from './environmental';
+export {
+  globalCarbonCycle,
+  waterCycleDiagram,
+  greenhouseEffectDiagram,
+  foodWebDiagram,
+  environmentalImpactAssessment,
+  waterQualityMonitoring,
+  biodiversitySurvey,
+  // Note: biomeClassification excluded to avoid conflict with biology
+  pollutionClassification,
+  iucnConservationStatus,
+  nitrogenCycleDiagram,
+  ecologicalSuccession,
+  wasteManagementHierarchy,
+  climateChangeImpacts,
+  lifeCycleAssessment,
+  renewableEnergySystems,
+  environmentalTemplates,
+} from './environmental';
 export * from './materials_science';
 export * from './oceanography';
 export * from './meteorology';
@@ -307,6 +325,7 @@ export const allTemplates: DiagramTemplate[] = [
   ...hematologyOncologyTemplates,
   ...dermatologyTemplates,
   ...physiologyTemplates,
+  ...anatomyTemplates,
   // Additional science branches
   ...geologyTemplates,
   ...astronomyTemplates,
@@ -351,7 +370,7 @@ export const allTemplates: DiagramTemplate[] = [
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
   medicine: [...medicineTemplates, ...cardiologyTemplates, ...neurologyTemplates,
   ...gastroenterologyTemplates,
-  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...dermatologyTemplates, ...physiologyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates, ...pharmacologyTemplates],
+  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...dermatologyTemplates, ...physiologyTemplates, ...anatomyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates, ...pharmacologyTemplates],
   biology: [...biologyTemplates, ...molecularTemplates, ...geneticsTemplates, ...ecologyTemplates, ...microbiologyTemplates, ...zoologyTemplates, ...botanyTemplates, ...cellbiologyTemplates, ...neuroscienceTemplates, ...environmentalTemplates, ...oceanographyTemplates, ...agricultureTemplates],
   chemistry: [...chemistryTemplates, ...forensicsTemplates, ...biochemistryTemplates, ...organicTemplates, ...inorganicTemplates, ...analyticalTemplates],
   physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates, ...quantumTemplates, ...thermodynamicsTemplates, ...electromagnetismTemplates, ...opticsTemplates, ...nuclearTemplates, ...mechanicsTemplates, ...astrophysicsTemplates],
@@ -464,7 +483,7 @@ export function getTemplateStats(): {
   return {
     total: allTemplates.length,
     byDomain: {
-      medicine: medicineTemplates.length + cardiologyTemplates.length + neurologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length + analgesicsTemplates.length + antibioticsTemplates.length + psychotropicsTemplates.length + endocrineDrugsTemplates.length + pharmacologyTemplates.length,
+      medicine: medicineTemplates.length + cardiologyTemplates.length + neurologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length + hematologyOncologyTemplates.length + dermatologyTemplates.length + physiologyTemplates.length + anatomyTemplates.length + analgesicsTemplates.length + antibioticsTemplates.length + psychotropicsTemplates.length + endocrineDrugsTemplates.length + pharmacologyTemplates.length,
       biology: biologyTemplates.length + molecularTemplates.length + geneticsTemplates.length + ecologyTemplates.length + microbiologyTemplates.length + zoologyTemplates.length + botanyTemplates.length + cellbiologyTemplates.length + neuroscienceTemplates.length,
       chemistry: chemistryTemplates.length + forensicsTemplates.length + biochemistryTemplates.length + organicTemplates.length + inorganicTemplates.length + analyticalTemplates.length,
       physics: physicsTemplates.length + geologyTemplates.length + astronomyTemplates.length + meteorologyTemplates.length + quantumTemplates.length + thermodynamicsTemplates.length + electromagnetismTemplates.length + opticsTemplates.length + nuclearTemplates.length + mechanicsTemplates.length + astrophysicsTemplates.length,

@@ -1056,6 +1056,736 @@ export const engineeringIcons: IconDefinition[] = [
   <path d="M16 3l-2 2"/>
 </svg>`,
   },
+
+  // ===========================================================================
+  // MANUFACTURING & PRODUCTION
+  // ===========================================================================
+  {
+    id: 'eng-cnc-machine',
+    name: 'CNC Machine',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['CNC', 'machining', 'computer numerical control', 'milling', 'automation'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="6" width="20" height="14" rx="2"/>
+  <rect x="4" y="8" width="10" height="8"/>
+  <path d="M9 8v-4"/>
+  <path d="M7 4h4"/>
+  <circle cx="9" cy="12" r="2"/>
+  <rect x="16" y="9" width="4" height="6" rx="1"/>
+  <path d="M17 12h2"/>
+  <path d="M18 10v4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-3d-printer',
+    name: '3D Printer',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['additive manufacturing', '3D printing', 'FDM', 'rapid prototyping', 'fabrication'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4" y="2" width="16" height="20" rx="2"/>
+  <path d="M4 8h16"/>
+  <path d="M12 8v-4"/>
+  <path d="M10 4h4"/>
+  <rect x="8" y="14" width="8" height="4"/>
+  <path d="M12 11v3"/>
+  <path d="M10 11h4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-lathe',
+    name: 'Lathe',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['lathe', 'turning', 'machining', 'spindle', 'rotation'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="10" width="16" height="4"/>
+  <circle cx="20" cy="12" r="2"/>
+  <ellipse cx="4" cy="12" rx="2" ry="4"/>
+  <path d="M10 6l2 4"/>
+  <path d="M12 10l2-4"/>
+  <path d="M4 6v2"/>
+  <path d="M4 14v2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-injection-molding',
+    name: 'Injection Molding',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['injection molding', 'plastic', 'mold', 'casting', 'mass production'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="8" width="8" height="8" rx="1"/>
+  <rect x="14" y="8" width="8" height="8" rx="1"/>
+  <path d="M10 12h4"/>
+  <path d="M12 10v4"/>
+  <path d="M12 2v6"/>
+  <path d="M10 4h4"/>
+  <path d="M6 16v4"/>
+  <path d="M18 16v4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-welding',
+    name: 'Welding',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['welding', 'joining', 'fabrication', 'fusion', 'MIG', 'TIG'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 20l8-8"/>
+  <path d="M12 12l8-8"/>
+  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+  <path d="M10 10l-2-4"/>
+  <path d="M14 10l2-4"/>
+  <path d="M8 6l2-2"/>
+  <path d="M14 4l2 2"/>
+  <path d="M2 20h4"/>
+  <path d="M18 4h4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-assembly-line',
+    name: 'Assembly Line',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['assembly', 'production line', 'manufacturing', 'automation', 'mass production'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 16h20"/>
+  <circle cx="5" cy="16" r="2"/>
+  <circle cx="19" cy="16" r="2"/>
+  <rect x="4" y="10" width="4" height="4"/>
+  <rect x="10" y="8" width="4" height="6"/>
+  <rect x="16" y="12" width="4" height="2"/>
+  <path d="M8 12h2"/>
+  <path d="M14 11h2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-press',
+    name: 'Hydraulic Press',
+    domain: 'engineering',
+    category: 'manufacturing',
+    tags: ['press', 'hydraulic', 'forming', 'stamping', 'forging'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4" y="2" width="16" height="4"/>
+  <rect x="10" y="6" width="4" height="8"/>
+  <path d="M8 14h8"/>
+  <path d="M6 14l-2 6"/>
+  <path d="M18 14l2 6"/>
+  <path d="M4 20h16"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // MATERIALS TESTING
+  // ===========================================================================
+  {
+    id: 'eng-tensile-test',
+    name: 'Tensile Testing',
+    domain: 'engineering',
+    category: 'testing',
+    tags: ['tensile', 'stress', 'strain', 'material testing', 'strength'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2v4"/>
+  <path d="M12 18v4"/>
+  <path d="M8 6h8"/>
+  <path d="M8 18h8"/>
+  <rect x="10" y="6" width="4" height="12" rx="2"/>
+  <path d="M10 12h4"/>
+  <path d="M9 4l3-2 3 2"/>
+  <path d="M9 20l3 2 3-2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-hardness-test',
+    name: 'Hardness Testing',
+    domain: 'engineering',
+    category: 'testing',
+    tags: ['hardness', 'Rockwell', 'Brinell', 'Vickers', 'material testing'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2l-2 8 4 2-2 10"/>
+  <rect x="4" y="18" width="16" height="4"/>
+  <circle cx="12" cy="18" r="2"/>
+  <path d="M8 18h-2"/>
+  <path d="M18 18h-2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-fatigue-test',
+    name: 'Fatigue Testing',
+    domain: 'engineering',
+    category: 'testing',
+    tags: ['fatigue', 'cyclic', 'endurance', 'stress cycle', 'material testing'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0 4 4 6 0"/>
+  <rect x="4" y="16" width="16" height="4" rx="1"/>
+  <path d="M8 16v-2"/>
+  <path d="M16 16v-2"/>
+  <circle cx="12" cy="8" r="1" fill="currentColor"/>
+</svg>`,
+  },
+  {
+    id: 'eng-impact-test',
+    name: 'Impact Testing',
+    domain: 'engineering',
+    category: 'testing',
+    tags: ['impact', 'Charpy', 'Izod', 'toughness', 'material testing'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 4l8 8"/>
+  <circle cx="4" cy="4" r="2"/>
+  <rect x="10" y="10" width="4" height="6" rx="1"/>
+  <path d="M6 20h12"/>
+  <path d="M8 16v4"/>
+  <path d="M16 16v4"/>
+  <path d="M14 13l4-4"/>
+  <path d="M18 9l2-2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-ndt',
+    name: 'Non-Destructive Testing',
+    domain: 'engineering',
+    category: 'testing',
+    tags: ['NDT', 'ultrasonic', 'radiographic', 'inspection', 'quality'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="8" width="8" height="10" rx="1"/>
+  <path d="M10 13c2 0 2-3 4-3s2 3 4 3"/>
+  <path d="M18 10c1 0 1-2 2-2"/>
+  <path d="M18 16c1 0 1 2 2 2"/>
+  <rect x="6" y="4" width="4" height="4"/>
+  <circle cx="8" cy="13" r="2"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // METROLOGY & MEASUREMENT
+  // ===========================================================================
+  {
+    id: 'eng-caliper',
+    name: 'Caliper',
+    domain: 'engineering',
+    category: 'metrology',
+    tags: ['caliper', 'measurement', 'vernier', 'dimension', 'precision'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 8h20"/>
+  <path d="M4 8v8"/>
+  <path d="M4 16h4v-4"/>
+  <path d="M14 8v8"/>
+  <path d="M14 16h4v-4"/>
+  <path d="M2 6h6"/>
+  <path d="M2 10h18"/>
+  <path d="M12 6v2"/>
+  <path d="M16 6v2"/>
+  <path d="M20 6v2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-micrometer',
+    name: 'Micrometer',
+    domain: 'engineering',
+    category: 'metrology',
+    tags: ['micrometer', 'measurement', 'precision', 'thickness', 'gauge'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 12c0-2 1-4 4-4"/>
+  <path d="M8 8v8"/>
+  <rect x="8" y="10" width="10" height="4"/>
+  <path d="M18 12h4"/>
+  <circle cx="20" cy="12" r="2"/>
+  <path d="M10 10v4"/>
+  <path d="M12 10v4"/>
+  <path d="M14 10v4"/>
+  <path d="M4 10v4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-cmm',
+    name: 'CMM Machine',
+    domain: 'engineering',
+    category: 'metrology',
+    tags: ['CMM', 'coordinate measuring', '3D measurement', 'inspection', 'quality'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="16" width="20" height="4"/>
+  <path d="M4 16v-6"/>
+  <path d="M20 16v-6"/>
+  <path d="M4 10h16"/>
+  <path d="M12 10v-6"/>
+  <path d="M12 4l-2 2"/>
+  <path d="M12 4l2 2"/>
+  <path d="M12 8v4"/>
+  <circle cx="12" cy="14" r="1" fill="currentColor"/>
+  <rect x="8" y="18" width="3" height="2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-gauge',
+    name: 'Dial Gauge',
+    domain: 'engineering',
+    category: 'metrology',
+    tags: ['gauge', 'dial indicator', 'measurement', 'tolerance', 'inspection'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="10" r="8"/>
+  <path d="M12 6v4l2 2"/>
+  <path d="M8 6l1 1"/>
+  <path d="M16 6l-1 1"/>
+  <path d="M6 10h1"/>
+  <path d="M17 10h1"/>
+  <path d="M12 18v4"/>
+  <path d="M10 22h4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-spirit-level',
+    name: 'Spirit Level',
+    domain: 'engineering',
+    category: 'metrology',
+    tags: ['level', 'spirit level', 'alignment', 'horizontal', 'measurement'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="8" width="20" height="8" rx="2"/>
+  <rect x="8" y="10" width="8" height="4" rx="1"/>
+  <circle cx="12" cy="12" r="1" fill="currentColor"/>
+  <path d="M10 12h-1"/>
+  <path d="M15 12h-1"/>
+  <path d="M4 10v4"/>
+  <path d="M20 10v4"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // HYDRAULICS & PNEUMATICS
+  // ===========================================================================
+  {
+    id: 'eng-hydraulic-cylinder',
+    name: 'Hydraulic Cylinder',
+    domain: 'engineering',
+    category: 'hydraulics',
+    tags: ['hydraulic', 'cylinder', 'actuator', 'piston', 'linear motion'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="8" width="12" height="8" rx="1"/>
+  <rect x="14" y="10" width="8" height="4"/>
+  <path d="M14 12h-4"/>
+  <circle cx="6" cy="12" r="2"/>
+  <path d="M6 8v-2"/>
+  <path d="M6 16v2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-pneumatic-valve',
+    name: 'Pneumatic Valve',
+    domain: 'engineering',
+    category: 'pneumatics',
+    tags: ['pneumatic', 'valve', 'air', 'solenoid', 'control'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4" y="8" width="16" height="8" rx="1"/>
+  <path d="M2 12h2"/>
+  <path d="M20 12h2"/>
+  <path d="M8 8v-4"/>
+  <path d="M16 8v-4"/>
+  <path d="M12 8v-2"/>
+  <path d="M6 4h4"/>
+  <path d="M14 4h4"/>
+  <path d="M9 12l3-2 3 2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-accumulator',
+    name: 'Accumulator',
+    domain: 'engineering',
+    category: 'hydraulics',
+    tags: ['accumulator', 'pressure vessel', 'energy storage', 'hydraulic', 'bladder'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="12" cy="6" rx="6" ry="4"/>
+  <ellipse cx="12" cy="18" rx="6" ry="4"/>
+  <path d="M6 6v12"/>
+  <path d="M18 6v12"/>
+  <path d="M6 12h12" stroke-dasharray="3 2"/>
+  <path d="M12 18v4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-air-compressor',
+    name: 'Air Compressor',
+    domain: 'engineering',
+    category: 'pneumatics',
+    tags: ['compressor', 'air', 'pneumatic', 'pressure', 'tank'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="8" cy="14" rx="6" ry="4"/>
+  <path d="M2 14v4"/>
+  <path d="M14 14v4"/>
+  <path d="M8 10v-4"/>
+  <rect x="6" y="2" width="4" height="4"/>
+  <path d="M12 4h4"/>
+  <path d="M16 2v4"/>
+  <circle cx="8" cy="18" r="2"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // PROJECT MANAGEMENT
+  // ===========================================================================
+  {
+    id: 'eng-gantt-chart',
+    name: 'Gantt Chart',
+    domain: 'engineering',
+    category: 'management',
+    tags: ['Gantt', 'schedule', 'timeline', 'project management', 'planning'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 4v16"/>
+  <path d="M4 8h16"/>
+  <rect x="6" y="10" width="8" height="2" fill="currentColor"/>
+  <rect x="8" y="14" width="10" height="2" fill="currentColor"/>
+  <rect x="6" y="18" width="6" height="2" fill="currentColor"/>
+  <path d="M4 12h2"/>
+  <path d="M4 16h2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-milestone',
+    name: 'Milestone',
+    domain: 'engineering',
+    category: 'management',
+    tags: ['milestone', 'checkpoint', 'deliverable', 'project', 'goal'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2l8 10-8 10-8-10z"/>
+  <path d="M12 6v12"/>
+  <path d="M8 12h8"/>
+</svg>`,
+  },
+  {
+    id: 'eng-critical-path',
+    name: 'Critical Path',
+    domain: 'engineering',
+    category: 'management',
+    tags: ['critical path', 'network', 'PERT', 'scheduling', 'dependencies'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="4" cy="12" r="2"/>
+  <circle cx="12" cy="6" r="2"/>
+  <circle cx="12" cy="18" r="2"/>
+  <circle cx="20" cy="12" r="2"/>
+  <path d="M6 12h4" stroke-width="3"/>
+  <path d="M14 12h4" stroke-width="3"/>
+  <path d="M12 8v2"/>
+  <path d="M12 14v2"/>
+  <path d="M6 11l4-4"/>
+  <path d="M14 7l4 4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-revision',
+    name: 'Revision Control',
+    domain: 'engineering',
+    category: 'management',
+    tags: ['revision', 'version', 'change control', 'ECN', 'documentation'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4" y="2" width="12" height="16" rx="1"/>
+  <path d="M8 6h4"/>
+  <path d="M8 10h4"/>
+  <path d="M8 14h2"/>
+  <path d="M14 14l4 4"/>
+  <path d="M18 14v4h-4"/>
+  <circle cx="18" cy="18" r="4"/>
+  <text x="16" y="20" font-size="5" fill="currentColor" stroke="none">R</text>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // POWER & ENERGY
+  // ===========================================================================
+  {
+    id: 'eng-turbine',
+    name: 'Turbine',
+    domain: 'engineering',
+    category: 'power',
+    tags: ['turbine', 'power generation', 'rotor', 'steam', 'gas'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8"/>
+  <circle cx="12" cy="12" r="2"/>
+  <path d="M12 4c-2 2-2 4 0 6"/>
+  <path d="M12 14c2 2 2 4 0 6"/>
+  <path d="M4 12c2-2 4-2 6 0"/>
+  <path d="M14 12c2 2 4 2 6 0"/>
+</svg>`,
+  },
+  {
+    id: 'eng-generator',
+    name: 'Generator',
+    domain: 'engineering',
+    category: 'power',
+    tags: ['generator', 'power', 'electricity', 'alternator', 'dynamo'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8"/>
+  <circle cx="12" cy="12" r="3"/>
+  <path d="M12 4v2"/>
+  <path d="M12 18v2"/>
+  <path d="M4 12h2"/>
+  <path d="M18 12h2"/>
+  <path d="M2 12h2"/>
+  <path d="M20 12h2"/>
+  <text x="10" y="14" font-size="5" fill="currentColor" stroke="none">G</text>
+</svg>`,
+  },
+  {
+    id: 'eng-solar-panel',
+    name: 'Solar Panel',
+    domain: 'engineering',
+    category: 'power',
+    tags: ['solar', 'photovoltaic', 'renewable', 'PV', 'energy'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="6" width="20" height="12" rx="1"/>
+  <path d="M2 10h20"/>
+  <path d="M2 14h20"/>
+  <path d="M7 6v12"/>
+  <path d="M12 6v12"/>
+  <path d="M17 6v12"/>
+  <path d="M12 18v4"/>
+  <path d="M8 22h8"/>
+</svg>`,
+  },
+  {
+    id: 'eng-wind-turbine',
+    name: 'Wind Turbine',
+    domain: 'engineering',
+    category: 'power',
+    tags: ['wind', 'turbine', 'renewable', 'energy', 'blade'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="8" r="2"/>
+  <path d="M12 10v12"/>
+  <path d="M8 22h8"/>
+  <path d="M12 6c-1-4 1-4 2-6"/>
+  <path d="M10 8c-4 1-4-1-6-2"/>
+  <path d="M14 8c4 1 4-1 6-2"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // STRUCTURAL ANALYSIS
+  // ===========================================================================
+  {
+    id: 'eng-fea-mesh',
+    name: 'FEA Mesh',
+    domain: 'engineering',
+    category: 'analysis',
+    tags: ['FEA', 'finite element', 'mesh', 'simulation', 'analysis'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="2" width="20" height="20"/>
+  <path d="M2 7h20"/>
+  <path d="M2 12h20"/>
+  <path d="M2 17h20"/>
+  <path d="M7 2v20"/>
+  <path d="M12 2v20"/>
+  <path d="M17 2v20"/>
+  <path d="M2 2l5 5"/>
+  <path d="M7 2l5 5"/>
+  <path d="M12 2l5 5"/>
+  <path d="M2 7l5 5"/>
+  <path d="M7 7l5 5"/>
+</svg>`,
+  },
+  {
+    id: 'eng-stress-strain',
+    name: 'Stress-Strain',
+    domain: 'engineering',
+    category: 'analysis',
+    tags: ['stress', 'strain', 'deformation', 'mechanics', 'analysis'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 20l4-4 4 2 4-6 4-2"/>
+  <path d="M4 20h16"/>
+  <path d="M4 20v-16"/>
+  <text x="2" y="8" font-size="4" fill="currentColor" stroke="none">σ</text>
+  <text x="18" y="22" font-size="4" fill="currentColor" stroke="none">ε</text>
+  <circle cx="16" cy="10" r="1" fill="currentColor"/>
+</svg>`,
+  },
+  {
+    id: 'eng-moment-diagram',
+    name: 'Bending Moment',
+    domain: 'engineering',
+    category: 'analysis',
+    tags: ['moment', 'bending', 'beam', 'structural', 'diagram'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 12h20"/>
+  <path d="M4 12v-4"/>
+  <path d="M20 12v-4"/>
+  <path d="M4 12c4 6 12 6 16 0"/>
+  <path d="M12 6v-4"/>
+  <path d="M10 4l2-2 2 2"/>
+  <circle cx="4" cy="12" r="1" fill="currentColor"/>
+  <circle cx="20" cy="12" r="1" fill="currentColor"/>
+</svg>`,
+  },
+  {
+    id: 'eng-shear-force',
+    name: 'Shear Force',
+    domain: 'engineering',
+    category: 'analysis',
+    tags: ['shear', 'force', 'beam', 'structural', 'diagram'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 12h20"/>
+  <path d="M4 12v6h8v-12h8v6"/>
+  <path d="M4 18h8"/>
+  <path d="M12 6h8"/>
+  <circle cx="4" cy="12" r="1" fill="currentColor"/>
+  <circle cx="20" cy="12" r="1" fill="currentColor"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // ADDITIONAL MECHANICAL
+  // ===========================================================================
+  {
+    id: 'eng-clutch',
+    name: 'Clutch',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['clutch', 'friction', 'engagement', 'transmission', 'coupling'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="8" cy="12" r="5"/>
+  <circle cx="16" cy="12" r="5"/>
+  <circle cx="8" cy="12" r="2"/>
+  <circle cx="16" cy="12" r="2"/>
+  <path d="M2 12h3"/>
+  <path d="M19 12h3"/>
+  <path d="M11 12h2" stroke-dasharray="2 1"/>
+</svg>`,
+  },
+  {
+    id: 'eng-brake',
+    name: 'Disc Brake',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['brake', 'disc', 'caliper', 'friction', 'stopping'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8"/>
+  <circle cx="12" cy="12" r="3"/>
+  <path d="M12 4v2"/>
+  <path d="M12 18v2"/>
+  <path d="M4 12h2"/>
+  <path d="M18 12h2"/>
+  <rect x="18" y="8" width="4" height="8" rx="1"/>
+</svg>`,
+  },
+  {
+    id: 'eng-flywheel',
+    name: 'Flywheel',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['flywheel', 'inertia', 'energy storage', 'rotation', 'momentum'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <circle cx="12" cy="12" r="6"/>
+  <circle cx="12" cy="12" r="2"/>
+  <path d="M12 2v4"/>
+  <path d="M12 18v4"/>
+  <path d="M2 12h4"/>
+  <path d="M18 12h4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-gearbox',
+    name: 'Gearbox',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['gearbox', 'transmission', 'gear train', 'reduction', 'speed'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="4" y="4" width="16" height="16" rx="2"/>
+  <circle cx="9" cy="9" r="3"/>
+  <circle cx="15" cy="15" r="3"/>
+  <path d="M11 7l4 4"/>
+  <path d="M2 12h2"/>
+  <path d="M20 12h2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-sprocket',
+    name: 'Sprocket',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['sprocket', 'chain', 'teeth', 'drive', 'bicycle'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="6"/>
+  <circle cx="12" cy="12" r="2"/>
+  <path d="M12 2v4"/>
+  <path d="M12 18v4"/>
+  <path d="M2 12h4"/>
+  <path d="M18 12h4"/>
+  <path d="M4.93 4.93l2.83 2.83"/>
+  <path d="M16.24 16.24l2.83 2.83"/>
+  <path d="M4.93 19.07l2.83-2.83"/>
+  <path d="M16.24 7.76l2.83-2.83"/>
+</svg>`,
+  },
+  {
+    id: 'eng-pulley',
+    name: 'Pulley System',
+    domain: 'engineering',
+    category: 'mechanical',
+    tags: ['pulley', 'rope', 'mechanical advantage', 'lift', 'hoist'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="8" cy="6" r="4"/>
+  <circle cx="16" cy="6" r="4"/>
+  <circle cx="8" cy="6" r="1"/>
+  <circle cx="16" cy="6" r="1"/>
+  <path d="M8 10v8"/>
+  <path d="M16 10v8"/>
+  <path d="M4 6v14"/>
+  <path d="M4 6h4"/>
+  <path d="M4 18h4"/>
+  <path d="M16 18h4l-2 4"/>
+</svg>`,
+  },
+
+  // ===========================================================================
+  // HVAC
+  // ===========================================================================
+  {
+    id: 'eng-hvac-unit',
+    name: 'HVAC Unit',
+    domain: 'engineering',
+    category: 'hvac',
+    tags: ['HVAC', 'air conditioning', 'heating', 'ventilation', 'climate'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="6" width="20" height="12" rx="2"/>
+  <path d="M6 10h4"/>
+  <path d="M6 14h4"/>
+  <circle cx="16" cy="12" r="3"/>
+  <path d="M14 12h4"/>
+  <path d="M16 10v4"/>
+  <path d="M2 18v2"/>
+  <path d="M22 18v2"/>
+</svg>`,
+  },
+  {
+    id: 'eng-ductwork',
+    name: 'Ductwork',
+    domain: 'engineering',
+    category: 'hvac',
+    tags: ['duct', 'air', 'ventilation', 'distribution', 'HVAC'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 8h8v8h8"/>
+  <path d="M4 12h8"/>
+  <path d="M12 12v4"/>
+  <path d="M4 6v8"/>
+  <path d="M12 6v2"/>
+  <path d="M12 16h8v4"/>
+  <path d="M18 20h4"/>
+</svg>`,
+  },
+  {
+    id: 'eng-fan',
+    name: 'Fan',
+    domain: 'engineering',
+    category: 'hvac',
+    tags: ['fan', 'blower', 'air movement', 'ventilation', 'cooling'],
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"/>
+  <circle cx="12" cy="12" r="2"/>
+  <path d="M12 4c-2 2-1 5 0 6"/>
+  <path d="M12 14c2 2 1 5 0 6"/>
+  <path d="M6 9c1-2 4-2 6 0"/>
+  <path d="M12 12c2 1 5 1 6-2"/>
+</svg>`,
+  },
+
   {
     id: 'eng-antenna',
     name: 'Antenna',

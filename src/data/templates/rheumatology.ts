@@ -795,6 +795,484 @@ export const biologicSelection: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL DECISION TREES
+// =============================================================================
+
+/**
+ * Spondyloarthropathy Treatment Algorithm template
+ */
+export const spondyloarthropathyTreatment: DiagramTemplate = {
+  id: 'rheum-spondyloarthropathy-treatment',
+  name: 'Spondyloarthropathy Treatment Algorithm',
+  description: 'Treatment approach for axial and peripheral spondyloarthritis following ASAS/EULAR guidelines',
+  domain: 'medicine',
+  promptTemplate: `Create a spondyloarthropathy treatment algorithm:
+- Disease phenotype (axial vs peripheral): {{phenotype}}
+- Disease activity measures: {{activityMeasures}}
+- Initial NSAID trial: {{nsaidTrial}}
+- TNF inhibitor indications: {{tnfIndicatons}}
+- IL-17 inhibitor options: {{il17Options}}
+- JAK inhibitor considerations: {{jakConsiderations}}
+- Physical therapy role: {{physicalTherapy}}
+- Monitoring approach: {{monitoring}}
+{{#additionalNotes}}Extra-articular considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'phenotype',
+    'activityMeasures',
+    'nsaidTrial',
+    'tnfIndicatons',
+    'il17Options',
+    'jakConsiderations',
+    'physicalTherapy',
+    'monitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Spondyloarthropathy\\nDiagnosis")] --> B{"Axial or\\nPeripheral?"}
+    B -->|"Axial SpA"| C["NSAIDs\\n+ Physical therapy"]
+    B -->|"Peripheral SpA"| D["NSAIDs +/- DMARD\\n(SSZ, MTX)"]
+    C --> E{"BASDAI/ASDAS\\nResponse?"}
+    E -->|"Inadequate"| F["TNF inhibitor"]
+    E -->|"Good"| G["Continue\\nMonitor"]
+    F --> H{"Response?"}
+    H -->|"No"| I["IL-17i or JAKi"]
+    H -->|"Yes"| J["Continue\\nAssess tapering"]
+    D --> K{"Peripheral\\nResponse?"}
+    K -->|"No"| L["TNFi/IL-17i"]
+    K -->|"Yes"| M["Continue DMARDs"]
+    style F fill:#4169E1,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Antiphospholipid Syndrome Management template
+ */
+export const apsSyndromeManagement: DiagramTemplate = {
+  id: 'rheum-aps-management',
+  name: 'Antiphospholipid Syndrome Management',
+  description: 'Management approach for APS including thrombosis prevention and pregnancy considerations',
+  domain: 'medicine',
+  promptTemplate: `Create an antiphospholipid syndrome management algorithm:
+- Classification criteria: {{classificationCriteria}}
+- Antibody profile: {{antibodyProfile}}
+- Thrombosis history: {{thrombosisHistory}}
+- Anticoagulation approach: {{anticoagulation}}
+- Pregnancy management: {{pregnancyManagement}}
+- Catastrophic APS recognition: {{catastrophicAPS}}
+- Risk stratification: {{riskStratification}}
+- Monitoring: {{monitoring}}
+{{#additionalNotes}}Special populations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'classificationCriteria',
+    'antibodyProfile',
+    'thrombosisHistory',
+    'anticoagulation',
+    'pregnancyManagement',
+    'catastrophicAPS',
+    'riskStratification',
+    'monitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("APS\\nDiagnosis")] --> B{"Thrombosis\\nType?"}
+    B -->|"Arterial"| C["Warfarin INR 2-3\\nor 3-4 if recurrent"]
+    B -->|"Venous"| D["Warfarin INR 2-3\\nLifelong"]
+    B -->|"Obstetric only"| E["LMWH + ASA\\nduring pregnancy"]
+    C --> F{"Triple\\nPositive?"}
+    D --> F
+    F -->|"Yes"| G["Higher intensity\\nAvoid DOACs"]
+    F -->|"No"| H["Standard\\nanticoagulation"]
+    subgraph CAPS["Catastrophic APS"]
+        I["Anticoagulation\\n+ Steroids\\n+ PLEX/IVIG"]
+    end
+    style G fill:#DC143C,color:#fff
+    style I fill:#8B0000,color:#fff`,
+};
+
+/**
+ * Systemic Sclerosis Management template
+ */
+export const systemicSclerosisManagement: DiagramTemplate = {
+  id: 'rheum-ssc-management',
+  name: 'Systemic Sclerosis Management',
+  description: 'Organ-based management approach for systemic sclerosis/scleroderma',
+  domain: 'medicine',
+  promptTemplate: `Create a systemic sclerosis management algorithm:
+- Disease subtype (limited vs diffuse): {{subtype}}
+- Skin involvement: {{skinInvolvement}}
+- ILD screening and treatment: {{ildManagement}}
+- PAH screening and treatment: {{pahManagement}}
+- GI manifestations: {{giManifestations}}
+- Raynaud's/digital ulcers: {{raynaudsManagement}}
+- Renal crisis prevention: {{renalCrisis}}
+- Autoantibody associations: {{antibodies}}
+{{#additionalNotes}}Emerging therapies: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'subtype',
+    'skinInvolvement',
+    'ildManagement',
+    'pahManagement',
+    'giManifestations',
+    'raynaudsManagement',
+    'renalCrisis',
+    'antibodies',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Systemic\\nSclerosis")] --> B{"Subtype?"}
+    B -->|"Limited (lcSSc)"| C["Anti-centromere Ab\\nPAH risk high"]
+    B -->|"Diffuse (dcSSc)"| D["Anti-Scl70\\nILD, renal crisis risk"]
+    C --> E["Annual Echo\\nfor PAH screen"]
+    D --> F["PFTs q6-12mo\\nfor ILD screen"]
+    subgraph Organ["Organ Management"]
+        G["ILD: Nintedanib/MMF"]
+        H["PAH: ERA, PDE5i, prostacyclin"]
+        I["GI: PPI, prokinetics"]
+        J["Raynaud: CCB, PDE5i"]
+        K["Skin: MTX, MMF"]
+    end
+    E --> H
+    F --> G
+    subgraph Emergency["Emergency"]
+        L["Renal Crisis:\\nACEi urgently"]
+    end
+    style L fill:#DC143C,color:#fff
+    style H fill:#FFA500,color:#000`,
+};
+
+/**
+ * Inflammatory Myopathy Workup template
+ */
+export const myopathyWorkup: DiagramTemplate = {
+  id: 'rheum-myopathy-workup',
+  name: 'Inflammatory Myopathy Workup',
+  description: 'Diagnostic approach for dermatomyositis, polymyositis, and other inflammatory myopathies',
+  domain: 'medicine',
+  promptTemplate: `Create an inflammatory myopathy workup algorithm:
+- Clinical presentation: {{presentation}}
+- Muscle enzymes (CK, aldolase): {{muscleEnzymes}}
+- Myositis-specific antibodies: {{myositisAntibodies}}
+- Myositis-associated antibodies: {{associatedAntibodies}}
+- EMG findings: {{emgFindings}}
+- MRI indications: {{mriIndications}}
+- Muscle biopsy: {{muscleBiopsy}}
+- Malignancy screening: {{malignancyScreening}}
+{{#additionalNotes}}ILD evaluation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'muscleEnzymes',
+    'myositisAntibodies',
+    'associatedAntibodies',
+    'emgFindings',
+    'mriIndications',
+    'muscleBiopsy',
+    'malignancyScreening',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Proximal Weakness\\n+ Elevated CK")] --> B["MSA/MAA Panel"]
+    B --> C{"Specific\\nAntibody?"}
+    C -->|"Anti-Jo1, PL-7, PL-12"| D["Antisynthetase\\nSyndrome"]
+    C -->|"Anti-Mi2"| E["Classic DM\\nGood prognosis"]
+    C -->|"Anti-MDA5"| F["Amyopathic DM\\nRapid ILD risk"]
+    C -->|"Anti-SRP, HMGCR"| G["Necrotizing\\nMyopathy"]
+    D --> H["High-dose steroids\\n+ Steroid-sparing"]
+    E --> H
+    F --> I["Aggressive IS\\nILD monitoring"]
+    G --> J["IVIG +/- IS"]
+    subgraph Workup["Full Workup"]
+        K["MRI muscle"]
+        L["EMG"]
+        M["Biopsy if needed"]
+        N["Cancer screen (DM)"]
+    end
+    style F fill:#DC143C,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * Sjogren's Syndrome Management template
+ */
+export const sjogrenManagement: DiagramTemplate = {
+  id: 'rheum-sjogren-management',
+  name: 'Sjogren Syndrome Management',
+  description: 'Management approach for primary and secondary Sjogren syndrome',
+  domain: 'medicine',
+  promptTemplate: `Create a Sjogren syndrome management algorithm:
+- Sicca symptoms management: {{siccaManagement}}
+- Salivary gland assessment: {{salivaryAssessment}}
+- Extraglandular manifestations: {{extraglandular}}
+- Systemic treatment indications: {{systemicTreatment}}
+- Lymphoma surveillance: {{lymphomaSurveillance}}
+- Fatigue management: {{fatigueManagement}}
+- Dental care: {{dentalCare}}
+- Ophthalmologic follow-up: {{ophthalmology}}
+{{#additionalNotes}}Quality of life: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'siccaManagement',
+    'salivaryAssessment',
+    'extraglandular',
+    'systemicTreatment',
+    'lymphomaSurveillance',
+    'fatigueManagement',
+    'dentalCare',
+    'ophthalmology',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Sjogren\\nSyndrome")] --> B["All patients:\\nArtificial tears/saliva"]
+    B --> C{"Extraglandular\\nManifestations?"}
+    C -->|"Sicca only"| D["Topical therapy\\nPilocarpine/Cevimeline"]
+    C -->|"Arthritis"| E["HCQ +/- MTX"]
+    C -->|"Vasculitis/Neuro"| F["Steroids + IS\\n(RTX, AZA, CYC)"]
+    B --> G["Monitor for Lymphoma"]
+    G --> H["Annual: Salivary US\\nMonitor IgM, cryos"]
+    subgraph Support["Supportive Care"]
+        I["Frequent dental visits"]
+        J["Ophthalmology q6-12mo"]
+        K["Punctal plugs if severe"]
+    end
+    style F fill:#DC143C,color:#fff
+    style G fill:#FFA500,color:#000`,
+};
+
+/**
+ * Septic Arthritis Emergency template
+ */
+export const septicArthritisEmergency: DiagramTemplate = {
+  id: 'rheum-septic-arthritis-emergency',
+  name: 'Septic Arthritis Emergency Management',
+  description: 'Emergency approach to suspected septic arthritis',
+  domain: 'medicine',
+  promptTemplate: `Create a septic arthritis emergency algorithm:
+- Clinical presentation: {{presentation}}
+- Risk factors: {{riskFactors}}
+- Arthrocentesis urgency: {{arthrocentesisUrgency}}
+- Synovial fluid analysis: {{synovialAnalysis}}
+- Empiric antibiotics: {{empiricAntibiotics}}
+- Surgical drainage indications: {{surgicalIndications}}
+- Native vs prosthetic joint: {{jointType}}
+- Response assessment: {{responseAssessment}}
+{{#additionalNotes}}Gonococcal considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'riskFactors',
+    'arthrocentesisUrgency',
+    'synovialAnalysis',
+    'empiricAntibiotics',
+    'surgicalIndications',
+    'jointType',
+    'responseAssessment',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Hot, Swollen\\nJoint")] --> B["URGENT\\nArthrocentesis"]
+    B --> C{"WBC\\n>50,000?"}
+    C -->|"Yes + purulent"| D["Empiric Abx:\\nVanc + Ceftriaxone"]
+    C -->|"Borderline"| E["Gram stain\\nCulture pending"]
+    D --> F{"Native or\\nProsthetic?"}
+    F -->|"Native"| G["Serial drainage\\nIV Abx 2-4 weeks"]
+    F -->|"Prosthetic"| H["Ortho consult\\nSurgical debridement"]
+    G --> I{"Improving?"}
+    I -->|"No"| J["Surgical washout"]
+    I -->|"Yes"| K["Complete Abx\\nPT/rehab"]
+    style A fill:#DC143C,color:#fff
+    style B fill:#DC143C,color:#fff
+    style H fill:#FFA500,color:#000`,
+};
+
+/**
+ * Osteoporosis Screening and Treatment template
+ */
+export const rheumOsteoporosisManagement: DiagramTemplate = {
+  id: 'rheum-osteoporosis-management',
+  name: 'Osteoporosis Screening and Treatment',
+  description: 'Comprehensive osteoporosis evaluation and treatment algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create an osteoporosis management algorithm:
+- Screening indications: {{screeningIndications}}
+- DEXA interpretation: {{dexaInterpretation}}
+- FRAX assessment: {{fraxAssessment}}
+- Secondary causes workup: {{secondaryCauses}}
+- First-line therapy: {{firstLineTherapy}}
+- Bisphosphonate selection: {{bisphosphonateSelection}}
+- Anabolic therapy indications: {{anabolicIndications}}
+- Monitoring and duration: {{monitoring}}
+{{#additionalNotes}}Drug holidays: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'screeningIndications',
+    'dexaInterpretation',
+    'fraxAssessment',
+    'secondaryCauses',
+    'firstLineTherapy',
+    'bisphosphonateSelection',
+    'anabolicIndications',
+    'monitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Osteoporosis\\nScreening")] --> B{"Who to\\nScreen?"}
+    B -->|"Women ≥65\\nMen ≥70"| C["DEXA scan"]
+    B -->|"Younger + RF"| C
+    C --> D{"T-score?"}
+    D -->|"≤-2.5"| E["Osteoporosis\\nTreat"]
+    D -->|"-1 to -2.5"| F["Osteopenia\\nFRAX score"]
+    D -->|">-1"| G["Normal\\nRescreen later"]
+    F --> H{"FRAX Hip\\n≥3% or Major\\n≥20%?"}
+    H -->|"Yes"| E
+    H -->|"No"| I["Lifestyle\\nCalcium/Vit D"]
+    E --> J{"Very high risk?\\n(T≤-3, fracture)"}
+    J -->|"Yes"| K["Anabolic first\\n(Teriparatide, Romosozumab)"]
+    J -->|"No"| L["Bisphosphonate\\n(Alendronate, Zoledronic)"]
+    style E fill:#DC143C,color:#fff
+    style K fill:#FFA500,color:#000`,
+};
+
+/**
+ * Juvenile Idiopathic Arthritis Management template
+ */
+export const jiaManagement: DiagramTemplate = {
+  id: 'rheum-jia-management',
+  name: 'JIA Management Algorithm',
+  description: 'Treatment approach for juvenile idiopathic arthritis by subtype',
+  domain: 'medicine',
+  promptTemplate: `Create a JIA management algorithm:
+- JIA subtype classification: {{subtypeClassification}}
+- Initial treatment approach: {{initialTreatment}}
+- DMARD selection: {{dmardSelection}}
+- Biologic therapy: {{biologicTherapy}}
+- Uveitis screening: {{uveitisScreening}}
+- Growth monitoring: {{growthMonitoring}}
+- MAS recognition: {{masRecognition}}
+- Transition to adult care: {{transitionCare}}
+{{#additionalNotes}}Psychosocial support: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'subtypeClassification',
+    'initialTreatment',
+    'dmardSelection',
+    'biologicTherapy',
+    'uveitisScreening',
+    'growthMonitoring',
+    'masRecognition',
+    'transitionCare',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("JIA\\nDiagnosis")] --> B{"ILAR\\nSubtype?"}
+    B -->|"Oligoarticular"| C["Intra-articular steroid\\n+/- MTX"]
+    B -->|"Polyarticular\\nRF-/RF+"| D["MTX first-line"]
+    B -->|"Systemic (sJIA)"| E["Anakinra/Tocilizumab\\n+ Steroids"]
+    B -->|"Enthesitis-related"| F["NSAIDs\\n→ SSZ → TNFi"]
+    C --> G["Uveitis Screen:\\nANA+: q3mo\\nANA-: q6mo"]
+    D --> H{"Response\\n3-6mo?"}
+    H -->|"No"| I["Add biologic\\n(TNFi, Abatacept)"]
+    H -->|"Yes"| J["Continue MTX\\nMonitor growth"]
+    subgraph Emergency["Emergency"]
+        K["MAS: High ferritin\\nDIC, hepatitis"]
+    end
+    E --> K
+    style E fill:#FFA500,color:#000
+    style K fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Fibromyalgia Assessment template
+ */
+export const fibromyalgiaAssessment: DiagramTemplate = {
+  id: 'rheum-fibromyalgia-assessment',
+  name: 'Fibromyalgia Assessment and Management',
+  description: 'Diagnostic and management approach for fibromyalgia',
+  domain: 'medicine',
+  promptTemplate: `Create a fibromyalgia assessment algorithm:
+- Diagnostic criteria (2016 ACR): {{diagnosticCriteria}}
+- Widespread pain index: {{painIndex}}
+- Symptom severity scale: {{severityScale}}
+- Differential diagnosis: {{differentialDiagnosis}}
+- Non-pharmacologic treatment: {{nonPharmacologic}}
+- Pharmacologic options: {{pharmacologicOptions}}
+- Comorbidity management: {{comorbidities}}
+- Follow-up approach: {{followUp}}
+{{#additionalNotes}}Patient education: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'diagnosticCriteria',
+    'painIndex',
+    'severityScale',
+    'differentialDiagnosis',
+    'nonPharmacologic',
+    'pharmacologicOptions',
+    'comorbidities',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Chronic Widespread\\nPain")] --> B["2016 ACR Criteria:\\nWPI + SSS"]
+    B --> C{"WPI ≥7 + SSS ≥5\\nOR WPI 4-6 + SSS ≥9?"}
+    C -->|"Yes"| D["Fibromyalgia\\nDiagnosis"]
+    C -->|"No"| E["Consider other\\ndiagnoses"]
+    D --> F["Non-pharm first:\\nExercise, CBT, Sleep hygiene"]
+    F --> G{"Adequate\\nRelief?"}
+    G -->|"No"| H["Add medication"]
+    G -->|"Yes"| I["Continue\\nReinforce"]
+    H --> J["Options:\\nDuloxetine\\nPregabalin\\nAmitriptyline"]
+    subgraph Comorbid["Address Comorbidities"]
+        K["Sleep disorders"]
+        L["Depression/Anxiety"]
+        M["Deconditioning"]
+    end
+    D --> K & L & M
+    style F fill:#228B22,color:#fff`,
+};
+
+/**
+ * Reactive Arthritis Management template
+ */
+export const reactiveArthritisManagement: DiagramTemplate = {
+  id: 'rheum-reactive-arthritis',
+  name: 'Reactive Arthritis Management',
+  description: 'Management approach for post-infectious reactive arthritis',
+  domain: 'medicine',
+  promptTemplate: `Create a reactive arthritis management algorithm:
+- Triggering infection: {{triggeringInfection}}
+- Clinical triad: {{clinicalTriad}}
+- HLA-B27 status: {{hlaB27}}
+- Joint involvement: {{jointInvolvement}}
+- Extra-articular features: {{extraArticular}}
+- Antibiotic role: {{antibioticRole}}
+- NSAID and DMARD therapy: {{nsaidDmard}}
+- Prognosis: {{prognosis}}
+{{#additionalNotes}}Chronic course management: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'triggeringInfection',
+    'clinicalTriad',
+    'hlaB27',
+    'jointInvolvement',
+    'extraArticular',
+    'antibioticRole',
+    'nsaidDmard',
+    'prognosis',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Post-infectious\\nArthritis")] --> B{"Triggering\\nInfection?"}
+    B -->|"GI: Salmonella,\\nShigella, Yersinia"| C["Stool studies"]
+    B -->|"GU: Chlamydia"| D["Urine NAAT"]
+    C & D --> E["Treat active\\ninfection"]
+    E --> F["NSAIDs\\n+ PT"]
+    F --> G{"Response in\\n4-6 weeks?"}
+    G -->|"No"| H["Intra-articular steroid\\nor Sulfasalazine"]
+    G -->|"Yes"| I["Continue\\nTaper"]
+    H --> J{"Chronic\\ncourse?"}
+    J -->|"Yes"| K["MTX or TNFi\\nif HLA-B27+"]
+    J -->|"No"| L["Taper therapy"]
+    subgraph Triad["Classic Triad"]
+        M["Arthritis"]
+        N["Urethritis"]
+        O["Conjunctivitis"]
+    end
+    style K fill:#4169E1,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -808,6 +1286,16 @@ export const rheumatologyTemplates: DiagramTemplate[] = [
   lupusManagement,
   goutTreatment,
   vasculitisEvaluation,
+  spondyloarthropathyTreatment,
+  apsSyndromeManagement,
+  systemicSclerosisManagement,
+  myopathyWorkup,
+  sjogrenManagement,
+  septicArthritisEmergency,
+  rheumOsteoporosisManagement,
+  jiaManagement,
+  fibromyalgiaAssessment,
+  reactiveArthritisManagement,
   // Anatomical Diagrams
   synovialJointAnatomy,
   inflammatoryVsDegenerative,

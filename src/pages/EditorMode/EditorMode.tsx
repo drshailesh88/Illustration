@@ -388,21 +388,20 @@ export function EditorMode(): JSX.Element {
                   onSelectionChange={handleSelectionChange}
                   onObjectModified={handleObjectModified}
                 />
-                {/* Paper.js overlay canvas for Pen Tool */}
-                {illustratorTool === 'pen' && (
-                  <canvas
-                    ref={paperCanvasRef}
-                    width={canvasSize.width}
-                    height={canvasSize.height}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      pointerEvents: 'auto',
-                      zIndex: 10,
-                    }}
-                  />
-                )}
+                {/* Paper.js overlay canvas for Pen Tool - always rendered for ref availability */}
+                <canvas
+                  ref={paperCanvasRef}
+                  width={canvasSize.width}
+                  height={canvasSize.height}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    pointerEvents: illustratorTool === 'pen' ? 'auto' : 'none',
+                    zIndex: illustratorTool === 'pen' ? 10 : -1,
+                    visibility: illustratorTool === 'pen' ? 'visible' : 'hidden',
+                  }}
+                />
               </div>
             </div>
           </div>

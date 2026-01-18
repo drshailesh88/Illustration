@@ -1380,11 +1380,363 @@ export const mitosisStages: DiagramTemplate = {
 };
 
 // =============================================================================
+// ORGANISM LIFE CYCLES & TAXONOMY TEMPLATES
+// =============================================================================
+
+/**
+ * Life Cycle template
+ */
+export const lifeCycleTemplate: DiagramTemplate = {
+  id: 'bio-life-cycle',
+  name: 'Organism Life Cycle',
+  description:
+    'Circular diagram showing stages of an organism life cycle including metamorphosis',
+  domain: 'biology',
+  promptTemplate: `Create a life cycle diagram:
+- Organism type: {{organismType}}
+- Life stages: {{lifeStages}}
+- Metamorphosis type: {{metamorphosisType}}
+- Duration of each stage: {{stageDuration}}
+- Environmental factors: {{environmentalFactors}}
+- Reproductive strategy: {{reproductiveStrategy}}
+- Key transformations: {{keyTransformations}}
+{{#habitat}}Habitat requirements: {{habitat}}{{/habitat}}`,
+  placeholders: [
+    'organismType',
+    'lifeStages',
+    'metamorphosisType',
+    'stageDuration',
+    'environmentalFactors',
+    'reproductiveStrategy',
+    'keyTransformations',
+    'habitat',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph lifecycle["Complete Metamorphosis"]
+        egg["Egg<br/>(1-2 weeks)"]
+        larva["Larva/Caterpillar<br/>(2-4 weeks)"]
+        pupa["Pupa/Chrysalis<br/>(1-2 weeks)"]
+        adult["Adult Butterfly<br/>(2-4 weeks)"]
+    end
+
+    egg -->|"Hatching"| larva
+    larva -->|"Molts 4-5x"| pupa
+    pupa -->|"Emergence"| adult
+    adult -->|"Oviposition"| egg
+
+    subgraph factors["Environmental Factors"]
+        temp["Temperature"]
+        light["Photoperiod"]
+        food["Host Plant"]
+    end
+
+    factors -.-> lifecycle
+
+    classDef early fill:#dcfce7,stroke:#16a34a
+    classDef growth fill:#fef3c7,stroke:#d97706
+    classDef transform fill:#f3e8ff,stroke:#9333ea
+    classDef mature fill:#dbeafe,stroke:#2563eb
+
+    class egg early
+    class larva growth
+    class pupa transform
+    class adult mature`,
+};
+
+/**
+ * Biome Classification template
+ */
+export const biomeClassification: DiagramTemplate = {
+  id: 'bio-biome-classification',
+  name: 'Biome Classification',
+  description:
+    'Diagram showing major biomes organized by climate factors',
+  domain: 'biology',
+  promptTemplate: `Create a biome classification diagram:
+- Biomes to include: {{biomes}}
+- Climate factors: {{climateFactors}}
+- Temperature ranges: {{temperatureRanges}}
+- Precipitation levels: {{precipitationLevels}}
+- Characteristic vegetation: {{vegetation}}
+- Representative animals: {{animals}}
+- Geographic distribution: {{distribution}}
+{{#humanImpact}}Human impact: {{humanImpact}}{{/humanImpact}}`,
+  placeholders: [
+    'biomes',
+    'climateFactors',
+    'temperatureRanges',
+    'precipitationLevels',
+    'vegetation',
+    'animals',
+    'distribution',
+    'humanImpact',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph terrestrial["Terrestrial Biomes"]
+        subgraph cold["Cold Biomes"]
+            tundra["Tundra<br/>-34 to 12°C"]
+            taiga["Taiga/Boreal<br/>-54 to 21°C"]
+        end
+
+        subgraph temperate["Temperate Biomes"]
+            deciduous["Deciduous Forest<br/>-30 to 30°C"]
+            grassland["Grassland<br/>-20 to 30°C"]
+        end
+
+        subgraph tropical["Tropical Biomes"]
+            rainforest["Tropical Rainforest<br/>20 to 34°C"]
+            savanna["Savanna<br/>20 to 30°C"]
+        end
+
+        subgraph arid["Arid Biomes"]
+            desert["Desert<br/>-18 to 49°C"]
+        end
+    end
+
+    subgraph aquatic["Aquatic Biomes"]
+        marine["Marine"]
+        freshwater["Freshwater"]
+    end
+
+    classDef cold fill:#e0f2fe,stroke:#0284c7
+    classDef temp fill:#dcfce7,stroke:#16a34a
+    classDef trop fill:#fef3c7,stroke:#d97706
+    classDef arid fill:#fee2e2,stroke:#dc2626
+    classDef water fill:#dbeafe,stroke:#2563eb
+
+    class tundra,taiga cold
+    class deciduous,grassland temp
+    class rainforest,savanna trop
+    class desert arid
+    class marine,freshwater water`,
+};
+
+/**
+ * Taxonomic Classification template
+ */
+export const taxonomicClassification: DiagramTemplate = {
+  id: 'bio-taxonomy',
+  name: 'Taxonomic Classification',
+  description:
+    'Hierarchical diagram showing taxonomic ranks from Kingdom to Species',
+  domain: 'biology',
+  promptTemplate: `Create a taxonomic classification diagram:
+- Organism: {{organism}}
+- Kingdom: {{kingdom}}
+- Phylum/Division: {{phylum}}
+- Class: {{class}}
+- Order: {{order}}
+- Family: {{family}}
+- Genus: {{genus}}
+- Species: {{species}}
+- Key characteristics at each level: {{characteristics}}
+{{#relatedSpecies}}Related species: {{relatedSpecies}}{{/relatedSpecies}}`,
+  placeholders: [
+    'organism',
+    'kingdom',
+    'phylum',
+    'class',
+    'order',
+    'family',
+    'genus',
+    'species',
+    'characteristics',
+    'relatedSpecies',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph taxonomy["Taxonomic Hierarchy"]
+        domain["Domain<br/>Eukarya"]
+        kingdom["Kingdom<br/>Animalia"]
+        phylum["Phylum<br/>Chordata"]
+        class["Class<br/>Mammalia"]
+        order["Order<br/>Primates"]
+        family["Family<br/>Hominidae"]
+        genus["Genus<br/><i>Homo</i>"]
+        species["Species<br/><i>Homo sapiens</i>"]
+    end
+
+    domain --> kingdom
+    kingdom --> phylum
+    phylum --> class
+    class --> order
+    order --> family
+    family --> genus
+    genus --> species
+
+    subgraph traits["Defining Characteristics"]
+        t1["Eukaryotic cells"]
+        t2["Multicellular, heterotroph"]
+        t3["Notochord, dorsal nerve"]
+        t4["Hair, mammary glands"]
+        t5["Forward-facing eyes"]
+        t6["Bipedal, large brain"]
+    end
+
+    kingdom -.-> t2
+    phylum -.-> t3
+    class -.-> t4
+    order -.-> t5
+    family -.-> t6
+
+    classDef high fill:#f3e8ff,stroke:#9333ea
+    classDef mid fill:#dbeafe,stroke:#2563eb
+    classDef low fill:#dcfce7,stroke:#16a34a
+
+    class domain,kingdom high
+    class phylum,class,order mid
+    class family,genus,species low`,
+};
+
+/**
+ * Ecological Relationships template
+ */
+export const ecologicalRelationships: DiagramTemplate = {
+  id: 'bio-ecological-relationships',
+  name: 'Ecological Relationships',
+  description:
+    'Diagram showing symbiotic and other ecological relationships between species',
+  domain: 'biology',
+  promptTemplate: `Create an ecological relationships diagram:
+- Relationship types: {{relationshipTypes}}
+- Species involved: {{species}}
+- Mutualistic examples: {{mutualismExamples}}
+- Parasitic examples: {{parasitismExamples}}
+- Commensal examples: {{commensalismExamples}}
+- Predator-prey examples: {{predatorPreyExamples}}
+- Competition examples: {{competitionExamples}}
+- Benefits/costs for each species: {{benefitsCosts}}`,
+  placeholders: [
+    'relationshipTypes',
+    'species',
+    'mutualismExamples',
+    'parasitismExamples',
+    'commensalismExamples',
+    'predatorPreyExamples',
+    'competitionExamples',
+    'benefitsCosts',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph mutualism["Mutualism (+/+)"]
+        m1["Bee"] <-->|"Pollination"| m2["Flower"]
+        m3["Clownfish"] <-->|"Protection"| m4["Sea Anemone"]
+    end
+
+    subgraph parasitism["Parasitism (+/-)"]
+        p1["Tapeworm"] -->|"Nutrients"| p2["Host Animal"]
+        p3["Tick"] -->|"Blood"| p4["Mammal"]
+    end
+
+    subgraph commensalism["Commensalism (+/0)"]
+        c1["Barnacle"] -->|"Transport"| c2["Whale"]
+        c3["Remora"] -->|"Food scraps"| c4["Shark"]
+    end
+
+    subgraph predation["Predation (+/-)"]
+        pr1["Lion"] -->|"Consumption"| pr2["Zebra"]
+    end
+
+    subgraph competition["Competition (-/-)"]
+        co1["Species A"] <-.->|"Same niche"| co2["Species B"]
+    end
+
+    classDef positive fill:#dcfce7,stroke:#16a34a
+    classDef negative fill:#fee2e2,stroke:#dc2626
+    classDef neutral fill:#f3f4f6,stroke:#6b7280
+
+    class m1,m2,m3,m4 positive
+    class p1,pr1 positive
+    class p2,p4,pr2 negative`,
+};
+
+/**
+ * Geological Time Scale / Evolution Timeline template
+ */
+export const geologicalTimeScale: DiagramTemplate = {
+  id: 'bio-geological-time',
+  name: 'Geological Time Scale',
+  description:
+    'Timeline showing major eras, periods, and evolutionary events',
+  domain: 'biology',
+  promptTemplate: `Create a geological time scale diagram:
+- Time range: {{timeRange}}
+- Eras to include: {{eras}}
+- Periods to highlight: {{periods}}
+- Major extinction events: {{extinctionEvents}}
+- Key evolutionary milestones: {{evolutionaryMilestones}}
+- First appearances of major groups: {{firstAppearances}}
+- Time markers (mya): {{timeMarkers}}
+{{#climateEvents}}Climate events: {{climateEvents}}{{/climateEvents}}`,
+  placeholders: [
+    'timeRange',
+    'eras',
+    'periods',
+    'extinctionEvents',
+    'evolutionaryMilestones',
+    'firstAppearances',
+    'timeMarkers',
+    'climateEvents',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph precambrian["Precambrian (4600-541 mya)"]
+        hadean["Hadean<br/>4600-4000"]
+        archean["Archean<br/>4000-2500"]
+        proterozoic["Proterozoic<br/>2500-541"]
+    end
+
+    subgraph paleozoic["Paleozoic (541-252 mya)"]
+        cambrian["Cambrian<br/>541-485"]
+        ordovician["Ordovician<br/>485-444"]
+        silurian["Silurian<br/>444-419"]
+        devonian["Devonian<br/>419-359"]
+        carboniferous["Carboniferous<br/>359-299"]
+        permian["Permian<br/>299-252"]
+    end
+
+    subgraph mesozoic["Mesozoic (252-66 mya)"]
+        triassic["Triassic<br/>252-201"]
+        jurassic["Jurassic<br/>201-145"]
+        cretaceous["Cretaceous<br/>145-66"]
+    end
+
+    subgraph cenozoic["Cenozoic (66-0 mya)"]
+        paleogene["Paleogene<br/>66-23"]
+        neogene["Neogene<br/>23-2.6"]
+        quaternary["Quaternary<br/>2.6-present"]
+    end
+
+    hadean --> archean --> proterozoic
+    proterozoic -->|"Cambrian Explosion"| cambrian
+    permian -->|"Great Dying (96%)"| triassic
+    cretaceous -->|"K-Pg Extinction"| paleogene
+
+    e1["First Life<br/>~3800 mya"] -.-> archean
+    e2["First Animals<br/>~600 mya"] -.-> proterozoic
+    e3["Fish<br/>~530 mya"] -.-> cambrian
+    e4["Land Plants<br/>~470 mya"] -.-> ordovician
+    e5["Dinosaurs<br/>~230 mya"] -.-> triassic
+    e6["Mammals Rise<br/>~66 mya"] -.-> paleogene
+
+    classDef ancient fill:#94a3b8,stroke:#475569
+    classDef paleo fill:#dbeafe,stroke:#2563eb
+    classDef meso fill:#dcfce7,stroke:#16a34a
+    classDef ceno fill:#fef3c7,stroke:#d97706
+    classDef extinction fill:#fee2e2,stroke:#dc2626
+
+    class hadean,archean,proterozoic ancient
+    class cambrian,ordovician,silurian,devonian,carboniferous,permian paleo
+    class triassic,jurassic,cretaceous meso
+    class paleogene,neogene,quaternary ceno`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
 /**
  * All biology templates exported as an array
+ *
+ * Ralph Loop Iteration 2 - COMPLETE checkpoint
+ * Expanded from 21 to 26 templates
  */
 export const biologyTemplates: DiagramTemplate[] = [
   // Cellular & Molecular
@@ -1397,11 +1749,14 @@ export const biologyTemplates: DiagramTemplate[] = [
   phylogeneticTree,
   cladogram,
   naturalSelectionProcess,
+  geologicalTimeScale,
   // Ecology
   foodWeb,
   ecosystemEnergyFlow,
   biogeochemicalCycle,
   populationDynamics,
+  biomeClassification,
+  ecologicalRelationships,
   // Genetics
   mendelianInheritance,
   dnaReplicationMechanism,
@@ -1414,6 +1769,9 @@ export const biologyTemplates: DiagramTemplate[] = [
   animalCellStructure,
   plantCellStructure,
   mitosisStages,
+  // Organism & Taxonomy
+  lifeCycleTemplate,
+  taxonomicClassification,
 ];
 
 export default biologyTemplates;

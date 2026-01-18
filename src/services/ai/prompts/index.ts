@@ -587,3 +587,12 @@ export { default as biochemistryPrompts } from './biochemistry-prompts';
 
 export * from './pharmacology-prompts';
 export { default as pharmacologyPrompts } from './pharmacology-prompts';
+
+export * from './rheumatology-prompts';
+export { default as rheumatologyPrompts } from './rheumatology-prompts';
+
+export * from './biology-prompts';
+export { default as biologyPrompts } from './biology-prompts';
+
+export * from './cell-biology-prompts';
+export { default as cellBiologyPrompts } from './cell-biology-prompts';

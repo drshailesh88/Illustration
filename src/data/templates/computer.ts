@@ -870,6 +870,546 @@ export const hardwareSecurityModule: DiagramTemplate = {
 };
 
 // =============================================================================
+// SOFTWARE & CLOUD ARCHITECTURE
+// =============================================================================
+
+/**
+ * Cloud Architecture template
+ */
+export const cloudArchitecture: DiagramTemplate = {
+  id: 'comp-cloud-architecture',
+  name: 'Cloud Architecture Diagram',
+  description: 'Cloud infrastructure and services architecture',
+  domain: 'engineering',
+  promptTemplate: `Create a cloud architecture diagram:
+- Cloud provider: {{cloudProvider}}
+- Compute services: {{computeServices}}
+- Storage solutions: {{storageServices}}
+- Database services: {{databaseServices}}
+- Networking: {{networking}}
+- Security layers: {{securityLayers}}
+- Monitoring: {{monitoring}}
+{{#additionalNotes}}Design considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'cloudProvider',
+    'computeServices',
+    'storageServices',
+    'databaseServices',
+    'networking',
+    'securityLayers',
+    'monitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Users["Users"]
+        WEB["Web Clients"]
+        MOB["Mobile Apps"]
+    end
+    subgraph Edge["Edge Layer"]
+        CDN["CDN"]
+        WAF["WAF"]
+        LB["Load Balancer"]
+    end
+    subgraph Compute["Compute"]
+        K8S["Kubernetes\\nCluster"]
+        LAMBDA["Lambda\\nFunctions"]
+    end
+    subgraph Data["Data Layer"]
+        RDS["RDS\\nPostgreSQL"]
+        REDIS["ElastiCache\\nRedis"]
+        S3["S3\\nStorage"]
+    end
+    WEB & MOB --> CDN --> WAF --> LB
+    LB --> K8S & LAMBDA
+    K8S --> RDS & REDIS
+    LAMBDA --> S3
+    style K8S fill:#3b82f6,color:#fff
+    style RDS fill:#10b981,color:#fff`,
+};
+
+/**
+ * Microservices Architecture template
+ */
+export const microservicesArchitecture: DiagramTemplate = {
+  id: 'comp-microservices',
+  name: 'Microservices Architecture',
+  description: 'Distributed microservices system design',
+  domain: 'engineering',
+  promptTemplate: `Create a microservices architecture diagram:
+- Services: {{services}}
+- API Gateway: {{apiGateway}}
+- Service mesh: {{serviceMesh}}
+- Message broker: {{messageBroker}}
+- Database per service: {{databases}}
+- Service discovery: {{serviceDiscovery}}
+- Monitoring stack: {{monitoring}}
+{{#additionalNotes}}Architecture patterns: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'services',
+    'apiGateway',
+    'serviceMesh',
+    'messageBroker',
+    'databases',
+    'serviceDiscovery',
+    'monitoring',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Gateway["API Gateway"]
+        GW["Kong/Nginx"]
+    end
+    subgraph Services["Microservices"]
+        AUTH["Auth\\nService"]
+        USER["User\\nService"]
+        ORDER["Order\\nService"]
+        PAY["Payment\\nService"]
+    end
+    subgraph Data["Data Stores"]
+        DB1["Users DB"]
+        DB2["Orders DB"]
+        CACHE["Redis"]
+    end
+    subgraph Messaging["Event Bus"]
+        KAFKA["Kafka"]
+    end
+    GW --> AUTH & USER & ORDER & PAY
+    AUTH --> CACHE
+    USER --> DB1
+    ORDER --> DB2 & KAFKA
+    PAY --> KAFKA
+    style GW fill:#3b82f6,color:#fff
+    style KAFKA fill:#f59e0b,color:#fff`,
+};
+
+/**
+ * Database Schema Design template
+ */
+export const databaseSchema: DiagramTemplate = {
+  id: 'comp-database-schema',
+  name: 'Database Schema Design',
+  description: 'Relational database entity-relationship diagram',
+  domain: 'engineering',
+  promptTemplate: `Create a database schema diagram:
+- Database type: {{databaseType}}
+- Main entities: {{entities}}
+- Relationships: {{relationships}}
+- Primary keys: {{primaryKeys}}
+- Foreign keys: {{foreignKeys}}
+- Indexes: {{indexes}}
+- Constraints: {{constraints}}
+{{#additionalNotes}}Normalization notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'databaseType',
+    'entities',
+    'relationships',
+    'primaryKeys',
+    'foreignKeys',
+    'indexes',
+    'constraints',
+    'additionalNotes',
+  ],
+  mermaidExample: `erDiagram
+    USERS {
+        int id PK
+        string email UK
+        string password_hash
+        datetime created_at
+    }
+    ORDERS {
+        int id PK
+        int user_id FK
+        decimal total
+        string status
+        datetime created_at
+    }
+    ORDER_ITEMS {
+        int id PK
+        int order_id FK
+        int product_id FK
+        int quantity
+        decimal price
+    }
+    PRODUCTS {
+        int id PK
+        string name
+        decimal price
+        int stock
+    }
+    USERS ||--o{ ORDERS : places
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    PRODUCTS ||--o{ ORDER_ITEMS : "included in"`,
+};
+
+/**
+ * Neural Network Architecture template
+ */
+export const neuralNetworkArchitecture: DiagramTemplate = {
+  id: 'comp-neural-network',
+  name: 'Neural Network Architecture',
+  description: 'Deep learning neural network structure',
+  domain: 'engineering',
+  promptTemplate: `Create a neural network architecture diagram:
+- Network type: {{networkType}}
+- Input layer: {{inputLayer}}
+- Hidden layers: {{hiddenLayers}}
+- Output layer: {{outputLayer}}
+- Activation functions: {{activations}}
+- Regularization: {{regularization}}
+- Training details: {{training}}
+{{#additionalNotes}}Model notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'networkType',
+    'inputLayer',
+    'hiddenLayers',
+    'outputLayer',
+    'activations',
+    'regularization',
+    'training',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Input["Input Layer"]
+        I1["x1"]
+        I2["x2"]
+        I3["x3"]
+    end
+    subgraph H1["Hidden 1 (ReLU)"]
+        H1N1["n1"]
+        H1N2["n2"]
+        H1N3["n3"]
+        H1N4["n4"]
+    end
+    subgraph H2["Hidden 2 (ReLU)"]
+        H2N1["n1"]
+        H2N2["n2"]
+        H2N3["n3"]
+    end
+    subgraph Output["Output (Softmax)"]
+        O1["Class A"]
+        O2["Class B"]
+    end
+    I1 & I2 & I3 --> H1N1 & H1N2 & H1N3 & H1N4
+    H1N1 & H1N2 & H1N3 & H1N4 --> H2N1 & H2N2 & H2N3
+    H2N1 & H2N2 & H2N3 --> O1 & O2
+    style H1 fill:#3b82f6,color:#fff
+    style H2 fill:#10b981,color:#fff`,
+};
+
+/**
+ * CI/CD Pipeline template
+ */
+export const cicdPipeline: DiagramTemplate = {
+  id: 'comp-cicd-pipeline',
+  name: 'CI/CD Pipeline Design',
+  description: 'Continuous integration and deployment workflow',
+  domain: 'engineering',
+  promptTemplate: `Create a CI/CD pipeline diagram:
+- Source control: {{sourceControl}}
+- Build stage: {{buildStage}}
+- Test stages: {{testStages}}
+- Security scans: {{securityScans}}
+- Deployment stages: {{deploymentStages}}
+- Environments: {{environments}}
+- Rollback strategy: {{rollback}}
+{{#additionalNotes}}Pipeline notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sourceControl',
+    'buildStage',
+    'testStages',
+    'securityScans',
+    'deploymentStages',
+    'environments',
+    'rollback',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Source["Source"]
+        GIT["Git Push"]
+    end
+    subgraph Build["Build"]
+        COMPILE["Compile"]
+        DOCKER["Docker\\nBuild"]
+    end
+    subgraph Test["Testing"]
+        UNIT["Unit\\nTests"]
+        INT["Integration\\nTests"]
+        SEC["Security\\nScan"]
+    end
+    subgraph Deploy["Deploy"]
+        DEV["Dev"]
+        STG["Staging"]
+        PROD["Production"]
+    end
+    GIT --> COMPILE --> DOCKER
+    DOCKER --> UNIT --> INT --> SEC
+    SEC --> DEV --> STG --> PROD
+    style GIT fill:#6b7280,color:#fff
+    style PROD fill:#dc2626,color:#fff`,
+};
+
+/**
+ * Operating System Architecture template
+ */
+export const osArchitecture: DiagramTemplate = {
+  id: 'comp-os-architecture',
+  name: 'Operating System Architecture',
+  description: 'OS kernel and system architecture',
+  domain: 'engineering',
+  promptTemplate: `Create an operating system architecture diagram:
+- OS type: {{osType}}
+- Kernel architecture: {{kernelArchitecture}}
+- Process management: {{processManagement}}
+- Memory management: {{memoryManagement}}
+- File system: {{fileSystem}}
+- Device drivers: {{deviceDrivers}}
+- System calls: {{systemCalls}}
+{{#additionalNotes}}Design notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'osType',
+    'kernelArchitecture',
+    'processManagement',
+    'memoryManagement',
+    'fileSystem',
+    'deviceDrivers',
+    'systemCalls',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph User["User Space"]
+        APP["Applications"]
+        LIB["System Libraries"]
+    end
+    subgraph Kernel["Kernel Space"]
+        SC["System Call\\nInterface"]
+        PM["Process\\nManager"]
+        MM["Memory\\nManager"]
+        VFS["Virtual\\nFile System"]
+        NET["Network\\nStack"]
+        DD["Device\\nDrivers"]
+    end
+    subgraph HW["Hardware"]
+        CPU["CPU"]
+        MEM["Memory"]
+        DISK["Storage"]
+        NIC["Network"]
+    end
+    APP --> LIB --> SC
+    SC --> PM & MM & VFS & NET
+    VFS --> DD
+    NET --> DD
+    DD --> CPU & MEM & DISK & NIC
+    style Kernel fill:#3b82f6,color:#fff
+    style HW fill:#6b7280,color:#fff`,
+};
+
+/**
+ * Algorithm Complexity Analysis template
+ */
+export const algorithmComplexity: DiagramTemplate = {
+  id: 'comp-algorithm-complexity',
+  name: 'Algorithm Complexity Analysis',
+  description: 'Big O notation and complexity comparison',
+  domain: 'engineering',
+  promptTemplate: `Create an algorithm complexity analysis diagram:
+- Algorithm name: {{algorithmName}}
+- Time complexity: {{timeComplexity}}
+- Space complexity: {{spaceComplexity}}
+- Best case: {{bestCase}}
+- Average case: {{averageCase}}
+- Worst case: {{worstCase}}
+- Comparison algorithms: {{comparisonAlgorithms}}
+{{#additionalNotes}}Analysis notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'algorithmName',
+    'timeComplexity',
+    'spaceComplexity',
+    'bestCase',
+    'averageCase',
+    'worstCase',
+    'comparisonAlgorithms',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph Complexity["Time Complexity"]
+        O1["O(1)\\nConstant"]
+        OLOGN["O(log n)\\nLogarithmic"]
+        ON["O(n)\\nLinear"]
+        ONLOGN["O(n log n)\\nLinearithmic"]
+        ON2["O(n²)\\nQuadratic"]
+    end
+    subgraph Examples["Algorithm Examples"]
+        E1["Array Access"]
+        E2["Binary Search"]
+        E3["Linear Search"]
+        E4["Merge Sort"]
+        E5["Bubble Sort"]
+    end
+    O1 --- E1
+    OLOGN --- E2
+    ON --- E3
+    ONLOGN --- E4
+    ON2 --- E5
+    style O1 fill:#10b981,color:#fff
+    style ON2 fill:#dc2626,color:#fff`,
+};
+
+/**
+ * Data Flow Diagram template
+ */
+export const dataFlowDiagram: DiagramTemplate = {
+  id: 'comp-data-flow',
+  name: 'Data Flow Diagram',
+  description: 'System data flow and process visualization',
+  domain: 'engineering',
+  promptTemplate: `Create a data flow diagram:
+- System name: {{systemName}}
+- External entities: {{externalEntities}}
+- Processes: {{processes}}
+- Data stores: {{dataStores}}
+- Data flows: {{dataFlows}}
+- Level of detail: {{levelOfDetail}}
+- Security boundaries: {{securityBoundaries}}
+{{#additionalNotes}}DFD notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'systemName',
+    'externalEntities',
+    'processes',
+    'dataStores',
+    'dataFlows',
+    'levelOfDetail',
+    'securityBoundaries',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph External["External Entities"]
+        CUST["Customer"]
+        BANK["Bank"]
+    end
+    subgraph System["E-Commerce System"]
+        P1["1.0\\nProcess\\nOrder"]
+        P2["2.0\\nValidate\\nPayment"]
+        P3["3.0\\nUpdate\\nInventory"]
+    end
+    subgraph Stores["Data Stores"]
+        D1[("Orders\\nDB")]
+        D2[("Products\\nDB")]
+    end
+    CUST -->|"Order Details"| P1
+    P1 -->|"Payment Request"| P2
+    P2 -->|"Auth Request"| BANK
+    BANK -->|"Auth Response"| P2
+    P1 -->|"Order Data"| D1
+    P1 -->|"Update Stock"| P3
+    P3 -->|"Stock Update"| D2
+    style P1 fill:#3b82f6,color:#fff
+    style P2 fill:#10b981,color:#fff`,
+};
+
+/**
+ * Cybersecurity Threat Model template
+ */
+export const threatModel: DiagramTemplate = {
+  id: 'comp-threat-model',
+  name: 'Cybersecurity Threat Model',
+  description: 'Security threat modeling and attack surface analysis',
+  domain: 'engineering',
+  promptTemplate: `Create a cybersecurity threat model diagram:
+- System components: {{systemComponents}}
+- Trust boundaries: {{trustBoundaries}}
+- Entry points: {{entryPoints}}
+- Threats (STRIDE): {{threats}}
+- Mitigations: {{mitigations}}
+- Risk levels: {{riskLevels}}
+- Data sensitivity: {{dataSensitivity}}
+{{#additionalNotes}}Security notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'systemComponents',
+    'trustBoundaries',
+    'entryPoints',
+    'threats',
+    'mitigations',
+    'riskLevels',
+    'dataSensitivity',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph External["Untrusted Zone"]
+        ATK["Attacker"]
+        USER["User"]
+    end
+    subgraph DMZ["DMZ"]
+        WAF["WAF"]
+        LB["Load Balancer"]
+    end
+    subgraph Internal["Trusted Zone"]
+        APP["Application\\nServer"]
+        DB["Database"]
+    end
+    ATK -->|"1. SQL Injection"| WAF
+    USER -->|"HTTPS"| WAF
+    WAF -->|"Filtered"| LB
+    LB --> APP
+    APP -->|"Encrypted"| DB
+    style ATK fill:#dc2626,color:#fff
+    style WAF fill:#f59e0b,color:#fff
+    style DB fill:#10b981,color:#fff`,
+};
+
+/**
+ * UML Class Diagram template
+ */
+export const umlClassDiagram: DiagramTemplate = {
+  id: 'comp-uml-class',
+  name: 'UML Class Diagram',
+  description: 'Object-oriented class relationships',
+  domain: 'engineering',
+  promptTemplate: `Create a UML class diagram:
+- Classes: {{classes}}
+- Attributes: {{attributes}}
+- Methods: {{methods}}
+- Inheritance: {{inheritance}}
+- Associations: {{associations}}
+- Composition/Aggregation: {{composition}}
+- Interfaces: {{interfaces}}
+{{#additionalNotes}}Design patterns: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'classes',
+    'attributes',
+    'methods',
+    'inheritance',
+    'associations',
+    'composition',
+    'interfaces',
+    'additionalNotes',
+  ],
+  mermaidExample: `classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound() void
+        +move() void
+    }
+    class Dog {
+        +String breed
+        +bark() void
+        +fetch() void
+    }
+    class Cat {
+        +boolean indoor
+        +meow() void
+        +climb() void
+    }
+    class Owner {
+        +String name
+        +List~Animal~ pets
+        +feed(Animal) void
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat
+    Owner "1" --> "*" Animal : owns`,
+};
+
+// =============================================================================
 // Export all templates
 // =============================================================================
 
@@ -898,4 +1438,15 @@ export const computerTemplates: DiagramTemplate[] = [
   networkInterfaceCard,
   // Security
   hardwareSecurityModule,
+  // Software & Cloud Architecture
+  cloudArchitecture,
+  microservicesArchitecture,
+  databaseSchema,
+  neuralNetworkArchitecture,
+  cicdPipeline,
+  osArchitecture,
+  algorithmComplexity,
+  dataFlowDiagram,
+  threatModel,
+  umlClassDiagram,
 ];

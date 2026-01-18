@@ -371,7 +371,7 @@ export {
   drugClassColors,
   admeColors,
   receptorColors,
-  interactionColors,
+  interactionColors as pharmacologyInteractionColors,
   cyp450Colors,
   tdmColors,
   adrColors,
@@ -431,3 +431,60 @@ export {
 } from './cell-biology';
 
 export type { CellBiologyColorScheme } from './cell-biology';
+
+// =============================================================================
+// RHEUMATOLOGY
+// =============================================================================
+
+export {
+  jointAnatomyColors,
+  inflammatoryColors as rheumInflammatoryColors,
+  autoimmuneColors as rheumAutoimmuneColors,
+  crystalColors,
+  ctdColors,
+  osteoarthritisColors,
+  diseaseActivityColors,
+  severityGradient as rheumSeverityGradient,
+  treatmentColors as rheumTreatmentColors,
+  imagingColors as rheumImagingColors,
+  anaPatternColors,
+  flowchartColors as rheumFlowchartColors,
+  vasculitisColors,
+  rheumatologyColorScheme,
+} from './rheumatology';
+
+export type { RheumatologyColorScheme } from './rheumatology';
+
+// =============================================================================
+// GENERAL BIOLOGY
+// =============================================================================
+
+export {
+  trophicLevelColors,
+  ecosystemColors,
+  biomeColors,
+  evolutionColors,
+  taxonomyColors,
+  kingdomColors,
+  populationColors,
+  interactionColors as biologyInteractionColors,
+  lifeCycleColors,
+  nutrientCycleColors,
+  conservationColors,
+  geologicalColors,
+  flowchartColors as biologyFlowchartColors,
+  severityGradient as biologySeverityGradient,
+  biologyColorScheme,
+} from './biology';
+
+export type { BiologyColorScheme } from './biology';
+
+// =============================================================================
+// ANATOMY
+// =============================================================================
+
+export {
+  anatomyColorScheme,
+} from './anatomy';
+
+export type { AnatomyColorScheme } from './anatomy';
