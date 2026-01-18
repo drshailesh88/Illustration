@@ -1,6 +1,6 @@
 {
   "currentSpecialty": null,
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology", "radiology", "ophthalmology", "dermatology", "ent", "pediatrics", "obgyn", "pathology"],
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology", "radiology", "ophthalmology", "dermatology", "ent", "pediatrics", "obgyn", "pathology", "psychiatry", "rheumatology", "physiology"],
   "blockedSpecialties": [],
   "progress": {
     "anesthesiology": {
@@ -417,20 +417,124 @@
           "quality-assurance": 1
         }
       }
+    },
+    "rheumatology": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:30:00Z",
+      "metrics": {
+        "icons": {
+          "current": 100,
+          "target": 90,
+          "percentage": 111
+        },
+        "templates": {
+          "current": 28,
+          "target": 25,
+          "percentage": 112
+        },
+        "prompts": {
+          "current": 25,
+          "target": 20,
+          "percentage": 125
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "joint-anatomy": 10,
+          "inflammatory-arthritis": 12,
+          "connective-tissue": 15,
+          "osteoarthritis": 8,
+          "crystal-arthropathy": 8,
+          "vasculitis": 10,
+          "autoantibodies-labs": 10,
+          "imaging": 12,
+          "treatment-medications": 15
+        },
+        "templates": {
+          "decision-trees": 15,
+          "anatomical-diagrams": 3,
+          "assessment-templates": 5,
+          "data-visualization": 3,
+          "additional-clinical": 2
+        }
+      }
+    },
+    "psychiatry": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:45:00Z",
+      "metrics": {
+        "icons": {
+          "current": 98,
+          "target": 90,
+          "percentage": 109
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 25,
+          "target": 20,
+          "percentage": 125
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "brain-neurotransmitters": 10,
+          "mood-disorders": 10,
+          "anxiety-disorders": 8,
+          "psychotic-disorders": 8,
+          "substance-use": 8,
+          "therapy-treatment": 18,
+          "assessment": 8,
+          "neurodevelopmental": 5,
+          "crisis-emergency": 4,
+          "child-adolescent": 4,
+          "cognitive-dementia": 3,
+          "forensic-legal": 3,
+          "other": 9
+        },
+        "templates": {
+          "clinical-decision-trees": 5,
+          "anatomical-diagrams": 3,
+          "assessment-templates": 3,
+          "data-visualization": 3,
+          "bipolar-management": 1,
+          "ptsd-treatment": 1,
+          "ocd-treatment": 1,
+          "adhd-evaluation": 1,
+          "personality-disorders": 1,
+          "eating-disorders": 1,
+          "cbt-model": 1,
+          "dbt-skills": 1,
+          "antidepressant-selection": 1,
+          "psychiatric-emergency": 1,
+          "therapy-modalities": 1
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 18,
+    "completed": 20,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 17,
+    "notStarted": 15,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1332,
-    "currentTotalTemplates": 327,
-    "currentTotalPrompts": 232
+    "currentTotalIcons": 1432,
+    "currentTotalTemplates": 355,
+    "currentTotalPrompts": 257
   },
   "executionOrder": [
     "cardiology",
@@ -469,5 +573,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "radiology"
+  "nextSpecialty": "anatomy"
 }
