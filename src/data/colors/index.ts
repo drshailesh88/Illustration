@@ -604,8 +604,8 @@ export type { MolecularBiologyColorScheme } from './molecular-biology';
 
 export {
   deviceColors,
-  implantColors,
-  prostheticColors,
+  implantColors as biomedImplantColors,
+  prostheticColors as biomedProstheticColors,
   orthoticColors,
   biosensorColors,
   signalColors,
@@ -614,7 +614,7 @@ export {
   bioreactorColors,
   neuralInterfaceColors,
   bciColors,
-  biomechanicsColors,
+  biomechanicsColors as biomedBiomechanicsColors,
   motionColors,
   drugDeliveryColors,
   microfluidicsColors,

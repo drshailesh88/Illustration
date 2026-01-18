@@ -1480,6 +1480,257 @@ export const molecularIcons: IconDefinition[] = [
       <text x="16" y="48" font-size="4" fill="currentColor" stroke="none">RNA-seq</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADDITIONAL ICONS - COMPLETING 90+ TARGET
+  // ===========================================================================
+  {
+    id: 'mol-codon-table',
+    name: 'Codon Table',
+    domain: 'biology',
+    category: 'translation',
+    tags: ['codon', 'genetic code', 'amino acid', 'translation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2"/>
+      <line x1="8" y1="20" x2="56" y2="20"/>
+      <line x1="8" y1="32" x2="56" y2="32"/>
+      <line x1="8" y1="44" x2="56" y2="44"/>
+      <line x1="20" y1="8" x2="20" y2="56"/>
+      <line x1="32" y1="8" x2="32" y2="56"/>
+      <line x1="44" y1="8" x2="44" y2="56"/>
+      <text x="10" y="16" font-size="4" fill="currentColor" stroke="none">UUU</text>
+      <text x="22" y="16" font-size="4" fill="currentColor" stroke="none">UUC</text>
+      <text x="46" y="28" font-size="4" fill="currentColor" stroke="none">Met</text>
+    </svg>`
+  },
+  {
+    id: 'mol-polymerase-complex',
+    name: 'Polymerase Complex',
+    domain: 'biology',
+    category: 'replication',
+    tags: ['polymerase', 'holoenzyme', 'replication complex', 'replisome'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="16" fill="#27AE60" opacity="0.2"/>
+      <circle cx="20" cy="28" r="8" fill="#3498DB" opacity="0.4"/>
+      <circle cx="44" cy="28" r="8" fill="#E74C3C" opacity="0.4"/>
+      <circle cx="32" cy="40" r="6" fill="#F39C12" opacity="0.4"/>
+      <path d="M4 32h8"/>
+      <path d="M52 32h8"/>
+      <text x="16" y="54" font-size="4" fill="currentColor" stroke="none">Replisome</text>
+    </svg>`
+  },
+  {
+    id: 'mol-promoter',
+    name: 'Promoter Region',
+    domain: 'biology',
+    category: 'gene-expression',
+    tags: ['promoter', 'TATA', 'transcription start', 'TSS'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="36" x2="60" y2="36"/>
+      <rect x="12" y="28" width="16" height="16" fill="#E74C3C" opacity="0.3"/>
+      <rect x="36" y="28" width="8" height="16" fill="#F39C12" opacity="0.3"/>
+      <path d="M44 32l8-12h8"/>
+      <text x="14" y="38" font-size="4" fill="currentColor" stroke="none">TATA</text>
+      <text x="38" y="38" font-size="4" fill="currentColor" stroke="none">+1</text>
+      <text x="16" y="54" font-size="4" fill="currentColor" stroke="none">Promoter</text>
+    </svg>`
+  },
+  {
+    id: 'mol-terminator',
+    name: 'Terminator Sequence',
+    domain: 'biology',
+    category: 'gene-expression',
+    tags: ['terminator', 'transcription termination', 'poly-U', 'Rho'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="36" x2="60" y2="36"/>
+      <path d="M32 36c0-16 8-16 8 0"/>
+      <path d="M24 24c8 0 8 12 16 12"/>
+      <rect x="44" y="28" width="12" height="16" fill="#E74C3C" opacity="0.3"/>
+      <text x="46" y="38" font-size="4" fill="currentColor" stroke="none">Stop</text>
+      <text x="20" y="54" font-size="4" fill="currentColor" stroke="none">Terminator</text>
+    </svg>`
+  },
+  {
+    id: 'mol-aminoacyl-trna',
+    name: 'Aminoacyl-tRNA Synthetase',
+    domain: 'biology',
+    category: 'translation',
+    tags: ['aminoacyl-tRNA synthetase', 'charging', 'tRNA', 'amino acid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="12" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="16" cy="20" r="6" fill="#27AE60" opacity="0.4"/>
+      <text x="12" y="22" font-size="4" fill="currentColor" stroke="none">AA</text>
+      <path d="M22 20h8"/>
+      <path d="M48 32c4-8 4-16 0-20"/>
+      <ellipse cx="52" cy="8" rx="4" ry="6"/>
+      <text x="48" y="10" font-size="3" fill="currentColor" stroke="none">tRNA</text>
+      <text x="16" y="54" font-size="4" fill="currentColor" stroke="none">aaRS</text>
+    </svg>`
+  },
+  {
+    id: 'mol-riboswitch',
+    name: 'Riboswitch',
+    domain: 'biology',
+    category: 'gene-expression',
+    tags: ['riboswitch', 'aptamer', 'regulatory RNA', 'ligand binding'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 44h16"/>
+      <path d="M24 44c0-12 16-12 16 0"/>
+      <path d="M40 44h16"/>
+      <circle cx="32" cy="28" r="8" fill="#27AE60" opacity="0.3"/>
+      <circle cx="32" cy="28" r="4" fill="#E74C3C" opacity="0.5"/>
+      <text x="28" y="30" font-size="4" fill="currentColor" stroke="none">L</text>
+      <text x="18" y="56" font-size="4" fill="currentColor" stroke="none">Riboswitch</text>
+    </svg>`
+  },
+  {
+    id: 'mol-splicing-variant',
+    name: 'Alternative Splicing',
+    domain: 'biology',
+    category: 'rna-processing',
+    tags: ['alternative splicing', 'exon skipping', 'isoform', 'splice variant'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="12" width="12" height="8" fill="#3498DB" opacity="0.5"/>
+      <rect x="20" y="12" width="8" height="8" fill="#27AE60" opacity="0.5"/>
+      <rect x="32" y="12" width="8" height="8" fill="#F39C12" opacity="0.5"/>
+      <rect x="44" y="12" width="16" height="8" fill="#E74C3C" opacity="0.5"/>
+      <path d="M16 36h32"/>
+      <rect x="4" y="32" width="12" height="8" fill="#3498DB" opacity="0.5"/>
+      <rect x="48" y="32" width="12" height="8" fill="#E74C3C" opacity="0.5"/>
+      <path d="M16 56h32"/>
+      <rect x="4" y="52" width="12" height="8" fill="#3498DB" opacity="0.5"/>
+      <rect x="20" y="52" width="8" height="8" fill="#F39C12" opacity="0.5"/>
+      <rect x="32" y="52" width="28" height="8" fill="#E74C3C" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'mol-nmd',
+    name: 'Nonsense-Mediated Decay',
+    domain: 'biology',
+    category: 'rna-processing',
+    tags: ['NMD', 'quality control', 'PTC', 'mRNA decay'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24c8-4 16 4 24 0s16 4 24 0" stroke="#E74C3C"/>
+      <circle cx="32" cy="24" r="6" fill="#E74C3C" opacity="0.5"/>
+      <text x="28" y="26" font-size="4" fill="currentColor" stroke="none">PTC</text>
+      <path d="M32 32v8"/>
+      <ellipse cx="32" cy="48" rx="16" ry="8" fill="#95A5A6" opacity="0.3"/>
+      <text x="24" y="50" font-size="4" fill="currentColor" stroke="none">NMD</text>
+      <path d="M16 44l4-4M48 44l-4-4"/>
+    </svg>`
+  },
+  {
+    id: 'mol-emsa',
+    name: 'EMSA (Gel Shift)',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['EMSA', 'gel shift', 'DNA-protein', 'binding assay'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2" fill="#F5F5DC" opacity="0.5"/>
+      <rect x="16" y="16" width="8" height="4" fill="#3498DB"/>
+      <rect x="28" y="16" width="8" height="4" fill="#3498DB"/>
+      <rect x="40" y="16" width="8" height="4" fill="#3498DB"/>
+      <rect x="16" y="32" width="8" height="4" fill="#3498DB"/>
+      <rect x="28" y="24" width="8" height="4" fill="#27AE60"/>
+      <rect x="40" y="20" width="8" height="4" fill="#27AE60"/>
+      <text x="14" y="48" font-size="3" fill="currentColor" stroke="none">Free</text>
+      <text x="26" y="48" font-size="3" fill="currentColor" stroke="none">Bound</text>
+    </svg>`
+  },
+  {
+    id: 'mol-luciferase',
+    name: 'Luciferase Reporter',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['luciferase', 'reporter', 'bioluminescence', 'gene expression'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="40" rx="16" ry="8"/>
+      <path d="M32 32v-8"/>
+      <circle cx="32" cy="20" r="8" fill="#F1C40F" opacity="0.5"/>
+      <path d="M24 12l-4-8M32 10v-8M40 12l4-8"/>
+      <path d="M24 16l-4-4M40 16l4-4"/>
+      <text x="18" y="56" font-size="4" fill="currentColor" stroke="none">Luciferase</text>
+    </svg>`
+  },
+  {
+    id: 'mol-fret',
+    name: 'FRET',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['FRET', 'fluorescence', 'energy transfer', 'protein interaction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="32" r="10" fill="#27AE60" opacity="0.4"/>
+      <circle cx="44" cy="32" r="10" fill="#E74C3C" opacity="0.4"/>
+      <path d="M30 32h4" stroke="#F1C40F" stroke-width="2" stroke-dasharray="2 2"/>
+      <path d="M16 20l-4-8M24 18l4-8"/>
+      <path d="M40 20l-4-8M48 18l4-8" stroke="#E74C3C"/>
+      <text x="16" y="52" font-size="3" fill="currentColor" stroke="none">Donor</text>
+      <text x="38" y="52" font-size="3" fill="currentColor" stroke="none">Acceptor</text>
+    </svg>`
+  },
+  {
+    id: 'mol-transfection',
+    name: 'Transfection',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['transfection', 'lipofection', 'DNA delivery', 'gene transfer'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="40" r="16"/>
+      <circle cx="32" cy="40" r="8" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="32" cy="16" r="8" fill="#3498DB" opacity="0.4"/>
+      <circle cx="32" cy="16" r="4"/>
+      <path d="M32 24v8"/>
+      <path d="M28 32l4 4 4-4"/>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">Transfection</text>
+    </svg>`
+  },
+  {
+    id: 'mol-lentivirus',
+    name: 'Lentivirus',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['lentivirus', 'viral vector', 'transduction', 'gene delivery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="#9B59B6" opacity="0.2"/>
+      <circle cx="32" cy="32" r="8" fill="#3498DB" opacity="0.4"/>
+      <path d="M12 24l-4-8M52 24l4-8"/>
+      <path d="M12 40l-4 8M52 40l4 8"/>
+      <path d="M20 16l-4-4M44 16l4-4"/>
+      <path d="M20 48l-4 4M44 48l4 4"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">Lentivirus</text>
+    </svg>`
+  },
+  {
+    id: 'mol-coip',
+    name: 'Co-IP',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['Co-IP', 'immunoprecipitation', 'protein interaction', 'pulldown'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="8" fill="#3498DB" opacity="0.4"/>
+      <circle cx="40" cy="24" r="6" fill="#27AE60" opacity="0.4"/>
+      <path d="M32 24h-8"/>
+      <ellipse cx="32" cy="44" rx="20" ry="8" fill="#F39C12" opacity="0.2"/>
+      <circle cx="24" cy="44" r="4"/>
+      <path d="M24 32v8"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">Co-IP</text>
+    </svg>`
+  },
+  {
+    id: 'mol-atac-seq',
+    name: 'ATAC-seq',
+    domain: 'biology',
+    category: 'lab-techniques',
+    tags: ['ATAC-seq', 'chromatin accessibility', 'open chromatin', 'Tn5'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 28c4-4 8 4 12 0s8 4 12 0 8 4 12 0 8 4 12 0"/>
+      <circle cx="20" cy="28" r="6" fill="#4ECDC4" opacity="0.4"/>
+      <circle cx="44" cy="28" r="6" fill="#4ECDC4" opacity="0.4"/>
+      <rect x="16" y="40" width="8" height="12" fill="#27AE60" opacity="0.5"/>
+      <rect x="40" y="40" width="8" height="16" fill="#27AE60" opacity="0.5"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">ATAC-seq</text>
+    </svg>`
+  },
 ];
 
 export default molecularIcons;
