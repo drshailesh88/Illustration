@@ -512,3 +512,26 @@ export {
 } from './psychiatry';
 
 export type { PsychiatryColorScheme } from './psychiatry';
+
+// =============================================================================
+// COMPUTER SCIENCE
+// =============================================================================
+
+export {
+  dataStructureColors,
+  algorithmColors,
+  cloudColors,
+  databaseColors,
+  aiMlColors,
+  securityColors,
+  osColors,
+  programmingColors,
+  architectureColors,
+  severityGradient as csSeverityGradient,
+  statusColors,
+  complexityColors,
+  flowchartColors as csFlowchartColors,
+  computerScienceColorScheme,
+} from './computer-science';
+
+export type { ComputerScienceColorScheme } from './computer-science';
