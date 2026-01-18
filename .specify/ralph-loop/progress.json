@@ -806,20 +806,126 @@
           "pharmacogenomics": 3
         }
       }
+    },
+    "biology-general": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 95,
+          "target": 90,
+          "percentage": 106
+        },
+        "templates": {
+          "current": 26,
+          "target": 25,
+          "percentage": 104
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "cellular": 12,
+          "molecular": 10,
+          "ecology": 15,
+          "evolution": 12,
+          "plant-biology": 10,
+          "animal-biology": 12,
+          "microbiology": 12,
+          "laboratory": 12
+        },
+        "templates": {
+          "cellular-molecular": 5,
+          "evolution-phylogenetics": 4,
+          "ecology": 5,
+          "genetics": 4,
+          "plant-biology": 2,
+          "cell-structure": 3,
+          "organism-taxonomy": 3
+        }
+      }
+    },
+    "biomedical-engineering": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 92,
+          "target": 90,
+          "percentage": 102
+        },
+        "templates": {
+          "current": 27,
+          "target": 25,
+          "percentage": 108
+        },
+        "prompts": {
+          "current": 25,
+          "target": 20,
+          "percentage": 125
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "prosthetics": 9,
+          "imaging": 8,
+          "implants": 8,
+          "biosensors": 10,
+          "devices": 5,
+          "tissue-engineering": 6,
+          "drug-delivery": 6,
+          "rehabilitation": 6,
+          "wearables": 6,
+          "biomaterials": 5,
+          "surgical": 4,
+          "microfluidics": 5,
+          "neural": 4,
+          "regulatory": 4,
+          "power": 3,
+          "biomechanics": 3
+        },
+        "templates": {
+          "medical-device-design": 4,
+          "medical-imaging": 3,
+          "biomechanics": 3,
+          "tissue-engineering": 2,
+          "biosensors": 2,
+          "neural-engineering": 2,
+          "rehabilitation": 1,
+          "drug-delivery": 2,
+          "wearables": 1,
+          "regulatory": 2,
+          "bioprinting": 1,
+          "sensory-prostheses": 2,
+          "life-support": 2
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 28,
+    "completed": 29,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 7,
+    "notStarted": 6,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1806,
-    "currentTotalTemplates": 459,
-    "currentTotalPrompts": 347
+    "currentTotalIcons": 1901,
+    "currentTotalTemplates": 485,
+    "currentTotalPrompts": 367
   },
   "executionOrder": [
     "cardiology",
