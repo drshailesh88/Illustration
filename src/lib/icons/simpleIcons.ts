@@ -16,7 +16,7 @@ import * as simpleIcons from 'simple-icons';
 /**
  * Simple Icon interface from the package
  */
-interface SimpleIconData {
+export interface SimpleIconData {
   title: string;
   slug: string;
   hex: string;

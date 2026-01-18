@@ -901,6 +901,159 @@ export const giBleedingScores: DiagramTemplate = {
 };
 
 // =============================================================================
+// BARRETT'S ESOPHAGUS & SPECIALIZED TEMPLATES (3 templates)
+// =============================================================================
+
+/**
+ * Barrett's Esophagus Surveillance Algorithm template
+ */
+export const barrettsEsophagusSurveillance: DiagramTemplate = {
+  id: 'gi-barretts-surveillance',
+  name: "Barrett's Esophagus Surveillance Algorithm",
+  description:
+    "Surveillance and management algorithm for Barrett's esophagus based on dysplasia status",
+  domain: 'medicine',
+  promptTemplate: `Create a Barrett's esophagus surveillance algorithm:
+- Initial diagnosis confirmation: {{diagnosisConfirmation}}
+- Segment length (Prague classification): {{pragueClassification}}
+- Dysplasia status: {{dysplasiaStatus}}
+- Surveillance intervals: {{surveillanceIntervals}}
+- Endoscopic therapy options: {{endoscopicTherapy}}
+- Ablation techniques: {{ablationTechniques}}
+- Surgical indications: {{surgicalIndications}}
+- Cancer risk stratification: {{cancerRisk}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'diagnosisConfirmation',
+    'pragueClassification',
+    'dysplasiaStatus',
+    'surveillanceIntervals',
+    'endoscopicTherapy',
+    'ablationTechniques',
+    'surgicalIndications',
+    'cancerRisk',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Barrett's Esophagus\\nConfirmed")] --> B["Prague Classification\\nC & M extent"]
+    B --> C{"Dysplasia\\nStatus?"}
+    C -->|"No Dysplasia"| D["Surveillance EGD\\nq3-5 years"]
+    C -->|"Indefinite"| E["Optimize PPI\\nRepeat 3-6 months"]
+    C -->|"Low-grade\\nDysplasia"| F["Expert Pathology\\nReview"]
+    C -->|"High-grade\\nDysplasia"| G["Endoscopic\\nEradication Therapy"]
+    F -->|"Confirmed LGD"| H["EET or\\nSurveillance q6-12mo"]
+    G --> I["EMR visible lesions\\n+ RFA ablation"]
+    I --> J["Follow-up q3mo x1yr\\nthen q6mo x1yr"]
+    J --> K{"Complete\\nEradication?"}
+    K -->|"Yes"| L["Surveillance q1yr"]
+    K -->|"No"| M["Additional ablation\\nor surgery"]
+    style G fill:#DC143C,color:#fff
+    style L fill:#228B22,color:#fff`,
+};
+
+/**
+ * Hepatic Encephalopathy Grading Diagram template
+ */
+export const hepaticEncephalopathyGrading: DiagramTemplate = {
+  id: 'gi-hepatic-encephalopathy-grading',
+  name: 'Hepatic Encephalopathy Grading Diagram',
+  description:
+    'West Haven criteria and management algorithm for hepatic encephalopathy',
+  domain: 'medicine',
+  promptTemplate: `Create a hepatic encephalopathy grading and management diagram:
+- West Haven classification: {{westHavenCriteria}}
+- Minimal HE detection: {{minimalHEDetection}}
+- Precipitating factors: {{precipitatingFactors}}
+- Ammonia levels: {{ammoniaLevels}}
+- First-line treatment: {{firstLineTreatment}}
+- Second-line options: {{secondLineOptions}}
+- Prevention strategies: {{prevention}}
+- ICU criteria: {{icuCriteria}}
+{{#additionalNotes}}Transplant considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'westHavenCriteria',
+    'minimalHEDetection',
+    'precipitatingFactors',
+    'ammoniaLevels',
+    'firstLineTreatment',
+    'secondLineOptions',
+    'prevention',
+    'icuCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Grading["West Haven Criteria"]
+        G0["Grade 0 (Covert)\\nMinimal HE - Psychometric testing only"]
+        G1["Grade 1\\nTrivial lack of awareness\\nShortened attention span"]
+        G2["Grade 2\\nLethargy, disorientation\\nAsterixis present"]
+        G3["Grade 3\\nSomnolence, confusion\\nGross disorientation"]
+        G4["Grade 4\\nComa - Unresponsive"]
+    end
+    A[("Hepatic\\nEncephalopathy")] --> B{"Grade?"}
+    B --> G0 & G1 & G2 & G3 & G4
+    G0 --> T1["Lactulose PRN\\nRifaximin if recurrent"]
+    G1 --> T1
+    G2 --> T2["Lactulose 20-30g q1-2h\\nuntil 2-3 BM/day"]
+    G3 --> T3["ICU consideration\\nAirway protection"]
+    G4 --> T4["🚨 ICU: Intubate\\nRule out other causes"]
+    T2 --> P["Identify Precipitant:\\nGI bleed, Infection\\nConstipation, Meds"]
+    T3 --> P
+    style G4 fill:#DC143C,color:#fff
+    style T4 fill:#DC143C,color:#fff
+    style G0 fill:#228B22,color:#fff`,
+};
+
+/**
+ * NAFLD/NASH Management Algorithm template
+ */
+export const nafldNashManagement: DiagramTemplate = {
+  id: 'gi-nafld-nash-management',
+  name: 'NAFLD/NASH Management Algorithm',
+  description:
+    'Non-alcoholic fatty liver disease evaluation and treatment algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a NAFLD/NASH management algorithm:
+- Risk factor assessment: {{riskFactors}}
+- Diagnostic workup: {{diagnosticWorkup}}
+- Fibrosis staging: {{fibrosisStaging}}
+- FIB-4 and NFS scores: {{noninvasiveScores}}
+- Lifestyle interventions: {{lifestyleInterventions}}
+- Pharmacotherapy options: {{pharmacotherapy}}
+- Monitoring strategy: {{monitoring}}
+- Liver transplant criteria: {{transplantCriteria}}
+{{#additionalNotes}}Emerging therapies: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'riskFactors',
+    'diagnosticWorkup',
+    'fibrosisStaging',
+    'noninvasiveScores',
+    'lifestyleInterventions',
+    'pharmacotherapy',
+    'monitoring',
+    'transplantCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected\\nNAFLD")] --> B["Exclude other causes:\\nAlcohol, Viral, Autoimmune"]
+    B --> C["Calculate FIB-4"]
+    C --> D{"FIB-4 Score?"}
+    D -->|"<1.3"| E["Low Risk\\nLifestyle modification"]
+    D -->|"1.3-2.67"| F["Indeterminate\\nFibroScan or ELF"]
+    D -->|">2.67"| G["High Risk\\nRefer Hepatology"]
+    F --> H{"Fibrosis\\nF0-F2?"}
+    H -->|"Yes"| E
+    H -->|"F3-F4"| G
+    G --> I["Consider Liver Biopsy"]
+    I --> J{"NASH with\\nSignificant Fibrosis?"}
+    J -->|"Yes"| K["Lifestyle + Consider:\\nVitamin E or Pioglitazone"]
+    J -->|"Cirrhosis"| L["HCC surveillance\\nVarices screening"]
+    E --> M["7-10% weight loss goal\\nExercise 150min/week"]
+    style G fill:#FFA500,color:#000
+    style L fill:#DC143C,color:#fff
+    style M fill:#228B22,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -1106,6 +1259,10 @@ export const gastroenterologyTemplates: DiagramTemplate[] = [
   celiacWorkup,
   acutePancreatitisManagement,
   hepatitisBManagement,
+  // Barrett's Esophagus & Specialized
+  barrettsEsophagusSurveillance,
+  hepaticEncephalopathyGrading,
+  nafldNashManagement,
   // Anatomical Diagrams
   giTractOverview,
   hepatobiliarySystem,

@@ -1536,6 +1536,315 @@ export const infectiousIcons: IconDefinition[] = [
       <text x="12" y="52" font-size="3" fill="currentColor" stroke="none">Rapid Antigen</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // PPE EQUIPMENT (6)
+  // ===========================================================================
+  {
+    id: 'inf-n95-mask',
+    name: 'N95 Respirator',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['N95', 'respirator', 'mask', 'PPE', 'airborne', 'protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 24c0-8 10-16 20-16s20 8 20 16v8c0 12-8 20-20 20s-20-8-20-20v-8z" fill="#F3F4F6"/>
+      <path d="M12 24c0-8 10-16 20-16s20 8 20 16v8c0 12-8 20-20 20s-20-8-20-20v-8z"/>
+      <path d="M22 28h20"/>
+      <path d="M22 36h20"/>
+      <circle cx="32" cy="32" r="4" fill="#3B82F6" opacity="0.3"/>
+      <path d="M12 24c-4 0-6-2-6-2"/>
+      <path d="M52 24c4 0 6-2 6-2"/>
+      <text x="20" y="60" font-size="4" fill="currentColor" stroke="none">N95</text>
+    </svg>`
+  },
+  {
+    id: 'inf-surgical-mask',
+    name: 'Surgical Mask',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['surgical mask', 'mask', 'droplet', 'PPE', 'protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="10" y="20" width="44" height="24" rx="4" fill="#93C5FD" opacity="0.4"/>
+      <rect x="10" y="20" width="44" height="24" rx="4"/>
+      <path d="M10 28h44"/>
+      <path d="M10 36h44"/>
+      <path d="M10 24l-4-4"/>
+      <path d="M10 40l-4 4"/>
+      <path d="M54 24l4-4"/>
+      <path d="M54 40l4 4"/>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">Surgical Mask</text>
+    </svg>`
+  },
+  {
+    id: 'inf-isolation-gown',
+    name: 'Isolation Gown',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['gown', 'isolation', 'PPE', 'contact', 'protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8h24l4 12v32c0 4-2 4-6 4H22c-4 0-6 0-6-4V20l4-12z" fill="#FDE68A" opacity="0.4"/>
+      <path d="M20 8h24l4 12v32c0 4-2 4-6 4H22c-4 0-6 0-6-4V20l4-12z"/>
+      <path d="M14 20l-8 4v20l8 4"/>
+      <path d="M50 20l8 4v20l-8 4"/>
+      <path d="M28 8v8"/>
+      <path d="M36 8v8"/>
+      <text x="8" y="64" font-size="4" fill="currentColor" stroke="none">Isolation Gown</text>
+    </svg>`
+  },
+  {
+    id: 'inf-gloves',
+    name: 'Medical Gloves',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['gloves', 'nitrile', 'latex', 'PPE', 'contact', 'protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 56V32l-4-16v-4c0-2 2-4 4-4h4l4 8 4-8h4c2 0 4 2 4 4v4l-4 16v24c0 2-2 4-4 4H20c-2 0-4-2-4-4z" fill="#A5B4FC" opacity="0.4"/>
+      <path d="M16 56V32l-4-16v-4c0-2 2-4 4-4h4l4 8 4-8h4c2 0 4 2 4 4v4l-4 16v24c0 2-2 4-4 4H20c-2 0-4-2-4-4z"/>
+      <path d="M40 56V32l4-16v-4c0-2 2-4 4-4h4l4 8 4-8h4c2 0 4 2 4 4v4l-4 16v24c0 2-2 4-4 4H44c-2 0-4-2-4-4z" fill="#A5B4FC" opacity="0.4"/>
+      <path d="M40 56V32l4-16v-4c0-2 2-4 4-4h4l4 8 4-8h4c2 0 4 2 4 4v4l-4 16v24c0 2-2 4-4 4H44c-2 0-4-2-4-4z"/>
+      <text x="20" y="64" font-size="4" fill="currentColor" stroke="none">Gloves</text>
+    </svg>`
+  },
+  {
+    id: 'inf-face-shield',
+    name: 'Face Shield',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['face shield', 'visor', 'PPE', 'droplet', 'eye protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="8" rx="2" fill="#6B7280"/>
+      <rect x="8" y="8" width="48" height="8" rx="2"/>
+      <path d="M8 16c0 24 8 36 24 36s24-12 24-36" fill="#93C5FD" opacity="0.3"/>
+      <path d="M8 16c0 24 8 36 24 36s24-12 24-36"/>
+      <circle cx="24" cy="32" r="4" fill="#F3F4F6"/>
+      <circle cx="40" cy="32" r="4" fill="#F3F4F6"/>
+      <text x="8" y="62" font-size="4" fill="currentColor" stroke="none">Face Shield</text>
+    </svg>`
+  },
+  {
+    id: 'inf-papr',
+    name: 'PAPR Hood',
+    domain: 'medicine',
+    category: 'ppe',
+    tags: ['PAPR', 'powered air', 'respirator', 'hood', 'airborne', 'high-risk'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="18" ry="16" fill="#FDE68A" opacity="0.3"/>
+      <ellipse cx="32" cy="24" rx="18" ry="16"/>
+      <path d="M14 24v24c0 4 8 8 18 8s18-4 18-8V24"/>
+      <rect x="24" y="16" width="16" height="12" rx="2" fill="#93C5FD" opacity="0.5"/>
+      <rect x="24" y="16" width="16" height="12" rx="2"/>
+      <path d="M32 40v8"/>
+      <circle cx="32" cy="52" r="4" fill="#6B7280"/>
+      <text x="18" y="64" font-size="4" fill="currentColor" stroke="none">PAPR</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // TRANSMISSION VECTORS (6)
+  // ===========================================================================
+  {
+    id: 'inf-mosquito-vector',
+    name: 'Mosquito Vector',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['mosquito', 'vector', 'malaria', 'dengue', 'zika', 'arbovirus'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="10" ry="6" fill="#6B7280" opacity="0.3"/>
+      <ellipse cx="32" cy="36" rx="10" ry="6"/>
+      <ellipse cx="32" cy="28" rx="6" ry="4" fill="#6B7280" opacity="0.4"/>
+      <ellipse cx="32" cy="28" rx="6" ry="4"/>
+      <path d="M32 24v-12"/>
+      <path d="M30 12h4"/>
+      <path d="M22 32l-10-4"/>
+      <path d="M42 32l10-4"/>
+      <path d="M22 38l-12 8"/>
+      <path d="M42 38l12 8"/>
+      <path d="M28 42l-4 12"/>
+      <path d="M36 42l4 12"/>
+      <text x="14" y="64" font-size="4" fill="currentColor" stroke="none">Mosquito</text>
+    </svg>`
+  },
+  {
+    id: 'inf-tick-vector',
+    name: 'Tick Vector',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['tick', 'vector', 'lyme', 'rocky mountain', 'babesia', 'ehrlichia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="12" ry="16" fill="#92400E" opacity="0.4"/>
+      <ellipse cx="32" cy="36" rx="12" ry="16"/>
+      <ellipse cx="32" cy="20" rx="6" ry="4" fill="#92400E" opacity="0.5"/>
+      <ellipse cx="32" cy="20" rx="6" ry="4"/>
+      <path d="M20 28l-8-4"/>
+      <path d="M44 28l8-4"/>
+      <path d="M20 36l-12 0"/>
+      <path d="M44 36l12 0"/>
+      <path d="M20 44l-8 4"/>
+      <path d="M44 44l8 4"/>
+      <path d="M24 52l-4 8"/>
+      <path d="M40 52l4 8"/>
+      <text x="22" y="64" font-size="4" fill="currentColor" stroke="none">Tick</text>
+    </svg>`
+  },
+  {
+    id: 'inf-droplet-transmission',
+    name: 'Droplet Transmission',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['droplet', 'respiratory', 'cough', 'sneeze', 'transmission'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="24" r="12" fill="#F3F4F6"/>
+      <circle cx="16" cy="24" r="12"/>
+      <path d="M22 20c4 4 4 8 0 8"/>
+      <path d="M28 24l8 4"/>
+      <path d="M28 20l12-4"/>
+      <path d="M28 28l12 4"/>
+      <circle cx="44" cy="16" r="3" fill="#3B82F6" opacity="0.5"/>
+      <circle cx="48" cy="24" r="2" fill="#3B82F6" opacity="0.5"/>
+      <circle cx="52" cy="20" r="2" fill="#3B82F6" opacity="0.5"/>
+      <circle cx="46" cy="28" r="3" fill="#3B82F6" opacity="0.5"/>
+      <circle cx="56" cy="32" r="2" fill="#3B82F6" opacity="0.5"/>
+      <text x="10" y="52" font-size="4" fill="currentColor" stroke="none">Droplet</text>
+    </svg>`
+  },
+  {
+    id: 'inf-airborne-transmission',
+    name: 'Airborne Transmission',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['airborne', 'aerosol', 'TB', 'measles', 'chickenpox', 'COVID'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" stroke-dasharray="4 4" fill="#EF4444" opacity="0.1"/>
+      <circle cx="32" cy="32" r="12" stroke-dasharray="4 4" fill="#EF4444" opacity="0.2"/>
+      <circle cx="24" cy="28" r="2" fill="#EF4444" opacity="0.6"/>
+      <circle cx="36" cy="24" r="1.5" fill="#EF4444" opacity="0.6"/>
+      <circle cx="40" cy="32" r="2" fill="#EF4444" opacity="0.6"/>
+      <circle cx="28" cy="38" r="1.5" fill="#EF4444" opacity="0.6"/>
+      <circle cx="38" cy="40" r="2" fill="#EF4444" opacity="0.6"/>
+      <circle cx="20" cy="36" r="1" fill="#EF4444" opacity="0.6"/>
+      <circle cx="44" cy="28" r="1" fill="#EF4444" opacity="0.6"/>
+      <path d="M16 16c4 4 0 8-4 12"/>
+      <path d="M48 16c-4 4 0 8 4 12"/>
+      <path d="M16 48c4-4 0-8-4-12"/>
+      <path d="M48 48c-4-4 0-8 4-12"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">Airborne</text>
+    </svg>`
+  },
+  {
+    id: 'inf-fecal-oral',
+    name: 'Fecal-Oral Transmission',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['fecal-oral', 'enteric', 'waterborne', 'food', 'contamination'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="16" cy="32" rx="8" ry="12" fill="#92400E" opacity="0.3"/>
+      <ellipse cx="16" cy="32" rx="8" ry="12"/>
+      <path d="M24 32h8"/>
+      <path d="M36 28v8" fill="#3B82F6" opacity="0.3"/>
+      <path d="M32 24l8 8-8 8z" fill="#3B82F6" opacity="0.3"/>
+      <path d="M32 24l8 8-8 8z"/>
+      <path d="M44 32h8"/>
+      <circle cx="56" cy="24" r="4" fill="#F3F4F6"/>
+      <circle cx="56" cy="24" r="4"/>
+      <path d="M56 28v8"/>
+      <path d="M52 36h8"/>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">Fecal-Oral</text>
+    </svg>`
+  },
+  {
+    id: 'inf-bloodborne',
+    name: 'Bloodborne Transmission',
+    domain: 'medicine',
+    category: 'transmission',
+    tags: ['bloodborne', 'parenteral', 'needle', 'HIV', 'hepatitis', 'transfusion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8l12 24c4 8 0 16-12 20-12-4-16-12-12-20l12-24z" fill="#DC2626" opacity="0.4"/>
+      <path d="M32 8l12 24c4 8 0 16-12 20-12-4-16-12-12-20l12-24z"/>
+      <path d="M28 28c2-4 6-4 8 0"/>
+      <circle cx="32" cy="36" r="6" fill="#DC2626" opacity="0.6"/>
+      <path d="M32 56v4"/>
+      <path d="M28 60h8"/>
+      <text x="10" y="64" font-size="4" fill="currentColor" stroke="none">Bloodborne</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // VACCINATION (4)
+  // ===========================================================================
+  {
+    id: 'inf-vaccine-vial',
+    name: 'Vaccine Vial',
+    domain: 'medicine',
+    category: 'vaccination',
+    tags: ['vaccine', 'vial', 'immunization', 'prophylaxis', 'prevention'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="8" rx="2" fill="#6B7280"/>
+      <rect x="20" y="8" width="24" height="8" rx="2"/>
+      <rect x="24" y="4" width="16" height="4" rx="1" fill="#A5B4FC"/>
+      <path d="M20 16v36c0 4 4 8 12 8s12-4 12-8V16"/>
+      <path d="M20 16h24"/>
+      <rect x="24" y="24" width="16" height="24" rx="2" fill="#93C5FD" opacity="0.4"/>
+      <text x="28" y="40" font-size="6" fill="currentColor" stroke="none">V</text>
+      <text x="16" y="64" font-size="4" fill="currentColor" stroke="none">Vaccine</text>
+    </svg>`
+  },
+  {
+    id: 'inf-syringe',
+    name: 'Vaccination Syringe',
+    domain: 'medicine',
+    category: 'vaccination',
+    tags: ['syringe', 'injection', 'vaccine', 'immunization', 'shot'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="24" width="36" height="16" rx="2" fill="#F3F4F6"/>
+      <rect x="16" y="24" width="36" height="16" rx="2"/>
+      <rect x="20" y="28" width="24" height="8" rx="1" fill="#93C5FD" opacity="0.5"/>
+      <path d="M52 32h8"/>
+      <path d="M16 32h-8l-4 0"/>
+      <path d="M8 28v8"/>
+      <path d="M44 24v16"/>
+      <text x="14" y="52" font-size="4" fill="currentColor" stroke="none">Syringe</text>
+    </svg>`
+  },
+  {
+    id: 'inf-immunization-card',
+    name: 'Immunization Record',
+    domain: 'medicine',
+    category: 'vaccination',
+    tags: ['immunization', 'record', 'card', 'vaccination', 'history'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="#FEF3C7"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <rect x="12" y="12" width="12" height="16" rx="2" fill="#E5E7EB"/>
+      <path d="M28 16h24"/>
+      <path d="M28 24h20"/>
+      <path d="M12 36h40"/>
+      <path d="M12 44h40"/>
+      <path d="M12 52h32"/>
+      <circle cx="48" cy="44" r="4" fill="#10B981"/>
+      <path d="M46 44l2 2 4-4" stroke="#fff" stroke-width="1.5"/>
+      <text x="8" y="64" font-size="3" fill="currentColor" stroke="none">Immunization</text>
+    </svg>`
+  },
+  {
+    id: 'inf-herd-immunity',
+    name: 'Herd Immunity',
+    domain: 'medicine',
+    category: 'vaccination',
+    tags: ['herd immunity', 'population', 'coverage', 'threshold', 'protection'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" stroke-dasharray="4 4"/>
+      <circle cx="20" cy="20" r="4" fill="#10B981"/>
+      <circle cx="32" cy="16" r="4" fill="#10B981"/>
+      <circle cx="44" cy="20" r="4" fill="#10B981"/>
+      <circle cx="16" cy="32" r="4" fill="#10B981"/>
+      <circle cx="32" cy="32" r="4" fill="#EF4444"/>
+      <circle cx="48" cy="32" r="4" fill="#10B981"/>
+      <circle cx="20" cy="44" r="4" fill="#10B981"/>
+      <circle cx="32" cy="48" r="4" fill="#10B981"/>
+      <circle cx="44" cy="44" r="4" fill="#10B981"/>
+      <text x="4" y="64" font-size="3" fill="currentColor" stroke="none">Herd Immunity</text>
+    </svg>`
+  },
 ];
 
 export default infectiousIcons;

@@ -192,6 +192,62 @@ Viral Hepatitis Management requirements:
 - Include fibrosis staging (FibroScan, FIB-4)
 - Reference HCC surveillance indications
 - Show vaccination recommendations for contacts`,
+
+  // Additional prompts for COMPLETE status
+  advancedIbdManagement: `
+Advanced IBD Management requirements:
+- Include treat-to-target approach with objective endpoints
+- Reference biologic selection algorithm (anti-TNF, IL-12/23, integrin)
+- Show therapeutic drug monitoring (TDM) interpretation
+- Include loss of response management
+- Reference combination therapy indications
+- Show perianal Crohn's multidisciplinary approach
+- Include postoperative prophylaxis strategies
+- Reference extraintestinal manifestation treatment`,
+
+  cirrhosisComplications: `
+Cirrhosis Complications Management requirements:
+- Include AASLD guidelines for ascites management
+- Reference SBP prophylaxis indications (primary and secondary)
+- Show hepatorenal syndrome type 1 vs type 2 management
+- Include TIPS indications and contraindications
+- Reference variceal hemorrhage acute management
+- Show hepatopulmonary syndrome screening
+- Include portopulmonary hypertension evaluation
+- Reference transplant listing criteria by complication`,
+
+  giBleedingInterventions: `
+GI Bleeding Interventional Management requirements:
+- Include endoscopic hemostasis technique selection
+- Reference Forrest classification and rebleeding risk
+- Show angiographic intervention indications
+- Include hemostatic powder and clip application
+- Reference argon plasma coagulation technique
+- Show radiofrequency ablation for GAVE
+- Include surgical consultation triggers
+- Reference anticoagulation resumption timing`,
+
+  pancreaticDiseaseVisualization: `
+Pancreatic Disease Visualization requirements:
+- Include pancreatic anatomy with ductal system
+- Reference Atlanta classification for acute pancreatitis
+- Show pancreatic cyst differential (IPMN, MCN, SCN)
+- Include EUS-FNA indication algorithm
+- Reference chronic pancreatitis Cambridge classification
+- Show pancreatic enzyme replacement dosing
+- Include autoimmune pancreatitis type 1 vs 2
+- Reference pancreatic cancer staging and resectability`,
+
+  colorectalCancerScreening: `
+Colorectal Cancer Screening requirements:
+- Include USPSTF age recommendations (45-75)
+- Reference colonoscopy quality metrics (ADR, CIR)
+- Show polyp surveillance intervals (USMSTF 2020)
+- Include high-risk screening (Lynch, FAP, IBD)
+- Reference FIT vs colonoscopy screening strategies
+- Show sessile serrated polyp management
+- Include piecemeal polypectomy follow-up
+- Reference hereditary cancer syndrome referral criteria`,
 };
 
 // =============================================================================

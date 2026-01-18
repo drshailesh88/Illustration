@@ -1310,6 +1310,350 @@ export const nephrologyIcons: IconDefinition[] = [
       <text x="46" y="22" font-size="4" fill="white" stroke="none">R</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // KIDNEY STONES
+  // ===========================================================================
+  {
+    id: 'nephro-calcium-oxalate-stone',
+    name: 'Calcium Oxalate Stone',
+    domain: 'medicine',
+    category: 'kidney-stones',
+    tags: ['stone', 'calcium oxalate', 'nephrolithiasis', 'envelope crystals', 'most common'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="32,8 48,24 48,44 32,56 16,44 16,24" fill="#8B4513" opacity="0.5"/>
+      <polygon points="32,8 48,24 48,44 32,56 16,44 16,24"/>
+      <path d="M20 28l12 8 12-8"/>
+      <path d="M20 36l12 8 12-8"/>
+      <text x="4" y="60" font-size="4" fill="currentColor" stroke="none">CaOx - 80%</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-uric-acid-stone',
+    name: 'Uric Acid Stone',
+    domain: 'medicine',
+    category: 'kidney-stones',
+    tags: ['stone', 'uric acid', 'radiolucent', 'gout', 'acidic urine'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="20" fill="#FFA500" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="16" ry="20"/>
+      <path d="M24 24c4 4 8 4 12 0"/>
+      <path d="M24 32c4 4 8 4 12 0"/>
+      <path d="M24 40c4 4 8 4 12 0"/>
+      <text x="4" y="60" font-size="4" fill="currentColor" stroke="none">Uric acid - radiolucent</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-struvite-stone',
+    name: 'Struvite Stone',
+    domain: 'medicine',
+    category: 'kidney-stones',
+    tags: ['stone', 'struvite', 'staghorn', 'infection', 'MAP', 'coffin lid crystals'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-10 0-14 8-14 20s4 20 14 20c4 0 6-4 6-20s-2-20-6-20z" fill="currentColor" opacity="0.1"/>
+      <path d="M32 8c-10 0-14 8-14 20s4 20 14 20c4 0 6-4 6-20s-2-20-6-20z"/>
+      <path d="M20 16l-8 4 8 4-8 4 8 4-8 4 8 4" fill="#808080" stroke="#808080"/>
+      <path d="M28 12l-6 8 6 8-6 8 6 8" fill="#808080" opacity="0.6"/>
+      <text x="40" y="32" font-size="4" fill="currentColor" stroke="none">Staghorn</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-cystine-stone',
+    name: 'Cystine Stone',
+    domain: 'medicine',
+    category: 'kidney-stones',
+    tags: ['stone', 'cystine', 'cystinuria', 'hexagonal crystals', 'genetic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="32,4 52,16 52,40 32,52 12,40 12,16" fill="#FFD700" opacity="0.4"/>
+      <polygon points="32,4 52,16 52,40 32,52 12,40 12,16"/>
+      <polygon points="32,12 44,20 44,36 32,44 20,36 20,20" fill="#FFD700" opacity="0.3"/>
+      <text x="4" y="60" font-size="4" fill="currentColor" stroke="none">Hexagonal crystal</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-kidney-stone-lithotripsy',
+    name: 'Lithotripsy/ESWL',
+    domain: 'medicine',
+    category: 'kidney-stones',
+    tags: ['ESWL', 'lithotripsy', 'shock wave', 'stone fragmentation', 'non-invasive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 20c-8 0-12 6-12 16s4 16 12 16c4 0 6-4 6-16s-2-16-6-16z" fill="currentColor" opacity="0.2"/>
+      <path d="M36 20c-8 0-12 6-12 16s4 16 12 16c4 0 6-4 6-16s-2-16-6-16z"/>
+      <polygon points="30,34 26,38 34,38" fill="#8B4513"/>
+      <path d="M8 36l16-4" stroke="#4169E1" stroke-width="2" stroke-dasharray="4 2"/>
+      <path d="M8 32l16 4" stroke="#4169E1" stroke-width="2" stroke-dasharray="4 2"/>
+      <path d="M8 40l16-4" stroke="#4169E1" stroke-width="2" stroke-dasharray="4 2"/>
+      <text x="4" y="56" font-size="4" fill="currentColor" stroke="none">Shock waves</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL CLINICAL ICONS
+  // ===========================================================================
+  {
+    id: 'nephro-glomerular-hyperfiltration',
+    name: 'Glomerular Hyperfiltration',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['hyperfiltration', 'diabetic', 'early CKD', 'elevated GFR', 'hypertrophy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="#DC143C" opacity="0.2"/>
+      <circle cx="32" cy="32" r="20"/>
+      <path d="M16 24l8-8M48 24l-8-8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M28 20l8 12 8-12"/>
+      <path d="M28 28l8 12 8-12"/>
+      <path d="M28 36l8 12 8-12"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Increased flow</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-renal-artery-stenosis',
+    name: 'Renal Artery Stenosis',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['RAS', 'stenosis', 'renovascular HTN', 'fibromuscular', 'atherosclerotic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32h20" stroke="#DC143C" stroke-width="4"/>
+      <path d="M28 28v8" stroke="#FFA500" stroke-width="4"/>
+      <path d="M32 32h12" stroke="#DC143C" stroke-width="2"/>
+      <path d="M48 20c-8 0-12 6-12 12s4 12 12 12c4 0 6-4 6-12s-2-12-6-12z" fill="currentColor" opacity="0.2"/>
+      <path d="M48 20c-8 0-12 6-12 12s4 12 12 12c4 0 6-4 6-12s-2-12-6-12z"/>
+      <text x="4" y="56" font-size="4" fill="currentColor" stroke="none">Stenosis</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-anca-vasculitis',
+    name: 'ANCA Vasculitis',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['ANCA', 'vasculitis', 'GPA', 'MPA', 'crescentic GN', 'RPGN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <path d="M20 24c4-4 8-4 12 0"/>
+      <path d="M32 24c4-4 8-4 12 0"/>
+      <circle cx="24" cy="32" r="6" fill="#DC143C" opacity="0.5"/>
+      <circle cx="40" cy="32" r="6" fill="#DC143C" opacity="0.5"/>
+      <path d="M20 44c4 4 8 4 12 0" stroke="#DC143C" stroke-width="2"/>
+      <path d="M32 44c4 4 8 4 12 0" stroke="#DC143C" stroke-width="2"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Crescents + necrotizing</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-anti-gbm-disease',
+    name: 'Anti-GBM Disease',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['anti-GBM', 'Goodpasture', 'pulmonary-renal', 'linear IF', 'crescentic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="14" stroke="#22C55E" stroke-width="4" stroke-dasharray="0"/>
+      <text x="22" y="36" font-size="8" fill="currentColor" stroke="none">IgG</text>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Linear IF pattern</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-minimal-change',
+    name: 'Minimal Change Disease',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['MCD', 'minimal change', 'podocyte', 'foot process effacement', 'nephrotic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="14" stroke-dasharray="3 2"/>
+      <path d="M20 40v8M24 40v8M28 40v8M32 40v8M36 40v8M40 40v8M44 40v8" stroke-width="3"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Effaced foot processes</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-rta-type1',
+    name: 'Renal Tubular Acidosis Type 1',
+    domain: 'medicine',
+    category: 'electrolytes',
+    tags: ['RTA', 'distal', 'type 1', 'hypokalemia', 'urine pH >5.5'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="12" width="40" height="40" rx="4"/>
+      <text x="16" y="28" font-size="6" fill="currentColor" stroke="none">RTA</text>
+      <text x="16" y="40" font-size="8" fill="#DC143C" stroke="none">Type 1</text>
+      <text x="16" y="52" font-size="4" fill="currentColor" stroke="none">pH >5.5</text>
+      <circle cx="48" cy="16" r="6" fill="#FFD700" opacity="0.4"/>
+      <text x="44" y="18" font-size="4" fill="currentColor" stroke="none">K+</text>
+      <path d="M46 22l4 4-4 4" stroke="#DC143C"/>
+    </svg>`
+  },
+  {
+    id: 'nephro-rta-type4',
+    name: 'Renal Tubular Acidosis Type 4',
+    domain: 'medicine',
+    category: 'electrolytes',
+    tags: ['RTA', 'hyperkalemic', 'type 4', 'aldosterone', 'diabetes'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="12" width="40" height="40" rx="4"/>
+      <text x="16" y="28" font-size="6" fill="currentColor" stroke="none">RTA</text>
+      <text x="16" y="40" font-size="8" fill="#DC143C" stroke="none">Type 4</text>
+      <text x="16" y="52" font-size="4" fill="currentColor" stroke="none">Low aldo</text>
+      <circle cx="48" cy="16" r="6" fill="#FFD700" opacity="0.4"/>
+      <text x="44" y="18" font-size="4" fill="currentColor" stroke="none">K+</text>
+      <path d="M52 22l-4-8 4-4" stroke="#DC143C"/>
+    </svg>`
+  },
+  {
+    id: 'nephro-fanconi-syndrome',
+    name: 'Fanconi Syndrome',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['Fanconi', 'proximal tubule', 'glycosuria', 'aminoaciduria', 'phosphaturia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24c8 4 16-4 24 0s16-4 24 0" stroke-width="3"/>
+      <path d="M8 40c8 4 16-4 24 0s16-4 24 0" stroke-width="3"/>
+      <circle cx="16" cy="32" r="4" fill="#9333EA" opacity="0.5"/>
+      <circle cx="28" cy="32" r="4" fill="#FFD700" opacity="0.5"/>
+      <circle cx="40" cy="32" r="4" fill="#4169E1" opacity="0.5"/>
+      <circle cx="52" cy="32" r="4" fill="#22C55E" opacity="0.5"/>
+      <path d="M16 36v8M28 36v8M40 36v8M52 36v8" stroke-dasharray="2 2"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">PCT dysfunction - multi-loss</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-creatinine-marker',
+    name: 'Creatinine',
+    domain: 'medicine',
+    category: 'lab-markers',
+    tags: ['creatinine', 'Cr', 'kidney function', 'GFR marker', 'lab'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="20" y="32" font-size="12" fill="currentColor" stroke="none">Cr</text>
+      <text x="12" y="48" font-size="5" fill="currentColor" stroke="none">0.7-1.3</text>
+      <text x="36" y="48" font-size="4" fill="currentColor" stroke="none">mg/dL</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-bun-marker',
+    name: 'Blood Urea Nitrogen',
+    domain: 'medicine',
+    category: 'lab-markers',
+    tags: ['BUN', 'urea', 'nitrogen', 'kidney function', 'lab'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="32" font-size="10" fill="currentColor" stroke="none">BUN</text>
+      <text x="12" y="48" font-size="5" fill="currentColor" stroke="none">7-20</text>
+      <text x="36" y="48" font-size="4" fill="currentColor" stroke="none">mg/dL</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-cystatin-c',
+    name: 'Cystatin C',
+    domain: 'medicine',
+    category: 'lab-markers',
+    tags: ['cystatin C', 'GFR', 'muscle independent', 'kidney function', 'alternative'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="#4169E1" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="28" font-size="8" fill="currentColor" stroke="none">Cys-C</text>
+      <text x="12" y="44" font-size="4" fill="currentColor" stroke="none">Muscle-</text>
+      <text x="12" y="52" font-size="4" fill="currentColor" stroke="none">independent</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-uacr',
+    name: 'Urine Albumin-Creatinine Ratio',
+    domain: 'medicine',
+    category: 'lab-markers',
+    tags: ['UACR', 'ACR', 'albuminuria', 'microalbuminuria', 'diabetic nephropathy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4" fill="#FFD700" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <text x="12" y="28" font-size="8" fill="currentColor" stroke="none">UACR</text>
+      <rect x="12" y="34" width="8" height="16" fill="#22C55E" opacity="0.6"/>
+      <rect x="24" y="38" width="8" height="12" fill="#FFA500" opacity="0.6"/>
+      <rect x="36" y="42" width="8" height="8" fill="#DC143C" opacity="0.6"/>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">A1  A2  A3</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-kdigo-heatmap',
+    name: 'KDIGO CKD Heatmap',
+    domain: 'medicine',
+    category: 'clinical',
+    tags: ['KDIGO', 'CKD', 'risk', 'heatmap', 'staging', 'prognosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2"/>
+      <rect x="12" y="12" width="12" height="8" fill="#22C55E"/>
+      <rect x="24" y="12" width="12" height="8" fill="#84CC16"/>
+      <rect x="36" y="12" width="12" height="8" fill="#FACC15"/>
+      <rect x="12" y="20" width="12" height="8" fill="#84CC16"/>
+      <rect x="24" y="20" width="12" height="8" fill="#FACC15"/>
+      <rect x="36" y="20" width="12" height="8" fill="#F97316"/>
+      <rect x="12" y="28" width="12" height="8" fill="#FACC15"/>
+      <rect x="24" y="28" width="12" height="8" fill="#F97316"/>
+      <rect x="36" y="28" width="12" height="8" fill="#DC2626"/>
+      <rect x="12" y="36" width="12" height="8" fill="#F97316"/>
+      <rect x="24" y="36" width="12" height="8" fill="#DC2626"/>
+      <rect x="36" y="36" width="12" height="8" fill="#DC2626"/>
+      <rect x="12" y="44" width="12" height="8" fill="#DC2626"/>
+      <rect x="24" y="44" width="12" height="8" fill="#DC2626"/>
+      <rect x="36" y="44" width="12" height="8" fill="#DC2626"/>
+      <text x="4" y="18" font-size="3" fill="currentColor" stroke="none">G1</text>
+      <text x="4" y="26" font-size="3" fill="currentColor" stroke="none">G2</text>
+      <text x="4" y="34" font-size="3" fill="currentColor" stroke="none">G3</text>
+      <text x="4" y="42" font-size="3" fill="currentColor" stroke="none">G4</text>
+      <text x="4" y="50" font-size="3" fill="currentColor" stroke="none">G5</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-sglt2-inhibitor',
+    name: 'SGLT2 Inhibitor',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['SGLT2i', 'dapagliflozin', 'empagliflozin', 'DKD', 'renoprotective'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 28c8 4 16-4 24 0s16-4 24 0" stroke-width="2"/>
+      <circle cx="24" cy="28" r="6" fill="#FFD700" opacity="0.3"/>
+      <text x="21" y="30" font-size="4" fill="currentColor" stroke="none">Glu</text>
+      <path d="M24 34l-8 16" stroke="#FFD700" stroke-width="2"/>
+      <line x1="16" y1="36" x2="24" y2="40" stroke="#DC143C" stroke-width="3"/>
+      <circle cx="16" cy="50" r="4" fill="#FFD700" opacity="0.5"/>
+      <text x="4" y="60" font-size="3" fill="currentColor" stroke="none">Block PCT glucose reabsorption</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-raas-blockade',
+    name: 'RAAS Blockade',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['ACEi', 'ARB', 'RAAS', 'proteinuria', 'renoprotective'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 20l12 8-12 8z" fill="#4169E1" opacity="0.3"/>
+      <text x="4" y="36" font-size="4" fill="currentColor" stroke="none">Ang I</text>
+      <path d="M20 28h8"/>
+      <rect x="28" y="24" width="12" height="8" fill="#DC143C" opacity="0.3"/>
+      <text x="30" y="30" font-size="4" fill="currentColor" stroke="none">ACE</text>
+      <line x1="28" y1="20" x2="40" y2="36" stroke="#DC143C" stroke-width="3"/>
+      <path d="M40 28h8"/>
+      <path d="M48 20l12 8-12 8z" fill="#FFA500" opacity="0.3"/>
+      <text x="44" y="36" font-size="4" fill="currentColor" stroke="none">Ang II</text>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">ACEi/ARB blockade</text>
+    </svg>`
+  },
+  {
+    id: 'nephro-epo-deficiency',
+    name: 'EPO Deficiency',
+    domain: 'medicine',
+    category: 'pathology-ckd',
+    tags: ['EPO', 'erythropoietin', 'anemia', 'CKD anemia', 'normocytic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12c-8 0-12 8-12 20s4 20 12 20c4 0 6-4 6-20s-2-20-6-20z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 12c-8 0-12 8-12 20s4 20 12 20c4 0 6-4 6-20s-2-20-6-20z"/>
+      <path d="M26 32h12"/>
+      <path d="M34 28l4 4-4 4" stroke-dasharray="2 2"/>
+      <circle cx="48" cy="24" r="6" fill="#DC143C" opacity="0.3"/>
+      <circle cx="48" cy="36" r="6" fill="#DC143C" opacity="0.3"/>
+      <circle cx="48" cy="48" r="6" fill="#DC143C" opacity="0.3"/>
+      <path d="M42 24l12 0M42 36l12 0M42 48l12 0" stroke="#DC143C" stroke-dasharray="3 2"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Low EPO -> anemia</text>
+    </svg>`
+  },
 ];
 
 export default nephrologyIcons;
