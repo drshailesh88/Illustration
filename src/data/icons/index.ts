@@ -76,6 +76,22 @@ import { chemistryIcons } from './chemistry';
 import { physicsIcons } from './physics';
 import { engineeringIcons } from './engineering';
 import { cardiologyIcons } from './cardiology';
+import { gastroenterologyIcons } from './gastroenterology';
+import { nephrologyIcons } from './nephrology';
+import { anesthesiologyIcons } from './anesthesiology';
+import { ophthalmologyIcons } from './ophthalmology';
+import { radiologyIcons } from './radiology';
+import { pathologyIcons } from './pathology';
+import { rheumatologyIcons } from './rheumatology';
+import { endocrinologyIcons } from './endocrinology';
+import { psychiatryIcons } from './psychiatry';
+import { infectiousIcons } from './infectious';
+import { pediatricsIcons } from './pediatrics';
+import { emergencyIcons } from './emergency';
+import { orthopedicsIcons } from './orthopedics';
+import { pulmonologyIcons } from './pulmonology';
+import { entIcons } from './ent';
+import { obgynIcons } from './obgyn';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -87,6 +103,22 @@ import { cardiologyIcons } from './cardiology';
 export const allIcons: IconDefinition[] = [
   ...medicineIcons,
   ...cardiologyIcons,
+  ...pulmonologyIcons,
+  ...gastroenterologyIcons,
+  ...nephrologyIcons,
+  ...anesthesiologyIcons,
+  ...ophthalmologyIcons,
+  ...radiologyIcons,
+  ...pathologyIcons,
+  ...rheumatologyIcons,
+  ...endocrinologyIcons,
+  ...psychiatryIcons,
+  ...emergencyIcons,
+  ...infectiousIcons,
+  ...pediatricsIcons,
+  ...orthopedicsIcons,
+  ...entIcons,
+  ...obgynIcons,
   ...biologyIcons,
   ...chemistryIcons,
   ...physicsIcons,
@@ -97,7 +129,10 @@ export const allIcons: IconDefinition[] = [
  * Icons organized by domain for quick access
  */
 export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
-  medicine: [...medicineIcons, ...cardiologyIcons],
+  medicine: [...medicineIcons, ...cardiologyIcons, ...pulmonologyIcons,
+  ...gastroenterologyIcons,
+  ...nephrologyIcons, ...anesthesiologyIcons, ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
+  ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons, ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons],
   biology: biologyIcons,
   chemistry: chemistryIcons,
   physics: physicsIcons,
@@ -112,8 +147,8 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
   medicine: {
     id: 'medicine',
     name: 'Medicine',
-    description: 'Medical, clinical, and healthcare icons including cardiology',
-    iconCount: medicineIcons.length + cardiologyIcons.length,
+    description: 'Medical, clinical, and healthcare icons including cardiology, anesthesiology, ophthalmology, and radiology',
+    iconCount: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length,
     color: '#ef4444', // Red
   },
   biology: {
@@ -371,7 +406,7 @@ export function getIconStats(): {
   return {
     totalIcons: allIcons.length,
     byDomain: {
-      medicine: medicineIcons.length + cardiologyIcons.length,
+      medicine: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length,
       biology: biologyIcons.length,
       chemistry: chemistryIcons.length,
       physics: physicsIcons.length,
@@ -430,10 +465,26 @@ export function iconToBase64(icon: IconDefinition): string {
 
 export { medicineIcons } from './medicine';
 export { cardiologyIcons } from './cardiology';
+export { gastroenterologyIcons } from './gastroenterology';
+export { nephrologyIcons } from './nephrology';
+export { anesthesiologyIcons } from './anesthesiology';
+export { ophthalmologyIcons } from './ophthalmology';
+export { radiologyIcons } from './radiology';
+export { rheumatologyIcons } from './rheumatology';
+export { orthopedicsIcons } from './orthopedics';
+export { psychiatryIcons } from './psychiatry';
 export { biologyIcons } from './biology';
 export { chemistryIcons } from './chemistry';
 export { physicsIcons } from './physics';
 export { engineeringIcons } from './engineering';
+export { infectiousIcons } from './infectious';
+export { pediatricsIcons } from './pediatrics';
+export { emergencyIcons } from './emergency';
+export { pulmonologyIcons } from './pulmonology';
+export { endocrinologyIcons } from './endocrinology';
+export { pathologyIcons } from './pathology';
+export { entIcons } from './ent';
+export { obgynIcons } from './obgyn';
 
 export default {
   allIcons,

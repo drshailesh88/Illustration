@@ -15,10 +15,26 @@
 
 export * from './medicine';
 export * from './cardiology';
+export * from './gastroenterology';
+export * from './nephrology';
+export * from './anesthesiology';
+export * from './ophthalmology';
+export * from './radiology';
+export * from './rheumatology';
+export * from './endocrinology';
 export * from './biology';
 export * from './chemistry';
 export * from './physics';
 export * from './engineering';
+export * from './pediatrics';
+export * from './orthopedics';
+export * from './infectious';
+export * from './psychiatry';
+export * from './emergency';
+export * from './pulmonology';
+export * from './pathology';
+export * from './ent';
+export * from './obgyn';
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -104,10 +120,26 @@ export interface TemplateSearchOptions {
 
 import { medicineTemplates } from './medicine';
 import { cardiologyTemplates } from './cardiology';
+import { gastroenterologyTemplates } from './gastroenterology';
+import { nephrologyTemplates } from './nephrology';
+import { anesthesiologyTemplates } from './anesthesiology';
+import { ophthalmologyTemplates } from './ophthalmology';
+import { radiologyTemplates } from './radiology';
+import { rheumatologyTemplates } from './rheumatology';
+import { endocrinologyTemplates } from './endocrinology';
 import { biologyTemplates } from './biology';
 import { chemistryTemplates } from './chemistry';
 import { physicsTemplates } from './physics';
 import { engineeringTemplates } from './engineering';
+import { pediatricsTemplates } from './pediatrics';
+import { orthopedicsTemplates } from './orthopedics';
+import { infectiousTemplates } from './infectious';
+import { psychiatryTemplates } from './psychiatry';
+import { emergencyTemplates } from './emergency';
+import { pulmonologyTemplates } from './pulmonology';
+import { pathologyTemplates } from './pathology';
+import { entTemplates } from './ent';
+import { obgynTemplates } from './obgyn';
 
 // =============================================================================
 // AGGREGATED TEMPLATE COLLECTIONS
@@ -119,17 +151,35 @@ import { engineeringTemplates } from './engineering';
 export const allTemplates: DiagramTemplate[] = [
   ...medicineTemplates,
   ...cardiologyTemplates,
+  ...gastroenterologyTemplates,
+  ...nephrologyTemplates,
+  ...anesthesiologyTemplates,
+  ...ophthalmologyTemplates,
+  ...radiologyTemplates,
+  ...rheumatologyTemplates,
+  ...endocrinologyTemplates,
   ...biologyTemplates,
   ...chemistryTemplates,
   ...physicsTemplates,
   ...engineeringTemplates,
+  ...infectiousTemplates,
+  ...orthopedicsTemplates,
+  ...pediatricsTemplates,
+  ...psychiatryTemplates,
+  ...emergencyTemplates,
+  ...pulmonologyTemplates,
+  ...pathologyTemplates,
+  ...entTemplates,
+  ...obgynTemplates,
 ];
 
 /**
  * Templates organized by domain
  */
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
-  medicine: [...medicineTemplates, ...cardiologyTemplates],
+  medicine: [...medicineTemplates, ...cardiologyTemplates,
+  ...gastroenterologyTemplates,
+  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates],
   biology: biologyTemplates,
   chemistry: chemistryTemplates,
   physics: physicsTemplates,
@@ -242,7 +292,7 @@ export function getTemplateStats(): {
   return {
     total: allTemplates.length,
     byDomain: {
-      medicine: medicineTemplates.length + cardiologyTemplates.length,
+      medicine: medicineTemplates.length + cardiologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length,
       biology: biologyTemplates.length,
       chemistry: chemistryTemplates.length,
       physics: physicsTemplates.length,
