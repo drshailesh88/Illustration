@@ -42,3 +42,32 @@ export {
   type IconSearchProps,
   type IconGridProps,
 } from './IconBrowser';
+
+// Illustrator Tools
+export {
+  IllustratorToolbar,
+  type IllustratorToolbarProps,
+  type IllustratorTool,
+} from './IllustratorToolbar';
+
+// Style Panel (Hand-drawn styles)
+export {
+  StylePanel,
+  settingsToRoughOptions,
+  defaultHandDrawnSettings,
+  type StylePanelProps,
+  type HandDrawnSettings,
+  type FillStyle,
+} from './StylePanel';
+
+// Unified Icon Picker (external libraries: Tabler, Health, Science, IconPark, Simple)
+export {
+  IconPicker as UnifiedIconPicker,
+  IconSearch as UnifiedIconSearch,
+  IconGrid as UnifiedIconGrid,
+  IconPreview,
+  type IconPickerProps as UnifiedIconPickerProps,
+  type IconSearchProps as UnifiedIconSearchProps,
+  type IconGridProps as UnifiedIconGridProps,
+  type IconPreviewProps,
+} from './IconPicker/index';

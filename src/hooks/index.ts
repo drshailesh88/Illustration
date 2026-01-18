@@ -44,3 +44,9 @@ export type {
   UseToolSwitchingReturn,
   ToolInfo,
 } from './useToolSwitching';
+
+export { useIllustratorTools } from './useIllustratorTools';
+export type {
+  UseIllustratorToolsOptions,
+  UseIllustratorToolsReturn,
+} from './useIllustratorTools';

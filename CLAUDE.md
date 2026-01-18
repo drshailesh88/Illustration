@@ -12,13 +12,30 @@ FINNISH is an AI-powered scientific illustration tool replacing Adobe Illustrato
 
 | Metric | Current | Target | Progress |
 |--------|---------|--------|----------|
-| Specialties Complete | 1 | 35 | 2.9% |
-| Icons | 221 | 3,180 | 6.95% |
-| Templates | 50 | 709 | 7.05% |
-| Prompts | 25 | 525 | 4.8% |
+| Specialties Complete | 7 | 35 | 20% |
+| Icons | 792 | 3,180 | 25% |
+| Templates | 187 | 709 | 26% |
+| Prompts | 127 | 525 | 24% |
 
-**Completed**: Cardiology (100% - BENCHMARK)
-**Next in Queue**: Neurology, Pulmonology, Gastroenterology, Emergency Medicine (Phase 1)
+**Completed (7)**: Cardiology, Pulmonology, Emergency Medicine, Gastroenterology, Infectious Disease, Nephrology
+**In Progress**: Neurology (25%), Hematology-Oncology, Endocrinology, Orthopedics
+**Next in Queue**: Anesthesiology, Radiology, Ophthalmology
+
+---
+
+## ⚠️ CONTEXT REFRESH REMINDER
+
+> **ALWAYS run TWO PARALLEL WORKSTREAMS with multiple async agents:**
+>
+> **Workstream A: Specialty Expansion** (4-6 agents)
+> - Launch agents for incomplete specialties using Ralph Loop
+> - Check `.specify/ralph-loop/progress.json` for status
+>
+> **Workstream B: Illustrator Integration** (2-3 agents)
+> - Icon Picker UI, Pen Tool wiring, Color management
+> - Check `src/lib/` and `src/components/` for existing code
+>
+> **Use Task tool with `run_in_background: true` for all agents!**
 
 ---
 

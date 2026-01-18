@@ -5,16 +5,18 @@
  * @module pages/EditorMode/RightPanel
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { LayersPanel } from '../../components/LayersPanel';
 import PropertiesPanel from '../../components/PropertiesPanel';
 import IconPicker from '../../components/IconPicker';
+import { StylePanel, defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
+import { useEditorStore } from '../../store/editorStore';
 
 // ============================================================================
 // Types
 // ============================================================================
 
-type TabId = 'layers' | 'properties' | 'icons';
+type TabId = 'layers' | 'properties' | 'icons' | 'style';
 
 interface Tab {
   id: TabId;
@@ -128,6 +130,14 @@ const IconsIcon = () => (
   </svg>
 );
 
+const StyleIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 17c3.333-3.333 6.667-5 10-5 2 0 4 .5 6 1.5" />
+    <path d="M3 12c3.333-2 6.667-2.5 10-1.5 2 .6 4 1.8 6 3.5" />
+    <path d="M3 7c3.333-1 6.667-1 10 0 2 .6 4 1.8 6 3.5" />
+  </svg>
+);
+
 // ============================================================================
 // Tabs Configuration
 // ============================================================================
@@ -136,6 +146,7 @@ const tabs: Tab[] = [
   { id: 'layers', label: 'Layers', icon: <LayersIcon /> },
   { id: 'properties', label: 'Properties', icon: <PropertiesIcon /> },
   { id: 'icons', label: 'Icons', icon: <IconsIcon /> },
+  { id: 'style', label: 'Style', icon: <StyleIcon /> },
 ];
 
 // ============================================================================
@@ -178,6 +189,21 @@ function TabButton({ tab, isActive, onClick }: TabButtonProps): JSX.Element {
 
 export function RightPanel(): JSX.Element {
   const [activeTab, setActiveTab] = useState<TabId>('layers');
+  const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
+
+  // Get selection state from store
+  const selectedObjects = useEditorStore((state) => state.selectedObjects);
+  const canvas = useEditorStore((state) => state.canvas);
+  const hasSelection = selectedObjects.length > 0;
+
+  // Handle applying hand-drawn style to selection
+  const handleApplyToSelection = useCallback(() => {
+    if (!canvas || !hasSelection) return;
+
+    // TODO: Implement actual hand-drawn style application
+    // This will be handled by the useIllustratorTools hook
+    console.log('Applying hand-drawn style to selection:', handDrawnSettings);
+  }, [canvas, hasSelection, handDrawnSettings]);
 
   // Render content based on active tab
   const renderContent = () => {
@@ -188,6 +214,17 @@ export function RightPanel(): JSX.Element {
         return <PropertiesPanel />;
       case 'icons':
         return <IconPicker />;
+      case 'style':
+        return (
+          <div style={{ padding: '16px' }}>
+            <StylePanel
+              settings={handDrawnSettings}
+              onSettingsChange={setHandDrawnSettings}
+              onApplyToSelection={handleApplyToSelection}
+              hasSelection={hasSelection}
+            />
+          </div>
+        );
       default:
         return null;
     }

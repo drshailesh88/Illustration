@@ -17,10 +17,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEditorStore } from '../../store/editorStore';
 import { useToast } from '../../components/Toast';
 import { Canvas, CanvasProvider, CanvasRef } from '../../components/Canvas';
+import { IllustratorToolbar, type IllustratorTool } from '../../components/IllustratorToolbar';
+import { defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
+import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
 import { RightPanel } from './RightPanel';
 import { StatusBar } from './StatusBar';
+import { ToolType } from '../../types/index';
 
 // ============================================================================
 // Types
@@ -69,6 +73,7 @@ const styles: Record<string, React.CSSProperties> = {
     boxShadow: '0 4px 24px rgba(0, 0, 0, 0.4)',
     borderRadius: '4px',
     overflow: 'hidden',
+    position: 'relative',
   },
   loadingOverlay: {
     position: 'absolute',
@@ -102,13 +107,54 @@ export function EditorMode(): JSX.Element {
   const { showToast } = useToast();
 
   const canvasRef = useRef<CanvasRef>(null);
+  const paperCanvasRef = useRef<HTMLCanvasElement>(null);
   const [mouseCoords, setMouseCoords] = useState<MouseCoords>({ x: 0, y: 0 });
   const [canvasSize, setCanvasSize] = useState({ width: 800, height: 600 });
+  const [illustratorTool, setIllustratorTool] = useState<IllustratorTool>('select');
+  const [handDrawnEnabled, setHandDrawnEnabled] = useState(false);
+  const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
   const setLoading = useEditorStore((state) => state.setLoading);
   const setCanvas = useEditorStore((state) => state.setCanvas);
+  const canvas = useEditorStore((state) => state.canvas);
+  const setActiveTool = useEditorStore((state) => state.setActiveTool);
+
+  // Map illustrator tool to editor tool type
+  const mapIllustratorToolToEditorTool = useCallback((tool: IllustratorTool): ToolType => {
+    switch (tool) {
+      case 'select': return ToolType.SELECT;
+      case 'pen': return ToolType.PEN;
+      case 'brush': return ToolType.PENCIL;
+      case 'rectangle': return ToolType.RECTANGLE;
+      case 'ellipse': return ToolType.ELLIPSE;
+      case 'line': return ToolType.LINE;
+      case 'text': return ToolType.TEXT;
+      default: return ToolType.SELECT;
+    }
+  }, []);
+
+  // Handle illustrator tool change
+  const handleIllustratorToolChange = useCallback((tool: IllustratorTool) => {
+    setIllustratorTool(tool);
+    setActiveTool(mapIllustratorToolToEditorTool(tool));
+  }, [setActiveTool, mapIllustratorToolToEditorTool]);
+
+  // Handle hand-drawn toggle
+  const handleHandDrawnToggle = useCallback((enabled: boolean) => {
+    setHandDrawnEnabled(enabled);
+    setHandDrawnSettings(prev => ({ ...prev, enabled }));
+  }, []);
+
+  // Initialize illustrator tools hook
+  const illustratorTools = useIllustratorTools({
+    canvas: canvas,
+    activeTool: illustratorTool,
+    handDrawnSettings: handDrawnSettings,
+    strokeColor: '#000000',
+    strokeWidth: 2,
+  });
 
   // ========================================================================
   // Load Diagram by ID
@@ -226,6 +272,15 @@ export function EditorMode(): JSX.Element {
         {/* Top Menu Bar */}
         <MenuBar />
 
+        {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
+        <IllustratorToolbar
+          canvas={canvas}
+          activeTool={illustratorTool}
+          onToolChange={handleIllustratorToolChange}
+          handDrawnEnabled={handDrawnEnabled}
+          onHandDrawnToggle={handleHandDrawnToggle}
+        />
+
         {/* Main Content Area */}
         <div style={styles.main}>
           {/* Left Toolbar */}
@@ -251,6 +306,21 @@ export function EditorMode(): JSX.Element {
                   onSelectionChange={handleSelectionChange}
                   onObjectModified={handleObjectModified}
                 />
+                {/* Paper.js overlay canvas for Pen Tool */}
+                {illustratorTool === 'pen' && (
+                  <canvas
+                    ref={paperCanvasRef}
+                    width={canvasSize.width}
+                    height={canvasSize.height}
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      pointerEvents: 'auto',
+                      zIndex: 10,
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
