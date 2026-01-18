@@ -12,20 +12,20 @@ FINNISH is an AI-powered scientific illustration tool replacing Adobe Illustrato
 
 | Metric | Current | Target | Progress |
 |--------|---------|--------|----------|
-| Specialties Complete | 7 | 35 | 20% |
-| Icons | 792 | 3,180 | 25% |
-| Templates | 187 | 709 | 26% |
-| Prompts | 127 | 525 | 24% |
+| Specialties Complete | 15 | 35 | 43% |
+| Icons | 1,231+ | 3,180 | 39% |
+| Templates | 301+ | 709 | 42% |
+| Prompts | 212+ | 525 | 40% |
 
-**Completed (7)**: Cardiology, Pulmonology, Emergency Medicine, Gastroenterology, Infectious Disease, Nephrology
-**In Progress**: Neurology (25%), Hematology-Oncology, Endocrinology, Orthopedics
-**Next in Queue**: Anesthesiology, Radiology, Ophthalmology
+**Completed (15)**: Cardiology, Pulmonology, Emergency Medicine, Gastroenterology, Infectious Disease, Nephrology, Neurology, Hematology-Oncology, Endocrinology, Orthopedics, Anesthesiology, Radiology, Ophthalmology, Dermatology, ENT
+**In Progress**: Pediatrics, OB/GYN, Psychiatry
+**Next in Queue**: Rheumatology, Pathology, Anatomy, Physiology, Biochemistry
 
 ---
 
 ## ⚠️ CONTEXT REFRESH REMINDER
 
-> **ALWAYS run TWO PARALLEL WORKSTREAMS with multiple async agents:**
+> **ALWAYS run THREE PARALLEL WORKSTREAMS with multiple async agents:**
 >
 > **Workstream A: Specialty Expansion** (4-6 agents)
 > - Launch agents for incomplete specialties using Ralph Loop
@@ -34,6 +34,12 @@ FINNISH is an AI-powered scientific illustration tool replacing Adobe Illustrato
 > **Workstream B: Illustrator Integration** (2-3 agents)
 > - Icon Picker UI, Pen Tool wiring, Color management
 > - Check `src/lib/` and `src/components/` for existing code
+>
+> **Workstream C: Feature Testing & Fixing** (2-3 agents) ← NEW
+> - Test EVERY feature and wiring with mock runs
+> - Apply Ralph Loop: iterate until 100% functional
+> - DO NOT remove features - FIX them instead
+> - Check `src/components/`, `src/lib/`, `src/hooks/`
 >
 > **Use Task tool with `run_in_background: true` for all agents!**
 
@@ -198,47 +204,54 @@ When starting a new session:
 6. **Apply Ralph Loop**: Iterate until 90% completeness
 7. **Commit frequently**: Use "feat: Ralph Loop Iteration N - {specialty}" format
 
-### TWO PARALLEL WORKSTREAMS
+### THREE PARALLEL WORKSTREAMS
 
 ```
 Workstream A: Content Expansion (Ralph Loop)
 ├── 35 specialties with icons, templates, prompts
-└── Currently: 8 agents running in parallel
+├── Status: 15/35 complete (43%)
+└── Currently: 5 agents on Phase 4 specialties
 
 Workstream B: Editor Features (Illustrator Integration)
 ├── Pen tool, hand-drawn styles, icon libraries
 └── Spec: .specify/features/006-illustrator-integration/spec.md
+
+Workstream C: Feature Testing & Fixing (NEW!)
+├── Test EVERY feature, fix broken wiring
+├── Ralph Loop until 100% functional
+├── NEVER remove features - always fix them
+└── Currently: 2-3 agents testing Canvas, Export, Pen tool
 ```
 
 ---
 
 ## Execution Order (35 Specialties)
 
-### Phase 1: Medical Core (CURRENT FOCUS)
+### Phase 1: Medical Core ✓ COMPLETE
 1. ~~Cardiology~~ ✓ COMPLETE
-2. **Neurology** ← NEXT
-3. Pulmonology
-4. Gastroenterology
-5. Emergency Medicine
+2. ~~Neurology~~ ✓ COMPLETE
+3. ~~Pulmonology~~ ✓ COMPLETE
+4. ~~Gastroenterology~~ ✓ COMPLETE
+5. ~~Emergency Medicine~~ ✓ COMPLETE
 
-### Phase 2: Medical Specialties
-6. Hematology/Oncology
-7. Infectious Disease
-8. Nephrology
-9. Endocrinology
-10. Orthopedics
+### Phase 2: Medical Specialties ✓ COMPLETE
+6. ~~Hematology/Oncology~~ ✓ COMPLETE
+7. ~~Infectious Disease~~ ✓ COMPLETE
+8. ~~Nephrology~~ ✓ COMPLETE
+9. ~~Endocrinology~~ ✓ COMPLETE
+10. ~~Orthopedics~~ ✓ COMPLETE
 
-### Phase 3: Surgical & Procedural
-11. Anesthesiology
-12. Radiology
-13. Ophthalmology
-14. Dermatology
-15. ENT
+### Phase 3: Surgical & Procedural ✓ COMPLETE
+11. ~~Anesthesiology~~ ✓ COMPLETE
+12. ~~Radiology~~ ✓ COMPLETE
+13. ~~Ophthalmology~~ ✓ COMPLETE
+14. ~~Dermatology~~ ✓ COMPLETE
+15. ~~ENT~~ ✓ COMPLETE
 
-### Phase 4: Special Populations
-16. Pediatrics
-17. OB/GYN
-18. Psychiatry
+### Phase 4: Special Populations (CURRENT FOCUS)
+16. **Pediatrics** ← IN PROGRESS
+17. **OB/GYN** ← IN PROGRESS
+18. **Psychiatry** ← IN PROGRESS
 19. Rheumatology
 20. Pathology
 
@@ -337,6 +350,116 @@ When starting a session, also check:
 
 ---
 
+## FEATURE TESTING WORKSTREAM (Workstream C) - CRITICAL
+
+> **DO NOT FORGET THIS** - Every session must include testing agents
+
+### Goal
+Ensure ALL features are 100% functional. Use Ralph Loop methodology for testing - iterate until everything works.
+
+### Testing Ralph Loop Protocol
+```
+FOR each feature/component:
+    WHILE functionality < 100%:
+        1. MOCK RUN the feature (test in isolation)
+        2. IDENTIFY bugs, broken wiring, missing connections
+        3. FIX the issue (DO NOT remove the feature!)
+        4. VALIDATE fix works
+        5. TEST integration with other features
+        6. COMMIT fix with "fix: Ralph Loop - {component}" format
+    END WHILE
+    OUTPUT <promise>{FEATURE}_WORKING</promise>
+END FOR
+```
+
+### Testing Checklist (Per Feature)
+
+| Feature | Test Method | Status |
+|---------|-------------|--------|
+| Canvas Engine (Fabric.js) | Load, draw, select, move objects | ⬜ |
+| Pen Tool (Paper.js) | Draw paths, bezier curves, edit nodes | ⬜ |
+| Hand-drawn Mode (Rough.js) | Toggle sketchy style on/off | ⬜ |
+| Freehand Drawing | Draw with stylus/mouse, smooth strokes | ⬜ |
+| Color Picker | Select colors, apply to objects | ⬜ |
+| Export PNG | Export canvas to PNG file | ⬜ |
+| Export PDF | Export canvas to PDF file | ⬜ |
+| Export SVG | Export canvas to SVG file | ⬜ |
+| Icon Picker | Search, filter, insert specialty icons | ⬜ |
+| Template System | Load, customize, save templates | ⬜ |
+| Zoom/Pan | Canvas navigation works smoothly | ⬜ |
+| Undo/Redo | History management works | ⬜ |
+| Layer Management | Create, reorder, visibility toggle | ⬜ |
+| Text Tool | Add, edit, style text objects | ⬜ |
+| Shape Tools | Rectangle, circle, polygon creation | ⬜ |
+| AI Generation | Generate illustrations from prompts | ⬜ |
+
+### Key Testing Locations
+
+```
+src/components/
+├── Canvas/           # Main canvas component - TEST FIRST
+├── Toolbar/          # All tools UI - TEST WIRING
+├── IconPicker/       # Icon library browser - TEST SEARCH
+├── ColorPicker/      # Color selection - TEST APPLICATION
+├── ExportDialog/     # Export functionality - TEST OUTPUTS
+└── LayerPanel/       # Layer management - TEST CRUD
+
+src/lib/
+├── paper/            # Pen tool implementation - TEST PATHS
+├── rough/            # Hand-drawn effects - TEST TOGGLE
+├── freehand/         # Freehand drawing - TEST STROKES
+├── color/            # Color management - TEST CONVERSION
+└── export/           # Export pipeline - TEST ALL FORMATS
+
+src/hooks/
+├── useCanvas.ts      # Canvas state management
+├── useTool.ts        # Tool selection/switching
+└── useHistory.ts     # Undo/redo functionality
+```
+
+### Testing Priority Order
+
+1. **P0 - Core Canvas** (Must work first)
+   - Canvas renders
+   - Objects can be added
+   - Selection works
+   - Movement/resize works
+
+2. **P1 - Essential Tools**
+   - Shape tools (rectangle, circle, line)
+   - Text tool
+   - Color picker + application
+   - Export (at least PNG)
+
+3. **P2 - Professional Features**
+   - Pen tool with bezier curves
+   - Hand-drawn style toggle
+   - PDF export
+   - Icon picker integration
+
+4. **P3 - Nice to Have**
+   - WebGL filters
+   - AI generation
+   - Template auto-layout
+
+### Fix Principles (IMPORTANT)
+
+1. **NEVER DELETE A BROKEN FEATURE** - Fix it instead
+2. **Trace the wiring** - Usually issues are connection problems, not logic errors
+3. **Check imports/exports** - Missing exports are common culprits
+4. **Verify props flow** - Components might not receive expected props
+5. **Test in isolation first** - Then test integration
+6. **Console.log liberally** - Add temporary logs to trace issues
+7. **Check for TypeScript errors** - They often reveal the problem
+
+### Session Task: Testing Agents
+When starting a session, launch testing agents:
+- Agent 1: Test Canvas core + Shape tools
+- Agent 2: Test Export pipeline (PNG, PDF, SVG)
+- Agent 3: Test Pen tool + Hand-drawn mode
+
+---
+
 ## Remember
 
 1. **PARALLEL EXPANSION** - Launch multiple agents, don't work sequentially
@@ -345,6 +468,8 @@ When starting a session, also check:
 4. **SPEC-KIT** - Use methodology for planning
 5. **COMMIT OFTEN** - Track progress with clear messages
 6. **ILLUSTRATOR INTEGRATION** - Don't forget Feature 006 (pen tool, hand-drawn, icons)
+7. **FEATURE TESTING** - Test EVERY feature, fix broken wiring, Ralph Loop until 100% functional
+8. **NEVER REMOVE FEATURES** - Always fix instead of removing
 
 ---
 
