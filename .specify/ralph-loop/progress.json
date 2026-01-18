@@ -924,9 +924,9 @@
       "completedAt": "2026-01-18T23:59:00Z",
       "metrics": {
         "icons": {
-          "current": 97,
+          "current": 95,
           "target": 90,
-          "percentage": 108
+          "percentage": 106
         },
         "templates": {
           "current": 25,
