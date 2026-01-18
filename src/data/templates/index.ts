@@ -63,6 +63,7 @@ export {
   physiologyTemplates,
 } from './physiology';
 export * from './dermatology';
+export { anatomyTemplates } from './anatomy';
 // Biology subspecialties - use explicit exports to avoid duplicates
 export { molecularTemplates } from './molecular';
 export { geneticsTemplates } from './genetics';
@@ -217,6 +218,7 @@ import { obgynTemplates } from './obgyn';
 import { hematologyOncologyTemplates } from './hematology-oncology';
 import { physiologyTemplates } from './physiology';
 import { dermatologyTemplates } from './dermatology';
+import { anatomyTemplates } from './anatomy';
 // Biology subspecialties
 import { molecularTemplates } from './molecular';
 import { geneticsTemplates } from './genetics';

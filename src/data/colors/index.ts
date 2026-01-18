@@ -408,3 +408,26 @@ export {
 } from './biochemistry';
 
 export type { BiochemistryColorScheme } from './biochemistry';
+
+// =============================================================================
+// CELL BIOLOGY
+// =============================================================================
+
+export {
+  organelleColors,
+  membraneColors,
+  cellCycleColors,
+  mitosisColors,
+  chromosomeColors,
+  signalingColors as cellBioSignalingColors,
+  transportColors,
+  cellDeathColors,
+  cytoskeletonColors,
+  junctionColors,
+  cellTypeColors,
+  severityGradient as cellBioSeverityGradient,
+  flowchartColors as cellBioFlowchartColors,
+  cellBiologyColorScheme,
+} from './cell-biology';
+
+export type { CellBiologyColorScheme } from './cell-biology';
