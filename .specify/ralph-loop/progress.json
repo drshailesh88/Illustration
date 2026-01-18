@@ -33,7 +33,8 @@
     "cell-biology",
     "chemistry",
     "physics",
-    "microbiology"
+    "microbiology",
+    "anatomy"
   ],
   "blockedSpecialties": [],
   "progress": {
@@ -1165,20 +1166,81 @@
           "microbiome": 1
         }
       }
+    },
+    "anatomy": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 97,
+          "target": 90,
+          "percentage": 108
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "skeletal-axial": 10,
+          "skeletal-appendicular": 10,
+          "muscular-system": 8,
+          "cardiovascular": 8,
+          "nervous-system": 10,
+          "respiratory": 6,
+          "digestive": 8,
+          "urinary": 6,
+          "reproductive": 8,
+          "endocrine": 6,
+          "lymphatic": 6,
+          "integumentary": 6,
+          "special-senses": 8,
+          "regional-anatomy": 10,
+          "surface-anatomy": 5
+        },
+        "templates": {
+          "skeletal-system": 3,
+          "muscular-system": 2,
+          "cardiovascular": 2,
+          "nervous-system": 3,
+          "respiratory": 2,
+          "digestive": 2,
+          "urinary": 1,
+          "endocrine": 2,
+          "lymphatic": 1,
+          "reproductive": 2,
+          "integumentary": 1,
+          "developmental": 1,
+          "histology": 1,
+          "cross-sectional": 1,
+          "clinical-correlation": 1
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 33,
+    "completed": 34,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 2,
+    "notStarted": 1,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 2384,
-    "currentTotalTemplates": 610,
-    "currentTotalPrompts": 469
+    "currentTotalIcons": 2481,
+    "currentTotalTemplates": 635,
+    "currentTotalPrompts": 489
   },
   "executionOrder": [
     "cardiology",
@@ -1217,5 +1279,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "biochemistry"
+  "nextSpecialty": null
 }

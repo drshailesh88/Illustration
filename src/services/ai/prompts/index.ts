@@ -620,3 +620,12 @@ export { default as biomedicalEngineeringPrompts } from './biomedical-engineerin
 
 export * from './microbiology-prompts';
 export { default as microbiologyPrompts } from './microbiology-prompts';
+
+export * from './anatomy-prompts';
+export { default as anatomyPrompts } from './anatomy-prompts';
+
+export * from './physics-prompts';
+export { default as physicsPrompts } from './physics-prompts';
+
+export * from './chemistry-prompts';
+export { default as chemistryPrompts } from './chemistry-prompts';
