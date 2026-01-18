@@ -11,8 +11,14 @@
  * - Cardiac (8 icons)
  * - Vaccination (8 icons)
  * - Equipment (13 icons)
+ * - Congenital/Misc (10 icons)
+ * - Procedures (8 icons)
+ * - Emergencies (8 icons)
+ * - Neonatal Conditions (6 icons)
+ * - Developmental Conditions (6 icons)
+ * - Infant Conditions (5 icons)
  *
- * Total: 85 icons
+ * Total: 128 icons (COMPLETE checkpoint)
  */
 
 import type { IconDefinition } from './index';
@@ -1596,6 +1602,880 @@ export const pediatricsIcons: IconDefinition[] = [
       <circle cx="20" cy="32" r="4" fill="#3b82f6" opacity="0.3"/>
       <path d="M24 32h8" stroke-dasharray="2 2" stroke="#3b82f6"/>
       <text x="36" y="46" font-size="4" fill="currentColor" stroke="none">Chamber</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL ICONS FOR 90%+ COMPLETENESS (10 more icons)
+  // ===========================================================================
+  {
+    id: 'peds-cleft-lip-palate',
+    name: 'Cleft Lip/Palate',
+    domain: 'medicine',
+    category: 'congenital',
+    tags: ['cleft', 'lip', 'palate', 'congenital', 'craniofacial'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="18" ry="16"/>
+      <circle cx="26" cy="24" r="3" fill="currentColor"/>
+      <circle cx="38" cy="24" r="3" fill="currentColor"/>
+      <path d="M24 36c0 4 4 6 8 6s8-2 8-6" stroke-width="2"/>
+      <path d="M32 32v6" stroke="#ef4444" stroke-width="2"/>
+      <path d="M28 36l-2-4" stroke="#ef4444"/>
+      <path d="M36 36l2-4" stroke="#ef4444"/>
+      <ellipse cx="32" cy="52" rx="10" ry="6"/>
+      <path d="M32 46v-4"/>
+    </svg>`
+  },
+  {
+    id: 'peds-kawasaki',
+    name: 'Kawasaki Disease',
+    domain: 'medicine',
+    category: 'infectious',
+    tags: ['kawasaki', 'fever', 'rash', 'conjunctivitis', 'coronary'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="14"/>
+      <ellipse cx="26" cy="22" rx="3" ry="2" fill="#ef4444" opacity="0.5"/>
+      <ellipse cx="38" cy="22" rx="3" ry="2" fill="#ef4444" opacity="0.5"/>
+      <circle cx="26" cy="22" r="1.5" fill="currentColor"/>
+      <circle cx="38" cy="22" r="1.5" fill="currentColor"/>
+      <path d="M26 30h12" stroke="#ef4444" stroke-width="3"/>
+      <circle cx="32" cy="50" r="8"/>
+      <path d="M28 50c2 1 6 1 8 0" stroke="#ef4444"/>
+      <circle cx="28" cy="50" r="2" fill="#ef4444" opacity="0.3"/>
+      <circle cx="36" cy="50" r="2" fill="#ef4444" opacity="0.3"/>
+      <text x="6" y="20" font-size="4" fill="#ef4444" stroke="none">5d fever</text>
+    </svg>`
+  },
+  {
+    id: 'peds-hand-foot-mouth',
+    name: 'Hand-Foot-Mouth Disease',
+    domain: 'medicine',
+    category: 'infectious',
+    tags: ['HFMD', 'coxsackie', 'viral', 'vesicles', 'enterovirus'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 24c0-8 6-12 12-12h8c6 0 12 4 12 12v4c0 4-4 8-8 8h-16c-4 0-8-4-8-8z"/>
+      <circle cx="24" cy="26" r="2" fill="#f97316" opacity="0.7"/>
+      <circle cx="32" cy="28" r="2" fill="#f97316" opacity="0.7"/>
+      <circle cx="40" cy="26" r="2" fill="#f97316" opacity="0.7"/>
+      <path d="M12 44c0 0 4 8 8 8s8-8 8-8"/>
+      <circle cx="16" cy="48" r="2" fill="#f97316" opacity="0.7"/>
+      <circle cx="24" cy="50" r="2" fill="#f97316" opacity="0.7"/>
+      <path d="M36 44c0 0 4 8 8 8s8-8 8-8"/>
+      <circle cx="40" cy="48" r="2" fill="#f97316" opacity="0.7"/>
+      <circle cx="48" cy="50" r="2" fill="#f97316" opacity="0.7"/>
+    </svg>`
+  },
+  {
+    id: 'peds-intussusception',
+    name: 'Intussusception',
+    domain: 'medicine',
+    category: 'gi',
+    tags: ['intussusception', 'bowel', 'obstruction', 'target sign', 'currant jelly'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 20c0 0 8 4 16 4s16-4 16-4"/>
+      <path d="M16 20v24c0 4 8 8 16 8s16-4 16-8V20"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8" stroke-width="2"/>
+      <ellipse cx="32" cy="32" rx="8" ry="5" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="4" ry="3" fill="#ef4444" opacity="0.4"/>
+      <path d="M24 32h-8" stroke-dasharray="2 2"/>
+      <path d="M40 32h8" stroke-dasharray="2 2"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Target Sign</text>
+    </svg>`
+  },
+  {
+    id: 'peds-pyloric-stenosis',
+    name: 'Pyloric Stenosis',
+    domain: 'medicine',
+    category: 'gi',
+    tags: ['pyloric', 'stenosis', 'projectile vomiting', 'olive', 'hypertrophy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="28" rx="16" ry="12"/>
+      <ellipse cx="24" cy="28" rx="8" ry="6" fill="#fcd34d" opacity="0.3"/>
+      <ellipse cx="44" cy="32" rx="8" ry="4" stroke-width="3" fill="#ef4444" opacity="0.3"/>
+      <path d="M52 32h8"/>
+      <path d="M56 28v8"/>
+      <path d="M8 28c-4-8 0-16 8-20"/>
+      <path d="M12 12l-4-4"/>
+      <path d="M8 16l-4 0"/>
+      <text x="40" y="22" font-size="4" fill="currentColor" stroke="none">Olive</text>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Projectile</text>
+    </svg>`
+  },
+  {
+    id: 'peds-foreign-body-airway',
+    name: 'Foreign Body Aspiration',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['foreign body', 'choking', 'aspiration', 'airway', 'heimlich'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v12c0 4-4 8-8 8s-8-4-8-8V8"/>
+      <ellipse cx="32" cy="12" rx="6" ry="3" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="20" r="4" fill="#ef4444"/>
+      <path d="M32 28v8"/>
+      <path d="M24 36l16 0"/>
+      <path d="M20 36v20c0 4 8 4 12 4s12 0 12-4V36"/>
+      <path d="M28 40v12"/>
+      <path d="M36 40v12"/>
+      <text x="44" y="22" font-size="4" fill="#ef4444" stroke="none">FB</text>
+    </svg>`
+  },
+  {
+    id: 'peds-febrile-seizure',
+    name: 'Febrile Seizure',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['seizure', 'febrile', 'convulsion', 'fever', 'neurologic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <circle cx="28" cy="18" r="2" fill="currentColor"/>
+      <circle cx="36" cy="18" r="2" fill="currentColor"/>
+      <path d="M28 24c2 2 6 2 8 0"/>
+      <path d="M20 8l4 4" stroke="#f59e0b"/>
+      <path d="M44 8l-4 4" stroke="#f59e0b"/>
+      <path d="M32 2v6" stroke="#f59e0b"/>
+      <path d="M32 32v8"/>
+      <path d="M26 40c-6 1-10 8-8 14"/>
+      <path d="M38 40c6 1 10 8 8 14"/>
+      <path d="M18 56l8-4 8 4 8-4 8 4" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="4" y="20" font-size="4" fill="#ef4444" stroke="none">38C+</text>
+    </svg>`
+  },
+  {
+    id: 'peds-nicu-incubator',
+    name: 'NICU Incubator',
+    domain: 'medicine',
+    category: 'nicu',
+    tags: ['incubator', 'NICU', 'premature', 'isolette', 'temperature'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="20" width="48" height="28" rx="4"/>
+      <rect x="12" y="24" width="40" height="20" rx="2" fill="#ddd6fe" opacity="0.3"/>
+      <ellipse cx="32" cy="34" rx="12" ry="6"/>
+      <circle cx="28" cy="33" r="1" fill="currentColor"/>
+      <circle cx="36" cy="33" r="1" fill="currentColor"/>
+      <circle cx="16" cy="12" r="4"/>
+      <text x="14" y="14" font-size="4" fill="currentColor" stroke="none">T</text>
+      <circle cx="32" cy="12" r="4"/>
+      <text x="30" y="14" font-size="4" fill="currentColor" stroke="none">H</text>
+      <rect x="12" y="48" width="8" height="8"/>
+      <rect x="44" y="48" width="8" height="8"/>
+      <circle cx="56" cy="28" r="3"/>
+      <circle cx="56" cy="40" r="3"/>
+    </svg>`
+  },
+  {
+    id: 'peds-phototherapy',
+    name: 'Phototherapy Unit',
+    domain: 'medicine',
+    category: 'nicu',
+    tags: ['phototherapy', 'bilirubin', 'jaundice', 'blue light', 'bili lights'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="12" rx="2"/>
+      <rect x="12" y="12" width="8" height="4" fill="#3b82f6" opacity="0.7"/>
+      <rect x="22" y="12" width="8" height="4" fill="#3b82f6" opacity="0.7"/>
+      <rect x="32" y="12" width="8" height="4" fill="#3b82f6" opacity="0.7"/>
+      <rect x="42" y="12" width="8" height="4" fill="#3b82f6" opacity="0.7"/>
+      <path d="M16 20l-4 20" stroke="#3b82f6" stroke-dasharray="2 2"/>
+      <path d="M32 20v20" stroke="#3b82f6" stroke-dasharray="2 2"/>
+      <path d="M48 20l4 20" stroke="#3b82f6" stroke-dasharray="2 2"/>
+      <ellipse cx="32" cy="48" rx="16" ry="8"/>
+      <circle cx="28" cy="47" r="1.5" fill="currentColor"/>
+      <circle cx="36" cy="47" r="1.5" fill="currentColor"/>
+      <ellipse cx="32" cy="48" rx="6" ry="3" fill="#fcd34d" opacity="0.3"/>
+      <text x="4" y="60" font-size="4" fill="#3b82f6" stroke="none">450nm</text>
+    </svg>`
+  },
+  {
+    id: 'peds-oxyhood',
+    name: 'Oxygen Hood',
+    domain: 'medicine',
+    category: 'nicu',
+    tags: ['oxygen', 'hood', 'oxyhood', 'respiratory', 'FiO2'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 28c0-12 8-20 16-20s16 8 16 20"/>
+      <path d="M16 28v20c0 4 8 8 16 8s16-4 16-8V28"/>
+      <ellipse cx="32" cy="28" rx="16" ry="8" fill="#93c5fd" opacity="0.2"/>
+      <circle cx="32" cy="36" r="8"/>
+      <circle cx="29" cy="35" r="2" fill="currentColor"/>
+      <circle cx="35" cy="35" r="2" fill="currentColor"/>
+      <path d="M30 40c1 1 3 1 4 0"/>
+      <path d="M48 20c8 0 8 8 8 8v8"/>
+      <ellipse cx="56" cy="40" rx="4" ry="6"/>
+      <text x="52" y="42" font-size="4" fill="currentColor" stroke="none">O2</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // PROCEDURES (8 icons)
+  // ===========================================================================
+  {
+    id: 'peds-lumbar-puncture',
+    name: 'Pediatric Lumbar Puncture',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['lumbar puncture', 'LP', 'spinal tap', 'CSF', 'meningitis', 'lateral decubitus'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="20" rx="10" ry="8"/>
+      <path d="M22 20c0 8-4 16-4 24"/>
+      <path d="M42 20c0 8 4 16 4 24"/>
+      <ellipse cx="32" cy="40" rx="14" ry="12" fill="currentColor" opacity="0.1"/>
+      <path d="M32 28v24"/>
+      <path d="M28 32h8" stroke-dasharray="2 2"/>
+      <path d="M28 36h8" stroke-dasharray="2 2"/>
+      <path d="M28 40h8" stroke-dasharray="2 2"/>
+      <path d="M52 36l-12 4" stroke="#3b82f6" stroke-width="2"/>
+      <circle cx="40" cy="40" r="3" fill="#3b82f6"/>
+      <text x="48" y="32" font-size="4" fill="currentColor" stroke="none">L3-L4</text>
+    </svg>`
+  },
+  {
+    id: 'peds-iv-access',
+    name: 'Pediatric IV Access',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['IV', 'intravenous', 'access', 'catheter', 'butterfly', 'scalp vein'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 28c0-8 6-16 16-16s16 8 16 16"/>
+      <ellipse cx="32" cy="28" rx="16" ry="8"/>
+      <path d="M24 24l-4-8"/>
+      <path d="M40 24l4-8"/>
+      <circle cx="28" cy="20" r="2" fill="#3b82f6"/>
+      <path d="M28 22v4" stroke="#3b82f6"/>
+      <path d="M12 32c0 8 8 16 8 24"/>
+      <path d="M52 32c0 8-8 16-8 24"/>
+      <ellipse cx="32" cy="48" rx="12" ry="8"/>
+      <path d="M24 48l-8 4"/>
+      <circle cx="16" cy="52" r="3" fill="#3b82f6"/>
+      <text x="4" y="56" font-size="4" fill="currentColor" stroke="none">Scalp/Hand</text>
+    </svg>`
+  },
+  {
+    id: 'peds-io-access',
+    name: 'Intraosseous Access',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['IO', 'intraosseous', 'access', 'emergency', 'tibial', 'resuscitation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="12" ry="8"/>
+      <path d="M20 12c0 16-4 32-4 44"/>
+      <path d="M44 12c0 16 4 32 4 44"/>
+      <ellipse cx="32" cy="12" rx="6" ry="4" fill="currentColor" opacity="0.2"/>
+      <path d="M32 8v48" stroke-dasharray="4 2"/>
+      <circle cx="32" cy="20" r="4" fill="#dc2626" opacity="0.3"/>
+      <path d="M48 16l8-8"/>
+      <path d="M56 8v8h-8"/>
+      <path d="M52 12l-12 8" stroke="#dc2626" stroke-width="2"/>
+      <text x="4" y="28" font-size="4" fill="currentColor" stroke="none">Prox Tibia</text>
+    </svg>`
+  },
+  {
+    id: 'peds-endotracheal-intubation',
+    name: 'Pediatric Intubation',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['intubation', 'ETT', 'endotracheal', 'airway', 'uncuffed'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="16" rx="12" ry="10"/>
+      <circle cx="28" cy="14" r="2" fill="currentColor"/>
+      <circle cx="36" cy="14" r="2" fill="currentColor"/>
+      <ellipse cx="32" cy="22" rx="4" ry="2"/>
+      <path d="M32 24v32" stroke-width="3" stroke="#3b82f6"/>
+      <ellipse cx="32" cy="28" rx="3" ry="2" fill="#3b82f6" opacity="0.3"/>
+      <path d="M32 56h16"/>
+      <path d="M48 52v8"/>
+      <text x="8" y="48" font-size="4" fill="currentColor" stroke="none">ETT</text>
+      <text x="8" y="54" font-size="3" fill="currentColor" stroke="none">Age/4+4</text>
+    </svg>`
+  },
+  {
+    id: 'peds-umbilical-catheter',
+    name: 'Umbilical Catheter',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['UVC', 'UAC', 'umbilical', 'catheter', 'newborn', 'access'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <ellipse cx="32" cy="32" rx="8" ry="6" fill="currentColor" opacity="0.2"/>
+      <circle cx="28" cy="30" r="2" fill="#dc2626"/>
+      <circle cx="36" cy="30" r="2" fill="#dc2626"/>
+      <circle cx="32" cy="36" r="3" fill="#3b82f6"/>
+      <path d="M32 36v20" stroke="#3b82f6" stroke-width="2"/>
+      <path d="M28 30l-8 8" stroke="#dc2626"/>
+      <path d="M36 30l8 8" stroke="#dc2626"/>
+      <text x="8" y="20" font-size="4" fill="#dc2626" stroke="none">UA</text>
+      <text x="44" y="20" font-size="4" fill="#3b82f6" stroke="none">UV</text>
+    </svg>`
+  },
+  {
+    id: 'peds-circumcision',
+    name: 'Circumcision',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['circumcision', 'newborn', 'procedure', 'foreskin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="16" width="32" height="32" rx="4"/>
+      <ellipse cx="32" cy="32" rx="10" ry="12"/>
+      <path d="M26 24c4 1 8 1 12 0"/>
+      <ellipse cx="32" cy="32" rx="6" ry="8" stroke-dasharray="3 2"/>
+      <path d="M56 24l-8 8"/>
+      <path d="M56 24h-8v8"/>
+      <text x="10" y="56" font-size="4" fill="currentColor" stroke="none">Plastibell</text>
+    </svg>`
+  },
+  {
+    id: 'peds-suprapubic-aspiration',
+    name: 'Suprapubic Aspiration',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['SPA', 'suprapubic', 'urine', 'aspiration', 'bladder', 'UTI'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="16" ry="12"/>
+      <ellipse cx="32" cy="40" rx="10" ry="8" fill="#fef08a" opacity="0.4"/>
+      <path d="M32 8v16" stroke="#3b82f6" stroke-width="2"/>
+      <path d="M28 8h8"/>
+      <circle cx="32" cy="32" r="2" fill="#3b82f6"/>
+      <path d="M24 56h16"/>
+      <path d="M32 48v8"/>
+      <text x="8" y="20" font-size="4" fill="currentColor" stroke="none">Bladder</text>
+      <text x="40" y="56" font-size="4" fill="currentColor" stroke="none">SPA</text>
+    </svg>`
+  },
+  {
+    id: 'peds-sedation',
+    name: 'Procedural Sedation',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['sedation', 'procedural', 'ketamine', 'propofol', 'monitoring'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <path d="M26 18h4"/>
+      <path d="M34 18h4"/>
+      <path d="M28 24c2 1 6 1 8 0"/>
+      <path d="M44 12l8-4"/>
+      <path d="M52 8v8"/>
+      <text x="54" y="14" font-size="4" fill="currentColor" stroke="none">Zzz</text>
+      <ellipse cx="32" cy="44" rx="14" ry="12"/>
+      <path d="M24 44l16 0"/>
+      <path d="M32 36v16"/>
+      <circle cx="48" cy="48" r="6"/>
+      <path d="M46 46l4 4"/>
+      <path d="M50 46l-4 4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // EMERGENCIES (8 icons)
+  // ===========================================================================
+  {
+    id: 'peds-poisoning',
+    name: 'Poisoning/Toxic Ingestion',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['poisoning', 'toxic', 'ingestion', 'overdose', 'poison control'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16l4 12H20z"/>
+      <rect x="16" y="20" width="32" height="36" rx="4"/>
+      <ellipse cx="32" cy="44" rx="10" ry="8" fill="#22c55e" opacity="0.4"/>
+      <path d="M24 28h16"/>
+      <path d="M24 36h16"/>
+      <circle cx="32" cy="28" r="8"/>
+      <path d="M28 26l8 4"/>
+      <path d="M28 30l8-4"/>
+      <text x="8" y="60" font-size="5" fill="#dc2626" stroke="none">TOXIC</text>
+    </svg>`
+  },
+  {
+    id: 'peds-pals',
+    name: 'PALS Resuscitation',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['PALS', 'resuscitation', 'CPR', 'pediatric', 'cardiac arrest'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10"/>
+      <circle cx="29" cy="14" r="2" fill="currentColor"/>
+      <circle cx="35" cy="14" r="2" fill="currentColor"/>
+      <path d="M32 26v16"/>
+      <ellipse cx="32" cy="36" rx="12" ry="8" fill="currentColor" opacity="0.1"/>
+      <path d="M8 36l8-8 4 4 8-8 4 4 8-8 4 4 8-8" stroke="#dc2626" stroke-width="2"/>
+      <path d="M24 42l-4 16"/>
+      <path d="M40 42l4 16"/>
+      <text x="8" y="60" font-size="5" fill="currentColor" stroke="none">30:2</text>
+    </svg>`
+  },
+  {
+    id: 'peds-anaphylaxis',
+    name: 'Pediatric Anaphylaxis',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['anaphylaxis', 'allergic', 'epinephrine', 'EpiPen', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12" fill="#fca5a5" opacity="0.4"/>
+      <circle cx="32" cy="20" r="12"/>
+      <ellipse cx="28" cy="18" rx="3" ry="2"/>
+      <ellipse cx="36" cy="18" rx="3" ry="2"/>
+      <ellipse cx="32" cy="26" rx="5" ry="3" fill="#dc2626" opacity="0.5"/>
+      <path d="M32 32v8"/>
+      <path d="M24 40c-4 1-8 4-8 8"/>
+      <path d="M40 40c4 1 8 4 8 8"/>
+      <rect x="12" y="48" width="8" height="12" rx="2" fill="#22c55e"/>
+      <path d="M16 56v4"/>
+      <text x="4" y="62" font-size="4" fill="currentColor" stroke="none">Epi</text>
+    </svg>`
+  },
+  {
+    id: 'peds-status-epilepticus',
+    name: 'Status Epilepticus',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['seizure', 'status epilepticus', 'convulsion', 'benzodiazepine', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="18" r="12"/>
+      <path d="M26 16l2-4 2 4 2-4 2 4" stroke="#8b5cf6" stroke-width="2"/>
+      <path d="M32 30v8"/>
+      <path d="M24 38l-8 16"/>
+      <path d="M40 38l8 16"/>
+      <path d="M16 54l4-4 4 4 4-4 4 4 4-4 4 4 4-4 4 4" stroke="#8b5cf6" stroke-width="2"/>
+      <path d="M8 20l4-4"/>
+      <path d="M4 20l4-4"/>
+      <text x="44" y="16" font-size="4" fill="#dc2626" stroke="none">>5min</text>
+    </svg>`
+  },
+  {
+    id: 'peds-drowning',
+    name: 'Near Drowning',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['drowning', 'submersion', 'water', 'hypoxia', 'aspiration'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 40c4-4 8-4 12 0s8 4 12 0 8-4 12 0 8 4 12 0" stroke="#3b82f6" stroke-width="2"/>
+      <path d="M8 48c4-4 8-4 12 0s8 4 12 0 8-4 12 0 8 4 12 0" stroke="#3b82f6"/>
+      <path d="M8 56c4-4 8-4 12 0s8 4 12 0 8-4 12 0 8 4 12 0" stroke="#3b82f6" opacity="0.5"/>
+      <circle cx="32" cy="20" r="10"/>
+      <circle cx="29" cy="18" r="2" fill="currentColor"/>
+      <circle cx="35" cy="18" r="2" fill="currentColor"/>
+      <ellipse cx="32" cy="24" rx="4" ry="2"/>
+      <path d="M32 30v8"/>
+      <path d="M24 34h16"/>
+    </svg>`
+  },
+  {
+    id: 'peds-burns',
+    name: 'Pediatric Burns',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['burns', 'scald', 'thermal', 'TBSA', 'fluid resuscitation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="14" r="8"/>
+      <path d="M32 22v14"/>
+      <path d="M24 28l-8 8"/>
+      <path d="M40 28l8 8"/>
+      <path d="M28 36l-4 20"/>
+      <path d="M36 36l4 20"/>
+      <ellipse cx="32" cy="32" rx="6" ry="4" fill="#dc2626" opacity="0.4"/>
+      <ellipse cx="24" cy="44" rx="4" ry="6" fill="#f97316" opacity="0.4"/>
+      <ellipse cx="40" cy="48" rx="3" ry="5" fill="#f97316" opacity="0.4"/>
+      <text x="44" y="20" font-size="4" fill="currentColor" stroke="none">%TBSA</text>
+    </svg>`
+  },
+  {
+    id: 'peds-child-abuse',
+    name: 'Child Abuse Screening',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['abuse', 'NAT', 'non-accidental trauma', 'bruising', 'fracture', 'safeguarding'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10"/>
+      <circle cx="29" cy="14" r="2" fill="currentColor"/>
+      <circle cx="35" cy="14" r="2" fill="currentColor"/>
+      <path d="M29 20c2 1 4 1 6 0"/>
+      <ellipse cx="24" cy="12" rx="3" ry="2" fill="#7c3aed" opacity="0.5"/>
+      <path d="M32 26v12"/>
+      <path d="M24 32l-8 8"/>
+      <path d="M40 32l8 8"/>
+      <path d="M28 38l-4 16"/>
+      <path d="M36 38l4 16"/>
+      <ellipse cx="20" cy="50" rx="4" ry="3" fill="#7c3aed" opacity="0.5"/>
+      <ellipse cx="42" cy="44" rx="3" ry="4" fill="#7c3aed" opacity="0.5"/>
+      <text x="44" y="60" font-size="4" fill="#dc2626" stroke="none">TEN-4</text>
+    </svg>`
+  },
+  {
+    id: 'peds-lead-poisoning',
+    name: 'Lead Poisoning',
+    domain: 'medicine',
+    category: 'emergency',
+    tags: ['lead', 'poisoning', 'plumbism', 'screening', 'chelation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="18" r="12"/>
+      <circle cx="28" cy="16" r="2" fill="currentColor"/>
+      <circle cx="36" cy="16" r="2" fill="currentColor"/>
+      <path d="M28 22c2 1 6 1 8 0"/>
+      <path d="M32 30v14"/>
+      <path d="M24 36l-8 12"/>
+      <path d="M40 36l8 12"/>
+      <path d="M28 44l-4 12"/>
+      <path d="M36 44l4 12"/>
+      <rect x="8" y="48" width="12" height="8" rx="1" fill="#6b7280"/>
+      <text x="10" y="54" font-size="5" fill="white" stroke="none">Pb</text>
+      <path d="M8 12l-4 4"/>
+      <path d="M4 12l4 4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // NEONATAL CONDITIONS (6 icons)
+  // ===========================================================================
+  {
+    id: 'peds-prematurity',
+    name: 'Premature Infant',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['premature', 'preterm', 'VLBW', 'ELBW', 'gestational age'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="12" ry="10"/>
+      <circle cx="28" cy="26" r="2" fill="currentColor"/>
+      <circle cx="36" cy="26" r="2" fill="currentColor"/>
+      <path d="M30 32c1 1 3 1 4 0"/>
+      <ellipse cx="32" cy="46" rx="10" ry="8" fill="currentColor" opacity="0.1"/>
+      <path d="M22 46l-6-4"/>
+      <path d="M42 46l6-4"/>
+      <path d="M26 54l-2 6"/>
+      <path d="M38 54l2 6"/>
+      <text x="8" y="12" font-size="4" fill="currentColor" stroke="none"><28wk</text>
+      <text x="8" y="18" font-size="4" fill="currentColor" stroke="none"><1500g</text>
+      <path d="M48 12h8"/>
+      <path d="M52 8v8"/>
+    </svg>`
+  },
+  {
+    id: 'peds-nec',
+    name: 'Necrotizing Enterocolitis',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['NEC', 'necrotizing enterocolitis', 'premature', 'feeding intolerance', 'pneumatosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="24"/>
+      <path d="M20 20c4 4 8 8 8 16s-4 12-4 16"/>
+      <path d="M44 20c-4 4-8 8-8 16s4 12 4 16"/>
+      <circle cx="24" cy="28" r="3" fill="#dc2626" opacity="0.5"/>
+      <circle cx="36" cy="36" r="4" fill="#dc2626" opacity="0.5"/>
+      <circle cx="28" cy="44" r="2" fill="#dc2626" opacity="0.5"/>
+      <circle cx="40" cy="28" r="2"/>
+      <circle cx="20" cy="36" r="1.5"/>
+      <text x="6" y="56" font-size="4" fill="currentColor" stroke="none">Pneumatosis</text>
+    </svg>`
+  },
+  {
+    id: 'peds-rop',
+    name: 'Retinopathy of Prematurity',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['ROP', 'retinopathy', 'premature', 'ophthalmology', 'screening'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="12" ry="14"/>
+      <ellipse cx="40" cy="32" rx="12" ry="14"/>
+      <circle cx="24" cy="32" r="6"/>
+      <circle cx="40" cy="32" r="6"/>
+      <circle cx="24" cy="32" r="3" fill="currentColor"/>
+      <circle cx="40" cy="32" r="3" fill="currentColor"/>
+      <path d="M18 26c-2-2-4-4-6-4"/>
+      <path d="M30 26c2-2 4-2 6-2"/>
+      <path d="M34 26c-2-2-4-2-6-2"/>
+      <path d="M46 26c2-2 4-4 6-4"/>
+      <ellipse cx="24" cy="32" rx="10" ry="12" stroke-dasharray="2 2" stroke="#dc2626"/>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">Zone I-III</text>
+    </svg>`
+  },
+  {
+    id: 'peds-hypoglycemia',
+    name: 'Neonatal Hypoglycemia',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['hypoglycemia', 'glucose', 'newborn', 'jitteriness', 'feeding'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="12" ry="10"/>
+      <circle cx="28" cy="22" r="2" fill="currentColor"/>
+      <circle cx="36" cy="22" r="2" fill="currentColor"/>
+      <path d="M28 28c2 1 6 1 8 0"/>
+      <path d="M20 24c-4-2-8-2-12 0"/>
+      <path d="M44 24c4-2 8-2 12 0"/>
+      <ellipse cx="32" cy="44" rx="10" ry="8"/>
+      <rect x="8" y="48" width="16" height="8" rx="2" fill="#fef08a"/>
+      <text x="10" y="54" font-size="5" fill="currentColor" stroke="none">40</text>
+      <path d="M16 40l-4-4"/>
+      <text x="40" y="58" font-size="4" fill="#dc2626" stroke="none"><40mg/dL</text>
+    </svg>`
+  },
+  {
+    id: 'peds-birth-asphyxia',
+    name: 'Birth Asphyxia',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['asphyxia', 'HIE', 'hypoxic ischemic', 'encephalopathy', 'cooling'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="14" ry="12"/>
+      <circle cx="28" cy="22" r="2"/>
+      <circle cx="36" cy="22" r="2"/>
+      <path d="M28 28h8"/>
+      <ellipse cx="32" cy="46" rx="12" ry="10" fill="#93c5fd" opacity="0.3"/>
+      <path d="M20 46l-6-4"/>
+      <path d="M44 46l6-4"/>
+      <path d="M26 56l-2 4"/>
+      <path d="M38 56l2 4"/>
+      <path d="M8 16l4-4-4-4" stroke="#3b82f6"/>
+      <path d="M56 16l-4-4 4-4" stroke="#3b82f6"/>
+      <text x="12" y="60" font-size="4" fill="#3b82f6" stroke="none">Cooling</text>
+    </svg>`
+  },
+  {
+    id: 'peds-brachial-plexus',
+    name: 'Brachial Plexus Injury',
+    domain: 'medicine',
+    category: 'neonatal',
+    tags: ['Erb palsy', 'brachial plexus', 'birth injury', 'shoulder dystocia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="14" r="8"/>
+      <circle cx="29" cy="13" r="1.5" fill="currentColor"/>
+      <circle cx="35" cy="13" r="1.5" fill="currentColor"/>
+      <path d="M30 17c1 1 3 1 4 0"/>
+      <path d="M32 22v14"/>
+      <path d="M20 26l-8 12" stroke-width="2"/>
+      <path d="M44 26l8 12" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 2"/>
+      <circle cx="12" cy="38" r="4"/>
+      <path d="M52 38l4 4"/>
+      <path d="M52 38l4-4"/>
+      <path d="M28 36l-4 16"/>
+      <path d="M36 36l4 16"/>
+      <text x="40" y="56" font-size="4" fill="#dc2626" stroke="none">Erb</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // DEVELOPMENTAL CONDITIONS (6 icons)
+  // ===========================================================================
+  {
+    id: 'peds-hip-dysplasia',
+    name: 'Developmental Hip Dysplasia',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['DDH', 'hip dysplasia', 'Barlow', 'Ortolani', 'Pavlik harness'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="20" rx="20" ry="12"/>
+      <circle cx="20" cy="32" r="8"/>
+      <circle cx="44" cy="32" r="8" fill="#dc2626" opacity="0.2"/>
+      <circle cx="20" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <circle cx="44" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <path d="M20 40v16"/>
+      <path d="M44 40c0 4 2 12 6 16" stroke="#dc2626"/>
+      <ellipse cx="20" cy="56" rx="4" ry="2"/>
+      <ellipse cx="50" cy="56" rx="4" ry="2"/>
+      <text x="4" y="48" font-size="4" fill="currentColor" stroke="none">Normal</text>
+      <text x="44" y="48" font-size="4" fill="#dc2626" stroke="none">DDH</text>
+    </svg>`
+  },
+  {
+    id: 'peds-torticollis',
+    name: 'Congenital Torticollis',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['torticollis', 'SCM', 'sternocleidomastoid', 'head tilt', 'wry neck'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="20" rx="12" ry="10" transform="rotate(-15 24 20)"/>
+      <circle cx="20" cy="18" r="2" fill="currentColor"/>
+      <circle cx="26" cy="16" r="2" fill="currentColor"/>
+      <path d="M21 24c2 1 4 1 6 0"/>
+      <path d="M28 28l8 24" stroke-width="3"/>
+      <ellipse cx="36" cy="52" rx="10" ry="8"/>
+      <path d="M20 28l-4 8" stroke="#dc2626" stroke-width="2"/>
+      <ellipse cx="16" cy="36" rx="4" ry="2" fill="#dc2626" opacity="0.3"/>
+      <text x="4" y="40" font-size="4" fill="#dc2626" stroke="none">SCM</text>
+      <text x="4" y="46" font-size="4" fill="#dc2626" stroke="none">mass</text>
+    </svg>`
+  },
+  {
+    id: 'peds-plagiocephaly',
+    name: 'Plagiocephaly',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['plagiocephaly', 'flat head', 'positional', 'craniosynostosis', 'helmet'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="18" ry="14"/>
+      <path d="M14 28c0 4 4 12 18 12s18-8 18-12" fill="currentColor" opacity="0.1"/>
+      <circle cx="26" cy="26" r="2" fill="currentColor"/>
+      <circle cx="38" cy="26" r="2" fill="currentColor"/>
+      <path d="M28 32c2 1 6 1 8 0"/>
+      <ellipse cx="48" cy="24" rx="6" ry="10" fill="#fca5a5" opacity="0.3"/>
+      <path d="M8 28l-4-4"/>
+      <path d="M4 28l4-4"/>
+      <text x="4" y="48" font-size="4" fill="currentColor" stroke="none">Flat</text>
+      <text x="48" y="48" font-size="4" fill="currentColor" stroke="none">Bulge</text>
+    </svg>`
+  },
+  {
+    id: 'peds-clubfoot',
+    name: 'Clubfoot (Talipes)',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['clubfoot', 'talipes', 'equinovarus', 'Ponseti', 'casting'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8c-4 12-8 28-8 40 0 8 8 8 12 8"/>
+      <path d="M44 8c4 12 8 28 8 40 0 8-8 8-12 8"/>
+      <ellipse cx="24" cy="56" rx="10" ry="4"/>
+      <path d="M14 56c0 4 4 4 10 4"/>
+      <ellipse cx="44" cy="48" rx="8" ry="6" transform="rotate(30 44 48)"/>
+      <path d="M36 52c4 1 8 0 12-2" stroke="#dc2626"/>
+      <path d="M48 42l8 4"/>
+      <path d="M48 50l8-4"/>
+      <text x="4" y="24" font-size="4" fill="currentColor" stroke="none">Normal</text>
+      <text x="40" y="24" font-size="4" fill="#dc2626" stroke="none">CTEV</text>
+    </svg>`
+  },
+  {
+    id: 'peds-autism-spectrum',
+    name: 'Autism Spectrum Disorder',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['autism', 'ASD', 'developmental', 'communication', 'social', 'screening'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="14"/>
+      <circle cx="28" cy="22" r="2"/>
+      <circle cx="36" cy="22" r="2"/>
+      <path d="M28 30h8"/>
+      <path d="M20 12l-4-4"/>
+      <path d="M44 12l4-4"/>
+      <path d="M32 38v8"/>
+      <path d="M24 42l-8 4"/>
+      <path d="M40 42l8 4"/>
+      <circle cx="16" cy="46" r="4" fill="#8b5cf6" opacity="0.3"/>
+      <circle cx="48" cy="46" r="4" fill="#8b5cf6" opacity="0.3"/>
+      <circle cx="32" cy="54" r="4" fill="#8b5cf6" opacity="0.3"/>
+      <text x="8" y="60" font-size="4" fill="currentColor" stroke="none">Social</text>
+      <text x="40" y="60" font-size="4" fill="currentColor" stroke="none">Comm</text>
+    </svg>`
+  },
+  {
+    id: 'peds-adhd',
+    name: 'ADHD',
+    domain: 'medicine',
+    category: 'developmental',
+    tags: ['ADHD', 'attention', 'hyperactivity', 'impulsivity', 'Vanderbilt'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <circle cx="28" cy="18" r="2" fill="currentColor"/>
+      <circle cx="36" cy="18" r="2" fill="currentColor"/>
+      <path d="M28 24c2 2 6 2 8 0"/>
+      <path d="M8 8l8 4"/>
+      <path d="M56 8l-8 4"/>
+      <path d="M8 16l8-4"/>
+      <path d="M56 16l-8-4"/>
+      <path d="M32 32v8"/>
+      <path d="M20 36l-12 8"/>
+      <path d="M44 36l12 8"/>
+      <path d="M24 44l-8 12"/>
+      <path d="M40 44l8 12"/>
+      <path d="M16 56l4-4 4 4"/>
+      <path d="M40 56l4-4 4 4"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // COMMON INFANT CONDITIONS (5 icons)
+  // ===========================================================================
+  {
+    id: 'peds-colic',
+    name: 'Infantile Colic',
+    domain: 'medicine',
+    category: 'infant-conditions',
+    tags: ['colic', 'crying', 'fussiness', 'rule of 3s', 'Wessel criteria'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="14" ry="12"/>
+      <ellipse cx="28" cy="26" rx="3" ry="4" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="36" cy="26" rx="3" ry="4" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="34" rx="6" ry="4"/>
+      <path d="M12 16l-4-4"/>
+      <path d="M52 16l4-4"/>
+      <path d="M8 20l-4 0"/>
+      <path d="M56 20l4 0"/>
+      <ellipse cx="32" cy="50" rx="10" ry="8"/>
+      <path d="M26 48c4 1 8 1 12 0"/>
+      <path d="M26 52c4 1 8 1 12 0"/>
+      <text x="8" y="60" font-size="4" fill="currentColor" stroke="none">3hr/3d/3wk</text>
+    </svg>`
+  },
+  {
+    id: 'peds-teething',
+    name: 'Teething',
+    domain: 'medicine',
+    category: 'infant-conditions',
+    tags: ['teething', 'eruption', 'primary teeth', 'drooling', 'fussiness'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="14" ry="12"/>
+      <circle cx="28" cy="26" r="2" fill="currentColor"/>
+      <circle cx="36" cy="26" r="2" fill="currentColor"/>
+      <path d="M26 34c4 2 8 2 12 0"/>
+      <rect x="28" y="32" width="3" height="6" rx="1" fill="white" stroke="currentColor"/>
+      <rect x="33" y="34" width="3" height="4" rx="1" fill="white" stroke="currentColor"/>
+      <path d="M20 36l-4 8" stroke="#3b82f6"/>
+      <path d="M44 36l4 8" stroke="#3b82f6"/>
+      <ellipse cx="16" cy="44" rx="2" ry="3" fill="#3b82f6" opacity="0.3"/>
+      <ellipse cx="48" cy="44" rx="2" ry="3" fill="#3b82f6" opacity="0.3"/>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">6-12mo</text>
+    </svg>`
+  },
+  {
+    id: 'peds-diaper-dermatitis',
+    name: 'Diaper Dermatitis',
+    domain: 'medicine',
+    category: 'infant-conditions',
+    tags: ['diaper rash', 'dermatitis', 'candida', 'irritant', 'barrier cream'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c0-4 8-8 16-8s16 4 16 8"/>
+      <path d="M16 16v24c0 8 8 16 16 16s16-8 16-16V16"/>
+      <ellipse cx="32" cy="36" rx="12" ry="10" fill="#fca5a5" opacity="0.4"/>
+      <circle cx="26" cy="32" r="2" fill="#dc2626"/>
+      <circle cx="38" cy="34" r="2" fill="#dc2626"/>
+      <circle cx="32" cy="40" r="2" fill="#dc2626"/>
+      <circle cx="28" cy="42" r="1.5" fill="#dc2626"/>
+      <circle cx="36" cy="38" r="1.5" fill="#dc2626"/>
+      <path d="M20 16l-4-8"/>
+      <path d="M44 16l4-8"/>
+    </svg>`
+  },
+  {
+    id: 'peds-cradle-cap',
+    name: 'Cradle Cap',
+    domain: 'medicine',
+    category: 'infant-conditions',
+    tags: ['cradle cap', 'seborrheic dermatitis', 'scalp', 'scales', 'infant'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="18" ry="16"/>
+      <path d="M14 32c0-12 8-20 18-20s18 8 18 20"/>
+      <ellipse cx="32" cy="20" rx="12" ry="8" fill="#fef08a" opacity="0.5"/>
+      <path d="M24 16c2-2 6-2 8 0" stroke="#f59e0b"/>
+      <path d="M32 16c2-2 6-2 8 0" stroke="#f59e0b"/>
+      <path d="M20 20c2-1 4-1 6 0" stroke="#f59e0b"/>
+      <path d="M38 20c2-1 4-1 6 0" stroke="#f59e0b"/>
+      <circle cx="26" cy="32" r="3" fill="currentColor"/>
+      <circle cx="38" cy="32" r="3" fill="currentColor"/>
+      <path d="M28 40c2 2 6 2 8 0"/>
+    </svg>`
+  },
+  {
+    id: 'peds-umbilical-granuloma',
+    name: 'Umbilical Granuloma',
+    domain: 'medicine',
+    category: 'infant-conditions',
+    tags: ['umbilical', 'granuloma', 'silver nitrate', 'cord', 'stump'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <circle cx="32" cy="32" r="8"/>
+      <circle cx="32" cy="32" r="4" fill="#dc2626"/>
+      <path d="M32 24v-8"/>
+      <path d="M28 16h8"/>
+      <path d="M24 32c-2 1-4 2-4 4"/>
+      <path d="M40 32c2 1 4 2 4 4"/>
+      <ellipse cx="20" cy="36" rx="2" ry="3" fill="#fef08a" opacity="0.5"/>
+      <ellipse cx="44" cy="36" rx="2" ry="3" fill="#fef08a" opacity="0.5"/>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">AgNO3</text>
     </svg>`
   }
 ];
