@@ -611,6 +611,368 @@ export const neurologyIcons: IconDefinition[] = [
       <path d="M12 48c2-4 4 4 6 0s4 4 6 0 4 4 6 0 4 4 6 0 4 4 6 0"/>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADDITIONAL BRAIN ANATOMY - FOUNDATION_25
+  // ===========================================================================
+  {
+    id: 'neuro-thalamus',
+    name: 'Thalamus',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['thalamus', 'diencephalon', 'relay', 'sensory', 'VPL', 'VPM', 'LGN', 'MGN'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="12" ry="16" fill="currentColor" opacity="0.25"/>
+      <ellipse cx="40" cy="32" rx="12" ry="16" fill="currentColor" opacity="0.25"/>
+      <ellipse cx="24" cy="32" rx="12" ry="16"/>
+      <ellipse cx="40" cy="32" rx="12" ry="16"/>
+      <path d="M24 20v24" stroke-dasharray="2 2"/>
+      <path d="M40 20v24" stroke-dasharray="2 2"/>
+      <line x1="32" y1="16" x2="32" y2="48"/>
+      <text x="18" y="34" font-size="5" fill="currentColor" stroke="none">L</text>
+      <text x="42" y="34" font-size="5" fill="currentColor" stroke="none">R</text>
+      <circle cx="24" cy="24" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="40" cy="24" r="2" fill="currentColor" opacity="0.5"/>
+    </svg>`
+  },
+  {
+    id: 'neuro-hypothalamus',
+    name: 'Hypothalamus',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['hypothalamus', 'diencephalon', 'autonomic', 'pituitary', 'neuroendocrine', 'homeostasis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 16h24c4 0 8 4 8 8v8c0 4-4 8-8 8h-8v8c-2 4-6 8-4 12h-8c2-4-2-8-4-12v-8h-8c-4 0-8-4-8-8v-8c0-4 4-8 8-8z" fill="currentColor" opacity="0.15"/>
+      <path d="M20 16h24c4 0 8 4 8 8v8c0 4-4 8-8 8h-8v8c-2 4-6 8-4 12h-8c2-4-2-8-4-12v-8h-8c-4 0-8-4-8-8v-8c0-4 4-8 8-8z"/>
+      <ellipse cx="32" cy="56" rx="6" ry="4" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="32" cy="56" rx="6" ry="4"/>
+      <circle cx="26" cy="24" r="3" fill="currentColor" opacity="0.3"/>
+      <circle cx="38" cy="24" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="22" y="60" font-size="4" fill="currentColor" stroke="none">Pit</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-hippocampus',
+    name: 'Hippocampus',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['hippocampus', 'memory', 'temporal lobe', 'limbic', 'Alzheimer', 'seahorse', 'learning'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 32c0-8 4-16 12-18 6-2 12 2 16 8 4 6 8 10 16 10" fill="currentColor" opacity="0.15"/>
+      <path d="M12 32c0-8 4-16 12-18 6-2 12 2 16 8 4 6 8 10 16 10"/>
+      <path d="M12 38c4 8 12 12 20 10 8-2 16-8 24-6"/>
+      <path d="M20 28c4-2 8-2 12 0"/>
+      <path d="M32 32c4 2 8 2 12 0"/>
+      <circle cx="16" cy="32" r="2" fill="currentColor"/>
+      <path d="M52 42c4 4 4 8 0 12"/>
+      <text x="16" y="52" font-size="4" fill="currentColor" stroke="none">CA1</text>
+      <text x="32" y="52" font-size="4" fill="currentColor" stroke="none">CA3</text>
+      <text x="46" y="52" font-size="4" fill="currentColor" stroke="none">DG</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-amygdala',
+    name: 'Amygdala',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['amygdala', 'emotion', 'fear', 'limbic', 'temporal lobe', 'almond'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 20c-4 4-8 12-4 20 4 10 16 14 24 10 8-4 12-12 8-20-4-8-12-14-20-12-4 0-6 0-8 2z" fill="currentColor" opacity="0.2"/>
+      <path d="M20 20c-4 4-8 12-4 20 4 10 16 14 24 10 8-4 12-12 8-20-4-8-12-14-20-12-4 0-6 0-8 2z"/>
+      <ellipse cx="28" cy="32" rx="6" ry="8" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="38" cy="36" rx="5" ry="6" fill="currentColor" opacity="0.3"/>
+      <path d="M24 28c2-2 6-2 8 0"/>
+      <path d="M34 34c2-1 4-1 6 0"/>
+      <text x="22" y="48" font-size="4" fill="currentColor" stroke="none">BLA</text>
+      <text x="36" y="48" font-size="4" fill="currentColor" stroke="none">CeA</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-basal-ganglia',
+    name: 'Basal Ganglia',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['basal ganglia', 'caudate', 'putamen', 'globus pallidus', 'striatum', 'movement', 'Parkinson'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c-4 8-4 24 4 32 8 8 20 8 28 0 8-8 8-24 4-32" fill="currentColor" opacity="0.1"/>
+      <path d="M16 16c-4 8-4 24 4 32 8 8 20 8 28 0 8-8 8-24 4-32"/>
+      <path d="M20 20c-2 6-2 16 2 22" stroke="red" fill="none"/>
+      <ellipse cx="28" cy="32" rx="8" ry="12" fill="blue" opacity="0.2"/>
+      <ellipse cx="28" cy="32" rx="8" ry="12" stroke="blue"/>
+      <ellipse cx="40" cy="32" rx="6" ry="10" fill="green" opacity="0.2"/>
+      <ellipse cx="40" cy="32" rx="6" ry="10" stroke="green"/>
+      <ellipse cx="48" cy="32" rx="4" ry="8" fill="purple" opacity="0.2"/>
+      <ellipse cx="48" cy="32" rx="4" ry="8" stroke="purple"/>
+      <text x="8" y="40" font-size="3" fill="red" stroke="none">Caud</text>
+      <text x="24" y="48" font-size="3" fill="blue" stroke="none">Put</text>
+      <text x="40" y="48" font-size="3" fill="green" stroke="none">GPe</text>
+      <text x="50" y="40" font-size="3" fill="purple" stroke="none">GPi</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-corpus-callosum',
+    name: 'Corpus Callosum',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['corpus callosum', 'commissure', 'genu', 'splenium', 'white matter', 'interhemispheric'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c4-12 16-16 24-16s20 4 24 16c-4-8-16-10-24-10s-20 2-24 10z" fill="currentColor" opacity="0.25"/>
+      <path d="M8 32c4-12 16-16 24-16s20 4 24 16c-4-8-16-10-24-10s-20 2-24 10z"/>
+      <path d="M8 32c4 8 16 10 24 10s20-2 24-10" stroke-dasharray="3 2"/>
+      <circle cx="12" cy="28" r="3" fill="currentColor" opacity="0.3"/>
+      <circle cx="52" cy="28" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="8" y="24" font-size="4" fill="currentColor" stroke="none">Genu</text>
+      <text x="28" y="20" font-size="4" fill="currentColor" stroke="none">Body</text>
+      <text x="44" y="24" font-size="4" fill="currentColor" stroke="none">Splenium</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-parietal-lobe',
+    name: 'Parietal Lobe',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['parietal', 'lobe', 'sensory', 'somatosensory', 'spatial', 'integration'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0-14 10-24 24-24s24 10 24 24c0 14-10 24-24 24S8 46 8 32z" stroke-dasharray="3 3" opacity="0.3"/>
+      <path d="M32 8c8 4 16 10 20 16v8c-4 10-12 16-20 16" fill="currentColor" opacity="0.3"/>
+      <path d="M32 8c8 4 16 10 20 16v8c-4 10-12 16-20 16"/>
+      <line x1="32" y1="8" x2="32" y2="48" stroke-dasharray="4 2"/>
+      <path d="M36 20c4 2 8 2 12 0"/>
+      <path d="M36 32c4-2 8-2 12 0"/>
+      <text x="40" y="28" font-size="5" fill="currentColor" stroke="none">P</text>
+      <path d="M52 24l4 4"/>
+    </svg>`
+  },
+  {
+    id: 'neuro-occipital-lobe',
+    name: 'Occipital Lobe',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['occipital', 'lobe', 'visual', 'cortex', 'V1', 'calcarine', 'vision'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0-14 10-24 24-24s24 10 24 24c0 14-10 24-24 24S8 46 8 32z" stroke-dasharray="3 3" opacity="0.3"/>
+      <path d="M44 12c8 6 12 14 12 20s-4 14-12 20c-4-8-4-24 0-40z" fill="currentColor" opacity="0.3"/>
+      <path d="M44 12c8 6 12 14 12 20s-4 14-12 20c-4-8-4-24 0-40z"/>
+      <path d="M48 24c2 2 4 6 4 8"/>
+      <path d="M48 40c2-2 4-6 4-8"/>
+      <line x1="52" y1="20" x2="52" y2="44" stroke-dasharray="2 2"/>
+      <text x="46" y="34" font-size="5" fill="currentColor" stroke="none">O</text>
+      <circle cx="48" cy="32" r="4" fill="currentColor" opacity="0.2"/>
+      <text x="38" y="54" font-size="4" fill="currentColor" stroke="none">V1</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // SPINE ANATOMY - FOUNDATION_25
+  // ===========================================================================
+  {
+    id: 'neuro-vertebral-column',
+    name: 'Vertebral Column',
+    domain: 'medicine',
+    category: 'spinal',
+    tags: ['vertebral column', 'spine', 'vertebrae', 'cervical', 'thoracic', 'lumbar', 'sacral'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M28 4h8v4h-8z" fill="currentColor" opacity="0.3"/>
+      <path d="M26 8h12v4H26z" fill="currentColor" opacity="0.3"/>
+      <path d="M26 12h12v4H26z" fill="currentColor" opacity="0.3"/>
+      <path d="M28 16h8v4h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M28 20h8v4h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M28 24h8v4h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M28 28h8v4h-8z" fill="currentColor" opacity="0.2"/>
+      <path d="M26 32h12v4H26z" fill="currentColor" opacity="0.15"/>
+      <path d="M26 36h12v4H26z" fill="currentColor" opacity="0.15"/>
+      <path d="M26 40h12v4H26z" fill="currentColor" opacity="0.15"/>
+      <path d="M24 44h16v6H24z" fill="currentColor" opacity="0.1"/>
+      <path d="M28 50h8v6h-8z" fill="currentColor" opacity="0.05"/>
+      <path d="M28 4h8v4h-8zM26 8h12v4H26zM26 12h12v4H26zM28 16h8v4h-8zM28 20h8v4h-8zM28 24h8v4h-8zM28 28h8v4h-8zM26 32h12v4H26zM26 36h12v4H26zM26 40h12v4H26zM24 44h16v6H24zM28 50h8v6h-8z"/>
+      <text x="4" y="10" font-size="4" fill="currentColor" stroke="none">C</text>
+      <text x="4" y="26" font-size="4" fill="currentColor" stroke="none">T</text>
+      <text x="4" y="42" font-size="4" fill="currentColor" stroke="none">L</text>
+      <text x="4" y="52" font-size="4" fill="currentColor" stroke="none">S</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-cervical-spine',
+    name: 'Cervical Spine',
+    domain: 'medicine',
+    category: 'spinal',
+    tags: ['cervical', 'spine', 'C1-C7', 'atlas', 'axis', 'neck', 'vertebrae'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="10" rx="14" ry="4" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="10" rx="14" ry="4"/>
+      <circle cx="32" cy="10" r="4"/>
+      <rect x="24" y="16" width="16" height="6" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="16" width="16" height="6" rx="1"/>
+      <path d="M28 16v-6"/>
+      <path d="M36 16v-6"/>
+      <rect x="22" y="24" width="20" height="6" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="24" width="20" height="6" rx="1"/>
+      <rect x="22" y="32" width="20" height="6" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="32" width="20" height="6" rx="1"/>
+      <rect x="22" y="40" width="20" height="6" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="40" width="20" height="6" rx="1"/>
+      <rect x="22" y="48" width="20" height="6" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="48" width="20" height="6" rx="1"/>
+      <text x="8" y="12" font-size="4" fill="currentColor" stroke="none">C1</text>
+      <text x="8" y="21" font-size="4" fill="currentColor" stroke="none">C2</text>
+      <text x="8" y="53" font-size="4" fill="currentColor" stroke="none">C7</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-thoracic-spine',
+    name: 'Thoracic Spine',
+    domain: 'medicine',
+    category: 'spinal',
+    tags: ['thoracic', 'spine', 'T1-T12', 'ribs', 'kyphosis', 'vertebrae'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="26" y="6" width="12" height="5" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="26" y="6" width="12" height="5" rx="1"/>
+      <path d="M26 8h-10c-2 2-2 6 0 8h10"/>
+      <path d="M38 8h10c2 2 2 6 0 8h-10"/>
+      <rect x="26" y="13" width="12" height="5" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="26" y="13" width="12" height="5" rx="1"/>
+      <path d="M26 15h-10c-2 2-2 6 0 8h10"/>
+      <path d="M38 15h10c2 2 2 6 0 8h-10"/>
+      <rect x="26" y="20" width="12" height="5" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="26" y="20" width="12" height="5" rx="1"/>
+      <rect x="26" y="27" width="12" height="5" rx="1" fill="currentColor" opacity="0.2"/>
+      <rect x="26" y="27" width="12" height="5" rx="1"/>
+      <rect x="26" y="34" width="12" height="5" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="26" y="34" width="12" height="5" rx="1"/>
+      <rect x="26" y="41" width="12" height="5" rx="1" fill="currentColor" opacity="0.15"/>
+      <rect x="26" y="41" width="12" height="5" rx="1"/>
+      <rect x="26" y="48" width="12" height="5" rx="1" fill="currentColor" opacity="0.1"/>
+      <rect x="26" y="48" width="12" height="5" rx="1"/>
+      <text x="8" y="12" font-size="4" fill="currentColor" stroke="none">T1</text>
+      <text x="8" y="53" font-size="4" fill="currentColor" stroke="none">T12</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-lumbar-spine',
+    name: 'Lumbar Spine',
+    domain: 'medicine',
+    category: 'spinal',
+    tags: ['lumbar', 'spine', 'L1-L5', 'lordosis', 'lower back', 'vertebrae'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="20" y="8" width="24" height="8" rx="2"/>
+      <rect x="18" y="18" width="28" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="18" y="18" width="28" height="8" rx="2"/>
+      <rect x="18" y="28" width="28" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="18" y="28" width="28" height="8" rx="2"/>
+      <rect x="20" y="38" width="24" height="8" rx="2" fill="currentColor" opacity="0.15"/>
+      <rect x="20" y="38" width="24" height="8" rx="2"/>
+      <rect x="22" y="48" width="20" height="8" rx="2" fill="currentColor" opacity="0.15"/>
+      <rect x="22" y="48" width="20" height="8" rx="2"/>
+      <path d="M14 12h4"/>
+      <path d="M46 12h4"/>
+      <path d="M12 22h4"/>
+      <path d="M48 22h4"/>
+      <circle cx="32" cy="12" r="2" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="22" r="2" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="32" r="2" fill="currentColor" opacity="0.3"/>
+      <text x="6" y="14" font-size="4" fill="currentColor" stroke="none">L1</text>
+      <text x="6" y="54" font-size="4" fill="currentColor" stroke="none">L5</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-brain-sagittal',
+    name: 'Brain Sagittal View',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['brain', 'sagittal', 'midline', 'corpus callosum', 'brainstem', 'cerebellum'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 28c0-12 8-20 20-20 14 0 22 8 22 20 0 8-4 14-10 18l-6 10h-10l-4-8c-8-4-12-12-12-20z" fill="currentColor" opacity="0.1"/>
+      <path d="M12 28c0-12 8-20 20-20 14 0 22 8 22 20 0 8-4 14-10 18l-6 10h-10l-4-8c-8-4-12-12-12-20z"/>
+      <path d="M16 24c12-4 24-4 36 0" fill="currentColor" opacity="0.2"/>
+      <path d="M16 24c12-4 24-4 36 0"/>
+      <ellipse cx="44" cy="42" rx="10" ry="8" fill="currentColor" opacity="0.15"/>
+      <ellipse cx="44" cy="42" rx="10" ry="8"/>
+      <path d="M34 36v8c0 2-2 4-4 4"/>
+      <text x="24" y="20" font-size="4" fill="currentColor" stroke="none">CC</text>
+      <text x="40" y="44" font-size="4" fill="currentColor" stroke="none">Cb</text>
+      <text x="28" y="44" font-size="4" fill="currentColor" stroke="none">BS</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-brain-whole',
+    name: 'Brain Whole',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['brain', 'whole', 'complete', 'overview', 'anatomy', 'cerebrum'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 28c0-12 8-20 20-20 14 0 22 8 22 20 0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-14-12-14-22z" fill="currentColor" opacity="0.1"/>
+      <path d="M12 28c0-12 8-20 20-20 14 0 22 8 22 20 0 10-6 18-14 20l-4 8h-8l-2-6c-8-2-14-12-14-22z"/>
+      <path d="M16 20c4 2 10 2 14 0"/>
+      <path d="M34 20c4 2 10 2 14 0"/>
+      <path d="M14 30c6 2 14 2 20 0"/>
+      <path d="M30 30c6 2 14 2 20 0"/>
+      <path d="M18 40c4 1 10 1 14 0"/>
+      <line x1="32" y1="10" x2="32" y2="48" stroke-dasharray="3 2"/>
+      <circle cx="42" cy="40" r="4" fill="currentColor" opacity="0.15"/>
+    </svg>`
+  },
+  {
+    id: 'neuro-brain-hemisphere',
+    name: 'Brain Hemisphere',
+    domain: 'medicine',
+    category: 'brain-anatomy',
+    tags: ['brain', 'hemisphere', 'lateral', 'lobes', 'cortex', 'sulci', 'gyri'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0-14 10-24 24-24 12 0 20 8 20 20 0 12-6 20-16 22l-4 8h-8l-2-6c-10-2-14-12-14-20z" fill="currentColor" opacity="0.1"/>
+      <path d="M8 32c0-14 10-24 24-24 12 0 20 8 20 20 0 12-6 20-16 22l-4 8h-8l-2-6c-10-2-14-12-14-20z"/>
+      <path d="M16 16l20 4" stroke="red" opacity="0.6"/>
+      <path d="M36 20c4 8 8 12 12 14" stroke="blue" opacity="0.6"/>
+      <path d="M14 32c8 1 16 1 24 0"/>
+      <path d="M18 42c6 2 12 2 18 0"/>
+      <text x="12" y="26" font-size="4" fill="currentColor" stroke="none">F</text>
+      <text x="36" y="18" font-size="4" fill="currentColor" stroke="none">P</text>
+      <text x="44" y="36" font-size="4" fill="currentColor" stroke="none">O</text>
+      <text x="18" y="44" font-size="4" fill="currentColor" stroke="none">T</text>
+    </svg>`
+  },
+  {
+    id: 'neuro-nerve-bundle',
+    name: 'Nerve Bundle',
+    domain: 'medicine',
+    category: 'spinal',
+    tags: ['nerve', 'bundle', 'fibers', 'axons', 'fascicle', 'connective tissue'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <ellipse cx="20" cy="24" rx="6" ry="5" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="20" cy="24" rx="6" ry="5"/>
+      <ellipse cx="36" cy="22" rx="8" ry="6" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="36" cy="22" rx="8" ry="6"/>
+      <ellipse cx="44" cy="36" rx="6" ry="5" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="44" cy="36" rx="6" ry="5"/>
+      <ellipse cx="24" cy="40" rx="7" ry="5" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="24" cy="40" rx="7" ry="5"/>
+      <ellipse cx="38" cy="42" rx="4" ry="3" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="38" cy="42" rx="4" ry="3"/>
+      <circle cx="20" cy="24" r="1" fill="currentColor"/>
+      <circle cx="36" cy="22" r="1.5" fill="currentColor"/>
+      <circle cx="44" cy="36" r="1" fill="currentColor"/>
+      <circle cx="24" cy="40" r="1" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'neuro-nerve-impulse',
+    name: 'Nerve Impulse',
+    domain: 'medicine',
+    category: 'neurons',
+    tags: ['nerve', 'impulse', 'signal', 'propagation', 'action potential', 'conduction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8" y1="32" x2="56" y2="32" stroke-width="2"/>
+      <circle cx="8" cy="32" r="4" fill="currentColor" opacity="0.3"/>
+      <circle cx="8" cy="32" r="4"/>
+      <path d="M16 32c2-8 4-12 6-12s4 24 6 24 4-20 6-20 4 16 6 16 4-12 6-12 2 4 4 4" stroke="red" stroke-width="2" fill="none"/>
+      <path d="M46 32h10"/>
+      <polygon points="56,28 60,32 56,36" fill="currentColor"/>
+      <text x="4" y="48" font-size="4" fill="currentColor" stroke="none">Depolarization</text>
+      <text x="36" y="48" font-size="4" fill="currentColor" stroke="none">Propagation</text>
+    </svg>`
+  },
 ];
 
 export default neurologyIcons;
