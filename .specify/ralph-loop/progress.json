@@ -1,6 +1,6 @@
 {
   "currentSpecialty": "neurology",
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology"],
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease"],
   "blockedSpecialties": [],
   "progress": {
     "neurology": {
@@ -225,20 +225,65 @@
           "data-visualization": 4
         }
       }
+    },
+    "infectious-disease": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T16:00:00Z",
+      "metrics": {
+        "icons": {
+          "current": 101,
+          "target": 90,
+          "percentage": 112
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "pathogens-bacteria": 15,
+          "pathogens-viral": 12,
+          "pathogens-fungal-parasitic": 10,
+          "infection-sites": 15,
+          "immune-response": 10,
+          "antimicrobials": 12,
+          "equipment-diagnostics": 11,
+          "vaccines": 8,
+          "infection-control": 8
+        },
+        "templates": {
+          "clinical-decision-trees": 7,
+          "anatomical-diagrams": 4,
+          "procedure-illustrations": 3,
+          "data-visualization": 4,
+          "additional-clinical": 7
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 4,
+    "completed": 5,
     "inProgress": 1,
     "blocked": 0,
-    "notStarted": 30,
+    "notStarted": 29,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 587,
-    "currentTotalTemplates": 137,
-    "currentTotalPrompts": 87
+    "currentTotalIcons": 688,
+    "currentTotalTemplates": 162,
+    "currentTotalPrompts": 107
   },
   "executionOrder": [
     "cardiology",
@@ -277,5 +322,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "neurology"
+  "nextSpecialty": "hematology-oncology"
 }

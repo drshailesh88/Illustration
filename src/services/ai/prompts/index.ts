@@ -540,3 +540,18 @@ export { default as pulmonologyPrompts } from './pulmonology-prompts';
 
 export * from './emergency-medicine-prompts';
 export { default as emergencyMedicinePrompts } from './emergency-medicine-prompts';
+
+export * from './endocrinology-prompts';
+export { default as endocrinologyPrompts } from './endocrinology-prompts';
+
+export * from './gastroenterology-prompts';
+export { default as gastroenterologyPrompts } from './gastroenterology-prompts';
+
+export * from './neurology-prompts';
+export { default as neurologyPrompts } from './neurology-prompts';
+
+export * from './nephrology-prompts';
+export { default as nephrologyPrompts } from './nephrology-prompts';
+
+export * from './infectious-disease-prompts';
+export { default as infectiousDiseasePrompts } from './infectious-disease-prompts';

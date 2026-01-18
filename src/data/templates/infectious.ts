@@ -819,6 +819,332 @@ export const sepsisGrading: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL CLINICAL TEMPLATES (7)
+// =============================================================================
+
+/**
+ * Meningitis Workup Algorithm template
+ */
+export const meningitisWorkup: DiagramTemplate = {
+  id: 'inf-meningitis-workup',
+  name: 'Meningitis Workup Algorithm',
+  description: 'Diagnostic approach to suspected meningitis including CSF analysis',
+  domain: 'medicine',
+  promptTemplate: `Create a meningitis workup flowchart:
+- Clinical presentation: {{clinicalPresentation}}
+- Pre-LP considerations: {{preLPConsiderations}}
+- CSF analysis parameters: {{csfParameters}}
+- Bacterial vs viral patterns: {{bacterialVsViral}}
+- Empiric therapy: {{empiricTherapy}}
+- Steroid adjunct criteria: {{steroidCriteria}}
+- Culture and PCR testing: {{diagnosticTests}}
+{{#additionalNotes}}Special populations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'clinicalPresentation',
+    'preLPConsiderations',
+    'csfParameters',
+    'bacterialVsViral',
+    'empiricTherapy',
+    'steroidCriteria',
+    'diagnosticTests',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected\\nMeningitis")] --> B{"Focal Neuro\\nDeficit?"}
+    B -->|"Yes"| C["CT Head First"]
+    B -->|"No"| D["LP Safe"]
+    C --> E{"Mass Effect?"}
+    E -->|"Yes"| F["Defer LP\\nEmpiric Abx + Dex"]
+    E -->|"No"| D
+    D --> G["CSF Analysis"]
+    G --> H{"WBC >1000\\nGlucose <40\\nProtein >200?"}
+    H -->|"Yes"| I["Bacterial\\nLikely"]
+    H -->|"No"| J["Viral\\nLikely"]
+    I --> K["Ceftriaxone +\\nVanc + Dex"]
+    J --> L["Supportive Care\\nConsider HSV"]
+    style I fill:#DC143C,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Opportunistic Infections in HIV template
+ */
+export const hivOpportunisticInfections: DiagramTemplate = {
+  id: 'inf-hiv-oi',
+  name: 'HIV Opportunistic Infections',
+  description: 'CD4-based opportunistic infection risks and prophylaxis',
+  domain: 'medicine',
+  promptTemplate: `Create an HIV opportunistic infections diagram:
+- CD4 thresholds: {{cd4Thresholds}}
+- Primary prophylaxis: {{primaryProphylaxis}}
+- Treatment of active OIs: {{oiTreatment}}
+- Secondary prophylaxis: {{secondaryProphylaxis}}
+- Discontinuation criteria: {{discontinuationCriteria}}
+- IRIS considerations: {{irisConsiderations}}
+{{#additionalNotes}}ART timing: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'cd4Thresholds',
+    'primaryProphylaxis',
+    'oiTreatment',
+    'secondaryProphylaxis',
+    'discontinuationCriteria',
+    'irisConsiderations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph CD4_200["CD4 < 200"]
+        A["PCP Prophylaxis\\nTMP-SMX DS daily"]
+        B["Toxoplasma (if IgG+)\\nTMP-SMX DS daily"]
+    end
+    subgraph CD4_100["CD4 < 100"]
+        C["Histoplasma/Cocci\\n(endemic areas)"]
+    end
+    subgraph CD4_50["CD4 < 50"]
+        D["MAC Prophylaxis\\nAzithromycin 1200 weekly"]
+        E["CMV monitoring"]
+    end
+    F["Start ART"] --> G{"CD4 Response?"}
+    G -->|"CD4 > 200 x 3mo"| H["Stop PCP/Toxo\\nProphylaxis"]
+    G -->|"CD4 > 100 x 3mo"| I["Stop MAC\\nProphylaxis"]
+    style A fill:#FFA500,color:#000
+    style D fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Travel Medicine Pre-departure template
+ */
+export const travelMedicine: DiagramTemplate = {
+  id: 'inf-travel-medicine',
+  name: 'Travel Medicine Pre-departure',
+  description: 'Pre-travel consultation and vaccine/prophylaxis recommendations',
+  domain: 'medicine',
+  promptTemplate: `Create a travel medicine consultation flowchart:
+- Destination assessment: {{destinationAssessment}}
+- Routine vaccines: {{routineVaccines}}
+- Required vaccines: {{requiredVaccines}}
+- Recommended vaccines: {{recommendedVaccines}}
+- Malaria prophylaxis: {{malariaProphylaxis}}
+- Traveler's diarrhea prevention: {{diarrheaPrevention}}
+- Post-travel evaluation: {{postTravelEval}}
+{{#additionalNotes}}Special travelers: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'destinationAssessment',
+    'routineVaccines',
+    'requiredVaccines',
+    'recommendedVaccines',
+    'malariaProphylaxis',
+    'diarrheaPrevention',
+    'postTravelEval',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Travel Consult"] --> B["Assess Destination\\n& Itinerary"]
+    B --> C{"Malaria\\nEndemic?"}
+    C -->|"Yes"| D["Prophylaxis:\\nAtovaquone-proguanil\\nDoxycycline\\nMefloquine"]
+    B --> E{"Yellow Fever\\nRequired?"}
+    E -->|"Yes"| F["YF Vaccine\\n(IHR Certificate)"]
+    B --> G["Routine Vaccines"]
+    G --> G1["Tdap"]
+    G --> G2["MMR"]
+    G --> G3["Influenza"]
+    B --> H["Travel Vaccines"]
+    H --> H1["Hepatitis A/B"]
+    H --> H2["Typhoid"]
+    H --> H3["Rabies (if indicated)"]
+    style F fill:#FFA500,color:#000
+    style D fill:#10B981,color:#fff`,
+};
+
+/**
+ * Antimicrobial Stewardship Protocol template
+ */
+export const stewardshipProtocol: DiagramTemplate = {
+  id: 'inf-stewardship-protocol',
+  name: 'Antimicrobial Stewardship Protocol',
+  description: 'ASP interventions and antibiotic optimization strategies',
+  domain: 'medicine',
+  promptTemplate: `Create an antimicrobial stewardship flowchart:
+- Prospective audit: {{prospectiveAudit}}
+- Formulary restrictions: {{formularyRestrictions}}
+- De-escalation criteria: {{deescalationCriteria}}
+- IV-to-PO conversion: {{ivToPoConversion}}
+- Duration optimization: {{durationOptimization}}
+- Antibiotic timeout: {{antibioticTimeout}}
+- Outcome metrics: {{outcomeMetrics}}
+{{#additionalNotes}}Implementation strategies: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'prospectiveAudit',
+    'formularyRestrictions',
+    'deescalationCriteria',
+    'ivToPoConversion',
+    'durationOptimization',
+    'antibioticTimeout',
+    'outcomeMetrics',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Antibiotic\\nInitiated"] --> B["72h Review"]
+    B --> C{"Culture\\nResults?"}
+    C -->|"Positive"| D["De-escalate\\nto Targeted"]
+    C -->|"Negative"| E{"Clinical\\nImprovement?"}
+    E -->|"Yes"| F["Consider\\nStopping"]
+    E -->|"No"| G["Reassess\\nDiagnosis"]
+    D --> H{"IV to PO\\nCriteria Met?"}
+    H -->|"Yes"| I["Convert to PO"]
+    B --> J["Duration\\nAssessment"]
+    J --> K["Follow IDSA\\nGuidelines"]
+    K --> L["Shortest Effective\\nDuration"]
+    style D fill:#228B22,color:#fff
+    style F fill:#10B981,color:#fff
+    style I fill:#3B82F6,color:#fff`,
+};
+
+/**
+ * Fungal Infection Diagnosis template
+ */
+export const fungalDiagnosis: DiagramTemplate = {
+  id: 'inf-fungal-diagnosis',
+  name: 'Fungal Infection Diagnosis',
+  description: 'Diagnostic approach to invasive fungal infections',
+  domain: 'medicine',
+  promptTemplate: `Create a fungal infection diagnosis flowchart:
+- Risk factors: {{riskFactors}}
+- Clinical syndromes: {{clinicalSyndromes}}
+- Diagnostic tests: {{diagnosticTests}}
+- Biomarkers: {{biomarkers}}
+- Imaging findings: {{imagingFindings}}
+- Species identification: {{speciesID}}
+- Antifungal selection: {{antifungalSelection}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'riskFactors',
+    'clinicalSyndromes',
+    'diagnosticTests',
+    'biomarkers',
+    'imagingFindings',
+    'speciesID',
+    'antifungalSelection',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected IFI")] --> B{"Host\\nFactors?"}
+    B -->|"Neutropenic"| C["Invasive\\nAspergillosis"]
+    B -->|"ICU/Lines"| D["Invasive\\nCandidiasis"]
+    B -->|"Endemic Exposure"| E["Histo/Blasto\\nCocci"]
+    C --> F["Galactomannan\\nBeta-D-Glucan\\nCT Chest"]
+    F --> G{"Halo Sign?"}
+    G -->|"Yes"| H["Start\\nVoriconazole"]
+    D --> I["Blood Cultures\\nBeta-D-Glucan"]
+    I --> J{"Candida\\nSpecies?"}
+    J -->|"C. albicans"| K["Fluconazole"]
+    J -->|"C. glabrata"| L["Echinocandin"]
+    E --> M["Urine/Serum Ag\\nCulture"]
+    style C fill:#556B2F,color:#fff
+    style D fill:#CD853F,color:#fff`,
+};
+
+/**
+ * Outbreak Investigation Flowchart template
+ */
+export const outbreakInvestigation: DiagramTemplate = {
+  id: 'inf-outbreak-investigation',
+  name: 'Outbreak Investigation Flowchart',
+  description: 'Systematic approach to outbreak investigation and control',
+  domain: 'medicine',
+  promptTemplate: `Create an outbreak investigation flowchart:
+- Case identification: {{caseIdentification}}
+- Case definition: {{caseDefinition}}
+- Epidemiologic curve: {{epiCurve}}
+- Hypothesis generation: {{hypothesisGeneration}}
+- Analytic studies: {{analyticStudies}}
+- Control measures: {{controlMeasures}}
+- Communication: {{communication}}
+{{#additionalNotes}}Reporting requirements: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'caseIdentification',
+    'caseDefinition',
+    'epiCurve',
+    'hypothesisGeneration',
+    'analyticStudies',
+    'controlMeasures',
+    'communication',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Outbreak\\nSuspected"] --> B["Verify\\nDiagnosis"]
+    B --> C["Establish\\nCase Definition"]
+    C --> D["Case\\nFinding"]
+    D --> E["Describe by\\nTime/Place/Person"]
+    E --> F["Construct\\nEpi Curve"]
+    F --> G["Generate\\nHypotheses"]
+    G --> H["Test Hypotheses\\n(Case-Control)"]
+    H --> I["Identify\\nSource"]
+    I --> J["Implement\\nControl Measures"]
+    J --> J1["Isolation"]
+    J --> J2["Prophylaxis"]
+    J --> J3["Source Removal"]
+    J --> K["Communication\\n& Reporting"]
+    K --> L["Post-Outbreak\\nEvaluation"]
+    style A fill:#DC143C,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Healthcare-Associated Infection Prevention Bundle template
+ */
+export const haiPreventionBundle: DiagramTemplate = {
+  id: 'inf-hai-prevention',
+  name: 'HAI Prevention Bundle',
+  description: 'Evidence-based bundles for preventing healthcare-associated infections',
+  domain: 'medicine',
+  promptTemplate: `Create an HAI prevention bundle diagram:
+- CLABSI bundle: {{clabsiBundle}}
+- CAUTI bundle: {{cautiBundle}}
+- VAP bundle: {{vapBundle}}
+- SSI prevention: {{ssiPrevention}}
+- Hand hygiene: {{handHygiene}}
+- Monitoring metrics: {{monitoringMetrics}}
+- Compliance tracking: {{complianceTracking}}
+{{#additionalNotes}}Quality improvement: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'clabsiBundle',
+    'cautiBundle',
+    'vapBundle',
+    'ssiPrevention',
+    'handHygiene',
+    'monitoringMetrics',
+    'complianceTracking',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TB
+    subgraph CLABSI["CLABSI Prevention"]
+        A1["Hand Hygiene"]
+        A2["Maximal Barrier"]
+        A3["Chlorhexidine Prep"]
+        A4["Optimal Site"]
+        A5["Daily Line Review"]
+    end
+    subgraph CAUTI["CAUTI Prevention"]
+        B1["Avoid Unnecessary\\nCatheters"]
+        B2["Aseptic Insertion"]
+        B3["Daily Need Review"]
+        B4["Prompt Removal"]
+    end
+    subgraph VAP["VAP Prevention"]
+        C1["HOB Elevation 30-45"]
+        C2["Daily Sedation Wake"]
+        C3["Oral Care CHG"]
+        C4["DVT Prophylaxis"]
+        C5["Peptic Ulcer Prophylaxis"]
+    end
+    D["Compliance\\nMonitoring"] --> E["Infection\\nRate Tracking"]
+    E --> F["Feedback to\\nClinicians"]
+    style A1 fill:#228B22,color:#fff
+    style B1 fill:#3B82F6,color:#fff
+    style C1 fill:#8B5CF6,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -848,6 +1174,14 @@ export const infectiousTemplates: DiagramTemplate[] = [
   vaccinationSchedule,
   resistancePatterns,
   sepsisGrading,
+  // Additional Clinical Templates
+  meningitisWorkup,
+  hivOpportunisticInfections,
+  travelMedicine,
+  stewardshipProtocol,
+  fungalDiagnosis,
+  outbreakInvestigation,
+  haiPreventionBundle,
 ];
 
 export default infectiousTemplates;

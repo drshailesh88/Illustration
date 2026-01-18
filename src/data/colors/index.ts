@@ -18,6 +18,12 @@ export { default as emergencyMedicineColorScheme } from './emergency-medicine';
 export * from './gastroenterology';
 export { default as gastroenterologyColorScheme } from './gastroenterology';
 
+export * from './nephrology';
+export { default as nephrologyColorScheme } from './nephrology';
+
+export * from './infectious-disease';
+export { default as infectiousDiseaseColorScheme } from './infectious-disease';
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -25,3 +31,5 @@ export { default as gastroenterologyColorScheme } from './gastroenterology';
 export type { PulmonologyColorScheme } from './pulmonology';
 export type { EmergencyMedicineColorScheme } from './emergency-medicine';
 export type { GastroenterologyColorScheme } from './gastroenterology';
+export type { NephrologyColorScheme } from './nephrology';
+export type { InfectiousDiseaseColorScheme } from './infectious-disease';
