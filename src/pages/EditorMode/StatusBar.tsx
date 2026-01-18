@@ -5,7 +5,7 @@
  * @module pages/EditorMode/StatusBar
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useEditorStore, useViewport, useSelection, useActiveTool } from '../../store/editorStore';
 import { ToolType } from '../../types/index';
 

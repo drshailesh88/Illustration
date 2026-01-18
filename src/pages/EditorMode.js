@@ -9,7 +9,7 @@
  * - Bottom: Status bar (zoom level, canvas size, selection info)
  */
 
-import { fabric } from 'fabric';
+import * as fabric from 'fabric';
 
 // SVG Icons for tools
 const ToolIcons = {

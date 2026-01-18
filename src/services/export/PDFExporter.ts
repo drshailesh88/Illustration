@@ -10,8 +10,6 @@ import type {
   PDFExportOptions,
   ExportResult,
   ExportProgressCallback,
-  PageSize,
-  PageOrientation,
 } from './types.js';
 import { MIME_TYPES, FILE_EXTENSIONS, PAGE_SIZES } from './types.js';
 
@@ -171,7 +169,7 @@ export class PDFExporter implements Exporter<PDFExportOptions> {
     onProgress?.(95, 'Creating blob...');
 
     // Create blob
-    const blob = new Blob([pdfBytes], { type: MIME_TYPES.pdf });
+    const blob = new Blob([pdfBytes as BlobPart], { type: MIME_TYPES.pdf });
     const filename = `${opts.filename || 'illustration'}${FILE_EXTENSIONS.pdf}`;
 
     onProgress?.(100, 'Export complete');
@@ -285,7 +283,7 @@ export class PDFExporter implements Exporter<PDFExportOptions> {
     onProgress?.(85, 'Saving PDF document...');
 
     const pdfBytes = await pdfDoc.save();
-    const blob = new Blob([pdfBytes], { type: MIME_TYPES.pdf });
+    const blob = new Blob([pdfBytes as BlobPart], { type: MIME_TYPES.pdf });
     const filename = `${opts.filename || 'illustration'}${FILE_EXTENSIONS.pdf}`;
 
     onProgress?.(100, 'Export complete');
@@ -541,8 +539,8 @@ export class PDFExporter implements Exporter<PDFExportOptions> {
    * Get estimated page count for multi-page export
    */
   estimatePageCount(
-    canvas: FabricCanvas,
-    options?: Omit<PDFExportOptions, 'format'>
+    _canvas: FabricCanvas,
+    _options?: Omit<PDFExportOptions, 'format'>
   ): number {
     // Currently we only support single-page export
     // This could be extended to support tiling large canvases across multiple pages

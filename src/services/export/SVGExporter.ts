@@ -52,7 +52,7 @@ export class SVGExporter implements Exporter<SVGExportOptions> {
   /**
    * Validate export options
    */
-  validateOptions(options?: Partial<SVGExportOptions>): { valid: boolean; errors: string[] } {
+  validateOptions(_options?: Partial<SVGExportOptions>): { valid: boolean; errors: string[] } {
     // SVG options don't have strict validation requirements
     return { valid: true, errors: [] };
   }
@@ -75,8 +75,8 @@ export class SVGExporter implements Exporter<SVGExportOptions> {
       suppressPreamble: false,
       viewBox: opts.preserveViewBox
         ? {
-            minX: 0,
-            minY: 0,
+            x: 0,
+            y: 0,
             width: canvas.getWidth(),
             height: canvas.getHeight(),
           }
@@ -287,8 +287,8 @@ export class SVGExporter implements Exporter<SVGExportOptions> {
       suppressPreamble: false,
       viewBox: opts.preserveViewBox
         ? {
-            minX: 0,
-            minY: 0,
+            x: 0,
+            y: 0,
             width: canvas.getWidth(),
             height: canvas.getHeight(),
           }

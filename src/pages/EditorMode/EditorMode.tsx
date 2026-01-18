@@ -212,7 +212,7 @@ export function EditorMode(): JSX.Element {
     useEditorStore.getState().selectObjects(objectIds);
   }, []);
 
-  const handleObjectModified = useCallback((object: any) => {
+  const handleObjectModified = useCallback((_object: unknown) => {
     // Object was modified, history is automatically updated in Canvas component
   }, []);
 

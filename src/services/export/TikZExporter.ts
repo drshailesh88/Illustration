@@ -3,7 +3,7 @@
  * Exports Fabric.js canvas to TikZ code for LaTeX documents
  */
 
-import type { Canvas as FabricCanvas, FabricObject, TFiller } from 'fabric';
+import type { Canvas as FabricCanvas, FabricObject } from 'fabric';
 import type {
   Exporter,
   TikZExportOptions,

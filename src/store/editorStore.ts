@@ -10,7 +10,6 @@ import { subscribeWithSelector, devtools } from 'zustand/middleware';
 import type {
   FabricCanvas,
   EditorState,
-  EditorActions,
   EditorStore,
   PanPosition,
   ToolType,

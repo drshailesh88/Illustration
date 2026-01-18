@@ -35,50 +35,50 @@ export * from './pulmonology';
 export * from './pathology';
 export * from './ent';
 export * from './obgyn';
-// Biology subspecialties
-export * from './molecular';
-export * from './genetics';
+// Biology subspecialties - use explicit exports to avoid duplicates
+export { molecularTemplates } from './molecular';
+export { geneticsTemplates } from './genetics';
 export * from './ecology';
 export * from './microbiology';
 export * from './zoology';
 export * from './botany';
-export * from './cellbiology';
+export { cellbiologyTemplates } from './cellbiology';
 export * from './neuroscience';
-// Additional science branches
+// Additional science branches - use explicit exports to avoid duplicates
 export * from './geology';
-export * from './astronomy';
+export { astronomyTemplates } from './astronomy';
 export * from './environmental';
 export * from './materials_science';
 export * from './oceanography';
 export * from './meteorology';
 export * from './agriculture';
 export * from './forensics';
-// Physics subspecialties
-export * from './quantum';
-export * from './thermodynamics';
+// Physics subspecialties - use explicit exports to avoid duplicates
+export { quantumTemplates } from './quantum';
+export { thermodynamicsTemplates } from './thermodynamics';
 export * from './electromagnetism';
 export * from './optics';
 export * from './nuclear';
-export * from './mechanics';
-export * from './astrophysics';
+export { mechanicsTemplates } from './mechanics';
+export { astrophysicsTemplates } from './astrophysics';
 // Chemistry subspecialties
 export * from './biochemistry';
 export * from './organic';
 export * from './inorganic';
 export * from './analytical';
-// Engineering subspecialties
-export * from './aerospace';
-export * from './mechanical';
-export * from './electrical';
+// Engineering subspecialties - use explicit exports to avoid duplicates
+export { aerospaceTemplates } from './aerospace';
+export { mechanicalTemplates } from './mechanical';
+export { electricalTemplates } from './electrical';
 export * from './civil';
-export * from './chemical';
-export * from './computer';
+export { chemicalTemplates } from './chemical';
+export { computerTemplates } from './computer';
 export * from './biomedical';
-// Pharmacology/Medicine subspecialties
+// Pharmacology/Medicine subspecialties - use explicit exports to avoid duplicates
 export * from './analgesics';
 export * from './antibiotics';
 export * from './psychotropics';
-export * from './endocrine_drugs';
+export { endocrineDrugsTemplates } from './endocrine_drugs';
 
 // =============================================================================
 // TYPE DEFINITIONS

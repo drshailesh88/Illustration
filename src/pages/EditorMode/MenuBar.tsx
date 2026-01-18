@@ -5,7 +5,7 @@
  * @module pages/EditorMode/MenuBar
  */
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useEditorStore, useHistoryState, useViewport, useGridState } from '../../store/editorStore';
 import { useCanvas } from '../../components/Canvas/CanvasContext';
 import './MenuBar.css';

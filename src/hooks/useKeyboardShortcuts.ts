@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useCallback, useRef } from 'react';
+import { FabricObject } from 'fabric';
 import { useEditorStore, useHistoryState } from '../store/editorStore';
 import { ToolType } from '../types/index';
 
@@ -77,7 +78,7 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     if (!canvas) return;
     const activeObjects = canvas.getActiveObjects();
     if (activeObjects.length > 0) {
-      activeObjects.forEach((obj) => canvas.remove(obj));
+      activeObjects.forEach((obj: unknown) => canvas.remove(obj as FabricObject));
       canvas.discardActiveObject();
       canvas.renderAll();
     }
@@ -86,8 +87,8 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
   const selectAll = useCallback(() => {
     if (!canvas) return;
     canvas.discardActiveObject();
-    const objects = canvas.getObjects().filter((obj) => {
-      return !((obj as { isGrid?: boolean }).isGrid);
+    const objects = canvas.getObjects().filter((obj: FabricObject) => {
+      return !((obj as FabricObject & { isGrid?: boolean }).isGrid);
     });
     if (objects.length > 0) {
       // @ts-expect-error ActiveSelection not in types
@@ -102,7 +103,7 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     const activeObjects = canvas.getActiveObjects();
     if (activeObjects.length > 0) {
       // Store in global clipboard
-      (window as unknown as { __finnishClipboard: unknown[] }).__finnishClipboard = activeObjects.map((obj) =>
+      (window as unknown as { __finnishClipboard: unknown[] }).__finnishClipboard = activeObjects.map((obj: FabricObject) =>
         obj.toObject()
       );
     }
@@ -113,15 +114,14 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     const clipboardData = (window as unknown as { __finnishClipboard?: unknown[] }).__finnishClipboard;
     if (!clipboardData || clipboardData.length === 0) return;
 
-    clipboardData.forEach((objData) => {
-      // @ts-expect-error fabric types
-      window.fabric.util.enlivenObjects([objData], (objects: unknown[]) => {
-        objects.forEach((obj: { set: (opts: object) => void; left?: number; top?: number }) => {
+    clipboardData.forEach((objData: unknown) => {
+      // @ts-expect-error fabric global types
+      window.fabric.util.enlivenObjects([objData], (objects: FabricObject[]) => {
+        objects.forEach((obj: FabricObject) => {
           obj.set({
             left: (obj.left || 0) + 20,
             top: (obj.top || 0) + 20,
           });
-          // @ts-expect-error fabric types
           canvas.add(obj);
         });
         canvas.renderAll();
@@ -139,9 +139,9 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     const activeObjects = canvas.getActiveObjects();
     if (activeObjects.length < 2) return;
 
-    // @ts-expect-error fabric types
+    // @ts-expect-error fabric global types
     const group = new window.fabric.Group(activeObjects, { name: 'Group' });
-    activeObjects.forEach((obj) => canvas.remove(obj));
+    activeObjects.forEach((obj: FabricObject) => canvas.remove(obj));
     canvas.add(group);
     canvas.setActiveObject(group);
     canvas.renderAll();
@@ -150,16 +150,12 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
   const ungroupSelected = useCallback(() => {
     if (!canvas) return;
     const activeObject = canvas.getActiveObject();
-    // @ts-expect-error fabric types
     if (!activeObject || activeObject.type !== 'group') return;
 
-    // @ts-expect-error fabric types
-    const items = activeObject._objects.slice();
-    // @ts-expect-error fabric types
-    activeObject._restoreObjectsState();
+    const items = (activeObject as unknown as { _objects: FabricObject[] })._objects.slice();
+    (activeObject as unknown as { _restoreObjectsState: () => void })._restoreObjectsState();
     canvas.remove(activeObject);
-    // @ts-expect-error fabric types
-    items.forEach((item) => canvas.add(item));
+    items.forEach((item: FabricObject) => canvas.add(item));
     canvas.discardActiveObject();
     canvas.renderAll();
   }, [canvas]);

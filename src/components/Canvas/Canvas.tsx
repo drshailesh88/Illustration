@@ -5,7 +5,7 @@
  * @module components/Canvas/Canvas
  */
 
-import React, {
+import {
   useRef,
   useEffect,
   useCallback,
@@ -188,7 +188,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
       };
 
       // Mouse events
-      const handleMouseMove = (e: { e: MouseEvent; pointer?: { x: number; y: number } }) => {
+      const handleMouseMove = (e: { e: MouseEvent | TouchEvent; pointer?: { x: number; y: number } }) => {
         if (onMouseMove && e.pointer) {
           onMouseMove({ x: Math.round(e.pointer.x), y: Math.round(e.pointer.y) });
         }
@@ -261,7 +261,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
     // ========================================================================
 
     const handleMouseDown = useCallback(
-      (e: { e: MouseEvent; pointer?: { x: number; y: number } }) => {
+      (e: { e: MouseEvent | TouchEvent; pointer?: { x: number; y: number } }) => {
         const canvas = fabricRef.current;
         if (!canvas || !e.pointer) return;
 
@@ -271,8 +271,9 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
         // Handle hand tool panning
         if (activeTool === ToolType.HAND) {
           state.isDrawing = true;
-          state.startX = e.e.clientX;
-          state.startY = e.e.clientY;
+          const mouseEvent = e.e as MouseEvent;
+          state.startX = mouseEvent.clientX;
+          state.startY = mouseEvent.clientY;
           canvas.defaultCursor = 'grabbing';
           return;
         }
@@ -344,7 +345,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
     );
 
     const handleMouseMove = useCallback(
-      (e: { e: MouseEvent; pointer?: { x: number; y: number } }) => {
+      (e: { e: MouseEvent | TouchEvent; pointer?: { x: number; y: number } }) => {
         const canvas = fabricRef.current;
         if (!canvas || !e.pointer) return;
 
@@ -357,10 +358,11 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
         if (activeTool === ToolType.HAND) {
           const vpt = canvas.viewportTransform;
           if (vpt) {
-            vpt[4] += e.e.clientX - state.startX;
-            vpt[5] += e.e.clientY - state.startY;
-            state.startX = e.e.clientX;
-            state.startY = e.e.clientY;
+            const mouseEvent = e.e as MouseEvent;
+            vpt[4] += mouseEvent.clientX - state.startX;
+            vpt[5] += mouseEvent.clientY - state.startY;
+            state.startX = mouseEvent.clientX;
+            state.startY = mouseEvent.clientY;
             canvas.setViewportTransform(vpt);
             canvas.requestRenderAll();
           }
@@ -511,7 +513,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
             selectable: false,
             evented: false,
           });
-          (line as FabricObject & { isGrid: boolean }).isGrid = true;
+          (line as unknown as FabricObject & { isGrid: boolean }).isGrid = true;
           canvas.add(line);
           canvas.sendObjectToBack(line);
         }
@@ -523,7 +525,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
             selectable: false,
             evented: false,
           });
-          (line as FabricObject & { isGrid: boolean }).isGrid = true;
+          (line as unknown as FabricObject & { isGrid: boolean }).isGrid = true;
           canvas.add(line);
           canvas.sendObjectToBack(line);
         }

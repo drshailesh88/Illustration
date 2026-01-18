@@ -866,7 +866,7 @@ export class SVGImporter {
    */
   private applyOptions(
     objects: FabricObject[],
-    dimensions: { width: number; height: number }
+    _dimensions: { width: number; height: number }
   ): FabricObject[] {
     if (objects.length === 0) {
       return objects;

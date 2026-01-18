@@ -445,17 +445,18 @@ export class ClipboardHandler {
 
     try {
       // Use Clipboard API if available
-      if (navigator.clipboard && 'write' in navigator.clipboard) {
+      const clipboard = navigator.clipboard as Clipboard | undefined;
+      if (clipboard?.write) {
         const items = [
           new ClipboardItem({
             'text/plain': new Blob([jsonString], { type: 'text/plain' }),
             'image/svg+xml': new Blob([svgContent], { type: 'image/svg+xml' }),
           }),
         ];
-        await navigator.clipboard.write(items);
-      } else {
-        // Fallback to execCommand
-        await navigator.clipboard.writeText(jsonString);
+        await clipboard.write(items);
+      } else if (clipboard?.writeText) {
+        // Fallback to text-only clipboard
+        await clipboard.writeText(jsonString);
       }
     } catch (error) {
       throw new ImportError(

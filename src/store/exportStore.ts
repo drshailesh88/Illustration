@@ -77,7 +77,7 @@ const initialState: ExportState = {
  */
 export const useExportStore = create<ExportStore>()(
   devtools(
-    subscribeWithSelector((set, get) => ({
+    subscribeWithSelector((set, _get) => ({
       ...initialState,
 
       // ========================================================================

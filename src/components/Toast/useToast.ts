@@ -79,22 +79,6 @@ export function useToast(): UseToastReturn {
 
   const { showToast, dismissToast, dismissAll, toasts } = context;
 
-  /**
-   * Helper to create typed toast methods
-   */
-  const createTypedToast = useCallback(
-    (type: ToastType) => {
-      return (message: string, duration?: number): string => {
-        return showToast({
-          type,
-          message,
-          duration,
-        });
-      };
-    },
-    [showToast]
-  );
-
   const success = useCallback(
     (message: string, duration?: number): string => {
       return showToast({ type: 'success', message, duration });

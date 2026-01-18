@@ -16,7 +16,7 @@ import type {
   DiagramType,
 } from '../types';
 import { createLogger, AIServiceError } from '../types';
-import { buildPrompt, extractDSL, isValidDSL, FEW_SHOT_EXAMPLES } from '../prompts';
+import { FEW_SHOT_EXAMPLES } from '../prompts';
 
 // =============================================================================
 // MERMAID CONFIGURATION
@@ -767,7 +767,7 @@ export class MermaidBackend implements AIBackend {
   /**
    * Get suggestions for fixing DSL errors
    */
-  private getSuggestions(error: string, dsl: string): string[] {
+  private getSuggestions(error: string, _dsl: string): string[] {
     const suggestions: string[] = [];
 
     if (error.includes('arrow')) {
@@ -796,7 +796,7 @@ export class MermaidBackend implements AIBackend {
   /**
    * Attempt to fix common DSL issues
    */
-  private attemptDslFix(dsl: string, error: string): string {
+  private attemptDslFix(dsl: string, _error: string): string {
     let fixed = dsl;
 
     // Fix missing flowchart declaration

@@ -5,7 +5,7 @@
  * @module components/Canvas/CanvasContext
  */
 
-import React, {
+import {
   createContext,
   useContext,
   useState,
@@ -13,7 +13,7 @@ import React, {
   useMemo,
   ReactNode,
 } from 'react';
-import { Canvas as FabricCanvas, FabricObject, loadSVGFromString, util } from 'fabric';
+import { Canvas as FabricCanvas, FabricObject, loadSVGFromString, util, Point } from 'fabric';
 
 // ============================================================================
 // Types
@@ -176,7 +176,8 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
 
       return new Promise<void>((resolve, reject) => {
         loadSVGFromString(svgString).then(({ objects, options }) => {
-          const group = util.groupSVGElements(objects, options);
+          const filteredObjects = objects.filter((obj): obj is FabricObject => obj !== null);
+          const group = util.groupSVGElements(filteredObjects, options);
 
           // Scale to fit canvas
           const canvasWidth = canvas.width || 800;
@@ -305,7 +306,6 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
   const ungroupSelected = useCallback(() => {
     if (!canvas) return;
     const activeObject = canvas.getActiveObject();
-    // @ts-expect-error fabric types
     if (!activeObject || activeObject.type !== 'group') return;
 
     // @ts-expect-error fabric types
@@ -390,10 +390,10 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
     );
 
     canvas.setZoom(zoom);
-    canvas.absolutePan({
-      x: minX - (canvasWidth / zoom - contentWidth) / 2,
-      y: minY - (canvasHeight / zoom - contentHeight) / 2,
-    });
+    canvas.absolutePan(new Point(
+      minX - (canvasWidth / zoom - contentWidth) / 2,
+      minY - (canvasHeight / zoom - contentHeight) / 2
+    ));
     canvas.renderAll();
   }, [canvas]);
 

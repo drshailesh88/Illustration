@@ -89,17 +89,11 @@ export class PNGExporter implements Exporter<PNGExportOptions> {
     onProgress?.(10, 'Capturing canvas state...');
 
     // Store original canvas state
-    const originalWidth = canvas.getWidth();
-    const originalHeight = canvas.getHeight();
     const originalBackgroundColor = canvas.backgroundColor;
     const originalZoom = canvas.getZoom();
 
     try {
       onProgress?.(20, 'Applying DPI scaling...');
-
-      // Calculate scaled dimensions
-      const scaledWidth = originalWidth * scale;
-      const scaledHeight = originalHeight * scale;
 
       // Set background based on transparency option
       if (transparent) {

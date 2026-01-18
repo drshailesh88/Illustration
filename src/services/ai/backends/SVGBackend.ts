@@ -597,12 +597,12 @@ export class SVGBackend implements AIBackend {
     let modified = svgContent;
 
     // Scale width
-    modified = modified.replace(/width="(\d+)"/, (match, w) => {
+    modified = modified.replace(/width="(\d+)"/, (_match, w) => {
       return `width="${Math.round(parseInt(w) * scale)}"`;
     });
 
     // Scale height
-    modified = modified.replace(/height="(\d+)"/, (match, h) => {
+    modified = modified.replace(/height="(\d+)"/, (_match, h) => {
       return `height="${Math.round(parseInt(h) * scale)}"`;
     });
 

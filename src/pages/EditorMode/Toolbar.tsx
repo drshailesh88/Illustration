@@ -182,7 +182,7 @@ const ZoomIcon = () => (
 // Tool Button Component
 // ============================================================================
 
-function ToolButton({ tool, icon, label, shortcut, isActive, onClick }: ToolButtonProps) {
+function ToolButton({ tool: _tool, icon, label, shortcut, isActive, onClick }: ToolButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
