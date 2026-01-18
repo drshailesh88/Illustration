@@ -4,7 +4,9 @@
 
 ## Mission
 
-FINNISH is an AI-powered scientific illustration tool **killing BioRender** for academics. We're building the **free/affordable alternative** ($20-25/month vs BioRender's $38-39) with comprehensive icon and template libraries for **35 scientific specialties**.
+FINNISH is an AI-powered scientific illustration **web app** killing BioRender for academics. We're building the **free/affordable alternative** ($20-25/month vs BioRender's $38-39) with comprehensive icon and template libraries for **35 scientific specialties**.
+
+**Tech Stack**: React + Vite + TypeScript + Fabric.js (Web App - runs in browser)
 
 ### Strategic Focus: KILL BIORENDER
 
@@ -20,9 +22,11 @@ FINNISH is an AI-powered scientific illustration tool **killing BioRender** for 
 
 **What makes us beat BioRender:**
 1. **AI Prompt-to-Illustration** - Prompt it, get diagrams, tweak manually
-2. **Massive Icon Library** - 2,700+ bioicons + 2,384 custom icons
-3. **PPTX Export** - Scientists NEED PowerPoint export
-4. **Price** - $20-25/month vs $38-39
+2. **AI Image Generation** - Generate custom illustrations with fal.ai/OpenAI
+3. **Massive Icon Library** - 12,000+ icons (vs BioRender's paywalled library)
+4. **PPTX Export** - Scientists NEED PowerPoint export
+5. **Background Removal** - Browser-based, FREE (no API costs)
+6. **Price** - $20-25/month vs $38-39
 
 ---
 
@@ -41,60 +45,220 @@ FINNISH is an AI-powered scientific illustration tool **killing BioRender** for 
 
 ---
 
-## KILL BIORENDER ROADMAP
+## VERSIONED FEATURE ROADMAP
 
-### Phase 1: Icon Superiority (HIGH PRIORITY)
+### v1.0 - KILL BIORENDER (NOW)
 
-**External Icon Libraries (All MIT/CC0 - Safe for Commercial)**
+| Feature | Library | Status | Priority |
+|---------|---------|--------|----------|
+| PPTX Export | pptxgenjs (MIT) | ❌ TODO | **P0** |
+| Bioicons Integration | bioicons (CC0/MIT) | ❌ TODO | **P0** |
+| SciDraw Integration | scidraw.io (CC-BY) | ❌ TODO | **P0** |
+| Complete Pen Tool UI | Paper.js | ⚠️ WIRE UP | **P0** |
+| Background Removal | @imgly/background-removal-js | ❌ TODO | **P1** |
+| Unified Icon Search | Custom | ❌ TODO | **P1** |
+| Complete Anatomy | Ralph Loop | ❌ TODO | **P1** |
+| Complete Biology General | Ralph Loop | ❌ TODO | **P1** |
 
-| Library | Icons | License | Status |
-|---------|-------|---------|--------|
-| Bioicons | 2,700+ | CC0/MIT/CC-BY | **INTEGRATE** |
-| @tabler/icons-react | 4,000+ | MIT | ✅ Installed |
-| healthicons-react | 1,500+ | MIT | ✅ Installed |
-| @scienceicons/react | 500+ | MIT | ✅ Installed |
-| Custom FINNISH | 2,384 | Proprietary | ✅ Complete |
+### v1.5 - ENHANCED (Post-Launch)
 
-**Total Potential Icons: 11,000+** (BioRender has ~30,000 but many are locked behind paywall)
+| Feature | Library | Cost | Priority |
+|---------|---------|------|----------|
+| AI Image Generation | fal.ai FLUX Turbo | $0.008/image | **P1** |
+| AI Image Generation | OpenAI GPT-image-1 | $0.01-0.17/image | **P2** |
+| Simple Interactivity | Custom (tooltips, clickable) | Free | **P2** |
+| Inpainting | fal.ai / browser-based | Variable | **P2** |
 
-### Phase 2: Export Formats (CRITICAL)
+### v2.0 - NAPKIN.AI FEATURES (DEFERRED)
 
-| Format | Status | Priority |
-|--------|--------|----------|
-| PNG | ✅ Working | P0 |
-| SVG | ✅ Working | P0 |
-| PDF | ✅ Working | P0 |
-| **PPTX** | **❌ MISSING** | **P0 - URGENT** |
-
-**PPTX Export is CRITICAL** - Scientists live in PowerPoint. This is a BioRender-killer feature.
-
-### Phase 3: Prompt-to-Illustration Workflow
-
-**What BioRender CANNOT do:**
-- User prompts: "Draw a cell signaling pathway with EGFR activation"
-- AI generates initial diagram using icon library
-- User manually tweaks/adjusts in editor
-- Export to PPTX/PDF/PNG
-
-**Implementation:**
-1. AI understands scientific domain vocabulary
-2. Maps prompt concepts to icon library
-3. Auto-layouts diagram with connections
-4. User refines in Fabric.js canvas
+- Real-time collaborative editing
+- AI-powered automatic layout optimization
+- Natural language to complex diagram generation
+- Template generation from prompts
+- Advanced AI style transfer
 
 ---
 
-## Icon Licensing for Commercial Use
+## AI IMAGE GENERATION OPTIONS
 
-**SAFE TO USE (MIT/CC0):**
-- Bioicons: CC0 (no attribution), CC-BY (attribute), MIT
-- Tabler Icons: MIT License
-- Health Icons: MIT License
-- Science Icons: MIT License
+### Recommended: fal.ai FLUX (Cheapest + Best Quality)
 
-**CC-BY Attribution Required:**
-- Add attribution in app "About" section
-- "Icons from Bioicons (bioicons.com) licensed under CC-BY"
+```typescript
+// npm install @fal-ai/serverless-client
+
+import * as fal from '@fal-ai/serverless-client';
+
+// FLUX.2 Turbo - $0.008/image (CHEAPEST)
+const result = await fal.subscribe('fal-ai/flux/schnell', {
+  input: {
+    prompt: 'Scientific diagram of EGFR signaling pathway, clean vector style',
+    image_size: 'square_hd',
+    num_images: 1,
+  },
+});
+```
+
+**Pricing Comparison:**
+| Model | Cost/Image | Quality | Speed |
+|-------|-----------|---------|-------|
+| fal.ai FLUX Turbo | **$0.008** | Good | 6.6s |
+| fal.ai FLUX Dev | $0.012 | Better | 10s |
+| fal.ai FLUX Pro | $0.03 | Best | 15s |
+| OpenAI GPT-image-1 Low | $0.01 | Good | 5s |
+| OpenAI GPT-image-1 High | $0.17 | Best | 10s |
+
+**For $20-25/month subscription**: User can generate ~2,500-3,000 images with FLUX Turbo
+
+---
+
+## BACKGROUND REMOVAL (FREE - Browser-Based)
+
+```typescript
+// npm install @imgly/background-removal
+
+import { removeBackground } from '@imgly/background-removal';
+
+// Runs entirely in browser - NO API COSTS!
+const blob = await removeBackground(imageFile);
+const url = URL.createObjectURL(blob);
+```
+
+**Why this is a killer feature:**
+- Zero server costs (runs in WebGPU/WASM)
+- Complete privacy (images never leave browser)
+- Fast: <1 second for 1000x1000 images
+- BioRender doesn't have this!
+
+---
+
+## PPTX EXPORT (CRITICAL)
+
+```typescript
+// npm install pptxgenjs
+
+import PptxGenJS from 'pptxgenjs';
+
+export async function exportAsPptx(
+  canvas: fabric.Canvas,
+  filename: string
+): Promise<void> {
+  const pptx = new PptxGenJS();
+  const slide = pptx.addSlide();
+
+  // Convert canvas to high-res image
+  const dataUrl = canvas.toDataURL({ format: 'png', quality: 1, multiplier: 2 });
+
+  slide.addImage({
+    data: dataUrl,
+    x: 0.5, y: 0.5,
+    w: 9, h: 6.5
+  });
+
+  await pptx.writeFile({ fileName: filename });
+}
+```
+
+---
+
+## ICON LIBRARIES TO INTEGRATE
+
+### External Libraries (All Free + Commercial-Safe)
+
+| Library | Icons | License | How to Get |
+|---------|-------|---------|------------|
+| Bioicons | 2,700+ | CC0/MIT/CC-BY | bioicons.com / GitHub |
+| SciDraw | 1,000+ | CC-BY | scidraw.io |
+| Servier Medical Art | 3,000+ | CC-BY 4.0 | via Bioicons |
+| Tabler Icons | 4,000+ | MIT | ✅ Already installed |
+| Health Icons | 1,500+ | MIT | ✅ Already installed |
+| Science Icons | 500+ | MIT | ✅ Already installed |
+
+**Total: ~12,700 icons** (vs BioRender's paywalled 30,000)
+
+### Unified Search Implementation
+
+```typescript
+// src/lib/icons/unified-search.ts
+export interface UnifiedIcon {
+  id: string;
+  name: string;
+  svg: string;
+  source: 'finnish' | 'bioicons' | 'scidraw' | 'tabler' | 'health';
+  category: string;
+  license: 'MIT' | 'CC0' | 'CC-BY';
+}
+
+export function searchAllIcons(query: string): UnifiedIcon[] {
+  return [
+    ...searchFinnishIcons(query),
+    ...searchBioicons(query),
+    ...searchSciDraw(query),
+    ...searchTablerIcons(query),
+    ...searchHealthIcons(query),
+  ].sort(byRelevance);
+}
+```
+
+---
+
+## SIMPLE INTERACTIVITY (v1.5)
+
+```typescript
+// Clickable regions with tooltips
+interface InteractiveRegion {
+  id: string;
+  bounds: { x: number; y: number; width: number; height: number };
+  tooltip: string;
+  onClick?: () => void;
+  link?: string;
+}
+
+// Add to canvas objects
+fabricObject.set('interactiveData', {
+  tooltip: 'Click to learn more about EGFR',
+  link: 'https://en.wikipedia.org/wiki/EGFR'
+});
+```
+
+---
+
+## INPAINTING (v1.5)
+
+```typescript
+// Option 1: fal.ai (API-based)
+const result = await fal.subscribe('fal-ai/flux/inpaint', {
+  input: {
+    image_url: originalImage,
+    mask_url: maskImage,
+    prompt: 'Replace with mitochondria illustration',
+  },
+});
+
+// Option 2: Browser-based (future - when models get smaller)
+// Using transformers.js or similar
+```
+
+---
+
+## PEN TOOL WIRING (Paper.js)
+
+The pen tool is installed but needs UI wiring:
+
+```typescript
+// src/lib/paper/index.ts - EXISTS
+// Need to wire to: src/components/Toolbar/PenTool.tsx
+
+// Key functionality to expose:
+export interface PenToolAPI {
+  startPath(): void;
+  addPoint(x: number, y: number): void;
+  addBezierPoint(x: number, y: number, handleIn: Point, handleOut: Point): void;
+  closePath(): void;
+  editNode(nodeIndex: number, position: Point): void;
+  deleteNode(nodeIndex: number): void;
+  convertToFabric(): fabric.Path;
+}
+```
 
 ---
 
@@ -103,9 +267,10 @@ FINNISH is an AI-powered scientific illustration tool **killing BioRender** for 
 > **ALWAYS run THREE PARALLEL WORKSTREAMS with multiple async agents:**
 >
 > **Workstream A: Kill BioRender Features** (HIGHEST PRIORITY)
-> - PPTX Export implementation
-> - Bioicons integration (unified search)
-> - Prompt-to-illustration workflow
+> - PPTX Export (pptxgenjs)
+> - Background removal (@imgly/background-removal-js)
+> - Bioicons + SciDraw integration
+> - Pen tool UI wiring
 >
 > **Workstream B: Specialty Completion** (2 agents)
 > - Complete remaining: Anatomy, Biology (General)
@@ -120,149 +285,19 @@ FINNISH is an AI-powered scientific illustration tool **killing BioRender** for 
 
 ---
 
-## PPTX Export Implementation (URGENT)
-
-### Technical Approach
-
-```typescript
-// Library: pptxgenjs (MIT License)
-// npm install pptxgenjs
-
-import PptxGenJS from 'pptxgenjs';
-
-export async function exportAsPptx(
-  canvas: fabric.Canvas,
-  filename: string
-): Promise<void> {
-  const pptx = new PptxGenJS();
-  const slide = pptx.addSlide();
-
-  // Convert canvas to image
-  const dataUrl = canvas.toDataURL({ format: 'png', quality: 1 });
-
-  // Add to slide with proper sizing
-  slide.addImage({
-    data: dataUrl,
-    x: 0.5, y: 0.5,
-    w: 9, h: 6.5
-  });
-
-  await pptx.writeFile({ fileName: filename });
-}
-```
-
-### PPTX Features Needed
-1. Canvas → PPTX slide conversion
-2. Multiple slides from artboards
-3. Maintain vector quality where possible
-4. Editable text objects
-5. Proper aspect ratio handling
-
----
-
-## Bioicons Integration Plan
-
-### Step 1: Download/Reference Bioicons
-```bash
-# Option A: NPM package (if available)
-npm install bioicons
-
-# Option B: Download SVG files from bioicons.com
-# Store in: src/assets/bioicons/
-```
-
-### Step 2: Create Unified Icon Search
-```typescript
-// src/lib/icons/unified-search.ts
-export function searchAllIcons(query: string): IconResult[] {
-  return [
-    ...searchFinnishIcons(query),
-    ...searchBioicons(query),
-    ...searchTablerIcons(query),
-    ...searchHealthIcons(query),
-  ].sort(byRelevance);
-}
-```
-
-### Step 3: Icon Picker UI
-- Unified search bar
-- Filter by source (FINNISH, Bioicons, Tabler, Health)
-- Filter by category (Biology, Chemistry, Medicine, etc.)
-- Preview panel
-- Drag-and-drop to canvas
-
----
-
-## Ralph Loop Methodology
-
-### Core Principle
-> "Ralph is a Bash loop" - Iterate on each specialty until it reaches cardiology-level completeness (90%+).
-
-### Completeness Formula
-```
-Score = (Icons × 0.40) + (Templates × 0.35) + (Prompts × 0.15) + (Colors × 0.10)
-```
-
-### Progress File
-Track progress in: `.specify/ralph-loop/progress.json`
-
----
-
-## File Structure for Expansion
-
-For each specialty, create/update:
-
-```
-src/data/
-├── icons/{specialty}.ts          # Icon definitions
-├── templates/{specialty}.ts      # Template definitions
-└── colors/{specialty}.ts         # Color schemes
-
-src/services/ai/prompts/
-└── {specialty}-prompts.ts        # Domain prompts
-```
-
----
-
-## Quality Requirements
-
-### Icons
-- SVG format with proper viewBox
-- Uses `currentColor` for theming
-- Recognizable at 24x24 and 64x64
-- Consistent stroke width (1.5-2px)
-- Anatomically/scientifically accurate
-
-### Templates
-- Valid Mermaid/Fabric.js structure
-- Customizable placeholders
-- Professional academic appearance
-- Domain-appropriate colors
-
----
-
 ## Session Startup Checklist
 
 When starting a new session:
 
 1. **Read this file** (CLAUDE.md)
 2. **Check progress**: Read `.specify/ralph-loop/progress.json`
-3. **Priority 1**: PPTX export implementation status
-4. **Priority 2**: Bioicons integration status
-5. **Priority 3**: Complete remaining 2 specialties
-6. **Launch parallel agents** for Kill BioRender features
-7. **Commit frequently** with clear messages
-
----
-
-## Execution Order (35 Specialties)
-
-### Phases 1-5: ✓ COMPLETE (33/35)
-All medical, basic science, physical, and engineering specialties complete.
-
-### Remaining (2):
-- [ ] Anatomy
-- [ ] Biology (General)
+3. **Priority 1**: PPTX export implementation
+4. **Priority 2**: Background removal implementation
+5. **Priority 3**: Bioicons + SciDraw integration
+6. **Priority 4**: Pen tool UI wiring
+7. **Priority 5**: Complete remaining 2 specialties
+8. **Launch parallel agents** for all workstreams
+9. **Commit frequently** with clear messages
 
 ---
 
@@ -271,18 +306,21 @@ All medical, basic science, physical, and engineering specialties complete.
 | Component | Library | Status |
 |-----------|---------|--------|
 | Canvas Engine | Fabric.js 6.x | ✅ Working |
-| Path/Bezier | Paper.js | ✅ Installed |
+| Path/Bezier | Paper.js | ✅ Installed (needs wiring) |
 | Hand-drawn Style | Rough.js | ✅ Installed |
 | Freehand Drawing | perfect-freehand | ✅ Installed |
 | Color Management | Color.js | ✅ Installed |
 | Export PNG | saveSvgAsPng | ✅ Working |
 | Export PDF | jsPDF + svg2pdf | ✅ Working |
-| **Export PPTX** | pptxgenjs | **❌ NEED TO ADD** |
+| **Export PPTX** | pptxgenjs | **❌ INSTALL** |
+| **Background Removal** | @imgly/background-removal-js | **❌ INSTALL** |
+| **AI Generation** | @fal-ai/serverless-client | **❌ INSTALL (v1.5)** |
 | Image Filters | glfx.js | ✅ Installed |
 | Icons (General) | Tabler Icons | ✅ Installed |
 | Icons (Medical) | Health Icons | ✅ Installed |
 | Icons (Science) | @scienceicons | ✅ Installed |
-| **Icons (Bio)** | Bioicons | **❌ NEED TO ADD** |
+| **Icons (Bio)** | Bioicons | **❌ INTEGRATE** |
+| **Icons (SciDraw)** | SciDraw.io | **❌ INTEGRATE** |
 
 ---
 
@@ -296,34 +334,38 @@ feat: Ralph Loop Iteration {N} - {Specialty} {checkpoint}
 
 ---
 
-## DEFERRED TO v2.0 (Napkin.AI Features)
+## Icon Licensing for Commercial Use
 
-The following are DEFERRED - do NOT implement until v2.0:
-- Real-time collaborative editing
-- AI-powered automatic layout optimization
-- Natural language to complex diagram generation
-- Template generation from prompts
-- Advanced AI style transfer
+**SAFE TO USE (MIT/CC0):**
+- Bioicons: CC0 (no attribution), CC-BY (attribute), MIT
+- SciDraw: CC-BY (attribute)
+- Tabler Icons: MIT License
+- Health Icons: MIT License
+- Science Icons: MIT License
 
-Focus on **killing BioRender first** with:
-- Massive icon library
-- PPTX export
-- Simple prompt-to-diagram workflow
-- Professional manual editing tools
+**CC-BY Attribution Required (add to About page):**
+```
+Scientific illustrations from:
+- Bioicons (bioicons.com) - CC-BY
+- SciDraw (scidraw.io) - CC-BY
+- Servier Medical Art (smart.servier.com) - CC-BY 4.0
+```
 
 ---
 
 ## Remember
 
 1. **KILL BIORENDER** - This is the #1 priority
-2. **PPTX EXPORT** - Scientists need PowerPoint
-3. **ICON SUPERIORITY** - Integrate all open source icon libraries
-4. **PROMPT + TWEAK** - AI generates, user refines
-5. **PRICE TO WIN** - $20-25/month undercuts BioRender
-6. **DEFER NAPKIN.AI** - Complex AI features are v2.0
-7. **TEST EVERYTHING** - Ralph Loop until 100% functional
-8. **NEVER REMOVE FEATURES** - Always fix instead
+2. **WEB APP** - React + Vite, runs in browser
+3. **PPTX EXPORT** - Scientists need PowerPoint
+4. **BACKGROUND REMOVAL** - Free, browser-based, killer feature
+5. **ICON SUPERIORITY** - 12,700+ icons from open source
+6. **AI GENERATION** - fal.ai FLUX Turbo at $0.008/image (v1.5)
+7. **PRICE TO WIN** - $20-25/month undercuts BioRender
+8. **DEFER NAPKIN.AI** - Complex AI features are v2.0
+9. **TEST EVERYTHING** - Ralph Loop until 100% functional
+10. **NEVER REMOVE FEATURES** - Always fix instead
 
 ---
 
-*Last Updated: 2026-01-18 | Version: 2.0.0 - Kill BioRender Edition*
+*Last Updated: 2026-01-18 | Version: 2.1.0 - Kill BioRender Edition*
