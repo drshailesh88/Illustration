@@ -42,6 +42,10 @@ export { svg2pdf } from 'svg2pdf.js';
 // @see https://tabler.io/icons
 export * as TablerIcons from '@tabler/icons-react';
 
+// glfx.js - WebGL image effects library
+// @see https://evanw.github.io/glfx.js/
+// Note: glfx doesn't have default exports, imported via local wrapper
+
 // Re-export from local modules
 export * from './paper';
 export * from './rough';
@@ -49,3 +53,4 @@ export * from './freehand';
 export * from './color';
 export * from './export';
 export * from './icons';
+export * from './glfx';

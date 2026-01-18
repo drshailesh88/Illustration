@@ -1,10 +1,18 @@
 /**
  * Icons Module
  *
- * Provides access to Tabler Icons and custom scientific illustration icons.
- * Tabler Icons is a free and open source icon set with over 4,000 icons.
+ * Unified icon library providing access to multiple icon sets:
+ * - @tabler/icons-react: 4,000+ general purpose icons (MIT)
+ * - healthicons-react: Medical and healthcare icons (CC0)
+ * - @scienceicons/react: Open science platform icons (MIT)
+ * - @icon-park/react: 2,400+ high-quality icons by ByteDance (Apache 2.0)
+ * - simple-icons: Brand logos for science tools (CC0)
  *
  * @see https://tabler.io/icons
+ * @see https://healthicons.org/
+ * @see https://github.com/continuous-foundation/scienceicons
+ * @see https://iconpark.oceanengine.com/
+ * @see https://simpleicons.org/
  */
 
 // Import commonly used icons from Tabler
@@ -350,4 +358,196 @@ export {
   IconX,
   IconPlus,
   IconMinus,
+};
+
+// Re-export from other icon libraries (selective to avoid conflicts)
+export {
+  // Health Icons exports
+  healthIconsList,
+  healthIconCategories,
+  searchHealthIcons,
+  getHealthIconsByCategory,
+  type HealthIconMeta,
+} from './healthIcons';
+
+export {
+  // Science Icons exports
+  scienceIconsList,
+  scienceIconCategories,
+  searchScienceIcons,
+  getScienceIconsByCategory,
+  type ScienceIconMeta,
+  ArxivIcon,
+  JupyterIcon,
+  OrcidIcon,
+  OpenAccessIcon,
+  GithubIcon as ScienceGithubIcon,
+  CcIcon,
+  CcByIcon,
+} from './scienceIcons';
+
+export {
+  // Icon Park exports
+  iconParkList,
+  iconParkCategories,
+  searchIconPark,
+  getIconParkByCategory,
+  type IconParkMeta,
+  IconParkBrain,
+  IconParkCell,
+  IconParkFlask,
+  IconParkExperiment,
+  IconParkMicroscope,
+  IconParkHeart,
+  IconParkLung,
+  IconParkEarth,
+  IconParkRadiation,
+} from './iconPark';
+
+export {
+  // Simple Icons exports
+  scienceBrandsList,
+  simpleIconCategories,
+  searchSimpleIcons,
+  getSimpleIconsByCategory,
+  getSimpleIcon,
+  createSimpleIconSvg,
+  getSimpleIconPath,
+  type SimpleIconMeta,
+  type SimpleIconData,
+} from './simpleIcons';
+
+// Import search functions from each library for unified search
+import { searchHealthIcons, healthIconsList } from './healthIcons';
+import { searchScienceIcons, scienceIconsList } from './scienceIcons';
+import { searchIconPark, iconParkList } from './iconPark';
+import { searchSimpleIcons, scienceBrandsList } from './simpleIcons';
+
+/**
+ * Unified icon result from any library
+ */
+export interface UnifiedIconResult {
+  id: string;
+  name: string;
+  category: string;
+  keywords: string[];
+  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component?: React.ComponentType<any>;
+  slug?: string; // For simple-icons
+  hex?: string;  // For simple-icons brand color
+}
+
+/**
+ * Search across all icon libraries
+ */
+export function searchAllIcons(query: string): UnifiedIconResult[] {
+  const results: UnifiedIconResult[] = [];
+  const normalizedQuery = query.toLowerCase().trim();
+
+  // Search Health Icons
+  const healthResults = searchHealthIcons(normalizedQuery);
+  for (const icon of healthResults) {
+    results.push({
+      id: `health-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'health',
+      component: icon.component,
+    });
+  }
+
+  // Search Science Icons
+  const scienceResults = searchScienceIcons(normalizedQuery);
+  for (const icon of scienceResults) {
+    results.push({
+      id: `science-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'science',
+      component: icon.component,
+    });
+  }
+
+  // Search Icon Park
+  const iconParkResults = searchIconPark(normalizedQuery);
+  for (const icon of iconParkResults) {
+    results.push({
+      id: `iconpark-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'iconpark',
+      component: icon.component,
+    });
+  }
+
+  // Search Simple Icons (brands)
+  const simpleResults = searchSimpleIcons(normalizedQuery);
+  for (const icon of simpleResults) {
+    results.push({
+      id: `simple-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'simple',
+      slug: icon.slug,
+      hex: icon.hex,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * Get total icon count across all libraries
+ */
+export function getTotalIconCount(): { total: number; byLibrary: Record<string, number> } {
+  return {
+    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length,
+    byLibrary: {
+      health: healthIconsList.length,
+      science: scienceIconsList.length,
+      iconpark: iconParkList.length,
+      simple: scienceBrandsList.length,
+    },
+  };
+}
+
+/**
+ * Get all available icon library info
+ */
+export const iconLibraries = {
+  tabler: {
+    name: 'Tabler Icons',
+    description: '4,000+ general purpose icons',
+    license: 'MIT',
+    url: 'https://tabler.io/icons',
+  },
+  health: {
+    name: 'Health Icons',
+    description: 'Medical and healthcare icons',
+    license: 'CC0',
+    url: 'https://healthicons.org/',
+  },
+  science: {
+    name: 'Science Icons',
+    description: 'Open science platform icons',
+    license: 'MIT',
+    url: 'https://github.com/continuous-foundation/scienceicons',
+  },
+  iconpark: {
+    name: 'Icon Park',
+    description: '2,400+ high-quality icons by ByteDance',
+    license: 'Apache 2.0',
+    url: 'https://iconpark.oceanengine.com/',
+  },
+  simple: {
+    name: 'Simple Icons',
+    description: 'Brand logos for science tools',
+    license: 'CC0',
+    url: 'https://simpleicons.org/',
+  },
 };
