@@ -108,5 +108,13 @@ export function mergeRoughOptions(options: Partial<RoughOptions>): RoughOptions 
   return { ...defaultRoughOptions, ...options };
 }
 
+// Export hand-drawn style converter
+export { HandDrawnStyle, convertToHandDrawn, createHandDrawnGenerator } from './HandDrawnStyle';
+export type { StylePreset, HandDrawnStyleOptions } from './HandDrawnStyle';
+
+// Export React hook
+export { useHandDrawnStyle } from './useHandDrawnStyle';
+export type { UseHandDrawnStyleOptions, UseHandDrawnStyleReturn } from './useHandDrawnStyle';
+
 export { rough };
 export type { RoughCanvas, RoughOptions };
