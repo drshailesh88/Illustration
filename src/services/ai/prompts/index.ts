@@ -584,3 +584,6 @@ export { default as physiologyPrompts } from './physiology-prompts';
 
 export * from './biochemistry-prompts';
 export { default as biochemistryPrompts } from './biochemistry-prompts';
+
+export * from './pharmacology-prompts';
+export { default as pharmacologyPrompts } from './pharmacology-prompts';

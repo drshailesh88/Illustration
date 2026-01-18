@@ -490,6 +490,245 @@ Show convergence of degradation pathways.`,
     end`
 };
 
+export const dnaReplicationTemplate: DiagramTemplate = {
+  id: 'cell-dna-replication',
+  name: 'DNA Replication Fork',
+  description: 'Diagram showing replication fork with leading and lagging strands',
+  domain: 'biology',
+  promptTemplate: `Create a DNA replication diagram showing:
+- Origin of replication: {{origin}}
+- Leading strand synthesis: {{leadingStrand}}
+- Lagging strand (Okazaki): {{laggingStrand}}
+- Replication enzymes: {{enzymes}}
+- Proofreading: {{proofreading}}
+
+Show helicase, primase, DNA polymerase, and ligase.`,
+  placeholders: ['origin', 'leadingStrand', 'laggingStrand', 'enzymes', 'proofreading'],
+  mermaidExample: `flowchart LR
+    subgraph Replication["DNA Replication Fork"]
+        ORI[Origin of Replication] --> HELICASE[Helicase - Unwind]
+        HELICASE --> SSB[SSB Proteins]
+        subgraph Leading["Leading Strand"]
+            LEAD[5' to 3' Continuous]
+        end
+        subgraph Lagging["Lagging Strand"]
+            PRIM[Primase - RNA Primer]
+            OKAZAKI[Okazaki Fragments]
+            LIGASE[DNA Ligase]
+        end
+        POLIII[DNA Polymerase III] --> Leading
+        POLIII --> Lagging
+    end`
+};
+
+export const transcriptionTemplate: DiagramTemplate = {
+  id: 'cell-transcription',
+  name: 'Transcription Process',
+  description: 'Diagram showing RNA synthesis from DNA template',
+  domain: 'biology',
+  promptTemplate: `Create a transcription diagram showing:
+- Promoter recognition: {{promoter}}
+- RNA polymerase: {{rnaPolymerase}}
+- Elongation: {{elongation}}
+- Termination: {{termination}}
+- mRNA processing: {{mrnaProcessing}}
+
+Show eukaryotic modifications (cap, poly-A).`,
+  placeholders: ['promoter', 'rnaPolymerase', 'elongation', 'termination', 'mrnaProcessing'],
+  mermaidExample: `flowchart LR
+    subgraph Transcription["Transcription"]
+        TATA[TATA Box/Promoter] --> TF[Transcription Factors]
+        TF --> RNAP[RNA Polymerase II]
+        RNAP --> INIT[Initiation]
+        INIT --> ELONG[Elongation]
+        ELONG --> TERM[Termination]
+        subgraph Processing["mRNA Processing"]
+            CAP[5' Cap]
+            SPLICE[Splicing]
+            POLYA[3' Poly-A Tail]
+        end
+        TERM --> Processing
+    end`
+};
+
+export const proteinFoldingTemplate: DiagramTemplate = {
+  id: 'cell-protein-folding',
+  name: 'Protein Folding and Chaperones',
+  description: 'Diagram showing protein folding pathway and quality control',
+  domain: 'biology',
+  promptTemplate: `Create a protein folding diagram showing:
+- Nascent polypeptide: {{nascentPolypeptide}}
+- Chaperone assistance: {{chaperones}}
+- Folding intermediates: {{foldingIntermediates}}
+- ER quality control: {{erQualityControl}}
+- Misfolding consequences: {{misfolding}}
+
+Show Hsp70, Hsp90, and chaperonins.`,
+  placeholders: ['nascentPolypeptide', 'chaperones', 'foldingIntermediates', 'erQualityControl', 'misfolding'],
+  mermaidExample: `flowchart TB
+    subgraph Folding["Protein Folding"]
+        NASCENT[Nascent Polypeptide] --> HSP70[Hsp70 Binding]
+        HSP70 --> |Correct folding| NATIVE[Native Protein]
+        HSP70 --> |Complex proteins| CHAP[Chaperonin GroEL/TriC]
+        CHAP --> NATIVE
+        subgraph QC["Quality Control"]
+            MISF[Misfolded] --> ERAD[ER-Associated Degradation]
+            ERAD --> PROTEASOME[Proteasome]
+            MISF --> AGG[Aggregation - Disease]
+        end
+    end`
+};
+
+export const vesicleTraffickingTemplate: DiagramTemplate = {
+  id: 'cell-vesicle-trafficking',
+  name: 'Vesicle Coat Proteins and Targeting',
+  description: 'Diagram showing COPI, COPII, and clathrin-mediated transport',
+  domain: 'biology',
+  promptTemplate: `Create a vesicle trafficking diagram showing:
+- COPII (ER to Golgi): {{copii}}
+- COPI (retrograde): {{copi}}
+- Clathrin (PM/TGN): {{clathrin}}
+- SNARE-mediated fusion: {{snares}}
+- Rab GTPases: {{rabGTPases}}
+
+Show vesicle budding, transport, and fusion.`,
+  placeholders: ['copii', 'copi', 'clathrin', 'snares', 'rabGTPases'],
+  mermaidExample: `flowchart TB
+    subgraph Trafficking["Vesicle Trafficking"]
+        ER[ER] --> |COPII| CGN[cis-Golgi]
+        CGN --> |COPI retrograde| ER
+        TGN[trans-Golgi] --> |Clathrin| PM[Plasma Membrane]
+        PM --> |Clathrin endocytosis| ENDO[Endosome]
+        subgraph Fusion["Membrane Fusion"]
+            VSNARE[v-SNARE]
+            TSNARE[t-SNARE]
+            RAB[Rab GTPases]
+        end
+    end`
+};
+
+export const ecmInteractionsTemplate: DiagramTemplate = {
+  id: 'cell-ecm-interactions',
+  name: 'Cell-ECM Interactions',
+  description: 'Diagram showing integrin signaling and focal adhesions',
+  domain: 'biology',
+  promptTemplate: `Create a cell-ECM interaction diagram showing:
+- ECM components: {{ecmComponents}}
+- Integrin receptors: {{integrins}}
+- Focal adhesion complex: {{focalAdhesion}}
+- Signal transduction: {{signaling}}
+- Cytoskeletal connections: {{cytoskeleton}}
+
+Show inside-out and outside-in signaling.`,
+  placeholders: ['ecmComponents', 'integrins', 'focalAdhesion', 'signaling', 'cytoskeleton'],
+  mermaidExample: `flowchart TB
+    subgraph ECM["Cell-ECM Interactions"]
+        subgraph Matrix["Extracellular Matrix"]
+            COLL[Collagen]
+            FN[Fibronectin]
+            LAM[Laminin]
+        end
+        Matrix --> INTEGRIN[Integrin α/β]
+        subgraph FA["Focal Adhesion"]
+            TAL[Talin]
+            VIN[Vinculin]
+            FAK[FAK Kinase]
+        end
+        INTEGRIN --> FA
+        FA --> ACTIN[Actin Cytoskeleton]
+        FAK --> |Signaling| MAPK[MAPK/PI3K]
+    end`
+};
+
+export const rtkSignalingTemplate: DiagramTemplate = {
+  id: 'cell-rtk-signaling',
+  name: 'Receptor Tyrosine Kinase Signaling',
+  description: 'Diagram showing RTK dimerization and downstream pathways',
+  domain: 'biology',
+  promptTemplate: `Create an RTK signaling diagram showing:
+- Ligand binding: {{ligandBinding}}
+- Receptor dimerization: {{dimerization}}
+- Autophosphorylation: {{autophosphorylation}}
+- Adaptor proteins: {{adaptorProteins}}
+- Downstream pathways: {{downstreamPathways}}
+
+Show Ras-MAPK and PI3K-Akt activation.`,
+  placeholders: ['ligandBinding', 'dimerization', 'autophosphorylation', 'adaptorProteins', 'downstreamPathways'],
+  mermaidExample: `flowchart TB
+    subgraph RTK["RTK Signaling"]
+        GF[Growth Factor] --> RTK1[RTK Monomer]
+        RTK1 --> |Dimerization| RTK2[RTK Dimer]
+        RTK2 --> |Autophosphorylation| pRTK[p-RTK]
+        pRTK --> GRB2[Grb2-SOS]
+        GRB2 --> RAS[Ras Activation]
+        RAS --> RAF[Raf-MEK-ERK]
+        pRTK --> PI3K[PI3K]
+        PI3K --> AKT[Akt/PKB]
+    end`
+};
+
+export const gProteinSignalingTemplate: DiagramTemplate = {
+  id: 'cell-gprotein-signaling',
+  name: 'G-Protein Coupled Receptor Signaling',
+  description: 'Diagram showing GPCR activation and second messenger systems',
+  domain: 'biology',
+  promptTemplate: `Create a GPCR signaling diagram showing:
+- Receptor structure: {{receptorStructure}}
+- G-protein cycle: {{gProteinCycle}}
+- Adenylyl cyclase: {{adenylylCyclase}}
+- Phospholipase C: {{plc}}
+- Second messengers: {{secondMessengers}}
+
+Show cAMP and calcium/IP3 pathways.`,
+  placeholders: ['receptorStructure', 'gProteinCycle', 'adenylylCyclase', 'plc', 'secondMessengers'],
+  mermaidExample: `flowchart TB
+    subgraph GPCR["GPCR Signaling"]
+        LIGAND[Ligand] --> GPCR1[GPCR - 7TM]
+        GPCR1 --> |GDP-GTP exchange| GALPHA[Gα Activation]
+        subgraph Gs["Gs Pathway"]
+            GALPHA --> AC[Adenylyl Cyclase]
+            AC --> CAMP[cAMP]
+            CAMP --> PKA[PKA]
+        end
+        subgraph Gq["Gq Pathway"]
+            GALPHA --> PLC[Phospholipase C]
+            PLC --> IP3[IP3]
+            PLC --> DAG[DAG]
+            IP3 --> CA[Ca2+ Release]
+            DAG --> PKC[PKC]
+        end
+    end`
+};
+
+export const stemCellDifferentiationTemplate: DiagramTemplate = {
+  id: 'cell-stem-differentiation',
+  name: 'Stem Cell Differentiation',
+  description: 'Diagram showing stem cell potency and lineage commitment',
+  domain: 'biology',
+  promptTemplate: `Create a stem cell differentiation diagram showing:
+- Totipotency: {{totipotency}}
+- Pluripotency: {{pluripotency}}
+- Multipotency: {{multipotency}}
+- Lineage commitment: {{lineageCommitment}}
+- Transcription factors: {{transcriptionFactors}}
+
+Show self-renewal and differentiation balance.`,
+  placeholders: ['totipotency', 'pluripotency', 'multipotency', 'lineageCommitment', 'transcriptionFactors'],
+  mermaidExample: `flowchart TB
+    subgraph Stem["Stem Cell Hierarchy"]
+        TOTI[Totipotent - Zygote] --> PLURI[Pluripotent - ES/iPS]
+        PLURI --> |Self-renewal| PLURI
+        PLURI --> ECTO[Ectoderm]
+        PLURI --> MESO[Mesoderm]
+        PLURI --> ENDO[Endoderm]
+        MESO --> HSC[Multipotent HSC]
+        HSC --> |Lineage commitment| MYELO[Myeloid]
+        HSC --> LYMPH[Lymphoid]
+        MYELO --> RBC[Erythrocytes]
+        MYELO --> WBC[Granulocytes]
+    end`
+};
+
 // Export all cell biology templates
 export const cellbiologyTemplates: DiagramTemplate[] = [
   cellMembraneStructureTemplate,
@@ -508,7 +747,15 @@ export const cellbiologyTemplates: DiagramTemplate[] = [
   cellJunctionsTemplate,
   nuclearEnvelopeTemplate,
   ribosomeStructureTemplate,
-  lysosomeTemplate
+  lysosomeTemplate,
+  dnaReplicationTemplate,
+  transcriptionTemplate,
+  proteinFoldingTemplate,
+  vesicleTraffickingTemplate,
+  ecmInteractionsTemplate,
+  rtkSignalingTemplate,
+  gProteinSignalingTemplate,
+  stemCellDifferentiationTemplate
 ];
 
 export default cellbiologyTemplates;
