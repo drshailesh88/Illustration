@@ -575,3 +575,6 @@ export { default as ophthalmologyPrompts } from './ophthalmology-prompts';
 
 export * from './ent-prompts';
 export { default as entPrompts } from './ent-prompts';
+
+export * from './dermatology-prompts';
+export { default as dermatologyPrompts } from './dermatology-prompts';

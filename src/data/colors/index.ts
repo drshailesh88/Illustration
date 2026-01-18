@@ -263,3 +263,26 @@ export {
 } from './ent';
 
 export type { ENTColorScheme } from './ent';
+
+// =============================================================================
+// DERMATOLOGY
+// =============================================================================
+
+export {
+  skinToneColors,
+  skinLayerColors,
+  lesionColors,
+  inflammatoryColors as dermaInflammatoryColors,
+  infectiousColors as dermaInfectiousColors,
+  malignancyColors as dermaMalignancyColors,
+  autoimmuneColors,
+  procedureColors as dermaProcedureColors,
+  equipmentColors as dermaEquipmentColors,
+  woundHealingColors,
+  severityGradient as dermaSeverityGradient,
+  diagnosticColors as dermaDiagnosticColors,
+  flowchartColors as dermaFlowchartColors,
+  dermatologyColorScheme,
+} from './dermatology';
+
+export type { DermatologyColorScheme } from './dermatology';

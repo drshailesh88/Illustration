@@ -37,6 +37,7 @@ export * from './pathology';
 export * from './ent';
 export * from './obgyn';
 export * from './hematology-oncology';
+export * from './dermatology';
 // Biology subspecialties - use explicit exports to avoid duplicates
 export { molecularTemplates } from './molecular';
 export { geneticsTemplates } from './genetics';
@@ -188,6 +189,7 @@ import { pathologyTemplates } from './pathology';
 import { entTemplates } from './ent';
 import { obgynTemplates } from './obgyn';
 import { hematologyOncologyTemplates } from './hematology-oncology';
+import { dermatologyTemplates } from './dermatology';
 // Biology subspecialties
 import { molecularTemplates } from './molecular';
 import { geneticsTemplates } from './genetics';
@@ -273,6 +275,7 @@ export const allTemplates: DiagramTemplate[] = [
   ...entTemplates,
   ...obgynTemplates,
   ...hematologyOncologyTemplates,
+  ...dermatologyTemplates,
   // Additional science branches
   ...geologyTemplates,
   ...astronomyTemplates,
@@ -316,7 +319,7 @@ export const allTemplates: DiagramTemplate[] = [
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
   medicine: [...medicineTemplates, ...cardiologyTemplates, ...neurologyTemplates,
   ...gastroenterologyTemplates,
-  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates],
+  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...dermatologyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates],
   biology: [...biologyTemplates, ...molecularTemplates, ...geneticsTemplates, ...ecologyTemplates, ...microbiologyTemplates, ...zoologyTemplates, ...botanyTemplates, ...cellbiologyTemplates, ...neuroscienceTemplates, ...environmentalTemplates, ...oceanographyTemplates, ...agricultureTemplates],
   chemistry: [...chemistryTemplates, ...forensicsTemplates, ...biochemistryTemplates, ...organicTemplates, ...inorganicTemplates, ...analyticalTemplates],
   physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates, ...quantumTemplates, ...thermodynamicsTemplates, ...electromagnetismTemplates, ...opticsTemplates, ...nuclearTemplates, ...mechanicsTemplates, ...astrophysicsTemplates],
