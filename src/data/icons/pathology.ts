@@ -1343,6 +1343,481 @@ export const pathologyIcons: IconDefinition[] = [
       <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Digital pathology</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // CYTOPATHOLOGY
+  // ===========================================================================
+  {
+    id: 'path-pap-smear',
+    name: 'Pap Smear',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['Pap smear', 'cervical', 'cytology', 'screening', 'Bethesda'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="24" width="48" height="16" rx="1"/>
+      <ellipse cx="20" cy="32" rx="6" ry="5" fill="#FFB6C1" opacity="0.4"/>
+      <ellipse cx="20" cy="32" rx="3" ry="2" fill="#4B0082"/>
+      <ellipse cx="36" cy="30" rx="5" ry="4" fill="#FFB6C1" opacity="0.4"/>
+      <ellipse cx="36" cy="30" rx="2" ry="1.5" fill="#4B0082"/>
+      <ellipse cx="48" cy="34" rx="4" ry="3" fill="#FFB6C1" opacity="0.4"/>
+      <ellipse cx="48" cy="34" rx="1.5" ry="1" fill="#4B0082"/>
+      <text x="12" y="48" font-size="3" fill="currentColor" stroke="none">Squamous cells</text>
+    </svg>`
+  },
+  {
+    id: 'path-fna-cytology',
+    name: 'Fine Needle Aspiration',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['FNA', 'fine needle', 'aspiration', 'cytology', 'biopsy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="16" ry="14" fill="#FFE4E1" opacity="0.4"/>
+      <ellipse cx="32" cy="36" rx="16" ry="14"/>
+      <path d="M32 8v16" stroke-width="2"/>
+      <path d="M30 8h4"/>
+      <path d="M28 24l4 4 4-4" fill="#E8B4B8" opacity="0.6"/>
+      <circle cx="28" cy="36" r="3" fill="#4B0082" opacity="0.5"/>
+      <circle cx="36" cy="38" r="3" fill="#4B0082" opacity="0.5"/>
+      <circle cx="32" cy="44" r="2" fill="#4B0082" opacity="0.5"/>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">FNA biopsy</text>
+    </svg>`
+  },
+  {
+    id: 'path-urine-cytology',
+    name: 'Urine Cytology',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['urine', 'cytology', 'bladder', 'urothelial', 'voided'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="12" width="24" height="40" rx="4"/>
+      <rect x="24" y="28" width="16" height="20" fill="#FFFACD" opacity="0.4"/>
+      <ellipse cx="28" cy="34" rx="2" ry="3" fill="#4B0082" opacity="0.6"/>
+      <ellipse cx="36" cy="38" rx="3" ry="2" fill="#4B0082" opacity="0.5"/>
+      <ellipse cx="32" cy="44" rx="2" ry="2" fill="#4B0082" opacity="0.5"/>
+      <path d="M20 24h24"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">Urothelial cells</text>
+    </svg>`
+  },
+  {
+    id: 'path-effusion-cytology',
+    name: 'Effusion Cytology',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['effusion', 'pleural', 'ascites', 'fluid', 'cytology'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="16" width="32" height="32" rx="2" fill="#87CEEB" opacity="0.2"/>
+      <rect x="16" y="16" width="32" height="32" rx="2"/>
+      <circle cx="24" cy="28" r="4" fill="#4B0082" opacity="0.5"/>
+      <circle cx="36" cy="26" r="3" fill="#4B0082" opacity="0.5"/>
+      <circle cx="40" cy="36" r="4" fill="#4B0082" opacity="0.5"/>
+      <circle cx="28" cy="40" r="3" fill="#4B0082" opacity="0.5"/>
+      <ellipse cx="32" cy="32" r="2" fill="#DC143C" opacity="0.4"/>
+      <text x="12" y="56" font-size="3" fill="currentColor" stroke="none">Fluid cytology</text>
+    </svg>`
+  },
+  {
+    id: 'path-thyroid-fna',
+    name: 'Thyroid FNA',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['thyroid', 'FNA', 'Bethesda', 'nodule', 'follicular'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 24c0-4 8-8 16-8s16 4 16 8c0 8-4 24-16 24s-16-16-16-24z" fill="#FFB6C1" opacity="0.3"/>
+      <path d="M16 24c0-4 8-8 16-8s16 4 16 8c0 8-4 24-16 24s-16-16-16-24z"/>
+      <circle cx="26" cy="28" r="4" fill="#4B0082" opacity="0.4"/>
+      <circle cx="38" cy="28" r="4" fill="#4B0082" opacity="0.4"/>
+      <circle cx="32" cy="36" r="3" fill="#4B0082" opacity="0.4"/>
+      <path d="M32 8v8" stroke-width="2"/>
+      <text x="8" y="56" font-size="3" fill="currentColor" stroke="none">Bethesda system</text>
+    </svg>`
+  },
+  {
+    id: 'path-koilocyte',
+    name: 'Koilocyte',
+    domain: 'medicine',
+    category: 'cytopathology',
+    tags: ['koilocyte', 'HPV', 'perinuclear halo', 'dysplasia', 'cervical'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="18" ry="16" fill="#FFB6C1" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="18" ry="16"/>
+      <ellipse cx="32" cy="32" rx="10" ry="8" fill="#FFFFFF" opacity="0.8"/>
+      <ellipse cx="32" cy="32" rx="6" ry="5" fill="#4B0082" opacity="0.6"/>
+      <ellipse cx="32" cy="32" rx="6" ry="5"/>
+      <path d="M28 30c2 1 4 1 6 0" fill="#4B0082"/>
+      <text x="8" y="56" font-size="3" fill="currentColor" stroke="none">Perinuclear halo (HPV)</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // SURGICAL PATHOLOGY
+  // ===========================================================================
+  {
+    id: 'path-margin-assessment',
+    name: 'Margin Assessment',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['margin', 'resection', 'surgical', 'clearance', 'positive'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="18"/>
+      <ellipse cx="32" cy="32" rx="10" ry="8" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="10" ry="8"/>
+      <path d="M12 32h8" stroke="#228B22" stroke-width="2"/>
+      <path d="M44 32h8" stroke="#228B22" stroke-width="2"/>
+      <path d="M32 14v6" stroke="#228B22" stroke-width="2"/>
+      <path d="M32 44v6" stroke="#228B22" stroke-width="2"/>
+      <text x="8" y="58" font-size="3" fill="#228B22" stroke="none">Clear margins</text>
+    </svg>`
+  },
+  {
+    id: 'path-sentinel-node',
+    name: 'Sentinel Lymph Node',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['sentinel', 'lymph node', 'biopsy', 'SLN', 'staging'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="14"/>
+      <ellipse cx="32" cy="32" rx="14" ry="12" fill="#4169E1" opacity="0.3"/>
+      <path d="M16 32c-8 0-8 8 0 8" fill="#ADD8E6" opacity="0.4"/>
+      <path d="M48 32c8 0 8 8 0 8" fill="#ADD8E6" opacity="0.4"/>
+      <circle cx="28" cy="28" r="3" fill="#4B0082" opacity="0.4"/>
+      <circle cx="36" cy="30" r="3" fill="#4B0082" opacity="0.4"/>
+      <circle cx="32" cy="38" r="2" fill="#4B0082" opacity="0.4"/>
+      <text x="8" y="56" font-size="3" fill="#4169E1" stroke="none">Blue dye localization</text>
+    </svg>`
+  },
+  {
+    id: 'path-frozen-intraop',
+    name: 'Intraoperative Frozen',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['frozen section', 'intraoperative', 'rapid', 'diagnosis', 'FS'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="20" width="40" height="24" rx="2" fill="#ADD8E6" opacity="0.3"/>
+      <rect x="12" y="20" width="40" height="24" rx="2"/>
+      <path d="M24 24v16"/>
+      <path d="M32 24v16"/>
+      <path d="M40 24v16"/>
+      <path d="M20 28h24"/>
+      <path d="M20 36h24"/>
+      <circle cx="8" cy="32" r="3" fill="#87CEEB"/>
+      <circle cx="56" cy="32" r="3" fill="#87CEEB"/>
+      <text x="16" y="52" font-size="3" fill="currentColor" stroke="none">Rapid frozen section</text>
+    </svg>`
+  },
+  {
+    id: 'path-specimen-orientation',
+    name: 'Specimen Orientation',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['orientation', 'specimen', 'marking', 'suture', 'surgical'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="#FFE4E1" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M12 32l8-4v8z" fill="#DC143C"/>
+      <path d="M52 32l-8-4v8z" fill="#4169E1"/>
+      <circle cx="32" cy="16" r="4" fill="#228B22"/>
+      <circle cx="32" cy="48" r="4" fill="#FFD700"/>
+      <text x="8" y="10" font-size="3" fill="currentColor" stroke="none">Superior</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Inferior</text>
+    </svg>`
+  },
+  {
+    id: 'path-lymphovascular-invasion',
+    name: 'Lymphovascular Invasion',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['LVI', 'lymphovascular', 'invasion', 'spread', 'prognostic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c8-8 16-8 24 0s16 8 24 0" fill="none"/>
+      <path d="M8 28c8-8 16-8 24 0s16 8 24 0" fill="#ADD8E6" opacity="0.3"/>
+      <path d="M8 36c8-8 16-8 24 0s16 8 24 0" fill="#ADD8E6" opacity="0.3"/>
+      <ellipse cx="24" cy="32" rx="4" ry="3" fill="#DC143C" opacity="0.6"/>
+      <ellipse cx="40" cy="32" rx="4" ry="3" fill="#DC143C" opacity="0.6"/>
+      <ellipse cx="32" cy="32" rx="3" ry="2" fill="#DC143C" opacity="0.6"/>
+      <text x="8" y="52" font-size="3" fill="#DC143C" stroke="none">Tumor in vessels</text>
+    </svg>`
+  },
+  {
+    id: 'path-perineural-invasion',
+    name: 'Perineural Invasion',
+    domain: 'medicine',
+    category: 'surgical-pathology',
+    tags: ['PNI', 'perineural', 'invasion', 'nerve', 'prognostic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32h48" stroke-width="3" stroke="#FFD700"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8"/>
+      <ellipse cx="32" cy="32" rx="10" ry="6" fill="#DC143C" opacity="0.4"/>
+      <circle cx="28" cy="30" r="2" fill="#4B0082"/>
+      <circle cx="36" cy="32" r="2" fill="#4B0082"/>
+      <circle cx="32" cy="36" r="2" fill="#4B0082"/>
+      <text x="8" y="48" font-size="3" fill="currentColor" stroke="none">Tumor around nerve</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // AUTOPSY PATHOLOGY
+  // ===========================================================================
+  {
+    id: 'path-autopsy-incision',
+    name: 'Autopsy Incision',
+    domain: 'medicine',
+    category: 'autopsy',
+    tags: ['autopsy', 'Y-incision', 'post-mortem', 'examination', 'forensic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="20" rx="12" ry="10"/>
+      <rect x="20" y="28" width="24" height="28" rx="2"/>
+      <path d="M24 12l8 16 8-16" stroke="#DC143C" stroke-width="2"/>
+      <path d="M32 28v24" stroke="#DC143C" stroke-width="2"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Y-incision</text>
+    </svg>`
+  },
+  {
+    id: 'path-organ-weights',
+    name: 'Organ Weights',
+    domain: 'medicine',
+    category: 'autopsy',
+    tags: ['organ', 'weight', 'autopsy', 'measurement', 'protocol'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="36" width="32" height="8" rx="1"/>
+      <path d="M20 36v-8h24v8"/>
+      <ellipse cx="32" cy="24" rx="8" ry="6" fill="#DC143C" opacity="0.4"/>
+      <path d="M32 44v8"/>
+      <path d="M24 52h16"/>
+      <rect x="8" y="12" width="12" height="16" rx="1"/>
+      <text x="10" y="24" font-size="4" fill="currentColor" stroke="none">g</text>
+      <text x="48" y="24" font-size="4" fill="currentColor" stroke="none">350g</text>
+    </svg>`
+  },
+  {
+    id: 'path-post-mortem-changes',
+    name: 'Post-mortem Changes',
+    domain: 'medicine',
+    category: 'autopsy',
+    tags: ['post-mortem', 'livor', 'rigor', 'mortis', 'decomposition'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="20" width="40" height="24" rx="2"/>
+      <rect x="12" y="32" width="40" height="12" rx="1" fill="#8B4513" opacity="0.4"/>
+      <path d="M16 28h8"/>
+      <path d="M28 28h8"/>
+      <path d="M40 28h8"/>
+      <circle cx="20" cy="28" r="2" fill="#E6E6FA"/>
+      <circle cx="32" cy="28" r="2" fill="#E6E6FA"/>
+      <circle cx="44" cy="28" r="2" fill="#E6E6FA"/>
+      <text x="8" y="52" font-size="3" fill="currentColor" stroke="none">Livor mortis (hypostasis)</text>
+    </svg>`
+  },
+  {
+    id: 'path-cause-of-death',
+    name: 'Cause of Death',
+    domain: 'medicine',
+    category: 'autopsy',
+    tags: ['cause', 'death', 'manner', 'certificate', 'COD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="40" rx="2"/>
+      <line x1="12" y1="20" x2="52" y2="20"/>
+      <text x="14" y="18" font-size="4" fill="currentColor" stroke="none">CAUSE OF DEATH</text>
+      <line x1="12" y1="28" x2="52" y2="28"/>
+      <text x="14" y="26" font-size="3" fill="currentColor" stroke="none">I(a) Immediate:</text>
+      <line x1="12" y1="36" x2="52" y2="36"/>
+      <text x="14" y="34" font-size="3" fill="currentColor" stroke="none">(b) Underlying:</text>
+      <line x1="12" y1="44" x2="52" y2="44"/>
+      <text x="14" y="42" font-size="3" fill="currentColor" stroke="none">II Contributing:</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // MOLECULAR PATHOLOGY
+  // ===========================================================================
+  {
+    id: 'path-fish-analysis',
+    name: 'FISH Analysis',
+    domain: 'medicine',
+    category: 'molecular-pathology',
+    tags: ['FISH', 'fluorescence', 'in situ', 'hybridization', 'HER2'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="16" width="40" height="32" rx="2" fill="#000033"/>
+      <circle cx="24" cy="28" r="6" stroke="#4B0082"/>
+      <circle cx="22" cy="26" r="2" fill="#FF0000"/>
+      <circle cx="26" cy="30" r="2" fill="#00FF00"/>
+      <circle cx="40" cy="36" r="6" stroke="#4B0082"/>
+      <circle cx="38" cy="34" r="2" fill="#FF0000"/>
+      <circle cx="42" cy="38" r="2" fill="#00FF00"/>
+      <circle cx="40" cy="34" r="2" fill="#FF0000"/>
+      <circle cx="38" cy="38" r="2" fill="#00FF00"/>
+      <text x="12" y="56" font-size="3" fill="#00FF00" stroke="none">FISH amplified</text>
+    </svg>`
+  },
+  {
+    id: 'path-pcr-gel',
+    name: 'PCR Gel Electrophoresis',
+    domain: 'medicine',
+    category: 'molecular-pathology',
+    tags: ['PCR', 'gel', 'electrophoresis', 'DNA', 'amplification'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="40" rx="2" fill="#E0E0E0" opacity="0.3"/>
+      <rect x="8" y="12" width="48" height="40" rx="2"/>
+      <rect x="12" y="16" width="6" height="4" fill="#FF6600"/>
+      <rect x="12" y="24" width="6" height="3" fill="#FF6600"/>
+      <rect x="12" y="36" width="6" height="2" fill="#FF6600"/>
+      <rect x="22" y="16" width="6" height="4" fill="#FF6600"/>
+      <rect x="22" y="28" width="6" height="3" fill="#FF6600"/>
+      <rect x="32" y="16" width="6" height="4" fill="#FF6600"/>
+      <rect x="32" y="24" width="6" height="3" fill="#FF6600"/>
+      <rect x="32" y="32" width="6" height="2" fill="#FF6600"/>
+      <rect x="42" y="16" width="6" height="4" fill="#FF6600"/>
+      <rect x="42" y="36" width="6" height="3" fill="#FF6600"/>
+      <text x="10" y="56" font-size="3" fill="currentColor" stroke="none">DNA bands</text>
+    </svg>`
+  },
+  {
+    id: 'path-ngs-sequencing',
+    name: 'NGS Sequencing',
+    domain: 'medicine',
+    category: 'molecular-pathology',
+    tags: ['NGS', 'next-gen', 'sequencing', 'genomic', 'panel'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="40" rx="2"/>
+      <rect x="12" y="16" width="4" height="32" fill="#228B22"/>
+      <rect x="18" y="20" width="4" height="28" fill="#DC143C"/>
+      <rect x="24" y="18" width="4" height="30" fill="#4169E1"/>
+      <rect x="30" y="22" width="4" height="26" fill="#FFD700"/>
+      <rect x="36" y="16" width="4" height="32" fill="#228B22"/>
+      <rect x="42" y="24" width="4" height="24" fill="#DC143C"/>
+      <rect x="48" y="20" width="4" height="28" fill="#4169E1"/>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Sequence reads</text>
+    </svg>`
+  },
+  {
+    id: 'path-mutation-analysis',
+    name: 'Mutation Analysis',
+    domain: 'medicine',
+    category: 'molecular-pathology',
+    tags: ['mutation', 'EGFR', 'KRAS', 'BRAF', 'targetable'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 16h40v32H12z" fill="#E0E0E0" opacity="0.2"/>
+      <path d="M12 16h40v32H12z"/>
+      <text x="16" y="28" font-size="5" fill="#228B22" stroke="none">A T G C</text>
+      <text x="16" y="38" font-size="5" fill="#228B22" stroke="none">A</text>
+      <text x="24" y="38" font-size="5" fill="#DC143C" stroke="none">C</text>
+      <text x="32" y="38" font-size="5" fill="#228B22" stroke="none">G C</text>
+      <path d="M24 40l4 8"/>
+      <text x="24" y="54" font-size="3" fill="#DC143C" stroke="none">T>C mutation</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // DIGITAL PATHOLOGY
+  // ===========================================================================
+  {
+    id: 'path-wsi-viewer',
+    name: 'WSI Viewer',
+    domain: 'medicine',
+    category: 'digital-pathology',
+    tags: ['WSI', 'viewer', 'whole slide', 'digital', 'navigation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="36" rx="2"/>
+      <rect x="12" y="16" width="40" height="28" fill="#E8B4B8" opacity="0.4"/>
+      <rect x="28" y="28" width="12" height="8" stroke="#4169E1" stroke-width="2"/>
+      <path d="M8 52h48"/>
+      <circle cx="20" cy="56" r="3"/>
+      <circle cx="32" cy="56" r="3"/>
+      <circle cx="44" cy="56" r="3"/>
+      <text x="16" y="24" font-size="3" fill="currentColor" stroke="none">Navigate</text>
+    </svg>`
+  },
+  {
+    id: 'path-annotation-tool',
+    name: 'Digital Annotation',
+    domain: 'medicine',
+    category: 'digital-pathology',
+    tags: ['annotation', 'digital', 'markup', 'ROI', 'measurement'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="16" width="40" height="32" rx="2" fill="#E8B4B8" opacity="0.3"/>
+      <rect x="12" y="16" width="40" height="32" rx="2"/>
+      <ellipse cx="28" cy="32" rx="8" ry="6" stroke="#DC143C" stroke-width="2" fill="none"/>
+      <path d="M40 24l8 8-8 8" stroke="#4169E1" stroke-width="2"/>
+      <line x1="20" y1="44" x2="36" y2="44" stroke="#228B22" stroke-width="2"/>
+      <text x="38" y="46" font-size="3" fill="#228B22" stroke="none">2mm</text>
+    </svg>`
+  },
+  {
+    id: 'path-ai-analysis',
+    name: 'AI-Assisted Analysis',
+    domain: 'medicine',
+    category: 'digital-pathology',
+    tags: ['AI', 'machine learning', 'analysis', 'algorithm', 'automated'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="16" width="40" height="32" rx="2" fill="#E8B4B8" opacity="0.3"/>
+      <rect x="12" y="16" width="40" height="32" rx="2"/>
+      <circle cx="24" cy="28" r="4" fill="#228B22" opacity="0.5"/>
+      <circle cx="36" cy="24" r="3" fill="#228B22" opacity="0.5"/>
+      <circle cx="40" cy="36" r="5" fill="#DC143C" opacity="0.5"/>
+      <circle cx="28" cy="40" r="3" fill="#228B22" opacity="0.5"/>
+      <path d="M48 24l8-8"/>
+      <path d="M52 16h8v8"/>
+      <text x="50" y="14" font-size="3" fill="#4169E1" stroke="none">AI</text>
+      <text x="16" y="54" font-size="3" fill="currentColor" stroke="none">Cell detection</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ELECTRON MICROSCOPY
+  // ===========================================================================
+  {
+    id: 'path-electron-microscope',
+    name: 'Electron Microscope',
+    domain: 'medicine',
+    category: 'electron-microscopy',
+    tags: ['electron', 'microscope', 'EM', 'TEM', 'ultrastructure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="48" rx="4"/>
+      <circle cx="32" cy="20" r="8" fill="#4B0082" opacity="0.3"/>
+      <rect x="24" y="32" width="16" height="8" fill="#808080" opacity="0.3"/>
+      <rect x="26" y="44" width="12" height="8" fill="#E0E0E0" opacity="0.5"/>
+      <path d="M28 20h8"/>
+      <path d="M32 16v8"/>
+      <circle cx="32" cy="20" r="2" fill="#00FF00"/>
+      <text x="16" y="62" font-size="3" fill="currentColor" stroke="none">TEM</text>
+    </svg>`
+  },
+  {
+    id: 'path-podocyte-em',
+    name: 'Podocyte (EM)',
+    domain: 'medicine',
+    category: 'electron-microscopy',
+    tags: ['podocyte', 'foot process', 'kidney', 'GBM', 'ultrastructure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="28" width="48" height="8" fill="#4169E1" opacity="0.3"/>
+      <rect x="8" y="28" width="48" height="8"/>
+      <path d="M12 28v-8c2-2 2-4 0-6"/>
+      <path d="M20 28v-8c2-2 2-4 0-6"/>
+      <path d="M28 28v-8c2-2 2-4 0-6"/>
+      <path d="M36 28v-8c2-2 2-4 0-6"/>
+      <path d="M44 28v-8c2-2 2-4 0-6"/>
+      <path d="M52 28v-8c2-2 2-4 0-6"/>
+      <path d="M16 36v8"/>
+      <path d="M32 36v8"/>
+      <path d="M48 36v8"/>
+      <text x="8" y="52" font-size="3" fill="currentColor" stroke="none">Foot processes / GBM</text>
+    </svg>`
+  },
+  {
+    id: 'path-immune-complex-em',
+    name: 'Immune Complex (EM)',
+    domain: 'medicine',
+    category: 'electron-microscopy',
+    tags: ['immune complex', 'deposits', 'subepithelial', 'electron dense'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="28" width="48" height="8" fill="#4169E1" opacity="0.3"/>
+      <rect x="8" y="28" width="48" height="8"/>
+      <ellipse cx="20" cy="24" rx="4" ry="3" fill="#000000" opacity="0.6"/>
+      <ellipse cx="36" cy="24" rx="5" ry="3" fill="#000000" opacity="0.6"/>
+      <ellipse cx="50" cy="24" rx="3" ry="2" fill="#000000" opacity="0.6"/>
+      <ellipse cx="28" cy="40" rx="4" ry="3" fill="#000000" opacity="0.4"/>
+      <ellipse cx="44" cy="40" rx="3" ry="2" fill="#000000" opacity="0.4"/>
+      <text x="8" y="52" font-size="3" fill="currentColor" stroke="none">Electron-dense deposits</text>
+    </svg>`
+  },
 ];
 
 export default pathologyIcons;
