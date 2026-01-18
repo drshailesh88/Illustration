@@ -1448,6 +1448,529 @@ export const rheumatologyIcons: IconDefinition[] = [
       <circle cx="20" cy="54" r="2" fill="#DC143C"/>
       <circle cx="44" cy="54" r="2" fill="#DC143C"/>
     </svg>`
+  },
+
+  // ===========================================================================
+  // VASCULITIS
+  // ===========================================================================
+  {
+    id: 'rheum-gca',
+    name: 'Giant Cell Arteritis',
+    domain: 'medicine',
+    category: 'vasculitis',
+    tags: ['GCA', 'giant cell', 'temporal arteritis', 'large vessel', 'polymyalgia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8"/>
+      <path d="M16 16c-4 4-8 12-8 20"/>
+      <path d="M48 16c4 4 8 12 8 20"/>
+      <path d="M8 36c0 12 8 20 24 20s24-8 24-20" stroke="#DC143C" stroke-width="3"/>
+      <path d="M24 8c-8 4-12 4-16 8"/>
+      <path d="M40 8c8 4 12 4 16 8"/>
+      <circle cx="12" cy="20" r="3" fill="#DC143C" opacity="0.5"/>
+      <circle cx="52" cy="20" r="3" fill="#DC143C" opacity="0.5"/>
+      <text x="16" y="62" font-size="4" fill="currentColor" stroke="none">Temporal A.</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-takayasu',
+    name: 'Takayasu Arteritis',
+    domain: 'medicine',
+    category: 'vasculitis',
+    tags: ['Takayasu', 'pulseless', 'aortic arch', 'large vessel', 'stenosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 56V24" stroke-width="6" stroke="#DC143C" opacity="0.3"/>
+      <path d="M32 56V24" stroke-width="3"/>
+      <path d="M32 24c0-8-12-16-20-16" stroke-width="3"/>
+      <path d="M32 24c0-8 12-16 20-16" stroke-width="3"/>
+      <path d="M24 16c-4-4-4-8 0-8" stroke-width="2"/>
+      <path d="M40 16c4-4 4-8 0-8" stroke-width="2"/>
+      <ellipse cx="20" cy="20" rx="6" ry="3" fill="#DC143C" opacity="0.5"/>
+      <ellipse cx="44" cy="20" rx="6" ry="3" fill="#DC143C" opacity="0.5"/>
+      <path d="M26 20l-6 4" stroke="#DC143C"/>
+      <path d="M38 20l6 4" stroke="#DC143C"/>
+      <text x="16" y="48" font-size="4" fill="currentColor" stroke="none">Aorta</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anca-vasculitis',
+    name: 'ANCA-Associated Vasculitis',
+    domain: 'medicine',
+    category: 'vasculitis',
+    tags: ['ANCA', 'GPA', 'MPA', 'EGPA', 'small vessel', 'granulomatosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <path d="M32 12v8" stroke-width="2"/>
+      <path d="M32 44v8" stroke-width="2"/>
+      <path d="M12 32h8" stroke-width="2"/>
+      <path d="M44 32h8" stroke-width="2"/>
+      <circle cx="32" cy="32" r="8" fill="#DC143C" opacity="0.4"/>
+      <path d="M28 28l8 8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M36 28l-8 8" stroke="#DC143C" stroke-width="2"/>
+      <circle cx="20" cy="20" r="3" fill="#FFD700"/>
+      <circle cx="44" cy="20" r="3" fill="#FFD700"/>
+      <circle cx="20" cy="44" r="3" fill="#FFD700"/>
+      <circle cx="44" cy="44" r="3" fill="#FFD700"/>
+      <text x="8" y="60" font-size="4" fill="currentColor" stroke="none">Sm. Vessel</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-pan',
+    name: 'Polyarteritis Nodosa',
+    domain: 'medicine',
+    category: 'vasculitis',
+    tags: ['PAN', 'polyarteritis', 'medium vessel', 'aneurysm', 'nodular'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32h48" stroke-width="3"/>
+      <ellipse cx="20" cy="32" rx="6" ry="8" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="36" cy="32" rx="4" ry="6" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="50" cy="32" rx="5" ry="7" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="20" cy="32" rx="6" ry="8"/>
+      <ellipse cx="36" cy="32" rx="4" ry="6"/>
+      <ellipse cx="50" cy="32" rx="5" ry="7"/>
+      <path d="M8 28h6"/>
+      <path d="M8 36h6"/>
+      <text x="10" y="52" font-size="4" fill="currentColor" stroke="none">Med. Vessel</text>
+      <text x="30" y="52" font-size="4" fill="currentColor" stroke="none">Aneurysms</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-behcet',
+    name: 'Behcet Disease',
+    domain: 'medicine',
+    category: 'vasculitis',
+    tags: ['Behcet', 'oral ulcer', 'genital ulcer', 'uveitis', 'pathergy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="8"/>
+      <path d="M24 14h16" stroke="#DC143C" stroke-width="2"/>
+      <ellipse cx="28" cy="14" rx="3" ry="2" fill="#DC143C"/>
+      <circle cx="32" cy="16" r="2" fill="white"/>
+      <circle cx="32" cy="44" r="12" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="44" rx="8" ry="6" fill="#DC143C" opacity="0.4"/>
+      <circle cx="12" cy="32" r="4"/>
+      <circle cx="12" cy="32" r="2" fill="#4169E1"/>
+      <circle cx="52" cy="32" r="4"/>
+      <circle cx="52" cy="32" r="2" fill="#4169E1"/>
+      <text x="6" y="44" font-size="3" fill="currentColor" stroke="none">Eye</text>
+      <text x="46" y="44" font-size="3" fill="currentColor" stroke="none">Eye</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CONNECTIVE TISSUE DISEASES (ADDITIONAL)
+  // ===========================================================================
+  {
+    id: 'rheum-mctd',
+    name: 'Mixed Connective Tissue Disease',
+    domain: 'medicine',
+    category: 'connective-tissue',
+    tags: ['MCTD', 'mixed', 'overlap', 'anti-U1RNP', 'Raynaud'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="12" fill="#DC143C" opacity="0.3"/>
+      <circle cx="40" cy="24" r="12" fill="#4169E1" opacity="0.3"/>
+      <circle cx="32" cy="40" r="12" fill="#228B22" opacity="0.3"/>
+      <circle cx="24" cy="24" r="12"/>
+      <circle cx="40" cy="24" r="12"/>
+      <circle cx="32" cy="40" r="12"/>
+      <text x="18" y="20" font-size="4" fill="currentColor" stroke="none">SLE</text>
+      <text x="36" y="20" font-size="4" fill="currentColor" stroke="none">SSc</text>
+      <text x="24" y="44" font-size="4" fill="currentColor" stroke="none">PM/DM</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-polymyositis',
+    name: 'Polymyositis',
+    domain: 'medicine',
+    category: 'connective-tissue',
+    tags: ['polymyositis', 'myositis', 'muscle weakness', 'CK elevation', 'inflammatory'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="16" ry="24"/>
+      <path d="M20 16c4 8 8 16 12 32" stroke-width="2" stroke="#DC143C"/>
+      <path d="M44 16c-4 8-8 16-12 32" stroke-width="2" stroke="#DC143C"/>
+      <path d="M24 24h16" stroke-dasharray="2 2"/>
+      <path d="M22 32h20" stroke-dasharray="2 2"/>
+      <path d="M24 40h16" stroke-dasharray="2 2"/>
+      <circle cx="28" cy="28" r="2" fill="#DC143C"/>
+      <circle cx="36" cy="36" r="2" fill="#DC143C"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">Muscle</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-raynaud',
+    name: 'Raynaud Phenomenon',
+    domain: 'medicine',
+    category: 'connective-tissue',
+    tags: ['Raynaud', 'vasospasm', 'digital', 'cold sensitivity', 'triphasic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 56V32c0-4 2-8 2-12s-2-8-2-12"/>
+      <path d="M28 56V24c0-4 2-8 2-12"/>
+      <path d="M36 56V24c0-4-2-8-2-12"/>
+      <path d="M44 56V32c0-4-2-8-2-12s2-8 2-12"/>
+      <rect x="18" y="44" width="6" height="12" rx="2" fill="white"/>
+      <rect x="26" y="44" width="6" height="12" rx="2" fill="#4169E1"/>
+      <rect x="34" y="44" width="6" height="12" rx="2" fill="#DC143C"/>
+      <rect x="42" y="44" width="6" height="12" rx="2" fill="currentColor" opacity="0.3"/>
+      <text x="14" y="40" font-size="3" fill="currentColor" stroke="none">White</text>
+      <text x="26" y="40" font-size="3" fill="currentColor" stroke="none">Blue</text>
+      <text x="38" y="40" font-size="3" fill="currentColor" stroke="none">Red</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-ctd-ild',
+    name: 'CTD-Associated ILD',
+    domain: 'medicine',
+    category: 'connective-tissue',
+    tags: ['ILD', 'interstitial lung disease', 'CTD', 'fibrosis', 'pulmonary'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="14" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="40" cy="32" rx="14" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="24" cy="32" rx="14" ry="20"/>
+      <ellipse cx="40" cy="32" rx="14" ry="20"/>
+      <path d="M18 24c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <path d="M18 32c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <path d="M18 40c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <path d="M34 24c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <path d="M34 32c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <path d="M34 40c4 4 8 4 12 0" stroke="#DC143C" stroke-dasharray="2 2"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">Fibrosis</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-antisynthetase',
+    name: 'Antisynthetase Syndrome',
+    domain: 'medicine',
+    category: 'connective-tissue',
+    tags: ['antisynthetase', 'anti-Jo1', 'myositis', 'ILD', 'mechanic hands'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 40c0-8 4-16 8-24"/>
+      <path d="M24 40c0-8 4-20 8-24"/>
+      <path d="M32 40c0-8 4-20 8-24"/>
+      <path d="M40 40c0-8 4-16 8-24"/>
+      <path d="M48 40c0-8 0-12 4-16"/>
+      <rect x="12" y="40" width="44" height="16" rx="4" fill="currentColor" opacity="0.2"/>
+      <path d="M16 48h8" stroke-dasharray="3 2" stroke="#DC143C"/>
+      <path d="M28 48h8" stroke-dasharray="3 2" stroke="#DC143C"/>
+      <path d="M40 48h8" stroke-dasharray="3 2" stroke="#DC143C"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Mechanic Hands</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL AUTOANTIBODIES
+  // ===========================================================================
+  {
+    id: 'rheum-anti-ro-ssa',
+    name: 'Anti-Ro/SSA Antibody',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['anti-Ro', 'SSA', 'Sjogren', 'neonatal lupus', 'photosensitivity'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="10" fill="#FFD700" opacity="0.4"/>
+      <text x="22" y="36" font-size="8" fill="currentColor" stroke="none">Ro</text>
+      <path d="M12 32h8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M44 32h8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M32 12v8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M32 44v8" stroke="#DC143C" stroke-width="2"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">SSA</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anti-la-ssb',
+    name: 'Anti-La/SSB Antibody',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['anti-La', 'SSB', 'Sjogren', 'lupus', 'protective'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="10" fill="#87CEEB" opacity="0.4"/>
+      <text x="24" y="36" font-size="8" fill="currentColor" stroke="none">La</text>
+      <path d="M12 32h8" stroke="#4169E1" stroke-width="2"/>
+      <path d="M44 32h8" stroke="#4169E1" stroke-width="2"/>
+      <path d="M32 12v8" stroke="#4169E1" stroke-width="2"/>
+      <path d="M32 44v8" stroke="#4169E1" stroke-width="2"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">SSB</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anti-jo1',
+    name: 'Anti-Jo-1 Antibody',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['anti-Jo1', 'tRNA synthetase', 'myositis', 'ILD', 'antisynthetase'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="12" width="40" height="40" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="12" width="40" height="40" rx="4"/>
+      <path d="M20 20l24 24" stroke="#DC143C" stroke-width="2"/>
+      <path d="M20 20v12" stroke-width="2"/>
+      <path d="M20 20h12" stroke-width="2"/>
+      <circle cx="32" cy="32" r="6" fill="#9370DB" opacity="0.4"/>
+      <text x="26" y="36" font-size="6" fill="currentColor" stroke="none">J1</text>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">tRNA Syn</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anti-scl70',
+    name: 'Anti-Scl-70 Antibody',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['anti-Scl70', 'topoisomerase', 'scleroderma', 'diffuse SSc', 'ILD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <path d="M20 24c8 0 16 8 24 8" stroke-width="2" stroke="#DC143C"/>
+      <path d="M20 32c8 0 16 8 24 8" stroke-width="2" stroke="#DC143C"/>
+      <path d="M20 40c8 0 16-8 24-8" stroke-width="2" stroke="#DC143C"/>
+      <circle cx="32" cy="32" r="6" fill="#228B22" opacity="0.4"/>
+      <text x="24" y="36" font-size="5" fill="currentColor" stroke="none">70</text>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Topo-1</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anca-pr3',
+    name: 'PR3-ANCA (c-ANCA)',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['PR3', 'c-ANCA', 'GPA', 'Wegener', 'cytoplasmic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="12" fill="#228B22" opacity="0.3"/>
+      <circle cx="32" cy="32" r="6" fill="#228B22" opacity="0.5"/>
+      <text x="20" y="36" font-size="6" fill="currentColor" stroke="none">PR3</text>
+      <path d="M12 20l4 4" stroke="#228B22" stroke-width="2"/>
+      <path d="M52 20l-4 4" stroke="#228B22" stroke-width="2"/>
+      <path d="M12 44l4-4" stroke="#228B22" stroke-width="2"/>
+      <path d="M52 44l-4-4" stroke="#228B22" stroke-width="2"/>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">Cytoplasmic</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-anca-mpo',
+    name: 'MPO-ANCA (p-ANCA)',
+    domain: 'medicine',
+    category: 'autoantibodies',
+    tags: ['MPO', 'p-ANCA', 'MPA', 'EGPA', 'perinuclear'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="8" fill="#4169E1" opacity="0.4"/>
+      <circle cx="32" cy="32" r="12" stroke="#4169E1" stroke-width="3" stroke-dasharray="4 2"/>
+      <text x="18" y="36" font-size="5" fill="currentColor" stroke="none">MPO</text>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">Perinuclear</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CRYSTAL ARTHROPATHIES (ADDITIONAL)
+  // ===========================================================================
+  {
+    id: 'rheum-cppd',
+    name: 'CPPD (Pseudogout)',
+    domain: 'medicine',
+    category: 'crystal-arthropathy',
+    tags: ['CPPD', 'pseudogout', 'calcium pyrophosphate', 'chondrocalcinosis', 'crystal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="12" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="12"/>
+      <rect x="20" y="28" width="8" height="4" fill="#87CEEB" opacity="0.6" transform="rotate(15 24 30)"/>
+      <rect x="32" y="26" width="10" height="3" fill="#87CEEB" opacity="0.6" transform="rotate(-10 37 28)"/>
+      <rect x="28" y="34" width="6" height="3" fill="#87CEEB" opacity="0.6" transform="rotate(25 31 36)"/>
+      <rect x="40" y="30" width="8" height="4" fill="#87CEEB" opacity="0.6" transform="rotate(-5 44 32)"/>
+      <text x="14" y="52" font-size="4" fill="currentColor" stroke="none">Rhomboid</text>
+      <text x="38" y="52" font-size="4" fill="currentColor" stroke="none">+Biref</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-tophi',
+    name: 'Gouty Tophi',
+    domain: 'medicine',
+    category: 'crystal-arthropathy',
+    tags: ['tophi', 'tophus', 'gout', 'urate deposit', 'chronic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="44" rx="20" ry="12" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="44" rx="20" ry="12"/>
+      <circle cx="24" cy="24" r="10" fill="#FFD700" opacity="0.5"/>
+      <circle cx="24" cy="24" r="10"/>
+      <circle cx="44" cy="20" r="6" fill="#FFD700" opacity="0.5"/>
+      <circle cx="44" cy="20" r="6"/>
+      <circle cx="40" cy="32" r="4" fill="#FFD700" opacity="0.5"/>
+      <circle cx="40" cy="32" r="4"/>
+      <path d="M24 24c-2-2 2-4 4-2s-2 4-4 2" fill="white"/>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">Tophi</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-crystal-analysis',
+    name: 'Crystal Analysis',
+    domain: 'medicine',
+    category: 'crystal-arthropathy',
+    tags: ['polarized', 'microscopy', 'synovial fluid', 'crystal', 'birefringence'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="22" fill="currentColor" opacity="0.05"/>
+      <circle cx="32" cy="32" r="22"/>
+      <circle cx="32" cy="32" r="16"/>
+      <path d="M20 28l8-4 8 4 8-4" stroke="#FFD700" stroke-width="2"/>
+      <rect x="26" y="32" width="12" height="4" fill="#87CEEB" opacity="0.6"/>
+      <path d="M16 40h32" stroke-dasharray="2 2"/>
+      <circle cx="10" cy="32" r="4"/>
+      <circle cx="54" cy="32" r="4"/>
+      <path d="M10 28v8"/>
+      <path d="M54 28v8"/>
+      <text x="6" y="44" font-size="3" fill="currentColor" stroke="none">Pol</text>
+      <text x="50" y="44" font-size="3" fill="currentColor" stroke="none">Pol</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // SPONDYLOARTHROPATHY SPECIFICS
+  // ===========================================================================
+  {
+    id: 'rheum-bamboo-spine',
+    name: 'Bamboo Spine',
+    domain: 'medicine',
+    category: 'spondyloarthropathy',
+    tags: ['bamboo spine', 'ankylosing spondylitis', 'syndesmophytes', 'fusion', 'AS'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="4" width="16" height="10" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="16" width="16" height="10" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="28" width="16" height="10" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="40" width="16" height="10" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="52" width="16" height="10" rx="2" fill="currentColor" opacity="0.2"/>
+      <path d="M20 4v58" stroke="#228B22" stroke-width="2"/>
+      <path d="M44 4v58" stroke="#228B22" stroke-width="2"/>
+      <path d="M20 14h4"/>
+      <path d="M40 14h4"/>
+      <path d="M20 26h4"/>
+      <path d="M40 26h4"/>
+      <path d="M20 38h4"/>
+      <path d="M40 38h4"/>
+      <path d="M20 50h4"/>
+      <path d="M40 50h4"/>
+      <text x="46" y="34" font-size="4" fill="currentColor" stroke="none">Fused</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-dactylitis',
+    name: 'Dactylitis (Sausage Digit)',
+    domain: 'medicine',
+    category: 'spondyloarthropathy',
+    tags: ['dactylitis', 'sausage digit', 'PsA', 'SpA', 'tenosynovitis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 56V24c0-8 4-16 8-16"/>
+      <path d="M28 56V12"/>
+      <path d="M40 56V12"/>
+      <path d="M52 56V24c0-8-4-16-8-16"/>
+      <ellipse cx="28" cy="34" rx="8" ry="16" fill="#DC143C" opacity="0.3"/>
+      <ellipse cx="28" cy="34" rx="8" ry="16"/>
+      <path d="M20 34h4"/>
+      <path d="M32 34h4"/>
+      <text x="36" y="38" font-size="4" fill="currentColor" stroke="none">Swollen</text>
+      <text x="8" y="62" font-size="4" fill="currentColor" stroke="none">Normal</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-sacroiliitis',
+    name: 'Sacroiliitis',
+    domain: 'medicine',
+    category: 'spondyloarthropathy',
+    tags: ['sacroiliitis', 'SI joint', 'SpA', 'axial', 'MRI'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16" stroke-width="3"/>
+      <ellipse cx="32" cy="40" rx="24" ry="16" fill="currentColor" opacity="0.1"/>
+      <path d="M16 32c-4 8-4 16 0 24"/>
+      <path d="M48 32c4 8 4 16 0 24"/>
+      <path d="M24 28c-4 12-4 20 0 28" stroke="#DC143C" stroke-width="2"/>
+      <path d="M40 28c4 12 4 20 0 28" stroke="#DC143C" stroke-width="2"/>
+      <ellipse cx="24" cy="40" rx="4" ry="8" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="40" cy="40" rx="4" ry="8" fill="#DC143C" opacity="0.4"/>
+      <text x="18" y="60" font-size="4" fill="currentColor" stroke="none">SI Joint</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL TREATMENT MODALITIES
+  // ===========================================================================
+  {
+    id: 'rheum-plasmapheresis',
+    name: 'Plasmapheresis',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['plasmapheresis', 'plasma exchange', 'PLEX', 'antibody removal', 'apheresis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="8" width="16" height="48" rx="4" fill="currentColor" opacity="0.1"/>
+      <rect x="24" y="8" width="16" height="48" rx="4"/>
+      <rect x="24" y="32" width="16" height="24" rx="4" fill="#DC143C" opacity="0.3"/>
+      <rect x="24" y="8" width="16" height="24" rx="4" fill="#FFD700" opacity="0.3"/>
+      <path d="M8 20h16"/>
+      <path d="M8 44h16"/>
+      <path d="M8 20v24" stroke-width="2" stroke="#DC143C"/>
+      <circle cx="8" cy="32" r="4"/>
+      <path d="M56 20h-16"/>
+      <path d="M56 44h-16"/>
+      <path d="M56 20v24" stroke-width="2" stroke="#4169E1"/>
+      <circle cx="56" cy="32" r="4"/>
+      <text x="26" y="22" font-size="4" fill="currentColor" stroke="none">Plasma</text>
+      <text x="28" y="46" font-size="4" fill="currentColor" stroke="none">RBC</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-ivig',
+    name: 'IVIG Therapy',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['IVIG', 'immunoglobulin', 'IV', 'immune modulation', 'antibody'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="40" rx="4" fill="#FFD700" opacity="0.3"/>
+      <rect x="20" y="8" width="24" height="40" rx="4"/>
+      <path d="M32 48v12"/>
+      <path d="M28 56h8"/>
+      <circle cx="32" cy="60" r="2"/>
+      <path d="M20 20h24" stroke-dasharray="4 2"/>
+      <path d="M26 28h12"/>
+      <path d="M32 24v8"/>
+      <text x="24" y="42" font-size="5" fill="currentColor" stroke="none">IVIG</text>
+      <text x="8" y="16" font-size="4" fill="currentColor" stroke="none">IgG</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-hydroxychloroquine',
+    name: 'Hydroxychloroquine',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['hydroxychloroquine', 'Plaquenil', 'HCQ', 'antimalarial', 'DMARD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="10" fill="#4169E1" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="16" ry="10"/>
+      <path d="M16 32c0 12 8 20 16 20s16-8 16-20"/>
+      <path d="M24 28c4 4 12 4 16 0"/>
+      <path d="M24 36c4-4 12-4 16 0"/>
+      <circle cx="32" cy="32" r="4" fill="white"/>
+      <text x="28" y="35" font-size="5" fill="currentColor" stroke="none">H</text>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">HCQ</text>
+    </svg>`
+  },
+  {
+    id: 'rheum-il17-inhibitor',
+    name: 'IL-17 Inhibitor',
+    domain: 'medicine',
+    category: 'treatment',
+    tags: ['IL-17', 'secukinumab', 'ixekizumab', 'biologic', 'SpA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="32" r="12" fill="#9370DB" opacity="0.3"/>
+      <circle cx="24" cy="32" r="12"/>
+      <text x="14" y="36" font-size="6" fill="currentColor" stroke="none">17</text>
+      <rect x="40" y="20" width="16" height="24" rx="4" fill="#DC143C" opacity="0.3"/>
+      <rect x="40" y="20" width="16" height="24" rx="4"/>
+      <path d="M36 28h4"/>
+      <path d="M36 36h4"/>
+      <path d="M44 28v8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M44 32h8" stroke="#DC143C" stroke-width="2"/>
+      <text x="42" y="50" font-size="4" fill="currentColor" stroke="none">Block</text>
+    </svg>`
   }
 ];
 
