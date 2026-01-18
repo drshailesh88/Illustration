@@ -1368,6 +1368,566 @@ export const anatomyIcons: IconDefinition[] = [
       <text x="20" y="58" font-size="3" fill="currentColor" stroke="none">Middle</text>
       <text x="44" y="58" font-size="3" fill="currentColor" stroke="none">Inner</text>
     </svg>`
+  },
+  // ===========================================================================
+  // HISTOLOGY & TISSUE TYPES
+  // ===========================================================================
+  {
+    id: 'anat-epithelial-simple',
+    name: 'Simple Epithelium',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['epithelium', 'simple', 'squamous', 'cuboidal', 'columnar', 'tissue'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="28" width="56" height="8" fill="currentColor" opacity="0.15"/>
+      <rect x="4" y="28" width="56" height="8"/>
+      <rect x="4" y="36" width="56" height="4" fill="#CD853F" opacity="0.3"/>
+      <circle cx="12" cy="32" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="24" cy="32" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="36" cy="32" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="48" cy="32" r="2" fill="currentColor" opacity="0.5"/>
+      <text x="4" y="24" font-size="3" fill="currentColor" stroke="none">Simple squamous</text>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Basement membrane</text>
+    </svg>`
+  },
+  {
+    id: 'anat-epithelial-stratified',
+    name: 'Stratified Epithelium',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['epithelium', 'stratified', 'layers', 'keratinized', 'tissue'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="6" fill="currentColor" opacity="0.1"/>
+      <rect x="4" y="14" width="56" height="8" fill="currentColor" opacity="0.15"/>
+      <rect x="4" y="22" width="56" height="10" fill="currentColor" opacity="0.2"/>
+      <rect x="4" y="32" width="56" height="12" fill="currentColor" opacity="0.25"/>
+      <rect x="4" y="44" width="56" height="4" fill="#CD853F" opacity="0.3"/>
+      <path d="M4 8h56M4 14h56M4 22h56M4 32h56M4 44h56M4 48h56"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Stratified squamous</text>
+    </svg>`
+  },
+  {
+    id: 'anat-connective-tissue',
+    name: 'Connective Tissue',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['connective', 'tissue', 'collagen', 'fibroblast', 'matrix'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" fill="currentColor" opacity="0.05"/>
+      <path d="M8 8c16 4 32 4 48 0" stroke="#DAA520" stroke-width="1"/>
+      <path d="M8 20c16 4 32 4 48 0" stroke="#DAA520" stroke-width="1"/>
+      <path d="M8 32c16 4 32 4 48 0" stroke="#DAA520" stroke-width="1"/>
+      <path d="M8 44c16 4 32 4 48 0" stroke="#DAA520" stroke-width="1"/>
+      <path d="M8 56c16 4 32 4 48 0" stroke="#DAA520" stroke-width="1"/>
+      <ellipse cx="20" cy="16" rx="4" ry="2" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="44" cy="28" rx="4" ry="2" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="28" cy="40" rx="4" ry="2" fill="currentColor" opacity="0.3"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Collagen fibers + Fibroblasts</text>
+    </svg>`
+  },
+  {
+    id: 'anat-adipose-tissue',
+    name: 'Adipose Tissue',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['adipose', 'fat', 'adipocytes', 'lipid', 'tissue'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="16" r="10" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="40" cy="16" r="10" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="28" cy="32" r="10" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="52" cy="32" r="8" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="16" cy="48" r="10" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="44" cy="48" r="10" fill="#FFFACD" opacity="0.4"/>
+      <circle cx="16" cy="16" r="10"/>
+      <circle cx="40" cy="16" r="10"/>
+      <circle cx="28" cy="32" r="10"/>
+      <circle cx="52" cy="32" r="8"/>
+      <circle cx="16" cy="48" r="10"/>
+      <circle cx="44" cy="48" r="10"/>
+      <circle cx="16" cy="16" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="40" cy="16" r="2" fill="currentColor" opacity="0.5"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Adipocytes (fat cells)</text>
+    </svg>`
+  },
+  {
+    id: 'anat-cartilage-hyaline',
+    name: 'Hyaline Cartilage',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['cartilage', 'hyaline', 'chondrocytes', 'lacunae', 'matrix'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" fill="#B0E0E6" opacity="0.3"/>
+      <ellipse cx="16" cy="20" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="40" cy="16" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="28" cy="36" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="52" cy="32" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="16" cy="52" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="44" cy="48" rx="4" ry="6" fill="currentColor" opacity="0.3"/>
+      <circle cx="16" cy="20" r="2" fill="currentColor"/>
+      <circle cx="40" cy="16" r="2" fill="currentColor"/>
+      <circle cx="28" cy="36" r="2" fill="currentColor"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Chondrocytes in lacunae</text>
+    </svg>`
+  },
+  {
+    id: 'anat-bone-compact',
+    name: 'Compact Bone Histology',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['bone', 'compact', 'osteon', 'haversian', 'osteocytes'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="24"/>
+      <circle cx="32" cy="32" r="18" fill="currentColor" opacity="0.15"/>
+      <circle cx="32" cy="32" r="18"/>
+      <circle cx="32" cy="32" r="12" fill="currentColor" opacity="0.2"/>
+      <circle cx="32" cy="32" r="12"/>
+      <circle cx="32" cy="32" r="6" fill="currentColor" opacity="0.25"/>
+      <circle cx="32" cy="32" r="6"/>
+      <circle cx="32" cy="32" r="3" fill="#DC143C" opacity="0.4"/>
+      <circle cx="20" cy="32" r="1" fill="currentColor"/>
+      <circle cx="26" cy="32" r="1" fill="currentColor"/>
+      <circle cx="38" cy="32" r="1" fill="currentColor"/>
+      <circle cx="44" cy="32" r="1" fill="currentColor"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Osteon (Haversian system)</text>
+    </svg>`
+  },
+  {
+    id: 'anat-blood-smear',
+    name: 'Blood Smear',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['blood', 'smear', 'RBC', 'WBC', 'platelets', 'cells'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="16" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="28" cy="12" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="44" cy="20" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="20" cy="32" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="48" cy="36" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="12" cy="48" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="36" cy="52" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <ellipse cx="52" cy="48" rx="4" ry="3" fill="#CD5C5C" opacity="0.5"/>
+      <circle cx="36" cy="32" r="6" fill="#E6E6FA" opacity="0.6"/>
+      <circle cx="36" cy="32" r="6"/>
+      <circle cx="36" cy="32" r="3" fill="#9370DB" opacity="0.5"/>
+      <circle cx="56" cy="24" r="1" fill="#DDA0DD"/>
+      <circle cx="8" cy="36" r="1" fill="#DDA0DD"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">RBCs + WBC + Platelets</text>
+    </svg>`
+  },
+  {
+    id: 'anat-smooth-muscle-histo',
+    name: 'Smooth Muscle Histology',
+    domain: 'biology',
+    category: 'histology',
+    tags: ['smooth muscle', 'histology', 'visceral', 'spindle', 'cells'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="16" cy="12" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="40" cy="20" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="20" cy="28" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="44" cy="36" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="16" cy="44" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="40" cy="52" rx="12" ry="4" fill="#DB7093" opacity="0.3"/>
+      <ellipse cx="16" cy="12" rx="12" ry="4"/>
+      <ellipse cx="40" cy="20" rx="12" ry="4"/>
+      <ellipse cx="20" cy="28" rx="12" ry="4"/>
+      <ellipse cx="44" cy="36" rx="12" ry="4"/>
+      <ellipse cx="16" cy="44" rx="12" ry="4"/>
+      <ellipse cx="40" cy="52" rx="12" ry="4"/>
+      <circle cx="16" cy="12" r="2" fill="currentColor"/>
+      <circle cx="40" cy="20" r="2" fill="currentColor"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Spindle-shaped cells</text>
+    </svg>`
+  },
+  // ===========================================================================
+  // EMBRYOLOGY & DEVELOPMENTAL ANATOMY
+  // ===========================================================================
+  {
+    id: 'anat-germ-layers',
+    name: 'Germ Layers',
+    domain: 'biology',
+    category: 'embryology',
+    tags: ['germ layers', 'ectoderm', 'mesoderm', 'endoderm', 'gastrulation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.05"/>
+      <path d="M8 28h48" stroke="#4169E1" stroke-width="3"/>
+      <path d="M8 36h48" stroke="#22C55E" stroke-width="3"/>
+      <path d="M8 44h48" stroke="#FFA500" stroke-width="3"/>
+      <text x="52" y="30" font-size="3" fill="#4169E1" stroke="none">Ecto</text>
+      <text x="52" y="38" font-size="3" fill="#22C55E" stroke="none">Meso</text>
+      <text x="52" y="46" font-size="3" fill="#FFA500" stroke="none">Endo</text>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">Neural, Skin</text>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Muscle, Bone | GI, Lungs</text>
+    </svg>`
+  },
+  {
+    id: 'anat-blastocyst',
+    name: 'Blastocyst',
+    domain: 'biology',
+    category: 'embryology',
+    tags: ['blastocyst', 'embryo', 'inner cell mass', 'trophoblast', 'development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="32" r="24"/>
+      <circle cx="40" cy="24" r="10" fill="currentColor" opacity="0.3"/>
+      <circle cx="40" cy="24" r="10"/>
+      <circle cx="36" cy="22" r="3" fill="currentColor"/>
+      <circle cx="44" cy="22" r="3" fill="currentColor"/>
+      <circle cx="40" cy="28" r="3" fill="currentColor"/>
+      <ellipse cx="32" cy="40" rx="16" ry="6" fill="currentColor" opacity="0.1"/>
+      <text x="4" y="24" font-size="3" fill="currentColor" stroke="none">Trophoblast</text>
+      <text x="46" y="18" font-size="3" fill="currentColor" stroke="none">ICM</text>
+      <text x="26" y="52" font-size="3" fill="currentColor" stroke="none">Blastocoel</text>
+    </svg>`
+  },
+  {
+    id: 'anat-neural-tube',
+    name: 'Neural Tube Formation',
+    domain: 'biology',
+    category: 'embryology',
+    tags: ['neural tube', 'neurulation', 'neural fold', 'somite', 'development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 40c0 0 8-24 24-24s24 24 24 24" fill="currentColor" opacity="0.15"/>
+      <path d="M8 40c0 0 8-24 24-24s24 24 24 24"/>
+      <path d="M20 32c0 0 4-12 12-12s12 12 12 12" fill="#87CEEB" opacity="0.3"/>
+      <path d="M20 32c0 0 4-12 12-12s12 12 12 12"/>
+      <circle cx="32" cy="24" r="4" fill="currentColor" opacity="0.2"/>
+      <path d="M8 44h48" stroke-width="2"/>
+      <rect x="12" cy="48" width="6" height="4" fill="currentColor" opacity="0.2"/>
+      <rect x="22" cy="48" width="6" height="4" fill="currentColor" opacity="0.2"/>
+      <rect x="32" cy="48" width="6" height="4" fill="currentColor" opacity="0.2"/>
+      <rect x="42" cy="48" width="6" height="4" fill="currentColor" opacity="0.2"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Neural folds → Neural tube | Somites</text>
+    </svg>`
+  },
+  {
+    id: 'anat-pharyngeal-arches',
+    name: 'Pharyngeal Arches',
+    domain: 'biology',
+    category: 'embryology',
+    tags: ['pharyngeal', 'branchial', 'arches', 'embryo', 'head development'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="24" rx="16" ry="16" fill="currentColor" opacity="0.15"/>
+      <ellipse cx="24" cy="24" rx="16" ry="16"/>
+      <path d="M40 20c4 0 8 4 8 8s-4 8-4 12" fill="currentColor" opacity="0.2" stroke-width="2"/>
+      <path d="M44 24c4 0 8 4 8 8s-4 8-4 12" fill="currentColor" opacity="0.15" stroke-width="2"/>
+      <path d="M48 28c4 0 8 4 8 8s-4 8-4 12" fill="currentColor" opacity="0.1" stroke-width="2"/>
+      <path d="M40 20c4 0 8 4 8 8s-4 8-4 12"/>
+      <path d="M44 24c4 0 8 4 8 8s-4 8-4 12"/>
+      <path d="M48 28c4 0 8 4 8 8s-4 8-4 12"/>
+      <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Arches 1-4 → Face, neck structures</text>
+    </svg>`
+  },
+  {
+    id: 'anat-heart-development',
+    name: 'Heart Development',
+    domain: 'biology',
+    category: 'embryology',
+    tags: ['heart', 'cardiac', 'development', 'looping', 'septation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0 0 4-16 12-16s12 8 12 16" fill="#DC143C" opacity="0.2"/>
+      <path d="M8 32c0 0 4-16 12-16s12 8 12 16"/>
+      <path d="M20 44c0 4 4 8 8 8s8-4 8-8" fill="#DC143C" opacity="0.2"/>
+      <path d="M20 44c0 4 4 8 8 8s8-4 8-8"/>
+      <path d="M8 32c0 8 4 12 12 12"/>
+      <path d="M32 32c0 8-4 12-12 12"/>
+      <path d="M44 20h12l4 12-4 12h-12" fill="#DC143C" opacity="0.15"/>
+      <path d="M44 20h12l4 12-4 12h-12"/>
+      <path d="M48 20v24"/>
+      <text x="4" y="10" font-size="3" fill="currentColor" stroke="none">Tube → Loop</text>
+      <text x="44" y="10" font-size="3" fill="currentColor" stroke="none">4 chambers</text>
+    </svg>`
+  },
+  // ===========================================================================
+  // REGIONAL ANATOMY - HEAD AND NECK
+  // ===========================================================================
+  {
+    id: 'anat-cranial-fossae',
+    name: 'Cranial Fossae',
+    domain: 'biology',
+    category: 'regional-head',
+    tags: ['cranial', 'fossae', 'anterior', 'middle', 'posterior', 'skull base'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="28" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="28" ry="24"/>
+      <path d="M4 24h56" stroke-dasharray="2 2"/>
+      <path d="M4 40h56" stroke-dasharray="2 2"/>
+      <ellipse cx="32" cy="16" rx="12" ry="6" fill="#87CEEB" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="20" ry="8" fill="#98FB98" opacity="0.3"/>
+      <ellipse cx="32" cy="48" rx="16" ry="8" fill="#DDA0DD" opacity="0.3"/>
+      <text x="26" y="18" font-size="3" fill="currentColor" stroke="none">Anterior</text>
+      <text x="28" y="34" font-size="3" fill="currentColor" stroke="none">Middle</text>
+      <text x="26" y="50" font-size="3" fill="currentColor" stroke="none">Posterior</text>
+    </svg>`
+  },
+  {
+    id: 'anat-facial-muscles',
+    name: 'Facial Muscles',
+    domain: 'biology',
+    category: 'regional-head',
+    tags: ['facial', 'muscles', 'expression', 'orbicularis', 'frontalis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="20" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="28" rx="20" ry="24"/>
+      <path d="M16 12h32" stroke="#CD5C5C" stroke-width="2"/>
+      <ellipse cx="24" cy="24" rx="4" ry="3" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="40" cy="24" rx="4" ry="3" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="32" cy="40" rx="8" ry="4" fill="#CD5C5C" opacity="0.3"/>
+      <path d="M20 32c4 4 20 4 24 0" stroke="#CD5C5C"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Frontalis, Orbicularis, Zygomaticus</text>
+    </svg>`
+  },
+  {
+    id: 'anat-neck-triangles',
+    name: 'Neck Triangles',
+    domain: 'biology',
+    category: 'regional-head',
+    tags: ['neck', 'triangles', 'anterior', 'posterior', 'sternocleidomastoid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="currentColor" opacity="0.05"/>
+      <path d="M32 8l-24 48h24z" fill="#87CEEB" opacity="0.3"/>
+      <path d="M32 8l24 48h-24z" fill="#98FB98" opacity="0.3"/>
+      <path d="M8 56l24-48 24 48"/>
+      <path d="M32 8v48"/>
+      <circle cx="24" cy="32" r="2" fill="currentColor"/>
+      <circle cx="40" cy="32" r="2" fill="currentColor"/>
+      <text x="12" y="44" font-size="3" fill="currentColor" stroke="none">Ant</text>
+      <text x="44" y="44" font-size="3" fill="currentColor" stroke="none">Post</text>
+      <text x="20" y="62" font-size="3" fill="currentColor" stroke="none">SCM divides triangles</text>
+    </svg>`
+  },
+  {
+    id: 'anat-orbit-anatomy',
+    name: 'Orbit Anatomy',
+    domain: 'biology',
+    category: 'regional-head',
+    tags: ['orbit', 'eye socket', 'extraocular', 'muscles', 'nerves'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0-16 12-24 24-24s24 8 24 24-12 24-24 24-24-8-24-24z" fill="currentColor" opacity="0.1"/>
+      <path d="M8 32c0-16 12-24 24-24s24 8 24 24-12 24-24 24-24-8-24-24z"/>
+      <circle cx="32" cy="32" r="12" fill="#87CEEB" opacity="0.3"/>
+      <circle cx="32" cy="32" r="12"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+      <path d="M32 8v12M32 44v12M8 32h12M44 32h12"/>
+      <path d="M16 16l8 8M48 16l-8 8M16 48l8-8M48 48l-8-8"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Globe + Extraocular muscles</text>
+    </svg>`
+  },
+  // ===========================================================================
+  // REGIONAL ANATOMY - THORAX AND ABDOMEN
+  // ===========================================================================
+  {
+    id: 'anat-mediastinum',
+    name: 'Mediastinum',
+    domain: 'biology',
+    category: 'regional-thorax',
+    tags: ['mediastinum', 'superior', 'inferior', 'thorax', 'compartments'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="currentColor" opacity="0.05"/>
+      <rect x="8" y="8" width="48" height="48"/>
+      <path d="M8 24h48" stroke-dasharray="2 2"/>
+      <rect x="20" y="8" width="24" height="16" fill="#87CEEB" opacity="0.3"/>
+      <rect x="16" y="24" width="12" height="32" fill="#98FB98" opacity="0.3"/>
+      <rect x="28" y="24" width="8" height="32" fill="#DDA0DD" opacity="0.3"/>
+      <rect x="36" y="24" width="12" height="32" fill="#FFB6C1" opacity="0.3"/>
+      <text x="26" y="18" font-size="3" fill="currentColor" stroke="none">Superior</text>
+      <text x="18" y="42" font-size="3" fill="currentColor" stroke="none">Ant</text>
+      <text x="30" y="42" font-size="3" fill="currentColor" stroke="none">Mid</text>
+      <text x="38" y="42" font-size="3" fill="currentColor" stroke="none">Post</text>
+    </svg>`
+  },
+  {
+    id: 'anat-abdominal-regions',
+    name: 'Abdominal Regions',
+    domain: 'biology',
+    category: 'regional-abdomen',
+    tags: ['abdomen', 'regions', 'nine', 'quadrants', 'surface anatomy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48"/>
+      <path d="M24 8v48M40 8v48M8 24h48M8 40h48"/>
+      <text x="12" y="18" font-size="3" fill="currentColor" stroke="none">RH</text>
+      <text x="30" y="18" font-size="3" fill="currentColor" stroke="none">Epi</text>
+      <text x="44" y="18" font-size="3" fill="currentColor" stroke="none">LH</text>
+      <text x="12" y="34" font-size="3" fill="currentColor" stroke="none">RL</text>
+      <text x="28" y="34" font-size="3" fill="currentColor" stroke="none">Umb</text>
+      <text x="44" y="34" font-size="3" fill="currentColor" stroke="none">LL</text>
+      <text x="12" y="50" font-size="3" fill="currentColor" stroke="none">RI</text>
+      <text x="28" y="50" font-size="3" fill="currentColor" stroke="none">Hyp</text>
+      <text x="44" y="50" font-size="3" fill="currentColor" stroke="none">LI</text>
+    </svg>`
+  },
+  {
+    id: 'anat-retroperitoneum',
+    name: 'Retroperitoneum',
+    domain: 'biology',
+    category: 'regional-abdomen',
+    tags: ['retroperitoneum', 'kidneys', 'adrenals', 'aorta', 'IVC'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="currentColor" opacity="0.05"/>
+      <path d="M8 20h48"/>
+      <ellipse cx="20" cy="32" rx="6" ry="10" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="44" cy="32" rx="6" ry="10" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="20" cy="32" rx="6" ry="10"/>
+      <ellipse cx="44" cy="32" rx="6" ry="10"/>
+      <ellipse cx="20" cy="20" rx="4" ry="2" fill="#F0E68C" opacity="0.4"/>
+      <ellipse cx="44" cy="20" rx="4" ry="2" fill="#F0E68C" opacity="0.4"/>
+      <path d="M32 8v48" stroke="#DC143C" stroke-width="2"/>
+      <path d="M36 8v48" stroke="#4169E1" stroke-width="2"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Kidneys, Adrenals, Great vessels</text>
+    </svg>`
+  },
+  // ===========================================================================
+  // REGIONAL ANATOMY - LIMBS
+  // ===========================================================================
+  {
+    id: 'anat-brachial-plexus',
+    name: 'Brachial Plexus',
+    domain: 'biology',
+    category: 'regional-limbs',
+    tags: ['brachial plexus', 'C5-T1', 'roots', 'trunks', 'cords', 'nerves'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 8h8M8 16h8M8 24h8M8 32h8M8 40h8" stroke="#FFD700" stroke-width="2"/>
+      <path d="M16 8l8 8M16 16l8 0M16 24l8-8"/>
+      <path d="M16 32l8-8M16 40l8-8"/>
+      <circle cx="24" cy="16" r="3" fill="currentColor" opacity="0.2"/>
+      <circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.2"/>
+      <circle cx="24" cy="32" r="3" fill="currentColor" opacity="0.2"/>
+      <path d="M27 16l8 8M27 24l8 8M27 32l8 0"/>
+      <circle cx="38" cy="24" r="4" fill="currentColor" opacity="0.15"/>
+      <circle cx="38" cy="32" r="4" fill="currentColor" opacity="0.15"/>
+      <circle cx="38" cy="40" r="4" fill="currentColor" opacity="0.15"/>
+      <path d="M42 24l12 0M42 32l12 0M42 40l12 0"/>
+      <text x="4" y="8" font-size="3" fill="currentColor" stroke="none">C5</text>
+      <text x="4" y="44" font-size="3" fill="currentColor" stroke="none">T1</text>
+      <text x="48" y="62" font-size="3" fill="currentColor" stroke="none">Nerves</text>
+    </svg>`
+  },
+  {
+    id: 'anat-arm-compartments',
+    name: 'Arm Compartments',
+    domain: 'biology',
+    category: 'regional-limbs',
+    tags: ['arm', 'compartments', 'anterior', 'posterior', 'muscles'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="20" ry="24"/>
+      <path d="M12 32h40"/>
+      <ellipse cx="32" cy="20" rx="12" ry="8" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="32" cy="44" rx="12" ry="8" fill="#BC8F8F" opacity="0.3"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.2"/>
+      <circle cx="24" cy="32" r="2" fill="#DC143C" opacity="0.5"/>
+      <circle cx="40" cy="32" r="2" fill="#4169E1" opacity="0.5"/>
+      <text x="26" y="22" font-size="3" fill="currentColor" stroke="none">Flexors</text>
+      <text x="24" y="46" font-size="3" fill="currentColor" stroke="none">Extensors</text>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Humerus + vessels</text>
+    </svg>`
+  },
+  {
+    id: 'anat-leg-compartments',
+    name: 'Leg Compartments',
+    domain: 'biology',
+    category: 'regional-limbs',
+    tags: ['leg', 'compartments', 'anterior', 'lateral', 'posterior', 'muscles'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <path d="M32 12v40"/>
+      <path d="M16 24l32 16"/>
+      <ellipse cx="24" cy="20" rx="8" ry="6" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="44" cy="24" rx="6" ry="8" fill="#BC8F8F" opacity="0.3"/>
+      <ellipse cx="32" cy="44" rx="12" ry="6" fill="#DB7093" opacity="0.3"/>
+      <circle cx="32" cy="32" r="3" fill="currentColor" opacity="0.2"/>
+      <circle cx="40" cy="32" r="2" fill="currentColor" opacity="0.15"/>
+      <text x="18" y="20" font-size="3" fill="currentColor" stroke="none">Ant</text>
+      <text x="42" y="26" font-size="3" fill="currentColor" stroke="none">Lat</text>
+      <text x="26" y="46" font-size="3" fill="currentColor" stroke="none">Post</text>
+    </svg>`
+  },
+  {
+    id: 'anat-carpal-tunnel',
+    name: 'Carpal Tunnel',
+    domain: 'biology',
+    category: 'regional-limbs',
+    tags: ['carpal tunnel', 'wrist', 'median nerve', 'flexor tendons'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c0-8 8-16 24-16s24 8 24 16" fill="currentColor" opacity="0.15"/>
+      <path d="M8 32c0-8 8-16 24-16s24 8 24 16"/>
+      <path d="M8 32h48" stroke-width="2"/>
+      <ellipse cx="20" cy="28" rx="3" ry="4" fill="#F5DEB3" opacity="0.4"/>
+      <ellipse cx="28" cy="26" rx="3" ry="4" fill="#F5DEB3" opacity="0.4"/>
+      <ellipse cx="36" cy="26" rx="3" ry="4" fill="#F5DEB3" opacity="0.4"/>
+      <ellipse cx="44" cy="28" rx="3" ry="4" fill="#F5DEB3" opacity="0.4"/>
+      <circle cx="32" cy="24" r="4" fill="#FFD700" opacity="0.4"/>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Flexor retinaculum</text>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">Tendons + Median n.</text>
+    </svg>`
+  },
+  // ===========================================================================
+  // SURFACE ANATOMY & LANDMARKS
+  // ===========================================================================
+  {
+    id: 'anat-surface-heart',
+    name: 'Surface Anatomy Heart',
+    domain: 'biology',
+    category: 'surface-anatomy',
+    tags: ['surface', 'heart', 'landmarks', 'apex', 'borders', 'auscultation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="currentColor" opacity="0.05"/>
+      <path d="M16 20c8-4 24-4 32 0" stroke-dasharray="2 2"/>
+      <path d="M20 16l8 32"/>
+      <path d="M40 16l-4 32"/>
+      <circle cx="28" cy="20" r="3" fill="#DC143C" opacity="0.4"/>
+      <circle cx="36" cy="20" r="3" fill="#DC143C" opacity="0.4"/>
+      <circle cx="20" cy="28" r="3" fill="#DC143C" opacity="0.4"/>
+      <circle cx="28" cy="44" r="3" fill="#DC143C" opacity="0.4"/>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">A P</text>
+      <text x="4" y="32" font-size="3" fill="currentColor" stroke="none">T</text>
+      <text x="32" y="48" font-size="3" fill="currentColor" stroke="none">M</text>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">APTM auscultation points</text>
+    </svg>`
+  },
+  {
+    id: 'anat-dermatomes',
+    name: 'Dermatomes',
+    domain: 'biology',
+    category: 'surface-anatomy',
+    tags: ['dermatomes', 'sensory', 'spinal', 'levels', 'distribution'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="8" ry="8" fill="currentColor" opacity="0.1"/>
+      <rect x="24" y="20" width="16" height="20" fill="currentColor" opacity="0.1"/>
+      <path d="M24 40l-8 20M40 40l8 20"/>
+      <path d="M20 28l-12 8M44 28l12 8"/>
+      <path d="M8 28h12" stroke="#87CEEB" stroke-width="2"/>
+      <path d="M8 32h12" stroke="#98FB98" stroke-width="2"/>
+      <path d="M8 36h12" stroke="#DDA0DD" stroke-width="2"/>
+      <path d="M12 44h8" stroke="#FFB6C1" stroke-width="2"/>
+      <path d="M12 52h8" stroke="#FFD700" stroke-width="2"/>
+      <text x="44" y="30" font-size="3" fill="currentColor" stroke="none">C5-T1</text>
+      <text x="44" y="42" font-size="3" fill="currentColor" stroke="none">T2-12</text>
+      <text x="44" y="56" font-size="3" fill="currentColor" stroke="none">L1-S5</text>
+    </svg>`
+  },
+  {
+    id: 'anat-myotomes',
+    name: 'Myotomes',
+    domain: 'biology',
+    category: 'surface-anatomy',
+    tags: ['myotomes', 'motor', 'spinal', 'levels', 'testing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="8" ry="8" fill="currentColor" opacity="0.1"/>
+      <rect x="24" y="20" width="16" height="20" fill="currentColor" opacity="0.1"/>
+      <path d="M24 40l-8 20M40 40l8 20"/>
+      <path d="M20 28l-12 8M44 28l12 8"/>
+      <ellipse cx="12" cy="32" rx="4" ry="6" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="52" cy="32" rx="4" ry="6" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="20" cy="52" rx="4" ry="8" fill="#CD5C5C" opacity="0.3"/>
+      <ellipse cx="44" cy="52" rx="4" ry="8" fill="#CD5C5C" opacity="0.3"/>
+      <text x="4" y="24" font-size="3" fill="currentColor" stroke="none">C5 shoulder</text>
+      <text x="4" y="40" font-size="3" fill="currentColor" stroke="none">C6 elbow</text>
+      <text x="4" y="56" font-size="3" fill="currentColor" stroke="none">L3 knee ext</text>
+    </svg>`
   }
 ];
 

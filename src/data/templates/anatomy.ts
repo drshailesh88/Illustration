@@ -705,6 +705,112 @@ export const embryonicDevelopment: DiagramTemplate = {
 };
 
 // =============================================================================
+// HISTOLOGY TEMPLATES
+// =============================================================================
+
+export const tissueTypesOverview: DiagramTemplate = {
+  id: 'anat-tissue-types-overview',
+  name: 'Tissue Types Overview',
+  description: 'Classification and comparison of the four basic tissue types',
+  domain: 'biology',
+  promptTemplate: `Create a tissue types overview diagram:
+- Epithelial tissue types: {{epithelial}}
+- Connective tissue types: {{connective}}
+- Muscle tissue types: {{muscle}}
+- Nervous tissue: {{nervous}}
+- Key characteristics: {{characteristics}}
+- Clinical examples: {{clinicalExamples}}
+{{#additionalNotes}}Histological features: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['epithelial', 'connective', 'muscle', 'nervous', 'characteristics', 'clinicalExamples', 'additionalNotes'],
+  mermaidExample: `flowchart TB
+    T["Four Basic Tissue Types"] --> E["Epithelial"]
+    T --> C["Connective"]
+    T --> M["Muscle"]
+    T --> N["Nervous"]
+    E --> E1["Simple\\nStratified\\nPseudostratified"]
+    C --> C1["Loose\\nDense\\nSpecialized"]
+    M --> M1["Skeletal\\nCardiac\\nSmooth"]
+    N --> N1["Neurons\\nGlia"]
+    style E fill:#FFB6C1
+    style C fill:#F5DEB3
+    style M fill:#CD5C5C
+    style N fill:#FFD700`
+};
+
+export const crossSectionalAnatomy: DiagramTemplate = {
+  id: 'anat-cross-sectional',
+  name: 'Cross-Sectional Anatomy',
+  description: 'Template for axial cross-sections at various anatomical levels',
+  domain: 'biology',
+  promptTemplate: `Create a cross-sectional anatomy diagram:
+- Anatomical level: {{level}}
+- Anterior structures: {{anterior}}
+- Posterior structures: {{posterior}}
+- Lateral structures: {{lateral}}
+- Vascular structures: {{vascular}}
+- Nerve structures: {{nerves}}
+- Fascial planes: {{fascia}}
+{{#additionalNotes}}CT/MRI correlation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['level', 'anterior', 'posterior', 'lateral', 'vascular', 'nerves', 'fascia', 'additionalNotes'],
+  mermaidExample: `flowchart TB
+    subgraph Cross["Cross Section at L3"]
+        ANT["Anterior"]
+        subgraph Core["Central Structures"]
+            AO["Aorta"]
+            IVC["IVC"]
+            VB["Vertebral Body"]
+        end
+        POST["Posterior"]
+        LAT1["Left"] --- Core --- LAT2["Right"]
+        ANT --- Core --- POST
+    end
+    subgraph Legend["Structures"]
+        AB["Abdominal muscles"]
+        KID["Kidneys"]
+        PS["Psoas"]
+        QL["Quadratus Lumborum"]
+    end
+    style AO fill:#DC143C
+    style IVC fill:#4169E1
+    style VB fill:#F5F5DC`
+};
+
+export const clinicalAnatomyCorrelation: DiagramTemplate = {
+  id: 'anat-clinical-correlation',
+  name: 'Clinical Anatomy Correlation',
+  description: 'Template linking anatomical structures to clinical presentations',
+  domain: 'biology',
+  promptTemplate: `Create a clinical anatomy correlation diagram:
+- Anatomical structure: {{structure}}
+- Normal function: {{normalFunction}}
+- Clinical condition: {{condition}}
+- Signs and symptoms: {{signsSymptoms}}
+- Physical exam findings: {{examFindings}}
+- Imaging correlation: {{imaging}}
+{{#additionalNotes}}Treatment implications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['structure', 'normalFunction', 'condition', 'signsSymptoms', 'examFindings', 'imaging', 'additionalNotes'],
+  mermaidExample: `flowchart TB
+    subgraph Anatomy["Normal Anatomy"]
+        S["Structure:\\nMedian Nerve"]
+        F["Function:\\nThenar muscles\\nSensation digits 1-3"]
+    end
+    subgraph Pathology["Clinical Condition"]
+        C["Carpal Tunnel Syndrome"]
+        CAUSE["Causes:\\nRepetitive strain\\nPregnancy\\nDiabetes"]
+    end
+    subgraph Clinical["Clinical Presentation"]
+        SX["Symptoms:\\nNumbness\\nTingling\\nWeakness"]
+        PE["Exam:\\nTinel sign\\nPhalen test\\nThenar atrophy"]
+    end
+    S --> C
+    CAUSE --> C
+    C --> SX
+    C --> PE
+    style C fill:#FFC107
+    style SX fill:#FF6B6B`
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -743,6 +849,12 @@ export const anatomyTemplates: DiagramTemplate[] = [
   skinStructure,
   // Developmental Anatomy
   embryonicDevelopment,
+  // Histology
+  tissueTypesOverview,
+  // Cross-Sectional Anatomy
+  crossSectionalAnatomy,
+  // Clinical Anatomy
+  clinicalAnatomyCorrelation,
 ];
 
 export default anatomyTemplates;
