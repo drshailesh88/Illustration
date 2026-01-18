@@ -372,6 +372,8 @@ export const FEW_SHOT_EXAMPLES: Partial<Record<DiagramType, FewShotExample[]>> =
 export interface FewShotExample {
   prompt: string;
   output: string;
+  /** Optional explanation of why this output is appropriate */
+  reasoning?: string;
 }
 
 // =============================================================================

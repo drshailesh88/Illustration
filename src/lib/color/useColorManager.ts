@@ -24,12 +24,6 @@ import {
   toHex,
   parseColor,
   toCSSColor,
-  fromRGB,
-  fromHSL,
-  fromLAB,
-  fromLCH,
-  fromOKLCH,
-  fromCMYK,
   // Contrast and accessibility
   checkContrast,
   checkWCAGCompliance,
@@ -61,7 +55,6 @@ import {
   invert,
   // Color comparison
   deltaE,
-  getColorDifference,
   areColorsSimilar,
   // Gamut handling
   isInGamut,

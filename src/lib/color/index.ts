@@ -673,9 +673,9 @@ export function toOKLCH(color: string): OKLCHColor {
   const oklch = c.to('oklch');
   const coords = oklch.coords;
   return {
-    l: coords[0],
-    c: coords[1],
-    h: coords[2] || 0,
+    l: coords[0] ?? 0,
+    c: coords[1] ?? 0,
+    h: coords[2] ?? 0,
     alpha: oklch.alpha,
   };
 }
@@ -705,9 +705,9 @@ export function toP3(color: string): P3Color {
   const p3 = c.to('p3');
   const coords = p3.coords;
   return {
-    r: coords[0],
-    g: coords[1],
-    b: coords[2],
+    r: coords[0] ?? 0,
+    g: coords[1] ?? 0,
+    b: coords[2] ?? 0,
     alpha: p3.alpha,
   };
 }
