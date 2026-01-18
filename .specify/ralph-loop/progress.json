@@ -521,6 +521,60 @@
           "therapy-modalities": 1
         }
       }
+    },
+    "physiology": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 93,
+          "target": 90,
+          "percentage": 103
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "cardiac-physiology": 10,
+          "respiratory-physiology": 8,
+          "renal-physiology": 7,
+          "neurophysiology": 8,
+          "muscle-physiology": 6,
+          "endocrine-physiology": 6,
+          "gi-physiology": 5,
+          "metabolism": 6,
+          "fluid-balance": 5,
+          "acid-base": 5,
+          "thermoregulation": 6,
+          "cell-physiology": 5,
+          "general-physiology": 6
+        },
+        "templates": {
+          "cardiovascular-physiology": 3,
+          "respiratory-physiology": 4,
+          "renal-physiology": 3,
+          "neurophysiology": 2,
+          "muscle-physiology": 3,
+          "endocrine-physiology": 3,
+          "gi-physiology": 2,
+          "metabolism": 2,
+          "acid-base": 2,
+          "thermoregulation": 1
+        }
+      }
     }
   },
   "globalStats": {
