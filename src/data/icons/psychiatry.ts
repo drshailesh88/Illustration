@@ -2,15 +2,22 @@
  * Psychiatry Icon Library
  * Comprehensive SVG icons for psychiatry and mental health
  *
+ * COMPLETE CHECKPOINT: 98 icons (target: 90+)
+ *
  * Categories:
- * - Brain/Neurotransmitters (10): brain regions, neurotransmitters, synapse, receptor
- * - Mood Disorders (10): depression, mania, bipolar, seasonal, suicidal ideation
- * - Anxiety Disorders (8): anxiety, panic, phobia, OCD, PTSD
- * - Psychotic Disorders (8): hallucinations, delusions, disorganized thought, negative symptoms
- * - Substance Use (8): addiction cycle, withdrawal, tolerance, substances
- * - Therapy/Treatment (10): psychotherapy, medications, ECT, TMS
- * - Assessment (8): mental status exam, screening tools, safety assessment
- * - Other (3): sleep disorders, eating disorders, personality clusters
+ * - Brain/Neurotransmitters (10): prefrontal cortex, limbic system, serotonin, dopamine, norepinephrine, GABA, glutamate, synapse, receptor, brain overview
+ * - Mood Disorders (10): flat affect, crying, elevated mood, bipolar cycle, rapid cycling, seasonal, suicidal warning, hopelessness, anhedonia, mood spectrum
+ * - Anxiety Disorders (8): anxiety cloud, panic attack, phobia, OCD intrusive, OCD compulsion, PTSD, hypervigilance, avoidance
+ * - Psychotic Disorders (8): auditory/visual hallucinations, delusion, disorganized thought, negative symptoms, catatonia, paranoia, reality testing
+ * - Substance Use (8): addiction cycle, withdrawal, tolerance, intoxication, alcohol, opioids, stimulants, cannabis
+ * - Therapy/Treatment (18): psychotherapy, CBT, DBT, antidepressant, antipsychotic, mood stabilizer, ECT, TMS, medication, therapeutic alliance, group therapy, family therapy, EMDR, mindfulness, exposure therapy, motivational interviewing, benzodiazepine, stimulant med, ketamine
+ * - Assessment (8): MSE appearance, MSE behavior, PHQ-9, GAD-7, MMSE, safety assessment, risk factors, interview
+ * - Neurodevelopmental (5): ADHD brain, attention deficit, hyperactivity, autism spectrum, executive function
+ * - Crisis & Emergency (4): crisis intervention, psych hold, de-escalation, restraint
+ * - Child & Adolescent (4): child development, play therapy, school refusal, separation anxiety
+ * - Cognitive & Dementia (3): cognitive decline, delirium, memory loss
+ * - Forensic & Legal (3): competency evaluation, insanity defense, malingering
+ * - Other (9): sleep disorders, eating disorders, personality clusters, dissociation, somatization, psychomotor agitation, psychomotor retardation, anosognosia
  */
 
 import type { IconDefinition } from './index';
