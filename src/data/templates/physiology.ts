@@ -865,6 +865,155 @@ export const temperatureRegulation: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL PHYSIOLOGY TEMPLATES
+// =============================================================================
+
+/**
+ * Autonomic Nervous System template
+ */
+export const physiologyAutonomicNS: DiagramTemplate = {
+  id: 'physio-autonomic-ns',
+  name: 'Autonomic Nervous System',
+  description: 'Sympathetic and parasympathetic divisions with target organs',
+  domain: 'biology',
+  promptTemplate: `Create an autonomic nervous system diagram showing:
+- Central control: {{centralControl}}
+- Sympathetic division: {{sympatheticDivision}}
+- Parasympathetic division: {{parasympatheticDivision}}
+- Neurotransmitters: {{neurotransmitters}}
+- Target organs: {{targetOrgans}}
+- Physiological effects: {{effects}}
+{{#additionalNotes}}Clinical applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'centralControl',
+    'sympatheticDivision',
+    'parasympatheticDivision',
+    'neurotransmitters',
+    'targetOrgans',
+    'effects',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Hypothalamus"] --> B["Brainstem"]
+    B --> C["Sympathetic"]
+    B --> D["Parasympathetic"]
+    C --> E["Fight or Flight\\nNE, Epi"]
+    D --> F["Rest and Digest\\nACh"]
+    E --> G["↑HR, ↑BP, ↑Glucose"]
+    F --> H["↓HR, ↑Digestion"]
+    style C fill:#DC143C,color:#fff
+    style D fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Reflex Arc template
+ */
+export const reflexArc: DiagramTemplate = {
+  id: 'physio-reflex-arc',
+  name: 'Reflex Arc',
+  description: 'Components of somatic and autonomic reflex pathways',
+  domain: 'biology',
+  promptTemplate: `Create a reflex arc diagram showing:
+- Sensory receptor: {{sensoryReceptor}}
+- Afferent neuron: {{afferentNeuron}}
+- Integration center: {{integrationCenter}}
+- Efferent neuron: {{efferentNeuron}}
+- Effector: {{effector}}
+- Example reflex: {{exampleReflex}}
+{{#additionalNotes}}Clinical testing: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sensoryReceptor',
+    'afferentNeuron',
+    'integrationCenter',
+    'efferentNeuron',
+    'effector',
+    'exampleReflex',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Stimulus"] --> B["Receptor"]
+    B --> C["Sensory Neuron"]
+    C --> D["Integration\\n(Spinal Cord)"]
+    D --> E["Motor Neuron"]
+    E --> F["Effector\\n(Muscle)"]
+    F --> G["Response"]
+    style D fill:#9370DB,color:#fff`,
+};
+
+/**
+ * Sodium-Potassium Pump template
+ */
+export const sodiumPotassiumPump: DiagramTemplate = {
+  id: 'physio-na-k-pump',
+  name: 'Sodium-Potassium ATPase',
+  description: 'Na+/K+-ATPase pump mechanism and cellular importance',
+  domain: 'biology',
+  promptTemplate: `Create a Na+/K+-ATPase pump diagram showing:
+- Pump structure: {{pumpStructure}}
+- ATP binding site: {{atpBinding}}
+- Ion binding sites: {{ionBinding}}
+- Transport stoichiometry: {{stoichiometry}}
+- Conformational changes: {{conformationalChanges}}
+- Physiological importance: {{importance}}
+{{#additionalNotes}}Drug effects: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'pumpStructure',
+    'atpBinding',
+    'ionBinding',
+    'stoichiometry',
+    'conformationalChanges',
+    'importance',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Cycle["Na+/K+-ATPase Cycle"]
+        A["3 Na⁺ bind inside"] --> B["ATP→ADP+Pi"]
+        B --> C["Conformational change"]
+        C --> D["3 Na⁺ released outside"]
+        D --> E["2 K⁺ bind outside"]
+        E --> F["Pi released"]
+        F --> G["2 K⁺ released inside"]
+        G --> A
+    end
+    style B fill:#FFD700,color:#000`,
+};
+
+/**
+ * Oxygen Cascade template
+ */
+export const oxygenCascade: DiagramTemplate = {
+  id: 'physio-oxygen-cascade',
+  name: 'Oxygen Cascade',
+  description: 'Stepwise decrease in PO2 from atmosphere to mitochondria',
+  domain: 'biology',
+  promptTemplate: `Create an oxygen cascade diagram showing:
+- Atmospheric PO2: {{atmosphericPO2}}
+- Alveolar PO2: {{alveolarPO2}}
+- Arterial PO2: {{arterialPO2}}
+- Capillary PO2: {{capillaryPO2}}
+- Tissue PO2: {{tissuePO2}}
+- Mitochondrial PO2: {{mitochondrialPO2}}
+{{#additionalNotes}}Pathological changes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'atmosphericPO2',
+    'alveolarPO2',
+    'arterialPO2',
+    'capillaryPO2',
+    'tissuePO2',
+    'mitochondrialPO2',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Atmosphere\\n160 mmHg"] --> B["Alveoli\\n100 mmHg"]
+    B --> C["Arterial Blood\\n95 mmHg"]
+    C --> D["Capillaries\\n40-95 mmHg"]
+    D --> E["Tissues\\n20-40 mmHg"]
+    E --> F["Mitochondria\\n1-5 mmHg"]
+    style A fill:#87CEEB,color:#000
+    style F fill:#DC143C,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -880,6 +1029,7 @@ export const physiologyTemplates: DiagramTemplate[] = [
   oxygenDissociationCurve,
   vqMatching,
   spirometryTemplate,
+  oxygenCascade,
   // Renal
   nephronFunction,
   raasSystem,
@@ -887,6 +1037,8 @@ export const physiologyTemplates: DiagramTemplate[] = [
   // Neurophysiology
   actionPotential,
   synapticTransmission,
+  reflexArc,
+  physiologyAutonomicNS,
   // Muscle
   slidingFilamentModel,
   excitationContractionCoupling,
@@ -901,6 +1053,7 @@ export const physiologyTemplates: DiagramTemplate[] = [
   // Fluid/Electrolyte
   bodyFluidCompartments,
   starlingForcesTemplate,
+  sodiumPotassiumPump,
   // Thermoregulation
   temperatureRegulation,
 ];

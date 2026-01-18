@@ -153,6 +153,7 @@ import { agricultureIcons } from './agriculture';
 import { forensicsIcons } from './forensics';
 import { hematologyOncologyIcons } from './hematology-oncology';
 import { dermatologyIcons } from './dermatology';
+import { pharmacologyIcons } from './pharmacology';
 
 // =============================================================================
 // ICON COLLECTIONS
@@ -245,6 +246,7 @@ export const allIcons: IconDefinition[] = [
   ...forensicsIcons,
   ...hematologyOncologyIcons,
   ...dermatologyIcons,
+  ...pharmacologyIcons,
 ];
 
 /**
@@ -265,6 +267,7 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
     ...antihypertensivesIcons, ...antimicrobialsIcons, ...endocrineDrugsIcons,
     ...giDrugsIcons, ...immunologyDrugsIcons, ...neuroDrugsIcons,
     ...oncologyDrugsIcons, ...psychotropicsIcons, ...respiratoryDrugsIcons,
+    ...pharmacologyIcons,
   ],
   biology: [
     ...biologyIcons, ...molecularIcons, ...geneticsIcons, ...ecologyIcons,
@@ -301,7 +304,7 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
     id: 'medicine',
     name: 'Medicine',
     description: 'Medical, clinical, and healthcare icons including cardiology, anesthesiology, ophthalmology, radiology, and pharmacology drug classes',
-    iconCount: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
+    iconCount: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length + pharmacologyIcons.length,
     color: '#ef4444', // Red
   },
   biology: {
@@ -559,7 +562,7 @@ export function getIconStats(): {
   return {
     totalIcons: allIcons.length,
     byDomain: {
-      medicine: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
+      medicine: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length + pharmacologyIcons.length,
       biology: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
       chemistry: chemistryIcons.length + forensicsIcons.length + analyticalIcons.length + biochemistryIcons.length + inorganicIcons.length + medicinalIcons.length + organicIcons.length + physicalIcons.length + polymerIcons.length,
       physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length,
@@ -653,6 +656,7 @@ export { neuroDrugsIcons } from './neuro_drugs';
 export { oncologyDrugsIcons } from './oncology_drugs';
 export { psychotropicsIcons } from './psychotropics';
 export { respiratoryDrugsIcons } from './respiratory_drugs';
+export { pharmacologyIcons } from './pharmacology';
 // Biology subspecialties
 export { molecularIcons } from './molecular';
 export { geneticsIcons } from './genetics';

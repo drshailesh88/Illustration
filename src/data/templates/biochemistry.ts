@@ -493,6 +493,526 @@ export const transcription: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL METABOLIC PATHWAYS
+// =============================================================================
+
+/**
+ * Gluconeogenesis template
+ */
+export const gluconeogenesis: DiagramTemplate = {
+  id: 'biochem-gluconeogenesis',
+  name: 'Gluconeogenesis Pathway',
+  description: 'Glucose synthesis from non-carbohydrate precursors',
+  domain: 'chemistry',
+  promptTemplate: `Create a gluconeogenesis diagram:
+- Precursors: {{precursors}}
+- Bypass enzymes: {{bypassEnzymes}}
+- Pyruvate carboxylase: {{pyruvateCarboxylase}}
+- PEPCK reaction: {{pepckReaction}}
+- Energy cost: {{energyCost}}
+- Regulation: {{regulation}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'precursors',
+    'bypassEnzymes',
+    'pyruvateCarboxylase',
+    'pepckReaction',
+    'energyCost',
+    'regulation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Pyruvate"] -->|"PC (biotin)"| B["OAA"]
+    B -->|"PEPCK"| C["PEP"]
+    C --> D["2-PG"]
+    D --> E["F1,6BP"]
+    E -->|"F1,6BPase"| F["F6P"]
+    F --> G["G6P"]
+    G -->|"G6Pase"| H["Glucose"]
+    style A fill:#ff6b6b
+    style H fill:#4ecdc4`,
+};
+
+/**
+ * Pentose Phosphate Pathway template
+ */
+export const pentosePhosphatePathway: DiagramTemplate = {
+  id: 'biochem-ppp',
+  name: 'Pentose Phosphate Pathway',
+  description: 'NADPH and ribose-5-phosphate production',
+  domain: 'chemistry',
+  promptTemplate: `Create a pentose phosphate pathway diagram:
+- Oxidative phase: {{oxidativePhase}}
+- Non-oxidative phase: {{nonOxidativePhase}}
+- NADPH production: {{nadphProduction}}
+- Ribose-5-P uses: {{riboseUses}}
+- Regulatory enzyme: {{regulatoryEnzyme}}
+- Connection to glycolysis: {{glycolysisConnection}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'oxidativePhase',
+    'nonOxidativePhase',
+    'nadphProduction',
+    'riboseUses',
+    'regulatoryEnzyme',
+    'glycolysisConnection',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["G6P"] -->|"G6P DH"| B["6-PGL"]
+    B -->|"NADPH"| C["6-PG"]
+    C -->|"6-PG DH<br/>NADPH + CO2"| D["Ru5P"]
+    D --> E["R5P (nucleotides)"]
+    D --> F["Xu5P"]
+    F --> G["Glycolytic intermediates"]
+    style D fill:#ffd93d`,
+};
+
+/**
+ * Urea Cycle template
+ */
+export const ureaCycle: DiagramTemplate = {
+  id: 'biochem-urea-cycle',
+  name: 'Urea Cycle',
+  description: 'Nitrogen disposal and ammonia detoxification',
+  domain: 'chemistry',
+  promptTemplate: `Create a urea cycle diagram:
+- Ammonia entry: {{ammoniaEntry}}
+- Cycle intermediates: {{intermediates}}
+- Ornithine regeneration: {{ornithineRegeneration}}
+- Urea production: {{ureaProduction}}
+- Energy cost: {{energyCost}}
+- Regulation: {{regulation}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ammoniaEntry',
+    'intermediates',
+    'ornithineRegeneration',
+    'ureaProduction',
+    'energyCost',
+    'regulation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Ornithine"] -->|"CPS-I + OTC"| B["Citrulline"]
+    B -->|"ASS"| C["Argininosuccinate"]
+    C -->|"ASL"| D["Arginine"]
+    D -->|"Arginase"| E["Urea + Ornithine"]
+    E --> A
+    subgraph Mito["Mitochondria"]
+        A
+        B
+    end
+    style E fill:#4ecdc4`,
+};
+
+/**
+ * Fatty Acid Synthesis template
+ */
+export const fattyAcidSynthesis: DiagramTemplate = {
+  id: 'biochem-fa-synthesis',
+  name: 'Fatty Acid Synthesis',
+  description: 'De novo lipogenesis pathway',
+  domain: 'chemistry',
+  promptTemplate: `Create a fatty acid synthesis diagram:
+- Acetyl-CoA source: {{acetylCoASource}}
+- ACC reaction: {{accReaction}}
+- FAS complex: {{fasComplex}}
+- NADPH requirement: {{nadphRequirement}}
+- Product: {{product}}
+- Regulation: {{regulation}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'acetylCoASource',
+    'accReaction',
+    'fasComplex',
+    'nadphRequirement',
+    'product',
+    'regulation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Acetyl-CoA"] -->|"ACC"| B["Malonyl-CoA"]
+    B --> C["FAS Complex"]
+    C -->|"7 cycles"| D["Palmitate (C16)"]
+    E["NADPH"] --> C
+    subgraph Regulation
+        F["Insulin activates ACC"]
+        G["Glucagon inhibits ACC"]
+    end
+    style D fill:#ffd93d`,
+};
+
+/**
+ * Cholesterol Synthesis template
+ */
+export const cholesterolSynthesis: DiagramTemplate = {
+  id: 'biochem-cholesterol',
+  name: 'Cholesterol Synthesis',
+  description: 'Mevalonate pathway and steroid biosynthesis',
+  domain: 'chemistry',
+  promptTemplate: `Create a cholesterol synthesis diagram:
+- Starting material: {{startingMaterial}}
+- HMG-CoA reductase: {{hmgCoAReductase}}
+- Mevalonate pathway: {{mevalonatePathway}}
+- Squalene synthesis: {{squaleneSynthesis}}
+- Cholesterol uses: {{cholesterolUses}}
+- Statin target: {{statinTarget}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'startingMaterial',
+    'hmgCoAReductase',
+    'mevalonatePathway',
+    'squaleneSynthesis',
+    'cholesterolUses',
+    'statinTarget',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Acetyl-CoA"] --> B["HMG-CoA"]
+    B -->|"HMG-CoA Reductase<br/>(Statin target)"| C["Mevalonate"]
+    C --> D["Isoprene units"]
+    D --> E["Squalene"]
+    E --> F["Cholesterol"]
+    F --> G["Bile acids, Steroids, Membranes"]
+    style B fill:#ff6b6b`,
+};
+
+// =============================================================================
+// PROTEIN SYNTHESIS
+// =============================================================================
+
+/**
+ * Translation template
+ */
+export const translation: DiagramTemplate = {
+  id: 'biochem-translation',
+  name: 'Translation Process',
+  description: 'mRNA to protein synthesis on ribosomes',
+  domain: 'chemistry',
+  promptTemplate: `Create a translation diagram:
+- Initiation: {{initiation}}
+- Elongation steps: {{elongation}}
+- Termination: {{termination}}
+- tRNA function: {{trnaFunction}}
+- Ribosome structure: {{ribosomeStructure}}
+- Energy requirement: {{energyRequirement}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'initiation',
+    'elongation',
+    'termination',
+    'trnaFunction',
+    'ribosomeStructure',
+    'energyRequirement',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["mRNA + 40S subunit"] --> B["Met-tRNA binding"]
+    B --> C["60S joins - 80S"]
+    C --> D["Elongation cycle"]
+    D --> E["AA-tRNA delivery (EF-Tu)"]
+    E --> F["Peptide bond (peptidyl transferase)"]
+    F --> G["Translocation (EF-G)"]
+    G --> D
+    D -->|"Stop codon"| H["Release factors"]
+    H --> I["Polypeptide release"]`,
+};
+
+/**
+ * Post-translational Modifications template
+ */
+export const postTranslationalMod: DiagramTemplate = {
+  id: 'biochem-ptm',
+  name: 'Post-Translational Modifications',
+  description: 'Common protein modifications after translation',
+  domain: 'chemistry',
+  promptTemplate: `Create a PTM diagram:
+- Phosphorylation: {{phosphorylation}}
+- Glycosylation: {{glycosylation}}
+- Ubiquitination: {{ubiquitination}}
+- Acetylation: {{acetylation}}
+- Methylation: {{methylation}}
+- Proteolytic cleavage: {{proteolyticCleavage}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'phosphorylation',
+    'glycosylation',
+    'ubiquitination',
+    'acetylation',
+    'methylation',
+    'proteolyticCleavage',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Nascent Polypeptide"] --> B["Phosphorylation (Ser/Thr/Tyr)"]
+    A --> C["Glycosylation (N/O-linked)"]
+    A --> D["Ubiquitination (Lys)"]
+    A --> E["Acetylation (Lys)"]
+    A --> F["Methylation (Arg/Lys)"]
+    A --> G["Signal peptide cleavage"]
+    style B fill:#ffd93d
+    style D fill:#ff6b6b`,
+};
+
+// =============================================================================
+// CELL SIGNALING (ADDITIONAL)
+// =============================================================================
+
+/**
+ * MAPK Cascade template
+ */
+export const mapkCascade: DiagramTemplate = {
+  id: 'biochem-mapk',
+  name: 'MAPK Signaling Cascade',
+  description: 'Three-tiered kinase cascade for cell proliferation',
+  domain: 'chemistry',
+  promptTemplate: `Create a MAPK cascade diagram:
+- Stimulus: {{stimulus}}
+- MAPKKK level: {{mapkkk}}
+- MAPKK level: {{mapkk}}
+- MAPK level: {{mapk}}
+- Downstream targets: {{downstreamTargets}}
+- Scaffold proteins: {{scaffoldProteins}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'stimulus',
+    'mapkkk',
+    'mapkk',
+    'mapk',
+    'downstreamTargets',
+    'scaffoldProteins',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Growth Factor"] --> B["RTK activation"]
+    B --> C["Ras-GTP"]
+    C --> D["Raf (MAPKKK)"]
+    D --> E["MEK (MAPKK)"]
+    E --> F["ERK (MAPK)"]
+    F --> G["Transcription factors"]
+    G --> H["Cell proliferation genes"]
+    style F fill:#ff6b6b`,
+};
+
+/**
+ * Insulin Signaling template
+ */
+export const insulinSignaling: DiagramTemplate = {
+  id: 'biochem-insulin',
+  name: 'Insulin Signaling Pathway',
+  description: 'Metabolic effects of insulin receptor activation',
+  domain: 'chemistry',
+  promptTemplate: `Create an insulin signaling diagram:
+- Receptor activation: {{receptorActivation}}
+- IRS proteins: {{irsProteins}}
+- PI3K pathway: {{pi3kPathway}}
+- Akt targets: {{aktTargets}}
+- GLUT4 translocation: {{glut4Translocation}}
+- Metabolic effects: {{metabolicEffects}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'receptorActivation',
+    'irsProteins',
+    'pi3kPathway',
+    'aktTargets',
+    'glut4Translocation',
+    'metabolicEffects',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Insulin"] --> B["Insulin Receptor"]
+    B -->|"Autophosphorylation"| C["IRS-1"]
+    C --> D["PI3K"]
+    D --> E["PIP3"]
+    E --> F["Akt/PKB"]
+    F --> G["GLUT4 translocation"]
+    F --> H["Glycogen synthesis"]
+    F --> I["Lipogenesis"]
+    style G fill:#4ecdc4`,
+};
+
+/**
+ * Calcium Signaling template
+ */
+export const calciumSignaling: DiagramTemplate = {
+  id: 'biochem-calcium',
+  name: 'Calcium Signaling',
+  description: 'IP3 and calcium as second messengers',
+  domain: 'chemistry',
+  promptTemplate: `Create a calcium signaling diagram:
+- Receptor activation: {{receptorActivation}}
+- PLC activation: {{plcActivation}}
+- IP3 production: {{ip3Production}}
+- ER calcium release: {{erCalciumRelease}}
+- Calmodulin activation: {{calmodulinActivation}}
+- Downstream effects: {{downstreamEffects}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'receptorActivation',
+    'plcActivation',
+    'ip3Production',
+    'erCalciumRelease',
+    'calmodulinActivation',
+    'downstreamEffects',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["GPCR activation"] --> B["PLC"]
+    B --> C["PIP2 → IP3 + DAG"]
+    C --> D["IP3 → ER"]
+    D --> E["Ca2+ release"]
+    E --> F["Calmodulin"]
+    F --> G["CaM kinases"]
+    G --> H["Cellular responses"]
+    style E fill:#06B6D4`,
+};
+
+// =============================================================================
+// LABORATORY TECHNIQUES
+// =============================================================================
+
+/**
+ * PCR Technique template
+ */
+export const pcrTechnique: DiagramTemplate = {
+  id: 'biochem-pcr',
+  name: 'PCR Amplification',
+  description: 'Polymerase chain reaction for DNA amplification',
+  domain: 'chemistry',
+  promptTemplate: `Create a PCR diagram:
+- Template DNA: {{templateDna}}
+- Primer design: {{primerDesign}}
+- Denaturation step: {{denaturation}}
+- Annealing step: {{annealing}}
+- Extension step: {{extension}}
+- Cycle number: {{cycleNumber}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'templateDna',
+    'primerDesign',
+    'denaturation',
+    'annealing',
+    'extension',
+    'cycleNumber',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["dsDNA template"] -->|"95°C Denature"| B["ssDNA"]
+    B -->|"55°C Anneal"| C["Primers bound"]
+    C -->|"72°C Extend"| D["New dsDNA"]
+    D --> A
+    E["After n cycles: 2^n copies"]
+    style D fill:#4ecdc4`,
+};
+
+/**
+ * Western Blot template
+ */
+export const westernBlot: DiagramTemplate = {
+  id: 'biochem-western',
+  name: 'Western Blot Analysis',
+  description: 'Protein detection using antibodies',
+  domain: 'chemistry',
+  promptTemplate: `Create a Western blot diagram:
+- Sample preparation: {{samplePrep}}
+- SDS-PAGE separation: {{sdsPage}}
+- Transfer to membrane: {{transfer}}
+- Blocking: {{blocking}}
+- Primary antibody: {{primaryAb}}
+- Detection: {{detection}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'samplePrep',
+    'sdsPage',
+    'transfer',
+    'blocking',
+    'primaryAb',
+    'detection',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Protein sample"] --> B["SDS-PAGE"]
+    B --> C["Transfer to PVDF"]
+    C --> D["Block (BSA/milk)"]
+    D --> E["Primary antibody"]
+    E --> F["Secondary antibody-HRP"]
+    F --> G["Chemiluminescent detection"]
+    style G fill:#ffd93d`,
+};
+
+/**
+ * Gel Electrophoresis template
+ */
+export const gelElectrophoresis: DiagramTemplate = {
+  id: 'biochem-gel',
+  name: 'Gel Electrophoresis',
+  description: 'DNA, RNA, or protein separation by size',
+  domain: 'chemistry',
+  promptTemplate: `Create a gel electrophoresis diagram:
+- Sample type: {{sampleType}}
+- Gel matrix: {{gelMatrix}}
+- Running buffer: {{runningBuffer}}
+- Molecular markers: {{markers}}
+- Detection method: {{detectionMethod}}
+- Applications: {{applications}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sampleType',
+    'gelMatrix',
+    'runningBuffer',
+    'markers',
+    'detectionMethod',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Load samples in wells"] --> B["Apply electric field"]
+    B --> C["(-) Cathode to (+) Anode"]
+    C --> D["Small molecules migrate faster"]
+    D --> E["Stain gel (EtBr, Coomassie)"]
+    E --> F["Visualize bands"]
+    style F fill:#3B82F6`,
+};
+
+/**
+ * Chromatography template
+ */
+export const chromatography: DiagramTemplate = {
+  id: 'biochem-chromatography',
+  name: 'Column Chromatography',
+  description: 'Protein purification techniques',
+  domain: 'chemistry',
+  promptTemplate: `Create a chromatography diagram:
+- Separation principle: {{separationPrinciple}}
+- Column type: {{columnType}}
+- Mobile phase: {{mobilePhase}}
+- Stationary phase: {{stationaryPhase}}
+- Elution method: {{elutionMethod}}
+- Detection: {{detection}}
+{{#additionalNotes}}Additional notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'separationPrinciple',
+    'columnType',
+    'mobilePhase',
+    'stationaryPhase',
+    'elutionMethod',
+    'detection',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Types["Chromatography Types"]
+        A["Size Exclusion: by size"]
+        B["Ion Exchange: by charge"]
+        C["Affinity: by binding"]
+        D["HPLC: high resolution"]
+    end
+    E["Protein mixture"] --> Types
+    Types --> F["Purified fractions"]
+    style C fill:#8B5CF6`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -505,6 +1025,11 @@ export const biochemistryTemplates: DiagramTemplate[] = [
   tcaCycle,
   electronTransportChain,
   betaOxidation,
+  gluconeogenesis,
+  pentosePhosphatePathway,
+  ureaCycle,
+  fattyAcidSynthesis,
+  cholesterolSynthesis,
   // Enzyme Kinetics
   michaelisMenten,
   enzymeInhibition,
@@ -512,12 +1037,22 @@ export const biochemistryTemplates: DiagramTemplate[] = [
   // Signal Transduction
   gpcrSignaling,
   rtkSignaling,
+  mapkCascade,
+  insulinSignaling,
+  calciumSignaling,
   // Protein Structure
   proteinFolding,
   enzymeMechanism,
+  translation,
+  postTranslationalMod,
   // Nucleic Acids
   dnaReplication,
   transcription,
+  // Lab Techniques
+  pcrTechnique,
+  westernBlot,
+  gelElectrophoresis,
+  chromatography,
 ];
 
 export default biochemistryTemplates;

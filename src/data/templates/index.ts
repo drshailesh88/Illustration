@@ -37,7 +37,31 @@ export * from './pathology';
 export * from './ent';
 export * from './obgyn';
 export * from './hematology-oncology';
-export * from './physiology';
+export {
+  cardiacCycleDiagram,
+  frankStarlingMechanism,
+  pressureVolumeLooP,
+  oxygenDissociationCurve,
+  vqMatching,
+  spirometryTemplate,
+  nephronFunction,
+  raasSystem,
+  countercurrentMechanism,
+  actionPotential,
+  synapticTransmission,
+  slidingFilamentModel,
+  excitationContractionCoupling,
+  hypothalamicPituitaryAxis,
+  insulinGlucoseRegulation,
+  cellularRespirationOverview,
+  krebsCycleTemplate,
+  acidBaseDisorders,
+  bodyFluidCompartments,
+  starlingForcesTemplate,
+  reflexArc,
+  // Note: autonomicNervousSystem excluded to avoid conflict with anesthesiology
+  physiologyTemplates,
+} from './physiology';
 export * from './dermatology';
 // Biology subspecialties - use explicit exports to avoid duplicates
 export { molecularTemplates } from './molecular';
@@ -83,6 +107,7 @@ export * from './analgesics';
 export * from './antibiotics';
 export * from './psychotropics';
 export { endocrineDrugsTemplates } from './endocrine_drugs';
+export { pharmacologyTemplates } from './pharmacology';
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -236,6 +261,7 @@ import { analgesicsTemplates } from './analgesics';
 import { antibioticsTemplates } from './antibiotics';
 import { psychotropicsTemplates } from './psychotropics';
 import { endocrineDrugsTemplates } from './endocrine_drugs';
+import { pharmacologyTemplates } from './pharmacology';
 
 // =============================================================================
 // AGGREGATED TEMPLATE COLLECTIONS
@@ -314,6 +340,7 @@ export const allTemplates: DiagramTemplate[] = [
   ...antibioticsTemplates,
   ...psychotropicsTemplates,
   ...endocrineDrugsTemplates,
+  ...pharmacologyTemplates,
 ];
 
 /**
@@ -322,7 +349,7 @@ export const allTemplates: DiagramTemplate[] = [
 export const templatesByDomain: Record<TemplateDomain, DiagramTemplate[]> = {
   medicine: [...medicineTemplates, ...cardiologyTemplates, ...neurologyTemplates,
   ...gastroenterologyTemplates,
-  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...dermatologyTemplates, ...physiologyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates],
+  ...nephrologyTemplates, ...anesthesiologyTemplates, ...ophthalmologyTemplates, ...radiologyTemplates, ...rheumatologyTemplates, ...orthopedicsTemplates, ...endocrinologyTemplates, ...pediatricsTemplates, ...infectiousTemplates, ...psychiatryTemplates, ...emergencyTemplates, ...pulmonologyTemplates, ...pathologyTemplates, ...entTemplates, ...obgynTemplates, ...hematologyOncologyTemplates, ...dermatologyTemplates, ...physiologyTemplates, ...analgesicsTemplates, ...antibioticsTemplates, ...psychotropicsTemplates, ...endocrineDrugsTemplates, ...pharmacologyTemplates],
   biology: [...biologyTemplates, ...molecularTemplates, ...geneticsTemplates, ...ecologyTemplates, ...microbiologyTemplates, ...zoologyTemplates, ...botanyTemplates, ...cellbiologyTemplates, ...neuroscienceTemplates, ...environmentalTemplates, ...oceanographyTemplates, ...agricultureTemplates],
   chemistry: [...chemistryTemplates, ...forensicsTemplates, ...biochemistryTemplates, ...organicTemplates, ...inorganicTemplates, ...analyticalTemplates],
   physics: [...physicsTemplates, ...geologyTemplates, ...astronomyTemplates, ...meteorologyTemplates, ...quantumTemplates, ...thermodynamicsTemplates, ...electromagnetismTemplates, ...opticsTemplates, ...nuclearTemplates, ...mechanicsTemplates, ...astrophysicsTemplates],
@@ -435,7 +462,7 @@ export function getTemplateStats(): {
   return {
     total: allTemplates.length,
     byDomain: {
-      medicine: medicineTemplates.length + cardiologyTemplates.length + neurologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length + analgesicsTemplates.length + antibioticsTemplates.length + psychotropicsTemplates.length + endocrineDrugsTemplates.length,
+      medicine: medicineTemplates.length + cardiologyTemplates.length + neurologyTemplates.length + gastroenterologyTemplates.length + nephrologyTemplates.length + anesthesiologyTemplates.length + ophthalmologyTemplates.length + radiologyTemplates.length + rheumatologyTemplates.length + orthopedicsTemplates.length + endocrinologyTemplates.length + pediatricsTemplates.length + infectiousTemplates.length + psychiatryTemplates.length + emergencyTemplates.length + pulmonologyTemplates.length + pathologyTemplates.length + entTemplates.length + obgynTemplates.length + analgesicsTemplates.length + antibioticsTemplates.length + psychotropicsTemplates.length + endocrineDrugsTemplates.length + pharmacologyTemplates.length,
       biology: biologyTemplates.length + molecularTemplates.length + geneticsTemplates.length + ecologyTemplates.length + microbiologyTemplates.length + zoologyTemplates.length + botanyTemplates.length + cellbiologyTemplates.length + neuroscienceTemplates.length,
       chemistry: chemistryTemplates.length + forensicsTemplates.length + biochemistryTemplates.length + organicTemplates.length + inorganicTemplates.length + analyticalTemplates.length,
       physics: physicsTemplates.length + geologyTemplates.length + astronomyTemplates.length + meteorologyTemplates.length + quantumTemplates.length + thermodynamicsTemplates.length + electromagnetismTemplates.length + opticsTemplates.length + nuclearTemplates.length + mechanicsTemplates.length + astrophysicsTemplates.length,

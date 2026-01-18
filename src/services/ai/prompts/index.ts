@@ -581,3 +581,6 @@ export { default as dermatologyPrompts } from './dermatology-prompts';
 
 export * from './physiology-prompts';
 export { default as physiologyPrompts } from './physiology-prompts';
+
+export * from './biochemistry-prompts';
+export { default as biochemistryPrompts } from './biochemistry-prompts';

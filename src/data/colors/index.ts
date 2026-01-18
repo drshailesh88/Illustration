@@ -383,3 +383,28 @@ export {
 } from './pharmacology';
 
 export type { PharmacologyColorScheme } from './pharmacology';
+
+// =============================================================================
+// BIOCHEMISTRY
+// =============================================================================
+
+export {
+  proteinColors,
+  nucleicAcidColors,
+  carbohydrateColors,
+  lipidColors,
+  metabolismColors as biochemMetabolismColors,
+  pathwayFlowColors,
+  enzymeKineticsColors,
+  kineticsGraphColors,
+  cofactorColors,
+  signalingColors,
+  labTechniqueColors,
+  concentrationGradient,
+  activityGradient,
+  phGradient,
+  flowchartColors as biochemFlowchartColors,
+  biochemistryColorScheme,
+} from './biochemistry';
+
+export type { BiochemistryColorScheme } from './biochemistry';
