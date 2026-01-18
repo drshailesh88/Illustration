@@ -59,3 +59,4 @@ export * from './color/useColorManager';
 export * from './export';
 export * from './icons';
 export * from './glfx';
+export * from './image';
