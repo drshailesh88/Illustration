@@ -617,3 +617,6 @@ export { default as neurosciencePrompts } from './neuroscience-prompts';
 
 export * from './biomedical-engineering-prompts';
 export { default as biomedicalEngineeringPrompts } from './biomedical-engineering-prompts';
+
+export * from './microbiology-prompts';
+export { default as microbiologyPrompts } from './microbiology-prompts';

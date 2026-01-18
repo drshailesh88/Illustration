@@ -727,3 +727,29 @@ export {
 } from './physics';
 
 export type { PhysicsColorScheme } from './physics';
+
+// =============================================================================
+// MICROBIOLOGY
+// =============================================================================
+
+export {
+  gramStainColors,
+  bacterialStructureColors,
+  bacterialShapeColors,
+  viralStructureColors,
+  baltimoreClassColors,
+  fungalColors,
+  parasiteColors as microParasiteColors,
+  cultureMediaColors,
+  hemolysisColors,
+  specialStainColors as microSpecialStainColors,
+  susceptibilityColors,
+  resistanceMechanismColors,
+  biosafetyColors,
+  molecularColors,
+  elisaColors,
+  flowchartColors as microbiologyFlowchartColors,
+  microbiologyColorScheme,
+} from './microbiology';
+
+export type { MicrobiologyColorScheme } from './microbiology';
