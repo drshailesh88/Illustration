@@ -5,8 +5,18 @@
  * Contains templates for chemical reactions, molecular structures,
  * laboratory procedures, and analytical methods.
  *
- * Ralph Loop Iteration 1 - PATHOLOGY_50 checkpoint
- * Target: 20+ templates covering all chemistry domains
+ * Ralph Loop - COMPLETE checkpoint
+ * Total: 25 templates covering all chemistry domains
+ *
+ * Categories:
+ * - Reaction Mechanisms (SN1, SN2, E1, E2, Addition)
+ * - Molecular Structures (Lewis, VSEPR, Hybridization)
+ * - Thermodynamics & Kinetics (Energy diagrams, Rate laws, Phase diagrams)
+ * - Analytical Chemistry (Titration, Chromatography, Spectroscopy)
+ * - Laboratory Procedures (Distillation, Extraction, Recrystallization)
+ * - Electrochemistry (Galvanic cells, Redox balancing)
+ * - Equilibrium & Acids/Bases (Buffer solutions, Chemical equilibrium)
+ * - Periodic Trends
  */
 
 import type { DiagramTemplate } from './index';
@@ -1173,6 +1183,63 @@ export const bufferSolution: DiagramTemplate = {
 };
 
 // =============================================================================
+// PERIODIC TRENDS
+// =============================================================================
+
+/**
+ * Periodic Trends template
+ */
+export const periodicTrends: DiagramTemplate = {
+  id: 'chem-periodic-trends',
+  name: 'Periodic Trends',
+  description: 'Diagram showing periodic trends in atomic properties across the periodic table',
+  domain: 'chemistry',
+  promptTemplate: `Create a periodic trends diagram:
+- Property to display: {{property}}
+- Direction across period: {{periodTrend}}
+- Direction down group: {{groupTrend}}
+- Elements to highlight: {{highlightElements}}
+- Exceptions to note: {{exceptions}}
+- Explanation of trend: {{trendExplanation}}
+- Comparison examples: {{comparisonExamples}}
+- Applications: {{applications}}`,
+  placeholders: [
+    'property',
+    'periodTrend',
+    'groupTrend',
+    'highlightElements',
+    'exceptions',
+    'trendExplanation',
+    'comparisonExamples',
+    'applications',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph trends["Periodic Trends"]
+        ar["Atomic Radius<br/>↓ increases down group<br/>← decreases across period"]
+        ie["Ionization Energy<br/>↑ decreases down group<br/>→ increases across period"]
+        en["Electronegativity<br/>↑ decreases down group<br/>→ increases across period"]
+        ea["Electron Affinity<br/>Generally increases<br/>toward halogens"]
+    end
+
+    subgraph examples["Key Examples"]
+        maxEN["Most EN: F (4.0)"]
+        minEN["Least EN: Cs (0.79)"]
+        maxIE["Highest 1st IE: He"]
+        minIE["Lowest 1st IE: Cs"]
+    end
+
+    ar --> ie
+    ie --> en
+    en --> ea
+
+    classDef increase fill:#dcfce7,stroke:#16a34a
+    classDef decrease fill:#fecaca,stroke:#dc2626
+
+    class ie,en increase
+    class ar decrease`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -1211,6 +1278,8 @@ export const chemistryTemplates: DiagramTemplate[] = [
   // Equilibrium & Acids/Bases
   chemicalEquilibrium,
   bufferSolution,
+  // Periodic Table
+  periodicTrends,
 ];
 
 export default chemistryTemplates;

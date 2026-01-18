@@ -674,3 +674,35 @@ export {
 } from './neuroscience';
 
 export type { NeuroscienceColorScheme } from './neuroscience';
+
+// =============================================================================
+// CHEMISTRY
+// =============================================================================
+
+export {
+  elementCategoryColors,
+  elementColors,
+  orbitalColors,
+  shellColors,
+  bondColors,
+  polarityColors,
+  geometryColors as chemGeometryColors,
+  stereochemistryColors,
+  mechanismColors,
+  reactionTypeColors,
+  energyDiagramColors,
+  kineticsColors as chemKineticsColors,
+  equilibriumColors,
+  spectroscopyColors,
+  chromatographyColors,
+  titrationColors,
+  labEquipmentColors,
+  safetyColors as chemSafetyColors,
+  electrochemColors,
+  flowchartColors as chemistryFlowchartColors,
+  severityGradient as chemistrySeverityGradient,
+  concentrationGradient as chemConcentrationGradient,
+  chemistryColorScheme,
+} from './chemistry';
+
+export type { ChemistryColorScheme } from './chemistry';

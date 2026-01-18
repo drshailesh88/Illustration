@@ -266,7 +266,11 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
     for (const objData of clipboard) {
       try {
         const objects = await util.enlivenObjects([objData]);
-        objects.forEach((obj: FabricObject) => {
+        // Filter to only FabricObject instances
+        const fabricObjects = objects.filter(
+          (obj): obj is FabricObject => obj !== null && typeof obj === 'object' && 'set' in obj
+        );
+        fabricObjects.forEach((obj) => {
           obj.set({
             left: (obj.left || 0) + 20,
             top: (obj.top || 0) + 20,
