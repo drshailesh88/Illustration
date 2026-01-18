@@ -1,6 +1,6 @@
 {
-  "currentSpecialty": "hematology-oncology",
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology"],
+  "currentSpecialty": "anesthesiology",
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics"],
   "blockedSpecialties": [],
   "progress": {
     "neurology": {
@@ -325,16 +325,16 @@
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 8,
+    "completed": 10,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 27,
+    "notStarted": 25,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 854,
-    "currentTotalTemplates": 201,
-    "currentTotalPrompts": 132
+    "currentTotalIcons": 1134,
+    "currentTotalTemplates": 276,
+    "currentTotalPrompts": 192
   },
   "executionOrder": [
     "cardiology",
@@ -373,5 +373,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "hematology-oncology"
+  "nextSpecialty": "anesthesiology"
 }
