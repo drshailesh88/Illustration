@@ -24,6 +24,12 @@ interface Tab {
   icon: React.ReactNode;
 }
 
+export interface RightPanelProps {
+  handDrawnSettings?: HandDrawnSettings;
+  onHandDrawnSettingsChange?: (settings: HandDrawnSettings) => void;
+  onApplyHandDrawnToSelection?: () => Promise<void>;
+}
+
 // ============================================================================
 // Styles
 // ============================================================================
@@ -187,9 +193,16 @@ function TabButton({ tab, isActive, onClick }: TabButtonProps): JSX.Element {
 // RightPanel Component
 // ============================================================================
 
-export function RightPanel(): JSX.Element {
+export function RightPanel({
+  handDrawnSettings: externalSettings,
+  onHandDrawnSettingsChange: externalOnChange,
+  onApplyHandDrawnToSelection,
+}: RightPanelProps): JSX.Element {
   const [activeTab, setActiveTab] = useState<TabId>('layers');
-  const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
+  // Use external settings if provided, otherwise use local state
+  const [localSettings, setLocalSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
+  const handDrawnSettings = externalSettings ?? localSettings;
+  const setHandDrawnSettings = externalOnChange ?? setLocalSettings;
 
   // Get selection state from store
   const selectedObjects = useEditorStore((state) => state.selectedObjects);
@@ -197,13 +210,16 @@ export function RightPanel(): JSX.Element {
   const hasSelection = selectedObjects.length > 0;
 
   // Handle applying hand-drawn style to selection
-  const handleApplyToSelection = useCallback(() => {
+  const handleApplyToSelection = useCallback(async () => {
     if (!canvas || !hasSelection) return;
 
-    // TODO: Implement actual hand-drawn style application
-    // This will be handled by the useIllustratorTools hook
-    console.log('Applying hand-drawn style to selection:', handDrawnSettings);
-  }, [canvas, hasSelection, handDrawnSettings]);
+    // Use the provided applyHandDrawnToSelection function from useIllustratorTools
+    if (onApplyHandDrawnToSelection) {
+      await onApplyHandDrawnToSelection();
+    } else {
+      console.warn('applyHandDrawnToSelection not provided to RightPanel');
+    }
+  }, [canvas, hasSelection, onApplyHandDrawnToSelection]);
 
   // Render content based on active tab
   const renderContent = () => {

@@ -221,7 +221,7 @@ export function EditorMode(): JSX.Element {
 
   // Initialize illustrator tools hook
   // The hook sets up event handlers and manages Paper.js integration
-  useIllustratorTools({
+  const { applyHandDrawnToSelection } = useIllustratorTools({
     canvas: canvas,
     activeTool: illustratorTool,
     handDrawnSettings: handDrawnSettings,
@@ -408,7 +408,11 @@ export function EditorMode(): JSX.Element {
           </div>
 
           {/* Right Panel */}
-          <RightPanel />
+          <RightPanel
+            handDrawnSettings={handDrawnSettings}
+            onHandDrawnSettingsChange={setHandDrawnSettings}
+            onApplyHandDrawnToSelection={applyHandDrawnToSelection}
+          />
         </div>
 
         {/* Bottom Status Bar */}
