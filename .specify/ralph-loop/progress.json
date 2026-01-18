@@ -955,8 +955,8 @@
           "genetics": 2,
           "ion-channels": 4,
           "networks": 3,
-          "plasticity": 3,
-          "additional-research": 1
+          "plasticity": 2,
+          "additional-research": 2
         },
         "templates": {
           "core-neuroscience": 17,
