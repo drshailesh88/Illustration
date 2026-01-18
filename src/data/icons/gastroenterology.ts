@@ -1497,6 +1497,238 @@ export const gastroenterologyIcons: IconDefinition[] = [
       <text x="44" y="52" font-size="3" fill="currentColor" stroke="none">CO2</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADDITIONAL PATHOLOGY & CONDITIONS (8 icons)
+  // ===========================================================================
+  {
+    id: 'gi-celiac-disease',
+    name: 'Celiac Disease',
+    domain: 'medicine',
+    category: 'pathology-lower-gi',
+    tags: ['celiac', 'gluten', 'villous atrophy', 'malabsorption', 'sprue'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c8-8 16-8 24 0s16 8 24 0"/>
+      <path d="M8 32c8 8 16 8 24 0s16-8 24 0"/>
+      <path d="M12 24v-8" stroke-width="2"/>
+      <path d="M20 22v-10" stroke-width="2"/>
+      <path d="M28 24v-8" stroke-width="2"/>
+      <path d="M36 26v-4" stroke-dasharray="2 2"/>
+      <path d="M44 28v-2" stroke-dasharray="2 2"/>
+      <path d="M52 30v-2" stroke-dasharray="2 2"/>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">Normal</text>
+      <text x="36" y="20" font-size="3" fill="red" stroke="none">Atrophy</text>
+      <text x="20" y="56" font-size="4" fill="currentColor" stroke="none">Celiac</text>
+    </svg>`
+  },
+  {
+    id: 'gi-achalasia',
+    name: 'Achalasia',
+    domain: 'medicine',
+    category: 'pathology-upper-gi',
+    tags: ['achalasia', 'dysphagia', 'LES', 'motility', 'bird beak'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8h24c4 0 8 8 8 16v8c0 8-8 16-16 24-8-8-16-16-16-24v-8c0-8 4-16 8-16z" fill="currentColor" opacity="0.15"/>
+      <path d="M20 8h24c4 0 8 8 8 16v8c0 8-8 16-16 24-8-8-16-16-16-24v-8c0-8 4-16 8-16z"/>
+      <ellipse cx="36" cy="52" rx="2" ry="4"/>
+      <path d="M36 56l0 4"/>
+      <text x="4" y="24" font-size="3" fill="currentColor" stroke="none">Dilated</text>
+      <text x="40" y="56" font-size="3" fill="currentColor" stroke="none">Bird beak</text>
+    </svg>`
+  },
+  {
+    id: 'gi-gastroparesis',
+    name: 'Gastroparesis',
+    domain: 'medicine',
+    category: 'pathology-upper-gi',
+    tags: ['gastroparesis', 'delayed emptying', 'nausea', 'diabetes', 'motility'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c-8 4-8 20 0 28 8 8 24 8 32 0 8-8 8-20 0-28"/>
+      <path d="M16 16c4 4 12 4 16 0s12-4 16 0"/>
+      <ellipse cx="28" cy="36" rx="12" ry="8" fill="currentColor" opacity="0.3"/>
+      <circle cx="24" cy="34" r="3" fill="currentColor" opacity="0.5"/>
+      <circle cx="32" cy="38" r="4" fill="currentColor" opacity="0.5"/>
+      <circle cx="28" cy="30" r="2" fill="currentColor" opacity="0.5"/>
+      <path d="M44 36l8 8" stroke="red" stroke-width="2"/>
+      <path d="M52 36l-8 8" stroke="red" stroke-width="2"/>
+      <text x="44" y="52" font-size="3" fill="red" stroke="none">Delayed</text>
+    </svg>`
+  },
+  {
+    id: 'gi-sibo',
+    name: 'SIBO',
+    domain: 'medicine',
+    category: 'pathology-lower-gi',
+    tags: ['SIBO', 'small intestinal bacterial overgrowth', 'bloating', 'malabsorption'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 28c8 0 12 8 12 8s4-8 12-8 12 8 12 8s4-8 12-8"/>
+      <path d="M8 36c8 0 12-8 12-8s4 8 12 8 12-8 12-8s4 8 12 8"/>
+      <circle cx="16" cy="32" r="2" fill="green"/>
+      <circle cx="24" cy="28" r="2" fill="green"/>
+      <circle cx="28" cy="36" r="2" fill="green"/>
+      <circle cx="36" cy="30" r="2" fill="green"/>
+      <circle cx="40" cy="34" r="2" fill="green"/>
+      <circle cx="48" cy="32" r="2" fill="green"/>
+      <circle cx="20" cy="34" r="1" fill="green"/>
+      <circle cx="32" cy="32" r="1" fill="green"/>
+      <circle cx="44" cy="30" r="1" fill="green"/>
+      <text x="20" y="52" font-size="4" fill="green" stroke="none">SIBO</text>
+    </svg>`
+  },
+  {
+    id: 'gi-ischemic-colitis',
+    name: 'Ischemic Colitis',
+    domain: 'medicine',
+    category: 'pathology-lower-gi',
+    tags: ['ischemic colitis', 'watershed', 'ischemia', 'bloody diarrhea', 'mesenteric'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 12v40c0 4 4 8 8 8h16c4 0 8-4 8-8V12"/>
+      <rect x="24" y="28" width="16" height="16" fill="darkred" opacity="0.3"/>
+      <path d="M24 28h16"/>
+      <path d="M24 44h16"/>
+      <path d="M12 36h4" stroke="red" stroke-dasharray="2 2"/>
+      <path d="M48 36h4" stroke="red" stroke-dasharray="2 2"/>
+      <text x="4" y="40" font-size="3" fill="red" stroke="none">Ischemia</text>
+      <text x="20" y="60" font-size="3" fill="currentColor" stroke="none">Watershed</text>
+    </svg>`
+  },
+  {
+    id: 'gi-microscopic-colitis',
+    name: 'Microscopic Colitis',
+    domain: 'medicine',
+    category: 'pathology-lower-gi',
+    tags: ['microscopic colitis', 'lymphocytic', 'collagenous', 'watery diarrhea'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M16 32h32" stroke-dasharray="2 2"/>
+      <circle cx="20" cy="28" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="28" cy="26" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="36" cy="28" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="44" cy="26" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="24" cy="38" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="32" cy="36" r="2" fill="purple" opacity="0.5"/>
+      <circle cx="40" cy="38" r="2" fill="purple" opacity="0.5"/>
+      <path d="M32 20v-8"/>
+      <circle cx="32" cy="8" r="4"/>
+      <text x="16" y="56" font-size="3" fill="currentColor" stroke="none">Lymphocytes</text>
+    </svg>`
+  },
+  {
+    id: 'gi-zollinger-ellison',
+    name: 'Zollinger-Ellison Syndrome',
+    domain: 'medicine',
+    category: 'pathology-upper-gi',
+    tags: ['ZES', 'gastrinoma', 'peptic ulcer', 'hypergastrinemia', 'MEN1'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="28" cy="24" rx="16" ry="12" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="28" cy="24" rx="16" ry="12"/>
+      <circle cx="24" cy="22" r="3" fill="red" opacity="0.3" stroke="red"/>
+      <circle cx="32" cy="26" r="3" fill="red" opacity="0.3" stroke="red"/>
+      <circle cx="20" cy="28" r="2" fill="red" opacity="0.3" stroke="red"/>
+      <ellipse cx="44" cy="48" rx="10" ry="8"/>
+      <circle cx="44" cy="48" r="4" fill="darkred" opacity="0.4" stroke="darkred"/>
+      <path d="M36 36l4 8"/>
+      <text x="4" y="40" font-size="3" fill="red" stroke="none">Ulcers</text>
+      <text x="48" y="60" font-size="3" fill="darkred" stroke="none">Gastrinoma</text>
+    </svg>`
+  },
+  {
+    id: 'gi-giist',
+    name: 'GIST Tumor',
+    domain: 'medicine',
+    category: 'pathology-lower-gi',
+    tags: ['GIST', 'stromal tumor', 'c-kit', 'imatinib', 'submucosal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24h48"/>
+      <path d="M8 40h48"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8" fill="darkred" opacity="0.3" stroke="darkred" stroke-width="2"/>
+      <path d="M24 28c4 4 12 4 16 0" stroke="darkred"/>
+      <path d="M24 36c4-4 12-4 16 0" stroke="darkred"/>
+      <path d="M20 32h4" stroke="darkred"/>
+      <path d="M40 32h4" stroke="darkred"/>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">Mucosa</text>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Serosa</text>
+      <text x="44" y="36" font-size="3" fill="darkred" stroke="none">GIST</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL EQUIPMENT & INTERVENTIONS (4 icons)
+  // ===========================================================================
+  {
+    id: 'gi-hemostasis-clip',
+    name: 'Hemostasis Clip',
+    domain: 'medicine',
+    category: 'gi-equipment',
+    tags: ['clip', 'hemostasis', 'endoscopic', 'bleeding', 'hemoclip'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v24"/>
+      <path d="M24 32l8 8 8-8"/>
+      <path d="M24 40c-4 0-8 4-8 8"/>
+      <path d="M40 40c4 0 8 4 8 8"/>
+      <path d="M16 48c0 4 4 8 8 8"/>
+      <path d="M48 48c0 4-4 8-8 8"/>
+      <path d="M24 56h16"/>
+      <ellipse cx="32" cy="52" rx="4" ry="2" fill="currentColor" opacity="0.3"/>
+      <circle cx="32" cy="52" r="2" fill="red"/>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Clip</text>
+    </svg>`
+  },
+  {
+    id: 'gi-variceal-banding',
+    name: 'Variceal Banding',
+    domain: 'medicine',
+    category: 'gi-equipment',
+    tags: ['banding', 'varices', 'EVL', 'ligation', 'rubber band'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v40H24V8z"/>
+      <ellipse cx="32" cy="24" rx="6" ry="8" fill="blue" opacity="0.3" stroke="blue"/>
+      <ellipse cx="32" cy="20" rx="4" ry="2" fill="purple" stroke="purple" stroke-width="2"/>
+      <ellipse cx="32" cy="40" rx="6" ry="8" fill="blue" opacity="0.3" stroke="blue"/>
+      <ellipse cx="32" cy="36" rx="4" ry="2" fill="purple" stroke="purple" stroke-width="2"/>
+      <text x="40" y="24" font-size="3" fill="purple" stroke="none">Band</text>
+      <text x="40" y="44" font-size="3" fill="blue" stroke="none">Varix</text>
+    </svg>`
+  },
+  {
+    id: 'gi-biliary-stent',
+    name: 'Biliary Stent',
+    domain: 'medicine',
+    category: 'gi-equipment',
+    tags: ['stent', 'biliary', 'plastic', 'metal', 'obstruction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8v16"/>
+      <path d="M40 8v12"/>
+      <path d="M40 20c0 4-4 8-8 8"/>
+      <path d="M24 24h8"/>
+      <path d="M32 24v32" stroke-width="2"/>
+      <rect x="28" y="32" width="8" height="16" rx="1" fill="gray" opacity="0.3"/>
+      <path d="M28 32h8" stroke="gray"/>
+      <path d="M28 48h8" stroke="gray"/>
+      <path d="M30 36h4" stroke="gray"/>
+      <path d="M30 40h4" stroke="gray"/>
+      <path d="M30 44h4" stroke="gray"/>
+      <ellipse cx="44" cy="16" rx="6" ry="8"/>
+      <text x="44" y="40" font-size="3" fill="gray" stroke="none">Stent</text>
+    </svg>`
+  },
+  {
+    id: 'gi-polypectomy-snare',
+    name: 'Polypectomy Snare',
+    domain: 'medicine',
+    category: 'gi-equipment',
+    tags: ['polypectomy', 'snare', 'EMR', 'cold snare', 'hot snare'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v20"/>
+      <ellipse cx="32" cy="40" rx="12" ry="8"/>
+      <path d="M20 40c0 8 6 16 12 16s12-8 12-16"/>
+      <ellipse cx="32" cy="48" rx="8" ry="6" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="48" rx="8" ry="6"/>
+      <path d="M32 48v8"/>
+      <text x="4" y="44" font-size="3" fill="currentColor" stroke="none">Snare</text>
+      <text x="40" y="56" font-size="3" fill="currentColor" stroke="none">Polyp</text>
+    </svg>`
+  },
 ];
 
 export default gastroenterologyIcons;

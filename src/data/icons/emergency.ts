@@ -1715,6 +1715,448 @@ export const emergencyIcons: IconDefinition[] = [
       <text x="40" y="10" font-size="4" fill="currentColor" stroke="none">Occupied</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // STROKE & NEUROLOGICAL EMERGENCIES (8 icons)
+  // ===========================================================================
+  {
+    id: 'em-stroke-alert',
+    name: 'Stroke Alert',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['stroke', 'alert', 'CVA', 'brain', 'thrombolysis', 'code'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="20"/>
+      <path d="M22 24c4 4 16 4 20 0"/>
+      <path d="M22 32c4-4 16-4 20 0"/>
+      <path d="M32 48v8"/>
+      <path d="M28 52h8"/>
+      <path d="M40 20l8-8" stroke="red" stroke-width="2"/>
+      <circle cx="50" cy="10" r="4" fill="red" opacity="0.5"/>
+      <text x="46" y="14" font-size="5" fill="white" stroke="none">!</text>
+    </svg>`
+  },
+  {
+    id: 'em-tpa',
+    name: 'tPA/Thrombolysis',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['tPA', 'thrombolysis', 'alteplase', 'stroke', 'clot', 'lysis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="8" width="24" height="40" rx="4"/>
+      <rect x="24" y="12" width="16" height="32" rx="2" fill="red" opacity="0.3"/>
+      <path d="M32 44v12"/>
+      <path d="M28 52h8"/>
+      <text x="26" y="32" font-size="6" fill="currentColor" stroke="none">tPA</text>
+      <path d="M28 20c2 2 6 2 8 0"/>
+      <path d="M28 24c2 2 6 2 8 0"/>
+    </svg>`
+  },
+  {
+    id: 'em-nih-stroke-scale',
+    name: 'NIH Stroke Scale',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['NIHSS', 'stroke', 'scale', 'assessment', 'severity', 'score'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="2"/>
+      <path d="M20 20h24"/>
+      <path d="M20 28h24"/>
+      <path d="M20 36h24"/>
+      <path d="M20 44h16"/>
+      <circle cx="16" cy="20" r="2" fill="currentColor"/>
+      <circle cx="16" cy="28" r="2" fill="currentColor"/>
+      <circle cx="16" cy="36" r="2" fill="currentColor"/>
+      <circle cx="16" cy="44" r="2" fill="currentColor"/>
+      <text x="40" y="52" font-size="8" fill="currentColor" stroke="none">12</text>
+    </svg>`
+  },
+  {
+    id: 'em-seizure',
+    name: 'Seizure',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['seizure', 'epilepsy', 'convulsion', 'status', 'epilepticus', 'neuro'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <path d="M24 18l4 4-4 4"/>
+      <path d="M40 18l-4 4 4 4"/>
+      <path d="M32 32v8"/>
+      <path d="M28 40h8"/>
+      <path d="M20 48l8-4 8 4 8-4"/>
+      <path d="M20 54l8-4 8 4 8-4"/>
+      <path d="M8 16l8-4 4 8" stroke="yellow"/>
+      <path d="M56 16l-8-4-4 8" stroke="yellow"/>
+    </svg>`
+  },
+  {
+    id: 'em-brain-herniation',
+    name: 'Brain Herniation',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['herniation', 'brain', 'ICP', 'uncal', 'tentorial', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="18"/>
+      <path d="M20 20c6 4 18 4 24 0"/>
+      <path d="M20 28c6-4 18-4 24 0"/>
+      <path d="M32 42v12"/>
+      <path d="M28 48h8"/>
+      <path d="M32 36c4 4 4 8 4 12" fill="red" opacity="0.3"/>
+      <circle cx="28" cy="22" r="2" fill="currentColor"/>
+      <circle cx="36" cy="22" r="4"/>
+      <circle cx="36" cy="22" r="1" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'em-ct-head',
+    name: 'CT Head',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['CT', 'head', 'brain', 'imaging', 'scan', 'hemorrhage'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="14"/>
+      <path d="M24 28c4 4 12 4 16 0"/>
+      <path d="M24 36c4-4 12-4 16 0"/>
+      <circle cx="40" cy="28" r="4" fill="red" opacity="0.5"/>
+      <path d="M8 32h8"/>
+      <path d="M48 32h8"/>
+      <path d="M32 8v8"/>
+      <path d="M32 48v8"/>
+    </svg>`
+  },
+  {
+    id: 'em-lumbar-drain',
+    name: 'Lumbar Drain',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['lumbar', 'drain', 'CSF', 'pressure', 'hydrocephalus', 'EVD'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="20" rx="16" ry="12"/>
+      <path d="M32 32v20"/>
+      <path d="M24 24c4 4 12 4 16 0"/>
+      <path d="M44 36h8v16h-8"/>
+      <rect x="44" y="44" width="8" height="8" fill="yellow" opacity="0.3"/>
+      <path d="M32 40l12-4"/>
+      <text x="46" y="42" font-size="4" fill="currentColor" stroke="none">CSF</text>
+    </svg>`
+  },
+  {
+    id: 'em-spinal-cord-injury',
+    name: 'Spinal Cord Injury',
+    domain: 'medicine',
+    category: 'neuro-emergency',
+    tags: ['spinal', 'cord', 'injury', 'SCI', 'paralysis', 'trauma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="10" ry="6"/>
+      <path d="M32 18v36"/>
+      <path d="M28 24h8"/>
+      <path d="M26 32h12"/>
+      <path d="M24 40h16"/>
+      <path d="M32 54l-8 6"/>
+      <path d="M32 54l8 6"/>
+      <circle cx="32" cy="36" r="4" fill="red" opacity="0.5"/>
+      <path d="M28 36h8" stroke="red" stroke-width="2"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ABDOMINAL EMERGENCIES (6 icons)
+  // ===========================================================================
+  {
+    id: 'em-appendicitis',
+    name: 'Appendicitis',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['appendicitis', 'appendix', 'RLQ', 'acute', 'abdomen', 'surgical'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M32 16v32" stroke-dasharray="2 2"/>
+      <path d="M12 32h40" stroke-dasharray="2 2"/>
+      <path d="M40 40c4 4 8 8 8 12" stroke="red" stroke-width="2"/>
+      <circle cx="48" cy="52" r="4" fill="red" opacity="0.5"/>
+      <text x="42" y="60" font-size="4" fill="red" stroke="none">RLQ</text>
+    </svg>`
+  },
+  {
+    id: 'em-aaa',
+    name: 'AAA Rupture',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['AAA', 'aortic', 'aneurysm', 'rupture', 'abdominal', 'vascular'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16"/>
+      <ellipse cx="32" cy="36" rx="12" ry="16" fill="red" opacity="0.3"/>
+      <path d="M32 52v8"/>
+      <path d="M24 56l-4 4"/>
+      <path d="M40 56l4 4"/>
+      <path d="M20 32c-4 4-4 12 0 16" stroke="red"/>
+      <path d="M44 32c4 4 4 12 0 16" stroke="red"/>
+      <circle cx="40" cy="40" r="3" fill="red"/>
+    </svg>`
+  },
+  {
+    id: 'em-gi-bleed',
+    name: 'GI Bleeding',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['GI', 'bleeding', 'hematemesis', 'melena', 'hemorrhage', 'upper', 'lower'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12c0 8 8 16 12 24s12 16 12 24"/>
+      <path d="M44 12c0 8-8 16-12 24s-12 16-12 24"/>
+      <circle cx="32" cy="28" r="6" fill="red" opacity="0.5"/>
+      <circle cx="28" cy="44" r="4" fill="red" opacity="0.5"/>
+      <circle cx="36" cy="52" r="3" fill="red" opacity="0.5"/>
+      <path d="M28 20l4 8-4 8" stroke="red"/>
+    </svg>`
+  },
+  {
+    id: 'em-bowel-obstruction',
+    name: 'Bowel Obstruction',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['bowel', 'obstruction', 'SBO', 'ileus', 'vomiting', 'distension'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c4 4 8 0 12 4s8 0 12-4 8 0 8 4"/>
+      <path d="M16 28c4 4 8 0 12 4s8 0 12-4 8 0 8 4"/>
+      <path d="M16 40c4 4 8 0 12 4s8 0 12-4"/>
+      <rect x="40" y="36" width="4" height="12" fill="currentColor" opacity="0.5"/>
+      <path d="M16 52h32"/>
+      <ellipse cx="24" cy="22" rx="6" ry="4" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="24" cy="34" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
+    </svg>`
+  },
+  {
+    id: 'em-peritonitis',
+    name: 'Peritonitis',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['peritonitis', 'peritoneal', 'sepsis', 'acute', 'abdomen', 'rigid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="18" fill="red" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="20" ry="18"/>
+      <circle cx="24" cy="24" r="2" fill="red"/>
+      <circle cx="40" cy="24" r="2" fill="red"/>
+      <circle cx="28" cy="36" r="2" fill="red"/>
+      <circle cx="36" cy="40" r="2" fill="red"/>
+      <circle cx="32" cy="28" r="2" fill="red"/>
+      <text x="22" y="56" font-size="5" fill="red" stroke="none">Guarding</text>
+    </svg>`
+  },
+  {
+    id: 'em-ectopic',
+    name: 'Ectopic Pregnancy',
+    domain: 'medicine',
+    category: 'abdominal-emergency',
+    tags: ['ectopic', 'pregnancy', 'tubal', 'rupture', 'hemorrhage', 'OB'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="16" ry="12"/>
+      <path d="M16 36c-8-4-8-16 0-20"/>
+      <path d="M48 36c8-4 8-16 0-20"/>
+      <circle cx="12" cy="24" r="6" fill="red" opacity="0.3"/>
+      <circle cx="12" cy="24" r="3"/>
+      <path d="M6 28c-2 4 0 8 4 8" stroke="red"/>
+      <text x="24" y="56" font-size="5" fill="currentColor" stroke="none">Ectopic</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // PEDIATRIC EMERGENCIES (6 icons)
+  // ===========================================================================
+  {
+    id: 'em-broselow-tape',
+    name: 'Broselow Tape',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['broselow', 'tape', 'pediatric', 'weight', 'dosing', 'length'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="24" width="48" height="16" rx="2"/>
+      <rect x="8" y="24" width="8" height="16" fill="gray" opacity="0.3"/>
+      <rect x="16" y="24" width="8" height="16" fill="pink" opacity="0.3"/>
+      <rect x="24" y="24" width="8" height="16" fill="red" opacity="0.3"/>
+      <rect x="32" y="24" width="8" height="16" fill="purple" opacity="0.3"/>
+      <rect x="40" y="24" width="8" height="16" fill="yellow" opacity="0.3"/>
+      <rect x="48" y="24" width="8" height="16" fill="white" opacity="0.3"/>
+      <text x="10" y="34" font-size="4" fill="currentColor" stroke="none">3kg</text>
+      <text x="26" y="34" font-size="4" fill="currentColor" stroke="none">10</text>
+      <text x="42" y="34" font-size="4" fill="currentColor" stroke="none">20</text>
+      <path d="M8 44h48"/>
+    </svg>`
+  },
+  {
+    id: 'em-peds-code',
+    name: 'Pediatric Code',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['pediatric', 'code', 'PALS', 'arrest', 'resuscitation', 'child'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10"/>
+      <path d="M32 26v16"/>
+      <path d="M24 32h16"/>
+      <path d="M28 42l-6 14"/>
+      <path d="M36 42l6 14"/>
+      <path d="M28 14h8" stroke="red"/>
+      <path d="M32 10v8" stroke="red"/>
+      <circle cx="28" cy="14" r="1" fill="currentColor"/>
+      <circle cx="36" cy="14" r="1" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'em-croup',
+    name: 'Croup',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['croup', 'stridor', 'barking', 'cough', 'laryngotracheitis', 'pediatric'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10"/>
+      <path d="M28 14h8"/>
+      <circle cx="28" cy="14" r="1" fill="currentColor"/>
+      <circle cx="36" cy="14" r="1" fill="currentColor"/>
+      <path d="M28 20c2 2 6 2 8 0"/>
+      <path d="M32 26v8"/>
+      <path d="M28 30h8"/>
+      <ellipse cx="32" cy="32" rx="4" ry="2" fill="red" opacity="0.3"/>
+      <path d="M20 40c4-4 8-4 12 0s8 4 12 0"/>
+      <path d="M20 48c4-4 8-4 12 0s8 4 12 0"/>
+      <text x="44" y="28" font-size="5" fill="currentColor" stroke="none">Stridor</text>
+    </svg>`
+  },
+  {
+    id: 'em-epiglottitis',
+    name: 'Epiglottitis',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['epiglottitis', 'airway', 'drooling', 'tripod', 'stridor', 'emergency'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10"/>
+      <path d="M28 14h8"/>
+      <path d="M28 20c2 2 6 2 8 0"/>
+      <path d="M32 26v8"/>
+      <ellipse cx="32" cy="30" rx="6" ry="4" fill="red" opacity="0.5"/>
+      <path d="M32 34v12"/>
+      <path d="M24 36h16"/>
+      <path d="M28 46l-6 12"/>
+      <path d="M36 46l6 12"/>
+      <path d="M30 26l-6 8" stroke="blue" opacity="0.5"/>
+      <text x="8" y="38" font-size="4" fill="blue" stroke="none">Drool</text>
+    </svg>`
+  },
+  {
+    id: 'em-febrile-seizure',
+    name: 'Febrile Seizure',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['febrile', 'seizure', 'fever', 'pediatric', 'convulsion', 'simple'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="16" r="10" fill="red" opacity="0.2"/>
+      <path d="M28 14h8"/>
+      <circle cx="28" cy="14" r="1" fill="currentColor"/>
+      <circle cx="36" cy="14" r="1" fill="currentColor"/>
+      <path d="M32 26v16"/>
+      <path d="M24 32h16"/>
+      <path d="M28 42l-4 12"/>
+      <path d="M36 42l4 12"/>
+      <path d="M44 12l-4 4 4 4" stroke="red"/>
+      <path d="M48 8l-4 4 4 4" stroke="red"/>
+      <text x="20" y="60" font-size="4" fill="currentColor" stroke="none">39.5C</text>
+    </svg>`
+  },
+  {
+    id: 'em-neonatal-resus',
+    name: 'Neonatal Resuscitation',
+    domain: 'medicine',
+    category: 'pediatric-emergency',
+    tags: ['neonatal', 'resuscitation', 'NRP', 'newborn', 'delivery', 'APGAR'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="12"/>
+      <circle cx="32" cy="24" r="8"/>
+      <path d="M28 22h8"/>
+      <circle cx="28" cy="22" r="1" fill="currentColor"/>
+      <circle cx="36" cy="22" r="1" fill="currentColor"/>
+      <path d="M30 26c1 1 3 1 4 0"/>
+      <path d="M24 32h16"/>
+      <path d="M32 32v8"/>
+      <path d="M28 40l-4 8"/>
+      <path d="M36 40l4 8"/>
+      <path d="M16 20l-4-4" stroke="blue"/>
+      <ellipse cx="10" cy="14" rx="4" ry="2" fill="blue" opacity="0.3"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ACLS RHYTHMS (5 icons)
+  // ===========================================================================
+  {
+    id: 'em-vfib',
+    name: 'Ventricular Fibrillation',
+    domain: 'medicine',
+    category: 'acls-rhythm',
+    tags: ['VF', 'ventricular', 'fibrillation', 'shockable', 'arrest', 'rhythm'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <path d="M12 32c2-4 2-8 4-4s2 8 4 4 2-8 4-4 2 8 4 4 2-8 4-4 2 8 4 4 2-8 4-4 2 8 4 4 2-8 4-4" stroke="red"/>
+      <text x="12" y="14" font-size="6" fill="red" stroke="none">VF</text>
+      <circle cx="52" cy="12" r="4" fill="red"/>
+      <path d="M50 10l4 4"/>
+      <path d="M54 10l-4 4"/>
+    </svg>`
+  },
+  {
+    id: 'em-vtach',
+    name: 'Ventricular Tachycardia',
+    domain: 'medicine',
+    category: 'acls-rhythm',
+    tags: ['VT', 'ventricular', 'tachycardia', 'wide', 'complex', 'rhythm'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <path d="M12 32l2-8 4 16 4-16 4 16 4-16 4 16 4-16 4 16 4-16 2 8" stroke="orange"/>
+      <text x="12" y="14" font-size="6" fill="orange" stroke="none">VT</text>
+      <text x="44" y="54" font-size="5" fill="currentColor" stroke="none">200bpm</text>
+    </svg>`
+  },
+  {
+    id: 'em-asystole',
+    name: 'Asystole',
+    domain: 'medicine',
+    category: 'acls-rhythm',
+    tags: ['asystole', 'flatline', 'non-shockable', 'arrest', 'rhythm', 'PEA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <path d="M12 32h40" stroke="green"/>
+      <text x="12" y="14" font-size="5" fill="currentColor" stroke="none">Asystole</text>
+      <path d="M32 40v8"/>
+      <path d="M28 44h8"/>
+    </svg>`
+  },
+  {
+    id: 'em-pea',
+    name: 'PEA',
+    domain: 'medicine',
+    category: 'acls-rhythm',
+    tags: ['PEA', 'pulseless', 'electrical', 'activity', 'non-shockable', 'rhythm'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <path d="M12 32h6l2-6 4 12 2-6h6l2-4 4 8 2-4h12" stroke="green"/>
+      <text x="12" y="14" font-size="6" fill="currentColor" stroke="none">PEA</text>
+      <path d="M32 52l-4 4h8l-4-4z" fill="red" opacity="0.5"/>
+      <text x="26" y="60" font-size="4" fill="red" stroke="none">No Pulse</text>
+    </svg>`
+  },
+  {
+    id: 'em-sinus-brady',
+    name: 'Symptomatic Bradycardia',
+    domain: 'medicine',
+    category: 'acls-rhythm',
+    tags: ['bradycardia', 'sinus', 'slow', 'symptomatic', 'atropine', 'pacing'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <path d="M12 32h8l2-6 4 12 2-6h24" stroke="blue"/>
+      <text x="12" y="14" font-size="5" fill="blue" stroke="none">Brady</text>
+      <text x="40" y="54" font-size="5" fill="currentColor" stroke="none">35bpm</text>
+      <circle cx="48" cy="12" r="4"/>
+      <path d="M46 12h4"/>
+    </svg>`
+  },
 ];
 
 export default emergencyIcons;

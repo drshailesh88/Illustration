@@ -11,6 +11,10 @@
  * - Pathology - Vascular (8 icons)
  * - Pathology - Malignancy (6 icons)
  * - Equipment (12 icons)
+ * - Procedures (10 icons)
+ * - Sleep Medicine (6 icons)
+ *
+ * Total: 96 icons
  */
 
 import type { IconDefinition } from './index';
@@ -1590,6 +1594,332 @@ export const pulmonologyIcons: IconDefinition[] = [
       <ellipse cx="32" cy="54" rx="12" ry="6"/>
       <path d="M24 52c2-2 6-2 8 0"/>
       <path d="M32 52c2-2 6-2 8 0"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // PROCEDURES (10 icons)
+  // ===========================================================================
+  {
+    id: 'pulm-intubation',
+    name: 'Endotracheal Intubation',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['intubation', 'ETT', 'endotracheal', 'tube', 'airway management'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8c-4 0-8 2-8 6v12"/>
+      <path d="M32 8c4 0 8 2 8 6v12"/>
+      <rect x="24" y="26" width="16" height="8" rx="2"/>
+      <path d="M28 34v20"/>
+      <path d="M36 34v20"/>
+      <ellipse cx="32" cy="56" rx="6" ry="4"/>
+      <path d="M40 14h12"/>
+      <circle cx="56" cy="14" r="4"/>
+      <text x="10" y="20" font-size="5" fill="currentColor" stroke="none">ETT</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-thoracentesis',
+    name: 'Thoracentesis',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['thoracentesis', 'pleural tap', 'needle', 'drainage', 'effusion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8c-8 8-8 40 0 48"/>
+      <path d="M48 8c8 8 8 40 0 48"/>
+      <path d="M8 36c0 12 4 20 8 20h16v-20c-8 2-16 2-24 0z" fill="currentColor" opacity="0.3"/>
+      <path d="M8 36c8 2 16 2 24 0"/>
+      <rect x="36" y="20" width="4" height="24" rx="1"/>
+      <path d="M38 20l0-8"/>
+      <rect x="34" y="8" width="8" height="6" rx="1"/>
+      <path d="M38 44l4 8"/>
+      <circle cx="44" cy="54" r="4"/>
+      <text x="44" y="36" font-size="5" fill="currentColor" stroke="none">Tap</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-tracheostomy',
+    name: 'Tracheostomy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['tracheostomy', 'trach', 'surgical airway', 'stoma', 'tube'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8h16v24H24z"/>
+      <path d="M24 14h16"/>
+      <path d="M24 20h16"/>
+      <ellipse cx="32" cy="8" rx="8" ry="3"/>
+      <path d="M24 32l-8 8"/>
+      <path d="M40 32l8 8"/>
+      <ellipse cx="32" cy="32" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
+      <path d="M24 32c0 4 4 8 8 8s8-4 8-8"/>
+      <rect x="28" y="40" width="8" height="16" rx="2"/>
+      <ellipse cx="32" cy="56" rx="6" ry="4"/>
+      <text x="44" y="36" font-size="5" fill="currentColor" stroke="none">Trach</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-needle-decompression',
+    name: 'Needle Decompression',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['needle decompression', 'tension pneumothorax', 'emergency', 'chest'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8c-8 8-8 40 0 48"/>
+      <path d="M48 8c8 8 8 40 0 48"/>
+      <path d="M16 20c-2 8-2 20 0 28"/>
+      <path d="M16 20c4 4 8 16 8 20"/>
+      <rect x="36" y="8" width="4" height="20" rx="1"/>
+      <path d="M38 28l0 8"/>
+      <rect x="34" y="4" width="8" height="6" rx="1"/>
+      <circle cx="32" cy="36" r="2"/>
+      <circle cx="36" cy="40" r="1"/>
+      <circle cx="28" cy="42" r="2"/>
+      <text x="8" y="40" font-size="5" fill="currentColor" stroke="none">Air</text>
+      <text x="44" y="20" font-size="5" fill="currentColor" stroke="none">14G</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-pleurodesis',
+    name: 'Pleurodesis',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['pleurodesis', 'talc', 'chemical', 'recurrent effusion', 'pneumothorax'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8c-8 8-8 40 0 48"/>
+      <path d="M48 8c8 8 8 40 0 48"/>
+      <path d="M12 20c4 4 8 4 12 0"/>
+      <path d="M12 28c4 4 8 4 12 0"/>
+      <path d="M12 36c4 4 8 4 12 0"/>
+      <path d="M12 44c4 4 8 4 12 0"/>
+      <path d="M40 16c4 6 8 20 8 28"/>
+      <path d="M40 16c-2 6-4 16-4 24"/>
+      <circle cx="14" cy="24" r="2" fill="currentColor"/>
+      <circle cx="20" cy="32" r="2" fill="currentColor"/>
+      <circle cx="14" cy="40" r="2" fill="currentColor"/>
+      <text x="36" y="58" font-size="5" fill="currentColor" stroke="none">Talc</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-bal',
+    name: 'Bronchoalveolar Lavage',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['BAL', 'bronchoalveolar lavage', 'wash', 'sample', 'bronchoscopy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16"/>
+      <path d="M32 24l-16 16"/>
+      <path d="M32 24l16 16"/>
+      <circle cx="20" cy="44" r="8" fill="currentColor" opacity="0.3"/>
+      <circle cx="44" cy="44" r="8" fill="currentColor" opacity="0.3"/>
+      <path d="M28 12l-8-4"/>
+      <path d="M20 8v8"/>
+      <path d="M16 12h8"/>
+      <circle cx="20" cy="44" r="4"/>
+      <circle cx="44" cy="44" r="4"/>
+      <text x="18" y="58" font-size="5" fill="currentColor" stroke="none">BAL</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-endobronchial-biopsy',
+    name: 'Endobronchial Biopsy',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['biopsy', 'endobronchial', 'forceps', 'tissue', 'bronchoscopy'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v20" stroke-width="2"/>
+      <path d="M32 28l-16 16" stroke-width="1.5"/>
+      <path d="M32 28l16 16" stroke-width="1.5"/>
+      <path d="M32 8l8-4"/>
+      <path d="M40 4l4 4"/>
+      <path d="M40 4l4-2"/>
+      <path d="M44 8l4-2"/>
+      <circle cx="20" cy="40" r="6"/>
+      <path d="M17 37l6 6"/>
+      <path d="M23 37l-6 6"/>
+      <circle cx="44" cy="48" r="6"/>
+      <text x="12" y="56" font-size="5" fill="currentColor" stroke="none">Bx</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-ebus',
+    name: 'EBUS',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['EBUS', 'endobronchial ultrasound', 'lymph node', 'biopsy', 'staging'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v16" stroke-width="2"/>
+      <circle cx="32" cy="28" r="6"/>
+      <path d="M38 28c4 1 8 2 12 1"/>
+      <path d="M38 32c6 2 12 3 16 2"/>
+      <path d="M38 24c4-1 8-2 12-1"/>
+      <ellipse cx="32" cy="44" rx="12" ry="8" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="32" cy="44" rx="12" ry="8"/>
+      <path d="M24 44h16" stroke-dasharray="2 2"/>
+      <text x="4" y="34" font-size="5" fill="currentColor" stroke="none">EBUS</text>
+      <text x="32" y="50" font-size="4" fill="currentColor" stroke="none">LN</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-oxygen-titration',
+    name: 'Oxygen Titration',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['oxygen', 'titration', 'weaning', 'FiO2', 'SpO2 target'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="16" width="20" height="32" rx="4"/>
+      <rect x="16" y="20" width="12" height="8" rx="2" fill="currentColor" opacity="0.1"/>
+      <text x="18" y="27" font-size="6" fill="currentColor" stroke="none">O2</text>
+      <circle cx="22" cy="36" r="4"/>
+      <path d="M18 40l8 4"/>
+      <path d="M22 40v6"/>
+      <rect x="36" y="24" width="16" height="24" rx="4"/>
+      <path d="M40 32h8"/>
+      <path d="M40 36h6"/>
+      <path d="M40 40h4"/>
+      <path d="M32 36h4"/>
+      <text x="38" y="54" font-size="5" fill="currentColor" stroke="none">L/min</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-prone-positioning',
+    name: 'Prone Positioning',
+    domain: 'medicine',
+    category: 'procedures',
+    tags: ['prone', 'positioning', 'ARDS', 'oxygenation', 'ICU'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="28" width="48" height="20" rx="4" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="20" cy="24" rx="8" ry="6"/>
+      <path d="M16 30c-2 4-2 8 0 12"/>
+      <path d="M24 30c2 4 2 8 0 12"/>
+      <ellipse cx="44" cy="24" rx="8" ry="6"/>
+      <path d="M40 30c-2 4-2 8 0 12"/>
+      <path d="M48 30c2 4 2 8 0 12"/>
+      <path d="M28 38h8"/>
+      <path d="M32 34v8"/>
+      <circle cx="20" cy="52" r="4"/>
+      <circle cx="44" cy="52" r="4"/>
+      <text x="22" y="22" font-size="4" fill="currentColor" stroke="none">Prone</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // SLEEP MEDICINE (6 icons)
+  // ===========================================================================
+  {
+    id: 'pulm-osa',
+    name: 'Obstructive Sleep Apnea',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['OSA', 'obstructive', 'sleep apnea', 'snoring', 'AHI'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="16" ry="12"/>
+      <path d="M24 20c2 4 6 6 8 6s6-2 8-6"/>
+      <ellipse cx="26" cy="18" rx="2" ry="3"/>
+      <ellipse cx="38" cy="18" rx="2" ry="3"/>
+      <path d="M16 24l-8 4"/>
+      <path d="M48 24l8 4"/>
+      <path d="M28 32c2 8 4 16 4 24"/>
+      <path d="M36 32c-2 8-4 16-4 24"/>
+      <ellipse cx="32" cy="40" rx="4" ry="2" fill="currentColor" opacity="0.5"/>
+      <path d="M28 40c-4 1-8 1-12 0"/>
+      <path d="M36 40c4 1 8 1 12 0"/>
+      <text x="4" y="48" font-size="5" fill="currentColor" stroke="none">Zzz</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-central-apnea',
+    name: 'Central Sleep Apnea',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['CSA', 'central', 'sleep apnea', 'Cheyne-Stokes', 'heart failure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="12"/>
+      <ellipse cx="28" cy="22" rx="2" ry="3"/>
+      <ellipse cx="36" cy="22" rx="2" ry="3"/>
+      <path d="M28 28c2 2 4 2 8 0"/>
+      <path d="M32 36v20"/>
+      <ellipse cx="32" cy="44" rx="8" ry="4"/>
+      <path d="M8 52c4-4 8-8 12-8 4 0 4 8 8 8s4-8 8-8c4 0 8 4 12 8"/>
+      <text x="28" y="62" font-size="5" fill="currentColor" stroke="none">CSA</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-polysomnography',
+    name: 'Polysomnography',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['PSG', 'polysomnography', 'sleep study', 'EEG', 'monitoring'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="20" r="12"/>
+      <ellipse cx="28" cy="18" rx="2" ry="2"/>
+      <ellipse cx="36" cy="18" rx="2" ry="2"/>
+      <path d="M28 24c2 2 4 2 8 0"/>
+      <path d="M20 12l-8-4"/>
+      <path d="M44 12l8-4"/>
+      <path d="M32 8v-4"/>
+      <circle cx="12" cy="8" r="2" fill="currentColor"/>
+      <circle cx="52" cy="8" r="2" fill="currentColor"/>
+      <circle cx="32" cy="4" r="2" fill="currentColor"/>
+      <rect x="8" y="40" width="48" height="16" rx="4"/>
+      <path d="M12 48c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0 4-2 6 0 4 2 6 0"/>
+      <text x="16" y="38" font-size="5" fill="currentColor" stroke="none">Sleep Study</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-ahi',
+    name: 'AHI Index',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['AHI', 'apnea hypopnea index', 'severity', 'score', 'sleep'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="4"/>
+      <rect x="12" y="12" width="40" height="28" rx="2" fill="currentColor" opacity="0.1"/>
+      <path d="M16 32c4-4 8-8 12-4 4 4 4 8 8 4 4-4 8 0 12 4"/>
+      <path d="M20 44h6" stroke-width="2"/>
+      <path d="M28 44h8" stroke-width="2"/>
+      <path d="M38 44h8" stroke-width="2"/>
+      <text x="20" y="52" font-size="4" fill="currentColor" stroke="none">5</text>
+      <text x="30" y="52" font-size="4" fill="currentColor" stroke="none">15</text>
+      <text x="40" y="52" font-size="4" fill="currentColor" stroke="none">30</text>
+      <text x="24" y="28" font-size="8" fill="currentColor" stroke="none">AHI</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-hypoxemia-sleep',
+    name: 'Nocturnal Hypoxemia',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['nocturnal', 'hypoxemia', 'desaturation', 'oxygen', 'sleep'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="4"/>
+      <path d="M12 40c4-2 8-12 12-8 4 4 4 8 8 4 4-4 8-12 12-4 4 8 4 8 8 8"/>
+      <path d="M12 36h44" stroke-dasharray="2 2"/>
+      <text x="10" y="32" font-size="5" fill="red" stroke="none">88%</text>
+      <path d="M8 12l8-8"/>
+      <circle cx="20" cy="8" r="4"/>
+      <path d="M48 12l8-8"/>
+      <circle cx="52" cy="8" r="4"/>
+      <text x="22" y="58" font-size="5" fill="currentColor" stroke="none">SpO2</text>
+    </svg>`
+  },
+  {
+    id: 'pulm-home-oxygen',
+    name: 'Home Oxygen Therapy',
+    domain: 'medicine',
+    category: 'sleep-medicine',
+    tags: ['home oxygen', 'LTOT', 'long term', 'therapy', 'portable'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="36" rx="16" ry="20"/>
+      <ellipse cx="32" cy="36" rx="12" ry="16" fill="currentColor" opacity="0.1"/>
+      <path d="M32 16v-8"/>
+      <rect x="28" y="4" width="8" height="6" rx="2"/>
+      <circle cx="32" cy="28" r="4"/>
+      <text x="28" y="32" font-size="6" fill="currentColor" stroke="none">O2</text>
+      <path d="M32 56v4"/>
+      <path d="M24 60h16"/>
+      <path d="M48 32l8-4"/>
+      <path d="M56 28l4 8"/>
+      <text x="52" y="44" font-size="4" fill="currentColor" stroke="none">L/min</text>
     </svg>`
   },
 ];

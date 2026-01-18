@@ -7,6 +7,9 @@
  * - Anatomical diagrams (4)
  * - Procedure illustrations (3)
  * - Data visualization templates (4)
+ * - Additional clinical templates (5)
+ *
+ * Total: 23 templates
  */
 
 import type { DiagramTemplate } from './index';
@@ -836,6 +839,232 @@ export const ventilatorWaveforms: DiagramTemplate = {
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
+// =============================================================================
+// ADDITIONAL CLINICAL TEMPLATES (5 templates)
+// =============================================================================
+
+/**
+ * Oxygen Therapy Titration template
+ */
+export const oxygenTherapyTitration: DiagramTemplate = {
+  id: 'pulm-oxygen-titration',
+  name: 'Oxygen Therapy Titration',
+  description: 'Algorithm for oxygen therapy selection and titration based on clinical needs',
+  domain: 'medicine',
+  promptTemplate: `Create an oxygen therapy titration algorithm:
+- Baseline SpO2: {{baselineSpO2}}
+- Target SpO2 range: {{targetSpO2}}
+- Delivery devices: {{deliveryDevices}}
+- Flow rate adjustments: {{flowRates}}
+- Escalation criteria: {{escalationCriteria}}
+- Weaning protocol: {{weaningProtocol}}
+- Special considerations (COPD): {{specialConsiderations}}
+{{#additionalNotes}}Additional context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'baselineSpO2',
+    'targetSpO2',
+    'deliveryDevices',
+    'flowRates',
+    'escalationCriteria',
+    'weaningProtocol',
+    'specialConsiderations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Hypoxemia")] --> B{"SpO2 Level?"}
+    B -->|"88-92%"| C["Nasal Cannula\\n1-6 L/min"]
+    B -->|"<88%"| D["Face Mask\\n6-10 L/min"]
+    C --> E{"Still Hypoxic?"}
+    E -->|"Yes"| D
+    D --> F{"Still Hypoxic?"}
+    F -->|"Yes"| G["Non-rebreather\\n15 L/min"]
+    G --> H{"Still Hypoxic?"}
+    H -->|"Yes"| I["High-Flow NC\\nor NIV"]
+    E -->|"No"| J["Maintain + Wean"]
+    style I fill:#DC143C,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Thoracentesis Procedure template
+ */
+export const thoracentesisProcedure: DiagramTemplate = {
+  id: 'pulm-thoracentesis-procedure',
+  name: 'Thoracentesis Procedure',
+  description: 'Step-by-step thoracentesis procedure with ultrasound guidance',
+  domain: 'medicine',
+  promptTemplate: `Create a thoracentesis procedure flowchart:
+- Indication: {{indication}}
+- Pre-procedure checklist: {{preProceChecklist}}
+- Ultrasound landmarks: {{ultrasoundLandmarks}}
+- Patient positioning: {{positioning}}
+- Sterile technique: {{sterileTechnique}}
+- Insertion technique: {{insertionTechnique}}
+- Fluid analysis: {{fluidAnalysis}}
+- Post-procedure care: {{postProcedure}}
+{{#additionalNotes}}Complications to monitor: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'indication',
+    'preProceChecklist',
+    'ultrasoundLandmarks',
+    'positioning',
+    'sterileTechnique',
+    'insertionTechnique',
+    'fluidAnalysis',
+    'postProcedure',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Indication:\\nEffusion/Diagnosis"] --> B["Pre-procedure"]
+    B --> B1["Consent + Labs"]
+    B --> B2["US: Mark site"]
+    B2 --> C["Position: Upright\\nArms forward"]
+    C --> D["Prep + Drape\\nLidocaine"]
+    D --> E["Insert needle\\nAbove rib"]
+    E --> F["Aspirate fluid"]
+    F --> G{"Diagnostic\\nor Therapeutic?"}
+    G -->|"Diagnostic"| H["50-100mL\\nSend labs"]
+    G -->|"Therapeutic"| I["Drain max 1.5L"]
+    H & I --> J["Post-CXR if symptoms"]
+    style F fill:#4169E1,color:#fff
+    style J fill:#228B22,color:#fff`,
+};
+
+/**
+ * Sleep Apnea Management template
+ */
+export const sleepApneaManagement: DiagramTemplate = {
+  id: 'pulm-sleep-apnea-management',
+  name: 'Sleep Apnea Management',
+  description: 'OSA/CSA diagnosis and treatment pathway',
+  domain: 'medicine',
+  promptTemplate: `Create a sleep apnea management algorithm:
+- Presenting symptoms: {{symptoms}}
+- Risk factors: {{riskFactors}}
+- Sleep study results: {{sleepStudy}}
+- AHI severity: {{ahiSeverity}}
+- OSA vs CSA differentiation: {{osaCsaDiff}}
+- PAP therapy options: {{papTherapy}}
+- Alternative treatments: {{alternativeTx}}
+- Follow-up plan: {{followUp}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'symptoms',
+    'riskFactors',
+    'sleepStudy',
+    'ahiSeverity',
+    'osaCsaDiff',
+    'papTherapy',
+    'alternativeTx',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected OSA")] --> B["STOP-BANG Score"]
+    B -->|"≥3"| C["Sleep Study"]
+    B -->|"<3"| D["Monitor/Rescreen"]
+    C --> E{"AHI Result?"}
+    E -->|"5-15\\nMild"| F["Lifestyle + Position"]
+    E -->|"15-30\\nModerate"| G["CPAP Trial"]
+    E -->|">30\\nSevere"| H["CPAP Required"]
+    G --> I{"Tolerating?"}
+    I -->|"No"| J["Dental Appliance\\nor Surgery"]
+    I -->|"Yes"| K["Continue + F/U"]
+    H --> K
+    style H fill:#DC143C,color:#fff
+    style K fill:#228B22,color:#fff`,
+};
+
+/**
+ * Interstitial Lung Disease Workup template
+ */
+export const ildWorkup: DiagramTemplate = {
+  id: 'pulm-ild-workup',
+  name: 'Interstitial Lung Disease Workup',
+  description: 'Systematic approach to ILD diagnosis including IPF',
+  domain: 'medicine',
+  promptTemplate: `Create an ILD workup algorithm:
+- Clinical presentation: {{presentation}}
+- Exposure history: {{exposureHistory}}
+- HRCT pattern: {{hrctPattern}}
+- PFT findings: {{pftFindings}}
+- Serologic workup: {{serology}}
+- BAL analysis: {{balAnalysis}}
+- Lung biopsy indications: {{biopsyIndications}}
+- Multidisciplinary discussion: {{mdd}}
+{{#additionalNotes}}Treatment considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'exposureHistory',
+    'hrctPattern',
+    'pftFindings',
+    'serology',
+    'balAnalysis',
+    'biopsyIndications',
+    'mdd',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("ILD Suspected")] --> B["History + Exam"]
+    B --> C["HRCT Chest"]
+    C --> D{"Pattern?"}
+    D -->|"Definite UIP"| E["IPF Likely"]
+    D -->|"Probable UIP"| F["MDD Review"]
+    D -->|"Other"| G["Extended Workup"]
+    G --> H["Serology\\nANA, RF, CCP"]
+    G --> I["BAL"]
+    H & I --> J{"Diagnosis?"}
+    J -->|"No"| K["Surgical Biopsy"]
+    J -->|"Yes"| L["Treat Underlying"]
+    E --> M["Antifibrotic Rx"]
+    style E fill:#FFA500,color:#000
+    style M fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Ventilator Weaning Protocol template
+ */
+export const ventilatorWeaning: DiagramTemplate = {
+  id: 'pulm-vent-weaning',
+  name: 'Ventilator Weaning Protocol',
+  description: 'Evidence-based approach to liberation from mechanical ventilation',
+  domain: 'medicine',
+  promptTemplate: `Create a ventilator weaning protocol:
+- Readiness criteria: {{readinessCriteria}}
+- Daily awakening trial: {{awakening}}
+- Spontaneous breathing trial: {{sbtProtocol}}
+- SBT duration: {{sbtDuration}}
+- Success criteria: {{successCriteria}}
+- Failure criteria: {{failureCriteria}}
+- Extubation checklist: {{extubationChecklist}}
+- Post-extubation plan: {{postExtubation}}
+{{#additionalNotes}}High-risk considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'readinessCriteria',
+    'awakening',
+    'sbtProtocol',
+    'sbtDuration',
+    'successCriteria',
+    'failureCriteria',
+    'extubationChecklist',
+    'postExtubation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Daily Screen"] --> B{"Ready?"}
+    B -->|"FiO2 ≤40%\\nPEEP ≤8\\nStable"| C["SAT: Stop Sedation"]
+    B -->|"No"| D["Continue Vent\\nReassess Tomorrow"]
+    C --> E{"Awakens?\\nFollows?"}
+    E -->|"Yes"| F["SBT: PS 5-8\\nor T-piece"]
+    E -->|"No"| D
+    F --> G{"Tolerates\\n30-120 min?"}
+    G -->|"Yes"| H["Extubate"]
+    G -->|"No"| I["Resume Vent\\nIdentify Cause"]
+    H --> J["Post-extub\\nMonitor"]
+    style H fill:#228B22,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
 /**
  * All pulmonology templates
  */
@@ -862,6 +1091,12 @@ export const pulmonologyTemplates: DiagramTemplate[] = [
   abgAnalysis,
   pneumoniaSeverity,
   ventilatorWaveforms,
+  // Additional Clinical Templates (5)
+  oxygenTherapyTitration,
+  thoracentesisProcedure,
+  sleepApneaManagement,
+  ildWorkup,
+  ventilatorWeaning,
 ];
 
 export default pulmonologyTemplates;

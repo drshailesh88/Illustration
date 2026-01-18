@@ -904,6 +904,192 @@ export const giBleedingScores: DiagramTemplate = {
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
+// =============================================================================
+// ADDITIONAL CLINICAL TEMPLATES (4 templates)
+// =============================================================================
+
+/**
+ * H. pylori Treatment Algorithm template
+ */
+export const hPyloriTreatment: DiagramTemplate = {
+  id: 'gi-h-pylori-treatment',
+  name: 'H. pylori Treatment Algorithm',
+  description: 'Evidence-based H. pylori eradication therapy selection and follow-up',
+  domain: 'medicine',
+  promptTemplate: `Create an H. pylori treatment algorithm:
+- Testing method: {{testingMethod}}
+- First-line therapy: {{firstLineTherapy}}
+- Allergies/contraindications: {{allergies}}
+- Prior antibiotic exposure: {{priorExposure}}
+- Treatment duration: {{duration}}
+- Confirmation of eradication: {{confirmationTest}}
+- Second-line therapy: {{secondLineTherapy}}
+- Refractory management: {{refractoryManagement}}
+{{#additionalNotes}}Local resistance patterns: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'testingMethod',
+    'firstLineTherapy',
+    'allergies',
+    'priorExposure',
+    'duration',
+    'confirmationTest',
+    'secondLineTherapy',
+    'refractoryManagement',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("H. pylori\\nConfirmed")] --> B{"PCN Allergy?"}
+    B -->|"No"| C["Bismuth Quadruple\\nor PPI Triple"]
+    B -->|"Yes"| D["Bismuth Quadruple\\nor Levo-based"]
+    C --> E["14 days therapy"]
+    D --> E
+    E --> F["Wait 4 weeks\\nStop PPI 2 weeks"]
+    F --> G["Confirm Eradication\\nUrea Breath Test"]
+    G -->|"Negative"| H["✓ Cured"]
+    G -->|"Positive"| I["Second-line Rx"]
+    I --> J["Different regimen"]
+    style H fill:#228B22,color:#fff
+    style I fill:#FFA500,color:#000`,
+};
+
+/**
+ * Celiac Disease Workup template
+ */
+export const celiacWorkup: DiagramTemplate = {
+  id: 'gi-celiac-workup',
+  name: 'Celiac Disease Workup',
+  description: 'Systematic approach to diagnosing and managing celiac disease',
+  domain: 'medicine',
+  promptTemplate: `Create a celiac disease workup algorithm:
+- Clinical presentation: {{presentation}}
+- Serologic testing: {{serology}}
+- IgA level assessment: {{igaAssessment}}
+- Endoscopy indications: {{endoscopyIndications}}
+- Histologic findings: {{histology}}
+- Genetic testing: {{geneticTesting}}
+- Dietary management: {{dietaryManagement}}
+- Follow-up monitoring: {{followUp}}
+{{#additionalNotes}}Refractory celiac considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentation',
+    'serology',
+    'igaAssessment',
+    'endoscopyIndications',
+    'histology',
+    'geneticTesting',
+    'dietaryManagement',
+    'followUp',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspected\\nCeliac")] --> B["Check Total IgA"]
+    B --> C{"IgA Deficient?"}
+    C -->|"No"| D["TTG-IgA"]
+    C -->|"Yes"| E["TTG-IgG + DGP-IgG"]
+    D -->|"Positive"| F["EGD with Duodenal Bx"]
+    E -->|"Positive"| F
+    D -->|"Negative"| G["Celiac Unlikely"]
+    F --> H{"Marsh 2-3?"}
+    H -->|"Yes"| I["Celiac Confirmed"]
+    H -->|"No"| J["Consider HLA-DQ2/8"]
+    I --> K["Gluten-Free Diet"]
+    K --> L["Dietitian Referral"]
+    K --> M["Repeat TTG in 6-12mo"]
+    style I fill:#DC143C,color:#fff
+    style K fill:#228B22,color:#fff`,
+};
+
+/**
+ * Acute Pancreatitis Management template
+ */
+export const acutePancreatitisManagement: DiagramTemplate = {
+  id: 'gi-acute-pancreatitis',
+  name: 'Acute Pancreatitis Management',
+  description: 'Severity assessment and management algorithm for acute pancreatitis',
+  domain: 'medicine',
+  promptTemplate: `Create an acute pancreatitis management algorithm:
+- Etiology assessment: {{etiology}}
+- Severity scoring: {{severityScoring}}
+- Initial resuscitation: {{resuscitation}}
+- Nutrition approach: {{nutrition}}
+- Imaging timing: {{imaging}}
+- Intervention criteria: {{interventionCriteria}}
+- Complications monitoring: {{complications}}
+- Cholecystectomy timing: {{cholecystectomyTiming}}
+{{#additionalNotes}}ICU criteria: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'etiology',
+    'severityScoring',
+    'resuscitation',
+    'nutrition',
+    'imaging',
+    'interventionCriteria',
+    'complications',
+    'cholecystectomyTiming',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Acute\\nPancreatitis")] --> B["Confirm Dx:\\n2 of 3 criteria"]
+    B --> C["Lipase >3x\\nAbdominal Pain\\nImaging"]
+    C --> D["Assess Severity"]
+    D --> E{"BISAP ≥3?\\nOrgan Failure?"}
+    E -->|"Yes"| F["🚨 Severe - ICU"]
+    E -->|"No"| G["Mild - Floor"]
+    F --> H["Aggressive IVF\\nGoal-directed"]
+    G --> H
+    H --> I{"Gallstone\\nEtiology?"}
+    I -->|"Yes"| J["ERCP if Cholangitis"]
+    I -->|"Yes"| K["CCY same admission\\nif mild"]
+    H --> L["Early Oral Feeding\\nwhen tolerated"]
+    style F fill:#DC143C,color:#fff
+    style L fill:#228B22,color:#fff`,
+};
+
+/**
+ * Hepatitis B Management template
+ */
+export const hepatitisBManagement: DiagramTemplate = {
+  id: 'gi-hepatitis-b-management',
+  name: 'Hepatitis B Management',
+  description: 'Chronic hepatitis B treatment initiation and monitoring algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a hepatitis B management algorithm:
+- HBV serology interpretation: {{serologyInterpretation}}
+- Phase determination: {{phaseAssessment}}
+- Treatment indications: {{treatmentIndications}}
+- Medication options: {{medications}}
+- Monitoring parameters: {{monitoring}}
+- HCC surveillance: {{hccSurveillance}}
+- Special populations: {{specialPopulations}}
+- Treatment endpoints: {{endpoints}}
+{{#additionalNotes}}Resistance considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'serologyInterpretation',
+    'phaseAssessment',
+    'treatmentIndications',
+    'medications',
+    'monitoring',
+    'hccSurveillance',
+    'specialPopulations',
+    'endpoints',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Chronic HBV\\nHBsAg+ >6mo")] --> B{"HBeAg Status?"}
+    B -->|"Positive"| C["Check HBV DNA\\n& ALT"]
+    B -->|"Negative"| D["Check HBV DNA\\n& ALT"]
+    C --> E{"DNA >20K\\nALT >2x ULN?"}
+    D --> F{"DNA >2K\\nALT >2x ULN?"}
+    E -->|"Yes"| G["Treat: TDF or TAF\\nor Entecavir"]
+    F -->|"Yes"| G
+    E -->|"No"| H["Monitor q3-6mo"]
+    F -->|"No"| H
+    G --> I["Check DNA q3-6mo\\nuntil undetectable"]
+    A --> J["HCC Surveillance\\nUS q6mo if cirrhosis"]
+    style G fill:#4169E1,color:#fff
+    style J fill:#FFA500,color:#000`,
+};
+
 /**
  * All gastroenterology templates
  */
@@ -916,6 +1102,10 @@ export const gastroenterologyTemplates: DiagramTemplate[] = [
   diarrheaEvaluation,
   cirrhosisManagement,
   ibdTreatment,
+  hPyloriTreatment,
+  celiacWorkup,
+  acutePancreatitisManagement,
+  hepatitisBManagement,
   // Anatomical Diagrams
   giTractOverview,
   hepatobiliarySystem,

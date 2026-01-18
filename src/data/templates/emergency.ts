@@ -1065,6 +1065,191 @@ export const pediatricAssessmentTriangle: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL DECISION TREES (4 templates)
+// =============================================================================
+
+/**
+ * Acute Stroke Algorithm
+ */
+export const acuteStrokeAlgorithm: DiagramTemplate = {
+  id: 'em-acute-stroke',
+  name: 'Acute Stroke Algorithm',
+  description: 'Time-critical stroke evaluation and treatment algorithm including tPA and thrombectomy criteria',
+  domain: 'medicine',
+  promptTemplate: `Create an acute stroke algorithm:
+- Time of symptom onset: {{symptomOnset}}
+- NIHSS score: {{nihssScore}}
+- CT findings: {{ctFindings}}
+- tPA eligibility: {{tpaEligibility}}
+- Large vessel occlusion: {{lvo}}
+- Thrombectomy criteria: {{thrombectomyCriteria}}
+- Blood pressure management: {{bpManagement}}
+{{#additionalNotes}}Contraindications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'symptomOnset',
+    'nihssScore',
+    'ctFindings',
+    'tpaEligibility',
+    'lvo',
+    'thrombectomyCriteria',
+    'bpManagement',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Suspected Stroke"] --> B["STAT CT Head"]
+    B --> C{"Hemorrhage?"}
+    C -->|"Yes"| D["Neurosurgery Consult"]
+    C -->|"No"| E{"Time from LKW?"}
+    E -->|"<4.5h"| F["tPA Eligible?"]
+    F -->|"Yes"| G["Administer tPA"]
+    F -->|"No"| H["Check Exclusions"]
+    E -->|">4.5h"| I{"LVO on CTA?"}
+    I -->|"Yes"| J["Thrombectomy <24h"]
+    I -->|"No"| K["Supportive Care"]
+    G --> L{"LVO?"}
+    L -->|"Yes"| J
+    style G fill:#DC143C,color:#fff
+    style J fill:#4169E1,color:#fff`,
+};
+
+/**
+ * GI Bleeding Algorithm
+ */
+export const emergencyGiBleedAlgorithm: DiagramTemplate = {
+  id: 'em-gi-bleeding',
+  name: 'GI Bleeding Algorithm',
+  description: 'Upper and lower GI bleeding evaluation and management algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a GI bleeding algorithm:
+- Presentation type: {{presentationType}}
+- Hemodynamic status: {{hemodynamicStatus}}
+- Glasgow-Blatchford score: {{gbScore}}
+- Resuscitation priorities: {{resuscitation}}
+- Transfusion thresholds: {{transfusionThresholds}}
+- PPI therapy: {{ppiTherapy}}
+- Endoscopy timing: {{endoscopyTiming}}
+- Surgical consultation: {{surgicalConsult}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'presentationType',
+    'hemodynamicStatus',
+    'gbScore',
+    'resuscitation',
+    'transfusionThresholds',
+    'ppiTherapy',
+    'endoscopyTiming',
+    'surgicalConsult',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["GI Bleeding"] --> B{"Hemodynamically\\nStable?"}
+    B -->|"No"| C["Resuscitate"]
+    C --> C1["2 Large Bore IVs"]
+    C --> C2["Transfuse PRBCs"]
+    C --> C3["Consider MTP"]
+    B -->|"Yes"| D{"Upper or\\nLower?"}
+    D -->|"Upper\\n(Hematemesis)"| E["IV PPI"]
+    D -->|"Lower\\n(Hematochezia)"| F["GI Consult"]
+    E --> G["EGD <24h"]
+    F --> H{"Brisk\\nBleeding?"}
+    H -->|"Yes"| I["EGD or\\nAngio"]
+    H -->|"No"| J["Colonoscopy\\nafter Prep"]
+    C --> K{"Ongoing\\nBleed?"}
+    K -->|"Yes"| L["IR/Surgery"]
+    style C fill:#DC143C,color:#fff
+    style L fill:#8B0000,color:#fff`,
+};
+
+/**
+ * Pediatric Resuscitation (PALS) Algorithm
+ */
+export const palsAlgorithm: DiagramTemplate = {
+  id: 'em-pals-algorithm',
+  name: 'PALS Cardiac Arrest Algorithm',
+  description: 'Pediatric Advanced Life Support algorithm for cardiac arrest',
+  domain: 'medicine',
+  promptTemplate: `Create a PALS cardiac arrest algorithm:
+- Initial rhythm: {{initialRhythm}}
+- Shockable vs non-shockable: {{rhythmType}}
+- CPR quality metrics: {{cprMetrics}}
+- Weight-based dosing: {{weightDosing}}
+- Epinephrine dose: {{epinephrineDose}}
+- Defibrillation energy: {{defibEnergy}}
+- Reversible causes: {{reversibleCauses}}
+{{#additionalNotes}}Post-arrest care: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'initialRhythm',
+    'rhythmType',
+    'cprMetrics',
+    'weightDosing',
+    'epinephrineDose',
+    'defibEnergy',
+    'reversibleCauses',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Pediatric Arrest"] --> B["Start CPR"]
+    B --> C["Attach Monitor"]
+    C --> D{"Shockable?"}
+    D -->|"VF/pVT"| E["Shock 2J/kg"]
+    D -->|"Asystole/PEA"| F["CPR 2 min"]
+    E --> G["CPR 2 min"]
+    G --> H["Epi 0.01mg/kg\\nq3-5min"]
+    F --> H
+    H --> I{"Rhythm Check"}
+    I -->|"Shockable"| J["Shock 4J/kg"]
+    I -->|"Non-shockable"| F
+    I -->|"ROSC"| K["Post-Arrest Care"]
+    J --> L["Consider Amio\\n5mg/kg"]
+    L --> G
+    style A fill:#DC143C,color:#fff
+    style K fill:#228B22,color:#fff`,
+};
+
+/**
+ * Trauma Activation Criteria
+ */
+export const traumaActivation: DiagramTemplate = {
+  id: 'em-trauma-activation',
+  name: 'Trauma Activation Criteria',
+  description: 'Tiered trauma activation criteria for emergency department',
+  domain: 'medicine',
+  promptTemplate: `Create a trauma activation criteria template:
+- Level 1 criteria: {{level1Criteria}}
+- Level 2 criteria: {{level2Criteria}}
+- Mechanism criteria: {{mechanismCriteria}}
+- Physiologic criteria: {{physiologicCriteria}}
+- Anatomic criteria: {{anatomicCriteria}}
+- Special populations: {{specialPopulations}}
+- Team composition: {{teamComposition}}
+{{#additionalNotes}}Activation process: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'level1Criteria',
+    'level2Criteria',
+    'mechanismCriteria',
+    'physiologicCriteria',
+    'anatomicCriteria',
+    'specialPopulations',
+    'teamComposition',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Trauma Patient"] --> B{"Physiologic\\nCriteria?"}
+    B -->|"GCS <8, SBP <90,\\nRR <10 or >29"| C["LEVEL 1"]
+    B -->|"No"| D{"Anatomic\\nCriteria?"}
+    D -->|"Penetrating, Flail,\\n2+ Long Bone Fx"| C
+    D -->|"No"| E{"Mechanism?"}
+    E -->|"Ejection, >20ft Fall,\\nPed vs Auto"| F["LEVEL 2"]
+    E -->|"No"| G{"Special\\nPopulation?"}
+    G -->|"Age >65,\\nAnticoag, Pregnancy"| F
+    G -->|"No"| H["Standard Eval"]
+    C --> I["Full Trauma Team\\n+ Attending"]
+    F --> J["Trauma Team\\n+ Resident"]
+    style C fill:#DC143C,color:#fff
+    style F fill:#FFA500,color:#000`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -1098,6 +1283,11 @@ export const emergencyTemplates: DiagramTemplate[] = [
   qsofaSofaScoring,
   newsScoring,
   pediatricAssessmentTriangle,
+  // Additional Decision Trees (4)
+  acuteStrokeAlgorithm,
+  emergencyGiBleedAlgorithm,
+  palsAlgorithm,
+  traumaActivation,
 ];
 
 export default emergencyTemplates;
