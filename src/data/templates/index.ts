@@ -37,6 +37,7 @@ export * from './pathology';
 export * from './ent';
 export * from './obgyn';
 export * from './hematology-oncology';
+export * from './physiology';
 export * from './dermatology';
 // Biology subspecialties - use explicit exports to avoid duplicates
 export { molecularTemplates } from './molecular';
@@ -189,6 +190,7 @@ import { pathologyTemplates } from './pathology';
 import { entTemplates } from './ent';
 import { obgynTemplates } from './obgyn';
 import { hematologyOncologyTemplates } from './hematology-oncology';
+import { physiologyTemplates } from './physiology';
 import { dermatologyTemplates } from './dermatology';
 // Biology subspecialties
 import { molecularTemplates } from './molecular';

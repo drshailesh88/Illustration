@@ -93,6 +93,7 @@ import { orthopedicsIcons } from './orthopedics';
 import { pulmonologyIcons } from './pulmonology';
 import { entIcons } from './ent';
 import { obgynIcons } from './obgyn';
+import { physiologyIcons } from './physiology';
 // Drug classes
 import { analgesicsIcons } from './analgesics';
 import { antibioticsIcons } from './antibiotics';
@@ -180,6 +181,7 @@ export const allIcons: IconDefinition[] = [
   ...orthopedicsIcons,
   ...entIcons,
   ...obgynIcons,
+  ...physiologyIcons,
   // Drug classes
   ...analgesicsIcons,
   ...antibioticsIcons,
@@ -257,6 +259,7 @@ export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
     ...endocrinologyIcons, ...psychiatryIcons, ...entIcons, ...obgynIcons,
     ...hematologyOncologyIcons,
     ...dermatologyIcons,
+    ...physiologyIcons,
     // Drug classes
     ...analgesicsIcons, ...antibioticsIcons, ...anticoagulantsIcons,
     ...antihypertensivesIcons, ...antimicrobialsIcons, ...endocrineDrugsIcons,
@@ -636,6 +639,7 @@ export { endocrinologyIcons } from './endocrinology';
 export { pathologyIcons } from './pathology';
 export { entIcons } from './ent';
 export { obgynIcons } from './obgyn';
+export { physiologyIcons } from './physiology';
 // Drug classes
 export { analgesicsIcons } from './analgesics';
 export { antibioticsIcons } from './antibiotics';
