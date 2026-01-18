@@ -913,14 +913,62 @@
           "life-support": 2
         }
       }
+    },
+    "neuroscience-research": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T23:59:00Z",
+      "metrics": {
+        "icons": {
+          "current": 97,
+          "target": 90,
+          "percentage": 108
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 22,
+          "target": 20,
+          "percentage": 110
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "neurons": 6,
+          "synapses": 8,
+          "brain-regions": 14,
+          "neural-circuits": 12,
+          "neurotransmitters": 8,
+          "eeg-meg": 6,
+          "fmri-imaging": 6,
+          "optogenetics": 6,
+          "electrophysiology": 8,
+          "equipment": 10,
+          "genetics": 2,
+          "ion-channels": 4,
+          "networks": 3,
+          "plasticity": 3,
+          "additional-research": 1
+        },
+        "templates": {
+          "core-neuroscience": 17,
+          "research-focused": 8
+        }
+      }
     }
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 29,
+    "completed": 30,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 6,
+    "notStarted": 5,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
