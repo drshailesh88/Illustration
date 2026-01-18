@@ -338,3 +338,27 @@ export {
 } from './pathology';
 
 export type { PathologyColorScheme } from './pathology';
+
+// =============================================================================
+// PHYSIOLOGY
+// =============================================================================
+
+export {
+  cardiovascularColors,
+  respiratoryColors as physiologyRespiratoryColors,
+  renalColors,
+  neurophysiologyColors,
+  muscleColors,
+  endocrineColors as physiologyEndocrineColors,
+  giPhysiologyColors,
+  metabolismColors,
+  fluidElectrolyteColors,
+  acidBaseColors,
+  thermoregulationColors,
+  diagramElementColors,
+  flowchartColors as physiologyFlowchartColors,
+  severityGradient as physiologySeverityGradient,
+  physiologyColorScheme,
+} from './physiology';
+
+export type { PhysiologyColorScheme } from './physiology';

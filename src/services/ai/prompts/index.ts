@@ -578,3 +578,6 @@ export { default as entPrompts } from './ent-prompts';
 
 export * from './dermatology-prompts';
 export { default as dermatologyPrompts } from './dermatology-prompts';
+
+export * from './physiology-prompts';
+export { default as physiologyPrompts } from './physiology-prompts';
