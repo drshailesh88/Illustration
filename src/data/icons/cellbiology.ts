@@ -525,6 +525,971 @@ export const cellbiologyIcons: IconDefinition[] = [
       <text x="48" y="58" font-size="3" fill="currentColor" stroke="none">bodies</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // ADDITIONAL ORGANELLES
+  // ===========================================================================
+  {
+    id: 'cell-ribosome',
+    name: 'Ribosome',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['ribosome', 'protein synthesis', 'translation', 'mRNA', 'tRNA'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="24" rx="16" ry="10" fill="#9B59B6" opacity="0.4"/>
+      <ellipse cx="32" cy="24" rx="16" ry="10"/>
+      <ellipse cx="32" cy="40" rx="20" ry="12" fill="#3498DB" opacity="0.4"/>
+      <ellipse cx="32" cy="40" rx="20" ry="12"/>
+      <path d="M16 32h32" stroke="#E74C3C" stroke-width="2"/>
+      <text x="24" y="26" font-size="4" fill="currentColor" stroke="none">40S</text>
+      <text x="24" y="44" font-size="4" fill="currentColor" stroke="none">60S</text>
+    </svg>`
+  },
+  {
+    id: 'cell-peroxisome',
+    name: 'Peroxisome',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['peroxisome', 'oxidation', 'catalase', 'hydrogen peroxide', 'fatty acids'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="22" fill="#27AE60" opacity="0.3"/>
+      <circle cx="32" cy="32" r="22"/>
+      <circle cx="32" cy="32" r="8" fill="#27AE60" opacity="0.6"/>
+      <path d="M24 24l16 16" stroke="#333"/>
+      <path d="M40 24l-16 16" stroke="#333"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">H2O2 breakdown</text>
+    </svg>`
+  },
+  {
+    id: 'cell-centriole',
+    name: 'Centriole',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['centriole', 'centrosome', 'MTOC', 'microtubule', 'spindle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="8" ry="20" fill="#F39C12" opacity="0.3"/>
+      <ellipse cx="24" cy="32" rx="8" ry="20"/>
+      <ellipse cx="40" cy="32" rx="8" ry="20" fill="#F39C12" opacity="0.3" transform="rotate(90 40 32)"/>
+      <ellipse cx="40" cy="32" rx="8" ry="20" transform="rotate(90 40 32)"/>
+      <circle cx="24" cy="20" r="2" fill="currentColor"/>
+      <circle cx="24" cy="32" r="2" fill="currentColor"/>
+      <circle cx="24" cy="44" r="2" fill="currentColor"/>
+      <circle cx="32" cy="32" r="2" fill="currentColor"/>
+      <circle cx="48" cy="32" r="2" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'cell-vacuole',
+    name: 'Vacuole',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['vacuole', 'storage', 'plant cell', 'turgor', 'tonoplast'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="26" ry="22" fill="#87CEEB" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="26" ry="22"/>
+      <circle cx="20" cy="28" r="3" fill="#9B59B6" opacity="0.5"/>
+      <circle cx="44" cy="36" r="2" fill="#E74C3C" opacity="0.5"/>
+      <circle cx="32" cy="40" r="2" fill="#27AE60" opacity="0.5"/>
+      <text x="20" y="58" font-size="4" fill="currentColor" stroke="none">Central Vacuole</text>
+    </svg>`
+  },
+  {
+    id: 'cell-chloroplast',
+    name: 'Chloroplast',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['chloroplast', 'photosynthesis', 'thylakoid', 'grana', 'stroma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="28" ry="18" fill="#27AE60" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="28" ry="18"/>
+      <ellipse cx="32" cy="32" rx="24" ry="14" stroke-dasharray="2 2"/>
+      <rect x="16" y="26" width="6" height="12" rx="2" fill="#2ECC71"/>
+      <rect x="26" y="26" width="6" height="12" rx="2" fill="#2ECC71"/>
+      <rect x="36" y="26" width="6" height="12" rx="2" fill="#2ECC71"/>
+      <path d="M19 26v-4h20v4" stroke="#2ECC71"/>
+      <text x="48" y="36" font-size="3" fill="currentColor" stroke="none">Grana</text>
+    </svg>`
+  },
+  {
+    id: 'cell-plant-cell',
+    name: 'Plant Cell',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['plant cell', 'cell wall', 'chloroplast', 'vacuole', 'plasmodesmata'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="56" height="56" rx="4" fill="#90EE90" opacity="0.2"/>
+      <rect x="4" y="4" width="56" height="56" rx="4" stroke-width="3"/>
+      <rect x="8" y="8" width="48" height="48" rx="2"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="#87CEEB" opacity="0.4"/>
+      <circle cx="20" cy="24" r="4" fill="#9B59B6" opacity="0.5"/>
+      <ellipse cx="48" cy="40" rx="6" ry="4" fill="#27AE60" opacity="0.6"/>
+      <ellipse cx="16" cy="44" rx="5" ry="3" fill="#27AE60" opacity="0.6"/>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL MEMBRANE COMPONENTS
+  // ===========================================================================
+  {
+    id: 'cell-ion-channel',
+    name: 'Ion Channel',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['ion channel', 'voltage gated', 'ligand gated', 'sodium', 'potassium'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="24" fill="#3498DB" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="10" ry="16" fill="#27AE60" opacity="0.4"/>
+      <path d="M28 16v32" stroke="#27AE60" stroke-width="2"/>
+      <path d="M36 16v32" stroke="#27AE60" stroke-width="2"/>
+      <circle cx="32" cy="12" r="3" fill="#E74C3C"/>
+      <circle cx="32" cy="8" r="3" fill="#E74C3C"/>
+      <path d="M32 52v4"/>
+      <path d="M28 56l4 4 4-4"/>
+      <text x="44" y="32" font-size="4" fill="currentColor" stroke="none">Na+</text>
+    </svg>`
+  },
+  {
+    id: 'cell-aquaporin',
+    name: 'Aquaporin',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['aquaporin', 'water channel', 'osmosis', 'membrane protein'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="24" fill="#3498DB" opacity="0.2"/>
+      <ellipse cx="32" cy="32" rx="8" ry="14" fill="#87CEEB" opacity="0.4"/>
+      <path d="M28 18v28"/>
+      <path d="M36 18v28"/>
+      <circle cx="32" cy="10" r="2" fill="#87CEEB"/>
+      <circle cx="28" cy="14" r="2" fill="#87CEEB"/>
+      <circle cx="36" cy="12" r="2" fill="#87CEEB"/>
+      <circle cx="32" cy="54" r="2" fill="#87CEEB"/>
+      <circle cx="28" cy="50" r="2" fill="#87CEEB"/>
+      <text x="44" y="32" font-size="4" fill="currentColor" stroke="none">H2O</text>
+    </svg>`
+  },
+  {
+    id: 'cell-carrier-protein',
+    name: 'Carrier Protein',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['carrier protein', 'transporter', 'glucose', 'GLUT', 'facilitated'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="24" fill="#3498DB" opacity="0.2"/>
+      <path d="M24 20c0 8 8 12 8 12s8-4 8-12" fill="#F39C12" opacity="0.4"/>
+      <path d="M24 44c0-8 8-12 8-12s8 4 8 12" fill="#F39C12" opacity="0.4"/>
+      <circle cx="32" cy="12" r="4" fill="#9B59B6"/>
+      <path d="M32 16v4"/>
+      <path d="M28 20l4 4 4-4"/>
+      <circle cx="32" cy="52" r="4" fill="#9B59B6" opacity="0.5"/>
+      <text x="44" y="16" font-size="4" fill="currentColor" stroke="none">Glucose</text>
+    </svg>`
+  },
+  {
+    id: 'cell-receptor-protein',
+    name: 'Receptor Protein',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['receptor', 'signal', 'hormone', 'neurotransmitter', 'binding'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="24" width="56" height="16" fill="#3498DB" opacity="0.2"/>
+      <path d="M28 24v-8c0-4 8-4 8 0v8" fill="#E74C3C" opacity="0.3"/>
+      <circle cx="32" cy="12" r="4" fill="#27AE60"/>
+      <path d="M28 40v16"/>
+      <path d="M36 40v16"/>
+      <circle cx="32" cy="60" r="3" fill="#F39C12"/>
+      <text x="40" y="16" font-size="3" fill="currentColor" stroke="none">Ligand</text>
+    </svg>`
+  },
+  {
+    id: 'cell-cholesterol',
+    name: 'Membrane Cholesterol',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['cholesterol', 'membrane fluidity', 'lipid raft', 'steroid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="24" fill="#3498DB" opacity="0.2"/>
+      <circle cx="16" cy="20" r="4" fill="#3498DB"/>
+      <path d="M16 24v16"/>
+      <circle cx="48" cy="44" r="4" fill="#E74C3C"/>
+      <path d="M48 40v-16"/>
+      <path d="M32 28l-4 8h8l-4 8" fill="#F39C12" opacity="0.6"/>
+      <text x="24" y="58" font-size="3" fill="currentColor" stroke="none">Cholesterol</text>
+    </svg>`
+  },
+  {
+    id: 'cell-glycoprotein',
+    name: 'Glycoprotein',
+    domain: 'biology',
+    category: 'membrane',
+    tags: ['glycoprotein', 'glycocalyx', 'carbohydrate', 'cell recognition'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="28" width="56" height="16" fill="#3498DB" opacity="0.2"/>
+      <rect x="28" y="28" width="8" height="20" fill="#9B59B6" opacity="0.4"/>
+      <path d="M32 28v-4"/>
+      <path d="M28 24h8"/>
+      <circle cx="24" cy="20" r="3" fill="#F39C12"/>
+      <circle cx="32" cy="16" r="3" fill="#E74C3C"/>
+      <circle cx="40" cy="20" r="3" fill="#27AE60"/>
+      <circle cx="28" cy="12" r="2" fill="#F39C12"/>
+      <circle cx="36" cy="10" r="2" fill="#E74C3C"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">Glycocalyx</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL CYCLE PHASES
+  // ===========================================================================
+  {
+    id: 'cell-prophase',
+    name: 'Prophase',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['prophase', 'mitosis', 'chromosome condensation', 'nuclear envelope'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="#FFE4E1" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <circle cx="32" cy="32" r="12" stroke-dasharray="4 2" opacity="0.5"/>
+      <path d="M24 28c4 0 4 8 8 8s4-8 8-8" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M24 36c4 0 4-8 8-8s4 8 8 8" stroke="#3498DB" stroke-width="2"/>
+      <circle cx="16" cy="20" r="3" fill="#F39C12"/>
+      <circle cx="48" cy="44" r="3" fill="#F39C12"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Prophase</text>
+    </svg>`
+  },
+  {
+    id: 'cell-metaphase',
+    name: 'Metaphase',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['metaphase', 'mitosis', 'metaphase plate', 'spindle', 'alignment'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20" fill="#FFE4E1" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <line x1="32" y1="12" x2="32" y2="52" stroke-dasharray="2 2"/>
+      <rect x="28" y="20" width="8" height="6" fill="#E74C3C"/>
+      <rect x="28" y="29" width="8" height="6" fill="#3498DB"/>
+      <rect x="28" y="38" width="8" height="6" fill="#27AE60"/>
+      <circle cx="8" cy="32" r="3" fill="#F39C12"/>
+      <circle cx="56" cy="32" r="3" fill="#F39C12"/>
+      <path d="M11 32h17"/>
+      <path d="M36 32h17"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Metaphase</text>
+    </svg>`
+  },
+  {
+    id: 'cell-anaphase',
+    name: 'Anaphase',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['anaphase', 'mitosis', 'sister chromatids', 'separation', 'spindle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="26" ry="18" fill="#FFE4E1" opacity="0.3"/>
+      <ellipse cx="32" cy="32" rx="26" ry="18"/>
+      <circle cx="6" cy="32" r="3" fill="#F39C12"/>
+      <circle cx="58" cy="32" r="3" fill="#F39C12"/>
+      <rect x="12" y="26" width="4" height="4" fill="#E74C3C"/>
+      <rect x="12" y="32" width="4" height="4" fill="#3498DB"/>
+      <rect x="12" y="38" width="4" height="4" fill="#27AE60"/>
+      <rect x="48" y="26" width="4" height="4" fill="#E74C3C"/>
+      <rect x="48" y="32" width="4" height="4" fill="#3498DB"/>
+      <rect x="48" y="38" width="4" height="4" fill="#27AE60"/>
+      <path d="M9 32h3"/>
+      <path d="M52 32h3"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Anaphase</text>
+    </svg>`
+  },
+  {
+    id: 'cell-telophase',
+    name: 'Telophase',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['telophase', 'mitosis', 'nuclear envelope', 'cleavage furrow'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 12c-12 0-20 8-20 20s8 20 20 20" fill="#FFE4E1" opacity="0.3"/>
+      <path d="M32 12c12 0 20 8 20 20s-8 20-20 20" fill="#FFE4E1" opacity="0.3"/>
+      <path d="M32 12c-12 0-20 8-20 20s8 20 20 20"/>
+      <path d="M32 12c12 0 20 8 20 20s-8 20-20 20"/>
+      <path d="M32 20v24" stroke="#E74C3C" stroke-width="2" stroke-dasharray="2 2"/>
+      <circle cx="20" cy="32" r="6" stroke-dasharray="2 2"/>
+      <circle cx="44" cy="32" r="6" stroke-dasharray="2 2"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Telophase</text>
+    </svg>`
+  },
+  {
+    id: 'cell-g1-checkpoint',
+    name: 'G1 Checkpoint',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['G1 checkpoint', 'restriction point', 'p53', 'Rb', 'cell cycle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" stroke-dasharray="4 2"/>
+      <path d="M32 8v8"/>
+      <circle cx="32" cy="20" r="4" fill="#E74C3C"/>
+      <text x="40" y="22" font-size="4" fill="currentColor" stroke="none">STOP</text>
+      <path d="M50 20a24 24 0 0 1 0 24" stroke="#27AE60" stroke-width="3"/>
+      <text x="20" y="36" font-size="5" fill="currentColor" stroke="none">G1</text>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Restriction Point</text>
+    </svg>`
+  },
+  {
+    id: 'cell-g2-checkpoint',
+    name: 'G2 Checkpoint',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['G2 checkpoint', 'DNA damage', 'CDK1', 'cyclin B', 'cell cycle'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" stroke-dasharray="4 2"/>
+      <path d="M32 56v-8"/>
+      <circle cx="32" cy="44" r="4" fill="#F39C12"/>
+      <text x="40" y="46" font-size="4" fill="currentColor" stroke="none">CHECK</text>
+      <path d="M14 44a24 24 0 0 1 0-24" stroke="#3498DB" stroke-width="3"/>
+      <text x="20" y="36" font-size="5" fill="currentColor" stroke="none">G2</text>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">DNA Damage Check</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL DEATH MECHANISMS
+  // ===========================================================================
+  {
+    id: 'cell-necrosis',
+    name: 'Necrosis',
+    domain: 'biology',
+    category: 'cell-death',
+    tags: ['necrosis', 'cell death', 'inflammation', 'lysis', 'trauma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="#E74C3C" opacity="0.3"/>
+      <path d="M12 32c8 0 8-8 16-8s8 8 16 8s8-8 8-8" stroke="#E74C3C"/>
+      <path d="M12 32c8 0 8 8 16 8s8-8 16-8s8 8 8 8" stroke="#E74C3C"/>
+      <circle cx="24" cy="28" r="3" fill="#333" opacity="0.5"/>
+      <circle cx="40" cy="36" r="4" fill="#333" opacity="0.5"/>
+      <circle cx="32" cy="44" r="2" fill="#333" opacity="0.5"/>
+      <path d="M8 20l4 4"/>
+      <path d="M12 16l4 4"/>
+      <path d="M52 44l4 4"/>
+      <path d="M56 40l4 4"/>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">Necrosis</text>
+    </svg>`
+  },
+  {
+    id: 'cell-autophagy',
+    name: 'Autophagy',
+    domain: 'biology',
+    category: 'cell-death',
+    tags: ['autophagy', 'self-eating', 'lysosome', 'autophagosome', 'recycling'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="20" r="8" fill="#FFE4E1" opacity="0.3"/>
+      <circle cx="20" cy="20" r="4" fill="#E74C3C" opacity="0.5"/>
+      <path d="M28 20h8"/>
+      <path d="M36 16l4 4-4 4"/>
+      <circle cx="48" cy="20" r="10"/>
+      <circle cx="48" cy="20" r="6" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="48" cy="20" r="3" fill="#E74C3C" opacity="0.5"/>
+      <path d="M48 30v8"/>
+      <path d="M44 38l4 4 4-4"/>
+      <circle cx="48" cy="50" r="8" fill="#9B59B6" opacity="0.4"/>
+      <circle cx="44" cy="48" r="2" fill="#27AE60"/>
+      <circle cx="52" cy="52" r="2" fill="#27AE60"/>
+      <text x="4" y="48" font-size="3" fill="currentColor" stroke="none">Autophagosome</text>
+    </svg>`
+  },
+  {
+    id: 'cell-caspase',
+    name: 'Caspase Cascade',
+    domain: 'biology',
+    category: 'cell-death',
+    tags: ['caspase', 'apoptosis', 'protease', 'cascade', 'executioner'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="#E74C3C" opacity="0.5"/>
+      <text x="26" y="14" font-size="5" fill="currentColor" stroke="none">8/9</text>
+      <path d="M32 16v6"/>
+      <path d="M28 22l4 4 4-4"/>
+      <circle cx="32" cy="32" r="6" fill="#F39C12" opacity="0.5"/>
+      <text x="28" y="36" font-size="5" fill="currentColor" stroke="none">3</text>
+      <path d="M32 38v6"/>
+      <path d="M28 44l4 4 4-4"/>
+      <rect x="20" y="50" width="24" height="8" fill="#9B59B6" opacity="0.3"/>
+      <text x="20" y="58" font-size="4" fill="currentColor" stroke="none">Substrates</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CYTOSKELETON COMPONENTS
+  // ===========================================================================
+  {
+    id: 'cell-actin-filament',
+    name: 'Actin Filament',
+    domain: 'biology',
+    category: 'cytoskeleton',
+    tags: ['actin', 'microfilament', 'F-actin', 'G-actin', 'polymerization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c4-4 8 4 12 0s8 4 12 0s8 4 12 0s8 4 12 0" stroke="#E74C3C" stroke-width="3"/>
+      <path d="M8 36c4-4 8 4 12 0s8 4 12 0s8 4 12 0s8 4 12 0" stroke="#E74C3C" stroke-width="3"/>
+      <circle cx="8" cy="32" r="3" fill="#E74C3C"/>
+      <circle cx="8" cy="36" r="3" fill="#E74C3C"/>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">+ end</text>
+      <text x="48" y="20" font-size="3" fill="currentColor" stroke="none">- end</text>
+      <text x="16" y="52" font-size="4" fill="currentColor" stroke="none">Actin Filament (7nm)</text>
+    </svg>`
+  },
+  {
+    id: 'cell-microtubule',
+    name: 'Microtubule',
+    domain: 'biology',
+    category: 'cytoskeleton',
+    tags: ['microtubule', 'tubulin', 'alpha', 'beta', 'dynamic instability'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="32" rx="4" ry="8" fill="#27AE60" opacity="0.3"/>
+      <ellipse cx="12" cy="32" rx="4" ry="8"/>
+      <rect x="12" y="24" width="44" height="16" fill="#27AE60" opacity="0.2"/>
+      <path d="M12 24h44"/>
+      <path d="M12 40h44"/>
+      <ellipse cx="56" cy="32" rx="4" ry="8" fill="#27AE60" opacity="0.3"/>
+      <circle cx="20" cy="28" r="2" fill="#3498DB"/>
+      <circle cx="20" cy="36" r="2" fill="#9B59B6"/>
+      <circle cx="28" cy="28" r="2" fill="#3498DB"/>
+      <circle cx="28" cy="36" r="2" fill="#9B59B6"/>
+      <text x="4" y="52" font-size="3" fill="currentColor" stroke="none">α-tubulin</text>
+      <text x="36" y="52" font-size="3" fill="currentColor" stroke="none">β-tubulin</text>
+    </svg>`
+  },
+  {
+    id: 'cell-intermediate-filament',
+    name: 'Intermediate Filament',
+    domain: 'biology',
+    category: 'cytoskeleton',
+    tags: ['intermediate filament', 'keratin', 'vimentin', 'desmin', 'structural'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 28c48 0 48 8 48 8" stroke="#9B59B6" stroke-width="2"/>
+      <path d="M8 32c48 0 48 8 48 8" stroke="#9B59B6" stroke-width="2"/>
+      <path d="M8 36c48 0 48 8 48 8" stroke="#9B59B6" stroke-width="2"/>
+      <path d="M8 28c0 0 0 8 0 8" stroke="#9B59B6" stroke-width="4"/>
+      <text x="8" y="52" font-size="3" fill="currentColor" stroke="none">Coiled-coil dimer</text>
+      <text x="8" y="20" font-size="4" fill="currentColor" stroke="none">Intermediate Filament (10nm)</text>
+    </svg>`
+  },
+  {
+    id: 'cell-motor-protein',
+    name: 'Motor Protein',
+    domain: 'biology',
+    category: 'cytoskeleton',
+    tags: ['motor protein', 'kinesin', 'dynein', 'myosin', 'transport'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 44h48" stroke="#27AE60" stroke-width="4"/>
+      <path d="M24 44v-12"/>
+      <path d="M40 44v-12"/>
+      <circle cx="24" cy="28" r="4" fill="#E74C3C"/>
+      <circle cx="40" cy="28" r="4" fill="#E74C3C"/>
+      <path d="M24 24v-8"/>
+      <path d="M40 24v-8"/>
+      <circle cx="32" cy="12" r="6" fill="#F39C12" opacity="0.5"/>
+      <text x="28" y="16" font-size="4" fill="currentColor" stroke="none">V</text>
+      <path d="M44 28l8-4"/>
+      <path d="M52 24l4 4-4 4"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Kinesin</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL JUNCTIONS
+  // ===========================================================================
+  {
+    id: 'cell-tight-junction',
+    name: 'Tight Junction',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['tight junction', 'zonula occludens', 'claudin', 'occludin', 'barrier'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="24" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="36" y="8" width="24" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <path d="M28 12h8"/>
+      <path d="M28 20h8"/>
+      <path d="M28 28h8"/>
+      <path d="M28 36h8"/>
+      <path d="M28 44h8"/>
+      <path d="M28 52h8"/>
+      <circle cx="32" cy="12" r="2" fill="#E74C3C"/>
+      <circle cx="32" cy="28" r="2" fill="#E74C3C"/>
+      <circle cx="32" cy="44" r="2" fill="#E74C3C"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Tight Junction</text>
+    </svg>`
+  },
+  {
+    id: 'cell-gap-junction',
+    name: 'Gap Junction',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['gap junction', 'connexin', 'connexon', 'communication', 'ions'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="40" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <circle cx="24" cy="24" r="6" fill="#27AE60" opacity="0.3"/>
+      <circle cx="40" cy="24" r="6" fill="#27AE60" opacity="0.3"/>
+      <path d="M30 24h4"/>
+      <circle cx="24" cy="40" r="6" fill="#27AE60" opacity="0.3"/>
+      <circle cx="40" cy="40" r="6" fill="#27AE60" opacity="0.3"/>
+      <path d="M30 40h4"/>
+      <circle cx="32" cy="24" r="2" fill="#3498DB"/>
+      <circle cx="32" cy="40" r="2" fill="#3498DB"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Gap Junction</text>
+    </svg>`
+  },
+  {
+    id: 'cell-desmosome',
+    name: 'Desmosome',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['desmosome', 'cadherin', 'plaque', 'keratin', 'adhesion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="40" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="22" y="24" width="4" height="16" fill="#9B59B6" opacity="0.5"/>
+      <rect x="38" y="24" width="4" height="16" fill="#9B59B6" opacity="0.5"/>
+      <path d="M26 28h12"/>
+      <path d="M26 32h12"/>
+      <path d="M26 36h12"/>
+      <path d="M12 24c4 4 4 16 0 16" stroke="#E74C3C"/>
+      <path d="M52 24c-4 4-4 16 0 16" stroke="#E74C3C"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Desmosome</text>
+    </svg>`
+  },
+  {
+    id: 'cell-adherens-junction',
+    name: 'Adherens Junction',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['adherens junction', 'cadherin', 'catenin', 'actin', 'adhesion belt'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="40" y="8" width="20" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <path d="M24 24c4 4 4 16 0 16"/>
+      <path d="M40 24c-4 4-4 16 0 16"/>
+      <path d="M28 28h8"/>
+      <path d="M28 36h8"/>
+      <path d="M8 24c4 4 8 0 12 4" stroke="#3498DB" stroke-width="2"/>
+      <path d="M8 40c4-4 8 0 12-4" stroke="#3498DB" stroke-width="2"/>
+      <path d="M44 28c4 0 8-4 12-4" stroke="#3498DB" stroke-width="2"/>
+      <path d="M44 36c4 0 8 4 12 4" stroke="#3498DB" stroke-width="2"/>
+      <text x="4" y="62" font-size="3" fill="currentColor" stroke="none">Adherens Junction</text>
+    </svg>`
+  },
+  {
+    id: 'cell-hemidesmosome',
+    name: 'Hemidesmosome',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['hemidesmosome', 'integrin', 'basement membrane', 'adhesion', 'ECM'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="24" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="8" y="8" width="48" height="24"/>
+      <rect x="4" y="40" width="56" height="8" fill="#F39C12" opacity="0.3"/>
+      <rect x="4" y="40" width="56" height="8"/>
+      <rect x="28" y="28" width="8" height="16" fill="#9B59B6" opacity="0.5"/>
+      <path d="M16 20c4 8 4 8 4 8" stroke="#E74C3C"/>
+      <path d="M48 20c-4 8-4 8-4 8" stroke="#E74C3C"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Basement Membrane</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL TYPES
+  // ===========================================================================
+  {
+    id: 'cell-epithelial',
+    name: 'Epithelial Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['epithelial', 'columnar', 'cuboidal', 'squamous', 'barrier'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="16" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="8" y="8" width="16" height="48"/>
+      <rect x="24" y="8" width="16" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="24" y="8" width="16" height="48"/>
+      <rect x="40" y="8" width="16" height="48" fill="#FFE4E1" opacity="0.3"/>
+      <rect x="40" y="8" width="16" height="48"/>
+      <circle cx="16" cy="24" r="4" fill="#9B59B6" opacity="0.5"/>
+      <circle cx="32" cy="24" r="4" fill="#9B59B6" opacity="0.5"/>
+      <circle cx="48" cy="24" r="4" fill="#9B59B6" opacity="0.5"/>
+      <path d="M12 8v-4"/>
+      <path d="M16 8v-4"/>
+      <path d="M20 8v-4"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Columnar Epithelium</text>
+    </svg>`
+  },
+  {
+    id: 'cell-muscle',
+    name: 'Muscle Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['muscle', 'myocyte', 'sarcomere', 'striated', 'contraction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="24" rx="4" fill="#E74C3C" opacity="0.3"/>
+      <rect x="4" y="20" width="56" height="24" rx="4"/>
+      <path d="M12 20v24"/>
+      <path d="M20 20v24"/>
+      <path d="M28 20v24"/>
+      <path d="M36 20v24"/>
+      <path d="M44 20v24"/>
+      <path d="M52 20v24"/>
+      <rect x="12" y="28" width="8" height="8" fill="#9B59B6" opacity="0.5"/>
+      <rect x="28" y="28" width="8" height="8" fill="#9B59B6" opacity="0.5"/>
+      <rect x="44" y="28" width="8" height="8" fill="#9B59B6" opacity="0.5"/>
+      <ellipse cx="8" cy="32" r="3" ry="8" fill="#9B59B6"/>
+      <text x="16" y="52" font-size="3" fill="currentColor" stroke="none">Striated Muscle</text>
+    </svg>`
+  },
+  {
+    id: 'cell-neuron',
+    name: 'Neuron',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['neuron', 'nerve cell', 'axon', 'dendrite', 'synapse'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="32" r="10" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="16" cy="32" r="10"/>
+      <circle cx="16" cy="32" r="4" fill="#9B59B6"/>
+      <path d="M26 32h28" stroke-width="2"/>
+      <path d="M54 28v8"/>
+      <path d="M58 30v4"/>
+      <path d="M6 24l-4-8"/>
+      <path d="M8 22l-8-4"/>
+      <path d="M10 40l-8 8"/>
+      <path d="M8 42l-4 8"/>
+      <circle cx="40" cy="32" r="2" fill="#F39C12"/>
+      <text x="20" y="58" font-size="3" fill="currentColor" stroke="none">Neuron</text>
+    </svg>`
+  },
+  {
+    id: 'cell-red-blood-cell',
+    name: 'Red Blood Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['RBC', 'erythrocyte', 'hemoglobin', 'oxygen', 'biconcave'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="16" fill="#E74C3C" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="24" ry="16"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8" fill="#FFCCCB" opacity="0.6"/>
+      <path d="M20 32c4-4 8 0 12 0s8 4 12 0"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">Erythrocyte</text>
+    </svg>`
+  },
+  {
+    id: 'cell-white-blood-cell',
+    name: 'White Blood Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['WBC', 'leukocyte', 'immune', 'neutrophil', 'lymphocyte'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="#87CEEB" opacity="0.3"/>
+      <circle cx="32" cy="32" r="20"/>
+      <path d="M24 28c4 4 8-4 12 0s4 8 8 4" fill="#9B59B6" opacity="0.5"/>
+      <path d="M20 36c4-4 8 4 12 0s8-4 12 0" fill="#9B59B6" opacity="0.5"/>
+      <circle cx="24" cy="24" r="3" fill="#E74C3C" opacity="0.4"/>
+      <circle cx="40" cy="40" r="3" fill="#E74C3C" opacity="0.4"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">Leukocyte</text>
+    </svg>`
+  },
+  {
+    id: 'cell-platelet',
+    name: 'Platelet',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['platelet', 'thrombocyte', 'clotting', 'hemostasis', 'megakaryocyte'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="10" fill="#F39C12" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="16" ry="10"/>
+      <circle cx="28" cy="30" r="2" fill="#9B59B6"/>
+      <circle cx="36" cy="34" r="2" fill="#9B59B6"/>
+      <circle cx="32" cy="28" r="1.5" fill="#E74C3C"/>
+      <text x="16" y="54" font-size="3" fill="currentColor" stroke="none">Thrombocyte</text>
+    </svg>`
+  },
+  {
+    id: 'cell-stem-cell',
+    name: 'Stem Cell',
+    domain: 'biology',
+    category: 'cell-types',
+    tags: ['stem cell', 'pluripotent', 'differentiation', 'self-renewal', 'progenitor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="12" fill="#27AE60" opacity="0.3"/>
+      <circle cx="32" cy="24" r="12"/>
+      <circle cx="32" cy="24" r="4" fill="#27AE60"/>
+      <path d="M32 36v4"/>
+      <path d="M24 44l8 4 8-4"/>
+      <circle cx="16" cy="52" r="6" fill="#E74C3C" opacity="0.3"/>
+      <circle cx="32" cy="56" r="6" fill="#3498DB" opacity="0.3"/>
+      <circle cx="48" cy="52" r="6" fill="#9B59B6" opacity="0.3"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Differentiation</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // VESICULAR TRANSPORT
+  // ===========================================================================
+  {
+    id: 'cell-clathrin-vesicle',
+    name: 'Clathrin-Coated Vesicle',
+    domain: 'biology',
+    category: 'transport',
+    tags: ['clathrin', 'vesicle', 'receptor-mediated', 'endocytosis', 'coat'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="16" fill="#F39C12" opacity="0.3"/>
+      <polygon points="32,16 44,24 44,40 32,48 20,40 20,24" fill="none" stroke="#E74C3C"/>
+      <path d="M32 16v32"/>
+      <path d="M20 24l24 16"/>
+      <path d="M44 24l-24 16"/>
+      <circle cx="32" cy="32" r="8" fill="#3498DB" opacity="0.4"/>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">Clathrin Coat</text>
+    </svg>`
+  },
+  {
+    id: 'cell-copi-vesicle',
+    name: 'COPI Vesicle',
+    domain: 'biology',
+    category: 'transport',
+    tags: ['COPI', 'vesicle', 'retrograde', 'Golgi', 'ER'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14" fill="#9B59B6" opacity="0.3"/>
+      <circle cx="32" cy="32" r="14"/>
+      <circle cx="24" cy="26" r="3" fill="#9B59B6"/>
+      <circle cx="40" cy="26" r="3" fill="#9B59B6"/>
+      <circle cx="32" cy="38" r="3" fill="#9B59B6"/>
+      <circle cx="24" cy="38" r="3" fill="#9B59B6"/>
+      <circle cx="40" cy="38" r="3" fill="#9B59B6"/>
+      <path d="M48 32l8 0"/>
+      <path d="M56 28l4 4-4 4"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">COPI (Retrograde)</text>
+    </svg>`
+  },
+  {
+    id: 'cell-copii-vesicle',
+    name: 'COPII Vesicle',
+    domain: 'biology',
+    category: 'transport',
+    tags: ['COPII', 'vesicle', 'anterograde', 'ER', 'Golgi'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14" fill="#3498DB" opacity="0.3"/>
+      <circle cx="32" cy="32" r="14"/>
+      <rect x="26" y="26" width="4" height="4" fill="#3498DB"/>
+      <rect x="34" y="26" width="4" height="4" fill="#3498DB"/>
+      <rect x="26" y="34" width="4" height="4" fill="#3498DB"/>
+      <rect x="34" y="34" width="4" height="4" fill="#3498DB"/>
+      <path d="M48 32l8 0"/>
+      <path d="M56 28l4 4-4 4"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">COPII (Anterograde)</text>
+    </svg>`
+  },
+  {
+    id: 'cell-snare-fusion',
+    name: 'SNARE Complex',
+    domain: 'biology',
+    category: 'transport',
+    tags: ['SNARE', 'fusion', 'v-SNARE', 't-SNARE', 'membrane fusion'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="12" fill="#3498DB" opacity="0.3"/>
+      <rect x="4" y="8" width="56" height="12"/>
+      <circle cx="32" cy="40" r="12" fill="#F39C12" opacity="0.3"/>
+      <circle cx="32" cy="40" r="12"/>
+      <path d="M28 20v8c0 4 8 4 8 0v-8" stroke="#E74C3C" stroke-width="2"/>
+      <path d="M24 28l8 4 8-4" stroke="#27AE60" stroke-width="2"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">SNARE Fusion</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // SIGNALING PATHWAYS
+  // ===========================================================================
+  {
+    id: 'cell-gpcr',
+    name: 'G-Protein Coupled Receptor',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['GPCR', 'G-protein', 'seven transmembrane', 'signal', 'receptor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="16" fill="#3498DB" opacity="0.2"/>
+      <path d="M16 20v-8c4 0 4 8 8 0v8" fill="#27AE60" opacity="0.3"/>
+      <path d="M24 20v16c4 8 4-8 8 0v-16" fill="#27AE60" opacity="0.3"/>
+      <path d="M32 20v-8c4 0 4 8 8 0v8" fill="#27AE60" opacity="0.3"/>
+      <path d="M40 20v16c4 8 4-8 8 0v-16" fill="#27AE60" opacity="0.3"/>
+      <circle cx="24" cy="8" r="4" fill="#E74C3C"/>
+      <ellipse cx="32" cy="48" rx="8" ry="4" fill="#F39C12" opacity="0.5"/>
+      <text x="40" y="52" font-size="3" fill="currentColor" stroke="none">G-protein</text>
+    </svg>`
+  },
+  {
+    id: 'cell-rtk',
+    name: 'Receptor Tyrosine Kinase',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['RTK', 'tyrosine kinase', 'dimerization', 'phosphorylation', 'growth factor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="24" width="56" height="12" fill="#3498DB" opacity="0.2"/>
+      <rect x="20" y="24" width="8" height="32" fill="#9B59B6" opacity="0.3"/>
+      <rect x="36" y="24" width="8" height="32" fill="#9B59B6" opacity="0.3"/>
+      <path d="M24 24v-8c0-4 8-4 8 0v8"/>
+      <path d="M40 24v-8c0-4 8-4 8 0v8"/>
+      <circle cx="28" cy="12" r="4" fill="#E74C3C"/>
+      <circle cx="44" cy="12" r="4" fill="#E74C3C"/>
+      <circle cx="24" cy="48" r="3" fill="#F39C12"/>
+      <circle cx="40" cy="48" r="3" fill="#F39C12"/>
+      <text x="48" y="52" font-size="3" fill="currentColor" stroke="none">P</text>
+    </svg>`
+  },
+  {
+    id: 'cell-mapk-pathway',
+    name: 'MAPK Pathway',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['MAPK', 'ERK', 'Ras', 'Raf', 'MEK', 'cascade'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="8" r="5" fill="#E74C3C" opacity="0.5"/>
+      <text x="28" y="12" font-size="4" fill="currentColor" stroke="none">Ras</text>
+      <path d="M32 13v5"/>
+      <circle cx="32" cy="24" r="5" fill="#F39C12" opacity="0.5"/>
+      <text x="28" y="28" font-size="4" fill="currentColor" stroke="none">Raf</text>
+      <path d="M32 29v5"/>
+      <circle cx="32" cy="40" r="5" fill="#27AE60" opacity="0.5"/>
+      <text x="26" y="44" font-size="4" fill="currentColor" stroke="none">MEK</text>
+      <path d="M32 45v5"/>
+      <circle cx="32" cy="56" r="5" fill="#3498DB" opacity="0.5"/>
+      <text x="26" y="60" font-size="4" fill="currentColor" stroke="none">ERK</text>
+    </svg>`
+  },
+  {
+    id: 'cell-pi3k-pathway',
+    name: 'PI3K/Akt Pathway',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['PI3K', 'Akt', 'mTOR', 'survival', 'growth'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="56" height="8" fill="#3498DB" opacity="0.2"/>
+      <circle cx="32" cy="12" r="4" fill="#E74C3C"/>
+      <path d="M32 16v6"/>
+      <circle cx="32" cy="28" r="6" fill="#9B59B6" opacity="0.5"/>
+      <text x="26" y="32" font-size="4" fill="currentColor" stroke="none">PI3K</text>
+      <path d="M32 34v6"/>
+      <circle cx="32" cy="46" r="6" fill="#27AE60" opacity="0.5"/>
+      <text x="28" y="50" font-size="4" fill="currentColor" stroke="none">Akt</text>
+      <path d="M38 46h8"/>
+      <circle cx="52" cy="46" r="5" fill="#F39C12" opacity="0.5"/>
+      <text x="44" y="50" font-size="3" fill="currentColor" stroke="none">mTOR</text>
+    </svg>`
+  },
+  {
+    id: 'cell-calcium-signaling',
+    name: 'Calcium Signaling',
+    domain: 'biology',
+    category: 'signaling',
+    tags: ['calcium', 'IP3', 'DAG', 'PKC', 'calmodulin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="12" fill="#3498DB" opacity="0.2"/>
+      <ellipse cx="20" cy="44" rx="12" ry="8" fill="#F39C12" opacity="0.3"/>
+      <ellipse cx="20" cy="44" rx="12" ry="8"/>
+      <text x="16" y="48" font-size="4" fill="currentColor" stroke="none">ER</text>
+      <circle cx="40" cy="40" r="3" fill="#87CEEB"/>
+      <circle cx="48" cy="44" r="3" fill="#87CEEB"/>
+      <circle cx="44" cy="50" r="3" fill="#87CEEB"/>
+      <circle cx="52" cy="52" r="3" fill="#87CEEB"/>
+      <path d="M32 44l4-4"/>
+      <path d="M36 40l4 4"/>
+      <text x="40" y="60" font-size="3" fill="currentColor" stroke="none">Ca2+</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL STRUCTURES
+  // ===========================================================================
+  {
+    id: 'cell-centromere',
+    name: 'Centromere',
+    domain: 'biology',
+    category: 'cell-division',
+    tags: ['centromere', 'chromosome', 'kinetochore', 'sister chromatids'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8v48" stroke="#E74C3C" stroke-width="4"/>
+      <path d="M28 8v48" stroke="#E74C3C" stroke-width="4"/>
+      <path d="M36 8v48" stroke="#3498DB" stroke-width="4"/>
+      <path d="M44 8v48" stroke="#3498DB" stroke-width="4"/>
+      <ellipse cx="32" cy="32" rx="16" ry="6" fill="#9B59B6" opacity="0.5"/>
+      <circle cx="32" cy="32" r="4" fill="#27AE60"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Centromere/Kinetochore</text>
+    </svg>`
+  },
+  {
+    id: 'cell-chromatin',
+    name: 'Chromatin Structure',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['chromatin', 'nucleosome', 'histone', 'DNA', 'packaging'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="20" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="28" cy="20" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="44" cy="20" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="20" cy="36" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="36" cy="36" r="6" fill="#F39C12" opacity="0.5"/>
+      <circle cx="52" cy="36" r="6" fill="#F39C12" opacity="0.5"/>
+      <path d="M6 20c0 4 6 4 6 0s6 0 6 4s6 4 6 0s6 0 6 4s6 4 6 0" stroke="#3498DB"/>
+      <path d="M14 36c0-4 6-4 6 0s6 0 6-4s6-4 6 0s6 0 6-4s6-4 6 0" stroke="#3498DB"/>
+      <text x="8" y="54" font-size="3" fill="currentColor" stroke="none">Nucleosomes</text>
+    </svg>`
+  },
+  {
+    id: 'cell-flagellum',
+    name: 'Flagellum',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['flagellum', 'cilia', 'motility', '9+2', 'axoneme'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="20" cy="32" rx="12" ry="20" fill="#FFE4E1" opacity="0.3"/>
+      <ellipse cx="20" cy="32" rx="12" ry="20"/>
+      <circle cx="20" cy="32" r="4" fill="#9B59B6" opacity="0.5"/>
+      <path d="M32 32c8 8 8-8 16 0s8-8 12 0" stroke="#27AE60" stroke-width="3"/>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">Basal body</text>
+      <text x="36" y="58" font-size="3" fill="currentColor" stroke="none">Flagellum</text>
+    </svg>`
+  },
+  {
+    id: 'cell-nuclear-pore',
+    name: 'Nuclear Pore Complex',
+    domain: 'biology',
+    category: 'cell-structure',
+    tags: ['nuclear pore', 'NPC', 'nucleoporin', 'transport', 'import'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="24" width="56" height="16" fill="#9B59B6" opacity="0.2"/>
+      <circle cx="32" cy="32" r="10" fill="#87CEEB" opacity="0.3"/>
+      <circle cx="32" cy="32" r="10"/>
+      <circle cx="32" cy="32" r="6" stroke-dasharray="2 2"/>
+      <circle cx="24" cy="24" r="2" fill="#27AE60"/>
+      <circle cx="40" cy="24" r="2" fill="#27AE60"/>
+      <circle cx="24" cy="40" r="2" fill="#27AE60"/>
+      <circle cx="40" cy="40" r="2" fill="#27AE60"/>
+      <circle cx="32" cy="20" r="2" fill="#27AE60"/>
+      <circle cx="32" cy="44" r="2" fill="#27AE60"/>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Nuclear Pore Complex</text>
+    </svg>`
+  },
+  {
+    id: 'cell-plasmodesmata',
+    name: 'Plasmodesmata',
+    domain: 'biology',
+    category: 'junctions',
+    tags: ['plasmodesmata', 'plant', 'cell wall', 'communication', 'symplast'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="20" height="56" fill="#90EE90" opacity="0.2"/>
+      <rect x="40" y="4" width="20" height="56" fill="#90EE90" opacity="0.2"/>
+      <rect x="24" y="4" width="16" height="56" fill="#8B4513" opacity="0.3"/>
+      <circle cx="32" cy="16" r="4"/>
+      <line x1="28" y1="16" x2="24" y2="16"/>
+      <line x1="36" y1="16" x2="40" y2="16"/>
+      <circle cx="32" cy="32" r="4"/>
+      <line x1="28" y1="32" x2="24" y2="32"/>
+      <line x1="36" y1="32" x2="40" y2="32"/>
+      <circle cx="32" cy="48" r="4"/>
+      <line x1="28" y1="48" x2="24" y2="48"/>
+      <line x1="36" y1="48" x2="40" y2="48"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Plasmodesmata</text>
+    </svg>`
+  },
 ];
 
 export default cellbiologyIcons;
