@@ -286,3 +286,30 @@ export {
 } from './dermatology';
 
 export type { DermatologyColorScheme } from './dermatology';
+
+// =============================================================================
+// PEDIATRICS
+// =============================================================================
+
+export {
+  ageGroupColors,
+  growthColors,
+  developmentColors,
+  anatomyColors as pedsAnatomyColors,
+  respiratoryColors as pedsRespiratoryColors,
+  infectiousColors as pedsInfectiousColors,
+  giNutritionColors,
+  congenitalColors,
+  nicuColors,
+  neonatalConditionColors,
+  vaccinationColors,
+  wellChildColors,
+  emergencyColors as pedsEmergencyColors,
+  severityGradient as pedsSeverityGradient,
+  dehydrationGradient,
+  apgarColors,
+  flowchartColors as pedsFlowchartColors,
+  pediatricsColorScheme,
+} from './pediatrics';
+
+export type { PediatricsColorScheme } from './pediatrics';
