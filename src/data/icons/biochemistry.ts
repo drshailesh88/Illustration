@@ -438,6 +438,1035 @@ export const biochemistryIcons: IconDefinition[] = [
       <text x="14" y="54" font-size="4" fill="currentColor" stroke="none">reactions</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // AMINO ACIDS AND PROTEINS
+  // ===========================================================================
+  {
+    id: 'biochem-amino-acid',
+    name: 'Amino Acid Structure',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['amino acid', 'peptide', 'amine', 'carboxyl', 'R group'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="6" fill="gray" opacity="0.3"/>
+      <text x="28" y="35" font-size="5" fill="currentColor" stroke="none">Cα</text>
+      <circle cx="16" cy="24" r="5" fill="blue" opacity="0.4"/>
+      <text x="11" y="27" font-size="5" fill="currentColor" stroke="none">NH2</text>
+      <circle cx="48" cy="24" r="5" fill="red" opacity="0.4"/>
+      <text x="42" y="27" font-size="4" fill="currentColor" stroke="none">COOH</text>
+      <circle cx="32" cy="48" r="5" fill="green" opacity="0.4"/>
+      <text x="30" y="51" font-size="5" fill="currentColor" stroke="none">R</text>
+      <circle cx="32" cy="16" r="3" fill="white"/>
+      <text x="30" y="18" font-size="4" fill="currentColor" stroke="none">H</text>
+      <path d="M26 30 L20 26"/>
+      <path d="M38 30 L44 26"/>
+      <path d="M32 38 L32 44"/>
+      <path d="M32 26 L32 20"/>
+    </svg>`
+  },
+  {
+    id: 'biochem-peptide-bond',
+    name: 'Peptide Bond',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['peptide bond', 'amide', 'condensation', 'dehydration'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="20" height="24" rx="2" fill="blue" opacity="0.2"/>
+      <text x="8" y="35" font-size="5" fill="currentColor" stroke="none">AA1</text>
+      <rect x="40" y="20" width="20" height="24" rx="2" fill="green" opacity="0.2"/>
+      <text x="44" y="35" font-size="5" fill="currentColor" stroke="none">AA2</text>
+      <path d="M24 32 L40 32" stroke-width="2" stroke="red"/>
+      <text x="28" y="28" font-size="4" fill="red" stroke="none">C-N</text>
+      <path d="M32 36 L32 48"/>
+      <circle cx="32" cy="52" r="4" fill="cyan" opacity="0.4"/>
+      <text x="26" y="55" font-size="4" fill="currentColor" stroke="none">H2O</text>
+      <text x="16" y="60" font-size="4" fill="currentColor" stroke="none">Condensation</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-alpha-helix',
+    name: 'Alpha Helix',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['alpha helix', 'secondary structure', 'protein', 'hydrogen bond'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8 C40 12, 44 20, 24 24 C4 28, 8 36, 28 40 C48 44, 44 52, 24 56" stroke="purple" stroke-width="3" fill="none"/>
+      <path d="M24 12 L36 18" stroke-dasharray="2 2" stroke="blue"/>
+      <path d="M16 28 L28 34" stroke-dasharray="2 2" stroke="blue"/>
+      <path d="M24 44 L36 50" stroke-dasharray="2 2" stroke="blue"/>
+      <text x="44" y="20" font-size="4" fill="blue" stroke="none">H-bond</text>
+      <text x="44" y="40" font-size="5" fill="currentColor" stroke="none">3.6 AA</text>
+      <text x="44" y="48" font-size="5" fill="currentColor" stroke="none">per turn</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-beta-sheet',
+    name: 'Beta Sheet',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['beta sheet', 'secondary structure', 'protein', 'pleated sheet'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 12 L8 52" stroke="green" stroke-width="3"/>
+      <path d="M24 52 L24 12" stroke="green" stroke-width="3"/>
+      <path d="M40 12 L40 52" stroke="green" stroke-width="3"/>
+      <path d="M56 52 L56 12" stroke="green" stroke-width="3"/>
+      <path d="M8 20 L24 20" stroke-dasharray="2 2" stroke="blue"/>
+      <path d="M24 32 L40 32" stroke-dasharray="2 2" stroke="blue"/>
+      <path d="M40 44 L56 44" stroke-dasharray="2 2" stroke="blue"/>
+      <polygon points="8,8 12,12 4,12" fill="green"/>
+      <polygon points="24,56 20,52 28,52" fill="green"/>
+      <polygon points="40,8 44,12 36,12" fill="green"/>
+      <polygon points="56,56 52,52 60,52" fill="green"/>
+      <text x="16" y="62" font-size="4" fill="currentColor" stroke="none">Antiparallel</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-protein-folding',
+    name: 'Protein Folding Levels',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['protein folding', 'tertiary', 'quaternary', 'structure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12 L16 12" stroke="gray" stroke-width="2"/>
+      <text x="4" y="10" font-size="3" fill="currentColor" stroke="none">1°</text>
+      <path d="M20 8 C28 8, 28 16, 20 16 C28 16, 28 24, 20 24" stroke="purple" stroke-width="2" fill="none"/>
+      <text x="30" y="18" font-size="3" fill="currentColor" stroke="none">2°</text>
+      <ellipse cx="44" cy="16" rx="8" ry="10" fill="blue" opacity="0.3"/>
+      <path d="M38 12 C44 8, 50 12, 48 18 C46 24, 40 22, 38 16" stroke="blue" stroke-width="1.5" fill="none"/>
+      <text x="54" y="18" font-size="3" fill="currentColor" stroke="none">3°</text>
+      <ellipse cx="20" cy="48" rx="8" ry="6" fill="red" opacity="0.3"/>
+      <ellipse cx="36" cy="48" rx="8" ry="6" fill="green" opacity="0.3"/>
+      <ellipse cx="28" cy="40" rx="6" ry="5" fill="blue" opacity="0.3"/>
+      <ellipse cx="28" cy="56" rx="6" ry="5" fill="orange" opacity="0.3"/>
+      <text x="48" y="50" font-size="3" fill="currentColor" stroke="none">4°</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-disulfide-bond',
+    name: 'Disulfide Bond',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['disulfide', 'cysteine', 'S-S bond', 'protein stability'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="20" r="8" fill="blue" opacity="0.2"/>
+      <text x="10" y="23" font-size="5" fill="currentColor" stroke="none">Cys</text>
+      <circle cx="48" cy="20" r="8" fill="blue" opacity="0.2"/>
+      <text x="42" y="23" font-size="5" fill="currentColor" stroke="none">Cys</text>
+      <circle cx="24" cy="36" r="5" fill="yellow"/>
+      <text x="22" y="39" font-size="5" fill="currentColor" stroke="none">S</text>
+      <circle cx="40" cy="36" r="5" fill="yellow"/>
+      <text x="38" y="39" font-size="5" fill="currentColor" stroke="none">S</text>
+      <path d="M29 36 L35 36" stroke-width="3" stroke="yellow"/>
+      <path d="M20 26 L24 32"/>
+      <path d="M44 26 L40 32"/>
+      <text x="18" y="54" font-size="5" fill="currentColor" stroke="none">S-S Bridge</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-chaperone',
+    name: 'Chaperone Protein',
+    domain: 'chemistry',
+    category: 'amino-acids',
+    tags: ['chaperone', 'heat shock', 'HSP', 'protein folding'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="16" fill="blue" opacity="0.2"/>
+      <path d="M16 32 C20 24, 28 24, 32 32 C36 40, 44 40, 48 32" stroke="red" stroke-width="2" fill="none"/>
+      <text x="26" y="28" font-size="4" fill="currentColor" stroke="none">unfolded</text>
+      <path d="M12 44 L20 44" stroke="green"/>
+      <path d="M44 44 L52 44" stroke="green"/>
+      <text x="4" y="48" font-size="4" fill="green" stroke="none">ATP</text>
+      <text x="44" y="48" font-size="4" fill="green" stroke="none">ADP</text>
+      <text x="18" y="58" font-size="5" fill="currentColor" stroke="none">Chaperonin</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // NUCLEIC ACIDS
+  // ===========================================================================
+  {
+    id: 'biochem-dna-double-helix',
+    name: 'DNA Double Helix',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['DNA', 'double helix', 'Watson-Crick', 'nucleotide'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 4 C32 8, 48 16, 32 24 C16 32, 32 40, 48 44 C32 48, 16 56, 32 60" stroke="blue" stroke-width="2"/>
+      <path d="M48 4 C32 8, 16 16, 32 24 C48 32, 32 40, 16 44 C32 48, 48 56, 32 60" stroke="red" stroke-width="2"/>
+      <path d="M24 12 L40 12" stroke="green" stroke-width="1"/>
+      <path d="M28 24 L36 24" stroke="green" stroke-width="1"/>
+      <path d="M24 36 L40 36" stroke="green" stroke-width="1"/>
+      <path d="M28 48 L36 48" stroke="green" stroke-width="1"/>
+      <text x="52" y="14" font-size="3" fill="currentColor" stroke="none">A-T</text>
+      <text x="52" y="26" font-size="3" fill="currentColor" stroke="none">G-C</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-nucleotide',
+    name: 'Nucleotide Structure',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['nucleotide', 'base', 'sugar', 'phosphate'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="32" r="8" fill="red" opacity="0.4"/>
+      <text x="6" y="35" font-size="5" fill="currentColor" stroke="none">PO4</text>
+      <polygon points="32,24 40,32 32,40 24,32" fill="blue" opacity="0.3"/>
+      <text x="26" y="35" font-size="4" fill="currentColor" stroke="none">Sugar</text>
+      <rect x="44" y="24" width="16" height="16" rx="2" fill="green" opacity="0.3"/>
+      <text x="48" y="35" font-size="4" fill="currentColor" stroke="none">Base</text>
+      <path d="M20 32 L24 32"/>
+      <path d="M40 32 L44 32"/>
+      <text x="8" y="52" font-size="4" fill="currentColor" stroke="none">Phosphate</text>
+      <text x="26" y="52" font-size="4" fill="currentColor" stroke="none">Ribose</text>
+      <text x="44" y="52" font-size="4" fill="currentColor" stroke="none">A/G/C/T</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-rna-structure',
+    name: 'RNA Structure',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['RNA', 'mRNA', 'tRNA', 'rRNA', 'single strand'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 8 L8 56" stroke="orange" stroke-width="2"/>
+      <circle cx="16" cy="12" r="4" fill="blue"/>
+      <circle cx="16" cy="24" r="4" fill="green"/>
+      <circle cx="16" cy="36" r="4" fill="red"/>
+      <circle cx="16" cy="48" r="4" fill="purple"/>
+      <text x="22" y="14" font-size="5" fill="currentColor" stroke="none">A</text>
+      <text x="22" y="26" font-size="5" fill="currentColor" stroke="none">U</text>
+      <text x="22" y="38" font-size="5" fill="currentColor" stroke="none">G</text>
+      <text x="22" y="50" font-size="5" fill="currentColor" stroke="none">C</text>
+      <path d="M36 20 C48 16, 56 24, 48 32 C40 40, 48 48, 56 44" stroke="orange" stroke-width="2" fill="none"/>
+      <text x="36" y="58" font-size="4" fill="currentColor" stroke="none">Hairpin loop</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-base-pairing',
+    name: 'Base Pairing',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['base pairing', 'A-T', 'G-C', 'hydrogen bonds'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="20" height="20" rx="2" fill="blue" opacity="0.3"/>
+      <text x="10" y="22" font-size="8" fill="currentColor" stroke="none">A</text>
+      <rect x="40" y="8" width="20" height="20" rx="2" fill="green" opacity="0.3"/>
+      <text x="47" y="22" font-size="8" fill="currentColor" stroke="none">T</text>
+      <path d="M24 14 L40 14" stroke-dasharray="3 2" stroke="red"/>
+      <path d="M24 22 L40 22" stroke-dasharray="3 2" stroke="red"/>
+      <text x="28" y="12" font-size="3" fill="red" stroke="none">2 H-bonds</text>
+      <rect x="4" y="36" width="20" height="20" rx="2" fill="purple" opacity="0.3"/>
+      <text x="10" y="50" font-size="8" fill="currentColor" stroke="none">G</text>
+      <rect x="40" y="36" width="20" height="20" rx="2" fill="orange" opacity="0.3"/>
+      <text x="47" y="50" font-size="8" fill="currentColor" stroke="none">C</text>
+      <path d="M24 42 L40 42" stroke-dasharray="3 2" stroke="red"/>
+      <path d="M24 46 L40 46" stroke-dasharray="3 2" stroke="red"/>
+      <path d="M24 50 L40 50" stroke-dasharray="3 2" stroke="red"/>
+      <text x="28" y="40" font-size="3" fill="red" stroke="none">3 H-bonds</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-replication-fork',
+    name: 'DNA Replication Fork',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['replication', 'helicase', 'leading strand', 'lagging strand'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 16 L32 32 L8 48" stroke="blue" stroke-width="2" fill="none"/>
+      <path d="M8 20 L32 32 L8 44" stroke="red" stroke-width="2" fill="none"/>
+      <path d="M32 32 L56 20" stroke="blue" stroke-width="2"/>
+      <path d="M32 32 L40 38 M44 38 L52 38 M56 38 L60 38" stroke="red" stroke-width="2"/>
+      <circle cx="32" cy="32" r="4" fill="green"/>
+      <text x="28" y="28" font-size="3" fill="currentColor" stroke="none">Hel</text>
+      <text x="44" y="16" font-size="4" fill="blue" stroke="none">Leading</text>
+      <text x="44" y="50" font-size="4" fill="red" stroke="none">Lagging</text>
+      <polygon points="56,18 60,20 56,22" fill="blue"/>
+    </svg>`
+  },
+  {
+    id: 'biochem-transcription',
+    name: 'Transcription',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['transcription', 'RNA polymerase', 'mRNA', 'template'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 24 L56 24" stroke="blue" stroke-width="2"/>
+      <path d="M8 28 L56 28" stroke="blue" stroke-width="2"/>
+      <text x="4" y="22" font-size="4" fill="currentColor" stroke="none">DNA</text>
+      <ellipse cx="32" cy="26" rx="8" ry="10" fill="green" opacity="0.3"/>
+      <text x="26" y="29" font-size="4" fill="currentColor" stroke="none">RNAP</text>
+      <path d="M32 36 L32 44 C28 48, 20 48, 16 44" stroke="orange" stroke-width="2" fill="none"/>
+      <text x="4" y="50" font-size="4" fill="orange" stroke="none">mRNA</text>
+      <polygon points="16,42 12,44 16,46" fill="orange"/>
+      <text x="40" y="44" font-size="4" fill="currentColor" stroke="none">5' → 3'</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-translation',
+    name: 'Translation',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['translation', 'ribosome', 'tRNA', 'protein synthesis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 40 L56 40" stroke="orange" stroke-width="2"/>
+      <text x="4" y="48" font-size="4" fill="orange" stroke="none">mRNA</text>
+      <ellipse cx="32" cy="32" rx="16" ry="12" fill="blue" opacity="0.2"/>
+      <ellipse cx="32" cy="28" rx="12" ry="6" fill="purple" opacity="0.3"/>
+      <text x="24" y="30" font-size="4" fill="currentColor" stroke="none">Ribosome</text>
+      <path d="M28 20 L28 12" stroke="green" stroke-width="1.5"/>
+      <circle cx="28" cy="10" r="3" fill="green"/>
+      <text x="32" y="14" font-size="3" fill="currentColor" stroke="none">tRNA</text>
+      <path d="M8 16 L20 16" stroke="gray" stroke-width="1.5"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Protein</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-codon',
+    name: 'Codon Table',
+    domain: 'chemistry',
+    category: 'nucleic-acids',
+    tags: ['codon', 'genetic code', 'amino acid', 'triplet'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="none"/>
+      <line x1="8" y1="20" x2="56" y2="20"/>
+      <line x1="8" y1="32" x2="56" y2="32"/>
+      <line x1="8" y1="44" x2="56" y2="44"/>
+      <line x1="20" y1="8" x2="20" y2="56"/>
+      <line x1="32" y1="8" x2="32" y2="56"/>
+      <line x1="44" y1="8" x2="44" y2="56"/>
+      <text x="10" y="16" font-size="4" fill="currentColor" stroke="none">AUG</text>
+      <text x="22" y="16" font-size="4" fill="currentColor" stroke="none">Met</text>
+      <text x="34" y="16" font-size="4" fill="green" stroke="none">Start</text>
+      <text x="10" y="28" font-size="4" fill="currentColor" stroke="none">UAA</text>
+      <text x="22" y="28" font-size="4" fill="red" stroke="none">Stop</text>
+      <text x="10" y="40" font-size="4" fill="currentColor" stroke="none">GGU</text>
+      <text x="22" y="40" font-size="4" fill="currentColor" stroke="none">Gly</text>
+      <text x="10" y="52" font-size="4" fill="currentColor" stroke="none">UUU</text>
+      <text x="22" y="52" font-size="4" fill="currentColor" stroke="none">Phe</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CARBOHYDRATES
+  // ===========================================================================
+  {
+    id: 'biochem-glucose-ring',
+    name: 'Glucose Ring Structure',
+    domain: 'chemistry',
+    category: 'carbohydrates',
+    tags: ['glucose', 'hexose', 'pyranose', 'monosaccharide'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="20,16 44,16 52,32 44,48 20,48 12,32" fill="cyan" opacity="0.2"/>
+      <polygon points="20,16 44,16 52,32 44,48 20,48 12,32" fill="none"/>
+      <circle cx="44" cy="16" r="2" fill="red"/>
+      <text x="46" y="14" font-size="4" fill="currentColor" stroke="none">O</text>
+      <circle cx="20" cy="16" r="2" fill="blue"/>
+      <circle cx="12" cy="32" r="2" fill="blue"/>
+      <circle cx="20" cy="48" r="2" fill="blue"/>
+      <circle cx="44" cy="48" r="2" fill="blue"/>
+      <circle cx="52" cy="32" r="2" fill="blue"/>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">OH groups</text>
+      <text x="24" y="36" font-size="6" fill="currentColor" stroke="none">Glc</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-glycogen',
+    name: 'Glycogen Structure',
+    domain: 'chemistry',
+    category: 'carbohydrates',
+    tags: ['glycogen', 'storage', 'branched', 'polysaccharide'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="6" fill="blue" opacity="0.3"/>
+      <circle cx="20" cy="20" r="4" fill="cyan" opacity="0.3"/>
+      <circle cx="44" cy="20" r="4" fill="cyan" opacity="0.3"/>
+      <circle cx="20" cy="44" r="4" fill="cyan" opacity="0.3"/>
+      <circle cx="44" cy="44" r="4" fill="cyan" opacity="0.3"/>
+      <circle cx="12" cy="12" r="3" fill="green" opacity="0.3"/>
+      <circle cx="28" cy="12" r="3" fill="green" opacity="0.3"/>
+      <circle cx="52" cy="12" r="3" fill="green" opacity="0.3"/>
+      <path d="M32 26 L20 20 L12 12"/>
+      <path d="M32 26 L20 20 L28 12"/>
+      <path d="M32 26 L44 20 L52 12"/>
+      <path d="M32 38 L20 44"/>
+      <path d="M32 38 L44 44"/>
+      <text x="18" y="58" font-size="5" fill="currentColor" stroke="none">α-1,4 & α-1,6</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-disaccharide',
+    name: 'Disaccharide',
+    domain: 'chemistry',
+    category: 'carbohydrates',
+    tags: ['disaccharide', 'sucrose', 'maltose', 'lactose'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,20 24,20 28,32 24,44 12,44 8,32" fill="cyan" opacity="0.3"/>
+      <polygon points="40,20 52,20 56,32 52,44 40,44 36,32" fill="pink" opacity="0.3"/>
+      <path d="M28 32 L36 32" stroke-width="2" stroke="orange"/>
+      <text x="10" y="35" font-size="5" fill="currentColor" stroke="none">Glc</text>
+      <text x="42" y="35" font-size="5" fill="currentColor" stroke="none">Fru</text>
+      <text x="28" y="28" font-size="3" fill="orange" stroke="none">1-2</text>
+      <text x="16" y="56" font-size="5" fill="currentColor" stroke="none">Sucrose</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-cellulose',
+    name: 'Cellulose',
+    domain: 'chemistry',
+    category: 'carbohydrates',
+    tags: ['cellulose', 'fiber', 'plant', 'beta linkage'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="24" width="12" height="12" fill="green" opacity="0.3"/>
+      <rect x="18" y="28" width="12" height="12" fill="green" opacity="0.3"/>
+      <rect x="32" y="24" width="12" height="12" fill="green" opacity="0.3"/>
+      <rect x="46" y="28" width="12" height="12" fill="green" opacity="0.3"/>
+      <path d="M16 30 L18 30"/>
+      <path d="M30 34 L32 30"/>
+      <path d="M44 30 L46 34"/>
+      <text x="6" y="32" font-size="4" fill="currentColor" stroke="none">β</text>
+      <text x="20" y="36" font-size="4" fill="currentColor" stroke="none">β</text>
+      <text x="34" y="32" font-size="4" fill="currentColor" stroke="none">β</text>
+      <text x="48" y="36" font-size="4" fill="currentColor" stroke="none">β</text>
+      <text x="12" y="52" font-size="4" fill="currentColor" stroke="none">β-1,4 glycosidic</text>
+      <path d="M4 16 L60 16" stroke="brown" stroke-width="1" stroke-dasharray="2 2"/>
+      <path d="M4 44 L60 44" stroke="brown" stroke-width="1" stroke-dasharray="2 2"/>
+      <text x="4" y="12" font-size="3" fill="brown" stroke="none">H-bonds</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // LIPIDS
+  // ===========================================================================
+  {
+    id: 'biochem-fatty-acid',
+    name: 'Fatty Acid',
+    domain: 'chemistry',
+    category: 'lipids',
+    tags: ['fatty acid', 'carboxyl', 'hydrocarbon', 'saturated'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="32" r="6" fill="red" opacity="0.4"/>
+      <text x="2" y="35" font-size="4" fill="currentColor" stroke="none">COOH</text>
+      <path d="M14 32 L56 32" stroke="orange" stroke-width="3"/>
+      <text x="20" y="28" font-size="4" fill="currentColor" stroke="none">CH2-CH2-CH2...</text>
+      <text x="8" y="48" font-size="4" fill="currentColor" stroke="none">Hydrophilic</text>
+      <text x="32" y="48" font-size="4" fill="currentColor" stroke="none">Hydrophobic</text>
+      <text x="16" y="56" font-size="5" fill="currentColor" stroke="none">Saturated FA</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-phospholipid',
+    name: 'Phospholipid',
+    domain: 'chemistry',
+    category: 'lipids',
+    tags: ['phospholipid', 'membrane', 'bilayer', 'amphipathic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="12" r="8" fill="blue" opacity="0.4"/>
+      <text x="26" y="15" font-size="4" fill="currentColor" stroke="none">Head</text>
+      <path d="M28 20 L24 56" stroke="orange" stroke-width="2"/>
+      <path d="M36 20 L40 56" stroke="orange" stroke-width="2"/>
+      <text x="16" y="40" font-size="4" fill="currentColor" stroke="none">Tail 1</text>
+      <text x="42" y="40" font-size="4" fill="currentColor" stroke="none">Tail 2</text>
+      <text x="4" y="12" font-size="3" fill="blue" stroke="none">Polar</text>
+      <text x="4" y="48" font-size="3" fill="orange" stroke="none">Nonpolar</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-lipid-bilayer',
+    name: 'Lipid Bilayer',
+    domain: 'chemistry',
+    category: 'lipids',
+    tags: ['bilayer', 'membrane', 'cell membrane', 'phospholipid'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="16" r="4" fill="blue"/>
+      <circle cx="24" cy="16" r="4" fill="blue"/>
+      <circle cx="36" cy="16" r="4" fill="blue"/>
+      <circle cx="48" cy="16" r="4" fill="blue"/>
+      <path d="M12 20 L10 32 M14 20 L16 32"/>
+      <path d="M24 20 L22 32 M26 20 L28 32"/>
+      <path d="M36 20 L34 32 M38 20 L40 32"/>
+      <path d="M48 20 L46 32 M50 20 L52 32"/>
+      <circle cx="12" cy="48" r="4" fill="blue"/>
+      <circle cx="24" cy="48" r="4" fill="blue"/>
+      <circle cx="36" cy="48" r="4" fill="blue"/>
+      <circle cx="48" cy="48" r="4" fill="blue"/>
+      <path d="M12 44 L10 32 M14 44 L16 32"/>
+      <path d="M24 44 L22 32 M26 44 L28 32"/>
+      <path d="M36 44 L34 32 M38 44 L40 32"/>
+      <path d="M48 44 L46 32 M50 44 L52 32"/>
+      <text x="4" y="60" font-size="4" fill="currentColor" stroke="none">Extracellular</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-cholesterol',
+    name: 'Cholesterol',
+    domain: 'chemistry',
+    category: 'lipids',
+    tags: ['cholesterol', 'steroid', 'membrane fluidity', 'sterol'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,24 24,16 36,16 48,24 48,40 36,48 24,48 12,40" fill="yellow" opacity="0.3"/>
+      <polygon points="12,24 24,16 36,16 48,24 48,40 36,48 24,48 12,40" fill="none"/>
+      <polygon points="20,24 28,20 36,24 36,36 28,40 20,36" fill="none"/>
+      <path d="M48 32 L56 28 L56 20"/>
+      <circle cx="12" cy="32" r="3" fill="red"/>
+      <text x="6" y="35" font-size="4" fill="currentColor" stroke="none">OH</text>
+      <text x="16" y="58" font-size="5" fill="currentColor" stroke="none">Steroid ring</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-triglyceride',
+    name: 'Triglyceride',
+    domain: 'chemistry',
+    category: 'lipids',
+    tags: ['triglyceride', 'fat', 'glycerol', 'ester'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="12" height="24" fill="blue" opacity="0.3"/>
+      <text x="6" y="35" font-size="4" fill="currentColor" stroke="none">Gly</text>
+      <path d="M16 24 L56 24" stroke="orange" stroke-width="2"/>
+      <path d="M16 32 L56 32" stroke="orange" stroke-width="2"/>
+      <path d="M16 40 L56 40" stroke="orange" stroke-width="2"/>
+      <text x="32" y="20" font-size="4" fill="currentColor" stroke="none">FA 1</text>
+      <text x="32" y="30" font-size="4" fill="currentColor" stroke="none">FA 2</text>
+      <text x="32" y="48" font-size="4" fill="currentColor" stroke="none">FA 3</text>
+      <text x="12" y="58" font-size="4" fill="currentColor" stroke="none">Triacylglycerol</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // CELL SIGNALING
+  // ===========================================================================
+  {
+    id: 'biochem-gpcr',
+    name: 'G-Protein Coupled Receptor',
+    domain: 'chemistry',
+    category: 'signaling',
+    tags: ['GPCR', 'receptor', 'G protein', '7TM'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="20" width="56" height="4" fill="gray" opacity="0.3"/>
+      <path d="M12 20 L12 8 L16 8 L16 20 L20 20 L20 8 L24 8 L24 20 L28 20 L28 8 L32 8 L32 20" stroke="purple" stroke-width="2" fill="none"/>
+      <path d="M32 24 L32 36 L36 36 L36 24 L40 24 L40 36 L44 36 L44 24 L48 24 L48 36 L52 36 L52 24" stroke="purple" stroke-width="2" fill="none"/>
+      <circle cx="20" cy="4" r="3" fill="green"/>
+      <text x="24" y="6" font-size="3" fill="currentColor" stroke="none">Ligand</text>
+      <ellipse cx="40" cy="44" rx="12" ry="6" fill="blue" opacity="0.3"/>
+      <text x="34" y="46" font-size="4" fill="currentColor" stroke="none">G-prot</text>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">7-TM receptor</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-camp-pathway',
+    name: 'cAMP Signaling Pathway',
+    domain: 'chemistry',
+    category: 'signaling',
+    tags: ['cAMP', 'adenylyl cyclase', 'PKA', 'second messenger'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="6" fill="green" opacity="0.4"/>
+      <text x="6" y="15" font-size="4" fill="currentColor" stroke="none">GPCR</text>
+      <path d="M18 12 L26 12"/>
+      <circle cx="32" cy="12" r="6" fill="blue" opacity="0.4"/>
+      <text x="28" y="15" font-size="4" fill="currentColor" stroke="none">AC</text>
+      <path d="M32 18 L32 26"/>
+      <circle cx="32" cy="32" r="6" fill="orange" opacity="0.4"/>
+      <text x="26" y="35" font-size="4" fill="currentColor" stroke="none">cAMP</text>
+      <path d="M32 38 L32 46"/>
+      <circle cx="32" cy="52" r="6" fill="red" opacity="0.4"/>
+      <text x="26" y="55" font-size="4" fill="currentColor" stroke="none">PKA</text>
+      <text x="44" y="32" font-size="4" fill="currentColor" stroke="none">ATP→cAMP</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-receptor-tyrosine-kinase',
+    name: 'Receptor Tyrosine Kinase',
+    domain: 'chemistry',
+    category: 'signaling',
+    tags: ['RTK', 'tyrosine kinase', 'phosphorylation', 'growth factor'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="16" width="4" height="20" fill="purple"/>
+      <rect x="44" y="16" width="4" height="20" fill="purple"/>
+      <circle cx="18" cy="12" r="4" fill="green"/>
+      <circle cx="46" cy="12" r="4" fill="green"/>
+      <rect x="4" y="20" width="56" height="4" fill="gray" opacity="0.3"/>
+      <ellipse cx="18" cy="44" rx="6" ry="8" fill="red" opacity="0.3"/>
+      <ellipse cx="46" cy="44" rx="6" ry="8" fill="red" opacity="0.3"/>
+      <text x="14" y="46" font-size="4" fill="currentColor" stroke="none">Tyr</text>
+      <text x="42" y="46" font-size="4" fill="currentColor" stroke="none">Tyr</text>
+      <circle cx="18" cy="40" r="2" fill="yellow"/>
+      <circle cx="46" cy="40" r="2" fill="yellow"/>
+      <text x="50" y="42" font-size="3" fill="yellow" stroke="none">P</text>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">Dimerization</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-mapk-cascade',
+    name: 'MAPK Cascade',
+    domain: 'chemistry',
+    category: 'signaling',
+    tags: ['MAPK', 'ERK', 'kinase cascade', 'signal transduction'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="4" width="24" height="10" rx="2" fill="blue" opacity="0.3"/>
+      <text x="24" y="12" font-size="5" fill="currentColor" stroke="none">MAPKKK</text>
+      <path d="M32 14 L32 20"/>
+      <rect x="20" y="20" width="24" height="10" rx="2" fill="green" opacity="0.3"/>
+      <text x="26" y="28" font-size="5" fill="currentColor" stroke="none">MAPKK</text>
+      <path d="M32 30 L32 36"/>
+      <rect x="20" y="36" width="24" height="10" rx="2" fill="red" opacity="0.3"/>
+      <text x="28" y="44" font-size="5" fill="currentColor" stroke="none">MAPK</text>
+      <path d="M32 46 L32 52"/>
+      <rect x="16" y="52" width="32" height="8" rx="2" fill="purple" opacity="0.3"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">Transcription</text>
+      <text x="48" y="12" font-size="3" fill="currentColor" stroke="none">Raf</text>
+      <text x="48" y="28" font-size="3" fill="currentColor" stroke="none">MEK</text>
+      <text x="48" y="44" font-size="3" fill="currentColor" stroke="none">ERK</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-calcium-signaling',
+    name: 'Calcium Signaling',
+    domain: 'chemistry',
+    category: 'signaling',
+    tags: ['calcium', 'IP3', 'calmodulin', 'second messenger'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="56" height="4" fill="gray" opacity="0.3"/>
+      <circle cx="20" cy="12" r="4" fill="green"/>
+      <text x="26" y="14" font-size="3" fill="currentColor" stroke="none">PLC</text>
+      <path d="M20 20 L20 28"/>
+      <circle cx="12" cy="34" r="4" fill="orange"/>
+      <text x="8" y="36" font-size="4" fill="currentColor" stroke="none">IP3</text>
+      <circle cx="28" cy="34" r="4" fill="yellow"/>
+      <text x="23" y="36" font-size="3" fill="currentColor" stroke="none">DAG</text>
+      <path d="M12 38 L12 44"/>
+      <ellipse cx="12" cy="50" rx="8" ry="4" fill="blue" opacity="0.3"/>
+      <text x="6" y="52" font-size="3" fill="currentColor" stroke="none">ER</text>
+      <circle cx="28" cy="52" r="3" fill="cyan"/>
+      <text x="24" y="54" font-size="4" fill="currentColor" stroke="none">Ca2+</text>
+      <path d="M20 50 L24 52" stroke-dasharray="2 2"/>
+      <text x="40" y="52" font-size="4" fill="currentColor" stroke="none">Calmodulin</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // LAB TECHNIQUES
+  // ===========================================================================
+  {
+    id: 'biochem-gel-electrophoresis',
+    name: 'Gel Electrophoresis',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['electrophoresis', 'gel', 'DNA', 'protein separation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="blue" opacity="0.1"/>
+      <rect x="12" y="12" width="8" height="4" fill="blue"/>
+      <rect x="24" y="12" width="8" height="4" fill="blue"/>
+      <rect x="36" y="12" width="8" height="4" fill="blue"/>
+      <rect x="12" y="20" width="8" height="2" fill="purple"/>
+      <rect x="12" y="26" width="8" height="2" fill="purple"/>
+      <rect x="12" y="34" width="8" height="2" fill="purple"/>
+      <rect x="24" y="22" width="8" height="2" fill="green"/>
+      <rect x="24" y="32" width="8" height="2" fill="green"/>
+      <rect x="36" y="18" width="8" height="2" fill="red"/>
+      <rect x="36" y="24" width="8" height="2" fill="red"/>
+      <rect x="36" y="30" width="8" height="2" fill="red"/>
+      <rect x="36" y="36" width="8" height="2" fill="red"/>
+      <text x="4" y="10" font-size="4" fill="currentColor" stroke="none">-</text>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">+</text>
+      <path d="M8 8 L8 56" stroke="red" stroke-dasharray="2 2"/>
+    </svg>`
+  },
+  {
+    id: 'biochem-pcr',
+    name: 'PCR (Polymerase Chain Reaction)',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['PCR', 'amplification', 'DNA', 'polymerase'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8 L16 16 M20 8 L20 16" stroke="blue" stroke-width="2"/>
+      <text x="24" y="14" font-size="4" fill="currentColor" stroke="none">Denature 95°C</text>
+      <path d="M12 24 L16 28 L16 32 M20 24 L24 24" stroke="blue" stroke-width="2"/>
+      <rect x="8" y="26" width="4" height="4" fill="green"/>
+      <rect x="24" y="22" width="4" height="4" fill="green"/>
+      <text x="32" y="28" font-size="4" fill="currentColor" stroke="none">Anneal 55°C</text>
+      <path d="M8 40 L24 40 M8 44 L24 44" stroke="blue" stroke-width="2"/>
+      <path d="M16 40 L16 44" stroke="red" stroke-width="1"/>
+      <text x="28" y="44" font-size="4" fill="currentColor" stroke="none">Extend 72°C</text>
+      <text x="12" y="58" font-size="5" fill="currentColor" stroke="none">2^n copies</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-western-blot',
+    name: 'Western Blot',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['western blot', 'protein', 'antibody', 'immunoblot'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" fill="white"/>
+      <rect x="8" y="8" width="48" height="48" fill="none"/>
+      <rect x="16" y="16" width="8" height="3" fill="blue"/>
+      <rect x="16" y="24" width="8" height="3" fill="blue" opacity="0.7"/>
+      <rect x="16" y="32" width="8" height="3" fill="blue" opacity="0.4"/>
+      <rect x="32" y="20" width="8" height="3" fill="green"/>
+      <rect x="32" y="28" width="8" height="3" fill="green" opacity="0.6"/>
+      <rect x="48" y="18" width="8" height="3" fill="red"/>
+      <text x="10" y="48" font-size="4" fill="currentColor" stroke="none">Lane 1</text>
+      <text x="30" y="48" font-size="4" fill="currentColor" stroke="none">Lane 2</text>
+      <text x="44" y="48" font-size="4" fill="currentColor" stroke="none">Lane 3</text>
+      <text x="4" y="20" font-size="3" fill="currentColor" stroke="none">kDa</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-chromatography',
+    name: 'Column Chromatography',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['chromatography', 'separation', 'column', 'purification'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="20" y="4" width="24" height="52" rx="2" fill="gray" opacity="0.1"/>
+      <rect x="20" y="4" width="24" height="52" rx="2" fill="none"/>
+      <rect x="22" y="8" width="20" height="6" fill="blue" opacity="0.4"/>
+      <rect x="22" y="20" width="20" height="4" fill="green" opacity="0.6"/>
+      <rect x="22" y="30" width="20" height="4" fill="red" opacity="0.6"/>
+      <rect x="22" y="40" width="20" height="4" fill="purple" opacity="0.6"/>
+      <path d="M32 56 L32 60"/>
+      <ellipse cx="32" cy="62" rx="4" ry="2" fill="cyan"/>
+      <path d="M16 8 L20 8" stroke="blue"/>
+      <text x="4" y="10" font-size="3" fill="currentColor" stroke="none">Sample</text>
+      <text x="48" y="24" font-size="3" fill="currentColor" stroke="none">Bands</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-spectrophotometer',
+    name: 'Spectrophotometry',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['spectrophotometry', 'absorbance', 'wavelength', 'concentration'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="32" r="6" fill="yellow"/>
+      <text x="8" y="35" font-size="4" fill="currentColor" stroke="none">Light</text>
+      <path d="M18 32 L26 32" stroke="yellow" stroke-width="2"/>
+      <rect x="26" y="24" width="12" height="16" fill="blue" opacity="0.3"/>
+      <text x="28" y="34" font-size="4" fill="currentColor" stroke="none">Sample</text>
+      <path d="M38 32 L46 32" stroke="yellow" stroke-width="1" stroke-dasharray="2 2"/>
+      <rect x="46" y="28" width="12" height="8" fill="gray"/>
+      <text x="48" y="34" font-size="3" fill="currentColor" stroke="none">Det</text>
+      <text x="8" y="52" font-size="4" fill="currentColor" stroke="none">A = εlc</text>
+      <text x="8" y="58" font-size="3" fill="currentColor" stroke="none">Beer-Lambert</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-centrifugation',
+    name: 'Centrifugation',
+    domain: 'chemistry',
+    category: 'lab-techniques',
+    tags: ['centrifuge', 'separation', 'sedimentation', 'density'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="24" fill="gray" opacity="0.1"/>
+      <circle cx="32" cy="32" r="24" fill="none"/>
+      <ellipse cx="32" cy="16" rx="6" ry="10" fill="blue" opacity="0.3" transform="rotate(0 32 32)"/>
+      <ellipse cx="48" cy="32" rx="6" ry="10" fill="blue" opacity="0.3" transform="rotate(90 32 32)"/>
+      <ellipse cx="32" cy="48" rx="6" ry="10" fill="blue" opacity="0.3" transform="rotate(180 32 32)"/>
+      <ellipse cx="16" cy="32" rx="6" ry="10" fill="blue" opacity="0.3" transform="rotate(270 32 32)"/>
+      <circle cx="32" cy="32" r="4" fill="gray"/>
+      <path d="M28 32 L20 32 L16 28" stroke="green" stroke-dasharray="2 2"/>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">RCF = ω²r</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // VITAMINS AND MINERALS
+  // ===========================================================================
+  {
+    id: 'biochem-vitamin-c',
+    name: 'Vitamin C (Ascorbic Acid)',
+    domain: 'chemistry',
+    category: 'vitamins',
+    tags: ['vitamin C', 'ascorbic acid', 'antioxidant', 'collagen'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="20,16 44,16 52,32 44,48 20,48 12,32" fill="orange" opacity="0.3"/>
+      <circle cx="20" cy="24" r="3" fill="red"/>
+      <circle cx="44" cy="24" r="3" fill="red"/>
+      <text x="16" y="27" font-size="4" fill="currentColor" stroke="none">OH</text>
+      <text x="40" y="27" font-size="4" fill="currentColor" stroke="none">OH</text>
+      <text x="24" y="36" font-size="5" fill="currentColor" stroke="none">Vit C</text>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Antioxidant</text>
+      <path d="M52 32 L58 32" stroke="blue" stroke-dasharray="2 2"/>
+      <text x="54" y="28" font-size="3" fill="blue" stroke="none">e-</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-vitamin-d',
+    name: 'Vitamin D',
+    domain: 'chemistry',
+    category: 'vitamins',
+    tags: ['vitamin D', 'calciferol', 'calcium', 'bone'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="16,20 28,16 40,20 44,32 40,44 28,48 16,44 12,32" fill="yellow" opacity="0.3"/>
+      <polygon points="16,20 28,16 40,20 44,32 40,44 28,48 16,44 12,32" fill="none"/>
+      <path d="M44 32 L56 28 L56 20"/>
+      <circle cx="8" cy="12" r="4" fill="yellow"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">UV</text>
+      <path d="M12 12 L16 20" stroke="yellow" stroke-dasharray="2 2"/>
+      <text x="24" y="36" font-size="5" fill="currentColor" stroke="none">D3</text>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">Ca2+ absorption</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-vitamin-b12',
+    name: 'Vitamin B12',
+    domain: 'chemistry',
+    category: 'vitamins',
+    tags: ['vitamin B12', 'cobalamin', 'cobalt', 'methylation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="16,16 48,16 56,32 48,48 16,48 8,32" fill="red" opacity="0.3"/>
+      <circle cx="32" cy="32" r="8" fill="pink"/>
+      <text x="28" y="35" font-size="5" fill="currentColor" stroke="none">Co</text>
+      <circle cx="20" cy="24" r="3" fill="blue"/>
+      <circle cx="44" cy="24" r="3" fill="blue"/>
+      <circle cx="20" cy="40" r="3" fill="blue"/>
+      <circle cx="44" cy="40" r="3" fill="blue"/>
+      <text x="18" y="26" font-size="3" fill="white" stroke="none">N</text>
+      <text x="42" y="26" font-size="3" fill="white" stroke="none">N</text>
+      <text x="18" y="42" font-size="3" fill="white" stroke="none">N</text>
+      <text x="42" y="42" font-size="3" fill="white" stroke="none">N</text>
+      <text x="14" y="58" font-size="4" fill="currentColor" stroke="none">Corrin ring</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-iron-heme',
+    name: 'Heme Iron',
+    domain: 'chemistry',
+    category: 'vitamins',
+    tags: ['heme', 'iron', 'hemoglobin', 'porphyrin'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="16,16 48,16 56,32 48,48 16,48 8,32" fill="red" opacity="0.2"/>
+      <circle cx="32" cy="32" r="6" fill="red"/>
+      <text x="28" y="35" font-size="5" fill="white" stroke="none">Fe</text>
+      <path d="M20 20 L26 26"/>
+      <path d="M44 20 L38 26"/>
+      <path d="M20 44 L26 38"/>
+      <path d="M44 44 L38 38"/>
+      <circle cx="16" cy="16" r="2" fill="blue"/>
+      <circle cx="48" cy="16" r="2" fill="blue"/>
+      <circle cx="16" cy="48" r="2" fill="blue"/>
+      <circle cx="48" cy="48" r="2" fill="blue"/>
+      <path d="M32 8 L32 26" stroke="cyan" stroke-dasharray="2 2"/>
+      <text x="34" y="12" font-size="3" fill="cyan" stroke="none">O2</text>
+      <text x="12" y="60" font-size="4" fill="currentColor" stroke="none">Porphyrin ring</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // MOLECULAR STRUCTURES
+  // ===========================================================================
+  {
+    id: 'biochem-hydrogen-bond',
+    name: 'Hydrogen Bond',
+    domain: 'chemistry',
+    category: 'molecular',
+    tags: ['hydrogen bond', 'H-bond', 'intermolecular', 'weak bond'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="32" r="8" fill="red" opacity="0.4"/>
+      <text x="12" y="35" font-size="6" fill="currentColor" stroke="none">O</text>
+      <circle cx="32" cy="24" r="4" fill="white"/>
+      <text x="30" y="27" font-size="5" fill="currentColor" stroke="none">H</text>
+      <path d="M24 28 L28 26" stroke-width="2"/>
+      <path d="M36 26 L44 30" stroke-dasharray="3 2" stroke="blue" stroke-width="2"/>
+      <circle cx="52" cy="32" r="8" fill="blue" opacity="0.4"/>
+      <text x="48" y="35" font-size="6" fill="currentColor" stroke="none">N</text>
+      <text x="8" y="52" font-size="4" fill="currentColor" stroke="none">Donor</text>
+      <text x="40" y="52" font-size="4" fill="currentColor" stroke="none">Acceptor</text>
+      <text x="28" y="14" font-size="4" fill="blue" stroke="none">H-bond</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-ionic-bond',
+    name: 'Ionic Bond',
+    domain: 'chemistry',
+    category: 'molecular',
+    tags: ['ionic bond', 'electrostatic', 'salt bridge', 'charge'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="32" r="12" fill="red" opacity="0.3"/>
+      <text x="12" y="36" font-size="8" fill="currentColor" stroke="none">COO</text>
+      <text x="26" y="28" font-size="6" fill="red" stroke="none">-</text>
+      <circle cx="48" cy="32" r="10" fill="blue" opacity="0.3"/>
+      <text x="40" y="36" font-size="6" fill="currentColor" stroke="none">NH3</text>
+      <text x="54" y="28" font-size="6" fill="blue" stroke="none">+</text>
+      <path d="M32 32 L38 32" stroke="purple" stroke-width="2" stroke-dasharray="4 2"/>
+      <text x="14" y="54" font-size="4" fill="currentColor" stroke="none">Glu/Asp</text>
+      <text x="40" y="54" font-size="4" fill="currentColor" stroke="none">Lys/Arg</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-hydrophobic',
+    name: 'Hydrophobic Interaction',
+    domain: 'chemistry',
+    category: 'molecular',
+    tags: ['hydrophobic', 'nonpolar', 'van der Waals', 'protein core'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="20" fill="blue" opacity="0.1"/>
+      <text x="4" y="32" font-size="4" fill="blue" stroke="none">H2O</text>
+      <circle cx="24" cy="28" r="6" fill="orange" opacity="0.5"/>
+      <circle cx="40" cy="28" r="6" fill="orange" opacity="0.5"/>
+      <circle cx="32" cy="40" r="6" fill="orange" opacity="0.5"/>
+      <text x="20" y="30" font-size="4" fill="currentColor" stroke="none">Leu</text>
+      <text x="36" y="30" font-size="4" fill="currentColor" stroke="none">Ile</text>
+      <text x="28" y="42" font-size="4" fill="currentColor" stroke="none">Val</text>
+      <text x="8" y="56" font-size="4" fill="currentColor" stroke="none">Hydrophobic core</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-functional-groups',
+    name: 'Functional Groups',
+    domain: 'chemistry',
+    category: 'molecular',
+    tags: ['functional group', 'organic', 'hydroxyl', 'carboxyl', 'amino'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="24" height="12" fill="red" opacity="0.2"/>
+      <text x="8" y="13" font-size="5" fill="currentColor" stroke="none">-OH</text>
+      <rect x="36" y="4" width="24" height="12" fill="blue" opacity="0.2"/>
+      <text x="38" y="13" font-size="5" fill="currentColor" stroke="none">-NH2</text>
+      <rect x="4" y="20" width="24" height="12" fill="green" opacity="0.2"/>
+      <text x="6" y="29" font-size="4" fill="currentColor" stroke="none">-COOH</text>
+      <rect x="36" y="20" width="24" height="12" fill="orange" opacity="0.2"/>
+      <text x="40" y="29" font-size="5" fill="currentColor" stroke="none">-SH</text>
+      <rect x="4" y="36" width="24" height="12" fill="purple" opacity="0.2"/>
+      <text x="6" y="45" font-size="4" fill="currentColor" stroke="none">-PO4</text>
+      <rect x="36" y="36" width="24" height="12" fill="yellow" opacity="0.2"/>
+      <text x="38" y="45" font-size="4" fill="currentColor" stroke="none">C=O</text>
+      <text x="8" y="58" font-size="5" fill="currentColor" stroke="none">Key functional groups</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL METABOLISM
+  // ===========================================================================
+  {
+    id: 'biochem-glycogenesis',
+    name: 'Glycogenesis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['glycogenesis', 'glycogen synthesis', 'glucose storage'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="12" r="6" fill="blue" opacity="0.3"/>
+      <text x="10" y="15" font-size="4" fill="currentColor" stroke="none">Glc</text>
+      <path d="M16 18 L16 26"/>
+      <circle cx="16" cy="32" r="6" fill="cyan" opacity="0.3"/>
+      <text x="8" y="35" font-size="4" fill="currentColor" stroke="none">G6P</text>
+      <path d="M16 38 L16 46"/>
+      <ellipse cx="32" cy="52" rx="20" ry="8" fill="purple" opacity="0.3"/>
+      <text x="20" y="55" font-size="5" fill="currentColor" stroke="none">Glycogen</text>
+      <text x="28" y="32" font-size="3" fill="currentColor" stroke="none">Glycogen</text>
+      <text x="28" y="38" font-size="3" fill="currentColor" stroke="none">synthase</text>
+      <text x="44" y="20" font-size="4" fill="green" stroke="none">Insulin ↑</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-glycogenolysis',
+    name: 'Glycogenolysis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['glycogenolysis', 'glycogen breakdown', 'phosphorylase'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="12" rx="20" ry="8" fill="purple" opacity="0.3"/>
+      <text x="20" y="15" font-size="5" fill="currentColor" stroke="none">Glycogen</text>
+      <path d="M32 20 L32 28"/>
+      <circle cx="32" cy="34" r="6" fill="cyan" opacity="0.3"/>
+      <text x="24" y="37" font-size="4" fill="currentColor" stroke="none">G1P</text>
+      <path d="M32 40 L32 48"/>
+      <circle cx="32" cy="54" r="6" fill="blue" opacity="0.3"/>
+      <text x="26" y="57" font-size="4" fill="currentColor" stroke="none">Glc</text>
+      <text x="40" y="28" font-size="3" fill="currentColor" stroke="none">Phosphorylase</text>
+      <text x="44" y="48" font-size="4" fill="red" stroke="none">Glucagon ↑</text>
+      <text x="44" y="54" font-size="4" fill="orange" stroke="none">Epi ↑</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-ketogenesis',
+    name: 'Ketogenesis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['ketogenesis', 'ketone bodies', 'acetoacetate', 'liver'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="blue" opacity="0.3"/>
+      <text x="22" y="13" font-size="4" fill="currentColor" stroke="none">Acetyl-CoA</text>
+      <path d="M32 16 L32 24"/>
+      <rect x="20" y="24" width="24" height="10" fill="green" opacity="0.2"/>
+      <text x="24" y="32" font-size="4" fill="currentColor" stroke="none">HMG-CoA</text>
+      <path d="M32 34 L32 42"/>
+      <circle cx="16" cy="52" r="6" fill="orange" opacity="0.4"/>
+      <text x="8" y="55" font-size="3" fill="currentColor" stroke="none">AcAc</text>
+      <circle cx="32" cy="52" r="6" fill="orange" opacity="0.4"/>
+      <text x="26" y="55" font-size="3" fill="currentColor" stroke="none">βHB</text>
+      <circle cx="48" cy="52" r="6" fill="orange" opacity="0.4"/>
+      <text x="42" y="55" font-size="3" fill="currentColor" stroke="none">Acet</text>
+      <path d="M24 44 L16 48"/>
+      <path d="M32 42 L32 46"/>
+      <path d="M40 44 L48 48"/>
+    </svg>`
+  },
+  {
+    id: 'biochem-cholesterol-synthesis',
+    name: 'Cholesterol Synthesis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['cholesterol synthesis', 'HMG-CoA reductase', 'mevalonate'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="8" r="5" fill="blue" opacity="0.3"/>
+      <text x="22" y="11" font-size="3" fill="currentColor" stroke="none">Acetyl-CoA</text>
+      <path d="M32 13 L32 19"/>
+      <rect x="20" y="19" width="24" height="8" fill="red" opacity="0.3"/>
+      <text x="22" y="25" font-size="3" fill="currentColor" stroke="none">HMG-CoA</text>
+      <path d="M32 27 L32 33"/>
+      <text x="40" y="30" font-size="3" fill="red" stroke="none">Statins ⊗</text>
+      <rect x="20" y="33" width="24" height="8" fill="green" opacity="0.3"/>
+      <text x="22" y="39" font-size="3" fill="currentColor" stroke="none">Mevalonate</text>
+      <path d="M32 41 L32 47"/>
+      <polygon points="24,48 40,48 44,56 36,60 28,60 20,56" fill="yellow" opacity="0.3"/>
+      <text x="24" y="56" font-size="4" fill="currentColor" stroke="none">Chol</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-purine-synthesis',
+    name: 'Purine Synthesis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['purine', 'nucleotide synthesis', 'IMP', 'de novo'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="10" r="6" fill="blue" opacity="0.3"/>
+      <text x="24" y="13" font-size="4" fill="currentColor" stroke="none">PRPP</text>
+      <path d="M32 16 L32 24"/>
+      <rect x="20" y="24" width="24" height="12" fill="purple" opacity="0.2"/>
+      <text x="28" y="33" font-size="5" fill="currentColor" stroke="none">IMP</text>
+      <path d="M26 36 L18 44"/>
+      <path d="M38 36 L46 44"/>
+      <circle cx="14" cy="50" r="6" fill="green" opacity="0.3"/>
+      <text x="8" y="53" font-size="4" fill="currentColor" stroke="none">AMP</text>
+      <circle cx="50" cy="50" r="6" fill="orange" opacity="0.3"/>
+      <text x="44" y="53" font-size="4" fill="currentColor" stroke="none">GMP</text>
+      <text x="4" y="16" font-size="3" fill="currentColor" stroke="none">Gln, Gly</text>
+      <text x="4" y="22" font-size="3" fill="currentColor" stroke="none">Asp, CO2</text>
+    </svg>`
+  },
+  {
+    id: 'biochem-pyrimidine-synthesis',
+    name: 'Pyrimidine Synthesis',
+    domain: 'chemistry',
+    category: 'metabolism',
+    tags: ['pyrimidine', 'nucleotide synthesis', 'UMP', 'de novo'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="16" cy="10" r="5" fill="blue" opacity="0.3"/>
+      <text x="10" y="13" font-size="3" fill="currentColor" stroke="none">Gln</text>
+      <circle cx="32" cy="10" r="5" fill="red" opacity="0.3"/>
+      <text x="26" y="13" font-size="3" fill="currentColor" stroke="none">CO2</text>
+      <circle cx="48" cy="10" r="5" fill="green" opacity="0.3"/>
+      <text x="42" y="13" font-size="3" fill="currentColor" stroke="none">Asp</text>
+      <path d="M24 15 L28 20 M40 15 L36 20"/>
+      <rect x="20" y="20" width="24" height="10" fill="orange" opacity="0.2"/>
+      <text x="22" y="28" font-size="4" fill="currentColor" stroke="none">Orotate</text>
+      <path d="M32 30 L32 38"/>
+      <rect x="20" y="38" width="24" height="10" fill="purple" opacity="0.2"/>
+      <text x="28" y="46" font-size="4" fill="currentColor" stroke="none">UMP</text>
+      <path d="M26 48 L18 54"/>
+      <path d="M38 48 L46 54"/>
+      <text x="8" y="58" font-size="4" fill="currentColor" stroke="none">CTP</text>
+      <text x="44" y="58" font-size="4" fill="currentColor" stroke="none">TMP</text>
+    </svg>`
+  },
 ];
 
 export default biochemistryIcons;
