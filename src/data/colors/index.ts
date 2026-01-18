@@ -748,7 +748,7 @@ export {
   biosafetyColors,
   molecularColors,
   elisaColors,
-  flowchartColors as microbiologyFlowchartColors,
+  microbiologyFlowchartColors,
   microbiologyColorScheme,
 } from './microbiology';
 
