@@ -596,3 +596,6 @@ export { default as biologyPrompts } from './biology-prompts';
 
 export * from './cell-biology-prompts';
 export { default as cellBiologyPrompts } from './cell-biology-prompts';
+
+export * from './psychiatry-prompts';
+export { default as psychiatryPrompts } from './psychiatry-prompts';

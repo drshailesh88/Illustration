@@ -5,8 +5,15 @@
  * Contains templates for biological pathways, cellular processes,
  * molecular biology, genetics, ecology, evolution, and life sciences diagrams.
  *
- * Ralph Loop Iteration 1 - PATHOLOGY_50 checkpoint
- * Expanded from 7 to 22 templates
+ * Ralph Loop Iteration 2 - COMPLETE checkpoint
+ * Expanded from 21 to 26 templates covering:
+ * - Cellular & Molecular (5)
+ * - Evolution & Phylogenetics (4)
+ * - Ecology (5)
+ * - Genetics (4)
+ * - Plant Biology (2)
+ * - Cell Structure (3)
+ * - Organism & Taxonomy (3)
  */
 
 import type { DiagramTemplate } from './index';

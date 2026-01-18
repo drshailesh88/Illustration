@@ -488,3 +488,27 @@ export {
 } from './anatomy';
 
 export type { AnatomyColorScheme } from './anatomy';
+
+// =============================================================================
+// PSYCHIATRY
+// =============================================================================
+
+export {
+  moodStateColors,
+  anxietyColors as psychAnxietyColors,
+  psychosisColors,
+  neurotransmitterColors,
+  brainRegionColors,
+  medicationClassColors,
+  therapyModalityColors,
+  assessmentColors as psychAssessmentColors,
+  severityGradient as psychSeverityGradient,
+  riskLevelColors,
+  substanceColors,
+  personalityClusterColors,
+  sleepColors as psychSleepColors,
+  flowchartColors as psychFlowchartColors,
+  psychiatryColorScheme,
+} from './psychiatry';
+
+export type { PsychiatryColorScheme } from './psychiatry';
