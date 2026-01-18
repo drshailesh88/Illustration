@@ -76,6 +76,7 @@ import { chemistryIcons } from './chemistry';
 import { physicsIcons } from './physics';
 import { engineeringIcons } from './engineering';
 import { cardiologyIcons } from './cardiology';
+import { neurologyIcons } from './neurology';
 import { gastroenterologyIcons } from './gastroenterology';
 import { nephrologyIcons } from './nephrology';
 import { anesthesiologyIcons } from './anesthesiology';
@@ -160,6 +161,7 @@ import { forensicsIcons } from './forensics';
 export const allIcons: IconDefinition[] = [
   ...medicineIcons,
   ...cardiologyIcons,
+  ...neurologyIcons,
   ...pulmonologyIcons,
   ...gastroenterologyIcons,
   ...nephrologyIcons,
@@ -244,7 +246,7 @@ export const allIcons: IconDefinition[] = [
  */
 export const iconsByDomain: Record<IconDomain, IconDefinition[]> = {
   medicine: [
-    ...medicineIcons, ...cardiologyIcons, ...pulmonologyIcons,
+    ...medicineIcons, ...cardiologyIcons, ...neurologyIcons, ...pulmonologyIcons,
     ...gastroenterologyIcons, ...nephrologyIcons, ...anesthesiologyIcons,
     ...ophthalmologyIcons, ...radiologyIcons, ...pathologyIcons, ...pediatricsIcons,
     ...orthopedicsIcons, ...rheumatologyIcons, ...infectiousIcons, ...emergencyIcons,
@@ -290,7 +292,7 @@ export const domainMetadata: Record<IconDomain, DomainMetadata> = {
     id: 'medicine',
     name: 'Medicine',
     description: 'Medical, clinical, and healthcare icons including cardiology, anesthesiology, ophthalmology, radiology, and pharmacology drug classes',
-    iconCount: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
+    iconCount: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
     color: '#ef4444', // Red
   },
   biology: {
@@ -548,7 +550,7 @@ export function getIconStats(): {
   return {
     totalIcons: allIcons.length,
     byDomain: {
-      medicine: medicineIcons.length + cardiologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
+      medicine: medicineIcons.length + cardiologyIcons.length + neurologyIcons.length + pulmonologyIcons.length + gastroenterologyIcons.length + nephrologyIcons.length + anesthesiologyIcons.length + ophthalmologyIcons.length + radiologyIcons.length + rheumatologyIcons.length + orthopedicsIcons.length + psychiatryIcons.length + emergencyIcons.length + endocrinologyIcons.length + infectiousIcons.length + pediatricsIcons.length + pathologyIcons.length + entIcons.length + obgynIcons.length + analgesicsIcons.length + antibioticsIcons.length + anticoagulantsIcons.length + antihypertensivesIcons.length + antimicrobialsIcons.length + endocrineDrugsIcons.length + giDrugsIcons.length + immunologyDrugsIcons.length + neuroDrugsIcons.length + oncologyDrugsIcons.length + psychotropicsIcons.length + respiratoryDrugsIcons.length,
       biology: biologyIcons.length + molecularIcons.length + geneticsIcons.length + ecologyIcons.length + microbiologyIcons.length + zoologyIcons.length + botanyIcons.length + cellbiologyIcons.length + neuroscienceIcons.length + environmentalIcons.length + oceanographyIcons.length + agricultureIcons.length,
       chemistry: chemistryIcons.length + forensicsIcons.length + analyticalIcons.length + biochemistryIcons.length + inorganicIcons.length + medicinalIcons.length + organicIcons.length + physicalIcons.length + polymerIcons.length,
       physics: physicsIcons.length + geologyIcons.length + astronomyIcons.length + meteorologyIcons.length + astrophysicsIcons.length + electromagnetismIcons.length + mechanicsIcons.length + nuclearIcons.length + opticsIcons.length + quantumIcons.length + solidstateIcons.length + thermodynamicsIcons.length,
@@ -607,6 +609,7 @@ export function iconToBase64(icon: IconDefinition): string {
 
 export { medicineIcons } from './medicine';
 export { cardiologyIcons } from './cardiology';
+export { neurologyIcons } from './neurology';
 export { gastroenterologyIcons } from './gastroenterology';
 export { nephrologyIcons } from './nephrology';
 export { anesthesiologyIcons } from './anesthesiology';
