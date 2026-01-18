@@ -34,7 +34,8 @@
     "chemistry",
     "physics",
     "microbiology",
-    "anatomy"
+    "anatomy",
+    "biology-general"
   ],
   "blockedSpecialties": [],
   "progress": {
@@ -1231,10 +1232,10 @@
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 34,
+    "completed": 35,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 1,
+    "notStarted": 0,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,

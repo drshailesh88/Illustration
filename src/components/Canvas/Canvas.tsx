@@ -11,10 +11,12 @@ import {
   useCallback,
   forwardRef,
   useImperativeHandle,
+  useState,
 } from 'react';
 import { Canvas as FabricCanvas, FabricObject, Rect, Ellipse, Line, IText, Triangle, Group } from 'fabric';
 import { useEditorStore, useActiveTool, useViewport, useGridState } from '../../store/editorStore';
 import { ToolType } from '../../types/index';
+import { PenToolOverlay } from './PenToolOverlay';
 import './Canvas.css';
 
 // ============================================================================
@@ -98,6 +100,9 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
       startY: 0,
       tempObject: null,
     });
+
+    // Pen tool state
+    const [penToolActive, setPenToolActive] = useState(false);
 
     // Store hooks
     const setCanvas = useEditorStore((state) => state.setCanvas);
@@ -230,6 +235,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
           obj.selectable = true;
           obj.evented = true;
         });
+        setPenToolActive(false);
       } else if (activeTool === ToolType.HAND) {
         canvas.selection = false;
         canvas.defaultCursor = 'grab';
@@ -238,12 +244,14 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
           obj.selectable = false;
           obj.evented = false;
         });
+        setPenToolActive(false);
       } else if (activeTool === ToolType.TEXT) {
         canvas.selection = false;
         canvas.defaultCursor = 'text';
         canvas.hoverCursor = 'text';
-      } else {
-        // Drawing tools
+        setPenToolActive(false);
+      } else if (activeTool === ToolType.PEN) {
+        // Pen tool - use Paper.js overlay
         canvas.selection = false;
         canvas.defaultCursor = 'crosshair';
         canvas.hoverCursor = 'crosshair';
@@ -251,6 +259,17 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
           obj.selectable = false;
           obj.evented = false;
         });
+        setPenToolActive(true);
+      } else {
+        // Drawing tools (shapes)
+        canvas.selection = false;
+        canvas.defaultCursor = 'crosshair';
+        canvas.hoverCursor = 'crosshair';
+        canvas.forEachObject((obj) => {
+          obj.selectable = false;
+          obj.evented = false;
+        });
+        setPenToolActive(false);
       }
 
       canvas.renderAll();
@@ -633,6 +652,21 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
     // Render
     // ========================================================================
 
+    // Handle pen tool path completion
+    const handlePenToolPathComplete = useCallback(
+      (fabricPath: FabricObject) => {
+        // Path has been added to canvas, save history
+        const canvas = fabricRef.current;
+        if (canvas) {
+          pushHistory(JSON.stringify(canvas.toJSON()));
+        }
+        if (onObjectModified) {
+          onObjectModified(fabricPath);
+        }
+      },
+      [pushHistory, onObjectModified]
+    );
+
     return (
       <div ref={containerRef} className={`canvas-container ${className}`}>
         <div
@@ -642,9 +676,20 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
             height,
             transform: `scale(${zoom})`,
             transformOrigin: 'center center',
+            position: 'relative',
           }}
         >
           <canvas ref={canvasRef} id="finnish-canvas" />
+          {/* Paper.js Pen Tool Overlay */}
+          <PenToolOverlay
+            fabricCanvas={fabricRef.current}
+            isActive={penToolActive}
+            strokeColor="#0078d4"
+            strokeWidth={2}
+            width={width}
+            height={height}
+            onPathComplete={handlePenToolPathComplete}
+          />
         </div>
       </div>
     );
