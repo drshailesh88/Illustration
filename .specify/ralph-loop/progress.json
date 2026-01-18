@@ -1,6 +1,6 @@
 {
   "currentSpecialty": null,
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology", "radiology", "ophthalmology", "dermatology", "ent", "pediatrics", "obgyn", "pathology", "psychiatry", "rheumatology", "physiology"],
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology", "radiology", "ophthalmology", "dermatology", "ent", "pediatrics", "obgyn", "pathology", "psychiatry", "rheumatology", "physiology", "biochemistry", "mathematics"],
   "blockedSpecialties": [],
   "progress": {
     "anesthesiology": {
@@ -579,16 +579,16 @@
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 20,
+    "completed": 21,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 15,
+    "notStarted": 14,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1432,
-    "currentTotalTemplates": 355,
-    "currentTotalPrompts": 257
+    "currentTotalIcons": 1525,
+    "currentTotalTemplates": 380,
+    "currentTotalPrompts": 277
   },
   "executionOrder": [
     "cardiology",
@@ -627,5 +627,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "anatomy"
+  "nextSpecialty": "biochemistry"
 }
