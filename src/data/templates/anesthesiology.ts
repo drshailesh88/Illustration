@@ -772,6 +772,433 @@ export const anestheticDrugDosing: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL TEMPLATES - EMERGENCIES
+// =============================================================================
+
+/**
+ * Malignant Hyperthermia Treatment template
+ */
+export const malignantHyperthermia: DiagramTemplate = {
+  id: 'anes-malignant-hyperthermia',
+  name: 'Malignant Hyperthermia Treatment',
+  description: 'Emergency treatment algorithm for malignant hyperthermia crisis',
+  domain: 'medicine',
+  promptTemplate: `Create a malignant hyperthermia treatment flowchart:
+- Early signs recognition: {{earlySigns}}
+- Trigger agents to stop: {{triggers}}
+- Dantrolene dosing: {{dantroleneDosing}}
+- Cooling measures: {{coolingMeasures}}
+- Hyperkalemia treatment: {{hyperkalemiaTx}}
+- Laboratory monitoring: {{labMonitoring}}
+- ICU criteria: {{icuCriteria}}
+- MH hotline contact: {{hotlineInfo}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'earlySigns',
+    'triggers',
+    'dantroleneDosing',
+    'coolingMeasures',
+    'hyperkalemiaTx',
+    'labMonitoring',
+    'icuCriteria',
+    'hotlineInfo',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspect MH\\nEtCO2 rise + Tachycardia")] --> B["STOP TRIGGERS"]
+    B --> B1["Turn off volatiles"]
+    B --> B2["Hyperventilate 100% O2"]
+    B1 & B2 --> C["CALL FOR HELP\\nMH Hotline"]
+    C --> D["DANTROLENE 2.5 mg/kg"]
+    D --> D1{"Response?"}
+    D1 -->|No| D2["Repeat to 10 mg/kg"]
+    D1 -->|Yes| E["Continue 1 mg/kg q6h"]
+    C --> F["COOLING"]
+    C --> G["TREAT HYPERKALEMIA"]
+    E & F & G --> H["ICU Admission"]
+    style A fill:#DC143C,color:#fff
+    style D fill:#228B22,color:#fff`,
+};
+
+/**
+ * LAST Treatment Algorithm template
+ */
+export const lastTreatment: DiagramTemplate = {
+  id: 'anes-last-treatment',
+  name: 'LAST Treatment Algorithm',
+  description: 'Local anesthetic systemic toxicity recognition and lipid emulsion treatment',
+  domain: 'medicine',
+  promptTemplate: `Create a LAST treatment algorithm:
+- CNS symptoms: {{cnsSymptoms}}
+- Cardiovascular signs: {{cvSigns}}
+- Immediate actions: {{immediateActions}}
+- Lipid emulsion protocol: {{lipidProtocol}}
+- ACLS modifications: {{aclsModifications}}
+- Monitoring duration: {{monitoringDuration}}
+- Prevention strategies: {{prevention}}
+{{#additionalNotes}}Documentation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'cnsSymptoms',
+    'cvSigns',
+    'immediateActions',
+    'lipidProtocol',
+    'aclsModifications',
+    'monitoringDuration',
+    'prevention',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Suspect LAST")] --> B["STOP LA Injection"]
+    B --> C["Call for Help"]
+    C --> D{"Seizures?"}
+    D -->|Yes| E["Benzodiazepines"]
+    D -->|No| F{"CV Collapse?"}
+    E --> F
+    F -->|Yes| G["20% LIPID EMULSION"]
+    G --> G1["Bolus: 1.5 mL/kg"]
+    G1 --> G2["Infusion: 0.25 mL/kg/min"]
+    F -->|No| H["Monitor Closely"]
+    G2 --> I["Modified ACLS"]
+    I --> J["Monitor 4-6 hours"]
+    style A fill:#DC143C,color:#fff
+    style G fill:#228B22,color:#fff`,
+};
+
+/**
+ * Epidural Catheter Placement template
+ */
+export const epiduralPlacement: DiagramTemplate = {
+  id: 'anes-epidural-placement',
+  name: 'Epidural Catheter Placement',
+  description: 'Step-by-step epidural catheter insertion technique',
+  domain: 'medicine',
+  promptTemplate: `Create an epidural placement procedure flowchart:
+- Patient positioning: {{positioning}}
+- Level selection: {{levelSelection}}
+- Needle selection: {{needleSelection}}
+- Loss of resistance technique: {{lorTechnique}}
+- Catheter insertion depth: {{catheterDepth}}
+- Test dose: {{testDose}}
+- Securing catheter: {{securingCatheter}}
+- Troubleshooting: {{troubleshooting}}
+{{#additionalNotes}}Complications to watch: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'positioning',
+    'levelSelection',
+    'needleSelection',
+    'lorTechnique',
+    'catheterDepth',
+    'testDose',
+    'securingCatheter',
+    'troubleshooting',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Position: Sitting/Lateral"] --> B["Identify Level L3-L4"]
+    B --> C["Sterile Prep & Drape"]
+    C --> D["Local Infiltration"]
+    D --> E["Tuohy Needle Insertion"]
+    E --> F["Loss of Resistance Test"]
+    F --> G{"LOR Achieved?"}
+    G -->|Yes| H["Thread Catheter 3-5cm"]
+    G -->|No| I["Redirect/Re-attempt"]
+    I --> F
+    H --> J["Remove Needle"]
+    J --> K["Test Dose 3mL"]
+    K --> L{"Intravascular?"}
+    L -->|No| M["Secure Catheter"]
+    L -->|Yes| N["Reposition"]
+    style G fill:#FFA500,color:#000
+    style M fill:#228B22,color:#fff`,
+};
+
+/**
+ * Central Line Insertion template
+ */
+export const centralLineInsertion: DiagramTemplate = {
+  id: 'anes-central-line-insertion',
+  name: 'Central Venous Catheter Insertion',
+  description: 'Ultrasound-guided central venous access technique',
+  domain: 'medicine',
+  promptTemplate: `Create a central line insertion flowchart:
+- Site selection: {{siteSelection}}
+- Ultrasound guidance: {{ultrasoundTechnique}}
+- Seldinger technique: {{seldingerSteps}}
+- Confirmation methods: {{confirmationMethods}}
+- Catheter securement: {{catheterSecurement}}
+- Chest X-ray verification: {{cxrVerification}}
+- Complication prevention: {{complicationPrevention}}
+{{#additionalNotes}}Bundle compliance: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'siteSelection',
+    'ultrasoundTechnique',
+    'seldingerSteps',
+    'confirmationMethods',
+    'catheterSecurement',
+    'cxrVerification',
+    'complicationPrevention',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Site Selection: IJ/Subclavian/Femoral"] --> B["Ultrasound Survey"]
+    B --> C["Sterile Prep (Max Barrier)"]
+    C --> D["Local Anesthesia"]
+    D --> E["US-Guided Needle Insertion"]
+    E --> F{"Blood Return?"}
+    F -->|Yes| G["Confirm Venous (dark, non-pulsatile)"]
+    F -->|No| H["Redirect with US"]
+    H --> E
+    G --> I["Insert Guidewire"]
+    I --> J["Dilate Tract"]
+    J --> K["Thread Catheter"]
+    K --> L["Remove Wire"]
+    L --> M["Confirm All Ports"]
+    M --> N["Secure & Dress"]
+    N --> O["CXR for Position"]
+    style F fill:#FFA500,color:#000
+    style O fill:#228B22,color:#fff`,
+};
+
+/**
+ * Emergence and Extubation template
+ */
+export const emergenceExtubation: DiagramTemplate = {
+  id: 'anes-emergence-extubation',
+  name: 'Emergence and Extubation',
+  description: 'Safe emergence from anesthesia and extubation criteria',
+  domain: 'medicine',
+  promptTemplate: `Create an emergence and extubation flowchart:
+- Reversal confirmation: {{reversalConfirmation}}
+- Consciousness assessment: {{consciousnessAssessment}}
+- Respiratory criteria: {{respiratoryCriteria}}
+- Airway reflexes: {{airwayReflexes}}
+- Extubation technique: {{extubationTechnique}}
+- Post-extubation monitoring: {{postExtubationMonitoring}}
+- Re-intubation criteria: {{reintubationCriteria}}
+{{#additionalNotes}}High-risk considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'reversalConfirmation',
+    'consciousnessAssessment',
+    'respiratoryCriteria',
+    'airwayReflexes',
+    'extubationTechnique',
+    'postExtubationMonitoring',
+    'reintubationCriteria',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["End of Surgery"] --> B["Reduce Anesthetic"]
+    B --> C["Reverse NMB"]
+    C --> D{"TOF >= 0.9?"}
+    D -->|No| E["More Reversal/Wait"]
+    E --> D
+    D -->|Yes| F{"Following Commands?"}
+    F -->|No| G["Continue Emergence"]
+    G --> F
+    F -->|Yes| H{"Adequate Tidal Volume?\\nRR 10-20?"}
+    H -->|Yes| I["Suction Oropharynx"]
+    I --> J["Deflate Cuff"]
+    J --> K["Remove ETT on Inspiration"]
+    K --> L["Apply O2"]
+    L --> M["Monitor PACU"]
+    style D fill:#FFA500,color:#000
+    style M fill:#228B22,color:#fff`,
+};
+
+/**
+ * Enhanced Recovery (ERAS) Protocol template
+ */
+export const erasProtocol: DiagramTemplate = {
+  id: 'anes-eras-protocol',
+  name: 'ERAS Protocol',
+  description: 'Enhanced Recovery After Surgery protocol components',
+  domain: 'medicine',
+  promptTemplate: `Create an ERAS protocol flowchart:
+- Preoperative optimization: {{preopOptimization}}
+- Carbohydrate loading: {{carboLoading}}
+- Multimodal analgesia: {{multimodalAnalgesia}}
+- PONV prophylaxis: {{ponvProphylaxis}}
+- Fluid management: {{fluidManagement}}
+- Early mobilization: {{earlyMobilization}}
+- Outcome metrics: {{outcomeMetrics}}
+{{#additionalNotes}}Surgery-specific modifications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'preopOptimization',
+    'carboLoading',
+    'multimodalAnalgesia',
+    'ponvProphylaxis',
+    'fluidManagement',
+    'earlyMobilization',
+    'outcomeMetrics',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Pre["Preoperative"]
+        A["Patient Education"]
+        B["Carbohydrate Loading"]
+        C["No Prolonged Fasting"]
+        D["Optimize Comorbidities"]
+    end
+    subgraph Intra["Intraoperative"]
+        E["Multimodal Analgesia"]
+        F["Goal-Directed Fluids"]
+        G["Normothermia"]
+        H["Minimize Opioids"]
+    end
+    subgraph Post["Postoperative"]
+        I["Early Oral Intake"]
+        J["Early Mobilization"]
+        K["Multimodal Pain Control"]
+        L["Early Catheter Removal"]
+    end
+    Pre --> Intra --> Post --> M["Reduced LOS"]
+    style M fill:#228B22,color:#fff`,
+};
+
+/**
+ * Regional Block Selection template
+ */
+export const regionalBlockSelection: DiagramTemplate = {
+  id: 'anes-regional-block-selection',
+  name: 'Regional Block Selection',
+  description: 'Algorithm for selecting appropriate regional anesthesia technique',
+  domain: 'medicine',
+  promptTemplate: `Create a regional block selection flowchart:
+- Surgical site: {{surgicalSite}}
+- Block options: {{blockOptions}}
+- Patient factors: {{patientFactors}}
+- Anticoagulation status: {{anticoagulationStatus}}
+- Single shot vs catheter: {{singleVsCatheter}}
+- Local anesthetic selection: {{laSelection}}
+- Expected duration: {{expectedDuration}}
+{{#additionalNotes}}Special considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'surgicalSite',
+    'blockOptions',
+    'patientFactors',
+    'anticoagulationStatus',
+    'singleVsCatheter',
+    'laSelection',
+    'expectedDuration',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A[("Surgical Site?")] --> B{"Upper Extremity?"}
+    B -->|Yes| C["Brachial Plexus Block"]
+    C --> C1["Interscalene: Shoulder"]
+    C --> C2["Supraclavicular: Arm/Elbow"]
+    C --> C3["Axillary: Forearm/Hand"]
+    B -->|No| D{"Lower Extremity?"}
+    D -->|Yes| E["Neuraxial or PNB"]
+    E --> E1["Femoral/Adductor: Knee"]
+    E --> E2["Sciatic: Below Knee"]
+    E --> E3["Ankle Block: Foot"]
+    D -->|No| F{"Trunk?"}
+    F -->|Yes| G["Truncal Blocks"]
+    G --> G1["TAP: Abdominal Wall"]
+    G --> G2["PECS: Breast"]
+    G --> G3["ESP: Chest/Back"]
+    style A fill:#4169E1,color:#fff`,
+};
+
+/**
+ * Fluid Management Algorithm template
+ */
+export const fluidManagement: DiagramTemplate = {
+  id: 'anes-fluid-management',
+  name: 'Intraoperative Fluid Management',
+  description: 'Goal-directed fluid therapy algorithm',
+  domain: 'medicine',
+  promptTemplate: `Create a fluid management flowchart:
+- Baseline fluid deficit: {{baselineDeficit}}
+- Maintenance calculation: {{maintenanceCalc}}
+- Third space losses: {{thirdSpaceLosses}}
+- Blood loss estimation: {{bloodLossEstimation}}
+- Fluid responsiveness assessment: {{fluidResponsiveness}}
+- Crystalloid vs colloid: {{crystalloidVsColloid}}
+- Transfusion triggers: {{transfusionTriggers}}
+{{#additionalNotes}}Patient-specific factors: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'baselineDeficit',
+    'maintenanceCalc',
+    'thirdSpaceLosses',
+    'bloodLossEstimation',
+    'fluidResponsiveness',
+    'crystalloidVsColloid',
+    'transfusionTriggers',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Assess Fluid Status"] --> B{"Hypotension?"}
+    B -->|Yes| C["Fluid Responsiveness Test"]
+    C --> D{"PPV >13% or\\nSVV >13%?"}
+    D -->|Yes| E["Fluid Bolus 250mL"]
+    D -->|No| F["Vasopressor"]
+    E --> G{"Response?"}
+    G -->|Yes| H["Continue Monitoring"]
+    G -->|No| I["Repeat Assessment"]
+    I --> D
+    B -->|No| J{"Blood Loss >500mL?"}
+    J -->|Yes| K{"Hgb <7 or\\nSymptoms?"}
+    K -->|Yes| L["Transfuse PRBC"]
+    K -->|No| M["Crystalloid Replacement"]
+    J -->|No| N["Maintenance Fluids"]
+    style E fill:#4169E1,color:#fff
+    style L fill:#DC143C,color:#fff`,
+};
+
+/**
+ * Neuromuscular Blockade Management template
+ */
+export const nmbManagement: DiagramTemplate = {
+  id: 'anes-nmb-management',
+  name: 'Neuromuscular Blockade Management',
+  description: 'Neuromuscular blocker selection, monitoring, and reversal',
+  domain: 'medicine',
+  promptTemplate: `Create a neuromuscular blockade management flowchart:
+- NMB selection: {{nmbSelection}}
+- Dosing considerations: {{dosingConsiderations}}
+- TOF monitoring: {{tofMonitoring}}
+- Maintenance dosing: {{maintenanceDosing}}
+- Reversal agent selection: {{reversalSelection}}
+- Sugammadex indications: {{sugammadexIndications}}
+- Residual blockade prevention: {{residualBlockadePrevention}}
+{{#additionalNotes}}Special populations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'nmbSelection',
+    'dosingConsiderations',
+    'tofMonitoring',
+    'maintenanceDosing',
+    'reversalSelection',
+    'sugammadexIndications',
+    'residualBlockadePrevention',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["NMB Required"] --> B{"RSI Needed?"}
+    B -->|Yes| C["Succinylcholine 1-1.5mg/kg\\nor Rocuronium 1.2mg/kg"]
+    B -->|No| D["Rocuronium 0.6mg/kg\\nor Cisatracurium 0.1mg/kg"]
+    C & D --> E["Monitor TOF"]
+    E --> F{"TOF Count?"}
+    F -->|"0"| G["Deep Block - OK for Surgery"]
+    F -->|"1-3"| H["Moderate Block"]
+    F -->|"4"| I["Recovery Starting"]
+    G & H --> J["Redose PRN"]
+    J --> E
+    I --> K["End of Surgery"]
+    K --> L{"TOF Ratio?"}
+    L -->|"<0.9"| M["Reversal Needed"]
+    M --> N{"Deep Block?"}
+    N -->|Yes| O["Sugammadex 4mg/kg"]
+    N -->|No| P["Sugammadex 2mg/kg\\nor Neostigmine"]
+    O & P --> Q["Confirm TOF >= 0.9"]
+    L -->|">=0.9"| R["Safe to Extubate"]
+    Q --> R
+    style O fill:#228B22,color:#fff
+    style R fill:#228B22,color:#fff`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -799,6 +1226,18 @@ export const anesthesiologyTemplates: DiagramTemplate[] = [
   asaClassification,
   mallampatiScoring,
   anestheticDrugDosing,
+  // Emergency Protocols
+  malignantHyperthermia,
+  lastTreatment,
+  // Additional Procedures
+  epiduralPlacement,
+  centralLineInsertion,
+  emergenceExtubation,
+  // Clinical Protocols
+  erasProtocol,
+  regionalBlockSelection,
+  fluidManagement,
+  nmbManagement,
 ];
 
 export default anesthesiologyTemplates;

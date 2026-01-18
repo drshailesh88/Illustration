@@ -1383,6 +1383,479 @@ export const ophthalmologyIcons: IconDefinition[] = [
       <text x="18" y="62" font-size="4" fill="currentColor" stroke="none">PRP Burns</text>
     </svg>`
   },
+
+  // ===========================================================================
+  // REFRACTIVE CONDITIONS (4 icons)
+  // ===========================================================================
+  {
+    id: 'ophth-myopia',
+    name: 'Myopia (Nearsightedness)',
+    domain: 'medicine',
+    category: 'refractive',
+    tags: ['myopia', 'nearsighted', 'short-sighted', 'elongated', 'minus lens', 'refractive error'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="28" ry="20"/>
+      <ellipse cx="12" cy="32" rx="6" ry="10"/>
+      <path d="M8 20l48-8" stroke="#DC143C" stroke-width="1.5"/>
+      <path d="M8 44l48 8" stroke="#DC143C" stroke-width="1.5"/>
+      <circle cx="44" cy="32" r="3" fill="#DC143C" opacity="0.5"/>
+      <path d="M18 32h20" stroke-dasharray="3 2"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Light rays</text>
+      <text x="36" y="28" font-size="4" fill="#DC143C" stroke="none">Focus</text>
+      <text x="48" y="40" font-size="4" fill="currentColor" stroke="none">Retina</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-hyperopia',
+    name: 'Hyperopia (Farsightedness)',
+    domain: 'medicine',
+    category: 'refractive',
+    tags: ['hyperopia', 'farsighted', 'long-sighted', 'plus lens', 'refractive error'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <ellipse cx="12" cy="32" rx="6" ry="10"/>
+      <path d="M8 22l48 2" stroke="#DC143C" stroke-width="1.5"/>
+      <path d="M8 42l48-2" stroke="#DC143C" stroke-width="1.5"/>
+      <circle cx="64" cy="32" r="3" fill="#DC143C" opacity="0.5" stroke="none"/>
+      <circle cx="56" cy="32" r="2" fill="currentColor" opacity="0.3"/>
+      <path d="M18 32h38" stroke-dasharray="3 2"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Light rays</text>
+      <text x="48" y="24" font-size="4" fill="#DC143C" stroke="none">Focus behind</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-astigmatism',
+    name: 'Astigmatism',
+    domain: 'medicine',
+    category: 'refractive',
+    tags: ['astigmatism', 'irregular', 'corneal', 'lenticular', 'cylinder', 'axis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <ellipse cx="14" cy="32" rx="8" ry="6"/>
+      <path d="M8 24l36 4" stroke="#DC143C" stroke-width="1.5"/>
+      <path d="M8 40l36-4" stroke="#4169E1" stroke-width="1.5"/>
+      <circle cx="44" cy="28" r="2" fill="#DC143C" opacity="0.5"/>
+      <circle cx="44" cy="36" r="2" fill="#4169E1" opacity="0.5"/>
+      <path d="M22 32h32" stroke-dasharray="3 2"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Vertical</text>
+      <text x="4" y="54" font-size="4" fill="currentColor" stroke="none">Horizontal</text>
+      <text x="40" y="24" font-size="3" fill="#DC143C" stroke="none">F1</text>
+      <text x="40" y="44" font-size="3" fill="#4169E1" stroke="none">F2</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-presbyopia',
+    name: 'Presbyopia',
+    domain: 'medicine',
+    category: 'refractive',
+    tags: ['presbyopia', 'aging', 'accommodation', 'near vision', 'reading glasses', 'bifocal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <ellipse cx="14" cy="32" rx="6" ry="10" stroke-dasharray="3 2"/>
+      <ellipse cx="14" cy="32" rx="4" ry="6" fill="currentColor" opacity="0.2"/>
+      <path d="M4 20l8 4"/>
+      <path d="M4 44l8-4"/>
+      <circle cx="20" cy="28" r="1" fill="currentColor" opacity="0.5"/>
+      <path d="M8 28h12" stroke="#DC143C"/>
+      <path d="M8 36h16" stroke="#4169E1"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Near</text>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Far</text>
+      <text x="24" y="24" font-size="3" fill="#DC143C" stroke="none">Lost</text>
+      <text x="26" y="42" font-size="3" fill="#4169E1" stroke="none">OK</text>
+      <text x="32" y="58" font-size="4" fill="currentColor" stroke="none">Stiff Lens</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // EXTERNAL EYE STRUCTURES (6 icons)
+  // ===========================================================================
+  {
+    id: 'ophth-eyelid',
+    name: 'Eyelid Anatomy',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['eyelid', 'tarsus', 'levator', 'orbicularis', 'Meibomian', 'blepharoptosis'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c8-16 40-16 48 0"/>
+      <path d="M8 32c8 16 40 16 48 0"/>
+      <path d="M8 28c8-12 40-12 48 0" stroke-dasharray="3 2"/>
+      <path d="M12 24l4 8"/>
+      <path d="M20 20l2 12"/>
+      <path d="M44 20l-2 12"/>
+      <path d="M52 24l-4 8"/>
+      <rect x="16" y="30" width="32" height="4" fill="currentColor" opacity="0.2"/>
+      <path d="M16 38c8 4 24 4 32 0"/>
+      <text x="4" y="16" font-size="4" fill="currentColor" stroke="none">Levator</text>
+      <text x="22" y="34" font-size="4" fill="currentColor" stroke="none">Tarsus</text>
+      <text x="22" y="54" font-size="4" fill="currentColor" stroke="none">Lashes</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-lacrimal-system',
+    name: 'Lacrimal System',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['lacrimal', 'tear', 'gland', 'punctum', 'canaliculus', 'nasolacrimal duct'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="28" rx="20" ry="14"/>
+      <circle cx="32" cy="28" r="6" fill="currentColor"/>
+      <ellipse cx="52" cy="16" rx="6" ry="4" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="52" cy="16" rx="6" ry="4"/>
+      <path d="M52 20l-8 6" stroke="#4169E1" stroke-dasharray="2 1"/>
+      <circle cx="12" cy="24" r="2" fill="currentColor" opacity="0.3"/>
+      <circle cx="12" cy="32" r="2" fill="currentColor" opacity="0.3"/>
+      <path d="M12 24v8"/>
+      <path d="M12 32l-4 24"/>
+      <text x="46" y="12" font-size="3" fill="currentColor" stroke="none">Gland</text>
+      <text x="4" y="22" font-size="3" fill="currentColor" stroke="none">Puncta</text>
+      <text x="4" y="58" font-size="3" fill="currentColor" stroke="none">NLD</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-extraocular-muscles',
+    name: 'Extraocular Muscles',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['EOM', 'extraocular', 'rectus', 'oblique', 'strabismus', 'diplopia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14"/>
+      <circle cx="32" cy="32" r="6" fill="currentColor"/>
+      <path d="M32 18v-12" stroke-width="3"/>
+      <path d="M32 46v12" stroke-width="3"/>
+      <path d="M18 32h-12" stroke-width="3"/>
+      <path d="M46 32h12" stroke-width="3"/>
+      <path d="M22 22l-8-8" stroke-width="2"/>
+      <path d="M42 42l8 8" stroke-width="2"/>
+      <text x="28" y="10" font-size="3" fill="currentColor" stroke="none">SR</text>
+      <text x="28" y="58" font-size="3" fill="currentColor" stroke="none">IR</text>
+      <text x="2" y="34" font-size="3" fill="currentColor" stroke="none">MR</text>
+      <text x="52" y="34" font-size="3" fill="currentColor" stroke="none">LR</text>
+      <text x="8" y="18" font-size="3" fill="currentColor" stroke="none">SO</text>
+      <text x="48" y="54" font-size="3" fill="currentColor" stroke="none">IO</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-orbit',
+    name: 'Orbital Anatomy',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['orbit', 'orbital', 'bones', 'apex', 'annulus', 'fissure'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 12c8-8 40-8 48 0v40c-8 8-40 8-48 0z"/>
+      <ellipse cx="32" cy="32" rx="16" ry="14" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="16" ry="14"/>
+      <circle cx="32" cy="32" r="8"/>
+      <circle cx="32" cy="32" r="3" fill="currentColor"/>
+      <path d="M8 12l8 8"/>
+      <path d="M56 12l-8 8"/>
+      <path d="M8 52l8-8"/>
+      <path d="M56 52l-8-8"/>
+      <text x="4" y="32" font-size="3" fill="currentColor" stroke="none">Wall</text>
+      <text x="20" y="58" font-size="3" fill="currentColor" stroke="none">Orbital Floor</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-blepharitis',
+    name: 'Blepharitis',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['blepharitis', 'lid margin', 'MGD', 'Meibomian', 'collarettes', 'inflammation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 32c8-12 40-12 48 0"/>
+      <path d="M8 32c8 12 40 12 48 0"/>
+      <circle cx="32" cy="32" r="8"/>
+      <circle cx="32" cy="32" r="3" fill="currentColor"/>
+      <path d="M8 32h8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M48 32h8" stroke="#DC143C" stroke-width="2"/>
+      <circle cx="16" cy="38" r="1.5" fill="#FFD700"/>
+      <circle cx="24" cy="40" r="1" fill="#FFD700"/>
+      <circle cx="40" cy="40" r="1" fill="#FFD700"/>
+      <circle cx="48" cy="38" r="1.5" fill="#FFD700"/>
+      <path d="M12 44l4-4"/>
+      <path d="M20 46l2-4"/>
+      <path d="M42 46l-2-4"/>
+      <path d="M52 44l-4-4"/>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Crusting + Debris</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-chalazion',
+    name: 'Chalazion/Hordeolum',
+    domain: 'medicine',
+    category: 'external-eye',
+    tags: ['chalazion', 'hordeolum', 'stye', 'Meibomian', 'lid lesion', 'granuloma'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 28c8-12 40-12 48 0"/>
+      <path d="M8 36c8 12 40 12 48 0"/>
+      <ellipse cx="32" cy="32" rx="12" ry="8"/>
+      <circle cx="32" cy="32" r="3" fill="currentColor"/>
+      <ellipse cx="20" cy="24" rx="6" ry="4" fill="#DC143C" opacity="0.4"/>
+      <ellipse cx="20" cy="24" rx="6" ry="4"/>
+      <circle cx="20" cy="24" r="2" fill="#FFD700"/>
+      <path d="M16 24h8" stroke="#DC143C" stroke-width="1"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Swelling</text>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Chalazion</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // OPTICAL CONCEPTS (4 icons)
+  // ===========================================================================
+  {
+    id: 'ophth-light-refraction',
+    name: 'Light Refraction',
+    domain: 'medicine',
+    category: 'optical',
+    tags: ['refraction', 'light', 'lens', 'focal point', 'convergent', 'divergent'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="6" ry="20" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="24" cy="32" rx="6" ry="20"/>
+      <path d="M4 20l14 12" stroke="#FFD700" stroke-width="2"/>
+      <path d="M4 32l14 0" stroke="#FFD700" stroke-width="2"/>
+      <path d="M4 44l14-12" stroke="#FFD700" stroke-width="2"/>
+      <path d="M30 32l20 0" stroke="#FFD700" stroke-width="2"/>
+      <path d="M30 32l20-8" stroke="#FFD700" stroke-width="1" stroke-dasharray="3 2"/>
+      <path d="M30 32l20 8" stroke="#FFD700" stroke-width="1" stroke-dasharray="3 2"/>
+      <circle cx="50" cy="32" r="3" fill="#FFD700"/>
+      <text x="2" y="16" font-size="4" fill="currentColor" stroke="none">Light</text>
+      <text x="46" y="28" font-size="3" fill="currentColor" stroke="none">Focus</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-snellen-chart',
+    name: 'Visual Acuity Chart',
+    domain: 'medicine',
+    category: 'optical',
+    tags: ['Snellen', 'visual acuity', 'VA', 'chart', 'testing', '20/20'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="4" width="48" height="56" rx="2"/>
+      <text x="28" y="16" font-size="10" fill="currentColor" stroke="none" font-weight="bold">E</text>
+      <text x="22" y="26" font-size="6" fill="currentColor" stroke="none">F P</text>
+      <text x="18" y="34" font-size="5" fill="currentColor" stroke="none">T O Z</text>
+      <text x="16" y="42" font-size="4" fill="currentColor" stroke="none">L P E D</text>
+      <text x="14" y="48" font-size="3" fill="currentColor" stroke="none">P E C F D</text>
+      <text x="12" y="54" font-size="2" fill="currentColor" stroke="none">E D F C Z P</text>
+      <text x="46" y="16" font-size="3" fill="currentColor" stroke="none">20/200</text>
+      <text x="46" y="26" font-size="3" fill="currentColor" stroke="none">20/100</text>
+      <text x="46" y="34" font-size="3" fill="currentColor" stroke="none">20/70</text>
+      <text x="46" y="42" font-size="3" fill="currentColor" stroke="none">20/40</text>
+      <text x="46" y="48" font-size="3" fill="currentColor" stroke="none">20/30</text>
+      <text x="46" y="54" font-size="3" fill="currentColor" stroke="none">20/20</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-prism',
+    name: 'Prism',
+    domain: 'medicine',
+    category: 'optical',
+    tags: ['prism', 'deviation', 'diopter', 'strabismus', 'diplopia', 'Fresnel'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 8l24 24-24 24z" fill="currentColor" opacity="0.1"/>
+      <path d="M20 8l24 24-24 24z"/>
+      <path d="M4 32h16" stroke="#FFD700" stroke-width="2"/>
+      <path d="M44 32l16-8" stroke="#FFD700" stroke-width="2"/>
+      <path d="M32 32l12 0" stroke="#FFD700" stroke-width="1" stroke-dasharray="2 1"/>
+      <path d="M48 24l4-2"/>
+      <path d="M52 22l2 4"/>
+      <text x="4" y="28" font-size="4" fill="currentColor" stroke="none">In</text>
+      <text x="52" y="20" font-size="4" fill="currentColor" stroke="none">Out</text>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Base</text>
+      <text x="32" y="58" font-size="4" fill="currentColor" stroke="none">Apex</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-accommodation',
+    name: 'Accommodation',
+    domain: 'medicine',
+    category: 'optical',
+    tags: ['accommodation', 'near focus', 'ciliary', 'zonules', 'lens thickening'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <text x="8" y="12" font-size="4" fill="currentColor" stroke="none">Distance</text>
+      <ellipse cx="20" cy="24" rx="6" ry="10" stroke-dasharray="3 2"/>
+      <path d="M8 20l6 4"/>
+      <path d="M8 28l6-4"/>
+      <path d="M26 24l10 0"/>
+      <circle cx="40" cy="24" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="8" y="44" font-size="4" fill="currentColor" stroke="none">Near</text>
+      <ellipse cx="20" cy="52" rx="8" ry="8" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="20" cy="52" rx="8" ry="8"/>
+      <path d="M8 48l4 4"/>
+      <path d="M8 56l4-4"/>
+      <path d="M28 52l8 0"/>
+      <circle cx="40" cy="52" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="44" y="26" font-size="3" fill="currentColor" stroke="none">Thin</text>
+      <text x="44" y="54" font-size="3" fill="currentColor" stroke="none">Thick</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // TREATMENTS (4 icons)
+  // ===========================================================================
+  {
+    id: 'ophth-eye-drops',
+    name: 'Eye Drops',
+    domain: 'medicine',
+    category: 'treatments',
+    tags: ['eye drops', 'topical', 'medication', 'instillation', 'glaucoma', 'antibiotic'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 4h16v20l-4 4h-8l-4-4z" fill="currentColor" opacity="0.1"/>
+      <path d="M24 4h16v20l-4 4h-8l-4-4z"/>
+      <path d="M28 28v8l4 8 4-8v-8"/>
+      <circle cx="32" cy="48" r="4" fill="#4169E1"/>
+      <path d="M8 56c8-8 16-12 24-12"/>
+      <path d="M8 56c8 8 40 8 48 0"/>
+      <ellipse cx="32" cy="56" rx="16" ry="6"/>
+      <circle cx="32" cy="56" r="6" fill="currentColor"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Bottle</text>
+      <text x="36" y="50" font-size="3" fill="#4169E1" stroke="none">Drop</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-eye-patch',
+    name: 'Eye Patch/Occlusion',
+    domain: 'medicine',
+    category: 'treatments',
+    tags: ['patch', 'occlusion', 'amblyopia', 'patching', 'penalization', 'treatment'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="currentColor" opacity="0.4"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16"/>
+      <path d="M12 32c0-4 8-12 20-12"/>
+      <path d="M12 32c0 4 8 12 20 12"/>
+      <path d="M4 24l8 8"/>
+      <path d="M4 40l8-8"/>
+      <path d="M52 24l8-8"/>
+      <path d="M52 40l8 8"/>
+      <text x="22" y="34" font-size="5" fill="currentColor" stroke="none">PATCH</text>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Amblyopia Tx</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-antiVEGF',
+    name: 'Anti-VEGF Injection',
+    domain: 'medicine',
+    category: 'treatments',
+    tags: ['anti-VEGF', 'Avastin', 'Lucentis', 'Eylea', 'injection', 'AMD', 'DME'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="8" height="24" rx="2"/>
+      <path d="M8 32l4 4v16"/>
+      <path d="M12 52l-4 4-4-4"/>
+      <ellipse cx="40" cy="36" rx="18" ry="14"/>
+      <circle cx="32" cy="36" r="6" fill="currentColor"/>
+      <path d="M12 40l12 0" stroke="#DC143C" stroke-width="2"/>
+      <circle cx="24" cy="40" r="2" fill="#DC143C"/>
+      <path d="M50 28c-4 4-8 8-12 8" stroke="#4169E1" stroke-dasharray="2 1"/>
+      <text x="4" y="6" font-size="3" fill="currentColor" stroke="none">Syringe</text>
+      <text x="44" y="56" font-size="3" fill="currentColor" stroke="none">Pars Plana</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-shield',
+    name: 'Eye Shield',
+    domain: 'medicine',
+    category: 'treatments',
+    tags: ['shield', 'protection', 'post-op', 'trauma', 'Fox shield', 'safety'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="24" ry="20"/>
+      <ellipse cx="32" cy="32" rx="20" ry="16" fill="currentColor" opacity="0.1"/>
+      <circle cx="20" cy="28" r="2" fill="currentColor"/>
+      <circle cx="28" cy="24" r="2" fill="currentColor"/>
+      <circle cx="36" cy="24" r="2" fill="currentColor"/>
+      <circle cx="44" cy="28" r="2" fill="currentColor"/>
+      <circle cx="24" cy="36" r="2" fill="currentColor"/>
+      <circle cx="32" cy="40" r="2" fill="currentColor"/>
+      <circle cx="40" cy="36" r="2" fill="currentColor"/>
+      <path d="M8 32h-4"/>
+      <path d="M56 32h4"/>
+      <text x="16" y="58" font-size="4" fill="currentColor" stroke="none">Fox Shield</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL PATHOLOGY/EQUIPMENT (4 icons)
+  // ===========================================================================
+  {
+    id: 'ophth-optic-neuritis',
+    name: 'Optic Neuritis',
+    domain: 'medicine',
+    category: 'pathology-posterior',
+    tags: ['optic neuritis', 'MS', 'demyelination', 'disc swelling', 'vision loss', 'pain'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="28" r="14" fill="#FFA500" opacity="0.4"/>
+      <circle cx="32" cy="28" r="14"/>
+      <circle cx="32" cy="28" r="6" fill="currentColor" opacity="0.3"/>
+      <path d="M18 28c4 4 24 4 28 0"/>
+      <path d="M24 44l-4 12"/>
+      <path d="M40 44l4 12"/>
+      <path d="M32 44v14"/>
+      <path d="M28 52c8 4 8 4 8 0" stroke="#DC143C" stroke-width="2"/>
+      <text x="4" y="14" font-size="4" fill="currentColor" stroke="none">Swollen</text>
+      <text x="4" y="58" font-size="4" fill="#DC143C" stroke="none">Inflamed ON</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-gonioscopy-lens',
+    name: 'Gonioscopy Lens',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['gonioscopy', 'angle', 'Goldmann', 'Zeiss', 'Posner', 'iridocorneal'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="40" rx="20" ry="8" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="40" rx="20" ry="8"/>
+      <path d="M12 40v-16c0-8 8-16 20-16s20 8 20 16v16"/>
+      <path d="M16 32l8 8"/>
+      <path d="M48 32l-8 8"/>
+      <circle cx="32" cy="24" r="8"/>
+      <circle cx="32" cy="24" r="4" fill="currentColor" opacity="0.3"/>
+      <text x="4" y="58" font-size="4" fill="currentColor" stroke="none">Gonio Lens</text>
+      <text x="36" y="36" font-size="3" fill="currentColor" stroke="none">Mirror</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-keratometer',
+    name: 'Keratometer',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['keratometer', 'K readings', 'curvature', 'astigmatism', 'biometry', 'IOL calculation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="8" width="32" height="40" rx="4"/>
+      <circle cx="32" cy="28" r="12"/>
+      <circle cx="32" cy="28" r="8" fill="currentColor" opacity="0.1"/>
+      <path d="M32 16v4"/>
+      <path d="M32 36v4"/>
+      <path d="M20 28h4"/>
+      <path d="M40 28h4"/>
+      <circle cx="28" cy="24" r="2" fill="#DC143C"/>
+      <circle cx="36" cy="24" r="2" fill="#DC143C"/>
+      <circle cx="28" cy="32" r="2" fill="#DC143C"/>
+      <circle cx="36" cy="32" r="2" fill="#DC143C"/>
+      <rect x="24" y="52" width="16" height="8" rx="2"/>
+      <text x="12" y="62" font-size="3" fill="currentColor" stroke="none">K1</text>
+      <text x="44" y="62" font-size="3" fill="currentColor" stroke="none">K2</text>
+    </svg>`
+  },
+  {
+    id: 'ophth-retinoscope',
+    name: 'Retinoscope',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['retinoscope', 'retinoscopy', 'refraction', 'streak', 'objective', 'neutralization'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="26" y="4" width="12" height="48" rx="4"/>
+      <circle cx="32" cy="12" r="6"/>
+      <circle cx="32" cy="12" r="3" fill="currentColor" opacity="0.3"/>
+      <path d="M32 18v4"/>
+      <rect x="28" y="24" width="8" height="8" rx="1"/>
+      <path d="M28 36h8"/>
+      <path d="M28 40h8"/>
+      <path d="M28 44h8"/>
+      <path d="M32 52v8"/>
+      <path d="M28 58h8"/>
+      <path d="M38 12l8 0" stroke="#FFD700" stroke-width="2"/>
+      <path d="M38 12l6-4" stroke="#FFD700" stroke-dasharray="2 1"/>
+      <path d="M38 12l6 4" stroke="#FFD700" stroke-dasharray="2 1"/>
+      <text x="48" y="14" font-size="3" fill="currentColor" stroke="none">Light</text>
+    </svg>`
+  },
 ];
 
 export default ophthalmologyIcons;

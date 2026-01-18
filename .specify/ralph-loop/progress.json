@@ -1,8 +1,53 @@
 {
-  "currentSpecialty": "anesthesiology",
-  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics"],
+  "currentSpecialty": "radiology",
+  "completedSpecialties": ["cardiology", "pulmonology", "emergency-medicine", "gastroenterology", "infectious-disease", "nephrology", "neurology", "hematology-oncology", "endocrinology", "orthopedics", "anesthesiology"],
   "blockedSpecialties": [],
   "progress": {
+    "anesthesiology": {
+      "iterations": 1,
+      "currentScore": 100,
+      "lastCheckpoint": "COMPLETE",
+      "startedAt": "2026-01-18T00:00:00Z",
+      "completedAt": "2026-01-18T22:00:00Z",
+      "metrics": {
+        "icons": {
+          "current": 97,
+          "target": 90,
+          "percentage": 108
+        },
+        "templates": {
+          "current": 25,
+          "target": 25,
+          "percentage": 100
+        },
+        "prompts": {
+          "current": 20,
+          "target": 20,
+          "percentage": 100
+        },
+        "colorScheme": true
+      },
+      "details": {
+        "icons": {
+          "airway": 15,
+          "monitoring": 16,
+          "vascular-access": 10,
+          "anesthetic-agents": 14,
+          "regional-anesthesia": 16,
+          "pain-management": 8,
+          "complications": 10,
+          "equipment": 8
+        },
+        "templates": {
+          "decision-trees": 6,
+          "anatomical-diagrams": 4,
+          "procedure-illustrations": 5,
+          "data-visualization": 3,
+          "emergency-protocols": 2,
+          "clinical-protocols": 5
+        }
+      }
+    },
     "neurology": {
       "iterations": 2,
       "currentScore": 100,
@@ -325,16 +370,16 @@
   },
   "globalStats": {
     "totalSpecialties": 35,
-    "completed": 10,
+    "completed": 11,
     "inProgress": 0,
     "blocked": 0,
-    "notStarted": 25,
+    "notStarted": 24,
     "totalTargetIcons": 3180,
     "totalTargetTemplates": 709,
     "totalTargetPrompts": 525,
-    "currentTotalIcons": 1134,
-    "currentTotalTemplates": 276,
-    "currentTotalPrompts": 192
+    "currentTotalIcons": 1231,
+    "currentTotalTemplates": 301,
+    "currentTotalPrompts": 212
   },
   "executionOrder": [
     "cardiology",
@@ -373,5 +418,5 @@
     "engineering",
     "computer-science"
   ],
-  "nextSpecialty": "anesthesiology"
+  "nextSpecialty": "radiology"
 }

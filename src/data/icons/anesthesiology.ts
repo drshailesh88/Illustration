@@ -1398,6 +1398,441 @@ export const anesthesiologyIcons: IconDefinition[] = [
       <text x="26" y="58" font-size="4" fill="currentColor" stroke="none">Lipid</text>
       <text x="20" y="10" font-size="4" fill="currentColor" stroke="none">LAST</text>
     </svg>`
+  },
+
+  // ===========================================================================
+  // EQUIPMENT
+  // ===========================================================================
+  {
+    id: 'anes-anesthesia-machine',
+    name: 'Anesthesia Machine',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['anesthesia machine', 'workstation', 'vaporizer', 'ventilator', 'gas delivery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="40" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="16" width="48" height="40" rx="2"/>
+      <rect x="12" y="20" width="16" height="12" rx="1"/>
+      <rect x="32" y="20" width="20" height="8" rx="1" fill="currentColor" opacity="0.2"/>
+      <circle cx="36" cy="36" r="6"/>
+      <circle cx="50" cy="36" r="4"/>
+      <path d="M12 44h20"/>
+      <path d="M12 48h16"/>
+      <rect x="44" y="44" width="8" height="8" rx="1"/>
+      <path d="M20 8v8"/>
+      <path d="M44 8v8"/>
+      <circle cx="20" cy="6" r="3" fill="#228B22"/>
+      <circle cx="44" cy="6" r="3" fill="#4169E1"/>
+      <text x="14" y="62" font-size="3" fill="currentColor" stroke="none">Anesthesia Machine</text>
+    </svg>`
+  },
+  {
+    id: 'anes-ventilator',
+    name: 'Mechanical Ventilator',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['ventilator', 'mechanical ventilation', 'respiratory', 'ICU', 'PEEP'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="48" rx="3" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="48" rx="3"/>
+      <rect x="16" y="12" width="32" height="20" rx="2" fill="currentColor" opacity="0.2"/>
+      <path d="M20 22l4-6 4 8 4-4 4 6 4-8 4 4"/>
+      <rect x="16" y="36" width="10" height="6" rx="1"/>
+      <rect x="28" y="36" width="10" height="6" rx="1"/>
+      <rect x="40" y="36" width="10" height="6" rx="1"/>
+      <circle cx="21" cy="48" r="4"/>
+      <circle cx="33" cy="48" r="4"/>
+      <circle cx="45" cy="48" r="4"/>
+      <path d="M32 56v4"/>
+      <text x="20" y="62" font-size="4" fill="currentColor" stroke="none">Ventilator</text>
+    </svg>`
+  },
+  {
+    id: 'anes-infusion-pump',
+    name: 'Infusion Pump',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['infusion pump', 'IV pump', 'syringe pump', 'TCI', 'drug delivery'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="16" y="8" width="32" height="48" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="16" y="8" width="32" height="48" rx="2"/>
+      <rect x="20" y="12" width="24" height="12" rx="1" fill="currentColor" opacity="0.3"/>
+      <path d="M24 16h16"/>
+      <path d="M24 20h12"/>
+      <rect x="20" y="28" width="24" height="4" rx="1"/>
+      <path d="M8 30h8"/>
+      <path d="M48 30h8"/>
+      <circle cx="26" cy="40" r="4"/>
+      <circle cx="38" cy="40" r="4"/>
+      <rect x="24" y="48" width="16" height="4" rx="1" fill="#228B22"/>
+      <text x="18" y="60" font-size="3" fill="currentColor" stroke="none">Infusion Pump</text>
+    </svg>`
+  },
+  {
+    id: 'anes-warming-device',
+    name: 'Patient Warming Device',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['warming', 'Bair Hugger', 'forced air', 'hypothermia prevention', 'temperature'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="24" width="20" height="32" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="24" width="20" height="32" rx="2"/>
+      <circle cx="18" cy="32" r="4"/>
+      <rect x="14" y="40" width="8" height="4" rx="1"/>
+      <rect x="14" y="48" width="8" height="4" rx="1"/>
+      <path d="M28 36h8"/>
+      <path d="M36 36c8 0 16 4 16 12v8H36V36z" fill="#FFA07A" opacity="0.3"/>
+      <path d="M36 36c8 0 16 4 16 12v8H36V36z"/>
+      <path d="M40 44c2-2 4-2 6 0s4 2 6 0"/>
+      <path d="M40 50c2-2 4-2 6 0s4 2 6 0"/>
+      <text x="8" y="16" font-size="4" fill="currentColor" stroke="none">Warming</text>
+      <text x="6" y="62" font-size="3" fill="#FFA07A" stroke="none">37.0C</text>
+    </svg>`
+  },
+  {
+    id: 'anes-defibrillator',
+    name: 'Defibrillator',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['defibrillator', 'cardioversion', 'AED', 'shock', 'cardiac arrest'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="36" rx="3" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="12" width="48" height="36" rx="3"/>
+      <rect x="12" y="16" width="28" height="16" rx="2" fill="currentColor" opacity="0.2"/>
+      <path d="M16 28l4-8 4 12 4-8 4 8 4-4" stroke="#00FF00"/>
+      <circle cx="48" cy="24" r="4" fill="#DC143C"/>
+      <rect x="44" y="36" width="8" height="8" rx="1" fill="#FF4500"/>
+      <path d="M12 40h20"/>
+      <text x="14" y="46" font-size="3" fill="currentColor" stroke="none">200J</text>
+      <path d="M24 52l-8-4v8z" fill="currentColor"/>
+      <path d="M40 52l8-4v8z" fill="currentColor"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">Defibrillator</text>
+    </svg>`
+  },
+  {
+    id: 'anes-ultrasound-machine',
+    name: 'Ultrasound Machine',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['ultrasound', 'sonography', 'nerve block', 'vascular access', 'POCUS'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="8" width="40" height="32" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="8" width="40" height="32" rx="2"/>
+      <rect x="16" y="12" width="32" height="24" rx="1" fill="#000033"/>
+      <ellipse cx="32" cy="24" rx="12" ry="8" fill="currentColor" opacity="0.2"/>
+      <path d="M24 24c4-2 12-2 16 0" stroke="#4682B4"/>
+      <circle cx="32" cy="22" r="2" fill="#FFD700"/>
+      <path d="M28 44h8"/>
+      <rect x="28" y="44" width="8" height="16" rx="2" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="58" rx="6" ry="2"/>
+      <text x="20" y="62" font-size="4" fill="currentColor" stroke="none">US</text>
+    </svg>`
+  },
+  {
+    id: 'anes-suction',
+    name: 'Suction Apparatus',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['suction', 'Yankauer', 'airway clearance', 'aspiration', 'secretions'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="32" width="20" height="24" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="32" width="20" height="24" rx="2"/>
+      <circle cx="18" cy="44" r="6"/>
+      <path d="M12 52h12"/>
+      <path d="M28 40h8"/>
+      <path d="M36 40c0-16 8-24 16-32"/>
+      <path d="M48 8l4 4"/>
+      <path d="M48 8l-4 4"/>
+      <ellipse cx="52" cy="8" rx="3" ry="6" fill="currentColor" opacity="0.2"/>
+      <text x="10" y="62" font-size="4" fill="currentColor" stroke="none">Suction</text>
+    </svg>`
+  },
+  {
+    id: 'anes-fiber-optic-scope',
+    name: 'Fiber Optic Bronchoscope',
+    domain: 'medicine',
+    category: 'equipment',
+    tags: ['fiber optic', 'bronchoscope', 'FOB', 'awake intubation', 'difficult airway'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="16" height="24" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="16" height="24" rx="2"/>
+      <rect x="10" y="10" width="12" height="8" rx="1" fill="currentColor" opacity="0.3"/>
+      <circle cx="16" cy="24" r="3"/>
+      <path d="M16 32v4c0 8 8 16 8 20"/>
+      <path d="M24 56c2 2 4 4 4 4"/>
+      <circle cx="26" cy="58" r="2" fill="#00FF00"/>
+      <path d="M24 24h8"/>
+      <circle cx="36" cy="24" r="4"/>
+      <path d="M34 20v-4"/>
+      <text x="8" y="62" font-size="3" fill="currentColor" stroke="none">Fiberoptic</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL MONITORING
+  // ===========================================================================
+  {
+    id: 'anes-bis-monitor',
+    name: 'BIS Monitor',
+    domain: 'medicine',
+    category: 'monitoring',
+    tags: ['BIS', 'bispectral index', 'depth of anesthesia', 'awareness', 'sedation'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="16" width="48" height="32" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="16" width="48" height="32" rx="2"/>
+      <text x="16" y="36" font-size="16" font-weight="bold" fill="#FF69B4" stroke="none">45</text>
+      <path d="M40 24l2 4 2-8 2 12 2-6 2 2"/>
+      <rect x="40" y="36" width="12" height="4" fill="#228B22"/>
+      <path d="M16 44h32"/>
+      <text x="16" y="42" font-size="4" fill="currentColor" stroke="none">BIS</text>
+      <ellipse cx="32" cy="8" rx="8" ry="4" fill="currentColor" opacity="0.2"/>
+      <path d="M24 8h16"/>
+      <circle cx="24" cy="8" r="2" fill="currentColor"/>
+      <circle cx="32" cy="8" r="2" fill="currentColor"/>
+      <circle cx="40" cy="8" r="2" fill="currentColor"/>
+      <text x="14" y="56" font-size="3" fill="currentColor" stroke="none">Depth Monitor</text>
+    </svg>`
+  },
+  {
+    id: 'anes-tof-monitor',
+    name: 'TOF Monitor',
+    domain: 'medicine',
+    category: 'monitoring',
+    tags: ['TOF', 'train of four', 'neuromuscular', 'paralysis', 'muscle relaxant'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="32" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="32" rx="2"/>
+      <rect x="14" y="16" width="8" height="16" fill="#20B2AA"/>
+      <rect x="24" y="20" width="8" height="12" fill="#20B2AA" opacity="0.8"/>
+      <rect x="34" y="24" width="8" height="8" fill="#20B2AA" opacity="0.6"/>
+      <rect x="44" y="28" width="8" height="4" fill="#20B2AA" opacity="0.4"/>
+      <path d="M18 36v4"/>
+      <path d="M28 36v4"/>
+      <path d="M38 36v4"/>
+      <path d="M48 36v4"/>
+      <text x="14" y="48" font-size="5" fill="currentColor" stroke="none">TOF: 4/4</text>
+      <path d="M12 52h40"/>
+      <circle cx="20" cy="56" r="4" fill="currentColor" opacity="0.2"/>
+      <circle cx="44" cy="56" r="4" fill="currentColor" opacity="0.2"/>
+      <text x="18" y="58" font-size="3" fill="currentColor" stroke="none">+</text>
+      <text x="42" y="58" font-size="3" fill="currentColor" stroke="none">-</text>
+    </svg>`
+  },
+  {
+    id: 'anes-cardiac-output-monitor',
+    name: 'Cardiac Output Monitor',
+    domain: 'medicine',
+    category: 'monitoring',
+    tags: ['cardiac output', 'CO', 'hemodynamic', 'SVV', 'PPV', 'FloTrac'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="48" height="48" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="8" y="8" width="48" height="48" rx="2"/>
+      <path d="M32 12c-8 0-12 8-12 16s4 16 12 16 12-8 12-16-4-16-12-16z" fill="#DC143C" opacity="0.2"/>
+      <path d="M32 12c-8 0-12 8-12 16s4 16 12 16 12-8 12-16-4-16-12-16z"/>
+      <path d="M20 28h8l2-4 4 8 4-8 2 4h8" stroke="#DC143C"/>
+      <text x="12" y="52" font-size="4" fill="currentColor" stroke="none">CO: 5.2 L/min</text>
+      <text x="12" y="58" font-size="3" fill="currentColor" stroke="none">SVV: 12%</text>
+      <text x="36" y="58" font-size="3" fill="currentColor" stroke="none">CI: 2.8</text>
+    </svg>`
+  },
+  {
+    id: 'anes-temperature-probe',
+    name: 'Temperature Probe',
+    domain: 'medicine',
+    category: 'monitoring',
+    tags: ['temperature', 'core temp', 'esophageal', 'nasopharyngeal', 'hypothermia'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="8" width="16" height="40" rx="8" fill="currentColor" opacity="0.1"/>
+      <rect x="24" y="8" width="16" height="40" rx="8"/>
+      <rect x="28" y="20" width="8" height="24" rx="4" fill="#DC143C" opacity="0.7"/>
+      <circle cx="32" cy="40" r="4" fill="#DC143C"/>
+      <path d="M28 12h8"/>
+      <path d="M30 16h4"/>
+      <path d="M30 24h4"/>
+      <path d="M30 28h4"/>
+      <path d="M30 32h4"/>
+      <text x="42" y="24" font-size="4" fill="currentColor" stroke="none">36</text>
+      <text x="42" y="32" font-size="4" fill="currentColor" stroke="none">37</text>
+      <text x="42" y="40" font-size="4" fill="currentColor" stroke="none">38</text>
+      <text x="20" y="58" font-size="4" fill="currentColor" stroke="none">36.8C</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL COMPLICATIONS
+  // ===========================================================================
+  {
+    id: 'anes-bronchospasm',
+    name: 'Bronchospasm',
+    domain: 'medicine',
+    category: 'complications',
+    tags: ['bronchospasm', 'wheezing', 'airway', 'asthma', 'reactive airway'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v12"/>
+      <path d="M32 20c-8 0-16 8-20 24"/>
+      <path d="M32 20c8 0 16 8 20 24"/>
+      <path d="M12 44c4-4 8-8 20-8s16 4 20 8" fill="currentColor" opacity="0.1"/>
+      <path d="M20 28c2 1 4 0 6-1s4-1 6 0" stroke="#FF4500"/>
+      <path d="M32 28c2 1 4 0 6-1s4-1 6 0" stroke="#FF4500"/>
+      <path d="M16 36c2 1 4 0 6-1s4-1 6 0" stroke="#FF4500"/>
+      <path d="M36 36c2 1 4 0 6-1s4-1 6 0" stroke="#FF4500"/>
+      <circle cx="24" cy="52" r="4" fill="#DC143C" opacity="0.3"/>
+      <circle cx="40" cy="52" r="4" fill="#DC143C" opacity="0.3"/>
+      <text x="10" y="62" font-size="4" fill="currentColor" stroke="none">Bronchospasm</text>
+    </svg>`
+  },
+  {
+    id: 'anes-pdph',
+    name: 'Post-Dural Puncture Headache',
+    domain: 'medicine',
+    category: 'complications',
+    tags: ['PDPH', 'dural puncture', 'headache', 'spinal', 'epidural', 'blood patch'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="24" r="16" fill="currentColor" opacity="0.1"/>
+      <circle cx="32" cy="24" r="16"/>
+      <circle cx="26" cy="20" r="2"/>
+      <circle cx="38" cy="20" r="2"/>
+      <path d="M26 30c2 2 10 2 12 0"/>
+      <path d="M8 20l8-4"/>
+      <path d="M8 24l8 0"/>
+      <path d="M8 28l8 4"/>
+      <path d="M56 20l-8-4"/>
+      <path d="M56 24l-8 0"/>
+      <path d="M56 28l-8 4"/>
+      <path d="M24 44v8"/>
+      <path d="M40 44v8"/>
+      <path d="M24 52h16"/>
+      <ellipse cx="32" cy="54" rx="6" ry="2" fill="#ADD8E6"/>
+      <text x="20" y="62" font-size="3" fill="currentColor" stroke="none">PDPH</text>
+    </svg>`
+  },
+  {
+    id: 'anes-pneumothorax',
+    name: 'Pneumothorax',
+    domain: 'medicine',
+    category: 'complications',
+    tags: ['pneumothorax', 'tension', 'chest tube', 'hypoxia', 'central line'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="24" cy="32" rx="12" ry="20" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="24" cy="32" rx="12" ry="20"/>
+      <ellipse cx="44" cy="32" rx="8" ry="16" fill="none" stroke-dasharray="4 2"/>
+      <path d="M38 20c4 4 8 8 8 12s-4 8-8 12" stroke="#FF0000" stroke-width="2"/>
+      <path d="M20 24c-2 4-2 12 0 16"/>
+      <circle cx="56" cy="24" r="2" fill="currentColor"/>
+      <circle cx="56" cy="32" r="2" fill="currentColor"/>
+      <circle cx="56" cy="40" r="2" fill="currentColor"/>
+      <text x="50" y="24" font-size="4" fill="currentColor" stroke="none">Air</text>
+      <text x="10" y="58" font-size="4" fill="currentColor" stroke="none">Pneumothorax</text>
+    </svg>`
+  },
+  {
+    id: 'anes-high-spinal',
+    name: 'High Spinal Block',
+    domain: 'medicine',
+    category: 'complications',
+    tags: ['high spinal', 'total spinal', 'respiratory arrest', 'hypotension', 'neuraxial'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="8" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="8" ry="24"/>
+      <path d="M32 8v48"/>
+      <path d="M28 12h8"/>
+      <path d="M28 20h8"/>
+      <path d="M28 28h8"/>
+      <path d="M28 36h8"/>
+      <path d="M28 44h8"/>
+      <path d="M28 52h8"/>
+      <rect x="12" y="8" width="8" height="24" fill="#7B68EE" opacity="0.5"/>
+      <rect x="44" y="8" width="8" height="24" fill="#7B68EE" opacity="0.5"/>
+      <path d="M8 32h8" stroke="#DC143C" stroke-width="2"/>
+      <path d="M48 32h8" stroke="#DC143C" stroke-width="2"/>
+      <text x="14" y="44" font-size="3" fill="currentColor" stroke="none">T4</text>
+      <text x="10" y="60" font-size="3" fill="currentColor" stroke="none">High Spinal</text>
+    </svg>`
+  },
+
+  // ===========================================================================
+  // ADDITIONAL REGIONAL ANESTHESIA
+  // ===========================================================================
+  {
+    id: 'anes-tap-block',
+    name: 'TAP Block',
+    domain: 'medicine',
+    category: 'regional-anesthesia',
+    tags: ['TAP', 'transversus abdominis', 'abdominal wall', 'nerve block', 'ultrasound'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="20" width="40" height="32" rx="2" fill="currentColor" opacity="0.1"/>
+      <rect x="12" y="20" width="40" height="32" rx="2"/>
+      <path d="M12 28h40"/>
+      <path d="M12 36h40"/>
+      <path d="M12 44h40"/>
+      <text x="4" y="26" font-size="3" fill="currentColor" stroke="none">EO</text>
+      <text x="4" y="34" font-size="3" fill="currentColor" stroke="none">IO</text>
+      <text x="4" y="42" font-size="3" fill="currentColor" stroke="none">TA</text>
+      <ellipse cx="36" cy="40" rx="8" ry="4" fill="#7B68EE" opacity="0.5"/>
+      <path d="M44 12l-8 20" stroke="#C0C0C0" stroke-width="2"/>
+      <circle cx="44" cy="10" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="18" y="58" font-size="4" fill="currentColor" stroke="none">TAP Block</text>
+    </svg>`
+  },
+  {
+    id: 'anes-adductor-canal',
+    name: 'Adductor Canal Block',
+    domain: 'medicine',
+    category: 'regional-anesthesia',
+    tags: ['adductor canal', 'saphenous', 'femoral', 'knee surgery', 'nerve block'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="32" cy="32" rx="16" ry="24" fill="currentColor" opacity="0.1"/>
+      <ellipse cx="32" cy="32" rx="16" ry="24"/>
+      <circle cx="32" cy="24" r="4" fill="#DC143C" opacity="0.3"/>
+      <path d="M32 28v16" stroke="#FFD700" stroke-width="2"/>
+      <ellipse cx="24" cy="32" rx="4" ry="8" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="40" cy="32" rx="4" ry="8" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="32" cy="36" rx="6" ry="2" fill="#7B68EE" opacity="0.5"/>
+      <path d="M48 20l-12 16" stroke="#C0C0C0" stroke-width="2"/>
+      <circle cx="50" cy="18" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="8" y="60" font-size="3" fill="currentColor" stroke="none">Adductor Canal</text>
+    </svg>`
+  },
+  {
+    id: 'anes-erector-spinae',
+    name: 'Erector Spinae Block',
+    domain: 'medicine',
+    category: 'regional-anesthesia',
+    tags: ['ESP', 'erector spinae', 'paravertebral', 'thoracic', 'nerve block'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 8v48"/>
+      <rect x="24" y="12" width="16" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="24" width="16" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <rect x="24" y="36" width="16" height="8" rx="2" fill="currentColor" opacity="0.2"/>
+      <ellipse cx="16" cy="16" rx="4" ry="12" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="48" cy="16" rx="4" ry="12" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="16" cy="28" rx="4" ry="12" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="48" cy="28" rx="4" ry="12" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="44" cy="20" rx="8" ry="4" fill="#7B68EE" opacity="0.5"/>
+      <path d="M56 8l-12 12" stroke="#C0C0C0" stroke-width="2"/>
+      <text x="16" y="58" font-size="3" fill="currentColor" stroke="none">ESP Block</text>
+    </svg>`
+  },
+  {
+    id: 'anes-pecs-block',
+    name: 'PECS Block',
+    domain: 'medicine',
+    category: 'regional-anesthesia',
+    tags: ['PECS', 'pectoral', 'breast surgery', 'chest wall', 'nerve block'],
+    svg: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 16c8-4 24-4 32 0"/>
+      <path d="M16 16c0 16 4 32 16 40"/>
+      <path d="M48 16c0 16-4 32-16 40"/>
+      <path d="M20 24c6-2 18-2 24 0"/>
+      <path d="M24 32c4-1 12-1 16 0"/>
+      <ellipse cx="24" cy="28" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="40" cy="28" rx="8" ry="4" fill="currentColor" opacity="0.3"/>
+      <ellipse cx="36" cy="24" rx="6" ry="2" fill="#7B68EE" opacity="0.5"/>
+      <ellipse cx="36" cy="32" rx="6" ry="2" fill="#7B68EE" opacity="0.5"/>
+      <path d="M56 12l-16 12" stroke="#C0C0C0" stroke-width="2"/>
+      <circle cx="58" cy="10" r="3" fill="currentColor" opacity="0.3"/>
+      <text x="14" y="60" font-size="4" fill="currentColor" stroke="none">PECS Block</text>
+    </svg>`
   }
 ];
 
