@@ -430,12 +430,25 @@ export {
   type BioiconMeta,
 } from './bioicons';
 
+export {
+  // SciDraw exports
+  scidrawIcons,
+  searchSciDrawIcons,
+  getIconsByCategory as getSciDrawIconsByCategory,
+  getCategories as getSciDrawCategories,
+  getIconCount as getSciDrawIconCount,
+  getIconById as getSciDrawIconById,
+  toSvgString as scidrawToSvg,
+  type SciDrawIcon,
+} from './scidraw';
+
 // Import search functions from each library for unified search
 import { searchHealthIcons, healthIconsList } from './healthIcons';
 import { searchScienceIcons, scienceIconsList } from './scienceIcons';
 import { searchIconPark, iconParkList } from './iconPark';
 import { searchSimpleIcons, scienceBrandsList } from './simpleIcons';
 import { searchBioicons, bioiconsList } from './bioicons';
+import { searchSciDrawIcons, scidrawIcons } from './scidraw';
 
 /**
  * Unified icon result from any library
@@ -445,14 +458,14 @@ export interface UnifiedIconResult {
   name: string;
   category: string;
   keywords: string[];
-  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple' | 'bioicons';
+  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple' | 'bioicons' | 'scidraw';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: React.ComponentType<any>;
   slug?: string; // For simple-icons
   hex?: string;  // For simple-icons brand color
-  svg?: string;  // For bioicons (inline SVG)
-  viewBox?: string; // For bioicons
-  license?: string; // For bioicons
+  svg?: string;  // For bioicons/scidraw (inline SVG)
+  viewBox?: string; // For bioicons/scidraw
+  license?: string; // For bioicons/scidraw
 }
 
 /**
@@ -530,6 +543,21 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
     });
   }
 
+  // Search SciDraw
+  const scidrawResults = searchSciDrawIcons(normalizedQuery);
+  for (const icon of scidrawResults) {
+    results.push({
+      id: `scidraw-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'scidraw',
+      svg: icon.svg,
+      viewBox: icon.viewBox,
+      license: icon.license,
+    });
+  }
+
   return results;
 }
 
@@ -538,13 +566,14 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
  */
 export function getTotalIconCount(): { total: number; byLibrary: Record<string, number> } {
   return {
-    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length + bioiconsList.length,
+    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length + bioiconsList.length + scidrawIcons.length,
     byLibrary: {
       health: healthIconsList.length,
       science: scienceIconsList.length,
       iconpark: iconParkList.length,
       simple: scienceBrandsList.length,
       bioicons: bioiconsList.length,
+      scidraw: scidrawIcons.length,
     },
   };
 }
@@ -588,5 +617,11 @@ export const iconLibraries = {
     description: '70+ scientific biology and life science icons',
     license: 'CC0/MIT/CC-BY',
     url: 'https://bioicons.com/',
+  },
+  scidraw: {
+    name: 'SciDraw',
+    description: '60+ scientific research illustrations (model organisms, neuroscience, lab equipment)',
+    license: 'CC-BY',
+    url: 'https://scidraw.io/',
   },
 };
