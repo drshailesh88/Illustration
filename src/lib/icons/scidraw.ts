@@ -1232,6 +1232,322 @@ const cellBiologyIcons: SciDrawIcon[] = [
 ];
 
 // ============================================================================
+// Surgical Tools - For neuroscience and medical illustrations
+// ============================================================================
+
+const surgicalToolIcons: SciDrawIcon[] = [
+  {
+    id: 'scalpel',
+    name: 'Scalpel',
+    category: 'surgical-tools',
+    keywords: ['scalpel', 'blade', 'surgery', 'incision', 'dissection', 'knife'],
+    svg: '<path d="M4 20L18 6c1-1 2-1 2 0l0 2c0 1-1 2-2 2L4 20z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 8l2-2" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'forceps',
+    name: 'Forceps',
+    category: 'surgical-tools',
+    keywords: ['forceps', 'tweezers', 'surgery', 'grip', 'hold', 'dissection'],
+    svg: '<path d="M8 4c-1 0-2 1-2 2v10c0 2 2 4 4 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 4c1 0 2 1 2 2v10c0 2-2 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20h4" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'scissors-surgical',
+    name: 'Surgical Scissors',
+    category: 'surgical-tools',
+    keywords: ['scissors', 'surgery', 'cutting', 'dissection', 'surgical scissors'],
+    svg: '<circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 16l5-8 5 8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4l4 8M16 4l-4 8" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'retractor',
+    name: 'Retractor',
+    category: 'surgical-tools',
+    keywords: ['retractor', 'surgery', 'exposure', 'surgical access', 'wound'],
+    svg: '<path d="M6 4v16M18 4v16" stroke="currentColor" stroke-width="1.5"/><path d="M6 8h12M6 16h12" stroke="currentColor" stroke-width="1.5"/><path d="M4 4h4M16 4h4M4 20h4M16 20h4" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'suture-needle',
+    name: 'Suture Needle',
+    category: 'surgical-tools',
+    keywords: ['suture', 'needle', 'stitching', 'closure', 'surgery', 'thread'],
+    svg: '<path d="M4 12c0-4 4-8 8-8s8 4 8 8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20 12l-2-2M20 12l2-2" stroke="currentColor" stroke-width="1"/><path d="M4 12c0 4 3 6 6 8" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'cannula',
+    name: 'Cannula',
+    category: 'surgical-tools',
+    keywords: ['cannula', 'tube', 'injection', 'chronic implant', 'guide cannula'],
+    svg: '<rect x="10" y="2" width="4" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6h4M10 10h4M10 14h4" stroke="currentColor" stroke-width="0.75"/><circle cx="12" cy="22" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'drill-burr',
+    name: 'Drill Burr',
+    category: 'surgical-tools',
+    keywords: ['drill', 'burr', 'craniotomy', 'bone', 'surgery', 'stereotaxic'],
+    svg: '<rect x="10" y="2" width="4" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 14v4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20h4" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'hemostatic-clamp',
+    name: 'Hemostatic Clamp',
+    category: 'surgical-tools',
+    keywords: ['hemostat', 'clamp', 'forceps', 'hemostasis', 'surgery', 'bleeding'],
+    svg: '<path d="M6 4l4 8-4 8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M18 4l-4 8 4 8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="12" r="1" fill="currentColor"/><circle cx="14" cy="12" r="1" fill="currentColor"/><path d="M4 8h4M16 8h4" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+];
+
+// ============================================================================
+// Optogenetics - Light-based neural control
+// ============================================================================
+
+const optogeneticsIcons: SciDrawIcon[] = [
+  {
+    id: 'fiber-optic',
+    name: 'Fiber Optic Cannula',
+    category: 'optogenetics',
+    keywords: ['fiber optic', 'optogenetics', 'light delivery', 'cannula', 'implant'],
+    svg: '<rect x="9" y="2" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 8v12M14 8v12" stroke="currentColor" stroke-width="1.5"/><path d="M10 20l2 2 2-2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 14l-2-1M12 14l2-1M12 16l-2-1M12 16l2-1" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'led-array',
+    name: 'LED Array',
+    category: 'optogenetics',
+    keywords: ['LED', 'light', 'optogenetics', 'stimulation', 'illumination'],
+    svg: '<rect x="4" y="8" width="16" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M8 6v2M16 6v2" stroke="currentColor" stroke-width="1"/><path d="M6 4l2 2M10 4l-2 2M14 4l2 2M18 4l-2 2" stroke="currentColor" stroke-width="0.75"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'channelrhodopsin',
+    name: 'Channelrhodopsin',
+    category: 'optogenetics',
+    keywords: ['ChR2', 'channelrhodopsin', 'opsin', 'blue light', 'excitation', 'cation channel'],
+    svg: '<path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v2M12 18v2" stroke="currentColor" stroke-width="1"/><path d="M9 9l-3-3M15 9l3-3" stroke="currentColor" stroke-width="0.75" stroke-dasharray="1 1"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'halorhodopsin',
+    name: 'Halorhodopsin',
+    category: 'optogenetics',
+    keywords: ['NpHR', 'halorhodopsin', 'opsin', 'yellow light', 'inhibition', 'chloride pump'],
+    svg: '<path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v2M12 18v2" stroke="currentColor" stroke-width="1"/><path d="M9 15l-3 3M15 15l3 3" stroke="currentColor" stroke-width="0.75" stroke-dasharray="1 1"/><path d="M10 12h4" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'laser-source',
+    name: 'Laser Source',
+    category: 'optogenetics',
+    keywords: ['laser', 'light source', 'optogenetics', 'coherent light', 'stimulation'],
+    svg: '<rect x="2" y="8" width="12" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 12h8" stroke="currentColor" stroke-width="2"/><path d="M18 10v4" stroke="currentColor" stroke-width="0.75"/><path d="M20 9v6" stroke="currentColor" stroke-width="0.75"/><circle cx="6" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'optic-fiber-bundle',
+    name: 'Fiber Bundle',
+    category: 'optogenetics',
+    keywords: ['fiber bundle', 'multi-fiber', 'optogenetics', 'array', 'light delivery'],
+    svg: '<circle cx="12" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 10v10M8 12v8M16 12v8" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="20" width="12" height="2" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'photostimulation',
+    name: 'Photostimulation',
+    category: 'optogenetics',
+    keywords: ['photostimulation', 'light pulse', 'optogenetics', 'neural activation'],
+    svg: '<circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="1"/><path d="M5 5l3 3M16 5l-3 3M5 19l3-3M16 19l-3-3" stroke="currentColor" stroke-width="0.75"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'dreadd',
+    name: 'DREADD',
+    category: 'optogenetics',
+    keywords: ['DREADD', 'chemogenetics', 'CNO', 'designer receptor', 'hM3Dq', 'hM4Di'],
+    svg: '<circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v12" stroke="currentColor" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" stroke-width="0.75"/><circle cx="12" cy="3" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="21" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+];
+
+// ============================================================================
+// Behavior - Experimental paradigms and setups
+// ============================================================================
+
+const behaviorIcons: SciDrawIcon[] = [
+  {
+    id: 't-maze',
+    name: 'T-Maze',
+    category: 'behavior',
+    keywords: ['t-maze', 'maze', 'choice', 'decision', 'spatial', 'working memory'],
+    svg: '<path d="M12 20v-10M4 10h16" stroke="currentColor" stroke-width="2"/><path d="M10 20h4M2 8h4M18 8h4" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'y-maze',
+    name: 'Y-Maze',
+    category: 'behavior',
+    keywords: ['y-maze', 'maze', 'alternation', 'spatial', 'exploration', 'memory'],
+    svg: '<path d="M12 12v8M12 12l-7-10M12 12l7-10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'morris-water-maze',
+    name: 'Morris Water Maze',
+    category: 'behavior',
+    keywords: ['morris water maze', 'spatial', 'learning', 'hippocampus', 'platform', 'swimming'],
+    svg: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="10" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3" stroke="currentColor" stroke-width="0.75" stroke-dasharray="1 1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'operant-chamber',
+    name: 'Operant Chamber',
+    category: 'behavior',
+    keywords: ['operant', 'skinner box', 'lever', 'reward', 'conditioning', 'learning'],
+    svg: '<rect x="4" y="4" width="16" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="14" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="16" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M14 16h4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="8" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'open-field',
+    name: 'Open Field',
+    category: 'behavior',
+    keywords: ['open field', 'locomotion', 'anxiety', 'exploration', 'activity'],
+    svg: '<rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="8" width="8" height="8" fill="none" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2"/><path d="M6 6l2 2 1 3 3-1 2 4 2-2" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'elevated-plus-maze',
+    name: 'Elevated Plus Maze',
+    category: 'behavior',
+    keywords: ['elevated plus maze', 'EPM', 'anxiety', 'open arm', 'closed arm'],
+    svg: '<path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2"/><rect x="3" y="10" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/><rect x="17" y="10" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'fear-conditioning',
+    name: 'Fear Conditioning Box',
+    category: 'behavior',
+    keywords: ['fear conditioning', 'shock', 'freezing', 'amygdala', 'memory', 'context'],
+    svg: '<rect x="4" y="6" width="16" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 18h12" stroke="currentColor" stroke-width="1.5"/><path d="M7 18v-2M10 18v-2M13 18v-2M16 18v-2" stroke="currentColor" stroke-width="0.75"/><circle cx="16" cy="10" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M8 4v2M12 4v2M16 4v2" stroke="currentColor" stroke-width="0.75"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'running-wheel',
+    name: 'Running Wheel',
+    category: 'behavior',
+    keywords: ['running wheel', 'exercise', 'circadian', 'activity', 'voluntary running'],
+    svg: '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4M6 6l3 3M15 6l-3 3M6 18l3-3M15 18l-3-3" stroke="currentColor" stroke-width="0.75"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'social-interaction',
+    name: 'Social Interaction',
+    category: 'behavior',
+    keywords: ['social', 'interaction', 'behavior', 'sniffing', 'social preference'],
+    svg: '<circle cx="8" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 14c0 2 1 4 2 4M10 14c0 2-1 4-2 4M14 14c0 2 1 4 2 4M18 14c0 2-1 4-2 4" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'head-fixation',
+    name: 'Head Fixation',
+    category: 'behavior',
+    keywords: ['head fixation', 'head plate', 'two-photon', 'imaging', 'restrained'],
+    svg: '<ellipse cx="12" cy="10" rx="6" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 8h4M16 8h4" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="6" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1"/><rect x="18" y="6" width="4" height="8" fill="none" stroke="currentColor" stroke-width="1"/><path d="M10 14l2 6 2-6" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+];
+
+// ============================================================================
+// Cardiovascular - Heart and blood vessels
+// ============================================================================
+
+const cardiovascularIcons: SciDrawIcon[] = [
+  {
+    id: 'heart-anatomy',
+    name: 'Heart (Anatomical)',
+    category: 'cardiovascular',
+    keywords: ['heart', 'cardiac', 'ventricle', 'atrium', 'cardiology'],
+    svg: '<path d="M12 21c-6-5-10-9-10-13 0-3 2-5 5-5 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 2 5 5 0 4-4 8-10 13z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v8M8 11h8" stroke="currentColor" stroke-width="0.75"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'artery',
+    name: 'Artery',
+    category: 'cardiovascular',
+    keywords: ['artery', 'blood vessel', 'aorta', 'circulation', 'vascular'],
+    svg: '<path d="M4 12c4 0 6-4 8-4s4 4 8 4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10c4 0 6-4 8-4s4 4 8 4" fill="none" stroke="currentColor" stroke-width="1"/><path d="M4 14c4 0 6-4 8-4s4 4 8 4" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="12" r="1" fill="currentColor"/><circle cx="16" cy="12" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'capillary-bed',
+    name: 'Capillary Bed',
+    category: 'cardiovascular',
+    keywords: ['capillary', 'microcirculation', 'exchange', 'bed', 'vessel'],
+    svg: '<path d="M4 8h4c2 0 2 2 4 2s2-2 4-2h4" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h4c2 0 2 2 4 2s2-2 4-2h4" stroke="currentColor" stroke-width="1.5"/><path d="M4 16h4c2 0 2 2 4 2s2-2 4-2h4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="0.75" fill="currentColor"/><circle cx="14" cy="14" r="0.75" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'red-blood-cell',
+    name: 'Red Blood Cell',
+    category: 'cardiovascular',
+    keywords: ['RBC', 'erythrocyte', 'red blood cell', 'hemoglobin', 'oxygen'],
+    svg: '<ellipse cx="12" cy="12" rx="8" ry="4" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="3" ry="1.5" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'blood-vessel-cross',
+    name: 'Blood Vessel Cross-Section',
+    category: 'cardiovascular',
+    keywords: ['blood vessel', 'cross section', 'lumen', 'endothelium', 'wall'],
+    svg: '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+  {
+    id: 'ecg-trace',
+    name: 'ECG Trace',
+    category: 'cardiovascular',
+    keywords: ['ECG', 'EKG', 'electrocardiogram', 'heart rhythm', 'PQRST'],
+    svg: '<path d="M2 12h4l1-4 2 8 2-8 1 4h10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h20M2 16h20" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC-BY',
+  },
+];
+
+// ============================================================================
 // Combine all icons
 // ============================================================================
 
@@ -1246,6 +1562,10 @@ export const scidrawIcons: SciDrawIcon[] = [
   ...molecularIcons,
   ...anatomyIcons,
   ...cellBiologyIcons,
+  ...surgicalToolIcons,
+  ...optogeneticsIcons,
+  ...behaviorIcons,
+  ...cardiovascularIcons,
 ];
 
 /**
