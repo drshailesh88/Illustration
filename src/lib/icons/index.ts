@@ -418,7 +418,7 @@ export {
 } from './simpleIcons';
 
 export {
-  // Bioicons exports
+  // Bioicons exports (simple inline icons)
   bioiconsList,
   bioiconCategories,
   searchBioicons,
@@ -429,6 +429,16 @@ export {
   getBioiconCountsByCategory,
   type BioiconMeta,
 } from './bioicons';
+
+export {
+  // Bioicons Full Library (1500+ icons loaded on-demand)
+  bioiconsMetadata,
+  bioiconCategories as bioiconsFullCategories,
+  searchBioiconsMetadata,
+  getBioiconsUrl,
+  getBioiconsMetadataCount,
+  type BioiconEntry,
+} from './bioicons-data';
 
 export {
   // SciDraw exports
@@ -448,6 +458,7 @@ import { searchScienceIcons, scienceIconsList } from './scienceIcons';
 import { searchIconPark, iconParkList } from './iconPark';
 import { searchSimpleIcons, scienceBrandsList } from './simpleIcons';
 import { searchBioicons, bioiconsList } from './bioicons';
+import { searchBioiconsMetadata, bioiconsMetadata, getBioiconsUrl } from './bioicons-data';
 import { searchSciDrawIcons, scidrawIcons } from './scidraw';
 
 /**
@@ -458,7 +469,7 @@ export interface UnifiedIconResult {
   name: string;
   category: string;
   keywords: string[];
-  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple' | 'bioicons' | 'scidraw';
+  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple' | 'bioicons' | 'bioicons-full' | 'scidraw';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: React.ComponentType<any>;
   slug?: string; // For simple-icons
@@ -466,6 +477,8 @@ export interface UnifiedIconResult {
   svg?: string;  // For bioicons/scidraw (inline SVG)
   viewBox?: string; // For bioicons/scidraw
   license?: string; // For bioicons/scidraw
+  file?: string; // For bioicons-full (on-demand loading)
+  url?: string; // For bioicons-full (URL to load SVG)
 }
 
 /**
@@ -528,7 +541,7 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
     });
   }
 
-  // Search Bioicons
+  // Search Bioicons (simple inline icons)
   const bioiconsResults = searchBioicons(normalizedQuery);
   for (const icon of bioiconsResults) {
     results.push({
@@ -540,6 +553,21 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
       svg: icon.svg,
       viewBox: icon.viewBox,
       license: icon.license,
+    });
+  }
+
+  // Search Bioicons Full Library (1500+ icons, loaded on-demand)
+  const bioiconsFullResults = searchBioiconsMetadata(normalizedQuery);
+  for (const icon of bioiconsFullResults) {
+    results.push({
+      id: `bioicons-full-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'bioicons-full',
+      license: icon.license,
+      file: icon.file,
+      url: getBioiconsUrl(icon),
     });
   }
 
@@ -566,13 +594,14 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
  */
 export function getTotalIconCount(): { total: number; byLibrary: Record<string, number> } {
   return {
-    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length + bioiconsList.length + scidrawIcons.length,
+    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length + bioiconsList.length + bioiconsMetadata.length + scidrawIcons.length,
     byLibrary: {
       health: healthIconsList.length,
       science: scienceIconsList.length,
       iconpark: iconParkList.length,
       simple: scienceBrandsList.length,
       bioicons: bioiconsList.length,
+      'bioicons-full': bioiconsMetadata.length,
       scidraw: scidrawIcons.length,
     },
   };
@@ -613,9 +642,15 @@ export const iconLibraries = {
     url: 'https://simpleicons.org/',
   },
   bioicons: {
-    name: 'Bioicons',
-    description: '70+ scientific biology and life science icons',
+    name: 'Bioicons (Simple)',
+    description: '70+ scientific biology icons (inline SVG)',
     license: 'CC0/MIT/CC-BY',
+    url: 'https://bioicons.com/',
+  },
+  'bioicons-full': {
+    name: 'Bioicons Library',
+    description: '1,548 high-quality scientific illustrations (on-demand loading)',
+    license: 'CC0/MIT/CC-BY/CC-BY-SA',
     url: 'https://bioicons.com/',
   },
   scidraw: {
