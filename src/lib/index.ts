@@ -59,4 +59,38 @@ export * from './color/useColorManager';
 export * from './export';
 export * from './icons';
 export * from './glfx';
-export * from './image';
+// Image processing - re-export with explicit naming to avoid ProgressCallback conflict
+export {
+  removeImageBackground,
+  removeBackgroundFromUrl,
+  removeBackgroundFromBlob,
+  isBackgroundRemovalSupported,
+  createPreviewUrl,
+  revokePreviewUrl,
+  BackgroundRemovalError,
+  type BackgroundRemovalStage,
+  type BackgroundRemovalOptions,
+  type BackgroundRemovalResult,
+  type ProgressCallback as BackgroundRemovalProgressCallback,
+} from './image';
+
+// AI module - re-export with explicit naming
+export {
+  generateImage,
+  generateScientificDiagram,
+  generateVariations,
+  configureFalClient,
+  isClientConfigured,
+  downloadImageAsBlob,
+  imageToDataUrl,
+  estimateCost,
+  getModelInfo,
+  ImageGenerationError,
+  type ImageSize,
+  type FluxModel,
+  type IllustrationStyle,
+  type GenerationOptions,
+  type GeneratedImage,
+  type GenerationResult,
+  type AIProgressCallback,
+} from './ai';

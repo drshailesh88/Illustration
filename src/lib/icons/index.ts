@@ -417,11 +417,25 @@ export {
   type SimpleIconData,
 } from './simpleIcons';
 
+export {
+  // Bioicons exports
+  bioiconsList,
+  bioiconCategories,
+  searchBioicons,
+  getBioiconsByCategory,
+  getBioiconById,
+  bioiconToSvg,
+  getBioiconCount,
+  getBioiconCountsByCategory,
+  type BioiconMeta,
+} from './bioicons';
+
 // Import search functions from each library for unified search
 import { searchHealthIcons, healthIconsList } from './healthIcons';
 import { searchScienceIcons, scienceIconsList } from './scienceIcons';
 import { searchIconPark, iconParkList } from './iconPark';
 import { searchSimpleIcons, scienceBrandsList } from './simpleIcons';
+import { searchBioicons, bioiconsList } from './bioicons';
 
 /**
  * Unified icon result from any library
@@ -431,11 +445,14 @@ export interface UnifiedIconResult {
   name: string;
   category: string;
   keywords: string[];
-  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple';
+  library: 'tabler' | 'health' | 'science' | 'iconpark' | 'simple' | 'bioicons';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: React.ComponentType<any>;
   slug?: string; // For simple-icons
   hex?: string;  // For simple-icons brand color
+  svg?: string;  // For bioicons (inline SVG)
+  viewBox?: string; // For bioicons
+  license?: string; // For bioicons
 }
 
 /**
@@ -498,6 +515,21 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
     });
   }
 
+  // Search Bioicons
+  const bioiconsResults = searchBioicons(normalizedQuery);
+  for (const icon of bioiconsResults) {
+    results.push({
+      id: `bioicons-${icon.id}`,
+      name: icon.name,
+      category: icon.category,
+      keywords: icon.keywords,
+      library: 'bioicons',
+      svg: icon.svg,
+      viewBox: icon.viewBox,
+      license: icon.license,
+    });
+  }
+
   return results;
 }
 
@@ -506,12 +538,13 @@ export function searchAllIcons(query: string): UnifiedIconResult[] {
  */
 export function getTotalIconCount(): { total: number; byLibrary: Record<string, number> } {
   return {
-    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length,
+    total: healthIconsList.length + scienceIconsList.length + iconParkList.length + scienceBrandsList.length + bioiconsList.length,
     byLibrary: {
       health: healthIconsList.length,
       science: scienceIconsList.length,
       iconpark: iconParkList.length,
       simple: scienceBrandsList.length,
+      bioicons: bioiconsList.length,
     },
   };
 }
@@ -549,5 +582,11 @@ export const iconLibraries = {
     description: 'Brand logos for science tools',
     license: 'CC0',
     url: 'https://simpleicons.org/',
+  },
+  bioicons: {
+    name: 'Bioicons',
+    description: '70+ scientific biology and life science icons',
+    license: 'CC0/MIT/CC-BY',
+    url: 'https://bioicons.com/',
   },
 };

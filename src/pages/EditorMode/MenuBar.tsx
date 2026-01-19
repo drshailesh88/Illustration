@@ -38,13 +38,15 @@ interface MenuDefinition {
 interface MenuBarProps {
   /** Callback to open the export dialog */
   onOpenExportDialog?: () => void;
+  /** Callback to open the background removal tool */
+  onOpenBackgroundRemoval?: () => void;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuBarRef = useRef<HTMLDivElement>(null);
 
@@ -344,6 +346,48 @@ export function MenuBar({ onOpenExportDialog }: MenuBarProps) {
           label: 'Ungroup',
           shortcut: 'Ctrl+Shift+G',
           action: () => ungroupSelected(),
+        },
+      ],
+    },
+    {
+      id: 'image',
+      label: 'Image',
+      items: [
+        {
+          id: 'remove-background',
+          label: 'Remove Background...',
+          shortcut: 'Ctrl+Shift+B',
+          action: () => onOpenBackgroundRemoval?.(),
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'crop',
+          label: 'Crop Image',
+          disabled: true,
+        },
+        {
+          id: 'resize',
+          label: 'Resize Image',
+          disabled: true,
+        },
+        { id: 'divider2', label: '', divider: true },
+        {
+          id: 'adjustments',
+          label: 'Adjustments',
+          submenu: [
+            { id: 'brightness', label: 'Brightness/Contrast', disabled: true },
+            { id: 'hue-saturation', label: 'Hue/Saturation', disabled: true },
+            { id: 'levels', label: 'Levels', disabled: true },
+          ],
+        },
+        {
+          id: 'filters',
+          label: 'Filters',
+          submenu: [
+            { id: 'blur', label: 'Blur', disabled: true },
+            { id: 'sharpen', label: 'Sharpen', disabled: true },
+            { id: 'noise', label: 'Add Noise', disabled: true },
+          ],
         },
       ],
     },

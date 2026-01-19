@@ -20,7 +20,8 @@ import { Canvas, CanvasProvider, CanvasRef } from '../../components/Canvas';
 import { IllustratorToolbar, type IllustratorTool } from '../../components/IllustratorToolbar';
 import { defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
 import { ExportDialog, type ExportFormat, type ExportSettings } from '../../components/ExportDialog';
-import { exportAsPng, exportAsPdf, exportAsSvg } from '../../lib/export';
+import { exportAsPng, exportAsPdf, exportAsSvg, exportAsPptx } from '../../lib/export';
+import { BackgroundRemovalTool } from '../../components/BackgroundRemoval';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
@@ -97,6 +98,18 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
   },
+  modalOverlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+  },
 };
 
 // ============================================================================
@@ -116,6 +129,7 @@ export function EditorMode(): JSX.Element {
   const [handDrawnEnabled, setHandDrawnEnabled] = useState(false);
   const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
   const [exportDialogOpen, setExportDialogOpen] = useState(false);
+  const [bgRemovalToolOpen, setBgRemovalToolOpen] = useState(false);
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
@@ -153,6 +167,11 @@ export function EditorMode(): JSX.Element {
   // Handle opening export dialog
   const handleOpenExportDialog = useCallback(() => {
     setExportDialogOpen(true);
+  }, []);
+
+  // Handle opening background removal tool
+  const handleOpenBackgroundRemoval = useCallback(() => {
+    setBgRemovalToolOpen(true);
   }, []);
 
   // Handle export from ExportDialog
@@ -206,6 +225,19 @@ export function EditorMode(): JSX.Element {
             embedFonts: svgSettings.embedFonts,
           });
           showToast({ type: 'success', message: 'SVG exported successfully!' });
+          break;
+        }
+        case 'pptx': {
+          const pptxSettings = settings as { layout: string; resolution: number; background: string; centerImage: boolean; title?: string; author?: string };
+          await exportAsPptx(canvas, filename, {
+            layout: pptxSettings.layout as '16x9' | '16x10' | '4x3' | 'custom',
+            multiplier: pptxSettings.resolution,
+            slideBackground: pptxSettings.background === 'transparent' ? 'transparent' : 'FFFFFF',
+            centerImage: pptxSettings.centerImage,
+            title: pptxSettings.title,
+            author: pptxSettings.author,
+          });
+          showToast({ type: 'success', message: 'PowerPoint exported successfully!' });
           break;
         }
         case 'latex': {
@@ -348,7 +380,10 @@ export function EditorMode(): JSX.Element {
     <CanvasProvider>
       <div style={styles.container}>
         {/* Top Menu Bar */}
-        <MenuBar onOpenExportDialog={handleOpenExportDialog} />
+        <MenuBar
+          onOpenExportDialog={handleOpenExportDialog}
+          onOpenBackgroundRemoval={handleOpenBackgroundRemoval}
+        />
 
         {/* Export Dialog */}
         <ExportDialog
@@ -357,6 +392,23 @@ export function EditorMode(): JSX.Element {
           onExport={handleExport}
           filename="diagram"
         />
+
+        {/* Background Removal Tool Modal */}
+        {bgRemovalToolOpen && (
+          <div
+            style={styles.modalOverlay}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setBgRemovalToolOpen(false);
+              }
+            }}
+          >
+            <BackgroundRemovalTool
+              isOpen={bgRemovalToolOpen}
+              onClose={() => setBgRemovalToolOpen(false)}
+            />
+          </div>
+        )}
 
         {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
         <IllustratorToolbar
