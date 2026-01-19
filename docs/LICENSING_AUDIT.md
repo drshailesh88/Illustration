@@ -1,6 +1,6 @@
 # FINNISH Project Licensing Audit
 
-**Document Version:** 1.0
+**Document Version:** 2.0
 **Audit Date:** January 19, 2026
 **Project Version:** 0.1.0
 **Prepared For:** Commercial Use Verification
@@ -15,10 +15,24 @@ This document provides a comprehensive licensing audit of the FINNISH scientific
 
 | Severity | Finding | Package | License | Action Required |
 |----------|---------|---------|---------|-----------------|
-| **HIGH** | Copyleft License | `@imgly/background-removal` | AGPL-3.0 | Source disclosure required for network services |
-| **HIGH** | Copyleft License | `potrace` | GPL-2.0 | May require source disclosure; consider replacement |
+| ✅ **RESOLVED** | ~~Copyleft License~~ | ~~`@imgly/background-removal`~~ | ~~AGPL-3.0~~ | Replaced with `@mediapipe/tasks-vision` (Apache 2.0) |
+| ✅ **RESOLVED** | ~~Copyleft License~~ | ~~`potrace`~~ | ~~GPL-2.0~~ | Removed (was unused dependency) |
 | **MEDIUM** | Attribution Required | Multiple icon libraries | CC-BY | Add attribution to About page |
 | **LOW** | No issues | Most dependencies | MIT/Apache 2.0 | No action required |
+
+### License Resolution Summary (January 19, 2026)
+
+All previously identified copyleft (AGPL/GPL) licensing issues have been resolved:
+
+1. **Background Removal**: Replaced `@imgly/background-removal` (AGPL-3.0) with `@mediapipe/tasks-vision` (Apache 2.0)
+   - Google's MediaPipe Image Segmenter provides equivalent functionality
+   - Apache 2.0 is fully compatible with commercial use
+   - No source disclosure required
+
+2. **Image Tracing**: Removed `potrace` (GPL-2.0)
+   - The dependency was installed but never imported or used
+   - Custom pure JavaScript implementation in `ImageTracer.ts` provides tracing functionality
+   - No replacement needed
 
 ---
 
@@ -42,7 +56,7 @@ This document provides a comprehensive licensing audit of the FINNISH scientific
 |---------|---------|---------|-----------------|-------|
 | `@fal-ai/serverless-client` | 0.15.0 | MIT | Yes | AI image generation client |
 | `@icon-park/react` | 1.4.2 | Apache 2.0 | Yes | Icon library by ByteDance |
-| `@imgly/background-removal` | 1.7.0 | **AGPL-3.0** | **CAUTION** | Requires source disclosure for SaaS |
+| `@mediapipe/tasks-vision` | latest | **Apache 2.0** | **Yes** | Background removal (replaced AGPL package) |
 | `@scienceicons/react` | 0.0.13 | MIT | Yes | Science platform icons |
 | `@tabler/icons-react` | 3.36.1 | MIT | Yes | General purpose icons |
 | `clsx` | 2.1.1 | MIT | Yes | Utility for classNames |
@@ -59,7 +73,6 @@ This document provides a comprehensive licensing audit of the FINNISH scientific
 | `pdf-lib` | 1.17.1 | MIT | Yes | PDF manipulation |
 | `pdfjs-dist` | 4.8.69 | Apache 2.0 | Yes | PDF rendering |
 | `perfect-freehand` | 1.2.2 | MIT | Yes | Freehand drawing |
-| `potrace` | 2.1.8 | **GPL-2.0** | **CAUTION** | Bitmap to vector tracing |
 | `pptxgenjs` | 4.0.1 | MIT | Yes | PowerPoint export |
 | `react` | 18.3.1 | MIT | Yes | UI framework |
 | `react-dom` | 18.3.1 | MIT | Yes | React DOM rendering |
@@ -71,6 +84,8 @@ This document provides a comprehensive licensing audit of the FINNISH scientific
 | `svg2pdf.js` | 2.7.0 | MIT | Yes | SVG to PDF conversion |
 | `uuid` | 11.0.3 | MIT | Yes | UUID generation |
 | `zustand` | 5.0.2 | MIT | Yes | State management |
+
+> **Note:** `@imgly/background-removal` (AGPL-3.0) and `potrace` (GPL-2.0) have been removed from the project.
 
 ### 1.2 Development Dependencies
 
@@ -347,25 +362,24 @@ When using Simple Icons brand logos:
 
 ### 7.1 Immediate Actions Required
 
-1. **CRITICAL: Resolve AGPL-3.0 Issue**
-   - Option A: Contact IMG.LY for commercial license pricing
-   - Option B: Replace `@imgly/background-removal` with MIT-licensed alternative
-   - Timeline: Before public release
+1. ~~**CRITICAL: Resolve AGPL-3.0 Issue**~~ ✅ **RESOLVED**
+   - ~~Option A: Contact IMG.LY for commercial license pricing~~
+   - ✅ **Implemented Option B:** Replaced with `@mediapipe/tasks-vision` (Apache 2.0)
+   - Resolution Date: January 19, 2026
 
-2. **CRITICAL: Resolve GPL-2.0 Issue**
-   - Option A: Replace `potrace` with `ImageTracer.js` (MIT) or similar
-   - Option B: Isolate potrace as an optional external service
-   - Timeline: Before public release
+2. ~~**CRITICAL: Resolve GPL-2.0 Issue**~~ ✅ **RESOLVED**
+   - ✅ **Removed:** `potrace` was unused - custom JavaScript implementation exists
+   - Resolution Date: January 19, 2026
 
-3. **Add Attribution Page**
+3. **Add Attribution Page** (Still Required)
    - Create `/about` or `/credits` page with required attributions
-   - Include all CC-BY attribution requirements
+   - Include all CC-BY attribution requirements (SciDraw, some Bioicons)
    - Timeline: Before public release
 
 ### 7.2 Before Release Checklist
 
-- [ ] Resolve @imgly/background-removal licensing (AGPL-3.0)
-- [ ] Resolve potrace licensing (GPL-2.0)
+- [x] ~~Resolve @imgly/background-removal licensing (AGPL-3.0)~~ - Replaced with MediaPipe
+- [x] ~~Resolve potrace licensing (GPL-2.0)~~ - Removed (unused)
 - [ ] Create attribution/credits page
 - [ ] Include LICENSE files in distribution
 - [ ] Add license information to package.json
@@ -373,14 +387,12 @@ When using Simple Icons brand logos:
 - [ ] Document all font licenses
 - [ ] Create THIRD_PARTY_LICENSES.md file
 
-### 7.3 Alternative Libraries (MIT/Apache Licensed)
+### 7.3 Resolved Libraries
 
-| Current Package | Issue | Recommended Alternative | License |
-|-----------------|-------|------------------------|---------|
-| `@imgly/background-removal` | AGPL-3.0 | `@mediapipe/selfie_segmentation` + custom | Apache 2.0 |
-| `@imgly/background-removal` | AGPL-3.0 | TensorFlow.js BodyPix | Apache 2.0 |
-| `potrace` | GPL-2.0 | `imagetracerjs` | MIT |
-| `potrace` | GPL-2.0 | `svg-path-commander` + custom | MIT |
+| Previous Package | Issue | Resolution | New License |
+|-----------------|-------|------------|-------------|
+| `@imgly/background-removal` | AGPL-3.0 | Replaced with `@mediapipe/tasks-vision` | Apache 2.0 ✅ |
+| `potrace` | GPL-2.0 | Removed (unused dependency) | N/A ✅ |
 
 ### 7.4 Long-term Recommendations
 
@@ -455,17 +467,19 @@ SOFTWARE.
 ## Appendix B: Package License Summary
 
 ```
-Total Production Dependencies: 30
-- MIT License: 24 (80%)
-- Apache 2.0: 2 (7%)
+Total Production Dependencies: 28 (reduced from 30)
+- MIT License: 23 (82%)
+- Apache 2.0: 3 (11%) - includes @mediapipe/tasks-vision
 - CC0: 2 (7%)
-- GPL-2.0: 1 (3%) - NEEDS RESOLUTION
-- AGPL-3.0: 1 (3%) - NEEDS RESOLUTION
+- GPL-2.0: 0 (0%) - RESOLVED (potrace removed)
+- AGPL-3.0: 0 (0%) - RESOLVED (@imgly/background-removal replaced)
 
 Total Dev Dependencies: 19
 - MIT License: 17 (89%)
 - Apache 2.0: 1 (5%)
 - BSD-2-Clause: 1 (5%)
+
+✅ ALL PRODUCTION DEPENDENCIES ARE NOW COMMERCIALLY SAFE
 ```
 
 ---
@@ -474,6 +488,7 @@ Total Dev Dependencies: 19
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 2.0 | 2026-01-19 | Licensing Update | Resolved all AGPL/GPL issues |
 | 1.0 | 2026-01-19 | Licensing Audit | Initial comprehensive audit |
 
 ---

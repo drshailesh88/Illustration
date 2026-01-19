@@ -1,14 +1,20 @@
 /**
  * Background Removal Library
- * Browser-based background removal using @imgly/background-removal
+ * Browser-based background removal using MediaPipe Image Segmenter (Apache 2.0)
  *
  * This library runs entirely in the browser with no API costs.
- * Uses WebAssembly and TensorFlow.js for ML-based background removal.
+ * Uses Google's MediaPipe for ML-based background removal.
+ *
+ * License: Apache 2.0 - Commercially safe for all use cases
  *
  * @module lib/image/background-removal
  */
 
-import { removeBackground, Config } from '@imgly/background-removal';
+import {
+  ImageSegmenter,
+  FilesetResolver,
+  type ImageSegmenterResult,
+} from '@mediapipe/tasks-vision';
 
 // ============================================================================
 // Types
@@ -37,8 +43,6 @@ export type ProgressCallback = (
 export interface BackgroundRemovalOptions {
   /** Progress callback for UI feedback */
   onProgress?: ProgressCallback;
-  /** Model to use: 'small' (faster) or 'medium' (better quality) */
-  model?: 'small' | 'medium';
   /** Output format */
   output?: {
     /** Output format type */
@@ -46,6 +50,8 @@ export interface BackgroundRemovalOptions {
     /** Quality for lossy formats (0-1) */
     quality?: number;
   };
+  /** Edge feathering amount in pixels (0 = hard edge, higher = softer) */
+  featherAmount?: number;
 }
 
 /**
@@ -77,37 +83,80 @@ export class BackgroundRemovalError extends Error {
 }
 
 // ============================================================================
-// Configuration
+// Singleton Image Segmenter
 // ============================================================================
 
+let imageSegmenter: ImageSegmenter | null = null;
+let isModelLoading = false;
+let modelLoadPromise: Promise<ImageSegmenter> | null = null;
+
 /**
- * Default configuration for background removal
+ * Get or create the Image Segmenter singleton
  */
-const DEFAULT_CONFIG: Partial<Config> = {
-  debug: false,
-  // Use public CDN for model files
-  publicPath: 'https://unpkg.com/@anthropic-ai/background-removal@latest/dist/',
-};
+async function getImageSegmenter(
+  onProgress?: ProgressCallback
+): Promise<ImageSegmenter> {
+  if (imageSegmenter) {
+    return imageSegmenter;
+  }
+
+  if (isModelLoading && modelLoadPromise) {
+    return modelLoadPromise;
+  }
+
+  isModelLoading = true;
+
+  modelLoadPromise = (async () => {
+    try {
+      if (onProgress) {
+        onProgress(0.1, 'loading-model');
+      }
+
+      // Load the MediaPipe vision WASM
+      const vision = await FilesetResolver.forVisionTasks(
+        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm'
+      );
+
+      if (onProgress) {
+        onProgress(0.3, 'loading-model');
+      }
+
+      // Create the Image Segmenter with the selfie segmentation model
+      // This model segments person (foreground) vs background
+      imageSegmenter = await ImageSegmenter.createFromOptions(vision, {
+        baseOptions: {
+          modelAssetPath:
+            'https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_segmenter/float16/latest/selfie_segmenter.tflite',
+          delegate: 'GPU',
+        },
+        runningMode: 'IMAGE',
+        outputCategoryMask: true,
+        outputConfidenceMasks: false,
+      });
+
+      if (onProgress) {
+        onProgress(0.5, 'loading-model');
+      }
+
+      isModelLoading = false;
+      return imageSegmenter;
+    } catch (error) {
+      isModelLoading = false;
+      modelLoadPromise = null;
+      throw new BackgroundRemovalError(
+        `Failed to load segmentation model: ${error instanceof Error ? error.message : String(error)}`,
+        'loading-model',
+        error instanceof Error ? error : undefined
+      );
+    }
+  })();
+
+  return modelLoadPromise;
+}
 
 // ============================================================================
 // Helper Functions
 // ============================================================================
-
-/**
- * Maps internal progress keys to human-readable stages
- */
-function mapProgressKeyToStage(key: string): BackgroundRemovalStage {
-  if (key.includes('model') || key.includes('load')) {
-    return 'loading-model';
-  }
-  if (key.includes('inference') || key.includes('process')) {
-    return 'processing';
-  }
-  if (key.includes('encode') || key.includes('output')) {
-    return 'encoding';
-  }
-  return 'processing';
-}
 
 /**
  * Get image dimensions from a blob
@@ -125,6 +174,28 @@ async function getImageDimensions(blob: Blob): Promise<{ width: number; height: 
     img.onerror = () => {
       URL.revokeObjectURL(url);
       reject(new Error('Failed to load image for dimension detection'));
+    };
+
+    img.src = url;
+  });
+}
+
+/**
+ * Load an image file/blob as HTMLImageElement
+ */
+async function loadImageElement(source: File | Blob): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(source);
+
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(img);
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Failed to load image'));
     };
 
     img.src = url;
@@ -151,6 +222,138 @@ async function fetchImageAsBlob(url: string): Promise<Blob> {
   }
 
   return response.blob();
+}
+
+/**
+ * Apply the segmentation mask to remove the background
+ */
+function applyMask(
+  imageElement: HTMLImageElement,
+  segmentationResult: ImageSegmenterResult,
+  featherAmount: number = 0
+): HTMLCanvasElement {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) {
+    throw new BackgroundRemovalError('Failed to get canvas context', 'processing');
+  }
+
+  const width = imageElement.naturalWidth || imageElement.width;
+  const height = imageElement.naturalHeight || imageElement.height;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  // Draw the original image
+  ctx.drawImage(imageElement, 0, 0);
+
+  // Get the category mask (person = 1, background = 0)
+  const categoryMask = segmentationResult.categoryMask;
+  if (!categoryMask) {
+    throw new BackgroundRemovalError('No segmentation mask returned', 'processing');
+  }
+
+  // Get the mask data
+  const maskData = categoryMask.getAsUint8Array();
+
+  // Get the image data
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const pixels = imageData.data;
+
+  // Apply the mask to remove background
+  // The selfie segmenter returns: 0 = background, 1 = person/foreground
+  for (let i = 0; i < maskData.length; i++) {
+    const maskValue = maskData[i];
+    const pixelIndex = i * 4;
+
+    if (maskValue === 0) {
+      // Background pixel - make transparent
+      pixels[pixelIndex + 3] = 0;
+    } else if (featherAmount > 0) {
+      // Optional: soft edges with feathering
+      // For now, keep fully opaque for foreground
+      pixels[pixelIndex + 3] = 255;
+    }
+  }
+
+  // Apply optional feathering for smoother edges
+  if (featherAmount > 0) {
+    applyFeathering(pixels, width, height, featherAmount);
+  }
+
+  // Put the modified data back
+  ctx.putImageData(imageData, 0, 0);
+
+  // Close the mask to free resources
+  categoryMask.close();
+
+  return canvas;
+}
+
+/**
+ * Apply feathering to edges for smoother transitions
+ */
+function applyFeathering(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  amount: number
+): void {
+  // Simple box blur on alpha channel for edge softening
+  const radius = Math.min(amount, 5);
+  const tempAlpha = new Uint8ClampedArray(width * height);
+
+  // Copy alpha values
+  for (let i = 0; i < width * height; i++) {
+    tempAlpha[i] = pixels[i * 4 + 3];
+  }
+
+  // Apply blur
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      let sum = 0;
+      let count = 0;
+
+      for (let dy = -radius; dy <= radius; dy++) {
+        for (let dx = -radius; dx <= radius; dx++) {
+          const nx = x + dx;
+          const ny = y + dy;
+
+          if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+            sum += tempAlpha[ny * width + nx];
+            count++;
+          }
+        }
+      }
+
+      const idx = (y * width + x) * 4 + 3;
+      pixels[idx] = Math.round(sum / count);
+    }
+  }
+}
+
+/**
+ * Convert canvas to blob
+ */
+function canvasToBlob(
+  canvas: HTMLCanvasElement,
+  format: string = 'image/png',
+  quality: number = 1
+): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error('Failed to convert canvas to blob'));
+        }
+      },
+      format,
+      quality
+    );
+  });
 }
 
 // ============================================================================
@@ -194,21 +397,34 @@ export async function removeImageBackground(
   }
 
   try {
-    // Build configuration
-    const config: Partial<Config> = {
-      ...DEFAULT_CONFIG,
-      progress: options.onProgress
-        ? (key: string, current: number, total: number) => {
-            const progress = total > 0 ? current / total : 0;
-            const stage = mapProgressKeyToStage(key);
-            options.onProgress!(progress, stage);
-          }
-        : undefined,
-      output: options.output,
-    };
+    // Load the segmenter (may be cached)
+    const segmenter = await getImageSegmenter(options.onProgress);
 
-    // Perform background removal
-    const resultBlob = await removeBackground(imageFile, config);
+    if (options.onProgress) {
+      options.onProgress(0.6, 'processing');
+    }
+
+    // Load the image as an HTMLImageElement
+    const imageElement = await loadImageElement(imageFile);
+
+    // Perform segmentation
+    const segmentationResult = segmenter.segment(imageElement);
+
+    if (options.onProgress) {
+      options.onProgress(0.8, 'encoding');
+    }
+
+    // Apply the mask to remove background
+    const resultCanvas = applyMask(
+      imageElement,
+      segmentationResult,
+      options.featherAmount ?? 1
+    );
+
+    // Convert to blob
+    const outputFormat = options.output?.format ?? 'image/png';
+    const outputQuality = options.output?.quality ?? 1;
+    const resultBlob = await canvasToBlob(resultCanvas, outputFormat, outputQuality);
 
     // Get dimensions
     const dimensions = await getImageDimensions(resultBlob);
@@ -334,6 +550,14 @@ export function isBackgroundRemovalSupported(): boolean {
 }
 
 /**
+ * Preload the segmentation model for faster first use
+ * Call this during app initialization for better UX
+ */
+export async function preloadModel(): Promise<void> {
+  await getImageSegmenter();
+}
+
+/**
  * Create an object URL from the result blob for preview
  */
 export function createPreviewUrl(result: BackgroundRemovalResult): string {
@@ -345,4 +569,16 @@ export function createPreviewUrl(result: BackgroundRemovalResult): string {
  */
 export function revokePreviewUrl(url: string): void {
   URL.revokeObjectURL(url);
+}
+
+/**
+ * Clean up the image segmenter to free resources
+ * Call this when background removal is no longer needed
+ */
+export function dispose(): void {
+  if (imageSegmenter) {
+    imageSegmenter.close();
+    imageSegmenter = null;
+    modelLoadPromise = null;
+  }
 }

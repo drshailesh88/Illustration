@@ -8,24 +8,26 @@
 
 > **READ THIS FIRST** - Resume from where the last session ended
 
-### Last Session: 2026-01-19 (Session 4 - Continued)
+### Last Session: 2026-01-19 (Session 5 - Licensing Resolution)
 
-**Session Status**: ALL CORE FEATURES COMPLETE + DOCUMENTATION COMPLETE ✅
+**Session Status**: ALL LICENSING ISSUES RESOLVED ✅
 
 ### Completed This Session:
-- [x] **AIGenerationTool UI Wiring** - Added "AI Generate Image..." (Ctrl+Shift+A) to Image menu, modal overlay integrated
-- [x] **SciDraw Icon Library** - Created src/lib/icons/scidraw.ts with 60+ scientific icons (model organisms, neuroscience, lab equipment, etc.)
-- [x] **Unified Icon Search** - Integrated SciDraw into searchAllIcons() and getTotalIconCount()
-- [x] **Ralph Loop Feature Testing** - Created docs/FEATURE_AUDIT.md (15KB) - all core features verified working
-- [x] **Licensing Audit** - Created docs/LICENSING_AUDIT.md (17KB) - comprehensive dependency analysis
-- [x] **Architecture Documentation** - Created docs/ARCHITECTURE.md (32KB) - full technical documentation
-- [x] **Docker Readiness** - Verified project already Docker-ready with multi-stage builds
-- [x] **Build verification** - All TypeScript checks pass, production build successful
+- [x] **AGPL-3.0 Resolution** - Replaced @imgly/background-removal with @mediapipe/tasks-vision (Apache 2.0)
+- [x] **GPL-2.0 Resolution** - Removed potrace (was unused, custom JS implementation exists)
+- [x] **Background Removal Rewrite** - Rewrote src/lib/image/background-removal.ts to use MediaPipe Image Segmenter
+- [x] **Licensing Audit Update** - Updated docs/LICENSING_AUDIT.md to v2.0 reflecting all resolutions
+- [x] **Build Verification** - All TypeScript checks pass, production build successful
 
-### Critical Licensing Findings (from LICENSING_AUDIT.md):
-- **AGPL-3.0**: @imgly/background-removal - needs commercial license or replacement before release
-- **GPL-2.0**: potrace - consider replacing with imagetracerjs (MIT)
-- **CC-BY**: SciDraw, some Bioicons - attribution required on About page
+### Previous Session (2026-01-19 - Session 4):
+- [x] AIGenerationTool UI Wiring - Added "AI Generate Image..." (Ctrl+Shift+A) to Image menu
+- [x] SciDraw Icon Library - Created src/lib/icons/scidraw.ts with 60+ scientific icons
+- [x] Ralph Loop Feature Testing - Created docs/FEATURE_AUDIT.md (15KB)
+- [x] Licensing Audit - Created docs/LICENSING_AUDIT.md (17KB)
+- [x] Architecture Documentation - Created docs/ARCHITECTURE.md (32KB)
+
+### Licensing Status: ✅ ALL CLEAR FOR COMMERCIAL USE
+- **CC-BY**: SciDraw, some Bioicons - attribution required on About page (standard practice)
 
 ### Previous Session (2026-01-19 - Session 3):
 - [x] Bioicons Integration - Created src/lib/icons/bioicons.ts with 70 scientific icons
@@ -51,15 +53,16 @@
 - `src/pages/EditorMode/EditorMode.tsx` - Wired AIGenerationTool modal with overlay
 
 ### Next Session Should:
-1. Resolve licensing issues (AGPL-3.0 and GPL-2.0 packages)
+1. ~~Resolve licensing issues (AGPL-3.0 and GPL-2.0 packages)~~ ✅ DONE
 2. Create attribution/credits page for CC-BY content
 3. UI polish and user experience improvements
 4. End-to-end testing with real users
 5. Production deployment pipeline
 
 ### Blocking Issues (Before Release):
-- **CRITICAL**: @imgly/background-removal AGPL-3.0 licensing
-- **CRITICAL**: potrace GPL-2.0 licensing
+- ~~**CRITICAL**: @imgly/background-removal AGPL-3.0 licensing~~ ✅ RESOLVED
+- ~~**CRITICAL**: potrace GPL-2.0 licensing~~ ✅ RESOLVED
+- **None remaining** - All dependencies are now MIT/Apache 2.0/CC0/CC-BY compatible
 
 ### Icon Library Status:
 | Library | Icons | Status |
