@@ -42,6 +42,23 @@ export interface UseKeyboardShortcutsOptions {
   onSpaceDown?: () => void;
   /** Callback when space is released */
   onSpaceUp?: () => void;
+  // File operation callbacks
+  /** Callback for New (Ctrl+N) */
+  onNew?: () => void;
+  /** Callback for Open (Ctrl+O) */
+  onOpen?: () => void;
+  /** Callback for Save (Ctrl+S) */
+  onSave?: () => void;
+  /** Callback for Save As (Ctrl+Shift+S) */
+  onSaveAs?: () => void;
+  /** Callback for Export (Ctrl+E) */
+  onExport?: () => void;
+  /** Callback for opening background removal (Ctrl+Shift+B) */
+  onOpenBackgroundRemoval?: () => void;
+  /** Callback for opening AI generation (Ctrl+Shift+A) */
+  onOpenAIGeneration?: () => void;
+  /** Callback for zoom to fit (Ctrl+1) */
+  onZoomToFit?: () => void;
 }
 
 // ============================================================================
@@ -49,7 +66,22 @@ export interface UseKeyboardShortcutsOptions {
 // ============================================================================
 
 export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) {
-  const { enabled = true, customShortcuts = [], onSpaceDown, onSpaceUp } = options;
+  const {
+    enabled = true,
+    customShortcuts = [],
+    onSpaceDown,
+    onSpaceUp,
+    onNew,
+    onOpen,
+    onSave,
+    onSaveAs,
+    onExport,
+    onOpenBackgroundRemoval,
+    onOpenAIGeneration,
+    onZoomToFit: _onZoomToFit,
+  } = options;
+  // Wrap in a stable reference to satisfy TypeScript unused variable check
+  const onZoomToFit = _onZoomToFit;
 
   // Store hooks
   const setActiveTool = useEditorStore((state) => state.setActiveTool);
@@ -165,6 +197,67 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
   // ========================================================================
 
   const defaultShortcuts: ShortcutConfig[] = [
+    // File shortcuts
+    {
+      key: 'n',
+      ctrlOrCmd: true,
+      handler: () => onNew?.(),
+      description: 'New',
+      category: 'file',
+      preventDefault: true,
+    },
+    {
+      key: 'o',
+      ctrlOrCmd: true,
+      handler: () => onOpen?.(),
+      description: 'Open',
+      category: 'file',
+      preventDefault: true,
+    },
+    {
+      key: 's',
+      ctrlOrCmd: true,
+      handler: () => onSave?.(),
+      description: 'Save',
+      category: 'file',
+      preventDefault: true,
+    },
+    {
+      key: 's',
+      ctrlOrCmd: true,
+      shift: true,
+      handler: () => onSaveAs?.(),
+      description: 'Save As',
+      category: 'file',
+      preventDefault: true,
+    },
+    {
+      key: 'e',
+      ctrlOrCmd: true,
+      handler: () => onExport?.(),
+      description: 'Export',
+      category: 'file',
+      preventDefault: true,
+    },
+    // Image shortcuts
+    {
+      key: 'b',
+      ctrlOrCmd: true,
+      shift: true,
+      handler: () => onOpenBackgroundRemoval?.(),
+      description: 'Remove Background',
+      category: 'edit',
+      preventDefault: true,
+    },
+    {
+      key: 'a',
+      ctrlOrCmd: true,
+      shift: true,
+      handler: () => onOpenAIGeneration?.(),
+      description: 'AI Generate Image',
+      category: 'edit',
+      preventDefault: true,
+    },
     // Edit shortcuts
     {
       key: 'z',
@@ -358,6 +451,14 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
       ctrlOrCmd: true,
       handler: resetViewport,
       description: 'Reset Zoom',
+      category: 'view',
+      preventDefault: true,
+    },
+    {
+      key: '1',
+      ctrlOrCmd: true,
+      handler: () => onZoomToFit?.(),
+      description: 'Fit to Window',
       category: 'view',
       preventDefault: true,
     },

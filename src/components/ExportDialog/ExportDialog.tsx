@@ -12,6 +12,7 @@ import { SVGOptions, SVGExportSettings } from './SVGOptions';
 import { PDFOptions, PDFExportSettings } from './PDFOptions';
 import { PPTXOptions, PPTXExportSettings } from './PPTXOptions';
 import { LaTeXOptions, LaTeXExportSettings } from './LaTeXOptions';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 // ============================================================================
 // Types
@@ -22,12 +23,14 @@ export interface ExportDialogProps {
   isOpen: boolean;
   /** Callback when dialog is closed */
   onClose: () => void;
-  /** Callback when export is triggered */
-  onExport: (format: ExportFormat, settings: ExportSettings) => void;
+  /** Callback when export is triggered (can be async) */
+  onExport: (format: ExportFormat, settings: ExportSettings) => void | Promise<void>;
   /** Optional filename for export */
   filename?: string;
   /** Optional TikZ preview content */
   tikzPreview?: string;
+  /** Callback for error handling (for toast notifications) */
+  onError?: (message: string) => void;
 }
 
 export type ExportSettings =
@@ -186,6 +189,22 @@ const styles = {
     backgroundColor: 'var(--accent-primary, #3b82f6)',
     color: '#ffffff',
   },
+  disabledButton: {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+  },
+  errorMessage: {
+    padding: '12px',
+    marginBottom: '12px',
+    backgroundColor: 'rgba(244, 67, 54, 0.1)',
+    borderRadius: '6px',
+    border: '1px solid rgba(244, 67, 54, 0.3)',
+    color: '#f44336',
+    fontSize: '13px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
 };
 
 // ============================================================================
@@ -198,6 +217,7 @@ export function ExportDialog({
   onExport,
   filename = 'diagram',
   tikzPreview = '',
+  onError,
 }: ExportDialogProps): JSX.Element | null {
   const [selectedFormat, setSelectedFormat] = useState<ExportFormat>('png');
   const [exportFilename, setExportFilename] = useState(filename);
@@ -206,11 +226,14 @@ export function ExportDialog({
   const [pdfSettings, setPdfSettings] = useState<PDFExportSettings>(defaultPDFSettings);
   const [pptxSettings, setPptxSettings] = useState<PPTXExportSettings>(defaultPPTXSettings);
   const [latexSettings, setLatexSettings] = useState<LaTeXExportSettings>(defaultLaTeXSettings);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
 
-  // Reset filename when dialog opens
+  // Reset filename and error when dialog opens
   useEffect(() => {
     if (isOpen) {
       setExportFilename(filename);
+      setExportError(null);
     }
   }, [isOpen, filename]);
 
@@ -226,7 +249,7 @@ export function ExportDialog({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  const handleExport = useCallback(() => {
+  const handleExport = useCallback(async () => {
     let settings: ExportSettings;
 
     switch (selectedFormat) {
@@ -249,17 +272,30 @@ export function ExportDialog({
         settings = pngSettings;
     }
 
-    onExport(selectedFormat, settings);
-    onClose();
-  }, [selectedFormat, pngSettings, svgSettings, pdfSettings, pptxSettings, latexSettings, onExport, onClose]);
+    setIsExporting(true);
+    setExportError(null);
+
+    try {
+      await onExport(selectedFormat, settings);
+      onClose();
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Export failed. Please try again.';
+      setExportError(errorMessage);
+      if (onError) {
+        onError(errorMessage);
+      }
+    } finally {
+      setIsExporting(false);
+    }
+  }, [selectedFormat, pngSettings, svgSettings, pdfSettings, pptxSettings, latexSettings, onExport, onClose, onError]);
 
   const handleOverlayClick = useCallback(
     (e: React.MouseEvent) => {
-      if (e.target === e.currentTarget) {
+      if (e.target === e.currentTarget && !isExporting) {
         onClose();
       }
     },
-    [onClose]
+    [onClose, isExporting]
   );
 
   const getFileExtension = useCallback((format: ExportFormat): string => {
@@ -284,8 +320,12 @@ export function ExportDialog({
         <div style={styles.header}>
           <h2 style={styles.title}>Export Diagram</h2>
           <button
-            style={styles.closeButton}
+            style={{
+              ...styles.closeButton,
+              ...(isExporting ? styles.disabledButton : {}),
+            }}
             onClick={onClose}
+            disabled={isExporting}
             aria-label="Close dialog"
           >
             <svg
@@ -356,34 +396,67 @@ export function ExportDialog({
           </div>
         </div>
 
+        {/* Error Message */}
+        {exportError && (
+          <div style={{ padding: '0 20px' }}>
+            <div style={styles.errorMessage}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+              {exportError}
+            </div>
+          </div>
+        )}
+
         {/* Footer */}
         <div style={styles.footer}>
           <button
-            style={{ ...styles.button, ...styles.cancelButton }}
+            style={{
+              ...styles.button,
+              ...styles.cancelButton,
+              ...(isExporting ? styles.disabledButton : {}),
+            }}
             onClick={onClose}
+            disabled={isExporting}
           >
             Cancel
           </button>
           <button
-            style={{ ...styles.button, ...styles.exportButton }}
+            style={{
+              ...styles.button,
+              ...styles.exportButton,
+              ...(isExporting ? styles.disabledButton : {}),
+            }}
             onClick={handleExport}
+            disabled={isExporting}
           >
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Export
+              {isExporting ? (
+                <>
+                  <LoadingSpinner size="sm" variant="white" />
+                  Exporting...
+                </>
+              ) : (
+                <>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Export
+                </>
+              )}
             </span>
           </button>
         </div>

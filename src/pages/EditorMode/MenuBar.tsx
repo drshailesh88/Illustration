@@ -8,6 +8,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useEditorStore, useHistoryState, useViewport, useGridState } from '../../store/editorStore';
 import { useCanvas } from '../../components/Canvas/CanvasContext';
+import { useToast } from '../../components/Toast/useToast';
 import './MenuBar.css';
 
 // ============================================================================
@@ -52,7 +53,9 @@ interface MenuBarProps {
 
 export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [_isLoading, setIsLoading] = useState(false); // Used for async operations
   const menuBarRef = useRef<HTMLDivElement>(null);
+  const toast = useToast();
 
   // Store hooks
   const undo = useEditorStore((state) => state.undo);
@@ -489,38 +492,32 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
     input.onchange = async (e) => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) {
-        const text = await file.text();
+        setIsLoading(true);
+        toast.info(`Loading "${file.name}"...`);
         try {
+          const text = await file.text();
           const json = JSON.parse(text);
           if (canvas) {
             canvas.loadFromJSON(json, () => {
               canvas.renderAll();
+              setIsLoading(false);
+              toast.success(`Opened "${file.name}" successfully`);
             });
+          } else {
+            setIsLoading(false);
+            toast.error('Canvas not ready. Please try again.');
           }
         } catch {
-          alert('Invalid file format');
+          setIsLoading(false);
+          toast.error('Invalid file format. Please select a valid .finnish, .json, or .svg file.');
         }
       }
     };
     input.click();
-  }, [canvas]);
+  }, [canvas, toast]);
 
   const handleSave = useCallback(() => {
-    const json = exportJSON();
-    const blob = new Blob([JSON.stringify(json, null, 2)], {
-      type: 'application/json',
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'diagram.finnish';
-    a.click();
-    URL.revokeObjectURL(url);
-  }, [exportJSON]);
-
-  const handleSaveAs = useCallback(() => {
-    const filename = prompt('Enter filename:', 'diagram.finnish');
-    if (filename) {
+    try {
       const json = exportJSON();
       const blob = new Blob([JSON.stringify(json, null, 2)], {
         type: 'application/json',
@@ -528,66 +525,86 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = filename.endsWith('.finnish') ? filename : `${filename}.finnish`;
+      a.download = 'diagram.finnish';
       a.click();
       URL.revokeObjectURL(url);
+      toast.success('Diagram saved as "diagram.finnish"');
+    } catch (error) {
+      console.error('Save failed:', error);
+      toast.error('Failed to save diagram. Please try again.');
     }
-  }, [exportJSON]);
+  }, [exportJSON, toast]);
 
-  const handleExport = useCallback(
-    (format: 'svg' | 'png' | 'png-2x') => {
-      if (format === 'svg') {
-        const svg = exportSVG();
-        const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const handleSaveAs = useCallback(() => {
+    const filename = prompt('Enter filename:', 'diagram.finnish');
+    if (filename) {
+      try {
+        const json = exportJSON();
+        const blob = new Blob([JSON.stringify(json, null, 2)], {
+          type: 'application/json',
+        });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'diagram.svg';
+        const finalFilename = filename.endsWith('.finnish') ? filename : `${filename}.finnish`;
+        a.download = finalFilename;
         a.click();
         URL.revokeObjectURL(url);
-      } else if (format === 'png' || format === 'png-2x') {
-        const multiplier = format === 'png-2x' ? 2 : 1;
-        const dataUrl = exportPNG(multiplier);
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = `diagram${format === 'png-2x' ? '@2x' : ''}.png`;
-        a.click();
+        toast.success(`Saved as "${finalFilename}"`);
+      } catch (error) {
+        console.error('Save As failed:', error);
+        toast.error('Failed to save diagram. Please try again.');
+      }
+    }
+  }, [exportJSON, toast]);
+
+  const handleExport = useCallback(
+    (format: 'svg' | 'png' | 'png-2x') => {
+      try {
+        if (format === 'svg') {
+          const svg = exportSVG();
+          const blob = new Blob([svg], { type: 'image/svg+xml' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'diagram.svg';
+          a.click();
+          URL.revokeObjectURL(url);
+          toast.success('Exported as SVG');
+        } else if (format === 'png' || format === 'png-2x') {
+          const multiplier = format === 'png-2x' ? 2 : 1;
+          const dataUrl = exportPNG(multiplier);
+          const a = document.createElement('a');
+          a.href = dataUrl;
+          const filename = `diagram${format === 'png-2x' ? '@2x' : ''}.png`;
+          a.download = filename;
+          a.click();
+          toast.success(`Exported as ${format === 'png-2x' ? 'PNG @2x' : 'PNG'}`);
+        }
+      } catch (error) {
+        console.error('Export failed:', error);
+        toast.error('Export failed. Please try again.');
       }
     },
-    [exportSVG, exportPNG]
+    [exportSVG, exportPNG, toast]
   );
 
   const handleShowShortcuts = useCallback(() => {
-    alert(
-      'Keyboard Shortcuts:\n\n' +
-        'V - Select Tool\n' +
-        'H - Hand Tool\n' +
-        'R - Rectangle Tool\n' +
-        'E - Ellipse Tool\n' +
-        'L - Line Tool\n' +
-        'T - Text Tool\n\n' +
-        'Ctrl+Z - Undo\n' +
-        'Ctrl+Y - Redo\n' +
-        'Ctrl+C - Copy\n' +
-        'Ctrl+V - Paste\n' +
-        'Ctrl+X - Cut\n' +
-        'Ctrl+A - Select All\n' +
-        'Ctrl+G - Group\n' +
-        'Ctrl+Shift+G - Ungroup\n' +
-        'Del/Backspace - Delete\n\n' +
-        '+/- - Zoom In/Out\n' +
-        'Space+Drag - Pan'
+    toast.info(
+      'Shortcuts: V=Select, H=Hand, R=Rect, E=Ellipse, L=Line, T=Text | ' +
+        'Ctrl+Z=Undo, Ctrl+Y=Redo, Ctrl+C/V/X=Copy/Paste/Cut | ' +
+        'Ctrl+G=Group, +/-=Zoom, Space+Drag=Pan',
+      10000 // Show for 10 seconds
     );
-  }, []);
+  }, [toast]);
 
   const handleShowAbout = useCallback(() => {
-    alert(
-      'FINNISH - AI-Powered Scientific Illustration Tool\n\n' +
-        'Version: 0.1.0\n\n' +
-        'Kill Adobe Illustrator, BioRender, and Napkin.AI for academics.\n\n' +
-        'Built with React, Fabric.js, and Zustand.'
+    toast.info(
+      'FINNISH v0.1.0 - AI-Powered Scientific Illustration Tool. ' +
+        'Built with React, Fabric.js, and Zustand.',
+      8000 // Show for 8 seconds
     );
-  }, []);
+  }, [toast]);
 
   // ========================================================================
   // Click Outside Handler

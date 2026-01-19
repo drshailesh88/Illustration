@@ -13,6 +13,7 @@ import IconPicker from '../../components/IconPicker';
 import type { UnifiedIconResult } from '../../lib/icons';
 import { StylePanel, defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
 import { useEditorStore } from '../../store/editorStore';
+import { useToast } from '../../components/Toast/useToast';
 
 // ============================================================================
 // Types
@@ -201,6 +202,7 @@ export function RightPanel({
   onApplyHandDrawnToSelection,
 }: RightPanelProps): JSX.Element {
   const [activeTab, setActiveTab] = useState<TabId>('layers');
+  const toast = useToast();
   // Use external settings if provided, otherwise use local state
   const [localSettings, setLocalSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
   const handDrawnSettings = externalSettings ?? localSettings;
@@ -227,6 +229,7 @@ export function RightPanel({
   const handleIconSelect = useCallback(async (icon: UnifiedIconResult, svgContent: string) => {
     if (!canvas || !svgContent) {
       console.warn('Cannot add icon: canvas not ready or no SVG content');
+      toast.warning('Cannot add icon: canvas not ready');
       return;
     }
 
@@ -237,6 +240,7 @@ export function RightPanel({
 
       if (filteredObjects.length === 0) {
         console.warn('No valid objects found in SVG');
+        toast.warning('No valid objects found in SVG');
         return;
       }
 
@@ -267,10 +271,12 @@ export function RightPanel({
       canvas.renderAll();
 
       console.log(`Added icon "${icon.name}" to canvas`);
+      toast.success(`Added "${icon.name}" to canvas`);
     } catch (error) {
       console.error('Failed to add icon to canvas:', error);
+      toast.error('Failed to add icon to canvas');
     }
-  }, [canvas]);
+  }, [canvas, toast]);
 
   // Render content based on active tab
   const renderContent = () => {

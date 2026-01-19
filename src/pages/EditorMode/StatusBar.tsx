@@ -248,13 +248,23 @@ export function StatusBar({ mouseCoords }: StatusBarProps): JSX.Element {
           >
             <ZoomOutIcon />
           </button>
-          <span
-            style={{ ...styles.statusValue, cursor: 'pointer', minWidth: '36px', textAlign: 'center' }}
+          <button
+            style={{
+              ...styles.statusValue,
+              cursor: 'pointer',
+              minWidth: '36px',
+              textAlign: 'center' as const,
+              background: 'none',
+              border: 'none',
+              padding: '2px 4px',
+              borderRadius: '2px',
+            }}
             onClick={handleZoomReset}
             title="Reset zoom to 100%"
+            aria-label={`Current zoom ${zoomPercent}%. Click to reset zoom to 100%`}
           >
             {zoomPercent}%
-          </span>
+          </button>
           <button
             style={{
               ...styles.zoomButton,

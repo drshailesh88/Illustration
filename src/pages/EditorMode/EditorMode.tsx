@@ -24,7 +24,10 @@ import { exportAsPng, exportAsPdf, exportAsSvg, exportAsPptx } from '../../lib/e
 import { BackgroundRemovalTool } from '../../components/BackgroundRemoval';
 import { AIGenerationTool } from '../../components/AIGeneration';
 import { ShapeGeneratorPanel, type ShapeType } from '../../components/tools';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
+import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
+import { useCanvas as useCanvasContext } from '../../components/Canvas/CanvasContext';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
 import { RightPanel } from './RightPanel';
@@ -87,18 +90,17 @@ const styles: Record<string, React.CSSProperties> = {
     right: 0,
     bottom: 0,
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(30, 30, 30, 0.8)',
+    gap: '16px',
+    backgroundColor: 'rgba(30, 30, 30, 0.9)',
     zIndex: 100,
   },
-  loadingSpinner: {
-    width: '48px',
-    height: '48px',
-    border: '3px solid var(--border-primary)',
-    borderTopColor: 'var(--accent-primary)',
-    borderRadius: '50%',
-    animation: 'spin 1s linear infinite',
+  loadingText: {
+    color: 'var(--text-secondary, #9d9d9d)',
+    fontSize: '14px',
+    fontWeight: 500,
   },
   modalOverlay: {
     position: 'fixed',
@@ -191,6 +193,96 @@ export function EditorMode(): JSX.Element {
     }
     setShapeGeneratorOpen(true);
   }, []);
+
+  // ========================================================================
+  // File Operation Handlers (for keyboard shortcuts)
+  // ========================================================================
+
+  // Get canvas context for file operations
+  const {
+    clearCanvas,
+    exportJSON,
+    importJSON,
+    zoomToFit,
+  } = useCanvasContext();
+
+  // Handle New (Ctrl+N)
+  const handleNew = useCallback(() => {
+    if (confirm('Create new document? Unsaved changes will be lost.')) {
+      clearCanvas();
+      showToast({ type: 'info', message: 'New document created' });
+    }
+  }, [clearCanvas, showToast]);
+
+  // Handle Open (Ctrl+O)
+  const handleOpen = useCallback(() => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.finnish,.json,.svg';
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        const text = await file.text();
+        try {
+          const json = JSON.parse(text);
+          await importJSON(json);
+          showToast({ type: 'success', message: `Opened: ${file.name}` });
+        } catch {
+          showToast({ type: 'error', message: 'Invalid file format' });
+        }
+      }
+    };
+    input.click();
+  }, [importJSON, showToast]);
+
+  // Handle Save (Ctrl+S)
+  const handleSave = useCallback(() => {
+    const json = exportJSON();
+    const blob = new Blob([JSON.stringify(json, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'diagram.finnish';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast({ type: 'success', message: 'Saved: diagram.finnish' });
+  }, [exportJSON, showToast]);
+
+  // Handle Save As (Ctrl+Shift+S)
+  const handleSaveAs = useCallback(() => {
+    const filename = prompt('Enter filename:', 'diagram.finnish');
+    if (filename) {
+      const json = exportJSON();
+      const blob = new Blob([JSON.stringify(json, null, 2)], {
+        type: 'application/json',
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename.endsWith('.finnish') ? filename : `${filename}.finnish`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast({ type: 'success', message: `Saved: ${filename}` });
+    }
+  }, [exportJSON, showToast]);
+
+  // ========================================================================
+  // Keyboard Shortcuts Hook
+  // ========================================================================
+
+  useKeyboardShortcuts({
+    enabled: true,
+    onNew: handleNew,
+    onOpen: handleOpen,
+    onSave: handleSave,
+    onSaveAs: handleSaveAs,
+    onExport: handleOpenExportDialog,
+    onOpenBackgroundRemoval: handleOpenBackgroundRemoval,
+    onOpenAIGeneration: handleOpenAIGeneration,
+    onZoomToFit: zoomToFit,
+  });
 
   // Handle export from ExportDialog
   const handleExport = useCallback(async (format: ExportFormat, settings: ExportSettings) => {
@@ -411,6 +503,7 @@ export function EditorMode(): JSX.Element {
           onClose={() => setExportDialogOpen(false)}
           onExport={handleExport}
           filename="diagram"
+          onError={(message) => showToast({ type: 'error', message })}
         />
 
         {/* Background Removal Tool Modal */}
@@ -483,7 +576,8 @@ export function EditorMode(): JSX.Element {
           <div style={styles.canvasArea}>
             {isLoading && (
               <div style={styles.loadingOverlay}>
-                <div style={styles.loadingSpinner} />
+                <LoadingSpinner size="lg" variant="primary" />
+                <span style={styles.loadingText}>Loading diagram...</span>
               </div>
             )}
 

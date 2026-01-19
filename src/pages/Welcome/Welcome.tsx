@@ -31,6 +31,10 @@ interface Template {
 // Styles
 // ============================================================================
 
+// Focus outline style for accessibility
+const focusOutlineStyle = '2px solid var(--accent-primary)';
+const focusOutlineOffset = '2px';
+
 const styles = {
   page: {
     minHeight: '100vh',
@@ -373,12 +377,25 @@ const templates: Template[] = [
 // Component
 // ============================================================================
 
+// Keyboard handler for accessible interactive elements
+const handleKeyboardActivation = (
+  event: React.KeyboardEvent,
+  callback: () => void
+) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    callback();
+  }
+};
+
 export function Welcome(): JSX.Element {
   const navigate = useNavigate();
   const [recentDiagrams, setRecentDiagrams] = useState<RecentDiagram[]>([]);
   const [hoveredAction, setHoveredAction] = useState<string | null>(null);
   const [hoveredRecent, setHoveredRecent] = useState<string | null>(null);
   const [hoveredTemplate, setHoveredTemplate] = useState<string | null>(null);
+  const [focusedRecent, setFocusedRecent] = useState<string | null>(null);
+  const [focusedTemplate, setFocusedTemplate] = useState<string | null>(null);
 
   // Load recent diagrams from localStorage
   useEffect(() => {
@@ -497,24 +514,33 @@ export function Welcome(): JSX.Element {
           </div>
 
           {recentDiagrams.length > 0 ? (
-            <div style={styles.recentGrid}>
+            <div style={styles.recentGrid} role="list" aria-label="Recent diagrams">
               {recentDiagrams.map((diagram) => (
                 <div
                   key={diagram.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${diagram.name}, last edited ${formatDate(diagram.updatedAt)}`}
                   style={{
                     ...styles.recentCard,
-                    ...(hoveredRecent === diagram.id ? styles.recentCardHover : {}),
+                    ...(hoveredRecent === diagram.id || focusedRecent === diagram.id ? styles.recentCardHover : {}),
+                    outline: focusedRecent === diagram.id ? focusOutlineStyle : 'none',
+                    outlineOffset: focusOutlineOffset,
                   }}
                   onClick={() => handleRecentClick(diagram.id)}
+                  onKeyDown={(e) => handleKeyboardActivation(e, () => handleRecentClick(diagram.id))}
                   onMouseEnter={() => setHoveredRecent(diagram.id)}
                   onMouseLeave={() => setHoveredRecent(null)}
+                  onFocus={() => setFocusedRecent(diagram.id)}
+                  onBlur={() => setFocusedRecent(null)}
                 >
                   <div style={styles.recentThumbnail}>
                     {diagram.thumbnail ? (
                       <img
                         src={diagram.thumbnail}
-                        alt={diagram.name}
+                        alt=""
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        aria-hidden="true"
                       />
                     ) : (
                       <FileIcon />
@@ -543,19 +569,27 @@ export function Welcome(): JSX.Element {
             <h2 style={styles.sectionTitle}>Quick Templates</h2>
           </div>
 
-          <div style={styles.templateGrid}>
+          <div style={styles.templateGrid} role="list" aria-label="Quick templates">
             {templates.map((template) => (
               <div
                 key={template.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`Create ${template.name} template: ${template.description}`}
                 style={{
                   ...styles.templateCard,
-                  ...(hoveredTemplate === template.id ? styles.templateCardHover : {}),
+                  ...(hoveredTemplate === template.id || focusedTemplate === template.id ? styles.templateCardHover : {}),
+                  outline: focusedTemplate === template.id ? focusOutlineStyle : 'none',
+                  outlineOffset: focusOutlineOffset,
                 }}
                 onClick={() => handleTemplateClick(template.id)}
+                onKeyDown={(e) => handleKeyboardActivation(e, () => handleTemplateClick(template.id))}
                 onMouseEnter={() => setHoveredTemplate(template.id)}
                 onMouseLeave={() => setHoveredTemplate(null)}
+                onFocus={() => setFocusedTemplate(template.id)}
+                onBlur={() => setFocusedTemplate(null)}
               >
-                <div style={styles.templateIcon}>{template.icon}</div>
+                <div style={styles.templateIcon} aria-hidden="true">{template.icon}</div>
                 <span style={styles.templateName}>{template.name}</span>
               </div>
             ))}
