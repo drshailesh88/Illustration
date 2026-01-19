@@ -40,13 +40,15 @@ interface MenuBarProps {
   onOpenExportDialog?: () => void;
   /** Callback to open the background removal tool */
   onOpenBackgroundRemoval?: () => void;
+  /** Callback to open the AI generation tool */
+  onOpenAIGeneration?: () => void;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuBarRef = useRef<HTMLDivElement>(null);
 
@@ -353,6 +355,12 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval }: MenuBar
       id: 'image',
       label: 'Image',
       items: [
+        {
+          id: 'ai-generate',
+          label: 'AI Generate Image...',
+          shortcut: 'Ctrl+Shift+A',
+          action: () => onOpenAIGeneration?.(),
+        },
         {
           id: 'remove-background',
           label: 'Remove Background...',

@@ -22,6 +22,7 @@ import { defaultHandDrawnSettings, type HandDrawnSettings } from '../../componen
 import { ExportDialog, type ExportFormat, type ExportSettings } from '../../components/ExportDialog';
 import { exportAsPng, exportAsPdf, exportAsSvg, exportAsPptx } from '../../lib/export';
 import { BackgroundRemovalTool } from '../../components/BackgroundRemoval';
+import { AIGenerationTool } from '../../components/AIGeneration';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
@@ -130,6 +131,7 @@ export function EditorMode(): JSX.Element {
   const [handDrawnSettings, setHandDrawnSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
   const [exportDialogOpen, setExportDialogOpen] = useState(false);
   const [bgRemovalToolOpen, setBgRemovalToolOpen] = useState(false);
+  const [aiGenerationToolOpen, setAIGenerationToolOpen] = useState(false);
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
@@ -172,6 +174,11 @@ export function EditorMode(): JSX.Element {
   // Handle opening background removal tool
   const handleOpenBackgroundRemoval = useCallback(() => {
     setBgRemovalToolOpen(true);
+  }, []);
+
+  // Handle opening AI generation tool
+  const handleOpenAIGeneration = useCallback(() => {
+    setAIGenerationToolOpen(true);
   }, []);
 
   // Handle export from ExportDialog
@@ -383,6 +390,7 @@ export function EditorMode(): JSX.Element {
         <MenuBar
           onOpenExportDialog={handleOpenExportDialog}
           onOpenBackgroundRemoval={handleOpenBackgroundRemoval}
+          onOpenAIGeneration={handleOpenAIGeneration}
         />
 
         {/* Export Dialog */}
@@ -406,6 +414,23 @@ export function EditorMode(): JSX.Element {
             <BackgroundRemovalTool
               isOpen={bgRemovalToolOpen}
               onClose={() => setBgRemovalToolOpen(false)}
+            />
+          </div>
+        )}
+
+        {/* AI Generation Tool Modal */}
+        {aiGenerationToolOpen && (
+          <div
+            style={styles.modalOverlay}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setAIGenerationToolOpen(false);
+              }
+            }}
+          >
+            <AIGenerationTool
+              isOpen={aiGenerationToolOpen}
+              onClose={() => setAIGenerationToolOpen(false)}
             />
           </div>
         )}

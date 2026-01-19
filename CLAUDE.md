@@ -8,16 +8,19 @@
 
 > **READ THIS FIRST** - Resume from where the last session ended
 
-### Last Session: 2026-01-19 (Session 3)
+### Last Session: 2026-01-19 (Session 4)
 
-**Session Status**: ALL CORE FEATURES COMPLETE ✅
+**Session Status**: ALL CORE FEATURES COMPLETE + AI GENERATION WIRED ✅
 
 ### Completed This Session:
-- [x] **Bioicons Integration** - Created src/lib/icons/bioicons.ts with 70 scientific icons across 6 categories (Cell Biology: 14, Molecular Biology: 12, Microbiology: 10, Biochemistry: 10, Laboratory: 12, Anatomy: 12)
-- [x] **BackgroundRemovalTool UI Wiring** - Added "Image" menu with "Remove Background..." (Ctrl+Shift+B), modal overlay integrated
-- [x] **Export Testing** - All 4 formats verified working (PNG, SVG, PDF, PPTX)
-- [x] **fal.ai AI Image Generation** - Installed @fal-ai/serverless-client, created full library and UI component
+- [x] **AIGenerationTool UI Wiring** - Added "AI Generate Image..." (Ctrl+Shift+A) to Image menu, modal overlay integrated
 - [x] **Build verification** - All TypeScript checks pass, production build successful
+
+### Previous Session (2026-01-19 - Session 3):
+- [x] Bioicons Integration - Created src/lib/icons/bioicons.ts with 70 scientific icons
+- [x] BackgroundRemovalTool UI Wiring - Added "Image" menu with "Remove Background..." (Ctrl+Shift+B)
+- [x] Export Testing - All 4 formats verified working (PNG, SVG, PDF, PPTX)
+- [x] fal.ai AI Image Generation - Installed @fal-ai/serverless-client, created full library and UI component
 
 ### Previous Session (2026-01-18):
 - [x] PPTX Export - pptxgenjs installed, src/lib/export/pptx.ts implemented
@@ -25,25 +28,16 @@
 - [x] Pen Tool UI Wiring - PenToolOverlay component created, integrated with Canvas
 - [x] Ralph Loop - All 35 specialties complete
 
-### Files Created This Session:
-- `src/lib/icons/bioicons.ts` - 70 scientific icons with inline SVG paths
-- `src/lib/ai/image-generation.ts` - fal.ai FLUX integration library
-- `src/lib/ai/index.ts` - AI module exports
-- `src/components/AIGeneration/AIGenerationTool.tsx` - Full AI generation UI component
-- `src/components/AIGeneration/index.ts` - Component exports
-
 ### Files Modified This Session:
-- `src/lib/icons/index.ts` - Added bioicons exports and unified search integration
-- `src/lib/index.ts` - Added AI module exports with explicit naming
-- `src/pages/EditorMode/MenuBar.tsx` - Added "Image" menu with background removal
-- `src/pages/EditorMode/EditorMode.tsx` - Wired BackgroundRemovalTool modal
+- `src/pages/EditorMode/MenuBar.tsx` - Added "AI Generate Image..." to Image menu with Ctrl+Shift+A shortcut
+- `src/pages/EditorMode/EditorMode.tsx` - Wired AIGenerationTool modal with overlay
 
 ### Next Session Should:
-1. Wire AIGenerationTool to UI (add to Image menu or toolbar)
-2. Add SciDraw icons integration (1,000+ more icons)
-3. End-to-end feature testing with real usage
-4. Consider building production deployment pipeline
-5. UI polish and user experience improvements
+1. Add SciDraw icons integration (1,000+ more icons)
+2. End-to-end feature testing with real usage
+3. Consider building production deployment pipeline
+4. UI polish and user experience improvements
+5. Add keyboard shortcut handler for Ctrl+Shift+A
 
 ### Blocking Issues:
 - None currently
