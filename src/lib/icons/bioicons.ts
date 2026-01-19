@@ -11,7 +11,9 @@
  * - Microbiology: Bacteria, viruses, fungi
  * - Biochemistry: Pathways, molecules, reactions
  * - Laboratory: Equipment, techniques
+ * - Ecology: Ecosystems, food webs, biogeochemical cycles
  * - Anatomy: Organs, tissues, systems
+ * - Genetics: Inheritance, chromosomes, epigenetics
  *
  * @see https://bioicons.com/
  */
@@ -587,6 +589,147 @@ const laboratoryIcons: BioiconMeta[] = [
 ];
 
 /**
+ * Ecology Icons
+ */
+const ecologyIcons: BioiconMeta[] = [
+  {
+    id: 'food-web',
+    name: 'Food Web',
+    category: 'ecology',
+    keywords: ['food web', 'trophic', 'ecosystem', 'network', 'feeding relationships'],
+    svg: '<circle cx="12" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v0l-5.5 4.5M12 6l5.5 4.5M6.5 13.5l2 5M17.5 13.5l-2 5M10 20h4M7 12h10" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'food-chain',
+    name: 'Food Chain',
+    category: 'ecology',
+    keywords: ['food chain', 'linear', 'trophic level', 'predator prey', 'energy flow'],
+    svg: '<circle cx="4" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 12h4M14 12h4" stroke="currentColor" stroke-width="1.5"/><path d="M9 10l1 2-1 2M17 10l1 2-1 2" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'producer',
+    name: 'Producer',
+    category: 'ecology',
+    keywords: ['producer', 'autotroph', 'plant', 'photosynthesis', 'primary producer'],
+    svg: '<path d="M12 22v-10" stroke="currentColor" stroke-width="1.5"/><path d="M12 12c-4 0-6-4-4-7 1 2 3 3 4 3s3-1 4-3c2 3 0 7-4 7z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7c-2-3-1-5 1-5 0 2 1 3 2 4" fill="none" stroke="currentColor" stroke-width="1"/><path d="M9 20c0-2 1-3 3-3s3 1 3 3" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'primary-consumer',
+    name: 'Primary Consumer',
+    category: 'ecology',
+    keywords: ['herbivore', 'primary consumer', 'grazer', 'plant eater', 'trophic level 2'],
+    svg: '<ellipse cx="10" cy="12" rx="6" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="0.8" fill="currentColor"/><path d="M19 8l2-1M19 11l2 1" stroke="currentColor" stroke-width="1"/><path d="M4 14l-1 4M6 15l0 4M14 15l0 3M12 15l-1 3" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'secondary-consumer',
+    name: 'Secondary Consumer',
+    category: 'ecology',
+    keywords: ['carnivore', 'secondary consumer', 'predator', 'meat eater', 'trophic level 3'],
+    svg: '<ellipse cx="11" cy="12" rx="7" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M18 12c2 0 3-1 3-2s-1-2-3-2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="10" r="1" fill="currentColor"/><path d="M4 13l1 1 1-1 1 1 1-1" stroke="currentColor" stroke-width="1"/><path d="M5 15l-1 4M8 16l0 3M14 16l1 3M17 14l2 3" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'decomposer',
+    name: 'Decomposer',
+    category: 'ecology',
+    keywords: ['decomposer', 'fungi', 'bacteria', 'detritivore', 'nutrient cycling'],
+    svg: '<path d="M12 20c-3 0-5-2-5-4 0-3 2-4 3-6 0-2-1-4-1-6 0-1 1-2 3-2s3 1 3 2c0 2-1 4-1 6 1 2 3 3 3 6 0 2-2 4-5 4z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="14" r="1" fill="currentColor" opacity="0.5"/><circle cx="14" cy="15" r="0.8" fill="currentColor" opacity="0.5"/><circle cx="12" cy="17" r="0.6" fill="currentColor" opacity="0.5"/><path d="M9 6c-2 1-3 0-4-1M15 6c2 1 3 0 4-1" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'energy-pyramid',
+    name: 'Energy Pyramid',
+    category: 'ecology',
+    keywords: ['energy pyramid', 'trophic pyramid', 'biomass', 'ecological pyramid', 'energy transfer'],
+    svg: '<path d="M12 2l10 18H2L12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="14" x2="19" y2="14" stroke="currentColor" stroke-width="1"/><line x1="7" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="1"/><line x1="9" y1="6" x2="15" y2="6" stroke="currentColor" stroke-width="1"/><text x="12" y="18" text-anchor="middle" font-size="3" fill="currentColor">P</text><text x="12" y="13" text-anchor="middle" font-size="3" fill="currentColor">C1</text><text x="12" y="9" text-anchor="middle" font-size="3" fill="currentColor">C2</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'carbon-cycle',
+    name: 'Carbon Cycle',
+    category: 'ecology',
+    keywords: ['carbon cycle', 'CO2', 'biogeochemical', 'respiration', 'photosynthesis'],
+    svg: '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2" stroke="currentColor" stroke-width="1"/><path d="M8 8l2 2M14 14l2 2M8 16l2-2M14 8l2-2" stroke="currentColor" stroke-width="1"/><text x="12" y="13" text-anchor="middle" font-size="4" font-weight="bold" fill="currentColor">C</text><path d="M6 5l1 1M18 5l-1 1M6 19l1-1M18 19l-1-1" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'nitrogen-cycle',
+    name: 'Nitrogen Cycle',
+    category: 'ecology',
+    keywords: ['nitrogen cycle', 'N2', 'fixation', 'nitrification', 'denitrification'],
+    svg: '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4c0 3-2 4-2 6s2 3 2 6" stroke="currentColor" stroke-width="1"/><path d="M12 4c0 3 2 4 2 6s-2 3-2 6" stroke="currentColor" stroke-width="1"/><text x="12" y="13" text-anchor="middle" font-size="4" font-weight="bold" fill="currentColor">N</text><circle cx="12" cy="4" r="1" fill="currentColor"/><circle cx="12" cy="20" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="20" cy="12" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'water-cycle',
+    name: 'Water Cycle',
+    category: 'ecology',
+    keywords: ['water cycle', 'hydrological', 'evaporation', 'precipitation', 'condensation'],
+    svg: '<path d="M4 18c0-2 2-3 4-3s4 1 4 3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 18c0-2 2-3 4-3s4 1 4 3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 14c2-4 4-8 6-10 2 2 4 6 6 10" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 1"/><path d="M4 6c2 0 3-1 5-1s3 1 5 1 3-1 5-1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="0.8" fill="currentColor"/><circle cx="12" cy="6" r="0.8" fill="currentColor"/><circle cx="18" cy="6" r="0.8" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'ecosystem',
+    name: 'Ecosystem',
+    category: 'ecology',
+    keywords: ['ecosystem', 'biome', 'community', 'habitat', 'environment'],
+    svg: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 16c0-2 2-4 4-4s4 2 4 4" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 12v-6" stroke="currentColor" stroke-width="1.5"/><path d="M12 6c-2 0-3-2-2-4 1 1 2 2 2 2s1-1 2-2c1 2 0 4-2 4z" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="6" cy="14" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="18" cy="14" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M3 18c2-1 4-1 6 0M15 18c2-1 4-1 6 0" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'population-growth',
+    name: 'Population Growth Curve',
+    category: 'ecology',
+    keywords: ['population growth', 'exponential', 'logistic', 'S curve', 'J curve'],
+    svg: '<path d="M4 18L4 4M4 18h16" stroke="currentColor" stroke-width="1.5"/><path d="M6 16c2-1 4-2 6-6s4-4 6-4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="16" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="18" cy="6" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'carrying-capacity',
+    name: 'Carrying Capacity',
+    category: 'ecology',
+    keywords: ['carrying capacity', 'K', 'logistic growth', 'population limit', 'equilibrium'],
+    svg: '<path d="M4 18L4 4M4 18h16" stroke="currentColor" stroke-width="1.5"/><path d="M4 8h16" stroke="currentColor" stroke-width="1" stroke-dasharray="3 2"/><path d="M6 16c1-1 2-3 4-5s4-2 8-2" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="21" y="9" font-size="4" font-weight="bold" fill="currentColor">K</text><circle cx="6" cy="16" r="0.8" fill="currentColor"/><circle cx="10" cy="11" r="0.8" fill="currentColor"/><circle cx="18" cy="9" r="0.8" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'biodiversity',
+    name: 'Biodiversity',
+    category: 'ecology',
+    keywords: ['biodiversity', 'species richness', 'diversity', 'variety', 'conservation'],
+    svg: '<circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="6" cy="14" rx="3" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="12" width="4" height="4" rx="0.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 18c-1-2 0-4 2-4M12 18c1-2 0-4-2-4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="1" fill="currentColor"/><path d="M8 8v2M16 8v2" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'habitat',
+    name: 'Habitat',
+    category: 'ecology',
+    keywords: ['habitat', 'niche', 'environment', 'home range', 'territory'],
+    svg: '<ellipse cx="12" cy="14" rx="9" ry="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 12c0-3 1-6 3-7" fill="none" stroke="currentColor" stroke-width="1"/><path d="M18 12c0-3-1-6-3-7" fill="none" stroke="currentColor" stroke-width="1"/><path d="M12 4v2M12 6c-1 0-2 1-2 2" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="10" cy="14" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="15" cy="13" r="1" fill="none" stroke="currentColor" stroke-width="1"/><path d="M6 17c1 0 2-1 2-1s1 1 2 1" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+];
+
+/**
  * Anatomy Icons
  */
 const anatomyIcons: BioiconMeta[] = [
@@ -701,6 +844,174 @@ const anatomyIcons: BioiconMeta[] = [
 ];
 
 /**
+ * Genetics Icons
+ */
+const geneticsIcons: BioiconMeta[] = [
+  {
+    id: 'mendelian-inheritance',
+    name: 'Mendelian Inheritance',
+    category: 'genetics',
+    keywords: ['mendel', 'dominant', 'recessive', 'inheritance', 'trait', 'allele'],
+    svg: '<circle cx="12" cy="4" r="2" fill="currentColor"/><line x1="12" y1="6" x2="12" y2="8" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="6" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="18" y1="8" x2="18" y2="12" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="14" r="2" fill="currentColor"/><circle cx="18" cy="14" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="16" x2="6" y2="18" stroke="currentColor" stroke-width="1.5"/><line x1="18" y1="16" x2="18" y2="18" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="20" r="2" fill="currentColor" opacity="0.5"/><circle cx="18" cy="20" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'punnett-square',
+    name: 'Punnett Square',
+    category: 'genetics',
+    keywords: ['punnett', 'genetics', 'cross', 'genotype', 'phenotype', 'probability'],
+    svg: '<rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.5"/><text x="8" y="10" text-anchor="middle" font-size="4" fill="currentColor">Aa</text><text x="16" y="10" text-anchor="middle" font-size="4" fill="currentColor">AA</text><text x="8" y="18" text-anchor="middle" font-size="4" fill="currentColor">aa</text><text x="16" y="18" text-anchor="middle" font-size="4" fill="currentColor">Aa</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'pedigree-chart',
+    name: 'Pedigree Chart',
+    category: 'genetics',
+    keywords: ['pedigree', 'family tree', 'inheritance', 'genetic disorder', 'lineage'],
+    svg: '<rect x="4" y="2" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="4" x2="14" y2="4" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="4" x2="11" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="10" x2="5" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="10" x2="11" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="17" y1="10" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="12" width="4" height="4" fill="currentColor"/><circle cx="11" cy="14" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="14" r="2" fill="currentColor"/><line x1="5" y1="16" x2="5" y2="18" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="18" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'karyotype',
+    name: 'Karyotype',
+    category: 'genetics',
+    keywords: ['karyotype', 'chromosome', 'cytogenetics', 'chromosome analysis', 'aneuploidy'],
+    svg: '<path d="M3 4c0 2 1 4 1 6s-1 4-1 6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 4c0 2-1 4-1 6s1 4 1 6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 4c0 2 1 4 1 6s-1 4-1 6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 4c0 2-1 4-1 6s1 4 1 6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M13 5c0 1.5 1 3 1 5s-1 3.5-1 5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M15 5c0 1.5-1 3-1 5s1 3.5 1 5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M18 6c0 1 1 2 1 4s-1 3-1 4" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 6c0 1-1 2-1 4s1 3 1 4" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="2" y1="18" x2="22" y2="18" stroke="currentColor" stroke-width="1"/><text x="4" y="22" font-size="3" fill="currentColor">1</text><text x="9" y="22" font-size="3" fill="currentColor">2</text><text x="14" y="22" font-size="3" fill="currentColor">3</text><text x="19" y="22" font-size="3" fill="currentColor">4</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'x-chromosome',
+    name: 'X Chromosome',
+    category: 'genetics',
+    keywords: ['X chromosome', 'sex chromosome', 'female', 'XX', 'genetics'],
+    svg: '<path d="M8 2c-2 0-3 2-3 4s1 4 3 4c-2 0-3 2-3 4s1 6 3 6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 2c2 0 3 2 3 4s-1 4-3 4c2 0 3 2 3 4s-1 6-3 6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="10" rx="2" ry="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'y-chromosome',
+    name: 'Y Chromosome',
+    category: 'genetics',
+    keywords: ['Y chromosome', 'sex chromosome', 'male', 'XY', 'genetics', 'SRY'],
+    svg: '<path d="M9 2c-2 0-3 1-3 3s1 3 3 3c-2 0-3 2-3 3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 2c2 0 3 1 3 3s-1 3-3 3c2 0 3 2 3 3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="9" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="8" rx="1.5" ry="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'autosome',
+    name: 'Autosome',
+    category: 'genetics',
+    keywords: ['autosome', 'chromosome', 'non-sex chromosome', 'somatic', 'diploid'],
+    svg: '<path d="M8 3c-2 0-3 2-3 5s1 3 3 3c-2 0-3 1-3 4s1 5 3 5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3c2 0 3 2 3 5s-1 3-3 3c2 0 3 1 3 4s-1 5-3 5" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="9" width="4" height="4" rx="1" fill="currentColor" opacity="0.3"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'centromere',
+    name: 'Centromere',
+    category: 'genetics',
+    keywords: ['centromere', 'chromosome', 'kinetochore', 'spindle', 'cell division'],
+    svg: '<path d="M7 2c-2 0-3 2-3 4s1 4 3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M17 2c2 0 3 2 3 4s-1 4-3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 14c-2 0-3 2-3 4s1 4 3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M17 14c2 0 3 2 3 4s-1 4-3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="12" cy="11" rx="6" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/><line x1="7" y1="10" x2="7" y2="14" stroke="currentColor" stroke-width="1.5"/><line x1="17" y1="10" x2="17" y2="14" stroke="currentColor" stroke-width="1.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'telomere',
+    name: 'Telomere',
+    category: 'genetics',
+    keywords: ['telomere', 'chromosome end', 'aging', 'telomerase', 'TTAGGG'],
+    svg: '<path d="M8 6c-2 0-3 2-3 4s1 4 3 4c-2 0-3 2-3 4s1 4 3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 6c2 0 3 2 3 4s-1 4-3 4c2 0 3 2 3 4s-1 4-3 4" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="2" width="4" height="4" rx="2" fill="currentColor" opacity="0.6"/><rect x="14" y="2" width="4" height="4" rx="2" fill="currentColor" opacity="0.6"/><path d="M7 4h2M15 4h2" stroke="currentColor" stroke-width="0.5"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'dna-methylation',
+    name: 'DNA Methylation',
+    category: 'genetics',
+    keywords: ['methylation', 'epigenetics', 'CpG', 'gene silencing', '5mC'],
+    svg: '<path d="M4 8c2 0 3 2 5 2s3-2 5-2 3 2 5 2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 14c2 0 3-2 5-2s3 2 5 2 3-2 5-2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="6" y2="14" stroke="currentColor" stroke-width="1"/><line x1="12" y1="8" x2="12" y2="14" stroke="currentColor" stroke-width="1"/><line x1="18" y1="8" x2="18" y2="14" stroke="currentColor" stroke-width="1"/><circle cx="6" cy="5" r="2" fill="currentColor"/><text x="6" y="6" text-anchor="middle" font-size="2.5" fill="white">M</text><circle cx="12" cy="5" r="2" fill="currentColor"/><text x="12" y="6" text-anchor="middle" font-size="2.5" fill="white">M</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'histone-modification',
+    name: 'Histone Modification',
+    category: 'genetics',
+    keywords: ['histone', 'acetylation', 'methylation', 'epigenetics', 'chromatin', 'nucleosome'],
+    svg: '<circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 12c2-4 4-6 8-6s6 2 8 6-4 6-8 6-6-2-8-6z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="12" y1="7" x2="12" y2="3" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="9" x2="19" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="17" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="7" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="3" r="1" fill="currentColor"/><circle cx="19" cy="6" r="1" fill="currentColor"/><circle cx="21" cy="12" r="1" fill="currentColor"/><circle cx="3" cy="12" r="1" fill="currentColor"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'chromatin-remodeling',
+    name: 'Chromatin Remodeling',
+    category: 'genetics',
+    keywords: ['chromatin', 'remodeling', 'nucleosome', 'SWI/SNF', 'gene expression'],
+    svg: '<circle cx="6" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 8c1-2 2-2 2 0" stroke="currentColor" stroke-width="1"/><path d="M2 8c1-4 2-4 4 0" stroke="currentColor" stroke-width="1"/><path d="M17 8c1-4 1-4 3 0" stroke="currentColor" stroke-width="1"/><path d="M4 14l4-2 4 2 4-2 4 2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8" cy="16" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 16h4" stroke="currentColor" stroke-width="1"/><path d="M12 12l0 2" stroke="currentColor" stroke-width="1" stroke-dasharray="1 1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'gene-knockout',
+    name: 'Gene Knockout',
+    category: 'genetics',
+    keywords: ['knockout', 'KO', 'loss of function', 'deletion', 'null mutation'],
+    svg: '<rect x="2" y="10" width="20" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="10" width="4" height="4" fill="currentColor" opacity="0.5"/><rect x="10" y="10" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 1"/><rect x="16" y="10" width="4" height="4" fill="currentColor" opacity="0.5"/><line x1="8" y1="6" x2="16" y2="18" stroke="currentColor" stroke-width="2"/><line x1="16" y1="6" x2="8" y2="18" stroke="currentColor" stroke-width="2"/><text x="12" y="22" text-anchor="middle" font-size="3" fill="currentColor">KO</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'gene-knockin',
+    name: 'Gene Knockin',
+    category: 'genetics',
+    keywords: ['knockin', 'KI', 'insertion', 'transgene', 'targeted insertion'],
+    svg: '<rect x="2" y="10" width="20" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="10" width="4" height="4" fill="currentColor" opacity="0.5"/><rect x="16" y="10" width="4" height="4" fill="currentColor" opacity="0.5"/><rect x="9" y="8" width="6" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v4M10 4l2 2 2-2" stroke="currentColor" stroke-width="1.5"/><text x="12" y="13" text-anchor="middle" font-size="3" fill="currentColor">+</text><circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.3"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'crispr-cas9',
+    name: 'CRISPR Cas9',
+    category: 'genetics',
+    keywords: ['CRISPR', 'Cas9', 'gene editing', 'genome editing', 'nuclease', 'PAM'],
+    svg: '<ellipse cx="12" cy="12" rx="8" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 12c0-2 2-4 4-4h8c2 0 4 2 4 4" fill="none" stroke="currentColor" stroke-width="1"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l4 4M14 10l-4 4" stroke="currentColor" stroke-width="1.5"/><path d="M2 8c1 0 2-1 2-2" stroke="currentColor" stroke-width="1"/><path d="M22 8c-1 0-2-1-2-2" stroke="currentColor" stroke-width="1"/><text x="12" y="20" text-anchor="middle" font-size="3" fill="currentColor">Cas9</text>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'guide-rna',
+    name: 'Guide RNA',
+    category: 'genetics',
+    keywords: ['gRNA', 'sgRNA', 'guide RNA', 'CRISPR', 'targeting', 'spacer'],
+    svg: '<path d="M4 6c2 2 4 0 6 2s4 0 6 2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 10c2 2 2 4 0 6s-4 2-6 0-2-4 0-6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="10" cy="8" r="1" fill="currentColor"/><path d="M12 14l6-6" stroke="currentColor" stroke-width="1" stroke-dasharray="2 1"/><rect x="16" y="4" width="6" height="4" fill="none" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'transgene',
+    name: 'Transgene',
+    category: 'genetics',
+    keywords: ['transgene', 'transgenic', 'foreign gene', 'genetic engineering', 'GMO'],
+    svg: '<rect x="2" y="10" width="20" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="10" width="4" height="4" fill="currentColor" opacity="0.3"/><rect x="16" y="10" width="4" height="4" fill="currentColor" opacity="0.3"/><rect x="9" y="9" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/><path d="M12 6v2M9 6h6" stroke="currentColor" stroke-width="1"/><text x="12" y="14" text-anchor="middle" font-size="4" fill="currentColor">T</text><path d="M9 18c1-1 2-1 3 0s2 1 3 0" stroke="currentColor" stroke-width="1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+  {
+    id: 'snp',
+    name: 'SNP',
+    category: 'genetics',
+    keywords: ['SNP', 'single nucleotide polymorphism', 'mutation', 'variant', 'polymorphism'],
+    svg: '<path d="M4 8c2 0 3 2 5 2s3-2 5-2 3 2 5 2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 16c2 0 3-2 5-2s3 2 5 2 3-2 5-2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="6" y2="16" stroke="currentColor" stroke-width="1"/><line x1="18" y1="8" x2="18" y2="16" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="16" r="2" fill="currentColor"/><text x="12" y="9" text-anchor="middle" font-size="2.5" fill="currentColor">A</text><text x="12" y="17" text-anchor="middle" font-size="2.5" fill="white">G</text><path d="M14 10l0 4" stroke="currentColor" stroke-width="1" stroke-dasharray="1 1"/>',
+    viewBox: VIEWBOX,
+    license: 'CC0',
+  },
+];
+
+/**
  * Combined bioicons list
  */
 export const bioiconsList: BioiconMeta[] = [
@@ -709,7 +1020,9 @@ export const bioiconsList: BioiconMeta[] = [
   ...microbiologyIcons,
   ...biochemistryIcons,
   ...laboratoryIcons,
+  ...ecologyIcons,
   ...anatomyIcons,
+  ...geneticsIcons,
 ];
 
 /**
@@ -741,10 +1054,20 @@ export const bioiconCategories = {
     description: 'Lab equipment and techniques',
     count: laboratoryIcons.length,
   },
+  'ecology': {
+    name: 'Ecology',
+    description: 'Ecosystems, food webs, and biogeochemical cycles',
+    count: ecologyIcons.length,
+  },
   'anatomy': {
     name: 'Anatomy',
     description: 'Organs, tissues, and body systems',
     count: anatomyIcons.length,
+  },
+  'genetics': {
+    name: 'Genetics',
+    description: 'Genetic inheritance, chromosomes, and epigenetics',
+    count: geneticsIcons.length,
   },
 };
 

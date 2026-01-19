@@ -11,6 +11,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { Welcome } from './pages/Welcome';
 import { AgentMode } from './pages/AgentMode';
 import { EditorMode } from './pages/EditorMode';
+import { CreditsPage } from './pages/CreditsPage';
 
 // ============================================================================
 // App Component
@@ -24,6 +25,7 @@ import { EditorMode } from './pages/EditorMode';
  * - "/agent" -> AgentMode page (AI-powered diagram generation)
  * - "/editor" -> EditorMode page (manual editing)
  * - "/editor/:id" -> EditorMode with loaded diagram
+ * - "/credits" -> CreditsPage (attribution and licenses)
  */
 function App(): JSX.Element {
   return (
@@ -50,6 +52,9 @@ function App(): JSX.Element {
 
               {/* Editor with loaded diagram by ID */}
               <Route path="/editor/:id" element={<EditorMode />} />
+
+              {/* Credits and attribution page */}
+              <Route path="/credits" element={<CreditsPage />} />
 
               {/* Fallback to Welcome for unknown routes */}
               <Route path="*" element={<Welcome />} />
