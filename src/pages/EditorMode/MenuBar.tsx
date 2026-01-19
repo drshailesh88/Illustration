@@ -42,13 +42,15 @@ interface MenuBarProps {
   onOpenBackgroundRemoval?: () => void;
   /** Callback to open the AI generation tool */
   onOpenAIGeneration?: () => void;
+  /** Callback to open the shape generator panel */
+  onOpenShapeGenerator?: (shapeType?: string) => void;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuBarRef = useRef<HTMLDivElement>(null);
 
@@ -348,6 +350,58 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           label: 'Ungroup',
           shortcut: 'Ctrl+Shift+G',
           action: () => ungroupSelected(),
+        },
+      ],
+    },
+    {
+      id: 'insert',
+      label: 'Insert',
+      items: [
+        {
+          id: 'scientific-shapes',
+          label: 'Scientific Shapes',
+          submenu: [
+            {
+              id: 'shape-dna',
+              label: 'DNA Helix',
+              shortcut: 'Ctrl+Shift+D',
+              action: () => onOpenShapeGenerator?.('dna'),
+            },
+            {
+              id: 'shape-membrane',
+              label: 'Cell Membrane',
+              shortcut: 'Ctrl+Shift+M',
+              action: () => onOpenShapeGenerator?.('membrane'),
+            },
+            {
+              id: 'shape-cell-layer',
+              label: 'Cell Layer / Tissue',
+              action: () => onOpenShapeGenerator?.('cellLayer'),
+            },
+            {
+              id: 'shape-neuron',
+              label: 'Neuron',
+              action: () => onOpenShapeGenerator?.('neuron'),
+            },
+            {
+              id: 'shape-mitochondria',
+              label: 'Mitochondria',
+              action: () => onOpenShapeGenerator?.('mitochondria'),
+            },
+            { id: 'divider1', label: '', divider: true },
+            {
+              id: 'shape-pathway-arrow',
+              label: 'Pathway Arrows',
+              action: () => onOpenShapeGenerator?.('arrow'),
+            },
+          ],
+        },
+        { id: 'divider1', label: '', divider: true },
+        {
+          id: 'all-shapes',
+          label: 'All Scientific Shapes...',
+          shortcut: 'Ctrl+Shift+S',
+          action: () => onOpenShapeGenerator?.(),
         },
       ],
     },

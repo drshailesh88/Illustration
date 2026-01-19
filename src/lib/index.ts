@@ -94,3 +94,92 @@ export {
   type GenerationResult,
   type AIProgressCallback,
 } from './ai';
+
+// Visualization module - Plotly.js integration for data visualization
+// @see https://plotly.com/javascript/
+export {
+  // Chart creation functions
+  createLineChart,
+  createScatterPlot,
+  createBarChart,
+  createPieChart,
+  createHeatmap,
+  createBoxPlot,
+  createHistogram,
+  createAreaChart,
+  createViolinPlot,
+  // Rendering functions
+  renderChart,
+  updateChart,
+  chartToSvg,
+  chartToPng,
+  destroyChart,
+  // Data parsing utilities
+  parseCSV,
+  parseTSV,
+  parseJSON,
+  // Constants
+  COLOR_SCHEMES,
+  // Plotly instance
+  Plotly,
+  // Types
+  type ChartType,
+  type ColorScheme,
+  type ChartStyle,
+  type DataSeries,
+  type HeatmapData,
+  type PieData,
+  type BoxPlotData,
+  type ChartConfig,
+  type ChartResult,
+  type PlotlyHTMLElement,
+} from './visualization';
+
+// Visualization presets for scientific charts
+export {
+  // Preset functions
+  createGeneExpressionHeatmap,
+  createKaplanMeierCurve,
+  createDoseResponseCurve,
+  createWesternBlotChart,
+  createFlowCytometryPlot,
+  createTimeSeriesChart,
+  createBarWithErrorChart,
+  createVolcanoPlot,
+  createGrowthCurve,
+  createELISAStandardCurve,
+  createCellViabilityChart,
+  // Sample data generators
+  sampleGeneExpressionData,
+  sampleKaplanMeierData,
+  sampleDoseResponseData,
+  sampleWesternBlotData,
+  sampleFlowCytometryData,
+  sampleTimeSeriesData,
+  sampleBarWithErrorData,
+  sampleVolcanoPlotData,
+  sampleGrowthCurveData,
+  sampleELISAData,
+  sampleCellViabilityData,
+  // Preset registry
+  PRESET_INFO,
+  getPresetById,
+  getSampleData,
+  // Style presets
+  SCIENTIFIC_STYLE,
+  PUBLICATION_STYLE,
+  // Types
+  type PresetType,
+  type PresetInfo,
+  type GeneExpressionData,
+  type SurvivalData,
+  type DoseResponseData,
+  type WesternBlotData,
+  type FlowCytometryData,
+  type TimeSeriesData,
+  type BarWithErrorData,
+  type VolcanoPlotData,
+  type GrowthCurveData,
+  type ELISAData,
+  type CellViabilityData,
+} from './visualization/presets';

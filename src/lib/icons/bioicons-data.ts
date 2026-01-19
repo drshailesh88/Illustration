@@ -21244,21 +21244,81 @@ export const bioiconsMetadata: BioiconEntry[] = [
   }
 ];
 
-export const bioiconCategories = ["Animals","Blood_Immunology","Cell_culture","Cell_lines","Cell_membrane","Chemistry","Chemo-_and_Bioinformatics","Computer_hardware","General_items","Genetics","Human_physiology","Intracellular_components","Lab_apparatus","Machine_Learning","Microbiology","Molecular_modelling","Nucleic_acids","Oncology","Parasites","Plants_Algae","Receptors_channels","Safety_symbols","Scientific_graphs","Tissues","Viruses"];
+/**
+ * Categories available in the bioicons library (25 total)
+ * These match the actual category values in the metadata (lowercase with spaces)
+ */
+export const bioiconCategories = [
+  "animals",
+  "blood immunology",
+  "cell culture",
+  "cell lines",
+  "cell membrane",
+  "chemistry",
+  "chemo- and bioinformatics",
+  "computer hardware",
+  "general items",
+  "genetics",
+  "human physiology",
+  "intracellular components",
+  "lab apparatus",
+  "machine learning",
+  "microbiology",
+  "molecular modelling",
+  "nucleic acids",
+  "oncology",
+  "parasites",
+  "plants algae",
+  "receptors channels",
+  "safety symbols",
+  "scientific graphs",
+  "tissues",
+  "viruses"
+] as const;
 
+export type BioiconCategory = typeof bioiconCategories[number];
+
+/**
+ * Search bioicons by query string (searches name, keywords, and category)
+ */
 export function searchBioiconsMetadata(query: string): BioiconEntry[] {
   const q = query.toLowerCase();
   return bioiconsMetadata.filter(icon =>
     icon.name.toLowerCase().includes(q) ||
-    icon.keywords.some(k => k.includes(q)) ||
-    icon.category.includes(q)
+    icon.keywords.some(k => k.toLowerCase().includes(q)) ||
+    icon.category.toLowerCase().includes(q)
   );
 }
 
+/**
+ * Get bioicons by category
+ */
+export function getBioiconsMetadataByCategory(category: string): BioiconEntry[] {
+  const normalizedCategory = category.toLowerCase();
+  return bioiconsMetadata.filter(icon => icon.category.toLowerCase() === normalizedCategory);
+}
+
+/**
+ * Get URL to load a bioicon SVG file
+ */
 export function getBioiconsUrl(icon: BioiconEntry): string {
   return `/icons/bioicons/${icon.file}`;
 }
 
+/**
+ * Get total count of bioicons in the full library
+ */
 export function getBioiconsMetadataCount(): number {
   return bioiconsMetadata.length;
+}
+
+/**
+ * Get count of icons per category
+ */
+export function getBioiconsCountsByCategory(): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const icon of bioiconsMetadata) {
+    counts[icon.category] = (counts[icon.category] || 0) + 1;
+  }
+  return counts;
 }

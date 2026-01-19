@@ -23,6 +23,7 @@ import { ExportDialog, type ExportFormat, type ExportSettings } from '../../comp
 import { exportAsPng, exportAsPdf, exportAsSvg, exportAsPptx } from '../../lib/export';
 import { BackgroundRemovalTool } from '../../components/BackgroundRemoval';
 import { AIGenerationTool } from '../../components/AIGeneration';
+import { ShapeGeneratorPanel, type ShapeType } from '../../components/tools';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
@@ -132,6 +133,8 @@ export function EditorMode(): JSX.Element {
   const [exportDialogOpen, setExportDialogOpen] = useState(false);
   const [bgRemovalToolOpen, setBgRemovalToolOpen] = useState(false);
   const [aiGenerationToolOpen, setAIGenerationToolOpen] = useState(false);
+  const [shapeGeneratorOpen, setShapeGeneratorOpen] = useState(false);
+  const [initialShapeType, setInitialShapeType] = useState<ShapeType>('dna');
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
@@ -179,6 +182,14 @@ export function EditorMode(): JSX.Element {
   // Handle opening AI generation tool
   const handleOpenAIGeneration = useCallback(() => {
     setAIGenerationToolOpen(true);
+  }, []);
+
+  // Handle opening shape generator panel
+  const handleOpenShapeGenerator = useCallback((shapeType?: string) => {
+    if (shapeType) {
+      setInitialShapeType(shapeType as ShapeType);
+    }
+    setShapeGeneratorOpen(true);
   }, []);
 
   // Handle export from ExportDialog
@@ -391,6 +402,7 @@ export function EditorMode(): JSX.Element {
           onOpenExportDialog={handleOpenExportDialog}
           onOpenBackgroundRemoval={handleOpenBackgroundRemoval}
           onOpenAIGeneration={handleOpenAIGeneration}
+          onOpenShapeGenerator={handleOpenShapeGenerator}
         />
 
         {/* Export Dialog */}
@@ -435,6 +447,24 @@ export function EditorMode(): JSX.Element {
           </div>
         )}
 
+        {/* Shape Generator Panel Modal */}
+        {shapeGeneratorOpen && (
+          <div
+            style={styles.modalOverlay}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setShapeGeneratorOpen(false);
+              }
+            }}
+          >
+            <ShapeGeneratorPanel
+              isOpen={shapeGeneratorOpen}
+              onClose={() => setShapeGeneratorOpen(false)}
+              initialShape={initialShapeType}
+            />
+          </div>
+        )}
+
         {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
         <IllustratorToolbar
           canvas={canvas}
@@ -447,7 +477,7 @@ export function EditorMode(): JSX.Element {
         {/* Main Content Area */}
         <div style={styles.main}>
           {/* Left Toolbar */}
-          <Toolbar />
+          <Toolbar onOpenShapeGenerator={handleOpenShapeGenerator} />
 
           {/* Center Canvas Area */}
           <div style={styles.canvasArea}>

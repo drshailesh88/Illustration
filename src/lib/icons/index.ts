@@ -435,9 +435,12 @@ export {
   bioiconsMetadata,
   bioiconCategories as bioiconsFullCategories,
   searchBioiconsMetadata,
+  getBioiconsMetadataByCategory,
   getBioiconsUrl,
   getBioiconsMetadataCount,
+  getBioiconsCountsByCategory,
   type BioiconEntry,
+  type BioiconCategory,
 } from './bioicons-data';
 
 export {

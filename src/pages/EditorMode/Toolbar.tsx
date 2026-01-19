@@ -13,12 +13,24 @@ import { ToolType } from '../../types/index';
 // Types
 // ============================================================================
 
+interface ToolbarProps {
+  /** Callback to open the shape generator panel */
+  onOpenShapeGenerator?: () => void;
+}
+
 interface ToolButtonProps {
   tool: ToolType;
   icon: React.ReactNode;
   label: string;
   shortcut?: string;
   isActive: boolean;
+  onClick: () => void;
+}
+
+interface ActionButtonProps {
+  icon: React.ReactNode;
+  label: string;
+  shortcut?: string;
   onClick: () => void;
 }
 
@@ -178,6 +190,16 @@ const ZoomIcon = () => (
   </svg>
 );
 
+const ScientificShapesIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 15c6.667-6 13.333 0 20-6" />
+    <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
+    <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
+    <path d="M17 6l-2.5-2.5" />
+    <path d="M7 18l2.5 2.5" />
+  </svg>
+);
+
 // ============================================================================
 // Tool Button Component
 // ============================================================================
@@ -198,6 +220,32 @@ function ToolButton({ tool: _tool, icon, label, shortcut, isActive, onClick }: T
       title={`${label}${shortcut ? ` (${shortcut})` : ''}`}
       aria-label={label}
       aria-pressed={isActive}
+    >
+      {icon}
+      {isHovered && (
+        <div style={styles.tooltip}>
+          {label}
+          {shortcut && <span style={styles.tooltipShortcut}>{shortcut}</span>}
+        </div>
+      )}
+    </button>
+  );
+}
+
+function ActionButton({ icon, label, shortcut, onClick }: ActionButtonProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <button
+      style={{
+        ...styles.toolButton,
+        ...(isHovered ? styles.toolButtonHover : {}),
+      }}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      title={`${label}${shortcut ? ` (${shortcut})` : ''}`}
+      aria-label={label}
     >
       {icon}
       {isHovered && (
@@ -260,7 +308,7 @@ const toolGroups: ToolGroup[] = [
 // Toolbar Component
 // ============================================================================
 
-export function Toolbar(): JSX.Element {
+export function Toolbar({ onOpenShapeGenerator }: ToolbarProps): JSX.Element {
   const activeTool = useActiveTool();
   const setActiveTool = useEditorStore((state) => state.setActiveTool);
 
@@ -284,6 +332,17 @@ export function Toolbar(): JSX.Element {
           </div>
         </React.Fragment>
       ))}
+
+      {/* Scientific Shapes */}
+      <div style={styles.divider} />
+      <div style={styles.toolGroup} role="group" aria-label="Scientific Shapes">
+        <ActionButton
+          icon={<ScientificShapesIcon />}
+          label="Scientific Shapes"
+          shortcut="Ctrl+Shift+S"
+          onClick={() => onOpenShapeGenerator?.()}
+        />
+      </div>
     </aside>
   );
 }
