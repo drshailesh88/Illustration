@@ -623,6 +623,339 @@ export const fiberOptics: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL OPTICS TEMPLATES
+// =============================================================================
+
+/**
+ * Michelson Interferometer template
+ */
+export const michelsonInterferometer: DiagramTemplate = {
+  id: 'optics-michelson',
+  name: 'Michelson Interferometer',
+  description: 'Two-beam interferometer for precision measurements',
+  domain: 'physics',
+  promptTemplate: `Create a Michelson interferometer diagram:
+- Light source: {{lightSource}}
+- Beam splitter: {{beamSplitter}}
+- Mirror positions: {{mirrorPositions}}
+- Path difference: {{pathDifference}}
+- Fringe pattern: {{fringePattern}}
+- Applications: {{applications}}
+{{#additionalNotes}}LIGO connection: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'lightSource',
+    'beamSplitter',
+    'mirrorPositions',
+    'pathDifference',
+    'fringePattern',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    S["Source"] --> BS["Beam Splitter"]
+    BS --> M1["Mirror 1"]
+    BS --> M2["Mirror 2"]
+    M1 --> BS
+    M2 --> BS
+    BS --> D["Detector"]
+    subgraph Fringes
+        F["Δ = 2d cosθ = mλ"]
+    end`,
+};
+
+/**
+ * Fabry-Perot Interferometer template
+ */
+export const fabryPerotInterferometer: DiagramTemplate = {
+  id: 'optics-fabry-perot',
+  name: 'Fabry-Perot Interferometer',
+  description: 'Multiple-beam interferometer for high-resolution spectroscopy',
+  domain: 'physics',
+  promptTemplate: `Create a Fabry-Perot interferometer diagram:
+- Mirror reflectivity: {{mirrorReflectivity}}
+- Cavity spacing: {{cavitySpacing}}
+- Free spectral range: {{freeSpectralRange}}
+- Finesse: {{finesse}}
+- Resolution: {{resolution}}
+- Airy function: {{airyFunction}}
+{{#additionalNotes}}Laser applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'mirrorReflectivity',
+    'cavitySpacing',
+    'freeSpectralRange',
+    'finesse',
+    'resolution',
+    'airyFunction',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Cavity["Fabry-Perot Cavity"]
+        M1["Mirror R"]
+        GAP["Spacing d"]
+        M2["Mirror R"]
+    end
+    I["Incident"] --> M1
+    M1 --> M2
+    M2 --> T["Transmitted"]
+    subgraph Props
+        FSR["FSR = c/2d"]
+        FIN["F = π√R/(1-R)"]
+    end`,
+};
+
+/**
+ * Holography template
+ */
+export const holography: DiagramTemplate = {
+  id: 'optics-holography',
+  name: 'Holography',
+  description: 'Recording and reconstruction of 3D images',
+  domain: 'physics',
+  promptTemplate: `Create a holography diagram:
+- Recording setup: {{recordingSetup}}
+- Reference beam: {{referenceBeam}}
+- Object beam: {{objectBeam}}
+- Hologram type: {{hologramType}}
+- Reconstruction: {{reconstruction}}
+- Applications: {{applications}}
+{{#additionalNotes}}Coherence requirements: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'recordingSetup',
+    'referenceBeam',
+    'objectBeam',
+    'hologramType',
+    'reconstruction',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Recording
+        L["Laser"] --> BS["Beam Splitter"]
+        BS --> REF["Reference Beam"]
+        BS --> OBJ["Object Beam"]
+        REF --> H["Hologram"]
+        OBJ --> O["Object"] --> H
+    end
+    subgraph Playback
+        H2["Hologram + Ref"] --> I["3D Image"]
+    end`,
+};
+
+/**
+ * Optical Activity template
+ */
+export const opticalActivity: DiagramTemplate = {
+  id: 'optics-optical-activity',
+  name: 'Optical Activity',
+  description: 'Rotation of polarization by chiral substances',
+  domain: 'physics',
+  promptTemplate: `Create an optical activity diagram:
+- Chiral substance: {{chiralSubstance}}
+- Specific rotation: {{specificRotation}}
+- Path length: {{pathLength}}
+- Concentration: {{concentration}}
+- Dextro vs levo: {{dextroLevo}}
+- Applications: {{applications}}
+{{#additionalNotes}}Saccharimetry: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'chiralSubstance',
+    'specificRotation',
+    'pathLength',
+    'concentration',
+    'dextroLevo',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    P1["Polarizer"] --> S["Chiral Sample"]
+    S --> P2["Analyzer"]
+    subgraph Rotation
+        R["α = [α]lc"]
+        D["+ = dextrorotatory"]
+        L["- = levorotatory"]
+    end`,
+};
+
+/**
+ * Birefringence template
+ */
+export const birefringence: DiagramTemplate = {
+  id: 'optics-birefringence',
+  name: 'Birefringence',
+  description: 'Double refraction in anisotropic crystals',
+  domain: 'physics',
+  promptTemplate: `Create a birefringence diagram:
+- Crystal type: {{crystalType}}
+- Ordinary ray: {{ordinaryRay}}
+- Extraordinary ray: {{extraordinaryRay}}
+- Optic axis: {{opticAxis}}
+- Retardation: {{retardation}}
+- Wave plates: {{wavePlates}}
+{{#additionalNotes}}LCD applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'crystalType',
+    'ordinaryRay',
+    'extraordinaryRay',
+    'opticAxis',
+    'retardation',
+    'wavePlates',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    I["Unpolarized Light"] --> C["Birefringent Crystal"]
+    C --> O["O-ray (n_o)"]
+    C --> E["E-ray (n_e)"]
+    subgraph WavePlates
+        QWP["λ/4: Linear → Circular"]
+        HWP["λ/2: Rotate 90°"]
+    end`,
+};
+
+/**
+ * Spectrometer Design template
+ */
+export const spectrometerDesign: DiagramTemplate = {
+  id: 'optics-spectrometer',
+  name: 'Spectrometer Design',
+  description: 'Optical spectrometer components and resolution',
+  domain: 'physics',
+  promptTemplate: `Create a spectrometer design diagram:
+- Entrance slit: {{entranceSlit}}
+- Dispersive element: {{dispersiveElement}}
+- Collimating optics: {{collimatingOptics}}
+- Focusing optics: {{focusingOptics}}
+- Detector: {{detector}}
+- Resolution: {{resolution}}
+{{#additionalNotes}}Czerny-Turner design: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'entranceSlit',
+    'dispersiveElement',
+    'collimatingOptics',
+    'focusingOptics',
+    'detector',
+    'resolution',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    S["Slit"] --> M1["Collimating Mirror"]
+    M1 --> G["Grating"]
+    G --> M2["Focusing Mirror"]
+    M2 --> D["Detector Array"]
+    subgraph Resolution
+        R["R = λ/Δλ = mN"]
+    end`,
+};
+
+/**
+ * Rayleigh Scattering template
+ */
+export const rayleighScattering: DiagramTemplate = {
+  id: 'optics-rayleigh-scattering',
+  name: 'Rayleigh Scattering',
+  description: 'Light scattering by particles smaller than wavelength',
+  domain: 'physics',
+  promptTemplate: `Create a Rayleigh scattering diagram:
+- Particle size: {{particleSize}}
+- Wavelength dependence: {{wavelengthDependence}}
+- Scattering intensity: {{scatteringIntensity}}
+- Blue sky explanation: {{blueSkyExplanation}}
+- Sunset colors: {{sunsetColors}}
+- Polarization: {{polarization}}
+{{#additionalNotes}}Atmospheric optics: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'particleSize',
+    'wavelengthDependence',
+    'scatteringIntensity',
+    'blueSkyExplanation',
+    'sunsetColors',
+    'polarization',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Rayleigh
+        I["I ∝ 1/λ⁴"]
+        B["Blue scattered more"]
+    end
+    subgraph Sky
+        S1["Noon: Blue overhead"]
+        S2["Sunset: Red path longer"]
+    end`,
+};
+
+/**
+ * Aberrations template
+ */
+export const opticalAberrations: DiagramTemplate = {
+  id: 'optics-aberrations',
+  name: 'Optical Aberrations',
+  description: 'Monochromatic and chromatic aberrations in lenses',
+  domain: 'physics',
+  promptTemplate: `Create an optical aberrations diagram:
+- Spherical aberration: {{sphericalAberration}}
+- Coma: {{coma}}
+- Astigmatism: {{astigmatism}}
+- Field curvature: {{fieldCurvature}}
+- Distortion: {{distortion}}
+- Chromatic aberration: {{chromaticAberration}}
+{{#additionalNotes}}Correction methods: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sphericalAberration',
+    'coma',
+    'astigmatism',
+    'fieldCurvature',
+    'distortion',
+    'chromaticAberration',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Monochromatic
+        SA["Spherical: marginal rays"]
+        CO["Coma: off-axis comet"]
+        AS["Astigmatism: tangential/sagittal"]
+    end
+    subgraph Chromatic
+        CA["n(λ): different focal lengths"]
+        ACH["Achromat: crown + flint"]
+    end`,
+};
+
+/**
+ * Gaussian Beam template
+ */
+export const gaussianBeam: DiagramTemplate = {
+  id: 'optics-gaussian-beam',
+  name: 'Gaussian Beam',
+  description: 'Laser beam propagation and parameters',
+  domain: 'physics',
+  promptTemplate: `Create a Gaussian beam diagram:
+- Beam waist: {{beamWaist}}
+- Rayleigh range: {{rayleighRange}}
+- Divergence angle: {{divergenceAngle}}
+- Spot size variation: {{spotSizeVariation}}
+- M-squared factor: {{mSquaredFactor}}
+- ABCD matrix: {{abcdMatrix}}
+{{#additionalNotes}}Beam quality: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'beamWaist',
+    'rayleighRange',
+    'divergenceAngle',
+    'spotSizeVariation',
+    'mSquaredFactor',
+    'abcdMatrix',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Beam["Gaussian Beam"]
+        W0["Waist w₀"]
+        ZR["Rayleigh z_R = πw₀²/λ"]
+        TH["Divergence θ = λ/πw₀"]
+    end
+    subgraph Profile
+        WZ["w(z) = w₀√(1+(z/z_R)²)"]
+    end`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -635,19 +968,28 @@ export const opticsTemplates: DiagramTemplate[] = [
   mirrorRayDiagram,
   snellsLaw,
   prismDispersion,
+  opticalAberrations,
   // Wave Optics
   youngDoubleSlit,
   singleSlitDiffraction,
   diffractionGrating,
   thinFilmInterference,
+  michelsonInterferometer,
+  fabryPerotInterferometer,
+  holography,
+  rayleighScattering,
   // Polarization
   polarizationStates,
   malusLaw,
   brewsterAngle,
+  opticalActivity,
+  birefringence,
   // Lasers and Instruments
   laserCavity,
+  gaussianBeam,
   telescopeDesign,
   microscopeDesign,
+  spectrometerDesign,
   fiberOptics,
 ];
 

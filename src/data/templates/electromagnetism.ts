@@ -613,6 +613,339 @@ export const displacementCurrent: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL ELECTROMAGNETISM TEMPLATES
+// =============================================================================
+
+/**
+ * Lorentz Force template
+ */
+export const lorentzForce: DiagramTemplate = {
+  id: 'em-lorentz-force',
+  name: 'Lorentz Force',
+  description: 'Force on charged particle in EM fields',
+  domain: 'physics',
+  promptTemplate: `Create a Lorentz force diagram:
+- Charge: {{charge}}
+- Velocity: {{velocity}}
+- Electric field: {{electricField}}
+- Magnetic field: {{magneticField}}
+- Force direction: {{forceDirection}}
+- Applications: {{applications}}
+{{#additionalNotes}}Cyclotron motion: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'charge',
+    'velocity',
+    'electricField',
+    'magneticField',
+    'forceDirection',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Force["F = q(E + v×B)"]
+        FE["Electric: F_E = qE"]
+        FB["Magnetic: F_B = qv×B"]
+    end
+    subgraph Motion
+        CIR["Circular in B field"]
+        HEL["Helical with E+B"]
+    end`,
+};
+
+/**
+ * Biot-Savart Law template
+ */
+export const biotSavartLaw: DiagramTemplate = {
+  id: 'em-biot-savart',
+  name: 'Biot-Savart Law',
+  description: 'Magnetic field from current element',
+  domain: 'physics',
+  promptTemplate: `Create a Biot-Savart law diagram:
+- Current element: {{currentElement}}
+- Position vector: {{positionVector}}
+- Field direction: {{fieldDirection}}
+- Integration path: {{integrationPath}}
+- Wire configurations: {{wireConfigurations}}
+- Applications: {{applications}}
+{{#additionalNotes}}Comparison to Ampere: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'currentElement',
+    'positionVector',
+    'fieldDirection',
+    'integrationPath',
+    'wireConfigurations',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph BiotSavart
+        BS["dB = (μ₀/4π)(Idl×r̂)/r²"]
+    end
+    subgraph Examples
+        WIRE["Straight wire: B = μ₀I/2πr"]
+        LOOP["Loop center: B = μ₀I/2R"]
+    end`,
+};
+
+/**
+ * Inductance template
+ */
+export const inductance: DiagramTemplate = {
+  id: 'em-inductance',
+  name: 'Inductance',
+  description: 'Self and mutual inductance in coils',
+  domain: 'physics',
+  promptTemplate: `Create an inductance diagram:
+- Coil geometry: {{coilGeometry}}
+- Self inductance: {{selfInductance}}
+- Mutual inductance: {{mutualInductance}}
+- Energy stored: {{energyStored}}
+- Coupling coefficient: {{couplingCoefficient}}
+- Applications: {{applications}}
+{{#additionalNotes}}Inductor design: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'coilGeometry',
+    'selfInductance',
+    'mutualInductance',
+    'energyStored',
+    'couplingCoefficient',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Self["Self Inductance"]
+        L["L = NΦ/I"]
+        SOL["Solenoid: L = μ₀n²lA"]
+    end
+    subgraph Mutual
+        M["M = k√(L₁L₂)"]
+    end
+    subgraph Energy
+        U["U = ½LI²"]
+    end`,
+};
+
+/**
+ * RL Circuit template
+ */
+export const rlCircuit: DiagramTemplate = {
+  id: 'em-rl-circuit',
+  name: 'RL Circuit Analysis',
+  description: 'Resistor-inductor circuit transient response',
+  domain: 'physics',
+  promptTemplate: `Create an RL circuit diagram:
+- Resistance: {{resistance}}
+- Inductance: {{inductance}}
+- Time constant: {{timeConstant}}
+- Current rise: {{currentRise}}
+- Current decay: {{currentDecay}}
+- Energy considerations: {{energyConsiderations}}
+{{#additionalNotes}}Inductive kick: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'resistance',
+    'inductance',
+    'timeConstant',
+    'currentRise',
+    'currentDecay',
+    'energyConsiderations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Circuit["RL Circuit"]
+        V["V source"]
+        R["R"]
+        L["L"]
+    end
+    subgraph Response
+        TAU["τ = L/R"]
+        I["I(t) = (V/R)(1-e^(-t/τ))"]
+    end`,
+};
+
+/**
+ * Electromagnetic Spectrum template
+ */
+export const emSpectrum: DiagramTemplate = {
+  id: 'em-spectrum',
+  name: 'Electromagnetic Spectrum',
+  description: 'Complete EM spectrum from radio to gamma',
+  domain: 'physics',
+  promptTemplate: `Create an EM spectrum diagram:
+- Radio waves: {{radioWaves}}
+- Microwaves: {{microwaves}}
+- Infrared: {{infrared}}
+- Visible light: {{visibleLight}}
+- Ultraviolet: {{ultraviolet}}
+- X-rays and gamma: {{xraysGamma}}
+{{#additionalNotes}}Applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'radioWaves',
+    'microwaves',
+    'infrared',
+    'visibleLight',
+    'ultraviolet',
+    'xraysGamma',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Spectrum["EM Spectrum (increasing f)"]
+        R["Radio\\n>1m"]
+        MW["Microwave\\n1mm-1m"]
+        IR["IR\\n700nm-1mm"]
+        VIS["Visible\\n400-700nm"]
+        UV["UV\\n10-400nm"]
+        X["X-ray\\n0.01-10nm"]
+        G["Gamma\\n<0.01nm"]
+    end
+    R --> MW --> IR --> VIS --> UV --> X --> G`,
+};
+
+/**
+ * Antenna Radiation template
+ */
+export const antennaRadiation: DiagramTemplate = {
+  id: 'em-antenna',
+  name: 'Antenna Radiation',
+  description: 'Radiation patterns from antennas',
+  domain: 'physics',
+  promptTemplate: `Create an antenna radiation diagram:
+- Antenna type: {{antennaType}}
+- Radiation pattern: {{radiationPattern}}
+- Directivity: {{directivity}}
+- Gain: {{gain}}
+- Impedance matching: {{impedanceMatching}}
+- Near vs far field: {{nearFarField}}
+{{#additionalNotes}}Polarization: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'antennaType',
+    'radiationPattern',
+    'directivity',
+    'gain',
+    'impedanceMatching',
+    'nearFarField',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Dipole["Dipole Antenna"]
+        D["Length ~ λ/2"]
+        P["Figure-8 pattern"]
+    end
+    subgraph Parameters
+        G["Gain = 4πU_max/P_total"]
+        DIR["Directivity: D = 1.64 (dipole)"]
+    end`,
+};
+
+/**
+ * Waveguide template
+ */
+export const waveguide: DiagramTemplate = {
+  id: 'em-waveguide',
+  name: 'Waveguide Propagation',
+  description: 'EM wave propagation in waveguides',
+  domain: 'physics',
+  promptTemplate: `Create a waveguide diagram:
+- Waveguide type: {{waveguideType}}
+- Cutoff frequency: {{cutoffFrequency}}
+- Propagation modes: {{propagationModes}}
+- TE and TM modes: {{teTmModes}}
+- Group velocity: {{groupVelocity}}
+- Applications: {{applications}}
+{{#additionalNotes}}Dispersion: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'waveguideType',
+    'cutoffFrequency',
+    'propagationModes',
+    'teTmModes',
+    'groupVelocity',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Rectangular["Rectangular Waveguide"]
+        WG["a × b dimensions"]
+        FC["f_c = c/2a (TE₁₀)"]
+    end
+    subgraph Modes
+        TE["TE: E_z = 0"]
+        TM["TM: B_z = 0"]
+    end`,
+};
+
+/**
+ * Reflection and Transmission template
+ */
+export const reflectionTransmission: DiagramTemplate = {
+  id: 'em-reflection-transmission',
+  name: 'EM Wave Reflection and Transmission',
+  description: 'Fresnel equations at interfaces',
+  domain: 'physics',
+  promptTemplate: `Create a reflection/transmission diagram:
+- Interface: {{interface}}
+- Incident angle: {{incidentAngle}}
+- Fresnel coefficients: {{fresnelCoefficients}}
+- S and P polarization: {{sPPolarization}}
+- Reflectance: {{reflectance}}
+- Transmittance: {{transmittance}}
+{{#additionalNotes}}Impedance mismatch: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'interface',
+    'incidentAngle',
+    'fresnelCoefficients',
+    'sPPolarization',
+    'reflectance',
+    'transmittance',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Fresnel
+        RS["r_s = (n₁cosθ₁ - n₂cosθ₂)/(n₁cosθ₁ + n₂cosθ₂)"]
+        RP["r_p = (n₂cosθ₁ - n₁cosθ₂)/(n₂cosθ₁ + n₁cosθ₂)"]
+    end
+    subgraph Normal["Normal Incidence"]
+        R["R = ((n₁-n₂)/(n₁+n₂))²"]
+    end`,
+};
+
+/**
+ * Electric Dipole Radiation template
+ */
+export const electricDipoleRadiation: DiagramTemplate = {
+  id: 'em-dipole-radiation',
+  name: 'Electric Dipole Radiation',
+  description: 'Radiation from oscillating dipole',
+  domain: 'physics',
+  promptTemplate: `Create an electric dipole radiation diagram:
+- Dipole moment: {{dipoleMoment}}
+- Oscillation frequency: {{oscillationFrequency}}
+- Far field pattern: {{farFieldPattern}}
+- Power radiated: {{powerRadiated}}
+- Polarization: {{polarization}}
+- Applications: {{applications}}
+{{#additionalNotes}}Larmor formula: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'dipoleMoment',
+    'oscillationFrequency',
+    'farFieldPattern',
+    'powerRadiated',
+    'polarization',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Dipole
+        P["p = p₀cos(ωt)"]
+    end
+    subgraph Radiation
+        E["E ∝ sin(θ)/r"]
+        POW["P = (μ₀c/12π)(p₀ω²)²"]
+    end
+    subgraph Pattern
+        PT["Donut shape"]
+    end`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -628,16 +961,26 @@ export const electromagnetismTemplates: DiagramTemplate[] = [
   magneticFieldPatterns,
   ampereLaw,
   solenoidToroid,
+  biotSavartLaw,
+  lorentzForce,
   // Induction
   faradayLaw,
   transformer,
+  inductance,
   // Circuits
   rcCircuit,
+  rlCircuit,
   rlcCircuit,
   acPhasor,
   // EM Waves
   emWavePropagation,
   poyntingVector,
+  emSpectrum,
+  reflectionTransmission,
+  electricDipoleRadiation,
+  // Transmission
+  antennaRadiation,
+  waveguide,
   // Maxwell
   maxwellEquations,
   displacementCurrent,

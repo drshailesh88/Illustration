@@ -4,14 +4,16 @@
  *
  * Contains specialized prompts for pediatric medicine including:
  * - Growth and development assessment
+ * - Neonatal resuscitation (NRP)
  * - Newborn care and NICU
  * - Common childhood illnesses
  * - Vaccination protocols
  * - Pediatric emergencies
  * - Congenital conditions
+ * - ADHD evaluation and management
  * - Well-child visits
  *
- * Total: 25 specialized prompts
+ * Total: 27 specialized prompts
  */
 
 import type { FewShotExample } from './index';
@@ -81,6 +83,18 @@ Failure to Thrive Evaluation requirements:
   // =========================================================================
   // NEWBORN AND NICU
   // =========================================================================
+  neonatalResuscitation: `
+Neonatal Resuscitation (NRP) Algorithm requirements:
+- Follow current NRP guidelines and systematic approach
+- Include initial steps: warm, dry, position, stimulate, clear airway
+- Reference 30-second intervals for reassessment
+- Show MR. SOPA for ventilation troubleshooting (Mask adjustment, Reposition, Suction, Open mouth, Pressure increase, Alternative airway)
+- Include heart rate targets: <100 bpm = PPV, <60 bpm = compressions
+- Reference compression-to-ventilation ratio 3:1
+- Include epinephrine indications and dosing (0.01-0.03 mg/kg IV/IO)
+- Show UVC placement for medication/volume administration
+- Reference post-resuscitation monitoring and therapeutic hypothermia criteria`,
+
   newbornAssessment: `
 Newborn Assessment requirements:
 - Include APGAR scoring at 1 and 5 minutes
@@ -309,6 +323,20 @@ Adolescent Health Screening requirements:
 - Anticipatory guidance: sleep, nutrition, exercise, safety
 - Mental health resources and crisis intervention`,
 
+  adhdEvaluation: `
+ADHD Evaluation and Management requirements:
+- Include DSM-5 criteria for inattentive, hyperactive/impulsive, and combined types
+- Reference multi-source assessment (parent, teacher, clinician observations)
+- Include validated rating scales (Vanderbilt, Conners, SNAP-IV)
+- Show symptom duration criteria (>6 months, onset before age 12)
+- Include functional impairment assessment across settings
+- Rule out differential diagnoses (anxiety, depression, learning disorders, sleep disorders)
+- Reference AAP guidelines for stimulant medication initiation (typically age 6+)
+- Include behavioral therapy indications (first-line for ages 4-5)
+- Show medication options: methylphenidate vs amphetamine classes
+- Include monitoring protocol (height, weight, BP, HR, side effects)
+- Reference classroom accommodations and 504/IEP considerations`,
+
   // =========================================================================
   // PROCEDURES
   // =========================================================================
@@ -343,6 +371,55 @@ Pediatric Lumbar Puncture requirements:
  * Pediatrics-specific few-shot examples
  */
 export const PEDIATRICS_FEW_SHOT_EXAMPLES: FewShotExample[] = [
+  {
+    prompt: 'Create a neonatal resuscitation (NRP) algorithm flowchart',
+    output: `flowchart TD
+    A[("Newborn Delivery")] --> B{"Term?\\nBreathing/Crying?\\nGood Tone?"}
+
+    B -->|"All Yes"| C["Routine Care\\nWarm, Dry\\nSkin-to-Skin\\nOngoing Evaluation"]
+    B -->|"Any No"| D["Initial Steps\\n30 seconds"]
+
+    D --> D1["Warm, dry, stimulate"]
+    D --> D2["Position airway"]
+    D --> D3["Clear secretions PRN"]
+    D1 & D2 & D3 --> E{"HR? Breathing?"}
+
+    E -->|"HR >100\\nBreathing"| F["Position\\nMonitor SpO2"]
+    E -->|"HR <100\\nor Apnea"| G["PPV with 21-30% O2\\n40-60 breaths/min"]
+
+    G --> H{"HR after\\n30 sec PPV?"}
+    H -->|">100"| I["Post-Resuscitation Care"]
+    H -->|"60-100"| J["Check Ventilation\\nMR. SOPA"]
+    H -->|"<60"| K["Chest Compressions\\n3:1 ratio + 100% O2"]
+
+    J --> L{"HR still\\n<100?"}
+    L -->|"Yes"| K
+    L -->|"No"| I
+
+    K --> M{"HR after\\n60 sec?"}
+    M -->|">60"| N["Stop compressions\\nContinue PPV"]
+    M -->|"<60"| O["IV Epinephrine\\n0.01-0.03 mg/kg"]
+
+    O --> P["Consider:\\nHypovolemia (NS 10mL/kg)\\nPneumothorax\\nUVC access"]
+
+    subgraph MRSOPA["MR. SOPA"]
+        S1["Mask adjustment"]
+        S2["Reposition head"]
+        S3["Suction mouth/nose"]
+        S4["Open mouth"]
+        S5["Pressure increase"]
+        S6["Alternative airway"]
+    end
+
+    J --> MRSOPA
+
+    style A fill:#87CEEB,color:#000
+    style G fill:#FFD700,color:#000
+    style K fill:#FF6347,color:#fff
+    style O fill:#DC143C,color:#fff
+    style C fill:#228B22,color:#fff
+    style I fill:#228B22,color:#fff`,
+  },
   {
     prompt: 'Create a fever evaluation algorithm for infants under 90 days',
     output: `flowchart TD

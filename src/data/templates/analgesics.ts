@@ -353,6 +353,215 @@ export const opioidRiskAssessment: DiagramTemplate = {
     D & E & F --> G["Naloxone if >50 MME"]`
 };
 
+export const migraineAcuteTreatment: DiagramTemplate = {
+  id: 'analg-migraine-acute',
+  name: 'Acute Migraine Treatment Algorithm',
+  description: 'Stepwise approach to acute migraine management',
+  domain: 'medicine',
+  promptTemplate: `Create an acute migraine treatment algorithm:
+- Severity assessment: {{severityAssessment}}
+- First-line options: {{firstLineOptions}}
+- Triptan selection: {{triptanSelection}}
+- Rescue medications: {{rescueMedications}}
+- Refractory management: {{refractoryManagement}}
+{{#additionalNotes}}Emergency criteria: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['severityAssessment', 'firstLineOptions', 'triptanSelection', 'rescueMedications', 'refractoryManagement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Acute Migraine"] --> B{"Severity?"}
+    B -->|"Mild"| C["NSAIDs\\nAcetaminophen"]
+    B -->|"Moderate"| D["Triptan"]
+    B -->|"Severe"| E["Triptan +\\nAntiemetic"]
+    C --> F{"Relief?"}
+    F -->|"No"| D
+    D --> G{"Relief?"}
+    G -->|"No"| H["Rescue:\\nDHE, Ketorolac"]`
+};
+
+export const cancerPainManagement: DiagramTemplate = {
+  id: 'analg-cancer-pain',
+  name: 'Cancer Pain Management Protocol',
+  description: 'Comprehensive approach to cancer pain management',
+  domain: 'medicine',
+  promptTemplate: `Create a cancer pain management protocol:
+- Pain assessment: {{painAssessment}}
+- Baseline opioid selection: {{baselineOpioid}}
+- Breakthrough dosing: {{breakthroughDosing}}
+- Adjuvant medications: {{adjuvants}}
+- Interventional options: {{interventional}}
+- Palliative considerations: {{palliative}}
+{{#additionalNotes}}End-of-life care: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['painAssessment', 'baselineOpioid', 'breakthroughDosing', 'adjuvants', 'interventional', 'palliative', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Cancer Pain"] --> B["Baseline + PRN"]
+    B --> C["Long-acting Opioid"]
+    B --> D["Breakthrough 10-15%\\nof daily dose"]
+    C & D --> E["Adjuvants"]
+    E --> F["Gabapentin\\nSteroids\\nNSAIDs"]
+    E --> G["Interventional"]
+    G --> H["Nerve Blocks\\nIntrathecal Pump"]`
+};
+
+export const fibromyalgiaTreatment: DiagramTemplate = {
+  id: 'analg-fibromyalgia',
+  name: 'Fibromyalgia Treatment Algorithm',
+  description: 'Multimodal approach to fibromyalgia management',
+  domain: 'medicine',
+  promptTemplate: `Create a fibromyalgia treatment algorithm:
+- Diagnostic criteria: {{diagnosticCriteria}}
+- Non-pharmacological: {{nonPharmacological}}
+- First-line medications: {{firstLineMeds}}
+- Second-line options: {{secondLineOptions}}
+- Combination strategies: {{combinationStrategies}}
+{{#additionalNotes}}Comorbidity management: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['diagnosticCriteria', 'nonPharmacological', 'firstLineMeds', 'secondLineOptions', 'combinationStrategies', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Fibromyalgia"] --> B["Non-Pharmacological"]
+    B --> C["Exercise\\nCBT\\nSleep Hygiene"]
+    A --> D["Pharmacological"]
+    D --> E["Duloxetine\\nPregabalin\\nMilnacipran"]
+    E --> F{"Response?"}
+    F -->|"No"| G["Combine or\\nAdd Cyclobenzaprine"]`
+};
+
+export const proceduralSedation: DiagramTemplate = {
+  id: 'analg-procedural-sedation',
+  name: 'Procedural Sedation Protocol',
+  description: 'Protocol for procedural sedation and analgesia',
+  domain: 'medicine',
+  promptTemplate: `Create a procedural sedation protocol:
+- Patient assessment: {{patientAssessment}}
+- Fasting requirements: {{fastingRequirements}}
+- Medication selection: {{medicationSelection}}
+- Monitoring requirements: {{monitoring}}
+- Discharge criteria: {{dischargeCriteria}}
+{{#additionalNotes}}Emergency equipment: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['patientAssessment', 'fastingRequirements', 'medicationSelection', 'monitoring', 'dischargeCriteria', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Procedure Planned"] --> B["ASA Assessment"]
+    B --> C{"ASA 1-2?"}
+    C -->|"Yes"| D["Proceed with\\nModerate Sedation"]
+    C -->|"No"| E["Anesthesia Consult"]
+    D --> F["Propofol or\\nKetamine"]
+    F --> G["Continuous Monitoring"]
+    G --> H["Discharge Criteria:\\nAwake, Stable Vitals"]`
+};
+
+export const epiduralAnalgesia: DiagramTemplate = {
+  id: 'analg-epidural',
+  name: 'Epidural Analgesia Management',
+  description: 'Protocol for epidural analgesia administration and monitoring',
+  domain: 'medicine',
+  promptTemplate: `Create an epidural analgesia protocol:
+- Indications: {{indications}}
+- Medication mixture: {{medicationMixture}}
+- Rate and bolus settings: {{rateSettings}}
+- Monitoring parameters: {{monitoringParameters}}
+- Complication management: {{complicationManagement}}
+{{#additionalNotes}}Transition to oral: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['indications', 'medicationMixture', 'rateSettings', 'monitoringParameters', 'complicationManagement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Epidural Placed"] --> B["Standard Infusion"]
+    B --> C["Bupivacaine 0.1%\\n+ Fentanyl 2mcg/mL"]
+    C --> D["Rate 6-10 mL/h"]
+    D --> E["Monitor q4h"]
+    E --> F["Motor Function\\nSensory Level\\nBP, Sedation"]
+    E --> G{"Complications?"}
+    G -->|"Hypotension"| H["Fluid, Ephedrine"]
+    G -->|"High Block"| I["Stop Infusion"]`
+};
+
+export const peripheralNerveBlock: DiagramTemplate = {
+  id: 'analg-nerve-block',
+  name: 'Peripheral Nerve Block Selection',
+  description: 'Guide for selecting appropriate peripheral nerve blocks',
+  domain: 'medicine',
+  promptTemplate: `Create a nerve block selection guide:
+- Surgical site: {{surgicalSite}}
+- Block options: {{blockOptions}}
+- Local anesthetic choice: {{localAnesthetic}}
+- Duration considerations: {{durationConsiderations}}
+- Catheter placement: {{catheterPlacement}}
+{{#additionalNotes}}Ultrasound guidance: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['surgicalSite', 'blockOptions', 'localAnesthetic', 'durationConsiderations', 'catheterPlacement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Surgery Site"] --> B{"Location?"}
+    B -->|"Shoulder"| C["Interscalene"]
+    B -->|"Hand/Forearm"| D["Supraclavicular\\nAxillary"]
+    B -->|"Knee"| E["Adductor Canal\\n+ IPACK"]
+    B -->|"Foot/Ankle"| F["Popliteal Sciatic"]
+    C & D & E & F --> G["Choose LA"]
+    G --> H["Ropivacaine 0.5%\\nor Bupivacaine 0.25%"]`
+};
+
+export const opioidInducedHyperalgesia: DiagramTemplate = {
+  id: 'analg-oih',
+  name: 'Opioid-Induced Hyperalgesia Management',
+  description: 'Recognition and management of opioid-induced hyperalgesia',
+  domain: 'medicine',
+  promptTemplate: `Create an OIH management protocol:
+- Recognition criteria: {{recognitionCriteria}}
+- Differentiation from tolerance: {{toleranceDiff}}
+- Management strategies: {{managementStrategies}}
+- Opioid rotation: {{opioidRotation}}
+- NMDA antagonists: {{nmdaAntagonists}}
+{{#additionalNotes}}Prevention strategies: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['recognitionCriteria', 'toleranceDiff', 'managementStrategies', 'opioidRotation', 'nmdaAntagonists', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Increased Pain\\nDespite Dose Escalation"] --> B{"OIH vs Tolerance?"}
+    B -->|"OIH"| C["Reduce Opioid"]
+    B -->|"Tolerance"| D["Increase Opioid"]
+    C --> E["Add NMDA Antagonist"]
+    E --> F["Ketamine\\nMethadone"]
+    C --> G["Opioid Rotation"]
+    G --> H["Reduce MME by 25-50%"]`
+};
+
+export const intrathecalPump: DiagramTemplate = {
+  id: 'analg-intrathecal-pump',
+  name: 'Intrathecal Drug Delivery System',
+  description: 'Protocol for intrathecal pump management in chronic pain',
+  domain: 'medicine',
+  promptTemplate: `Create an intrathecal pump protocol:
+- Patient selection: {{patientSelection}}
+- Trial process: {{trialProcess}}
+- Medication options: {{medicationOptions}}
+- Dosing algorithms: {{dosingAlgorithms}}
+- Complication monitoring: {{complicationMonitoring}}
+{{#additionalNotes}}Refill schedule: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['patientSelection', 'trialProcess', 'medicationOptions', 'dosingAlgorithms', 'complicationMonitoring', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Refractory Pain\\nOpioid Tolerant"] --> B["Trial"]
+    B --> C["IT Morphine\\nBolus or Infusion"]
+    C --> D{">50% Relief?"}
+    D -->|"Yes"| E["Pump Implant"]
+    D -->|"No"| F["Not Candidate"]
+    E --> G["Medications"]
+    G --> H["Morphine\\nZiconotide\\nBupivacaine"]`
+};
+
+export const buprenorphinePrescribing: DiagramTemplate = {
+  id: 'analg-buprenorphine',
+  name: 'Buprenorphine Prescribing for Pain',
+  description: 'Protocol for using buprenorphine in chronic pain management',
+  domain: 'medicine',
+  promptTemplate: `Create a buprenorphine pain protocol:
+- Indications: {{indications}}
+- Formulation selection: {{formulationSelection}}
+- Conversion from other opioids: {{conversion}}
+- Titration schedule: {{titration}}
+- Considerations for OUD: {{oudConsiderations}}
+{{#additionalNotes}}DEA requirements: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['indications', 'formulationSelection', 'conversion', 'titration', 'oudConsiderations', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Chronic Pain\\nOpioid Candidate"] --> B{"OUD Risk?"}
+    B -->|"High"| C["Buprenorphine\\nPreferred"]
+    B -->|"Low"| D["Standard Opioid\\nor Buprenorphine"]
+    C --> E["Formulation"]
+    E --> F["Transdermal\\n(Butrans)"]
+    E --> G["Buccal\\n(Belbuca)"]
+    E --> H["SL\\n(off-label)"]`
+};
+
 // =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
@@ -373,6 +582,15 @@ export const analgesicsTemplates: DiagramTemplate[] = [
   ketamineInfusionProtocol,
   postopPainPathway,
   opioidRiskAssessment,
+  migraineAcuteTreatment,
+  cancerPainManagement,
+  fibromyalgiaTreatment,
+  proceduralSedation,
+  epiduralAnalgesia,
+  peripheralNerveBlock,
+  opioidInducedHyperalgesia,
+  intrathecalPump,
+  buprenorphinePrescribing,
 ];
 
 export default analgesicsTemplates;

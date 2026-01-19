@@ -343,6 +343,185 @@ export const psychotropicPregnancy: DiagramTemplate = {
     D & E & F --> G["Monitor Neonate"]`
 };
 
+export const anxietyTreatment: DiagramTemplate = {
+  id: 'psych-anxiety-treatment',
+  name: 'Anxiety Disorder Treatment Algorithm',
+  description: 'Evidence-based approach to treating anxiety disorders',
+  domain: 'medicine',
+  promptTemplate: `Create an anxiety treatment algorithm:
+- Disorder type: {{disorderType}}
+- First-line pharmacotherapy: {{firstLinePharmaco}}
+- Psychotherapy options: {{psychotherapy}}
+- Augmentation strategies: {{augmentation}}
+- Treatment duration: {{treatmentDuration}}
+{{#additionalNotes}}Benzodiazepine cautions: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['disorderType', 'firstLinePharmaco', 'psychotherapy', 'augmentation', 'treatmentDuration', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Anxiety Disorder"] --> B["SSRI/SNRI\\n+ CBT"]
+    B --> C{"Response at\\n8-12 weeks?"}
+    C -->|"Yes"| D["Continue 12+ months"]
+    C -->|"No"| E["Switch Agent\\nor Augment"]
+    E --> F["Buspirone\\nGabapentin\\nPregabalin"]
+    A --> G["Short-term BZD\\nPRN only"]`
+};
+
+export const ptsdTreatment: DiagramTemplate = {
+  id: 'psych-ptsd-treatment',
+  name: 'PTSD Treatment Algorithm',
+  description: 'Treatment approach for post-traumatic stress disorder',
+  domain: 'medicine',
+  promptTemplate: `Create a PTSD treatment algorithm:
+- Trauma-focused therapy: {{traumaFocusedTherapy}}
+- Pharmacotherapy options: {{pharmacotherapy}}
+- Nightmare management: {{nightmareManagement}}
+- Comorbidity treatment: {{comorbidityTreatment}}
+- Treatment resistance: {{treatmentResistance}}
+{{#additionalNotes}}Prazosin dosing: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['traumaFocusedTherapy', 'pharmacotherapy', 'nightmareManagement', 'comorbidityTreatment', 'treatmentResistance', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["PTSD Diagnosis"] --> B["Trauma-Focused\\nTherapy First"]
+    B --> C["CPT or\\nProlonged Exposure"]
+    A --> D["Pharmacotherapy"]
+    D --> E["Sertraline or\\nParoxetine"]
+    D --> F["Nightmares:\\nPrazosin"]
+    B & E --> G["Continue\\n6-12 months"]`
+};
+
+export const ocdTreatment: DiagramTemplate = {
+  id: 'psych-ocd-treatment',
+  name: 'OCD Treatment Algorithm',
+  description: 'Treatment approach for obsessive-compulsive disorder',
+  domain: 'medicine',
+  promptTemplate: `Create an OCD treatment algorithm:
+- First-line medications: {{firstLineMeds}}
+- ERP therapy: {{erpTherapy}}
+- High-dose SSRI: {{highDoseSsri}}
+- Augmentation options: {{augmentation}}
+- Refractory treatment: {{refractoryTreatment}}
+{{#additionalNotes}}Clomipramine considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['firstLineMeds', 'erpTherapy', 'highDoseSsri', 'augmentation', 'refractoryTreatment', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["OCD Diagnosis"] --> B["SSRI + ERP"]
+    B --> C{"Response\\nat 12 weeks?"}
+    C -->|"No"| D["Maximize SSRI\\n(High Dose OK)"]
+    D --> E{"Still No\\nResponse?"}
+    E -->|"Yes"| F["Add Antipsychotic\\nor Switch to CMI"]
+    C -->|"Yes"| G["Continue\\nLong-term"]`
+};
+
+export const insomniaManagement: DiagramTemplate = {
+  id: 'psych-insomnia',
+  name: 'Insomnia Management Algorithm',
+  description: 'Stepwise approach to treating insomnia',
+  domain: 'medicine',
+  promptTemplate: `Create an insomnia management algorithm:
+- Sleep hygiene: {{sleepHygiene}}
+- CBT-I: {{cbti}}
+- Pharmacotherapy options: {{pharmacotherapy}}
+- Short-term medications: {{shortTermMeds}}
+- Chronic insomnia approach: {{chronicApproach}}
+{{#additionalNotes}}Benzodiazepine alternatives: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['sleepHygiene', 'cbti', 'pharmacotherapy', 'shortTermMeds', 'chronicApproach', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Insomnia"] --> B["Sleep Hygiene\\nEducation"]
+    B --> C["CBT-I"]
+    C --> D{"Persistent?"}
+    D -->|"Yes"| E["Medication"]
+    E --> F["Short-acting Z-drug\\nor Doxepin\\nor Lemborexant"]
+    D -->|"No"| G["Maintain CBT-I"]`
+};
+
+export const suicideRiskAssessment: DiagramTemplate = {
+  id: 'psych-suicide-risk',
+  name: 'Suicide Risk Assessment',
+  description: 'Framework for assessing and managing suicide risk',
+  domain: 'medicine',
+  promptTemplate: `Create a suicide risk assessment framework:
+- Risk factors: {{riskFactors}}
+- Protective factors: {{protectiveFactors}}
+- Warning signs: {{warningSigns}}
+- Risk stratification: {{riskStratification}}
+- Safety planning: {{safetyPlanning}}
+- Disposition: {{disposition}}
+{{#additionalNotes}}Lethal means counseling: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['riskFactors', 'protectiveFactors', 'warningSigns', 'riskStratification', 'safetyPlanning', 'disposition', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Suicidal Ideation\\nIdentified"] --> B["Assess Risk Factors"]
+    B --> C["Intent, Plan\\nMeans, Timeline"]
+    C --> D{"Risk Level?"}
+    D -->|"High"| E["Inpatient\\nPsychiatric"]
+    D -->|"Moderate"| F["Safety Plan\\nClose Follow-up"]
+    D -->|"Low"| G["Outpatient\\nSafety Plan"]
+    F & G --> H["Lethal Means\\nCounseling"]`
+};
+
+export const substanceUseDisorder: DiagramTemplate = {
+  id: 'psych-sud-treatment',
+  name: 'Substance Use Disorder Treatment',
+  description: 'Medication-assisted treatment for substance use disorders',
+  domain: 'medicine',
+  promptTemplate: `Create a SUD treatment protocol:
+- Substance type: {{substanceType}}
+- Detoxification: {{detoxification}}
+- MAT options: {{matOptions}}
+- Psychosocial interventions: {{psychosocialInterventions}}
+- Relapse prevention: {{relapsePrevention}}
+{{#additionalNotes}}Harm reduction: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['substanceType', 'detoxification', 'matOptions', 'psychosocialInterventions', 'relapsePrevention', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Opioid Use\\nDisorder"] --> B["MAT Options"]
+    B --> C["Buprenorphine"]
+    B --> D["Methadone"]
+    B --> E["Naltrexone"]
+    A --> F["Alcohol Use\\nDisorder"]
+    F --> G["Naltrexone\\nAcamprosate\\nDisulfiram"]
+    C & D & E & G --> H["+ Counseling\\n+ Support Groups"]`
+};
+
+export const neurolepticMalignantSyndrome: DiagramTemplate = {
+  id: 'psych-nms',
+  name: 'Neuroleptic Malignant Syndrome',
+  description: 'Recognition and management of NMS',
+  domain: 'medicine',
+  promptTemplate: `Create an NMS management protocol:
+- Clinical features: {{clinicalFeatures}}
+- Diagnostic criteria: {{diagnosticCriteria}}
+- Immediate management: {{immediateManagement}}
+- Pharmacologic treatment: {{pharmacologicTreatment}}
+- Supportive care: {{supportiveCare}}
+{{#additionalNotes}}Rechallenge considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['clinicalFeatures', 'diagnosticCriteria', 'immediateManagement', 'pharmacologicTreatment', 'supportiveCare', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["NMS Suspected"] --> B["Stop Antipsychotic"]
+    B --> C["ICU Admission"]
+    C --> D["Supportive Care\\nCooling, IV Fluids"]
+    D --> E{"Severe?"}
+    E -->|"Yes"| F["Dantrolene\\nBromocriptine"]
+    E -->|"No"| G["Monitor CK\\nRenal Function"]
+    F --> H["May take 7-10 days\\nto resolve"]`
+};
+
+export const bipolarMaintenanceTherapy: DiagramTemplate = {
+  id: 'psych-bipolar-maintenance',
+  name: 'Bipolar Maintenance Therapy',
+  description: 'Long-term management of bipolar disorder',
+  domain: 'medicine',
+  promptTemplate: `Create a bipolar maintenance protocol:
+- Mood stabilizer selection: {{moodStabilizerSelection}}
+- Adjunctive therapy: {{adjunctiveTherapy}}
+- Episode prevention: {{episodePrevention}}
+- Monitoring requirements: {{monitoringRequirements}}
+- Adherence strategies: {{adherenceStrategies}}
+{{#additionalNotes}}Rapid cycling considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['moodStabilizerSelection', 'adjunctiveTherapy', 'episodePrevention', 'monitoringRequirements', 'adherenceStrategies', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Bipolar Disorder\\nMaintenance"] --> B{"Predominant\\nPolarity?"}
+    B -->|"Manic"| C["Lithium\\nValproate\\nAtypical AP"]
+    B -->|"Depressive"| D["Lamotrigine\\nQuetiapine\\nLurasidone"]
+    C & D --> E["Long-term\\nMonitoring"]
+    E --> F["Lithium: Renal, Thyroid\\nValproate: LFTs\\nAP: Metabolic"]`
+};
+
 export const psychotropicsTemplates: DiagramTemplate[] = [
   antidepressantSelection,
   antidepressantMechanisms,
@@ -359,6 +538,14 @@ export const psychotropicsTemplates: DiagramTemplate[] = [
   maoiDietRestrictions,
   depressionTreatmentResistant,
   psychotropicPregnancy,
+  anxietyTreatment,
+  ptsdTreatment,
+  ocdTreatment,
+  insomniaManagement,
+  suicideRiskAssessment,
+  substanceUseDisorder,
+  neurolepticMalignantSyndrome,
+  bipolarMaintenanceTherapy,
 ];
 
 export default psychotropicsTemplates;

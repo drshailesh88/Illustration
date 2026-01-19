@@ -521,6 +521,408 @@ export const titrationProcedure: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADVANCED SPECTROSCOPY
+// =============================================================================
+
+/**
+ * Atomic Absorption Spectroscopy template
+ */
+export const atomicAbsorption: DiagramTemplate = {
+  id: 'analytical-aas',
+  name: 'Atomic Absorption Spectroscopy',
+  description: 'Metal analysis using atomic absorption spectroscopy',
+  domain: 'chemistry',
+  promptTemplate: `Create an AAS analysis diagram:
+- Element analyzed: {{element}}
+- Atomization method: {{atomizationMethod}}
+- Hollow cathode lamp: {{hollowCathodeLamp}}
+- Background correction: {{backgroundCorrection}}
+- Interferences: {{interferences}}
+- Detection limits: {{detectionLimits}}
+{{#additionalNotes}}Matrix effects: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'element',
+    'atomizationMethod',
+    'hollowCathodeLamp',
+    'backgroundCorrection',
+    'interferences',
+    'detectionLimits',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Light Source\\nHCL"] --> B["Atomizer\\nFlame/Furnace"]
+    B --> C["Monochromator"]
+    C --> D["Detector"]
+    subgraph Atomization
+        E["Sample → Free atoms"]
+        F["Ground state absorption"]
+    end`,
+};
+
+/**
+ * ICP-MS Analysis template
+ */
+export const icpmsAnalysis: DiagramTemplate = {
+  id: 'analytical-icp-ms',
+  name: 'ICP-MS Analysis',
+  description: 'Inductively coupled plasma mass spectrometry for trace metals',
+  domain: 'chemistry',
+  promptTemplate: `Create an ICP-MS diagram:
+- Sample introduction: {{sampleIntroduction}}
+- Plasma conditions: {{plasmaConditions}}
+- Ion extraction: {{ionExtraction}}
+- Mass analyzer type: {{massAnalyzerType}}
+- Isotope ratios: {{isotopeRatios}}
+- Interferences: {{interferences}}
+{{#additionalNotes}}Detection capabilities: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sampleIntroduction',
+    'plasmaConditions',
+    'ionExtraction',
+    'massAnalyzerType',
+    'isotopeRatios',
+    'interferences',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Nebulizer"] --> B["ICP Torch\\n6000-10000K"]
+    B --> C["Ion Lens"]
+    C --> D["Quadrupole"]
+    D --> E["Detector"]
+    subgraph Plasma
+        F["Ionization M → M+"]
+    end`,
+};
+
+/**
+ * Fluorescence Spectroscopy template
+ */
+export const fluorescenceSpectroscopy: DiagramTemplate = {
+  id: 'analytical-fluorescence',
+  name: 'Fluorescence Spectroscopy',
+  description: 'Molecular fluorescence analysis and quantum yield',
+  domain: 'chemistry',
+  promptTemplate: `Create a fluorescence spectroscopy diagram:
+- Excitation wavelength: {{excitationWavelength}}
+- Emission wavelength: {{emissionWavelength}}
+- Stokes shift: {{stokesShift}}
+- Quantum yield: {{quantumYield}}
+- Quenching effects: {{quenching}}
+- Applications: {{applications}}
+{{#additionalNotes}}Sensitivity notes: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'excitationWavelength',
+    'emissionWavelength',
+    'stokesShift',
+    'quantumYield',
+    'quenching',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Excitation Source"] --> B["Sample"]
+    B --> C["Emission at 90°"]
+    C --> D["Monochromator"]
+    D --> E["Detector"]
+    subgraph Energy
+        F["S0 → S1 (abs)"]
+        G["S1 → S0 (emission)"]
+    end`,
+};
+
+/**
+ * Raman Spectroscopy template
+ */
+export const ramanSpectroscopy: DiagramTemplate = {
+  id: 'analytical-raman',
+  name: 'Raman Spectroscopy',
+  description: 'Vibrational analysis using inelastic light scattering',
+  domain: 'chemistry',
+  promptTemplate: `Create a Raman spectroscopy diagram:
+- Laser wavelength: {{laserWavelength}}
+- Stokes vs anti-Stokes: {{stokesAntiStokes}}
+- Raman shift: {{ramanShift}}
+- Selection rules: {{selectionRules}}
+- SERS enhancement: {{sersEnhancement}}
+- Applications: {{applications}}
+{{#additionalNotes}}Complementary to IR: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'laserWavelength',
+    'stokesAntiStokes',
+    'ramanShift',
+    'selectionRules',
+    'sersEnhancement',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Laser"] --> B["Sample"]
+    B --> C["Scattered Light"]
+    C --> D["Spectrometer"]
+    subgraph Scattering
+        E["Rayleigh (elastic)"]
+        F["Stokes (red-shifted)"]
+        G["Anti-Stokes (blue)"]
+    end`,
+};
+
+// =============================================================================
+// ADVANCED CHROMATOGRAPHY
+// =============================================================================
+
+/**
+ * LC-MS/MS Analysis template
+ */
+export const lcMsMs: DiagramTemplate = {
+  id: 'analytical-lc-ms-ms',
+  name: 'LC-MS/MS Analysis',
+  description: 'Tandem mass spectrometry coupled with liquid chromatography',
+  domain: 'chemistry',
+  promptTemplate: `Create an LC-MS/MS diagram:
+- HPLC conditions: {{hplcConditions}}
+- Ionization mode: {{ionizationMode}}
+- MRM transitions: {{mrmTransitions}}
+- Collision energy: {{collisionEnergy}}
+- Quantification: {{quantification}}
+- Matrix effects: {{matrixEffects}}
+{{#additionalNotes}}Method development: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'hplcConditions',
+    'ionizationMode',
+    'mrmTransitions',
+    'collisionEnergy',
+    'quantification',
+    'matrixEffects',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["HPLC"] --> B["ESI Source"]
+    B --> C["Q1 Selection"]
+    C --> D["Collision Cell"]
+    D --> E["Q3 Analysis"]
+    E --> F["Detector"]
+    subgraph MRM
+        G["Parent → Fragment"]
+    end`,
+};
+
+/**
+ * Size Exclusion Chromatography template
+ */
+export const sizeExclusionChromatography: DiagramTemplate = {
+  id: 'analytical-sec',
+  name: 'Size Exclusion Chromatography',
+  description: 'Separation based on molecular size and hydrodynamic volume',
+  domain: 'chemistry',
+  promptTemplate: `Create an SEC diagram:
+- Column packing: {{columnPacking}}
+- Molecular weight range: {{mwRange}}
+- Mobile phase: {{mobilePhase}}
+- Calibration standards: {{calibrationStandards}}
+- Molecular weight determination: {{mwDetermination}}
+- Applications: {{applications}}
+{{#additionalNotes}}Polymer analysis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'columnPacking',
+    'mwRange',
+    'mobilePhase',
+    'calibrationStandards',
+    'mwDetermination',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Sample Mixture"] --> B["SEC Column"]
+    B --> C["Large molecules\\nelude first"]
+    B --> D["Small molecules\\nelude later"]
+    subgraph Calibration
+        E["log(MW) vs Retention"]
+    end`,
+};
+
+/**
+ * Ion Chromatography template
+ */
+export const ionChromatography: DiagramTemplate = {
+  id: 'analytical-ion-chrom',
+  name: 'Ion Chromatography',
+  description: 'Separation and detection of ionic species',
+  domain: 'chemistry',
+  promptTemplate: `Create an ion chromatography diagram:
+- Ion exchange type: {{ionExchangeType}}
+- Eluent composition: {{eluentComposition}}
+- Suppressor function: {{suppressorFunction}}
+- Conductivity detection: {{conductivityDetection}}
+- Anions analyzed: {{anionsAnalyzed}}
+- Cations analyzed: {{cationsAnalyzed}}
+{{#additionalNotes}}Water quality applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'ionExchangeType',
+    'eluentComposition',
+    'suppressorFunction',
+    'conductivityDetection',
+    'anionsAnalyzed',
+    'cationsAnalyzed',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Eluent"] --> B["Sample"]
+    B --> C["Ion Exchange\\nColumn"]
+    C --> D["Suppressor"]
+    D --> E["Conductivity\\nDetector"]
+    subgraph Ions
+        F["Cl-, NO3-, SO42-"]
+    end`,
+};
+
+// =============================================================================
+// ELECTROANALYTICAL METHODS
+// =============================================================================
+
+/**
+ * Amperometric Detection template
+ */
+export const amperometricDetection: DiagramTemplate = {
+  id: 'analytical-amperometric',
+  name: 'Amperometric Detection',
+  description: 'Current measurement at fixed potential for quantification',
+  domain: 'chemistry',
+  promptTemplate: `Create an amperometric detection diagram:
+- Working electrode: {{workingElectrode}}
+- Applied potential: {{appliedPotential}}
+- Analyte oxidation/reduction: {{analyteReaction}}
+- Current response: {{currentResponse}}
+- Biosensor applications: {{biosensorApplications}}
+- Detection limits: {{detectionLimits}}
+{{#additionalNotes}}Flow injection analysis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'workingElectrode',
+    'appliedPotential',
+    'analyteReaction',
+    'currentResponse',
+    'biosensorApplications',
+    'detectionLimits',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Fixed Potential\\nApplied"] --> B["Analyte Oxidation\\nor Reduction"]
+    B --> C["Current Flow"]
+    C --> D["i ∝ Concentration"]
+    subgraph Biosensor
+        E["Enzyme + Electrode"]
+    end`,
+};
+
+/**
+ * Differential Pulse Voltammetry template
+ */
+export const differentialPulseVoltammetry: DiagramTemplate = {
+  id: 'analytical-dpv',
+  name: 'Differential Pulse Voltammetry',
+  description: 'Sensitive electrochemical technique with pulse waveform',
+  domain: 'chemistry',
+  promptTemplate: `Create a DPV diagram:
+- Pulse parameters: {{pulseParameters}}
+- Scan rate: {{scanRate}}
+- Peak potential: {{peakPotential}}
+- Peak current: {{peakCurrent}}
+- Resolution: {{resolution}}
+- Sensitivity: {{sensitivity}}
+{{#additionalNotes}}Trace analysis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'pulseParameters',
+    'scanRate',
+    'peakPotential',
+    'peakCurrent',
+    'resolution',
+    'sensitivity',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Waveform
+        A["Staircase + Pulse"]
+        B["Current sampled\\nbefore/after pulse"]
+    end
+    subgraph Output
+        C["Peak-shaped\\nresponse"]
+        D["Better resolution\\nthan CV"]
+    end
+    Waveform --> Output`,
+};
+
+/**
+ * Stripping Voltammetry template
+ */
+export const strippingVoltammetry: DiagramTemplate = {
+  id: 'analytical-stripping',
+  name: 'Stripping Voltammetry',
+  description: 'Preconcentration technique for trace metal analysis',
+  domain: 'chemistry',
+  promptTemplate: `Create a stripping voltammetry diagram:
+- Deposition step: {{depositionStep}}
+- Stripping step: {{strippingStep}}
+- Electrode type: {{electrodeType}}
+- Metals analyzed: {{metalsAnalyzed}}
+- Detection limits: {{detectionLimits}}
+- Interferences: {{interferences}}
+{{#additionalNotes}}Environmental monitoring: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'depositionStep',
+    'strippingStep',
+    'electrodeType',
+    'metalsAnalyzed',
+    'detectionLimits',
+    'interferences',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    A["Deposition\\n(negative E)"] --> B["Metal plated\\non electrode"]
+    B --> C["Strip\\n(positive scan)"]
+    C --> D["Peak current\\n∝ concentration"]
+    subgraph Sensitivity
+        E["ppb to ppt levels"]
+    end`,
+};
+
+// =============================================================================
+// ADDITIONAL TECHNIQUES
+// =============================================================================
+
+/**
+ * Karl Fischer Titration template
+ */
+export const karlFischerTitration: DiagramTemplate = {
+  id: 'analytical-karl-fischer',
+  name: 'Karl Fischer Titration',
+  description: 'Moisture determination by selective water reaction',
+  domain: 'chemistry',
+  promptTemplate: `Create a Karl Fischer titration diagram:
+- Sample type: {{sampleType}}
+- Volumetric vs coulometric: {{method}}
+- Reagent composition: {{reagentComposition}}
+- Endpoint detection: {{endpointDetection}}
+- Water content range: {{waterContentRange}}
+- Sample preparation: {{samplePreparation}}
+{{#additionalNotes}}Pharmaceutical applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'sampleType',
+    'method',
+    'reagentComposition',
+    'endpointDetection',
+    'waterContentRange',
+    'samplePreparation',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Sample + KF Reagent"] --> B["I2 + SO2 + ROH + Base"]
+    B --> C["Water Consumed"]
+    C --> D["Endpoint: Excess I2"]
+    subgraph Detection
+        E["Biamperometric"]
+    end`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -533,13 +935,23 @@ export const analyticalTemplates: DiagramTemplate[] = [
   irSpectroscopy,
   nmrSpectroscopy,
   massSpectrometry,
+  atomicAbsorption,
+  icpmsAnalysis,
+  fluorescenceSpectroscopy,
+  ramanSpectroscopy,
   // Chromatography
   hplcMethod,
   gcMethod,
   chromatogramAnalysis,
+  lcMsMs,
+  sizeExclusionChromatography,
+  ionChromatography,
   // Electrochemistry
   cyclicVoltammetry,
   potentiometricTitration,
+  amperometricDetection,
+  differentialPulseVoltammetry,
+  strippingVoltammetry,
   // Method Validation
   calibrationCurve,
   methodValidation,
@@ -547,6 +959,7 @@ export const analyticalTemplates: DiagramTemplate[] = [
   // Sample Preparation
   sampleExtraction,
   titrationProcedure,
+  karlFischerTitration,
 ];
 
 export default analyticalTemplates;

@@ -601,6 +601,352 @@ export const liquidDropModel: DiagramTemplate = {
 };
 
 // =============================================================================
+// ADDITIONAL NUCLEAR PHYSICS TEMPLATES
+// =============================================================================
+
+/**
+ * Gamma Decay template
+ */
+export const gammaDecay: DiagramTemplate = {
+  id: 'nuclear-gamma-decay',
+  name: 'Gamma Decay',
+  description: 'Nuclear de-excitation via gamma emission',
+  domain: 'physics',
+  promptTemplate: `Create a gamma decay diagram:
+- Excited nucleus: {{excitedNucleus}}
+- Energy levels: {{energyLevels}}
+- Gamma ray energy: {{gammaEnergy}}
+- Transition types: {{transitionTypes}}
+- Internal conversion: {{internalConversion}}
+- Selection rules: {{selectionRules}}
+{{#additionalNotes}}Isomeric states: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'excitedNucleus',
+    'energyLevels',
+    'gammaEnergy',
+    'transitionTypes',
+    'internalConversion',
+    'selectionRules',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Levels["Nuclear Energy Levels"]
+        E2["Excited State 2"]
+        E1["Excited State 1"]
+        G["Ground State"]
+    end
+    E2 -->|"γ₁"| E1
+    E1 -->|"γ₂"| G
+    subgraph Types
+        T["E1, E2, M1 transitions"]
+    end`,
+};
+
+/**
+ * Neutron Cross Section template
+ */
+export const neutronCrossSection: DiagramTemplate = {
+  id: 'nuclear-cross-section',
+  name: 'Neutron Cross Section',
+  description: 'Reaction probability as function of neutron energy',
+  domain: 'physics',
+  promptTemplate: `Create a neutron cross section diagram:
+- Target nucleus: {{targetNucleus}}
+- Reaction type: {{reactionType}}
+- 1/v region: {{oneOverVRegion}}
+- Resonance peaks: {{resonancePeaks}}
+- Thermal cross section: {{thermalCrossSection}}
+- Doppler broadening: {{dopplerBroadening}}
+{{#additionalNotes}}Breit-Wigner formula: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'targetNucleus',
+    'reactionType',
+    'oneOverVRegion',
+    'resonancePeaks',
+    'thermalCrossSection',
+    'dopplerBroadening',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph CrossSection["σ vs Energy"]
+        A["1/v region (thermal)"]
+        B["Resonance region"]
+        C["Unresolved resonances"]
+    end
+    subgraph Values
+        D["U-235 thermal: 584 b"]
+        E["U-238 thermal: 2.7 b"]
+    end`,
+};
+
+/**
+ * Nuclear Reactions Q-Value template
+ */
+export const nuclearQValue: DiagramTemplate = {
+  id: 'nuclear-q-value',
+  name: 'Nuclear Reaction Q-Value',
+  description: 'Energy release or absorption in nuclear reactions',
+  domain: 'physics',
+  promptTemplate: `Create a nuclear Q-value diagram:
+- Reaction: {{reaction}}
+- Initial masses: {{initialMasses}}
+- Final masses: {{finalMasses}}
+- Q-value calculation: {{qValueCalc}}
+- Exothermic vs endothermic: {{exoEndo}}
+- Threshold energy: {{thresholdEnergy}}
+{{#additionalNotes}}Mass-energy conversion: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'reaction',
+    'initialMasses',
+    'finalMasses',
+    'qValueCalc',
+    'exoEndo',
+    'thresholdEnergy',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Qvalue["Q-Value Calculation"]
+        A["Q = (m_initial - m_final)c²"]
+        B["Q > 0: Exothermic"]
+        C["Q < 0: Endothermic"]
+    end
+    subgraph Threshold
+        D["E_threshold = -Q(1 + m_a/m_A)"]
+    end`,
+};
+
+/**
+ * Radiocarbon Dating template
+ */
+export const radiocarbonDating: DiagramTemplate = {
+  id: 'nuclear-radiocarbon',
+  name: 'Radiocarbon Dating',
+  description: 'C-14 dating methodology',
+  domain: 'physics',
+  promptTemplate: `Create a radiocarbon dating diagram:
+- C-14 production: {{c14Production}}
+- Half-life: {{halfLife}}
+- Activity measurement: {{activityMeasurement}}
+- Age calculation: {{ageCalculation}}
+- Calibration: {{calibration}}
+- Limitations: {{limitations}}
+{{#additionalNotes}}AMS technique: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'c14Production',
+    'halfLife',
+    'activityMeasurement',
+    'ageCalculation',
+    'calibration',
+    'limitations',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Production
+        A["¹⁴N + n → ¹⁴C + p"]
+        B["Cosmic ray neutrons"]
+    end
+    subgraph Dating
+        C["t₁/₂ = 5730 years"]
+        D["t = -t₁/₂ ln(A/A₀)/ln2"]
+    end
+    subgraph Limits
+        E["~50,000 year limit"]
+    end`,
+};
+
+/**
+ * Radiation Detection template
+ */
+export const radiationDetection: DiagramTemplate = {
+  id: 'nuclear-radiation-detection',
+  name: 'Radiation Detection Methods',
+  description: 'Detectors for alpha, beta, gamma, and neutrons',
+  domain: 'physics',
+  promptTemplate: `Create a radiation detection diagram:
+- Radiation type: {{radiationType}}
+- Detector type: {{detectorType}}
+- Detection principle: {{detectionPrinciple}}
+- Energy resolution: {{energyResolution}}
+- Efficiency: {{efficiency}}
+- Applications: {{applications}}
+{{#additionalNotes}}Spectrum analysis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'radiationType',
+    'detectorType',
+    'detectionPrinciple',
+    'energyResolution',
+    'efficiency',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Detectors["Detector Types"]
+        A["GM Tube: counting"]
+        B["Scintillator: γ spectroscopy"]
+        C["HPGe: high resolution"]
+        D["Proportional: neutrons"]
+    end
+    subgraph Matching
+        G["γ → NaI, HPGe"]
+        N["n → ³He, BF₃"]
+    end`,
+};
+
+/**
+ * Dose and Dosimetry template
+ */
+export const doseDosimetry: DiagramTemplate = {
+  id: 'nuclear-dosimetry',
+  name: 'Radiation Dose and Dosimetry',
+  description: 'Radiation dose quantities and measurement',
+  domain: 'physics',
+  promptTemplate: `Create a dosimetry diagram:
+- Absorbed dose: {{absorbedDose}}
+- Equivalent dose: {{equivalentDose}}
+- Effective dose: {{effectiveDose}}
+- Quality factors: {{qualityFactors}}
+- Dose limits: {{doseLimits}}
+- Dosimeters: {{dosimeters}}
+{{#additionalNotes}}ALARA principle: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'absorbedDose',
+    'equivalentDose',
+    'effectiveDose',
+    'qualityFactors',
+    'doseLimits',
+    'dosimeters',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Quantities
+        D["D (Gy): Energy/mass"]
+        H["H (Sv): D × w_R"]
+        E["E (Sv): Σ w_T × H_T"]
+    end
+    subgraph Limits
+        OCC["Occupational: 50 mSv/yr"]
+        PUB["Public: 1 mSv/yr"]
+    end`,
+};
+
+/**
+ * Nuclear Medicine template
+ */
+export const nuclearMedicine: DiagramTemplate = {
+  id: 'nuclear-medicine',
+  name: 'Nuclear Medicine Applications',
+  description: 'Diagnostic and therapeutic nuclear medicine',
+  domain: 'physics',
+  promptTemplate: `Create a nuclear medicine diagram:
+- Radiopharmaceutical: {{radiopharmaceutical}}
+- Imaging modality: {{imagingModality}}
+- Half-life considerations: {{halfLifeConsiderations}}
+- Target organ: {{targetOrgan}}
+- Therapeutic applications: {{therapeuticApps}}
+- Dosimetry: {{dosimetry}}
+{{#additionalNotes}}PET vs SPECT: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'radiopharmaceutical',
+    'imagingModality',
+    'halfLifeConsiderations',
+    'targetOrgan',
+    'therapeuticApps',
+    'dosimetry',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Diagnostic
+        A["⁹⁹ᵐTc: SPECT"]
+        B["¹⁸F-FDG: PET"]
+    end
+    subgraph Therapeutic
+        C["¹³¹I: Thyroid"]
+        D["¹⁷⁷Lu: PRRT"]
+    end
+    subgraph Properties
+        E["Short t₁/₂ for imaging"]
+        F["β⁻ emitters for therapy"]
+    end`,
+};
+
+/**
+ * Particle Accelerator template
+ */
+export const particleAccelerator: DiagramTemplate = {
+  id: 'nuclear-accelerator',
+  name: 'Particle Accelerator',
+  description: 'Types and principles of particle accelerators',
+  domain: 'physics',
+  promptTemplate: `Create a particle accelerator diagram:
+- Accelerator type: {{acceleratorType}}
+- Accelerating mechanism: {{acceleratingMechanism}}
+- Maximum energy: {{maximumEnergy}}
+- Particle type: {{particleType}}
+- Applications: {{applications}}
+- Beam characteristics: {{beamCharacteristics}}
+{{#additionalNotes}}Synchrotron radiation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'acceleratorType',
+    'acceleratingMechanism',
+    'maximumEnergy',
+    'particleType',
+    'applications',
+    'beamCharacteristics',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Linear
+        A["Linac: RF cavities"]
+    end
+    subgraph Circular
+        B["Cyclotron: fixed B, spiral"]
+        C["Synchrotron: varying B"]
+    end
+    subgraph Energy
+        D["LHC: 13 TeV"]
+    end`,
+};
+
+/**
+ * Neutrino Physics template
+ */
+export const neutrinoPhysics: DiagramTemplate = {
+  id: 'nuclear-neutrino',
+  name: 'Neutrino Physics',
+  description: 'Neutrino properties and oscillations',
+  domain: 'physics',
+  promptTemplate: `Create a neutrino physics diagram:
+- Neutrino flavors: {{neutrinoFlavors}}
+- Mass eigenstates: {{massEigenstates}}
+- Oscillation parameters: {{oscillationParameters}}
+- Detection methods: {{detectionMethods}}
+- Solar neutrino problem: {{solarNeutrinoProblem}}
+- Current experiments: {{currentExperiments}}
+{{#additionalNotes}}Majorana vs Dirac: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'neutrinoFlavors',
+    'massEigenstates',
+    'oscillationParameters',
+    'detectionMethods',
+    'solarNeutrinoProblem',
+    'currentExperiments',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Flavors
+        A["νₑ, νμ, ντ"]
+    end
+    subgraph Oscillation
+        B["Flavor ↔ Mass mixing"]
+        C["P(νₑ→νμ) = sin²2θ sin²(Δm²L/4E)"]
+    end
+    subgraph Detection
+        D["Super-K: Cherenkov"]
+        E["SNO: D₂O"]
+    end`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -612,11 +958,14 @@ export const nuclearTemplates: DiagramTemplate[] = [
   decayChain,
   alphaDecay,
   betaDecay,
+  gammaDecay,
   decayStatistics,
   // Nuclear Reactions
   nuclearFission,
   nuclearFusion,
   bindingEnergy,
+  neutronCrossSection,
+  nuclearQValue,
   // Reactors
   reactorCore,
   chainReaction,
@@ -625,9 +974,16 @@ export const nuclearTemplates: DiagramTemplate[] = [
   standardModel,
   feynmanDiagram,
   quarkModel,
+  neutrinoPhysics,
   // Nuclear Structure
   nuclearShellModel,
   liquidDropModel,
+  // Applications
+  radiocarbonDating,
+  radiationDetection,
+  doseDosimetry,
+  nuclearMedicine,
+  particleAccelerator,
 ];
 
 export default nuclearTemplates;

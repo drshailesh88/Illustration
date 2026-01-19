@@ -546,6 +546,385 @@ export const metalCarbonylBonding: DiagramTemplate = {
 };
 
 // =============================================================================
+// BIOINORGANIC CHEMISTRY
+// =============================================================================
+
+/**
+ * Metalloenzyme Active Site template
+ */
+export const metalloenzymeSite: DiagramTemplate = {
+  id: 'inorganic-metalloenzyme',
+  name: 'Metalloenzyme Active Site',
+  description: 'Metal coordination environment in enzymes',
+  domain: 'chemistry',
+  promptTemplate: `Create a metalloenzyme active site diagram:
+- Metal center: {{metalCenter}}
+- Coordinating residues: {{coordinatingResidues}}
+- Substrate binding: {{substrateBinding}}
+- Catalytic mechanism: {{catalyticMechanism}}
+- Oxidation state changes: {{oxidationStates}}
+- Biological function: {{biologicalFunction}}
+{{#additionalNotes}}Structure-function: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'metalCenter',
+    'coordinatingResidues',
+    'substrateBinding',
+    'catalyticMechanism',
+    'oxidationStates',
+    'biologicalFunction',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph ActiveSite["Active Site"]
+        M["Metal (Fe, Cu, Zn)"]
+        H1["His"]
+        H2["His"]
+        C["Cys/Asp"]
+    end
+    M --> H1 & H2 & C
+    M --> S["Substrate"]
+    style M fill:#ff6b6b`,
+};
+
+/**
+ * Heme Chemistry template
+ */
+export const hemeChemistry: DiagramTemplate = {
+  id: 'inorganic-heme',
+  name: 'Heme Chemistry',
+  description: 'Iron porphyrin structure and function',
+  domain: 'chemistry',
+  promptTemplate: `Create a heme chemistry diagram:
+- Porphyrin structure: {{porphyrinStructure}}
+- Iron oxidation state: {{ironOxidationState}}
+- Axial ligands: {{axialLigands}}
+- Spin state: {{spinState}}
+- O2 binding: {{oxygenBinding}}
+- Spectroscopic properties: {{spectroscopicProperties}}
+{{#additionalNotes}}Protein environment: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'porphyrinStructure',
+    'ironOxidationState',
+    'axialLigands',
+    'spinState',
+    'oxygenBinding',
+    'spectroscopicProperties',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Heme["Heme Group"]
+        P["Porphyrin ring"]
+        Fe["Fe2+/Fe3+"]
+        His["Proximal His"]
+    end
+    Fe --> P
+    Fe --> His
+    Fe --> O2["O2 (6th position)"]
+    style Fe fill:#ff6b6b`,
+};
+
+/**
+ * Iron-Sulfur Clusters template
+ */
+export const ironSulfurClusters: DiagramTemplate = {
+  id: 'inorganic-fe-s-clusters',
+  name: 'Iron-Sulfur Clusters',
+  description: 'Fe-S cluster types and electron transfer',
+  domain: 'chemistry',
+  promptTemplate: `Create an iron-sulfur cluster diagram:
+- Cluster type: {{clusterType}}
+- Iron coordination: {{ironCoordination}}
+- Sulfur bridges: {{sulfurBridges}}
+- Redox potentials: {{redoxPotentials}}
+- Electron transfer: {{electronTransfer}}
+- Biological role: {{biologicalRole}}
+{{#additionalNotes}}Protein binding: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'clusterType',
+    'ironCoordination',
+    'sulfurBridges',
+    'redoxPotentials',
+    'electronTransfer',
+    'biologicalRole',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Clusters["Fe-S Cluster Types"]
+        A["[2Fe-2S]"]
+        B["[3Fe-4S]"]
+        C["[4Fe-4S]"]
+    end
+    subgraph Function
+        D["Electron transfer"]
+        E["Enzyme active sites"]
+    end
+    Clusters --> Function`,
+};
+
+// =============================================================================
+// MAIN GROUP CHEMISTRY
+// =============================================================================
+
+/**
+ * Main Group Compounds template
+ */
+export const mainGroupCompounds: DiagramTemplate = {
+  id: 'inorganic-main-group',
+  name: 'Main Group Compound Structures',
+  description: 'Structures of main group element compounds',
+  domain: 'chemistry',
+  promptTemplate: `Create a main group compound diagram:
+- Element: {{element}}
+- Oxidation states: {{oxidationStates}}
+- Common compounds: {{commonCompounds}}
+- Hybridization: {{hybridization}}
+- Molecular geometry: {{molecularGeometry}}
+- Reactivity patterns: {{reactivityPatterns}}
+{{#additionalNotes}}Industrial applications: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'element',
+    'oxidationStates',
+    'commonCompounds',
+    'hybridization',
+    'molecularGeometry',
+    'reactivityPatterns',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Phosphorus["P Compounds"]
+        A["PCl3 - pyramidal"]
+        B["PCl5 - TBP"]
+        C["PO43- - tetrahedral"]
+    end
+    subgraph Sulfur["S Compounds"]
+        D["SF4 - see-saw"]
+        E["SF6 - octahedral"]
+    end`,
+};
+
+/**
+ * Hypervalent Compounds template
+ */
+export const hypervalentCompounds: DiagramTemplate = {
+  id: 'inorganic-hypervalent',
+  name: 'Hypervalent Compounds',
+  description: 'Compounds exceeding octet rule',
+  domain: 'chemistry',
+  promptTemplate: `Create a hypervalent compound diagram:
+- Central atom: {{centralAtom}}
+- Expanded octet: {{expandedOctet}}
+- Bonding model: {{bondingModel}}
+- 3c-4e bonds: {{threeCenterBonds}}
+- Geometry: {{geometry}}
+- Examples: {{examples}}
+{{#additionalNotes}}Bonding controversy: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'centralAtom',
+    'expandedOctet',
+    'bondingModel',
+    'threeCenterBonds',
+    'geometry',
+    'examples',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Examples["Hypervalent Examples"]
+        A["SF6 - 12 electrons"]
+        B["PCl5 - 10 electrons"]
+        C["XeF4 - 12 electrons"]
+    end
+    subgraph Bonding["Bonding Model"]
+        D["3-center 4-electron"]
+        E["d-orbital participation?"]
+    end`,
+};
+
+/**
+ * Noble Gas Chemistry template
+ */
+export const nobleGasChemistry: DiagramTemplate = {
+  id: 'inorganic-noble-gas',
+  name: 'Noble Gas Chemistry',
+  description: 'Compounds of noble gases especially Xe',
+  domain: 'chemistry',
+  promptTemplate: `Create a noble gas chemistry diagram:
+- Noble gas: {{nobleGas}}
+- Oxidation states: {{oxidationStates}}
+- Fluorides: {{fluorides}}
+- Oxides: {{oxides}}
+- Structure: {{structure}}
+- Synthesis: {{synthesis}}
+{{#additionalNotes}}Historical context: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'nobleGas',
+    'oxidationStates',
+    'fluorides',
+    'oxides',
+    'structure',
+    'synthesis',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Xenon["Xe Compounds"]
+        A["XeF2 - linear"]
+        B["XeF4 - square planar"]
+        C["XeF6 - distorted oct"]
+        D["XeO3 - pyramidal"]
+    end
+    E["Xe + F2 → XeF2"]`,
+};
+
+// =============================================================================
+// TRANSITION METAL APPLICATIONS
+// =============================================================================
+
+/**
+ * Homogeneous Catalysis template
+ */
+export const homogeneousCatalysis: DiagramTemplate = {
+  id: 'inorganic-homogeneous-catalysis',
+  name: 'Homogeneous Catalysis',
+  description: 'Transition metal catalyzed reactions in solution',
+  domain: 'chemistry',
+  promptTemplate: `Create a homogeneous catalysis diagram:
+- Catalyst: {{catalyst}}
+- Reaction type: {{reactionType}}
+- Key intermediates: {{keyIntermediates}}
+- Turnover frequency: {{turnoverFrequency}}
+- Selectivity: {{selectivity}}
+- Industrial application: {{industrialApplication}}
+{{#additionalNotes}}Mechanism details: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'catalyst',
+    'reactionType',
+    'keyIntermediates',
+    'turnoverFrequency',
+    'selectivity',
+    'industrialApplication',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    A["Wilkinson's Catalyst\\nRhCl(PPh3)3"] --> B["Alkene Binding"]
+    B --> C["Oxidative Addition\\nH2"]
+    C --> D["Migratory Insertion"]
+    D --> E["Reductive Elimination"]
+    E --> A`,
+};
+
+/**
+ * Cross-Coupling Reactions template
+ */
+export const crossCouplingReactions: DiagramTemplate = {
+  id: 'inorganic-cross-coupling',
+  name: 'Cross-Coupling Reactions',
+  description: 'Pd-catalyzed C-C bond forming reactions',
+  domain: 'chemistry',
+  promptTemplate: `Create a cross-coupling reaction diagram:
+- Reaction name: {{reactionName}}
+- Catalyst system: {{catalystSystem}}
+- Coupling partners: {{couplingPartners}}
+- Mechanism steps: {{mechanismSteps}}
+- Ligand effects: {{ligandEffects}}
+- Scope: {{scope}}
+{{#additionalNotes}}Nobel Prize 2010: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'reactionName',
+    'catalystSystem',
+    'couplingPartners',
+    'mechanismSteps',
+    'ligandEffects',
+    'scope',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart LR
+    subgraph Reactions["Cross-Coupling Types"]
+        A["Suzuki: Ar-B(OH)2"]
+        B["Negishi: Ar-ZnX"]
+        C["Stille: Ar-SnR3"]
+    end
+    D["Pd(0)"] --> E["Ox Add"]
+    E --> F["Transmetallation"]
+    F --> G["Red Elim"]
+    G --> D`,
+};
+
+/**
+ * VSEPR Theory template
+ */
+export const vseprTheory: DiagramTemplate = {
+  id: 'inorganic-vsepr',
+  name: 'VSEPR Theory',
+  description: 'Predicting molecular geometry from electron pairs',
+  domain: 'chemistry',
+  promptTemplate: `Create a VSEPR theory diagram:
+- Steric number: {{stericNumber}}
+- Bonding pairs: {{bondingPairs}}
+- Lone pairs: {{lonePairs}}
+- Electron geometry: {{electronGeometry}}
+- Molecular geometry: {{molecularGeometry}}
+- Bond angles: {{bondAngles}}
+{{#additionalNotes}}Deviations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'stericNumber',
+    'bondingPairs',
+    'lonePairs',
+    'electronGeometry',
+    'molecularGeometry',
+    'bondAngles',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph SN4["Steric Number 4"]
+        A["4 BP, 0 LP: Tetrahedral"]
+        B["3 BP, 1 LP: Trigonal Pyramidal"]
+        C["2 BP, 2 LP: Bent"]
+    end
+    subgraph SN5["Steric Number 5"]
+        D["5 BP: Trigonal Bipyramidal"]
+        E["4 BP: See-saw"]
+        F["3 BP: T-shape"]
+    end`,
+};
+
+/**
+ * Hard-Soft Acid-Base Theory template
+ */
+export const hsabTheory: DiagramTemplate = {
+  id: 'inorganic-hsab',
+  name: 'Hard-Soft Acid-Base Theory',
+  description: 'HSAB principle for predicting complex stability',
+  domain: 'chemistry',
+  promptTemplate: `Create an HSAB theory diagram:
+- Hard acids: {{hardAcids}}
+- Soft acids: {{softAcids}}
+- Hard bases: {{hardBases}}
+- Soft bases: {{softBases}}
+- Matching principle: {{matchingPrinciple}}
+- Applications: {{applications}}
+{{#additionalNotes}}Symbiosis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: [
+    'hardAcids',
+    'softAcids',
+    'hardBases',
+    'softBases',
+    'matchingPrinciple',
+    'applications',
+    'additionalNotes',
+  ],
+  mermaidExample: `flowchart TD
+    subgraph Hard["Hard-Hard"]
+        A["Li+, Mg2+, Al3+"]
+        B["F-, OH-, O2-"]
+    end
+    subgraph Soft["Soft-Soft"]
+        C["Cu+, Ag+, Hg2+"]
+        D["I-, RS-, CN-"]
+    end
+    E["Hard with Hard = Stable"]
+    F["Soft with Soft = Stable"]`,
+};
+
+// =============================================================================
 // EXPORT ALL TEMPLATES
 // =============================================================================
 
@@ -571,6 +950,19 @@ export const inorganicTemplates: DiagramTemplate[] = [
   catalyticCycle,
   oxAddRedElim,
   metalCarbonylBonding,
+  // Bioinorganic Chemistry
+  metalloenzymeSite,
+  hemeChemistry,
+  ironSulfurClusters,
+  // Main Group Chemistry
+  mainGroupCompounds,
+  hypervalentCompounds,
+  nobleGasChemistry,
+  // Transition Metal Applications
+  homogeneousCatalysis,
+  crossCouplingReactions,
+  vseprTheory,
+  hsabTheory,
 ];
 
 export default inorganicTemplates;

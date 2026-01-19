@@ -328,6 +328,235 @@ export const pituitaryInsufficiency: DiagramTemplate = {
     D1["Testosterone or\\nEstrogen/Progest"]`
 };
 
+export const hhsManagement: DiagramTemplate = {
+  id: 'endo-hhs-management',
+  name: 'HHS Management Protocol',
+  description: 'Protocol for managing hyperosmolar hyperglycemic state',
+  domain: 'medicine',
+  promptTemplate: `Create an HHS management protocol:
+- Diagnosis criteria: {{diagnosisCriteria}}
+- Fluid resuscitation: {{fluidResuscitation}}
+- Insulin therapy: {{insulinTherapy}}
+- Electrolyte management: {{electrolyteManagement}}
+- Osmolality monitoring: {{osmolalityMonitoring}}
+- Transition criteria: {{transitionCriteria}}
+{{#additionalNotes}}Thromboprophylaxis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['diagnosisCriteria', 'fluidResuscitation', 'insulinTherapy', 'electrolyteManagement', 'osmolalityMonitoring', 'transitionCriteria', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["HHS Confirmed\\nGlc >600, Osm >320"] --> B["Aggressive Fluids\\nNS 1-1.5L/h"]
+    B --> C["Once Replete:\\nInsulin 0.1 U/kg/h"]
+    C --> D{"Glucose <300?"}
+    D -->|"Yes"| E["Add D5, ↓Insulin"]
+    B --> F["Monitor Osm\\nq2-4h"]
+    F --> G["Correct Na+\\nfor glucose"]`
+};
+
+export const cushingSyndromeWorkup: DiagramTemplate = {
+  id: 'endo-cushing-workup',
+  name: 'Cushing Syndrome Workup',
+  description: 'Algorithm for diagnosing and localizing Cushing syndrome',
+  domain: 'medicine',
+  promptTemplate: `Create a Cushing syndrome workup algorithm:
+- Screening tests: {{screeningTests}}
+- Confirmatory tests: {{confirmatoryTests}}
+- ACTH-dependent vs independent: {{acthStatus}}
+- Localization studies: {{localizationStudies}}
+- Treatment options: {{treatmentOptions}}
+{{#additionalNotes}}Pseudo-Cushing: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['screeningTests', 'confirmatoryTests', 'acthStatus', 'localizationStudies', 'treatmentOptions', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Suspected Cushing"] --> B["24h UFC\\n1mg DST\\nLate Night Salivary"]
+    B --> C{">2 Abnormal?"}
+    C -->|"Yes"| D["Check ACTH"]
+    D -->|"Low"| E["CT Adrenals"]
+    D -->|"Normal/High"| F["Pituitary MRI\\nIPSS"]
+    E --> G["Adrenal Tumor"]
+    F --> H["Pituitary vs Ectopic"]`
+};
+
+export const pheochromocytomaManagement: DiagramTemplate = {
+  id: 'endo-pheochromocytoma',
+  name: 'Pheochromocytoma Management',
+  description: 'Protocol for diagnosing and managing pheochromocytoma',
+  domain: 'medicine',
+  promptTemplate: `Create a pheochromocytoma management protocol:
+- Biochemical testing: {{biochemicalTesting}}
+- Imaging studies: {{imagingStudies}}
+- Preoperative blockade: {{preoperativeBlockade}}
+- Alpha before beta: {{alphaBetaSequence}}
+- Surgical considerations: {{surgicalConsiderations}}
+{{#additionalNotes}}Genetic testing: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['biochemicalTesting', 'imagingStudies', 'preoperativeBlockade', 'alphaBetaSequence', 'surgicalConsiderations', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Suspected Pheo"] --> B["Plasma/Urine\\nMetanephrines"]
+    B -->|"Elevated"| C["CT/MRI Adrenals"]
+    C -->|"Mass Found"| D["Alpha Blockade FIRST"]
+    D --> E["Phenoxybenzamine\\nor Doxazosin"]
+    E --> F["Then Beta Blocker\\nif Tachycardic"]
+    F --> G["Surgery"]`
+};
+
+export const primaryAldosteronismWorkup: DiagramTemplate = {
+  id: 'endo-primary-aldo',
+  name: 'Primary Aldosteronism Workup',
+  description: 'Algorithm for diagnosing primary aldosteronism',
+  domain: 'medicine',
+  promptTemplate: `Create a primary aldosteronism workup algorithm:
+- Screening indications: {{screeningIndications}}
+- ARR interpretation: {{arrInterpretation}}
+- Confirmatory tests: {{confirmatoryTests}}
+- Subtype differentiation: {{subtypeDifferentiation}}
+- Treatment selection: {{treatmentSelection}}
+{{#additionalNotes}}AVS interpretation: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['screeningIndications', 'arrInterpretation', 'confirmatoryTests', 'subtypeDifferentiation', 'treatmentSelection', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Resistant HTN\\nor Hypokalemia"] --> B["ARR Screen"]
+    B -->|"ARR >30"| C["Confirmatory Test\\nSaline Suppression"]
+    C -->|"Positive"| D["CT Adrenals"]
+    D --> E{"Unilateral\\nor Bilateral?"}
+    E -->|"Unclear"| F["AVS"]
+    E -->|"Unilateral"| G["Surgery"]
+    E -->|"Bilateral"| H["Spironolactone"]`
+};
+
+export const hyponatremiaManagement: DiagramTemplate = {
+  id: 'endo-hyponatremia',
+  name: 'Hyponatremia Management Algorithm',
+  description: 'Algorithm for evaluating and treating hyponatremia',
+  domain: 'medicine',
+  promptTemplate: `Create a hyponatremia management algorithm:
+- Volume status assessment: {{volumeStatus}}
+- Urine studies: {{urineStudies}}
+- Etiology identification: {{etiologyIdentification}}
+- Correction rate: {{correctionRate}}
+- ODS prevention: {{odsPrevention}}
+- SIADH management: {{siadhManagement}}
+{{#additionalNotes}}Acute vs chronic: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['volumeStatus', 'urineStudies', 'etiologyIdentification', 'correctionRate', 'odsPrevention', 'siadhManagement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Na <135"] --> B{"Serum Osm?"}
+    B -->|"Low"| C{"Volume Status?"}
+    C -->|"Low"| D["NS Resuscitation"]
+    C -->|"Normal"| E["SIADH: Restrict\\nVaptans"]
+    C -->|"High"| F["Diuresis"]
+    D & E & F --> G["Correct ≤8-10 mEq/24h"]`
+};
+
+export const hypercalcemiaWorkup: DiagramTemplate = {
+  id: 'endo-hypercalcemia',
+  name: 'Hypercalcemia Workup and Management',
+  description: 'Algorithm for diagnosing and treating hypercalcemia',
+  domain: 'medicine',
+  promptTemplate: `Create a hypercalcemia workup algorithm:
+- PTH interpretation: {{pthInterpretation}}
+- PTHrP testing: {{pthrpTesting}}
+- Vitamin D metabolites: {{vitaminDMetabolites}}
+- Malignancy workup: {{malignancyWorkup}}
+- Acute management: {{acuteManagement}}
+- Surgery indications: {{surgeryIndications}}
+{{#additionalNotes}}FHH vs PHPT: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['pthInterpretation', 'pthrpTesting', 'vitaminDMetabolites', 'malignancyWorkup', 'acuteManagement', 'surgeryIndications', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Ca >10.5"] --> B["Check PTH"]
+    B -->|"High/Normal"| C["Primary Hyperparathyroidism"]
+    B -->|"Low"| D["Non-PTH Mediated"]
+    D --> E["PTHrP, Vit D\\nMalignancy W/U"]
+    C --> F{"Surgery\\nIndications?"}
+    F -->|"Yes"| G["Parathyroidectomy"]
+    F -->|"No"| H["Monitor or\\nCinacalcet"]`
+};
+
+export const diabetesInPregnancy: DiagramTemplate = {
+  id: 'endo-diabetes-pregnancy',
+  name: 'Diabetes in Pregnancy Management',
+  description: 'Protocol for managing diabetes during pregnancy',
+  domain: 'medicine',
+  promptTemplate: `Create a diabetes in pregnancy protocol:
+- GDM screening: {{gdmScreening}}
+- Glycemic targets: {{glycemicTargets}}
+- Medication options: {{medicationOptions}}
+- Fetal monitoring: {{fetalMonitoring}}
+- Delivery timing: {{deliveryTiming}}
+- Postpartum management: {{postpartumManagement}}
+{{#additionalNotes}}Type 1/2 preconception: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['gdmScreening', 'glycemicTargets', 'medicationOptions', 'fetalMonitoring', 'deliveryTiming', 'postpartumManagement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Pregnancy + Diabetes"] --> B["Targets:\\nFasting <95\\n1h <140\\n2h <120"]
+    B --> C{"Diet Controlled?"}
+    C -->|"No"| D["Insulin"]
+    C -->|"Yes"| E["Continue Diet"]
+    D --> F["Fetal Surveillance\\nGrowth Scans"]
+    F --> G["Deliver 39-40 wk\\nunless complications"]`
+};
+
+export const testosteroneReplacement: DiagramTemplate = {
+  id: 'endo-testosterone',
+  name: 'Testosterone Replacement Therapy',
+  description: 'Protocol for testosterone replacement in hypogonadism',
+  domain: 'medicine',
+  promptTemplate: `Create a testosterone replacement protocol:
+- Diagnosis criteria: {{diagnosisCriteria}}
+- Formulation selection: {{formulationSelection}}
+- Dosing: {{dosing}}
+- Monitoring parameters: {{monitoringParameters}}
+- Contraindications: {{contraindications}}
+- Side effect management: {{sideEffectManagement}}
+{{#additionalNotes}}Fertility considerations: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['diagnosisCriteria', 'formulationSelection', 'dosing', 'monitoringParameters', 'contraindications', 'sideEffectManagement', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Low T Symptoms\\n+ Low AM T x2"] --> B["Confirm Hypogonadism"]
+    B --> C{"Contraindications?"}
+    C -->|"No"| D["Select Formulation"]
+    D --> E["Gel, Injection\\nor Patch"]
+    E --> F["Monitor:\\nT, Hct, PSA"]
+    F --> G["Adjust to\\nMid-Normal T"]`
+};
+
+export const menopauseHRT: DiagramTemplate = {
+  id: 'endo-menopause-hrt',
+  name: 'Menopause Hormone Therapy',
+  description: 'Algorithm for hormone therapy in menopause',
+  domain: 'medicine',
+  promptTemplate: `Create a menopause HRT algorithm:
+- Indication assessment: {{indicationAssessment}}
+- Risk stratification: {{riskStratification}}
+- Regimen selection: {{regimenSelection}}
+- Duration of therapy: {{durationTherapy}}
+- Monitoring: {{monitoring}}
+- Alternatives: {{alternatives}}
+{{#additionalNotes}}Timing hypothesis: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['indicationAssessment', 'riskStratification', 'regimenSelection', 'durationTherapy', 'monitoring', 'alternatives', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Vasomotor Symptoms"] --> B{"Age <60 or\\n<10y Postmenopause?"}
+    B -->|"Yes"| C{"Uterus?"}
+    C -->|"Yes"| D["E + P"]
+    C -->|"No"| E["E alone"]
+    B -->|"No"| F["Non-Hormonal:\\nSSRI, Gabapentin"]
+    D & E --> G["Lowest Dose\\nShortest Duration"]`
+};
+
+export const thyroidStormManagement: DiagramTemplate = {
+  id: 'endo-thyroid-storm',
+  name: 'Thyroid Storm Management',
+  description: 'Emergency protocol for thyroid storm',
+  domain: 'medicine',
+  promptTemplate: `Create a thyroid storm management protocol:
+- Recognition criteria: {{recognitionCriteria}}
+- Burch-Wartofsky score: {{burchWartofskyScore}}
+- Immediate interventions: {{immediateInterventions}}
+- Medication sequence: {{medicationSequence}}
+- Supportive care: {{supportiveCare}}
+- Precipitant identification: {{precipitantIdentification}}
+{{#additionalNotes}}ICU management: {{additionalNotes}}{{/additionalNotes}}`,
+  placeholders: ['recognitionCriteria', 'burchWartofskyScore', 'immediateInterventions', 'medicationSequence', 'supportiveCare', 'precipitantIdentification', 'additionalNotes'],
+  mermaidExample: `flowchart TD
+    A["Thyroid Storm\\nBW Score ≥45"] --> B["Block Synthesis:\\nPTU 200mg q4h"]
+    B --> C["Block Release:\\nIodine AFTER PTU"]
+    C --> D["Block Conversion:\\nPropranolol\\nSteroids"]
+    D --> E["Supportive:\\nCooling\\nIV Fluids"]
+    E --> F["Identify Trigger"]`
+};
+
 export const endocrineDrugsTemplates: DiagramTemplate[] = [
   insulinTypesComparison,
   diabetesOralAgentSelection,
@@ -343,6 +572,16 @@ export const endocrineDrugsTemplates: DiagramTemplate[] = [
   osteoporosisTherapy,
   thyroidNoduleWorkup,
   pituitaryInsufficiency,
+  hhsManagement,
+  cushingSyndromeWorkup,
+  pheochromocytomaManagement,
+  primaryAldosteronismWorkup,
+  hyponatremiaManagement,
+  hypercalcemiaWorkup,
+  diabetesInPregnancy,
+  testosteroneReplacement,
+  menopauseHRT,
+  thyroidStormManagement,
 ];
 
 export default endocrineDrugsTemplates;

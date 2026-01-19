@@ -629,3 +629,39 @@ export { default as physicsPrompts } from './physics-prompts';
 
 export * from './chemistry-prompts';
 export { default as chemistryPrompts } from './chemistry-prompts';
+
+export * from './obgyn-prompts';
+export { default as obgynPrompts } from './obgyn-prompts';
+
+export * from './cardiology-prompts';
+export { default as cardiologyPrompts } from './cardiology-prompts';
+
+export * from './aerospace-prompts';
+export { default as aerospacePrompts } from './aerospace-prompts';
+
+export * from './agriculture-prompts';
+export { default as agriculturePrompts } from './agriculture-prompts';
+
+export * from './forensics-prompts';
+export { default as forensicsPrompts } from './forensics-prompts';
+
+export * from './geology-prompts';
+export { default as geologyPrompts } from './geology-prompts';
+
+export * from './astronomy-prompts';
+export { default as astronomyPrompts } from './astronomy-prompts';
+
+export * from './ecology-prompts';
+export { default as ecologyPrompts } from './ecology-prompts';
+
+export * from './meteorology-prompts';
+export { default as meteorologyPrompts } from './meteorology-prompts';
+
+export * from './oceanography-prompts';
+export { default as oceanographyPrompts } from './oceanography-prompts';
+
+export * from './botany-prompts';
+export { default as botanyPrompts } from './botany-prompts';
+
+export * from './zoology-prompts';
+export { default as zoologyPrompts } from './zoology-prompts';
