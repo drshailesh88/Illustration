@@ -56,7 +56,6 @@ export * from './rough';
 export * from './freehand';
 export * from './color';
 export * from './color/useColorManager';
-export * from './export';
 export * from './icons';
 export * from './glfx';
 // Image processing - re-export with explicit naming to avoid ProgressCallback conflict

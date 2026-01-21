@@ -20,7 +20,8 @@ import { Canvas, CanvasProvider, CanvasRef } from '../../components/Canvas';
 import { IllustratorToolbar, type IllustratorTool } from '../../components/IllustratorToolbar';
 import { defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
 import { ExportDialog, type ExportFormat, type ExportSettings } from '../../components/ExportDialog';
-import { exportAsPng, exportAsPdf, exportAsSvg, exportAsPptx } from '../../lib/export';
+import { exportAsPptx } from '../../lib/export/pptx';
+import { getExportService } from '../../services/export';
 import { BackgroundRemovalTool } from '../../components/BackgroundRemoval';
 import { AIGenerationTool } from '../../components/AIGeneration';
 import { ShapeGeneratorPanel, type ShapeType } from '../../components/tools';
@@ -117,10 +118,22 @@ const styles: Record<string, React.CSSProperties> = {
 };
 
 // ============================================================================
-// EditorMode Component
+// EditorMode Component (Wrapper with CanvasProvider)
 // ============================================================================
 
 export function EditorMode(): JSX.Element {
+  return (
+    <CanvasProvider>
+      <EditorModeContent />
+    </CanvasProvider>
+  );
+}
+
+// ============================================================================
+// EditorModeContent Component (Inner component that uses canvas context)
+// ============================================================================
+
+function EditorModeContent(): JSX.Element {
   const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -203,6 +216,7 @@ export function EditorMode(): JSX.Element {
     clearCanvas,
     exportJSON,
     importJSON,
+    importSVG,
     zoomToFit,
   } = useCanvasContext();
 
@@ -284,6 +298,17 @@ export function EditorMode(): JSX.Element {
     onZoomToFit: zoomToFit,
   });
 
+  const downloadExport = useCallback((blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const mmToPoints = useCallback((mm: number) => mm * (72 / 25.4), []);
+
   // Handle export from ExportDialog
   const handleExport = useCallback(async (format: ExportFormat, settings: ExportSettings) => {
     if (!canvas) {
@@ -291,50 +316,67 @@ export function EditorMode(): JSX.Element {
       return;
     }
 
+    const exportService = getExportService();
+    const filename = 'diagram';
+
     try {
-      // Get SVG string from Fabric.js canvas
-      const svgString = canvas.toSVG();
-
-      // Create an SVG element from the string
-      const parser = new DOMParser();
-      const svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
-      const svgElement = svgDoc.documentElement as unknown as SVGSVGElement;
-
-      // Append to body temporarily for rendering (required by some export libs)
-      document.body.appendChild(svgElement);
-      svgElement.style.position = 'absolute';
-      svgElement.style.left = '-9999px';
-
-      const filename = 'diagram';
-
       switch (format) {
         case 'png': {
           const pngSettings = settings as { dpi: number; quality: number; background: string };
-          const scale = pngSettings.dpi / 72; // Convert DPI to scale factor
-          await exportAsPng(svgElement, `${filename}.png`, {
-            scale,
-            backgroundColor: pngSettings.background === 'transparent' ? undefined : '#ffffff',
+          const result = await exportService.export(canvas, {
+            format: 'png',
+            dpi: pngSettings.dpi as 72 | 150 | 300 | 600,
+            quality: pngSettings.quality,
+            transparent: pngSettings.background === 'transparent',
+            filename,
           });
+          downloadExport(result.blob, result.filename);
           showToast({ type: 'success', message: 'PNG exported successfully!' });
-          break;
-        }
-        case 'pdf': {
-          const pdfSettings = settings as { pageSize: string; orientation: string; margins: { top: number; right: number; bottom: number; left: number } };
-          await exportAsPdf(svgElement, `${filename}.pdf`, {
-            pageSize: pdfSettings.pageSize as 'a4' | 'letter' | 'a3' | 'custom',
-            orientation: pdfSettings.orientation as 'portrait' | 'landscape',
-            margins: pdfSettings.margins,
-          });
-          showToast({ type: 'success', message: 'PDF exported successfully!' });
           break;
         }
         case 'svg': {
           const svgSettings = settings as { optimize: boolean; minify: boolean; embedFonts: boolean };
-          exportAsSvg(svgElement, `${filename}.svg`, {
+          const result = await exportService.export(canvas, {
+            format: 'svg',
+            optimize: svgSettings.optimize,
             minify: svgSettings.minify,
             embedFonts: svgSettings.embedFonts,
+            preserveViewBox: true,
+            filename,
           });
+          downloadExport(result.blob, result.filename);
           showToast({ type: 'success', message: 'SVG exported successfully!' });
+          break;
+        }
+        case 'pdf': {
+          const pdfSettings = settings as {
+            pageSize: 'a4' | 'letter' | 'custom';
+            orientation: 'portrait' | 'landscape';
+            margins: { top: number; right: number; bottom: number; left: number };
+            customWidth?: number;
+            customHeight?: number;
+            metadata?: { title?: string; author?: string; subject?: string };
+          };
+          const marginPoints = Math.max(
+            pdfSettings.margins.top,
+            pdfSettings.margins.right,
+            pdfSettings.margins.bottom,
+            pdfSettings.margins.left
+          );
+          const result = await exportService.export(canvas, {
+            format: 'pdf',
+            pageSize: pdfSettings.pageSize,
+            orientation: pdfSettings.orientation,
+            customWidth: pdfSettings.customWidth ? mmToPoints(pdfSettings.customWidth) : undefined,
+            customHeight: pdfSettings.customHeight ? mmToPoints(pdfSettings.customHeight) : undefined,
+            margin: mmToPoints(marginPoints),
+            title: pdfSettings.metadata?.title,
+            author: pdfSettings.metadata?.author,
+            subject: pdfSettings.metadata?.subject,
+            filename,
+          });
+          downloadExport(result.blob, result.filename);
+          showToast({ type: 'success', message: 'PDF exported successfully!' });
           break;
         }
         case 'pptx': {
@@ -351,19 +393,24 @@ export function EditorMode(): JSX.Element {
           break;
         }
         case 'latex': {
-          // LaTeX export is handled directly in the LaTeXOptions component
-          showToast({ type: 'success', message: 'LaTeX code ready!' });
+          const latexSettings = settings as { standalone: boolean; includePreamble: boolean };
+          const result = await exportService.export(canvas, {
+            format: 'tikz',
+            standalone: latexSettings.standalone,
+            includePreamble: latexSettings.includePreamble,
+            includeComments: true,
+            filename,
+          });
+          downloadExport(result.blob, result.filename);
+          showToast({ type: 'success', message: 'LaTeX exported successfully!' });
           break;
         }
       }
-
-      // Clean up
-      document.body.removeChild(svgElement);
     } catch (error) {
       console.error('Export failed:', error);
       showToast({ type: 'error', message: 'Export failed. Please try again.' });
     }
-  }, [canvas, showToast]);
+  }, [canvas, downloadExport, mmToPoints, showToast]);
 
   // Initialize illustrator tools hook
   // The hook sets up event handlers and manages Paper.js integration
@@ -396,12 +443,25 @@ export function EditorMode(): JSX.Element {
       if (stored) {
         const diagramData = JSON.parse(stored);
 
-        if (canvasRef.current) {
-          await canvasRef.current.loadFromJSON(diagramData.canvas);
+        if (diagramData.svg) {
+          clearCanvas();
+          await importSVG(diagramData.svg);
           showToast({
             type: 'success',
             message: `Loaded diagram: ${diagramData.name || diagramId}`,
           });
+        } else if (diagramData.canvas) {
+          if (canvasRef.current) {
+            await canvasRef.current.loadFromJSON(diagramData.canvas);
+          } else {
+            await importJSON(diagramData.canvas);
+          }
+          showToast({
+            type: 'success',
+            message: `Loaded diagram: ${diagramData.name || diagramId}`,
+          });
+        } else {
+          throw new Error('Unsupported diagram format');
         }
       } else {
         showToast({
@@ -420,7 +480,7 @@ export function EditorMode(): JSX.Element {
     } finally {
       setLoading(false);
     }
-  }, [navigate, setLoading, showToast]);
+  }, [navigate, setLoading, showToast, importSVG, clearCanvas, importJSON]);
 
   // ========================================================================
   // Canvas Resize Handler
@@ -487,7 +547,6 @@ export function EditorMode(): JSX.Element {
   // ========================================================================
 
   return (
-    <CanvasProvider>
       <div style={styles.container}>
         {/* Top Menu Bar */}
         <MenuBar
@@ -622,7 +681,6 @@ export function EditorMode(): JSX.Element {
         {/* Bottom Status Bar */}
         <StatusBar mouseCoords={mouseCoords} />
       </div>
-    </CanvasProvider>
   );
 }
 

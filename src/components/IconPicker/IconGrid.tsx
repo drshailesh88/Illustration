@@ -36,6 +36,8 @@ export interface IconGridProps {
   maxVisibleItems?: number;
   /** Custom class name */
   className?: string;
+  /** Callback when drag starts */
+  onDragStart?: (icon: UnifiedIconResult) => void;
 }
 
 export interface IconCardProps {
@@ -46,6 +48,7 @@ export interface IconCardProps {
   isSelected: boolean;
   size: number;
   showName: boolean;
+  onDragStart?: (e: React.DragEvent, icon: UnifiedIconResult) => void;
 }
 
 // =============================================================================
@@ -72,6 +75,7 @@ const IconCard: React.FC<IconCardProps> = React.memo(({
   isSelected,
   size,
   showName,
+  onDragStart,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const libraryColor = libraryColors[icon.library] || '#6b7280';
@@ -86,6 +90,10 @@ const IconCard: React.FC<IconCardProps> = React.memo(({
     onMouseLeave();
   }, [onMouseLeave]);
 
+  const handleDragStart = useCallback((e: React.DragEvent) => {
+    onDragStart?.(e, icon);
+  }, [icon, onDragStart]);
+
   const IconComponent = icon.component;
 
   return (
@@ -93,14 +101,16 @@ const IconCard: React.FC<IconCardProps> = React.memo(({
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onDragStart={handleDragStart}
+      draggable={true}
       className={`icon-grid-card ${isSelected ? 'selected' : ''} ${isHovered ? 'hovered' : ''}`}
       style={{
         width: size,
         minHeight: showName ? size + 24 : size,
         '--library-color': libraryColor,
       } as React.CSSProperties}
-      title={`${icon.name} (${icon.library})`}
-      aria-label={`Icon: ${icon.name}`}
+      title={`${icon.name} (${icon.library}) - Drag to canvas or click to insert`}
+      aria-label={`Icon: ${icon.name} - Drag to canvas or click to insert`}
       type="button"
     >
       <div
@@ -191,6 +201,7 @@ export const IconGrid: React.FC<IconGridProps> = ({
   isLoading = false,
   maxVisibleItems = 200,
   className = '',
+  onDragStart,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleRange, setVisibleRange] = useState({ start: 0, end: maxVisibleItems });
@@ -237,6 +248,11 @@ export const IconGrid: React.FC<IconGridProps> = ({
     },
     [onIconHover]
   );
+
+  // Handle drag start
+  const handleDragStart = useCallback((_e: React.DragEvent, icon: UnifiedIconResult) => {
+    onDragStart?.(icon);
+  }, [onDragStart]);
 
   // Render loading state
   if (isLoading) {
@@ -289,6 +305,7 @@ export const IconGrid: React.FC<IconGridProps> = ({
             isSelected={selectedIconId === icon.id}
             size={iconSize}
             showName={showNames}
+            onDragStart={handleDragStart}
           />
         ))}
       </div>

@@ -9,6 +9,9 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useEditorStore, useHistoryState, useViewport, useGridState } from '../../store/editorStore';
 import { useCanvas } from '../../components/Canvas/CanvasContext';
 import { useToast } from '../../components/Toast/useToast';
+import { FilterDialog } from '../../components/FilterDialog/FilterDialog';
+import { AdjustmentsDialog, AdjustmentSettings } from '../../components/AdjustmentsDialog/AdjustmentsDialog';
+import { applyFilters, applyAdjustments } from '../../lib/image/filters';
 import './MenuBar.css';
 
 // ============================================================================
@@ -54,8 +57,36 @@ interface MenuBarProps {
 export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [_isLoading, setIsLoading] = useState(false); // Used for async operations
+  const [recentFiles, setRecentFiles] = useState<Array<{ id: string; name: string; path: string }>>([]);
+  const [showFilterDialog, setShowFilterDialog] = useState(false);
+  const [showAdjustmentsDialog, setShowAdjustmentsDialog] = useState(false);
   const menuBarRef = useRef<HTMLDivElement>(null);
   const toast = useToast();
+
+  // Load recent files from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('finnish-recent-files');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setRecentFiles(parsed);
+      }
+    } catch (error) {
+      console.error('Failed to load recent files:', error);
+    }
+  }, []);
+
+  // Add to recent files
+  const addToRecentFiles = useCallback((name: string, content: string) => {
+    try {
+      const id = `file-${Date.now()}`;
+      const newRecent = [{ id, name, path: content }, ...recentFiles].slice(0, 10); // Keep max 10 files
+      localStorage.setItem('finnish-recent-files', JSON.stringify(newRecent));
+      setRecentFiles(newRecent);
+    } catch (error) {
+      console.error('Failed to save recent files:', error);
+    }
+  }, [recentFiles]);
 
   // Store hooks
   const undo = useEditorStore((state) => state.undo);
@@ -161,11 +192,13 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
         {
           id: 'recent',
           label: 'Recent Files',
-          submenu: [
-            { id: 'recent-1', label: 'diagram-1.finnish', disabled: true },
-            { id: 'recent-2', label: 'flowchart.finnish', disabled: true },
-            { id: 'recent-3', label: 'No recent files', disabled: true },
-          ],
+          submenu: recentFiles.length > 0
+            ? recentFiles.map((file) => ({
+                id: file.id,
+                label: file.name,
+                action: () => handleOpenRecentFile(file.path),
+              }))
+            : [{ id: 'no-recent', label: 'No recent files', disabled: true }],
         },
       ],
     },
@@ -428,30 +461,28 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
         {
           id: 'crop',
           label: 'Crop Image',
-          disabled: true,
+          action: () => toast.info('Crop feature coming soon'),
         },
         {
           id: 'resize',
           label: 'Resize Image',
-          disabled: true,
+          action: () => toast.info('Resize feature coming soon'),
         },
         { id: 'divider2', label: '', divider: true },
         {
           id: 'adjustments',
           label: 'Adjustments',
           submenu: [
-            { id: 'brightness', label: 'Brightness/Contrast', disabled: true },
-            { id: 'hue-saturation', label: 'Hue/Saturation', disabled: true },
-            { id: 'levels', label: 'Levels', disabled: true },
+            { id: 'brightness', label: 'Brightness/Contrast', action: () => setShowAdjustmentsDialog(true) },
           ],
         },
         {
           id: 'filters',
           label: 'Filters',
           submenu: [
-            { id: 'blur', label: 'Blur', disabled: true },
-            { id: 'sharpen', label: 'Sharpen', disabled: true },
-            { id: 'noise', label: 'Add Noise', disabled: true },
+            { id: 'blur', label: 'Blur', action: () => setShowFilterDialog(true) },
+            { id: 'sharpen', label: 'Sharpen', action: () => setShowFilterDialog(true) },
+            { id: 'noise', label: 'Add Noise', action: () => setShowFilterDialog(true) },
           ],
         },
       ],
@@ -516,6 +547,22 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
     input.click();
   }, [canvas, toast]);
 
+  const handleOpenRecentFile = useCallback((content: string) => {
+    try {
+      const json = JSON.parse(content);
+      if (canvas) {
+        canvas.loadFromJSON(json, () => {
+          canvas.renderAll();
+          toast.success('Loaded recent file successfully');
+        });
+      } else {
+        toast.error('Canvas not ready. Please try again.');
+      }
+    } catch {
+      toast.error('Failed to load recent file. The file may be corrupted.');
+    }
+  }, [canvas, toast]);
+
   const handleSave = useCallback(() => {
     try {
       const json = exportJSON();
@@ -528,12 +575,13 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
       a.download = 'diagram.finnish';
       a.click();
       URL.revokeObjectURL(url);
+      addToRecentFiles('diagram.finnish', JSON.stringify(json));
       toast.success('Diagram saved as "diagram.finnish"');
     } catch (error) {
       console.error('Save failed:', error);
       toast.error('Failed to save diagram. Please try again.');
     }
-  }, [exportJSON, toast]);
+  }, [exportJSON, toast, addToRecentFiles]);
 
   const handleSaveAs = useCallback(() => {
     const filename = prompt('Enter filename:', 'diagram.finnish');
@@ -550,13 +598,14 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
         a.download = finalFilename;
         a.click();
         URL.revokeObjectURL(url);
+        addToRecentFiles(finalFilename, JSON.stringify(json));
         toast.success(`Saved as "${finalFilename}"`);
       } catch (error) {
         console.error('Save As failed:', error);
         toast.error('Failed to save diagram. Please try again.');
       }
     }
-  }, [exportJSON, toast]);
+  }, [exportJSON, toast, addToRecentFiles]);
 
   const handleExport = useCallback(
     (format: 'svg' | 'png' | 'png-2x') => {
@@ -605,6 +654,54 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
       8000 // Show for 8 seconds
     );
   }, [toast]);
+
+  const handleFilter = useCallback(async (filter: string, value: number) => {
+    if (!canvas) {
+      toast.error('No canvas available');
+      return;
+    }
+
+    try {
+      const result = await applyFilters(canvas, [{ type: filter as any, value }]);
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = result;
+      });
+
+      canvas.clear();
+      canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+      toast.success('Filter applied successfully');
+    } catch (error) {
+      toast.error('Failed to apply filter');
+      console.error('Filter error:', error);
+    }
+  }, [canvas, toast]);
+
+  const handleAdjustments = useCallback(async (settings: AdjustmentSettings) => {
+    if (!canvas) {
+      toast.error('No canvas available');
+      return;
+    }
+
+    try {
+      const result = await applyAdjustments(canvas, settings);
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = result;
+      });
+
+      canvas.clear();
+      canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+      toast.success('Adjustments applied successfully');
+    } catch (error) {
+      toast.error('Failed to apply adjustments');
+      console.error('Adjustments error:', error);
+    }
+  }, [canvas, toast]);
 
   // ========================================================================
   // Click Outside Handler
@@ -739,6 +836,22 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
         </svg>
       </button>
+
+      {/* Filter Dialog */}
+      <FilterDialog
+        isOpen={showFilterDialog}
+        onClose={() => setShowFilterDialog(false)}
+        onApply={handleFilter}
+        canvas={canvas?.getElement() || null}
+      />
+
+      {/* Adjustments Dialog */}
+      <AdjustmentsDialog
+        isOpen={showAdjustmentsDialog}
+        onClose={() => setShowAdjustmentsDialog(false)}
+        onApply={handleAdjustments}
+        canvas={canvas?.getElement() || null}
+      />
     </div>
   );
 }

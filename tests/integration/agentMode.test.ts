@@ -16,7 +16,7 @@ import {
   CATEGORY_LABELS,
   type Message,
   type Template,
-} from '../../src/stores/useAgentStore';
+} from '../../src/store/useAgentStore';
 import { createMockFabricCanvas, waitForStateUpdate } from '../setup';
 
 // ============================================================================

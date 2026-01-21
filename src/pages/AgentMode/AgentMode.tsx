@@ -12,13 +12,14 @@
  */
 
 import React, { useState, useCallback, useRef } from 'react';
-import { useAgentStore } from '../../stores/useAgentStore';
+import { useAgentStore } from '../../store/useAgentStore';
 import { TemplateGallery } from './TemplateGallery';
 import { ChatHistory } from './ChatHistory';
 import { PromptInput } from './PromptInput';
 import { DiagramPreview } from './DiagramPreview';
+import { useDiagramGenerator } from '../../hooks/useDiagramGenerator';
 
-// Sample diagram generators (simulating AI responses)
+// Sample diagram generators (fallback templates when AI is not configured)
 const generateConsortDiagram = (): string => `<svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
   <style>
     .box { fill: #f8f9fa; stroke: #333; stroke-width: 2; }
@@ -197,7 +198,7 @@ const generateGenericDiagram = (): string => `<svg viewBox="0 0 400 300" xmlns="
   <text class="text" x="200" y="240">Output</text>
 </svg>`;
 
-// Response generator based on prompt
+// Response generator based on prompt (fallback when AI is not configured)
 const generateDiagramFromPrompt = (prompt: string): { text: string; diagram: string } => {
   const lowerPrompt = prompt.toLowerCase();
 
@@ -242,6 +243,7 @@ interface AgentModeProps {
 export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   const [showPreviewPane, setShowPreviewPane] = useState(true);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const { generate } = useDiagramGenerator();
 
   const {
     addMessage,
@@ -263,23 +265,27 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     abortControllerRef.current = new AbortController();
 
     try {
-      // Simulate API delay
-      await new Promise((resolve, reject) => {
-        const timeout = setTimeout(resolve, 1500);
-        abortControllerRef.current?.signal.addEventListener('abort', () => {
-          clearTimeout(timeout);
-          reject(new Error('Generation cancelled'));
+      const result = await generate(prompt, { preferredBackend: 'mermaid' });
+
+      if (abortControllerRef.current?.signal.aborted) {
+        throw new Error('Generation cancelled');
+      }
+
+      if (result?.svg) {
+        addMessage({
+          role: 'assistant',
+          content: `I've generated a diagram based on your request. You can customize it further in the Editor mode.`,
+          diagram: result.svg
         });
-      });
+        return;
+      }
 
-      // Generate response
-      const response = generateDiagramFromPrompt(prompt);
-
-      // Add assistant message with diagram
+      const fallback = generateDiagramFromPrompt(prompt);
       addMessage({
         role: 'assistant',
-        content: response.text,
-        diagram: response.diagram
+        content: `${fallback.text}\n\n(Note: Diagram generator failed; using a fallback template.)`,
+        diagram: fallback.diagram,
+        isError: true
       });
     } catch (error) {
       if ((error as Error).message !== 'Generation cancelled') {
@@ -293,7 +299,7 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       setLoading(false);
       abortControllerRef.current = null;
     }
-  }, [addMessage, setLoading]);
+  }, [addMessage, setLoading, generate]);
 
   // Handle stop generation
   const handleStop = useCallback(() => {

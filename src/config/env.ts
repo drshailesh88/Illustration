@@ -58,6 +58,9 @@ export const config = {
     claudeApiKey: import.meta.env.VITE_CLAUDE_API_KEY || '',
     claudeModel: import.meta.env.VITE_CLAUDE_MODEL || 'claude-sonnet-4-20250514',
     openaiApiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
+    openaiModel: import.meta.env.VITE_OPENAI_MODEL || 'gpt-4-turbo-preview',
+    openaiBaseUrl: import.meta.env.VITE_OPENAI_BASE_URL || 'https://api.openai.com/v1',
+    openaiProxyUrl: import.meta.env.VITE_OPENAI_PROXY_URL || '',
     maxTokens: parseNumber(import.meta.env.VITE_AI_MAX_TOKENS, 4096),
     temperature: parseFloat(import.meta.env.VITE_AI_TEMPERATURE || '0.7'),
     // Rate limiting

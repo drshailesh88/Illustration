@@ -19,7 +19,6 @@ import type {
 } from './types';
 
 // Import glfx.js (uses CommonJS exports)
-// @ts-expect-error - glfx.js doesn't have TypeScript definitions
 import * as glfxLib from 'glfx';
 
 // Cast to proper type

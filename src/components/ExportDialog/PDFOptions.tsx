@@ -31,6 +31,17 @@ export interface PDFExportSettings {
   customWidth?: number;
   /** Custom page height in mm */
   customHeight?: number;
+  /** Compression level (0-9) */
+  compression?: number;
+  /** PDF metadata */
+  metadata?: {
+    title?: string;
+    author?: string;
+    subject?: string;
+    keywords?: string;
+  };
+  /** Embed fonts */
+  embedFonts?: boolean;
 }
 
 export interface PDFOptionsProps {
@@ -167,6 +178,30 @@ const styles = {
     color: 'var(--text-muted, #666)',
     fontSize: '14px',
   },
+  checkboxContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  checkbox: {
+    width: '16px',
+    height: '16px',
+    cursor: 'pointer',
+  },
+  checkboxLabel: {
+    fontSize: '13px',
+    color: 'var(--text-primary, #ffffff)',
+  },
+  metadataGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '8px',
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '4px',
+  },
   previewContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -235,6 +270,22 @@ export function PDFOptions({ settings, onChange }: PDFOptionsProps): JSX.Element
   const handleCustomDimensionChange = (key: 'customWidth' | 'customHeight', value: string) => {
     const numValue = parseInt(value, 10) || 0;
     onChange({ ...settings, [key]: Math.max(50, Math.min(1000, numValue)) });
+  };
+
+  const handleCompressionChange = (value: string) => {
+    const numValue = parseInt(value, 10) || 3;
+    onChange({ ...settings, compression: Math.max(0, Math.min(9, numValue)) });
+  };
+
+  const handleMetadataChange = (key: string, value: string) => {
+    onChange({
+      ...settings,
+      metadata: { ...settings.metadata, [key]: value },
+    });
+  };
+
+  const handleEmbedFontsChange = (checked: boolean) => {
+    onChange({ ...settings, embedFonts: checked });
   };
 
   const getPageDimensions = () => {
@@ -398,6 +449,87 @@ export function PDFOptions({ settings, onChange }: PDFOptionsProps): JSX.Element
               style={styles.input}
               min="0"
               max="100"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Compression */}
+      <div style={styles.section}>
+        <label style={styles.label}>Compression Level (0-9)</label>
+        <div style={styles.field}>
+          <input
+            type="range"
+            style={styles.input}
+            min="0"
+            max="9"
+            value={settings.compression || 3}
+            onChange={(e) => handleCompressionChange(e.target.value)}
+          />
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
+            <span style={styles.selectDescription}>0 (None)</span>
+            <span style={{ ...styles.selectLabel, fontSize: '13px' }}>{settings.compression || 3}</span>
+            <span style={styles.selectDescription}>9 (Max)</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Font Embedding */}
+      <div style={styles.section}>
+        <div style={styles.checkboxContainer}>
+          <input
+            type="checkbox"
+            style={styles.checkbox}
+            checked={settings.embedFonts ?? true}
+            onChange={(e) => handleEmbedFontsChange(e.target.checked)}
+            id="embed-fonts"
+          />
+          <label htmlFor="embed-fonts" style={styles.checkboxLabel}>Embed fonts in PDF</label>
+        </div>
+      </div>
+
+      {/* Metadata */}
+      <div style={styles.section}>
+        <label style={styles.label}>PDF Metadata</label>
+        <div style={styles.metadataGrid}>
+          <div style={styles.marginInput}>
+            <span style={styles.marginLabel}>Title</span>
+            <input
+              type="text"
+              value={settings.metadata?.title || ''}
+              onChange={(e) => handleMetadataChange('title', e.target.value)}
+              style={styles.input}
+              placeholder="Document title"
+            />
+          </div>
+          <div style={styles.marginInput}>
+            <span style={styles.marginLabel}>Author</span>
+            <input
+              type="text"
+              value={settings.metadata?.author || ''}
+              onChange={(e) => handleMetadataChange('author', e.target.value)}
+              style={styles.input}
+              placeholder="Author name"
+            />
+          </div>
+          <div style={styles.marginInput}>
+            <span style={styles.marginLabel}>Subject</span>
+            <input
+              type="text"
+              value={settings.metadata?.subject || ''}
+              onChange={(e) => handleMetadataChange('subject', e.target.value)}
+              style={styles.input}
+              placeholder="Document subject"
+            />
+          </div>
+          <div style={styles.marginInput}>
+            <span style={styles.marginLabel}>Keywords</span>
+            <input
+              type="text"
+              value={settings.metadata?.keywords || ''}
+              onChange={(e) => handleMetadataChange('keywords', e.target.value)}
+              style={styles.input}
+              placeholder="Comma-separated"
             />
           </div>
         </div>

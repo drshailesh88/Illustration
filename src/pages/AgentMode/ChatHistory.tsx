@@ -10,7 +10,7 @@
  */
 
 import React, { useRef, useEffect } from 'react';
-import { useAgentStore, Message } from '../../stores/useAgentStore';
+import { useAgentStore, Message } from '../../store/useAgentStore';
 import { DiagramPreview } from './DiagramPreview';
 import { DiagramActions } from './DiagramActions';
 

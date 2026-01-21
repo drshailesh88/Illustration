@@ -242,15 +242,15 @@ const ExternalLinkIcon = () => (
 const scientificIllustrations: Attribution[] = [
   {
     name: 'SciDraw-style Illustrations',
-    license: 'CC-BY',
+    license: 'CC-BY 4.0',
     url: 'https://scidraw.io/',
-    description: 'Original work inspired by SciDraw (Federico Claudi & Alex Harston). Scientific illustrations for neuroscience and biology.',
+    description: 'Scientific illustrations for neuroscience and biology. Original work inspired by SciDraw (Federico Claudi & Alex Harston). Attribution required.',
   },
   {
     name: 'Bioicons',
-    license: 'CC-BY',
+    license: 'CC-BY 4.0',
     url: 'https://bioicons.com/',
-    description: 'Free, open-source icons for science illustrations. Some icons licensed under CC-BY require attribution.',
+    description: 'Free, open-source icons for science illustrations. Icons licensed under CC-BY 4.0 require attribution.',
   },
   {
     name: 'Servier Medical Art',

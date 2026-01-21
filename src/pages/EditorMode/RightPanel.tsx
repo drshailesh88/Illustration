@@ -5,7 +5,7 @@
  * @module pages/EditorMode/RightPanel
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { loadSVGFromString, util, FabricObject } from 'fabric';
 import { LayersPanel } from '../../components/LayersPanel';
 import PropertiesPanel from '../../components/PropertiesPanel';
@@ -14,12 +14,13 @@ import type { UnifiedIconResult } from '../../lib/icons';
 import { StylePanel, defaultHandDrawnSettings, type HandDrawnSettings } from '../../components/StylePanel';
 import { useEditorStore } from '../../store/editorStore';
 import { useToast } from '../../components/Toast/useToast';
+import { createSimpleIconSvg } from '../../lib/icons';
 
 // ============================================================================
 // Types
 // ============================================================================
 
-type TabId = 'layers' | 'properties' | 'icons' | 'style';
+type TabId = 'layers' | 'properties' | 'icons' | 'style' | 'templates' | 'history' | 'align';
 
 interface Tab {
   id: TabId;
@@ -147,6 +148,30 @@ const StyleIcon = () => (
   </svg>
 );
 
+const TemplatesIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1" />
+    <rect x="14" y="3" width="7" height="7" rx="1" />
+    <rect x="14" y="14" width="7" height="7" rx="1" />
+    <rect x="3" y="14" width="7" height="7" rx="1" />
+  </svg>
+);
+
+const HistoryIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+
+const AlignIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
 // ============================================================================
 // Tabs Configuration
 // ============================================================================
@@ -155,6 +180,9 @@ const tabs: Tab[] = [
   { id: 'layers', label: 'Layers', icon: <LayersIcon /> },
   { id: 'properties', label: 'Properties', icon: <PropertiesIcon /> },
   { id: 'icons', label: 'Icons', icon: <IconsIcon /> },
+  { id: 'templates', label: 'Templates', icon: <TemplatesIcon /> },
+  { id: 'align', label: 'Align', icon: <AlignIcon /> },
+  { id: 'history', label: 'History', icon: <HistoryIcon /> },
   { id: 'style', label: 'Style', icon: <StyleIcon /> },
 ];
 
@@ -193,6 +221,125 @@ function TabButton({ tab, isActive, onClick }: TabButtonProps): JSX.Element {
 }
 
 // ============================================================================
+// Align Panel Component
+// ============================================================================
+
+interface AlignPanelProps {
+  canvas: any;
+  hasSelection: boolean;
+}
+
+const AlignPanel: React.FC<AlignPanelProps> = ({ canvas, hasSelection }) => {
+  const handleAlign = useCallback((alignment: 'left' | 'center' | 'right' | 'top' | 'middle' | 'bottom') => {
+    if (!canvas || !hasSelection) return;
+
+    const activeObjects = canvas.getActiveObjects();
+    if (activeObjects.length < 2) return;
+
+    const group = canvas.getActiveObject();
+    if (!group) return;
+
+    activeObjects.forEach((obj: any) => {
+      if (alignment === 'left') obj.set('left', group.left);
+      else if (alignment === 'center') obj.set('left', group.left + group.width / 2 - obj.width * obj.scaleX / 2);
+      else if (alignment === 'right') obj.set('left', group.left + group.width - obj.width * obj.scaleX);
+      else if (alignment === 'top') obj.set('top', group.top);
+      else if (alignment === 'middle') obj.set('top', group.top + group.height / 2 - obj.height * obj.scaleY / 2);
+      else if (alignment === 'bottom') obj.set('top', group.top + group.height - obj.height * obj.scaleY);
+
+      obj.setCoords();
+    });
+
+    canvas.renderAll();
+  }, [canvas, hasSelection]);
+
+  const alignButtons = [
+    { label: 'Align Left', action: 'left' as const, icon: '⬅️' },
+    { label: 'Align Center', action: 'center' as const, icon: '↔️' },
+    { label: 'Align Right', action: 'right' as const, icon: '➡️' },
+    { label: 'Align Top', action: 'top' as const, icon: '⬆️' },
+    { label: 'Align Middle', action: 'middle' as const, icon: '↕️' },
+    { label: 'Align Bottom', action: 'bottom' as const, icon: '⬇️' },
+  ];
+
+  if (!hasSelection) {
+    return (
+      <div style={{ padding: '16px' }}>
+        <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '12px', marginTop: '32px' }}>
+          Select 2 or more objects to align
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ padding: '16px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase' }}>
+          Horizontal Alignment
+        </label>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+          {alignButtons.slice(0, 3).map((btn) => (
+            <button
+              key={btn.action}
+              onClick={() => handleAlign(btn.action)}
+              style={{
+                padding: '8px',
+                backgroundColor: 'var(--bg-tertiary)',
+                border: '1px solid var(--border-primary)',
+                borderRadius: '4px',
+                color: 'var(--text-primary)',
+                fontSize: '10px',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+              title={btn.label}
+            >
+              <span>{btn.icon}</span>
+              <span>{btn.label.split(' ')[1]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase' }}>
+          Vertical Alignment
+        </label>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+          {alignButtons.slice(3).map((btn) => (
+            <button
+              key={btn.action}
+              onClick={() => handleAlign(btn.action)}
+              style={{
+                padding: '8px',
+                backgroundColor: 'var(--bg-tertiary)',
+                border: '1px solid var(--border-primary)',
+                borderRadius: '4px',
+                color: 'var(--text-primary)',
+                fontSize: '10px',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+              title={btn.label}
+            >
+              <span>{btn.icon}</span>
+              <span>{btn.label.split(' ')[1]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
 // RightPanel Component
 // ============================================================================
 
@@ -207,6 +354,9 @@ export function RightPanel({
   const [localSettings, setLocalSettings] = useState<HandDrawnSettings>(defaultHandDrawnSettings);
   const handDrawnSettings = externalSettings ?? localSettings;
   const setHandDrawnSettings = externalOnChange ?? setLocalSettings;
+
+  // Drag and drop state
+  const [draggedIcon, setDraggedIcon] = useState<UnifiedIconResult | null>(null);
 
   // Get selection state from store
   const selectedObjects = useEditorStore((state) => state.selectedObjects);
@@ -226,7 +376,7 @@ export function RightPanel({
   }, [canvas, hasSelection, onApplyHandDrawnToSelection]);
 
   // Handle icon selection from IconPicker - adds icon SVG to canvas
-  const handleIconSelect = useCallback(async (icon: UnifiedIconResult, svgContent: string) => {
+  const handleIconSelect = useCallback(async (icon: UnifiedIconResult, svgContent: string, dropPosition?: { x: number; y: number }) => {
     if (!canvas || !svgContent) {
       console.warn('Cannot add icon: canvas not ready or no SVG content');
       toast.warning('Cannot add icon: canvas not ready');
@@ -254,12 +404,16 @@ export function RightPanel({
       const scale = targetSize / Math.max(currentWidth, currentHeight);
       group.scale(scale);
 
-      // Position in center of canvas
+      // Position at drop location or center of canvas
       const canvasWidth = canvas.width || 800;
       const canvasHeight = canvas.height || 600;
+      const position = dropPosition || {
+        x: (canvasWidth - targetSize) / 2,
+        y: (canvasHeight - targetSize) / 2,
+      };
       group.set({
-        left: (canvasWidth - targetSize) / 2,
-        top: (canvasHeight - targetSize) / 2,
+        left: position.x,
+        top: position.y,
         // Add metadata for identification
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         name: icon.name,
@@ -278,6 +432,75 @@ export function RightPanel({
     }
   }, [canvas, toast]);
 
+  // Helper to extract SVG content
+  const extractSvgContent = useCallback(async (icon: UnifiedIconResult): Promise<string> => {
+    if (icon.library === 'simple' && icon.slug) {
+      return createSimpleIconSvg(icon.slug, 64, 'currentColor') || '';
+    }
+
+    if (icon.component) {
+      const ReactDOMServer = await import('react-dom/server');
+      const React = await import('react');
+      const element = React.createElement(icon.component, { size: 64 });
+      return ReactDOMServer.renderToStaticMarkup(element);
+    }
+
+    return '';
+  }, []);
+
+  // Handle drag start
+  const handleIconDragStart = useCallback(async (icon: UnifiedIconResult) => {
+    const svgContent = await extractSvgContent(icon);
+    if (svgContent) {
+      setDraggedIcon({ ...icon, svgContent } as any);
+    }
+  }, [extractSvgContent]);
+
+  // Handle drag over (allow drop)
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+  }, []);
+
+  // Handle drop on canvas
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+
+    if (!draggedIcon || !canvas) return;
+
+    // Get drop position relative to canvas
+    const canvasElement = canvas.getElement();
+    if (!canvasElement) return;
+
+    const rect = canvasElement.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Get SVG content
+    const svgContent = (draggedIcon as any).svgContent;
+    handleIconSelect(draggedIcon, svgContent, { x, y });
+
+    setDraggedIcon(null);
+  }, [draggedIcon, canvas, handleIconSelect]);
+
+  // Setup drop handlers on canvas wrapper
+  useEffect(() => {
+    if (!canvas) return;
+
+    const canvasElement = canvas.getElement();
+    if (!canvasElement) return;
+
+    const canvasContainer = canvasElement.parentElement;
+    if (!canvasContainer) return;
+
+    canvasContainer.addEventListener('dragover', handleDragOver as any);
+    canvasContainer.addEventListener('drop', handleDrop as any);
+
+    return () => {
+      canvasContainer.removeEventListener('dragover', handleDragOver as any);
+      canvasContainer.removeEventListener('drop', handleDrop as any);
+    };
+  }, [canvas, handleDragOver, handleDrop]);
+
   // Render content based on active tab
   const renderContent = () => {
     switch (activeTab) {
@@ -286,7 +509,25 @@ export function RightPanel({
       case 'properties':
         return <PropertiesPanel />;
       case 'icons':
-        return <IconPicker onSelectIcon={handleIconSelect} />;
+        return <IconPicker onSelectIcon={handleIconSelect} onDragStart={handleIconDragStart} />;
+      case 'templates':
+        return (
+          <div style={{ padding: '16px' }}>
+            <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '12px', marginTop: '32px' }}>
+              Template gallery coming soon.
+            </div>
+          </div>
+        );
+      case 'align':
+        return <AlignPanel canvas={canvas} hasSelection={hasSelection} />;
+      case 'history':
+        return (
+          <div style={{ padding: '16px' }}>
+            <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '12px', marginTop: '32px' }}>
+              History panel coming soon.
+            </div>
+          </div>
+        );
       case 'style':
         return (
           <div style={{ padding: '16px' }}>

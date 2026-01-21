@@ -188,7 +188,11 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
       };
 
       // Object added/removed
-      const handleObjectAdded = () => {
+      const handleObjectAdded = (e: { target?: FabricObject }) => {
+        const target = e.target;
+        if (target && (target as FabricObject & { isGrid?: boolean }).isGrid) {
+          return;
+        }
         pushHistory(JSON.stringify(canvas.toJSON()));
       };
 
@@ -533,6 +537,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
             evented: false,
           });
           (line as unknown as FabricObject & { isGrid: boolean }).isGrid = true;
+          (line as unknown as FabricObject & { excludeFromLayerPanel: boolean }).excludeFromLayerPanel = true;
           canvas.add(line);
           canvas.sendObjectToBack(line);
         }
@@ -545,6 +550,7 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
             evented: false,
           });
           (line as unknown as FabricObject & { isGrid: boolean }).isGrid = true;
+          (line as unknown as FabricObject & { excludeFromLayerPanel: boolean }).excludeFromLayerPanel = true;
           canvas.add(line);
           canvas.sendObjectToBack(line);
         }

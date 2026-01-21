@@ -5,8 +5,9 @@
  * @module App
  */
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastProvider } from './components/Toast';
+import { useCallback } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { ToastProvider, useToast } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Welcome } from './pages/Welcome';
 import { AgentMode } from './pages/AgentMode';
@@ -27,6 +28,53 @@ import { CreditsPage } from './pages/CreditsPage';
  * - "/editor/:id" -> EditorMode with loaded diagram
  * - "/credits" -> CreditsPage (attribution and licenses)
  */
+function AppRoutes(): JSX.Element {
+  const navigate = useNavigate();
+  const { showToast } = useToast();
+
+  const handleSendToEditor = useCallback((svg: string) => {
+    const diagramId = `agent-${Date.now()}`;
+    const payload = {
+      name: 'Agent Diagram',
+      svg,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      localStorage.setItem(`finnish-diagram-${diagramId}`, JSON.stringify(payload));
+      navigate(`/editor/${diagramId}`);
+    } catch (error) {
+      console.error('Failed to store diagram for editor:', error);
+      showToast({
+        type: 'error',
+        message: 'Failed to open diagram in Editor. Please try again.',
+      });
+    }
+  }, [navigate, showToast]);
+
+  return (
+    <Routes>
+      {/* Landing page */}
+      <Route path="/" element={<Welcome />} />
+
+      {/* AI Agent mode for diagram generation */}
+      <Route path="/agent" element={<AgentMode onSendToEditor={handleSendToEditor} />} />
+
+      {/* Manual editor mode */}
+      <Route path="/editor" element={<EditorMode />} />
+
+      {/* Editor with loaded diagram by ID */}
+      <Route path="/editor/:id" element={<EditorMode />} />
+
+      {/* Credits and attribution page */}
+      <Route path="/credits" element={<CreditsPage />} />
+
+      {/* Fallback to Welcome for unknown routes */}
+      <Route path="*" element={<Welcome />} />
+    </Routes>
+  );
+}
+
 function App(): JSX.Element {
   return (
     <ErrorBoundary
@@ -40,25 +88,7 @@ function App(): JSX.Element {
       <ToastProvider maxToasts={5}>
         <BrowserRouter>
           <div className="finnish-app">
-            <Routes>
-              {/* Landing page */}
-              <Route path="/" element={<Welcome />} />
-
-              {/* AI Agent mode for diagram generation */}
-              <Route path="/agent" element={<AgentMode />} />
-
-              {/* Manual editor mode */}
-              <Route path="/editor" element={<EditorMode />} />
-
-              {/* Editor with loaded diagram by ID */}
-              <Route path="/editor/:id" element={<EditorMode />} />
-
-              {/* Credits and attribution page */}
-              <Route path="/credits" element={<CreditsPage />} />
-
-              {/* Fallback to Welcome for unknown routes */}
-              <Route path="*" element={<Welcome />} />
-            </Routes>
+            <AppRoutes />
           </div>
         </BrowserRouter>
       </ToastProvider>

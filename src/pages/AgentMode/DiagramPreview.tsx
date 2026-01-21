@@ -9,7 +9,7 @@
  */
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { useAgentStore } from '../../stores/useAgentStore';
+import { useAgentStore } from '../../store/useAgentStore';
 
 // Icons
 const ZoomInIcon = () => (

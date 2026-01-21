@@ -1,0 +1,38 @@
+# Ralphy Configuration
+# https://github.com/michaelshimeles/ralphy
+
+# Project info (auto-detected, edit if needed)
+project:
+  name: "finnish"
+  language: "TypeScript"
+  framework: "React"
+  description: "AI-powered scientific illustration tool - Kill BioRender alternative"
+
+# Commands (auto-detected from package.json/pyproject.toml)
+commands:
+  test: "npm test"
+  lint: "npm run lint"
+  build: "npm run build"
+
+# Rules - instructions the AI MUST follow
+# These are injected into every prompt
+rules:
+  - "Always test fixes with browser automation before marking complete"
+  - "Use existing libraries (Fabric.js, Paper.js, fal.ai) before adding new dependencies"
+  - "Follow existing code patterns in the codebase"
+  - "Run typecheck (npm run typecheck) after any changes"
+  - "Run build (npm run build) to verify changes work"
+  - "Document any new features in comments"
+  - "Test with both AgentMode and EditorMode when relevant"
+  - "Use agent-browser for UI testing: snapshot, click, fill, screenshot"
+
+# Boundaries - files/folders AI should not modify
+boundaries:
+  never_touch:
+    - "node_modules/**"
+    - "dist/**"
+    - ".git/**"
+    - ".ralphy/**"
+    - "package-lock.json"
+    - "yarn.lock"
+    - "pnpm-lock.yaml"

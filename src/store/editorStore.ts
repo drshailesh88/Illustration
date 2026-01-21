@@ -7,6 +7,7 @@
 
 import { create } from 'zustand';
 import { subscribeWithSelector, devtools } from 'zustand/middleware';
+import { useShallow } from 'zustand/shallow';
 import type {
   FabricCanvas,
   EditorState,
@@ -423,41 +424,49 @@ export const useActiveTool = () => useEditorStore((state) => state.activeTool);
  * Hook to get viewport state
  */
 export const useViewport = () =>
-  useEditorStore((state) => ({
-    zoom: state.zoom,
-    pan: state.pan,
-  }));
+  useEditorStore(
+    useShallow((state) => ({
+      zoom: state.zoom,
+      pan: state.pan,
+    }))
+  );
 
 /**
  * Hook to get selection state
  */
 export const useSelection = () =>
-  useEditorStore((state) => ({
-    selectedObjects: state.selectedObjects,
-    hasSelection: state.selectedObjects.length > 0,
-    selectionCount: state.selectedObjects.length,
-  }));
+  useEditorStore(
+    useShallow((state) => ({
+      selectedObjects: state.selectedObjects,
+      hasSelection: state.selectedObjects.length > 0,
+      selectionCount: state.selectedObjects.length,
+    }))
+  );
 
 /**
  * Hook to get grid state
  */
 export const useGridState = () =>
-  useEditorStore((state) => ({
-    gridVisible: state.gridVisible,
-    snapToGrid: state.snapToGrid,
-    gridSize: state.gridSize,
-  }));
+  useEditorStore(
+    useShallow((state) => ({
+      gridVisible: state.gridVisible,
+      snapToGrid: state.snapToGrid,
+      gridSize: state.gridSize,
+    }))
+  );
 
 /**
  * Hook to get history state
  */
 export const useHistoryState = () =>
-  useEditorStore((state) => ({
-    canUndo: state.history.past.length > 0,
-    canRedo: state.history.future.length > 0,
-    undoCount: state.history.past.length,
-    redoCount: state.history.future.length,
-  }));
+  useEditorStore(
+    useShallow((state) => ({
+      canUndo: state.history.past.length > 0,
+      canRedo: state.history.future.length > 0,
+      undoCount: state.history.past.length,
+      redoCount: state.history.future.length,
+    }))
+  );
 
 // ============================================================================
 // Store Utilities

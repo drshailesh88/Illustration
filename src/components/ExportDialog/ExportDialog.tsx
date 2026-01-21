@@ -60,6 +60,14 @@ const defaultPDFSettings: PDFExportSettings = {
   pageSize: 'a4',
   orientation: 'portrait',
   margins: { top: 20, right: 20, bottom: 20, left: 20 },
+  compression: 3,
+  metadata: {
+    title: '',
+    author: '',
+    subject: '',
+    keywords: '',
+  },
+  embedFonts: true,
 };
 
 const defaultPPTXSettings: PPTXExportSettings = {

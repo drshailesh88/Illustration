@@ -8,9 +8,45 @@
 
 > **READ THIS FIRST** - Resume from where the last session ended
 
-### Last Session: 2026-01-19 (Session 5 - Licensing Resolution)
+### Last Session: 2026-01-21 (Session 8 - Phase 3 Consolidation)
 
-**Session Status**: ALL LICENSING ISSUES RESOLVED ✅
+**Session Status**: Phase 3 consolidation complete; ready for follow-up fixes/testing.
+
+### Completed This Session:
+- [x] Switched Editor export flow to services/export (PNG/SVG/PDF/TikZ), kept PPTX in lib/export
+- [x] Consolidated agent store into src/store and updated all imports/tests
+- [x] Removed legacy lib export re-export from src/lib/index.ts
+
+### Current Problems (Must Fix)
+1) **Template mismatches**  
+   - PRISMA/cell prompts often route to generic flowchart; no correct template use in AgentMode.  
+   - Files: `src/pages/AgentMode/AgentMode.tsx`, `src/services/ai/PromptParser.ts`.
+2) **Legacy export module cleanup**  
+   - `src/lib/export/index.ts` (PNG/SVG/PDF) is now unused; decide to delete or re-scope to PPTX only.
+
+### Multi-Session Plan (Persistent)
+**Phase 1: Fix AgentMode -> Editor flow (P0)**
+- [x] Wire `AgentMode` to use `DiagramGenerator` (Mermaid/SVG) for structured diagrams.  
+- [x] Implement `onSendToEditor` in `App.tsx` and add SVG import path in Editor.  
+- [x] Store SVG or Fabric JSON in localStorage; load via `CanvasContext.importSVG`.
+
+**Phase 2: Decide LLM usage (P0 decision)**
+- [x] Choose: OpenAI only, Claude only, or hybrid with fallback.  
+- [x] Wire `LLMService` to selected provider and lock model + prompt schema.
+
+**Phase 3: Consolidate duplicate systems (P1)**
+- [x] Pick one export pipeline and migrate UI to it.  
+- [x] Merge `src/store` and `src/stores` to a single source of truth.  
+- [x] Align tests with actual runtime usage.
+
+### Resume After Crash
+1) Read this file first.  
+2) Re-open: `docs/AGENTMODE_BUG_REPORT.md`, `VALIDATION_OUTPUT.md`.  
+3) Focus files: `src/services/ai/PromptParser.ts`, `src/lib/export/index.ts`, `src/services/ai/backends/MermaidBackend.ts`.  
+4) Next: fix template routing + optional cleanup of legacy export module.
+
+### Decision Needed (Do Not Forget)
+- None. LLM provider set to OpenAI only (client-side with optional proxy).
 
 ### Completed This Session:
 - [x] **AGPL-3.0 Resolution** - Replaced @imgly/background-removal with @mediapipe/tasks-vision (Apache 2.0)

@@ -39,6 +39,8 @@ export interface IconPickerProps {
   width?: number | string;
   /** Custom class name */
   className?: string;
+  /** Callback when drag starts */
+  onDragStart?: (icon: UnifiedIconResult) => void;
 }
 
 // =============================================================================
@@ -187,6 +189,7 @@ export const IconPicker: React.FC<IconPickerProps> = ({
   onClose,
   width = 400,
   className = '',
+  onDragStart,
 }) => {
   // State
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
@@ -374,6 +377,7 @@ export const IconPicker: React.FC<IconPickerProps> = ({
               ? `No icons matching "${searchQuery}"`
               : 'No icons in this category'
           }
+          onDragStart={onDragStart}
         />
       </div>
 
@@ -388,7 +392,7 @@ export const IconPicker: React.FC<IconPickerProps> = ({
 
       {/* Help Text */}
       <div className="icon-picker-help">
-        Click to select, then Insert to add to canvas
+        Click to select, then Insert to add to canvas. Or drag icons directly to canvas.
       </div>
     </div>
   );

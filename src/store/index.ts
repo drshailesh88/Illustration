@@ -101,6 +101,17 @@ export {
   clearPersistedLayers,
 } from './layerStore.js';
 
+// Agent Store - Agent mode chat/diagram state
+export {
+  useAgentStore,
+  useMessages as useAgentMessages,
+  useIsLoading as useAgentIsLoading,
+  useCurrentDiagram as useAgentCurrentDiagram,
+  usePreviewZoom as useAgentPreviewZoom,
+  TEMPLATES as AGENT_TEMPLATES,
+  CATEGORY_LABELS as AGENT_CATEGORY_LABELS,
+} from './useAgentStore';
+
 // ============================================================================
 // Type Re-exports
 // ============================================================================
@@ -162,6 +173,13 @@ export type {
   LayerActions,
   LayerStore,
 } from './layerStore.js';
+
+// Agent store types
+export type {
+  Message as AgentMessage,
+  Template as AgentTemplate,
+  TemplateCategory as AgentTemplateCategory,
+} from './useAgentStore';
 
 // Re-export continued from types
 export type {

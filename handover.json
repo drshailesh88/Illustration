@@ -1,0 +1,157 @@
+{
+  "project": "FINNISH - Academic Illustrator App",
+  "methodology": "See METHODOLOGY_SPEC.md for full details",
+  "tools": {
+    "browser_automation": "agent-browser (globally installed as agent-browser@0.6.0)",
+    "browser_session": "Use --session <name> flag for persistent sessions",
+    "iterative_fixing": "Ralph Loop",
+    "state_management": "handover.json + VALIDATION_OUTPUT.md"
+  },
+  "persona": {
+    "name": "Dr. Sarah Chen",
+    "role": "Clinical Researcher at Stanford",
+    "task": "Preparing 50-60 publication-quality figures for Nature Medicine submission"
+  },
+  "phase": "Phase 3: Ralph Loop - Fixing Critical Issues",
+  "progress": 10,
+  "server_url": "http://localhost:3000",
+  "diagram_testing": {
+    "total_planned": 60,
+    "tested": 6,
+    "passed": 0,
+    "partial": 2,
+    "failed": 4,
+    "current_diagram": "Paused for fixes",
+    "categories": {
+      "medicine": {
+        "planned": 15,
+        "tested": 3,
+        "diagrams": [
+          {"id": 1, "name": "CONSORT Flow Diagram", "status": "FAIL", "issue": "Placeholder data"},
+          {"id": 2, "name": "PRISMA Flow Diagram", "status": "FAIL", "issue": "Wrong diagram type"},
+          {"id": 3, "name": "Forest Plot", "status": "PARTIAL", "issue": "Placeholder data, structure OK"},
+          {"id": 4, "name": "Kaplan-Meier Curves", "status": "pending"},
+          {"id": 5, "name": "ROC Curves", "status": "pending"},
+          {"id": 6, "name": "Funnel Plot", "status": "pending"},
+          {"id": 7, "name": "STROBE Flow Diagram", "status": "pending"},
+          {"id": 8, "name": "STARD Diagram", "status": "pending"},
+          {"id": 9, "name": "Treatment Algorithm", "status": "pending"},
+          {"id": 10, "name": "Clinical Trial Timeline", "status": "pending"},
+          {"id": 11, "name": "Patient Flow Diagram", "status": "pending"},
+          {"id": 12, "name": "Dose-Response Curve", "status": "pending"},
+          {"id": 13, "name": "Pharmacokinetics Plot", "status": "pending"},
+          {"id": 14, "name": "Adverse Events Summary", "status": "pending"},
+          {"id": 15, "name": "Study Design Schematic", "status": "pending"}
+        ]
+      },
+      "biology": {
+        "planned": 15,
+        "tested": 2,
+        "diagrams": [
+          {"id": 16, "name": "MAPK Signaling Pathway", "status": "PARTIAL", "issue": "Placeholder data, structure OK"},
+          {"id": 17, "name": "Cell Diagram", "status": "FAIL", "issue": "Wrong diagram type"},
+          {"id": 18, "name": "Gene Expression Heatmap", "status": "pending"},
+          {"id": 19, "name": "Phylogenetic Tree", "status": "pending"},
+          {"id": 20, "name": "Cell Cycle Diagram", "status": "pending"},
+          {"id": 21, "name": "Metabolic Pathway", "status": "pending"},
+          {"id": 22, "name": "Receptor Binding Diagram", "status": "pending"},
+          {"id": 23, "name": "Enzyme Mechanism", "status": "pending"},
+          {"id": 24, "name": "DNA Replication Fork", "status": "pending"},
+          {"id": 25, "name": "Transcription/Translation", "status": "pending"},
+          {"id": 26, "name": "Membrane Transport", "status": "pending"},
+          {"id": 27, "name": "Apoptosis Pathway", "status": "pending"},
+          {"id": 28, "name": "Immune Response Cascade", "status": "pending"},
+          {"id": 29, "name": "Neurotransmitter Pathway", "status": "pending"},
+          {"id": 30, "name": "Protein Structure Diagram", "status": "pending"}
+        ]
+      },
+      "chemistry": {
+        "planned": 10,
+        "tested": 0,
+        "diagrams": [
+          {"id": 31, "name": "Reaction Mechanism", "status": "pending"},
+          {"id": 32, "name": "Synthesis Route", "status": "pending"},
+          {"id": 33, "name": "Molecular Orbital Diagram", "status": "pending"},
+          {"id": 34, "name": "Energy Level Diagram", "status": "pending"},
+          {"id": 35, "name": "Phase Diagram", "status": "pending"},
+          {"id": 36, "name": "Chromatography Result", "status": "pending"},
+          {"id": 37, "name": "Spectroscopy Analysis", "status": "pending"},
+          {"id": 38, "name": "Crystal Structure", "status": "pending"},
+          {"id": 39, "name": "Chemical Equilibrium", "status": "pending"},
+          {"id": 40, "name": "Catalytic Cycle", "status": "pending"}
+        ]
+      },
+      "general": {
+        "planned": 20,
+        "tested": 0,
+        "diagrams": "See METHODOLOGY_SPEC.md for full list (IDs 41-60)"
+      }
+    },
+    "features_tested": {
+      "send_to_editor": {"status": "FAIL", "issue": "Button does nothing"}
+    }
+  },
+  "critical_issues": [
+    {
+      "id": 1,
+      "description": "NO LLM INTEGRATION - Diagrams use placeholder data",
+      "severity": "CRITICAL",
+      "root_cause": "MermaidBackend.ts populateTemplate() uses regex extraction, no LLM",
+      "file": "src/services/ai/backends/MermaidBackend.ts",
+      "status": "OPEN - FIXING NOW",
+      "fix_plan": "Implement GPT-4.7 API call to parse prompts"
+    },
+    {
+      "id": 2,
+      "description": "PRISMA returns wrong diagram type",
+      "severity": "HIGH",
+      "root_cause": "Missing PRISMA template, falls back to generic flowchart",
+      "status": "OPEN"
+    },
+    {
+      "id": 3,
+      "description": "Cell Diagram returns wrong diagram type",
+      "severity": "HIGH",
+      "root_cause": "Missing Cell Diagram template, falls back to generic flowchart",
+      "status": "OPEN"
+    },
+    {
+      "id": 4,
+      "description": "Send to Editor workflow broken",
+      "severity": "HIGH",
+      "root_cause": "onClick handler not functioning or navigation broken",
+      "status": "OPEN"
+    }
+  ],
+  "issues_fixed_previously": [
+    "index.html root element mismatch",
+    "AgentMode class constructor error",
+    "Editor Mode useCanvas context error",
+    "LayersPanel class constructor error",
+    "PropertiesPanel class constructor error",
+    "EditorStore hooks infinite loop",
+    "Multiple conflicting .js files"
+  ],
+  "next_steps": [
+    "RALPH LOOP ITERATION 2: Fix LLM integration with GPT-4.7",
+    "After LLM fix: Continue testing remaining 54 diagrams",
+    "Fix Send to Editor workflow",
+    "Add proper PRISMA and Cell Diagram templates"
+  ],
+  "ralph_loop": {
+    "iteration": 2,
+    "current_task": "Implementing LLM integration",
+    "issues_to_fix": 4,
+    "issues_fixed": 0
+  },
+  "artifacts": [
+    {"type": "screenshot", "path": "/tmp/consort-placeholder-issue.png", "description": "CONSORT with placeholder data"},
+    {"type": "screenshot", "path": "/tmp/prisma-wrong-diagram.png", "description": "PRISMA returning generic flowchart"},
+    {"type": "screenshot", "path": "/tmp/forest-plot-template.png", "description": "Forest Plot template structure"},
+    {"type": "screenshot", "path": "/tmp/forest-plot-custom-ignored.png", "description": "Forest Plot ignoring custom data"},
+    {"type": "screenshot", "path": "/tmp/cell-diagram-wrong.png", "description": "Cell Diagram returning generic flowchart"},
+    {"type": "screenshot", "path": "/tmp/editor-current.png", "description": "Editor Mode - Send to Editor didn't work"}
+  ],
+  "status": "RALPH LOOP ITERATION 2 - Fixing LLM Integration",
+  "last_updated": "2026-01-19T16:15:00Z"
+}
