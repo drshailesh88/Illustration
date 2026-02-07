@@ -177,6 +177,13 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
       return new Promise<void>((resolve, reject) => {
         loadSVGFromString(svgString).then(({ objects, options }) => {
           const filteredObjects = objects.filter((obj): obj is FabricObject => obj !== null);
+
+          if (filteredObjects.length === 0) {
+            resolve();
+            return;
+          }
+
+          // Temporarily group to calculate bounding box and scale
           const group = util.groupSVGElements(filteredObjects, options);
 
           // Scale to fit canvas
@@ -189,14 +196,43 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
           const scaleY = maxHeight / (group.height || 1);
           const scale = Math.min(scaleX, scaleY, 1);
 
-          group.scale(scale);
-          group.set({
-            left: (canvasWidth - (group.width || 0) * scale) / 2,
-            top: (canvasHeight - (group.height || 0) * scale) / 2,
+          // Calculate group's final center position
+          const groupWidth = (group.width || 0) * scale;
+          const groupHeight = (group.height || 0) * scale;
+          const groupLeft = (canvasWidth - groupWidth) / 2;
+          const groupTop = (canvasHeight - groupHeight) / 2;
+          const groupCenterX = groupLeft + groupWidth / 2;
+          const groupCenterY = groupTop + groupHeight / 2;
+
+          // Get group center before positioning for offset calculation
+          const origCenter = group.getCenterPoint();
+
+          // Ungroup: add each element individually so they are independently editable
+          const addedObjects: FabricObject[] = [];
+          filteredObjects.forEach((item: FabricObject) => {
+            const itemCenter = item.getCenterPoint();
+            const itemScaleX = (item.scaleX || 1) * scale;
+            const itemScaleY = (item.scaleY || 1) * scale;
+
+            item.set({
+              left: groupCenterX + (itemCenter.x - origCenter.x) * scale,
+              top: groupCenterY + (itemCenter.y - origCenter.y) * scale,
+              scaleX: itemScaleX,
+              scaleY: itemScaleY,
+            });
+            item.setCoords();
+            canvas.add(item);
+            addedObjects.push(item);
           });
 
-          canvas.add(group);
-          canvas.setActiveObject(group);
+          // Select all imported objects so user can see them
+          if (addedObjects.length > 1) {
+            const selection = new ActiveSelection(addedObjects, { canvas });
+            canvas.setActiveObject(selection);
+          } else if (addedObjects.length === 1) {
+            canvas.setActiveObject(addedObjects[0]);
+          }
+
           canvas.renderAll();
           resolve();
         }).catch(reject);
