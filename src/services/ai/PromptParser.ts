@@ -202,6 +202,7 @@ const SPECIALTY_KEYWORD_MAP: Record<string, string[]> = {
   botany: ['plant', 'flower', 'root', 'photosynthesis', 'chlorophyll', 'xylem', 'phloem'],
   zoology: ['animal', 'species', 'vertebrate', 'invertebrate', 'mammal', 'behavior', 'migration'],
   ent: ['ear', 'nose', 'throat', 'hearing', 'sinus', 'larynx', 'tonsil', 'cochlea'],
+  'hematology-oncology': ['blood', 'leukemia', 'lymphoma', 'hematology', 'oncology', 'chemotherapy', 'bone marrow', 'anemia', 'coagulation', 'platelet', 'myeloma', 'hematopoiesis', 'cancer staging'],
 };
 
 /**

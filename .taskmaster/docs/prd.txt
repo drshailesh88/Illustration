@@ -1,0 +1,369 @@
+# FINNISH (Codename) - Product Requirements Document
+# One App for All Scientific Illustration Needs
+# Version: 3.0 | Date: 2026-02-07 | Source: Founder Interview
+
+---
+
+## 1. PRODUCT VISION
+
+### One-line Pitch
+One app that solves every illustration problem for the scientific community - AI generates it, you edit it, done.
+
+### Mission
+Democratize scientific illustration. Eliminate the need for expensive medical illustrators. Empower every scientist to create their own publication-quality figures.
+
+### The Formula
+AI generation (Agent Mode) + Curated icon library (BioRender-killer) + Manual editor (Excalidraw-level) = FINNISH
+
+Neither mode alone is the product. The COMBINATION is the product.
+- Editor Mode alone = another BioRender clone, lost in the crowd
+- Agent Mode alone = a Claude wrapper, no value add
+- Agent Mode + Editor Mode = democratized scientific illustration
+
+### Competitive Positioning
+| Competitor | Their Weakness | FINNISH Advantage |
+|---|---|---|
+| BioRender ($39/mo) | Expensive, no AI generation, forces attribution | Cheaper, AI-powered, users own content |
+| Illustrae ($9/mo) | AI-only (no verified icons), no manual editor, no specialty depth | Verified icon library, full editor, deep medical coverage |
+| Adobe Illustrator | Too complex, not science-specific, expensive | Built for scientists, AI-powered, affordable |
+| ChatGPT/Claude (direct) | No editing, inconsistent quality, not publication-ready | Integrated editor, structured output, publication-quality |
+
+### Unfair Advantage
+Verified scientific icons + AI composition + manual editing. AI decides WHAT to draw, verified components ensure accuracy, editor gives direct control. When AI generates, it uses verified icons from the library first; AI-generated elements are labeled as such.
+
+---
+
+## 2. TARGET USER
+
+- **Primary**: Medical professionals (doctors, researchers, faculty) - ALL branches of medicine
+- **Secondary**: Scientists across all disciplines (biology, chemistry, physics, engineering, computer science)
+- **Go-to-market**: Medical conferences, starting July 2026
+- **User Profile**: Educated, English-speaking, mobile-first discovery, desktop for serious work
+- **Pain Point**: Spending hours and thousands of rupees on medical illustrators for figures that should take minutes
+
+---
+
+## 3. PRODUCT ARCHITECTURE
+
+### Two Modes
+
+**Agent Mode** (Default landing experience)
+- User types a prompt, AI generates an editable SVG diagram
+- Single output (no gallery of options), accept/reject paradigm (like Cursor IDE)
+- Reject = regenerate with improvements
+- Iterative refinement via follow-up prompts ("make boxes blue", "add another branch")
+- Speed: up to 30 seconds acceptable (value prop: hours reduced to seconds)
+- Quality target: publication-ready ideal, solid tweakable draft minimum
+- Input methods: text prompt, sketch upload (photograph rough drawing), photo upload (refine existing image)
+
+**Editor Mode**
+- Excalidraw-level canvas, NOT Adobe Illustrator complexity
+- Purpose: close the gap between "AI draft" and "publication ready"
+- Adobe Illustrator-like interface with panels (toolbar, canvas, properties panel)
+- NOT for: logo design, magazine covers, complex vector art
+- FOR: tweaking AI-generated SVGs - fix alignment, reposition text, add icons, polish for publication
+
+**Flow**: Agent Mode -> accept -> optionally send to Editor Mode -> tweak -> export
+
+### Agent Mode Engine (Hybrid Architecture)
+
+```
+User prompt (text / sketch photo / image upload)
+    |
+    v
+AI interprets -> generates structured JSON specification
+    |
+    v
+For each element in the spec:
+    |
+    +-- Search curated icon library
+    |       |
+    |       +-- Found: use verified icon (accurate)
+    |       +-- Not found: AI generates element (labeled "AI-generated - verify accuracy")
+    |
+    v
+Compose into editable SVG on Fabric.js canvas
+    |
+    v
+User accepts / rejects / iterates
+```
+
+Over time: track what AI generates most often -> add those as verified icons to grow the library based on real demand.
+
+### Diagram Types Supported
+- Flow diagrams (PRISMA, clinical trial flows, patient selection, decision trees)
+- Statistical figures (bar graphs, scatter plots, survival curves, forest plots)
+- Anatomical figures (organ systems, labeled anatomy, cross-sections)
+- Pathological figures (histology, tissue samples, disease progression)
+- Clinical scenarios (treatment algorithms, patient pathways)
+- Trial designs (study design, randomization flows, CONSORT)
+- Results visualization (trial results, outcomes)
+- Hero images / graphical abstracts (summary figures for papers)
+- AI-generated photorealistic images (via vision models, lowest priority)
+- Multi-panel composite figures (panels A, B, C, D - common in papers)
+
+---
+
+## 4. V1 LAUNCH FEATURES
+
+### Editor Mode Features (14 features - ALL V1)
+1. Drag & drop icons from library onto canvas
+2. Text tool - add/edit text labels, captions, annotations
+3. Shape tools - rectangles, circles, arrows, lines, polygons
+4. Pen/freehand drawing tool
+5. Alignment & snapping - snap to grid, align objects, distribute evenly
+6. Layers panel - z-order control (bring to front, send to back)
+7. Color picker - change fill/stroke colors, opacity
+8. Undo/Redo - full history within session
+9. Copy/Paste
+10. Grouping - group/ungroup multiple objects
+11. Background removal - browser-based, free (MediaPipe)
+12. Image filters - brightness, contrast, blur, sharpen, saturation
+13. Rulers & guides - precise positioning
+14. Zoom & pan - smooth canvas navigation
+
+### Agent Mode Features (8 features - ALL V1)
+1. Text-to-diagram - user types prompt, AI generates SVG (flowcharts, pathways, PRISMA, etc.)
+2. Text-to-statistical-figure - user describes chart, AI generates (bar, scatter, survival curves)
+3. Text-to-illustration - AI generates scientific illustrations (cells, organs, molecules)
+4. Iterative refinement - follow-up prompts to modify generated diagrams conversationally
+5. AI image generation - photorealistic/artistic images via vision models (fallback for missing icons)
+6. Diagram type detection - AI automatically picks the right style based on prompt context
+7. Multi-panel figures - generate composite figures with panels A, B, C, D
+8. Smart labeling - AI automatically adds proper scientific labels, annotations
+
+### Platform Features (10 features - ALL V1)
+1. User accounts with Clerk authentication (Google sign-in, email/password)
+2. Cloud saving with Convex database (pure TypeScript, LLM-debuggable)
+3. My Projects dashboard - view all past diagrams, thumbnails, organized by date
+4. Version history - browse and restore previous versions across sessions (like Google Docs)
+5. Sketch upload - photograph a rough drawing, AI turns it into polished diagram (uses vision API)
+6. Photo upload - upload existing image, AI refines it into scientific illustration
+7. Dark mode - full dark theme, V1 launch
+8. Offline Editor Mode - works without internet, saves locally, syncs to cloud when connected
+9. Custom image/icon upload - users bring their own SVGs, images, custom symbols
+10. PII detection warning - if prompt contains patient-identifiable information, show warning before generating
+
+### Export (ALL V1)
+- PNG - full resolution for Pro, low-res with watermark for Free
+- SVG - vector format, editable (Pro only)
+- PDF - publication quality with DPI options (code exists, jsPDF + svg2pdf)
+- PPTX - PowerPoint export for presentations (code exists, pptxgenjs)
+
+### Canvas Features
+- Preset canvas sizes based on journal requirements (Nature single column, NEJM full width, etc.)
+- Resolution/DPI selection for export (72 screen, 300 print, 600 high-quality)
+- Import existing SVG into editor
+
+### Mobile Strategy
+- Mobile-responsive landing page - non-negotiable (users discover on mobile while scrolling)
+- Agent Mode on mobile - fully functional (type prompt, get diagram, save to My Projects)
+- Editor Mode on mobile - shows message "Open on desktop for full editing capabilities"
+- My Projects dashboard - accessible on mobile (view, organize saved work)
+
+---
+
+## 5. V1.5 FAST FOLLOW (2-3 months after launch)
+
+- Pre-made diagram templates (PRISMA, CONSORT, pathway, etc.)
+- AI style suggestions for journal formatting (Nature, Cell, PNAS, NEJM styles)
+- TikZ/LaTeX export for direct journal integration
+
+---
+
+## 6. V2 LATER (6+ months)
+
+- TIFF export
+- EPS export
+- Collaboration/sharing with co-authors (send link to edit)
+- Writing app integration (link from academic draft writing app)
+- Real-time collaborative editing
+
+---
+
+## 7. ICON LIBRARY
+
+### Strategy
+The icon library is a competitive MOAT, not a sidebar feature. "Everything under one roof, no other subscriptions needed."
+
+### Priority Coverage
+| Priority | Discipline | Coverage Level |
+|---|---|---|
+| V1 (world-class) | Medicine - ALL branches (cardiology, neurology, surgery, orthopedics, pathology, radiology, dermatology, ophthalmology, ENT, pediatrics, OB/GYN, etc.) | Deep, comprehensive, professionally curated |
+| V1 (solid) | Biology, Chemistry | Good coverage of core concepts |
+| V1.5+ | Engineering, Computer Science, Physics, other sciences | Added over time based on demand |
+
+### Hybrid Approach
+1. First: search curated icon library -> use verified, accurate components
+2. Fallback: library doesn't have it -> AI generates it (labeled "AI-generated - verify accuracy")
+3. Over time: track what AI generates most often -> add those as verified icons to the library
+
+### Existing Libraries (from codebase)
+- Tabler Icons: 4,000+ (MIT)
+- Health Icons: 1,500+ (MIT)
+- Science Icons: 500+ (MIT)
+- Icon Park: 2,400+ (MIT)
+- Simple Icons: 200+ (MIT)
+- Bioicons: 70+ (CC0/MIT/CC-BY)
+- SciDraw: 60+ (CC-BY)
+- Custom FINNISH icons: 2,646 across 35 specialties
+
+Total: 12,000+ icons. Must verify quality and categorization for medicine branches.
+
+---
+
+## 8. BUSINESS MODEL
+
+### Pricing Tiers
+| Tier | Price | Includes |
+|---|---|---|
+| Free | Rs 0 | Editor Mode only, limited icons, low-res PNG export with subtle corner watermark ("Made with [App]"), NO Agent Mode |
+| Pro | ~Rs 1,000/month (~$12 USD) | Agent Mode + full Editor, full icon library, full-res PNG + SVG export, no watermark, AI generation quota |
+| Team/Lab | TBD (target ~Rs 3,000/month) | Multi-seat (5 seats), shared assets, higher AI generation quota |
+| Annual | 20-30% discount on Pro/Team | Improved retention, better cash flow |
+
+### Free Tier Limitations
+- Low-resolution PNG only (no SVG export)
+- Subtle "Made with [App Name]" watermark in corner (not diagonal, not aggressive)
+- No Agent Mode (AI generation)
+- Limited icon library access
+- No version history
+
+### Content Ownership
+Users own EVERYTHING they create. No attribution required, no licensing restrictions. Full commercial use rights. "You made it, it's yours." This is the opposite of BioRender's approach.
+
+### Cost Optimization (ALL mandatory from day one)
+1. Prompt caching - system prompts cached for 90% savings on repeated calls
+2. Smart model routing - cheap model (GPT-4o mini or Gemini Flash) for simple diagrams, Claude Sonnet for complex ones
+3. Template matching - known diagram types (PRISMA, CONSORT) skip AI entirely, use structured templates filled with user data
+
+---
+
+## 9. TECH STACK
+
+| Component | Choice | Reason |
+|---|---|---|
+| Frontend | React 18 + Vite + TypeScript | Existing codebase, proven stack |
+| Canvas Engine | Fabric.js 6.x | Existing, full-featured, well-documented |
+| Authentication | Clerk | Easy, familiar to founder, industry standard |
+| Database + Storage | Convex | Pure TypeScript (no SQL), LLM-debuggable, built-in file storage, real-time capable |
+| Hosting | Vercel | Easy deployment, familiar to founder, free tier sufficient for launch |
+| Payments | Lemon Squeezy | Single integration for Indian + international users, handles taxes, fast onboarding |
+| AI Primary | Claude Sonnet (Anthropic) | Best at understanding complex scientific context, clean structured output |
+| AI Secondary | GPT-4o mini or Gemini Flash (paid) | Fast/cheap for simple tasks, benchmark both during development |
+| AI Fallback | DeepSeek | Cost optimization for high-volume simple tasks |
+
+### AI Provider Notes
+- Founder has API keys for: Anthropic (Claude), OpenAI (GPT), Google (Gemini - has Google Cloud Billing set up), DeepSeek
+- NO OpenRouter (adds middleman cost)
+- Direct API keys to each provider
+- Smart routing decides which model handles each request based on complexity
+
+---
+
+## 10. QUALITY BAR
+
+| Aspect | Target |
+|---|---|
+| App load time | Under 2 seconds (snappy = "easy to use") |
+| Language | English only |
+| Dark mode | V1 launch (founder prefers dark mode) |
+| Offline capability | Editor Mode works offline, saves locally, syncs when connected |
+| Mobile | Responsive landing + Agent Mode functional on mobile |
+| Performance feel | Fast, no heavy splash screens, no loading bars that signal complexity |
+| First impression | "This is going to be easy to use" (like opening a modern app, not Premiere Pro) |
+
+---
+
+## 11. DATA & PRIVACY
+
+- Users own all generated content - full commercial rights
+- PII detection: if prompt contains what looks like patient names, DOB, medical record numbers -> warning shown before generating
+- Terms of Service: users responsible for not entering Protected Health Information (PHI)
+- No forced attribution watermark on paid tier
+- AI prompts are not stored long-term (standard API data retention policies apply)
+
+---
+
+## 12. FIRST-TIME USER EXPERIENCE
+
+1. User signs up (Clerk) -> lands on Agent Mode by default
+2. Prompt box front and center: "Describe the diagram you need..."
+3. Clear toggle/option to switch to Editor Mode
+4. Editor Mode opens Illustrator-like canvas with panels
+5. No onboarding tutorial - the app speaks for itself through clean design
+6. On mobile: Agent Mode works fully, Editor Mode shows "Open on desktop for full editing capabilities"
+
+---
+
+## 13. LAUNCH PLAN
+
+| Milestone | Target Date | Deliverable |
+|---|---|---|
+| Waitlist page live | ASAP (Feb 2026) | Landing page with email collection, build hype |
+| Product ready | Before July 2026 | Fully functional V1, deployed on Vercel |
+| Conference demo | July 2026 | Live demo to medical audience at conference |
+| Success metric | Conference | 5-10 paying subscribers from the event |
+
+### Team
+Founder (product vision, domain expertise as medical doctor) + LLMs (Claude Code as primary engineering team). No external developers. No budget for hiring.
+
+### The Demo Moment
+Open FINNISH -> prompt a complex NEJM-quality figure -> app generates it in seconds -> switch to Editor Mode -> tweak a label, adjust colors -> export -> "This would have cost Rs 15,000 and 4 hours with a medical illustrator. I did it in 2 minutes for Rs 1,000/month."
+
+### App Name
+TBD. FINNISH is the codename. Founder will decide the final brand name separately.
+
+---
+
+## 14. EXISTING CODEBASE STATUS
+
+The project has ~8 months of prior development. Significant code exists but reliability is unknown. A codebase audit against this PRD is required to determine:
+- KEEP: Feature works and aligns with this PRD
+- FIX: Feature exists but is broken or incomplete
+- CUT: Feature exists but is NOT in this PRD scope
+- BUILD: Feature is required by this PRD but doesn't exist yet
+
+### Known Issues (from prior sessions)
+1. AgentMode uses hardcoded SVG templates, NOT real AI generation
+2. TypeScript build fails (1 type mismatch error in App.tsx <-> AgentMode.tsx)
+3. Two duplicate export systems exist (src/services/export/ and src/lib/export/)
+4. Agent store duplicated between src/store/ and src/stores/
+
+### Existing Tech Already Installed
+- Fabric.js 6.x (canvas engine) - working
+- Paper.js (pen tool) - installed, needs verification
+- Rough.js (hand-drawn effects) - installed
+- perfect-freehand (freehand drawing) - installed
+- pptxgenjs (PPTX export) - installed, working (deferred to V1.5)
+- jsPDF + svg2pdf (PDF export) - installed, working (deferred to V1.5)
+- @mediapipe/tasks-vision (background removal) - installed, working
+- Mermaid (diagram rendering) - installed
+- Plotly.js (data visualization) - installed
+- @fal-ai/serverless-client (AI image generation) - installed
+- Zustand (state management) - working
+- React Router (routing) - working
+
+---
+
+## 15. SUCCESS CRITERIA
+
+### Functional
+- Agent Mode generates diagrams from text prompts using real AI (not hardcoded)
+- Agent Mode generates diagrams from uploaded sketches/photos
+- Editor Mode provides Excalidraw-level editing for all diagram types
+- Send to Editor flow works end-to-end (Agent Mode -> Editor Mode)
+- User accounts with Clerk, cloud saving with Convex
+- My Projects dashboard shows all saved work with thumbnails
+- Version history allows restoring previous diagram states
+- PNG and SVG export work correctly
+- Free tier has watermark + low-res, Pro tier has full quality
+- Lemon Squeezy billing processes payments (INR + international)
+- App loads in under 2 seconds
+- Dark mode available
+- Mobile-responsive (Agent Mode functional, Editor Mode desktop-only note)
+- Offline Editor Mode works and syncs when reconnected
+- PII detection warns users about patient data in prompts
+
+### The Real Test
+A doctor at the July conference opens FINNISH on their phone, sees Agent Mode, types a complex medical diagram prompt, gets a publication-quality SVG in under 30 seconds, sends it to Editor Mode on their laptop, tweaks it in under 2 minutes, exports PNG, and signs up for Pro on the spot.

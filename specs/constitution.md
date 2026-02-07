@@ -62,6 +62,19 @@ Democratize scientific illustration. One app that solves every illustration prob
 | AI Secondary | GPT-4o mini or Gemini Flash (paid) | Fast/cheap for simple tasks |
 | AI Fallback | DeepSeek | Cost optimization for high-volume |
 | AI Image Gen | fal.ai FLUX | Photorealistic/artistic, $0.008/image |
+| Styling | Tailwind CSS | Progressive migration from inline CSS-in-JS |
+| Design Model | Claude Opus + frontend-design plugin | Non-negotiable for all UI work |
+
+---
+
+## Frontend Design Standard (Non-Negotiable)
+
+- All UI/frontend work uses Claude Opus with the `frontend-design` plugin
+- Tailwind CSS for all styling; progressive migration from inline CSS-in-JS
+- Design tokens in `tailwind.config.ts` ensure ecosystem coherence
+- Opus chooses aesthetic per page, but shared tokens create unity
+- No generic AI aesthetics - distinctive, refined design for medical professionals
+- Page-by-page restyling as tasks touch each page
 
 ---
 

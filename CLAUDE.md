@@ -46,6 +46,13 @@ Every feature follows: `/speckit.specify` → `/speckit.clarify` → `/speckit.p
 - Canvas-based testing via screenshot comparison
 - No task is "done" without proof it works
 
+### 5. Frontend Design (Visual Quality)
+- Claude Opus + `frontend-design` plugin for all UI/frontend work
+- Tailwind CSS for all styling (progressive migration from inline CSS)
+- Design tokens in `tailwind.config.ts` ensure ecosystem coherence across pages
+- Page-by-page restyling: every page touched by a task gets migrated to Tailwind
+- No generic AI aesthetics - distinctive, refined design worthy of medical professionals
+
 ---
 
 ## BUILD COMMANDS
@@ -99,6 +106,54 @@ npx playwright test
 
 ---
 
+## FRONTEND DESIGN DIRECTIVE (NON-NEGOTIABLE)
+
+> **All UI/frontend work MUST use Claude Opus with the `frontend-design` plugin.**
+> **This is not optional. No page, component, or layout ships without this.**
+
+### Rules
+
+1. **Opus only for UI work** - Any task that touches pages, components, layouts, or styling MUST be executed with Claude Opus (claude-opus-4-6). Sonnet/Haiku may handle backend logic, AI pipeline, or data work, but the moment code touches what users SEE, it's Opus + frontend-design skill.
+
+2. **Tailwind CSS** - All new styling uses Tailwind. Existing inline CSS-in-JS is migrated to Tailwind page-by-page as each page gets worked on. No new inline styles.
+
+3. **Page-by-page restyling** - Existing pages (Welcome, AgentMode, EditorMode, CreditsPage) are restyled progressively whenever they are touched for any task. If you're fixing a bug on a page, you restyle it too. New pages (ProjectsPage, Landing, Waitlist, etc.) are built with Tailwind + frontend-design from day one.
+
+4. **One ecosystem, many pages** - Every page must feel like part of the same app. Opus chooses the aesthetic per page, but shared design tokens (colors, fonts, spacing, shadows, border radii) are defined in `tailwind.config.ts` and `src/styles/global.css`. These tokens are the connective tissue. First restyled page establishes the tokens; all subsequent pages inherit them.
+
+5. **No generic AI slop** - No Inter/Roboto/Arial. No purple-gradient-on-white. No cookie-cutter layouts. FINNISH serves medical professionals - the design must feel distinctive, refined, and trustworthy. The aesthetic should make a doctor at a conference think "this is a serious tool."
+
+6. **Design token establishment** - The first page restyled with Opus MUST define the shared design system in `tailwind.config.ts`:
+   - Color palette (primary, secondary, accent, neutrals, semantic colors)
+   - Typography (distinctive display font + refined body font via Google Fonts or similar)
+   - Spacing scale
+   - Border radii, shadows, transitions
+   - Dark mode variants (for Task 14)
+
+   Every subsequent page uses these tokens. If a new token is needed, add it to the config - never hardcode.
+
+7. **Tailwind setup prerequisite** - Before any UI work begins, Tailwind CSS must be installed and configured:
+   ```bash
+   npm install -D tailwindcss @tailwindcss/vite
+   ```
+   Configure in `vite.config.ts` and create `tailwind.config.ts`. This is a one-time setup task.
+
+### What This Means in Practice
+
+- **Working on Task 6 (My Projects)?** → Build the page with Opus + frontend-design + Tailwind.
+- **Fixing a bug in EditorMode?** → Also restyle EditorMode to Tailwind while you're there.
+- **Building Task 21 (Landing page)?** → Opus + frontend-design from scratch. This page IS the first impression.
+- **Working on Task 2 (Wire AI)?** → The AI pipeline code can use Sonnet. But if AgentMode.tsx UI changes are needed, switch to Opus for that part.
+
+### Migration Strategy (Existing Pages)
+
+Existing pages use inline CSS-in-JS (`style={{ ... }}`). Migration order follows natural task flow:
+1. Whichever page gets touched first by a task → restyle it then
+2. Don't do a separate "restyle everything" sprint - let it happen organically
+3. By the time all tasks are done, all pages will be on Tailwind
+
+---
+
 ## CODEBASE MAP
 
 ```
@@ -113,7 +168,7 @@ convex/                            # Convex backend (serverless database functio
 src/
 ├── App.tsx                    # Router: /, /agent, /editor, /editor/:id, /projects, /credits
 ├── pages/
-│   ├── AgentMode/             # AI diagram generation (CURRENTLY USES HARDCODED SVG - MUST FIX)
+│   ├── AgentMode/             # AI diagram generation (Claude Sonnet primary, GPT-4o mini fallback)
 │   ├── EditorMode/            # Fabric.js canvas editor + cloud save
 │   ├── ProjectsPage/          # My Projects dashboard
 │   ├── Welcome/               # Landing page
@@ -160,16 +215,19 @@ src/
 - [x] Auto-save: 30-second debounce, save status indicator
 - [x] User record sync: Lazy creation from Clerk identity
 - [x] localStorage migration: Prompt to move browser diagrams to cloud
+- [x] Agent Mode AI pipeline: Claude Sonnet primary, GPT-4o mini fallback, regex last resort - Task 2 DONE
+- [x] Template-first routing: PRISMA/CONSORT/forest plot skip AI (< 5s) - Task 2 DONE
+- [x] Specialty detection: 41 specialties with keyword maps and prompt enhancement - Task 2 DONE
+- [x] Prompt caching: Anthropic cache_control for 90% cost reduction - Task 2 DONE
+- [x] Waitlist page: /waitlist with email collection, duplicate prevention, referral tracking - Task 22 DONE
 
 ### What's Broken
-- [ ] AgentMode uses HARDCODED SVG templates, NOT real AI (Task 2)
-- [ ] AI pipeline exists in services/ai/ but is DISCONNECTED from AgentMode
 - [ ] Send to Editor flow untested end-to-end (Task 3)
 
 ### What's Missing
 - [x] Authentication (Clerk) - Task 4 DONE
-- [ ] Database & cloud saving (Convex) - Task 5
-- [ ] My Projects dashboard - Task 6
+- [x] Database & cloud saving (Convex) - Task 5 DONE
+- [x] My Projects dashboard - Task 6 DONE
 - [ ] Version history - Task 7
 - [ ] Lemon Squeezy payments - Task 12
 - [ ] Dark mode - Task 14
@@ -187,14 +245,14 @@ src/
 ```
 Task 1 (Fix build) ✅ DONE
     │
-    ├── Task 2 (Wire Agent Mode to real AI) ← NEXT PRIORITY
-    │   ├── Task 3 (Send to Editor flow)
+    ├── Task 2 (Wire Agent Mode to real AI) ✅ DONE
+    │   ├── Task 3 (Send to Editor flow) ← NEXT PRIORITY
     │   │   └── Task 11 (Iterative refinement)
     │   ├── Task 9 (Sketch/photo upload)
     │   ├── Task 10 (Smart model routing)
     │   └── Task 17 (PII detection)
     │
-    ├── Task 4 (Clerk auth) ← CAN RUN PARALLEL WITH Task 2
+    ├── Task 4 (Clerk auth) ✅ DONE
     │   ├── Task 5 (Convex database)
     │   │   ├── Task 6 (My Projects)
     │   │   │   └── Task 15 (Mobile responsive)
@@ -226,6 +284,10 @@ Task 1 (Fix build) ✅ DONE
 6. **No OpenRouter** → Direct API keys only
 7. **Content ownership** → Users own everything, no forced attribution
 8. **Mobile** → Agent Mode works on mobile, Editor Mode = "open on desktop"
+9. **Frontend Design** → Claude Opus + frontend-design plugin for ALL UI work (non-negotiable)
+10. **Styling** → Tailwind CSS (progressive migration from inline CSS-in-JS)
+11. **Design approach** → Opus decides aesthetic per page, but all pages share design tokens for ecosystem coherence
+12. **Restyling** → Page-by-page as tasks touch them (no separate design sprint)
 
 ---
 
@@ -235,9 +297,10 @@ Task 1 (Fix build) ✅ DONE
 2. Run `task-master next` to find next unblocked task
 3. Run `task-master show <id>` for full task details
 4. If the task involves a new feature: `/speckit.specify` first
-5. Implement following Ralph Loop: implement → verify build → test → commit
-6. `task-master set-status --id=<id> --status=done`
-7. Update this file's CURRENT STATE section before ending session
+5. **If the task touches UI**: confirm Opus model + frontend-design plugin are active. If not, switch before writing UI code.
+6. Implement following Ralph Loop: implement → verify build → test → commit
+7. `task-master set-status --id=<id> --status=done`
+8. Update this file's CURRENT STATE section before ending session
 
 ---
 
@@ -264,13 +327,15 @@ Chains A, B, C, D can all run in parallel terminals.
 
 ---
 
-*Last updated: 2026-02-07 | Session 10 - Chain B: Task 4 (Clerk Auth) DONE, moving to Task 5 (Convex)*
+*Last updated: 2026-02-07 | Session 12 - Task 2 (Wire Agent Mode to Real AI) verified complete: Claude Sonnet primary, GPT-4o mini fallback, template-first routing, 41 specialty detection, prompt caching. Task 22 (Waitlist) complete. Hematology-oncology added to specialty registry.*
 
 ## Active Technologies
 - TypeScript 5.x (React 18 + Vite) + Fabric.js 6.x, Mermaid.js (rendering), Anthropic SDK (new), OpenAI SDK (existing) (001-wire-agent-ai)
 - localStorage (conversation persistence), Zustand (state management) (001-wire-agent-ai)
 - TypeScript 5.x (strict mode) + convex (SDK), @clerk/clerk-react (auth, already installed), convex/react-clerk (auth bridge), React 18, Zustand (state) (003-convex-cloud-saving)
 - Convex (real-time database + file storage for thumbnails) (003-convex-cloud-saving)
+- TypeScript 5.x (React 18 + Vite) + React, Convex (already installed), existing CSS variable system (004-waitlist-page)
+- Convex — new `waitlist` table in existing schema (004-waitlist-page)
 
 ## Recent Changes
 - 001-wire-agent-ai: Added TypeScript 5.x (React 18 + Vite) + Fabric.js 6.x, Mermaid.js (rendering), Anthropic SDK (new), OpenAI SDK (existing)

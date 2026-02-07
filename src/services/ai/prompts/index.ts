@@ -582,6 +582,7 @@ import { METEOROLOGY_DOMAIN_PROMPT, METEOROLOGY_PROMPTS, METEOROLOGY_FEW_SHOT_EX
 import { OCEANOGRAPHY_DOMAIN_PROMPT, OCEANOGRAPHY_PROMPTS, OCEANOGRAPHY_FEW_SHOT_EXAMPLES } from './oceanography-prompts';
 import { BOTANY_DOMAIN_PROMPT, BOTANY_PROMPTS, BOTANY_FEW_SHOT_EXAMPLES } from './botany-prompts';
 import { ZOOLOGY_DOMAIN_PROMPT, ZOOLOGY_PROMPTS, ZOOLOGY_FEW_SHOT_EXAMPLES } from './zoology-prompts';
+import { HEMATOLOGY_ONCOLOGY_SYSTEM_PROMPT, HEMATOLOGY_ONCOLOGY_TYPE_PROMPTS, HEMATOLOGY_ONCOLOGY_EXAMPLES } from './hematology-oncology-prompts';
 
 /**
  * Registry mapping specialty names to their prompt data.
@@ -632,6 +633,7 @@ export const SPECIALTY_REGISTRY: Record<string, SpecialtyPromptSet> = {
   oceanography: { domainPrompt: OCEANOGRAPHY_DOMAIN_PROMPT, prompts: OCEANOGRAPHY_PROMPTS, examples: OCEANOGRAPHY_FEW_SHOT_EXAMPLES },
   botany: { domainPrompt: BOTANY_DOMAIN_PROMPT, prompts: BOTANY_PROMPTS, examples: BOTANY_FEW_SHOT_EXAMPLES },
   zoology: { domainPrompt: ZOOLOGY_DOMAIN_PROMPT, prompts: ZOOLOGY_PROMPTS, examples: ZOOLOGY_FEW_SHOT_EXAMPLES },
+  'hematology-oncology': { domainPrompt: HEMATOLOGY_ONCOLOGY_SYSTEM_PROMPT, prompts: HEMATOLOGY_ONCOLOGY_TYPE_PROMPTS, examples: Object.values(HEMATOLOGY_ONCOLOGY_EXAMPLES) as FewShotExample[] },
 };
 
 /**

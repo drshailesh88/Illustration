@@ -1,0 +1,400 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": "1",
+        "title": "Fix TypeScript Build Errors and Clean Up Codebase",
+        "description": "Fix the TypeScript compilation error in App.tsx <-> AgentMode.tsx props mismatch. Consolidate duplicate systems: merge src/store/ and src/stores/, pick one export pipeline (src/services/export/ vs src/lib/export/). Get the app to a clean `npm run build` state.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [],
+        "details": "The build currently fails with: Type '{ onSendToEditor: (svg: string) => void; }' is not assignable to type 'IntrinsicAttributes'. Fix AgentMode component to accept onSendToEditor prop with proper TypeScript interface. Remove duplicate stores and export modules. This is the foundation - nothing else works until the build passes.",
+        "testStrategy": "Run `tsc --noEmit` and `npm run build` - both must pass with zero errors.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T09:14:51.418Z"
+      },
+      {
+        "id": "2",
+        "title": "Wire Agent Mode to Real AI Pipeline (Hybrid Architecture)",
+        "description": "Replace the hardcoded SVG templates in AgentMode with the hybrid AI generation architecture: User prompt -> AI generates structured JSON spec -> search icon library for verified icons -> AI-generated fallback for missing -> compose into editable SVG on Fabric.js canvas. This is the core product differentiator.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "details": "AgentMode currently uses hardcoded generateConsortDiagram, generateForestPlot etc. with keyword matching. Replace with: 1) Send prompt to Claude Sonnet API, 2) AI returns structured JSON spec (diagram type, elements, connections, labels, colors), 3) For each element, search curated icon library first, 4) If icon not found, AI generates it (labeled 'AI-generated'), 5) Render composite into editable SVG on Fabric.js canvas. Use smart model routing: Claude Sonnet for complex diagrams, GPT-4o mini/Gemini Flash for simple ones. Implement prompt caching for system prompts. Template matching for known types (PRISMA, CONSORT) should skip AI entirely.",
+        "testStrategy": "Type 'Create a PRISMA flow diagram with 500 records screened, 120 included' in Agent Mode. Verify: real AI call is made, structured spec is generated, diagram renders as editable SVG, each element is individually selectable in Editor Mode.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T11:59:04.581Z"
+      },
+      {
+        "id": "3",
+        "title": "Implement Send to Editor Flow (Agent Mode -> Editor Mode)",
+        "description": "Wire the complete flow from Agent Mode diagram generation to Editor Mode editing. User generates diagram in Agent Mode, clicks 'Accept & Edit' or 'Send to Editor', diagram loads in Editor Mode as individually editable Fabric.js objects.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "1",
+          "2"
+        ],
+        "details": "1) Wire onSendToEditor prop from App.tsx to AgentMode, 2) Generate unique diagram ID, 3) Store diagram data (SVG + Fabric.js JSON) in state/localStorage, 4) Navigate to /editor/{id}, 5) EditorMode loads diagram using fabric.loadSVGFromString or Fabric.js JSON, 6) Every element must be individually selectable and editable. The diagram should NOT be a flat image - it must be decomposed into individual objects (boxes, text, arrows, icons).",
+        "testStrategy": "Generate diagram in Agent Mode, click Send to Editor, verify: navigation to Editor Mode, diagram appears on canvas, individual elements (boxes, text, arrows) are independently selectable and editable.",
+        "subtasks": []
+      },
+      {
+        "id": "4",
+        "title": "Implement Clerk Authentication",
+        "description": "Add user authentication using Clerk. Support Google sign-in and email/password. Protect Agent Mode behind Pro subscription. Allow Editor Mode for free tier. Implement auth-aware routing.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "details": "Install @clerk/clerk-react. Set up ClerkProvider in App.tsx. Add SignIn/SignUp pages. Implement protected routes: Agent Mode requires auth (Pro tier), Editor Mode accessible to all authenticated users (including free tier), landing/welcome page accessible to everyone. Store user metadata (subscription tier, usage counts) in Clerk user metadata or Convex. Show appropriate CTAs for unauthenticated users.",
+        "testStrategy": "Sign up with email, sign in with Google, verify protected routes work, verify free user cannot access Agent Mode, verify Pro user can access everything.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T09:59:58.253Z"
+      },
+      {
+        "id": "5",
+        "title": "Set Up Convex Database and Cloud Saving",
+        "description": "Install and configure Convex as the database and file storage layer. Implement diagram saving, loading, and My Projects dashboard. Pure TypeScript, no SQL.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "4"
+        ],
+        "details": "Install convex. Define schema: projects (id, userId, title, diagramData as JSON, thumbnail as file URL, createdAt, updatedAt, version), users (id, clerkId, email, subscriptionTier, aiGenerationsUsed, aiGenerationsLimit). Implement mutations: saveProject, updateProject, deleteProject. Implement queries: getProjects (by user), getProject (by id). Use Convex file storage for thumbnails. Auto-generate thumbnails on save by rendering canvas to small PNG data URL.",
+        "testStrategy": "Create a diagram, save it, refresh the page, verify diagram loads from Convex. Create multiple diagrams, verify My Projects dashboard shows all with thumbnails.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T10:39:40.404Z"
+      },
+      {
+        "id": "6",
+        "title": "Build My Projects Dashboard",
+        "description": "Create a dashboard where users see all their saved diagrams with thumbnails, organized by date. Support viewing, opening, renaming, and deleting projects.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "5"
+        ],
+        "details": "Create MyProjects page/component. Grid layout showing project thumbnails with titles and dates. Click to open in Editor Mode. Context menu or actions: rename, duplicate, delete (with confirmation). Sort by date (newest first). Show empty state for new users with CTA to create first diagram. Accessible on mobile (responsive grid). Link from navigation and Agent Mode landing.",
+        "testStrategy": "Save 3 diagrams, open My Projects, verify all 3 appear with correct thumbnails. Rename one, delete one, verify changes persist after refresh.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T10:43:43.839Z"
+      },
+      {
+        "id": "7",
+        "title": "Implement Version History",
+        "description": "Allow users to browse and restore previous versions of their diagrams across editing sessions, like Google Docs version history.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "5"
+        ],
+        "details": "Store diagram versions in Convex: each save creates a new version entry (projectId, versionNumber, diagramData, timestamp). UI: 'Version History' panel or dialog accessible from Editor Mode menu. Show list of versions with timestamps. Click to preview, 'Restore' button to revert. Limit to last 20 versions per project to manage storage. Auto-save creates versions at reasonable intervals (not every keystroke).",
+        "testStrategy": "Edit a diagram, save 3 times with different changes, open version history, verify all 3 versions listed, restore version 1, verify diagram reverts correctly.",
+        "subtasks": []
+      },
+      {
+        "id": "8",
+        "title": "Verify and Fix All Editor Mode Features",
+        "description": "Audit all 14 Editor Mode features against the PRD. Test each one, fix what's broken, wire what's disconnected. Features: drag & drop icons, text tool, shape tools, pen/freehand, alignment & snapping, layers, color picker, undo/redo, copy/paste, grouping, background removal, image filters, rulers & guides, zoom & pan.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "details": "Systematically test each feature: 1) Drag & drop icons from IconPicker onto canvas, 2) Text tool adds/edits text, 3) Shapes (rect, circle, arrow, line, polygon) create and resize, 4) Pen tool draws freehand, 5) Alignment snaps objects to grid, 6) Layers panel shows z-order with reordering, 7) Color picker changes fill/stroke, 8) Undo/Redo works with Ctrl+Z/Y, 9) Copy/paste with Ctrl+C/V, 10) Group/ungroup with Ctrl+G, 11) Background removal works on uploaded images, 12) Image filters (brightness, contrast, blur) apply, 13) Rulers visible with guides, 14) Zoom/pan smooth with scroll/drag. Fix any broken features. This is Excalidraw-level baseline.",
+        "testStrategy": "Create a test checklist. For each feature: perform the action, verify it works, verify undo works for it. Document pass/fail for each.",
+        "subtasks": []
+      },
+      {
+        "id": "9",
+        "title": "Implement Sketch and Photo Upload for Agent Mode",
+        "description": "Add sketch upload (photograph a rough drawing) and photo upload (refine existing image) as input methods for Agent Mode, alongside text prompts. Uses AI vision capabilities.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "2"
+        ],
+        "details": "Add upload buttons in Agent Mode UI alongside the text prompt. When user uploads an image: 1) Display the uploaded image as a preview, 2) Optionally add a text description, 3) Send image + prompt to Claude Sonnet (which has vision), 4) AI analyzes the sketch/photo and generates a structured JSON spec (same as text-to-diagram flow), 5) Render into editable SVG using the same hybrid pipeline. For sketch upload: prompt should be 'Analyze this rough sketch of a scientific diagram and generate a clean, structured version.' For photo upload: 'Refine this image into a publication-quality scientific illustration.'",
+        "testStrategy": "Upload a hand-drawn sketch photo of a flowchart, verify AI interprets it and generates a clean diagram. Upload a photo of a published figure, verify AI creates a similar structured diagram.",
+        "subtasks": []
+      },
+      {
+        "id": "10",
+        "title": "Implement Smart Model Routing and Cost Optimization",
+        "description": "Build the AI cost optimization layer: smart model routing (cheap model for simple, Claude Sonnet for complex), prompt caching for system prompts, and template matching for known diagram types.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "2"
+        ],
+        "details": "1) Smart routing: classify incoming prompts as simple (basic flowchart, simple chart) vs complex (multi-pathway biological diagram, detailed anatomy). Simple -> GPT-4o mini or Gemini Flash. Complex -> Claude Sonnet. 2) Prompt caching: use Anthropic's prompt caching for the system prompt that describes the structured JSON output format. This saves ~90% on the cached portion. 3) Template matching: for known diagram types (PRISMA, CONSORT, forest plot), detect the type from the prompt and use a pre-built template filled with user's data instead of calling AI. 4) Track API costs per user for billing/quota management.",
+        "testStrategy": "Generate a simple flowchart - verify it uses cheap model. Generate a complex pathway diagram - verify it uses Claude Sonnet. Generate a PRISMA diagram - verify template matching is used without AI call. Check that prompt caching headers are being sent.",
+        "subtasks": []
+      },
+      {
+        "id": "11",
+        "title": "Implement Iterative Refinement in Agent Mode",
+        "description": "Allow users to modify generated diagrams conversationally. After generating a diagram, user can say 'make the boxes blue', 'add another branch', 'change the title to X' and the diagram updates.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "2",
+          "3"
+        ],
+        "details": "Implement conversation context: 1) After initial generation, maintain the structured JSON spec in state, 2) When user sends follow-up prompt, send both the current spec + the modification request to AI, 3) AI returns an updated spec (not a full regeneration), 4) Re-render the updated diagram, 5) Show conversation history in Agent Mode UI, 6) Accept/reject paradigm still applies to each iteration. Use ConversationManager (already exists in src/services/ai/) to maintain multi-turn context.",
+        "testStrategy": "Generate a diagram, then prompt 'make all boxes blue', verify boxes change color. Prompt 'add a new step after step 3', verify new element appears. Verify conversation history shows all prompts.",
+        "subtasks": []
+      },
+      {
+        "id": "12",
+        "title": "Implement Lemon Squeezy Payment Integration",
+        "description": "Integrate Lemon Squeezy for subscription billing. Support Free, Pro (~Rs 1,000/month), and Team/Lab tiers. Handle Indian + international payments. Annual billing with 20-30% discount.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "4"
+        ],
+        "details": "1) Create Lemon Squeezy account and products (Free, Pro monthly, Pro annual, Team monthly, Team annual), 2) Install Lemon Squeezy JS SDK, 3) Create pricing page showing tiers with feature comparison, 4) Implement checkout flow - redirect to Lemon Squeezy hosted checkout, 5) Handle webhooks for subscription created/updated/cancelled, 6) Store subscription status in Convex (synced via webhook), 7) Gate features based on tier: Free = Editor only + watermark + limited icons + no Agent Mode, Pro = everything, 8) Show upgrade CTAs in appropriate places, 9) Billing management link in user settings.",
+        "testStrategy": "In test mode: create a Pro subscription, verify Agent Mode unlocks. Cancel subscription, verify Agent Mode locks. Test annual billing flow. Verify webhook updates Convex correctly.",
+        "subtasks": []
+      },
+      {
+        "id": "13",
+        "title": "Implement Free Tier Limitations (Watermark, Low-Res, Gating)",
+        "description": "Enforce free tier restrictions: low-resolution PNG export only (no SVG), subtle corner watermark on exports, no Agent Mode access, limited icon library. Pro tier gets full access.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "12"
+        ],
+        "details": "1) PNG export: Free tier exports at reduced resolution (e.g., 72 DPI max, scaled down). Pro tier exports at full resolution (up to 600 DPI). 2) Watermark: add subtle 'Made with [App Name]' text in bottom-right corner of exported PNGs for free tier. Not diagonal, not aggressive. 3) SVG export: disabled for free tier (button grayed out with 'Upgrade to Pro' tooltip). 4) Agent Mode: show Agent Mode UI to free users but with a locked state - 'Upgrade to Pro to generate diagrams with AI'. 5) Icon library: free tier sees a subset of icons, full library requires Pro. 6) No version history for free tier.",
+        "testStrategy": "Export PNG as free user, verify watermark appears and resolution is limited. Try SVG export as free user, verify it's blocked. Upgrade to Pro, verify watermark disappears and full resolution works.",
+        "subtasks": []
+      },
+      {
+        "id": "14",
+        "title": "Implement Dark Mode",
+        "description": "Add full dark mode theme toggle. Persist preference. Apply to all pages: Agent Mode, Editor Mode, My Projects, Settings.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "1"
+        ],
+        "details": "1) Create theme context/store with light/dark toggle, 2) Define dark mode color palette (backgrounds, text, borders, panels, toolbar, canvas surround), 3) Use CSS custom properties or Tailwind dark mode, 4) Toggle in header/settings, 5) Persist preference in localStorage (and Convex user settings when available), 6) Respect system preference (prefers-color-scheme) as default, 7) Canvas itself stays white (or configurable) - dark mode applies to the UI chrome around it, 8) Ensure all components look good in both modes.",
+        "testStrategy": "Toggle dark mode, verify all pages render correctly. Refresh page, verify preference persisted. Test in system dark mode, verify it's auto-detected.",
+        "subtasks": []
+      },
+      {
+        "id": "15",
+        "title": "Implement Mobile-Responsive Design",
+        "description": "Make the app mobile-responsive. Agent Mode fully functional on mobile. Editor Mode shows 'Open on desktop' message on mobile. My Projects dashboard responsive. Landing page mobile-first.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "1",
+          "6"
+        ],
+        "details": "1) Agent Mode on mobile: full prompt input, diagram preview, accept/reject buttons, conversation history - all touch-friendly, 2) Editor Mode on mobile: detect screen width, show message 'Open on desktop for the full editing experience' with link/button to save and continue on desktop, 3) My Projects: responsive grid (1 column on mobile, 2-3 on tablet, 4+ on desktop), 4) Landing/welcome page: mobile-first design, clear CTAs, 5) Navigation: hamburger menu on mobile, 6) All touch targets: minimum 44px, 7) Test on iPhone and Android viewport sizes.",
+        "testStrategy": "Open app on mobile viewport (375px width). Verify: Agent Mode prompt works, diagrams display, My Projects grid adapts, Editor Mode shows desktop message. Test on 768px (tablet) and 1024px+ (desktop).",
+        "subtasks": []
+      },
+      {
+        "id": "16",
+        "title": "Implement Offline Editor Mode with Sync",
+        "description": "Editor Mode works without internet. Saves locally when offline. Syncs to Convex cloud when connection returns. Agent Mode shows 'connect to internet' message when offline.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "5"
+        ],
+        "details": "1) Detect online/offline status using navigator.onLine + event listeners, 2) When offline: save diagram to IndexedDB/localStorage instead of Convex, show subtle 'Offline - changes saved locally' indicator, 3) When connection returns: sync local changes to Convex, show 'Synced' confirmation, 4) Handle conflicts: last-write-wins for simple case, 5) Agent Mode: show 'Connect to internet to generate diagrams with AI' message when offline, 6) Service worker for caching app shell (optional for V1, nice-to-have), 7) Icon library should be cached for offline use.",
+        "testStrategy": "Open Editor Mode, disconnect internet, make edits, verify they save locally. Reconnect, verify sync to Convex. Open Agent Mode offline, verify appropriate message shown.",
+        "subtasks": []
+      },
+      {
+        "id": "17",
+        "title": "Implement PII Detection Warning for Medical Data",
+        "description": "Detect potential patient-identifiable information in Agent Mode prompts and warn users before generating. Critical for medical audience trust.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "2"
+        ],
+        "details": "1) Before sending prompt to AI, scan for patterns: names with 'patient' or 'Mr./Mrs.', dates of birth, medical record numbers (MRN), phone numbers, email addresses, SSN-like patterns, 2) If detected: show warning dialog 'It looks like your prompt may contain patient-identifiable information. Please remove personal details before generating.' with options to 'Edit prompt' or 'Proceed anyway', 3) Log that warning was shown (but NOT the prompt content), 4) Add note in Terms of Service about PHI responsibility, 5) Keep detection client-side only - never send detected PII to analytics.",
+        "testStrategy": "Type 'Create diagram for Patient John Smith DOB 01/15/1980 MRN 12345' - verify warning appears. Type 'Create a generic PRISMA diagram' - verify no warning.",
+        "subtasks": []
+      },
+      {
+        "id": "18",
+        "title": "Implement Canvas Presets and DPI Export Options",
+        "description": "Add preset canvas sizes based on journal requirements (Nature, NEJM, etc.) and DPI selection for PNG export. Support importing existing SVG into editor.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "8"
+        ],
+        "details": "1) Canvas presets: New Project dialog with options - Nature single column (89mm), Nature double column (183mm), NEJM (varies), Letter, A4, Custom (width x height in mm/px/inches), 2) DPI export: when exporting PNG, offer DPI options (72 screen, 150 web, 300 print, 600 high-quality), multiply canvas dimensions accordingly, 3) SVG import: File > Import SVG menu item, opens file picker, loads SVG into canvas using fabric.loadSVGFromString, decomposes into individual editable objects, 4) Show current canvas size and DPI in status bar.",
+        "testStrategy": "Create new project with 'Nature single column' preset, verify canvas dimensions. Export PNG at 300 DPI, verify image resolution matches. Import an external SVG, verify elements are individually editable.",
+        "subtasks": []
+      },
+      {
+        "id": "19",
+        "title": "Implement Custom Image and Icon Upload",
+        "description": "Allow users to upload their own SVGs, PNG images, and custom icons to use in diagrams. Uploaded assets persist in their account for reuse.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "5",
+          "8"
+        ],
+        "details": "1) Upload button in icon picker/toolbar: 'Upload your own icon/image', 2) Accept SVG, PNG, JPG files, 3) SVG uploads: decompose into editable Fabric.js objects, 4) Raster uploads: add as Fabric.js Image objects, 5) Store uploaded assets in Convex file storage linked to user account, 6) Show 'My Uploads' section in icon picker, 7) Allow drag & drop from file system directly onto canvas, 8) File size limits (e.g., 5MB per file, 50MB total for free tier, 500MB for Pro).",
+        "testStrategy": "Upload a custom SVG icon, verify it appears in 'My Uploads'. Drag it onto canvas, verify it's editable. Upload a PNG, verify it appears on canvas. Close and reopen app, verify uploaded assets persist.",
+        "subtasks": []
+      },
+      {
+        "id": "20",
+        "title": "Curate and Verify Medical Icon Library",
+        "description": "Audit all existing medical specialty icons for quality, accuracy, and categorization. Ensure all branches of medicine have deep, professionally organized icon coverage. This is the competitive moat.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "8"
+        ],
+        "details": "1) Audit all 35 medical specialty icon sets in src/data/icons/ for: accuracy (do they represent what they claim?), quality (are they clean SVGs?), categorization (are they in the right specialty?), searchability (do names/tags make them findable?), 2) Prioritize medicine branches: cardiology, neurology, surgery, orthopedics, pathology, radiology, dermatology, ophthalmology, ENT, pediatrics, OB/GYN, 3) Ensure unified search works across all libraries, 4) Add missing icons for common medical diagram needs, 5) Verify all icon licenses are commercial-safe, 6) Biology and Chemistry should have solid (not world-class) coverage.",
+        "testStrategy": "Search for 'heart' - verify relevant cardiology icons appear. Search for 'neuron' - verify neurology icons. Search for 'cell' - verify biology icons. Verify no broken/missing SVGs across all specialties.",
+        "subtasks": []
+      },
+      {
+        "id": "21",
+        "title": "Build First-Time User Experience and Landing Page",
+        "description": "Create the first-time user experience: Agent Mode as default landing with prompt box, clear toggle to Editor Mode, and a compelling landing/marketing page for unauthenticated users.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "4",
+          "15"
+        ],
+        "details": "1) Unauthenticated users: see a landing page with value proposition, demo screenshots/video, pricing, CTA to sign up, 2) Authenticated users: land on Agent Mode by default with prompt box front and center ('Describe the diagram you need...'), 3) Clear toggle/tabs to switch between Agent Mode and Editor Mode, 4) No onboarding tutorial - app should be self-explanatory through clean design, 5) Mobile: landing page must be mobile-first (this is where discovery happens), 6) Include the demo moment messaging: 'Hours of illustration work in seconds'.",
+        "testStrategy": "Open app unauthenticated, verify landing page shows with sign up CTA. Sign up, verify Agent Mode appears by default. Toggle to Editor Mode, verify canvas loads. Test on mobile viewport.",
+        "subtasks": []
+      },
+      {
+        "id": "22",
+        "title": "Build Waitlist Landing Page",
+        "description": "Create a simple, compelling waitlist page to collect email signups before full launch. Deploy to Vercel immediately for early hype building and social media promotion.",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [],
+        "details": "1) Single-page design: headline (the pitch), 3-4 feature highlights with icons/screenshots, email signup form, 2) Store emails in Convex (or simple Google Sheets/Airtable integration if Convex isn't ready), 3) Show signup count ('Join 147 scientists on the waitlist'), 4) Mobile-responsive, 5) Deploy to Vercel on its own domain/subdomain, 6) Can be a separate simple page or the app's landing page before auth is ready, 7) Social proof: 'Built by a doctor, for doctors' messaging.",
+        "testStrategy": "Open waitlist page on desktop and mobile. Enter email, verify it's stored. Verify page loads fast (<2s). Share link and verify it works.",
+        "subtasks": [],
+        "updatedAt": "2026-02-07T11:59:05.055Z"
+      },
+      {
+        "id": "23",
+        "title": "Deploy to Vercel and Configure Production Environment",
+        "description": "Deploy the full application to Vercel. Configure environment variables, custom domain (when ready), and production settings.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "1",
+          "4",
+          "5"
+        ],
+        "details": "1) Create Vercel project linked to GitHub repo, 2) Configure environment variables: Clerk keys, Convex deployment URL, AI API keys (Anthropic, OpenAI, Google), Lemon Squeezy keys, 3) Set up build command (npm run build) and output directory (dist), 4) Configure Convex production deployment, 5) Set up custom domain when founder decides app name, 6) Enable Vercel Analytics (basic, free tier), 7) Test production build works with all features, 8) Set up preview deployments for PRs.",
+        "testStrategy": "Visit deployed URL, verify app loads in <2s. Sign up, create diagram in Agent Mode, edit in Editor Mode, save to cloud, export PNG. Verify all features work in production.",
+        "subtasks": []
+      },
+      {
+        "id": "24",
+        "title": "Implement Multi-Panel Figures and Smart Labeling",
+        "description": "Support generating multi-panel composite figures (panels A, B, C, D) common in scientific papers. Add smart labeling that automatically adds proper scientific labels, annotations, and panel letters.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "2",
+          "11"
+        ],
+        "details": "1) Multi-panel: user can prompt 'Create a 4-panel figure with: A) PRISMA flow, B) forest plot, C) survival curve, D) bar chart of outcomes', 2) AI generates each panel as a sub-diagram, arranges in grid layout (2x2, 1x4, etc.), 3) Each panel labeled with A, B, C, D in top-left corner, 4) Smart labeling: AI adds scale bars, axis labels, legend, statistical annotations (p-values, confidence intervals) where appropriate, 5) In Editor Mode: each panel is a group that can be rearranged, resized independently.",
+        "testStrategy": "Prompt a 4-panel figure, verify panels are arranged correctly with labels A-D. Verify each panel is independently editable. Check smart labels include appropriate scientific annotations.",
+        "subtasks": []
+      },
+      {
+        "id": "25",
+        "title": "End-to-End Testing and Conference Demo Preparation",
+        "description": "Full end-to-end testing of all features. Prepare the specific demo flow for the July conference: prompt NEJM-quality figure -> generate -> edit -> export. Fix all remaining issues.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "8",
+          "12",
+          "15",
+          "21",
+          "23"
+        ],
+        "details": "1) Test every user flow end-to-end: signup -> Agent Mode -> generate -> edit -> save -> export, 2) Test free tier limitations work correctly, 3) Test payment flow, 4) Test mobile experience, 5) Test offline mode, 6) Prepare specific demo diagrams: complex NEJM figure, PRISMA diagram, clinical pathway - these must work flawlessly, 7) Prepare demo script: what to show, what to say, what order, 8) Load test: verify app handles multiple concurrent users, 9) Fix all P0 and P1 bugs found during testing, 10) Create backup demo (pre-generated diagrams) in case live demo fails at conference.",
+        "testStrategy": "Run through the complete demo script 5 times. Every time must succeed. Test on the actual device (laptop + phone) that will be used at the conference. Test on conference WiFi conditions (potentially slow/spotty).",
+        "subtasks": []
+      },
+      {
+        "id": "26",
+        "title": "Wire fal.ai FLUX Image Generation into Agent Mode",
+        "description": "Connect fal.ai FLUX Turbo ($0.008/image) for photorealistic/artistic AI image generation in Agent Mode. @fal-ai/serverless-client is already installed.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "2"
+        ],
+        "details": "1) Create src/services/ai/backends/FalAIBackend.ts that sends scientific illustration prompts to fal-ai/flux/schnell, 2) Include style modifiers (clean vector style, scientific diagram, publication quality), 3) Handle loading states and errors, 4) Wire into Agent Mode's routing: when PromptParser detects an illustration/image request (not a structured diagram), route to FalAIBackend, 5) Structured diagrams (pathways, flowcharts) -> DiagramGenerator, Illustrations (cell, anatomy, custom art) -> fal.ai, 6) Track usage per user for billing/quota.",
+        "testStrategy": "Enter 'Generate a detailed cell membrane illustration' in Agent Mode, verify fal.ai API is called, verify image displays in preview, verify usage is tracked.",
+        "subtasks": []
+      },
+      {
+        "id": "27",
+        "title": "Verify and Fix PDF and PPTX Export for V1",
+        "description": "PDF export (jsPDF + svg2pdf) and PPTX export (pptxgenjs) already exist in the codebase. Verify they work correctly, fix any issues, and ensure they are accessible from the export dialog.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "8"
+        ],
+        "details": "1) Test PDF export from services/export/PDFExporter.ts - verify it produces correct output, 2) Test PPTX export from lib/export/pptx.ts - verify it produces correct PowerPoint file, 3) Ensure both formats appear in the export dialog UI, 4) Test with various diagram types (simple shapes, complex SVGs, images), 5) Fix any issues found, 6) Add DPI options to PDF export (300 for print, 72 for screen).",
+        "testStrategy": "Create a diagram with shapes, text, and icons. Export as PDF - open in viewer, verify content. Export as PPTX - open in PowerPoint/Google Slides, verify content. Test with different diagram complexities.",
+        "subtasks": []
+      },
+      {
+        "id": "28",
+        "title": "Set Up Playwright E2E Testing Framework",
+        "description": "Install and configure Playwright for end-to-end browser testing. Create test suites for critical user flows. Integrate with CI.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "2",
+          "4",
+          "8"
+        ],
+        "details": "1) Install @playwright/test, 2) Configure playwright.config.ts for React/Vite dev server, 3) Create test suites: auth flow (sign up, sign in, sign out), editor flow (create diagram, add shapes/text, save, export), agent mode flow (enter prompt, generate, send to editor), icon search (search, insert, position), 4) Screenshot comparison for canvas-based visual regression testing, 5) Test on Chromium, Firefox, WebKit, 6) Mobile viewport tests, 7) Add to CI pipeline.",
+        "testStrategy": "Run npx playwright test --all. All tests pass. Screenshot baselines captured. CI pipeline runs tests on push.",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-02-07T11:59:05.055Z",
+      "taskCount": 28,
+      "completedCount": 6,
+      "tags": [
+        "master"
+      ]
+    }
+  }
+}
