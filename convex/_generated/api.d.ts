@@ -20,6 +20,12 @@ declare const api: {
     getProject: FunctionReference<"query", "public", any, any>;
     getProjects: FunctionReference<"query", "public", any, any>;
   };
+  versions: {
+    createVersion: FunctionReference<"mutation", "public", any, any>;
+    getVersions: FunctionReference<"query", "public", any, any>;
+    getVersion: FunctionReference<"query", "public", any, any>;
+    restoreVersion: FunctionReference<"mutation", "public", any, any>;
+  };
   storage: {
     generateUploadUrl: FunctionReference<"mutation", "public", Record<string, never>, any>;
   };

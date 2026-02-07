@@ -37,6 +37,8 @@ import { Toolbar } from './Toolbar';
 import { RightPanel } from './RightPanel';
 import { StatusBar } from './StatusBar';
 import { ToolType } from '../../types/index';
+import { VersionHistoryDialog } from '../../components/VersionHistoryDialog/VersionHistoryDialog';
+import { useVersionHistory } from '../../hooks/useVersionHistory';
 
 // ============================================================================
 // Types
@@ -241,12 +243,19 @@ function EditorModeContent(): JSX.Element {
   const [aiGenerationToolOpen, setAIGenerationToolOpen] = useState(false);
   const [shapeGeneratorOpen, setShapeGeneratorOpen] = useState(false);
   const [initialShapeType, setInitialShapeType] = useState<ShapeType>('dna');
+  const [versionHistoryOpen, setVersionHistoryOpen] = useState(false);
 
   // Cloud project state
   const [currentProjectId, setCurrentProjectId] = useState<string | undefined>(
     id && !id.startsWith('agent-') ? id : undefined
   );
   const { project, save: saveToCloud, saveStatus } = useProject(currentProjectId);
+  const {
+    versions,
+    isLoading: versionsLoading,
+    isRestoring,
+    restoreVersion,
+  } = useVersionHistory(currentProjectId);
 
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
@@ -708,6 +717,18 @@ function EditorModeContent(): JSX.Element {
     markAutoSaveChanged();
   }, [markAutoSaveChanged]);
 
+  // Handle version restore — reload the project data after restore
+  const handleRestoreVersion = useCallback(async (versionId: string) => {
+    try {
+      await restoreVersion(versionId);
+      showToast({ type: 'success', message: 'Version restored successfully' });
+      // The Convex reactive query will update project data automatically
+      // which triggers the useEffect that loads from Convex
+    } catch {
+      showToast({ type: 'error', message: 'Failed to restore version' });
+    }
+  }, [restoreVersion, showToast]);
+
   // ========================================================================
   // Render
   // ========================================================================
@@ -722,6 +743,8 @@ function EditorModeContent(): JSX.Element {
           onOpenShapeGenerator={handleOpenShapeGenerator}
           onCloudSave={handleSave}
           saveStatus={saveStatus !== 'idle' ? saveStatus : autoSaveStatus}
+          onOpenVersionHistory={() => setVersionHistoryOpen(true)}
+          hasVersionHistory={!!currentProjectId}
         />
 
         {/* Export Dialog */}
@@ -784,6 +807,16 @@ function EditorModeContent(): JSX.Element {
             />
           </div>
         )}
+
+        {/* Version History Dialog */}
+        <VersionHistoryDialog
+          isOpen={versionHistoryOpen}
+          onClose={() => setVersionHistoryOpen(false)}
+          versions={versions}
+          isLoading={versionsLoading}
+          isRestoring={isRestoring}
+          onRestore={handleRestoreVersion}
+        />
 
         {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
         <IllustratorToolbar

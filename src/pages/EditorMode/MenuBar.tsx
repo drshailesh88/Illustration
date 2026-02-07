@@ -54,13 +54,17 @@ interface MenuBarProps {
   onCloudSave?: () => void;
   /** Current save status */
   saveStatus?: SaveStatus;
+  /** Callback to open version history dialog */
+  onOpenVersionHistory?: () => void;
+  /** Whether version history is available (project exists in cloud) */
+  hasVersionHistory?: boolean;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle' }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle', onOpenVersionHistory, hasVersionHistory = false }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [_isLoading, setIsLoading] = useState(false); // Used for async operations
   const [recentFiles, setRecentFiles] = useState<Array<{ id: string; name: string; path: string }>>([]);
@@ -167,6 +171,13 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           label: 'Save As...',
           shortcut: 'Ctrl+Shift+S',
           action: () => handleSaveAs(),
+        },
+        { id: 'divider-version', label: '', divider: true },
+        {
+          id: 'version-history',
+          label: 'Version History...',
+          disabled: !hasVersionHistory,
+          action: () => onOpenVersionHistory?.(),
         },
         { id: 'divider2', label: '', divider: true },
         {

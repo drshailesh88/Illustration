@@ -59,7 +59,7 @@ export const saveProject = mutation({
 
 /**
  * Update an existing project (title, diagram data, thumbnail).
- * Validates ownership and increments version.
+ * Validates ownership, increments version, and creates a version snapshot.
  */
 export const updateProject = mutation({
   args: {
@@ -67,6 +67,7 @@ export const updateProject = mutation({
     title: v.optional(v.string()),
     diagramData: v.optional(v.string()),
     thumbnailId: v.optional(v.id("_storage")),
+    saveSource: v.optional(v.string()), // "manual" | "auto" — for version history
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -82,14 +83,43 @@ export const updateProject = mutation({
       throw new Error("Not authorized");
     }
 
+    const newVersion = project.version + 1;
     const updates: Record<string, any> = {
       updatedAt: Date.now(),
-      version: project.version + 1,
+      version: newVersion,
     };
 
     if (args.title !== undefined) updates.title = args.title;
     if (args.diagramData !== undefined) updates.diagramData = args.diagramData;
     if (args.thumbnailId !== undefined) updates.thumbnailId = args.thumbnailId;
+
+    // Create a version snapshot of the PREVIOUS state before overwriting
+    if (args.diagramData !== undefined) {
+      await ctx.db.insert("projectVersions", {
+        projectId: args.projectId,
+        versionNumber: project.version,
+        diagramData: project.diagramData,
+        title: project.title,
+        source: args.saveSource ?? "auto",
+        createdAt: Date.now(),
+      });
+
+      // Enforce version limit (20 max)
+      const allVersions = await ctx.db
+        .query("projectVersions")
+        .withIndex("by_projectId_createdAt", (q: any) =>
+          q.eq("projectId", args.projectId)
+        )
+        .order("desc")
+        .collect();
+
+      if (allVersions.length > 20) {
+        const toDelete = allVersions.slice(20);
+        for (const ver of toDelete) {
+          await ctx.db.delete(ver._id);
+        }
+      }
+    }
 
     await ctx.db.patch(args.projectId, updates);
   },

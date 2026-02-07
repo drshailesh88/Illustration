@@ -14,6 +14,17 @@ export default defineSchema({
     .index("by_userId", ["userId"])
     .index("by_userId_updatedAt", ["userId", "updatedAt"]),
 
+  projectVersions: defineTable({
+    projectId: v.id("projects"),
+    versionNumber: v.number(),
+    diagramData: v.string(),
+    title: v.string(),
+    source: v.string(), // "manual" | "auto"
+    createdAt: v.number(),
+  })
+    .index("by_projectId", ["projectId"])
+    .index("by_projectId_createdAt", ["projectId", "createdAt"]),
+
   waitlist: defineTable({
     email: v.string(),
     signupDate: v.number(),
