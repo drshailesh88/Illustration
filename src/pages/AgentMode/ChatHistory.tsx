@@ -101,9 +101,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
   );
 };
 
-interface TypingIndicatorProps {}
-
-const TypingIndicator: React.FC<TypingIndicatorProps> = () => (
+const TypingIndicator: React.FC<{ isRefining?: boolean }> = ({ isRefining }) => (
   <div style={{ ...styles.message, ...styles.messageAssistant }}>
     <div style={{ ...styles.avatar, ...styles.avatarAssistant }}>
       <BotIcon />
@@ -111,7 +109,7 @@ const TypingIndicator: React.FC<TypingIndicatorProps> = () => (
     <div style={styles.content}>
       <div style={styles.typingContent}>
         <span style={styles.spinner}><SpinnerIcon /></span>
-        <span>Generating diagram...</span>
+        <span>{isRefining ? 'Refining diagram...' : 'Generating diagram...'}</span>
       </div>
     </div>
   </div>
@@ -161,12 +159,21 @@ interface ChatHistoryProps {
   onSendToEditor?: (svg: string) => void;
   onRegenerate?: (messageId: string) => void;
   onPromptSuggestion?: (prompt: string) => void;
+  /** AI-suggested follow-up actions */
+  suggestions?: string[];
+  /** Callback when user clicks a suggestion */
+  onSuggestionClick?: (suggestion: string) => void;
+  /** Whether the AI is currently refining */
+  isRefining?: boolean;
 }
 
 export const ChatHistory: React.FC<ChatHistoryProps> = ({
   onSendToEditor,
   onRegenerate,
-  onPromptSuggestion
+  onPromptSuggestion,
+  suggestions,
+  onSuggestionClick,
+  isRefining,
 }) => {
   const messages = useAgentStore((state) => state.messages);
   const isLoading = useAgentStore((state) => state.isLoading);
@@ -177,9 +184,10 @@ export const ChatHistory: React.FC<ChatHistoryProps> = ({
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [messages, isLoading]);
+  }, [messages, isLoading, suggestions]);
 
   const showWelcome = messages.length === 0 && !isLoading;
+  const hasSuggestions = suggestions && suggestions.length > 0 && !isLoading;
 
   return (
     <div ref={containerRef} style={styles.container}>
@@ -195,7 +203,21 @@ export const ChatHistory: React.FC<ChatHistoryProps> = ({
               onRegenerate={onRegenerate}
             />
           ))}
-          {isLoading && <TypingIndicator />}
+          {isLoading && <TypingIndicator isRefining={isRefining} />}
+          {hasSuggestions && (
+            <div style={styles.suggestionsRow}>
+              <span style={styles.suggestionsLabel}>Try next:</span>
+              {suggestions.map((s, i) => (
+                <button
+                  key={i}
+                  style={styles.suggestionChip}
+                  onClick={() => onSuggestionClick?.(s)}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
         </>
       )}
     </div>
@@ -325,7 +347,30 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'left',
     cursor: 'pointer',
     transition: 'all var(--transition-fast)'
-  }
+  },
+  suggestionsRow: {
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    alignItems: 'center',
+    gap: '8px',
+    padding: 'var(--spacing-sm) var(--spacing-md)',
+  },
+  suggestionsLabel: {
+    fontSize: 'var(--font-size-xs)',
+    color: 'var(--text-muted)',
+    fontWeight: 500,
+  },
+  suggestionChip: {
+    padding: '6px 12px',
+    background: 'var(--bg-tertiary)',
+    border: '1px solid var(--border-color)',
+    borderRadius: '16px',
+    color: 'var(--text-secondary)',
+    fontSize: 'var(--font-size-xs)',
+    cursor: 'pointer',
+    transition: 'all var(--transition-fast)',
+    whiteSpace: 'nowrap' as const,
+  },
 };
 
 // Add CSS keyframes for spinner

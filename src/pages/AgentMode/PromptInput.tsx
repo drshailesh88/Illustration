@@ -25,12 +25,23 @@ const StopIcon = () => (
   </svg>
 );
 
+const NewDiagramIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
 interface PromptInputProps {
   onSend: (prompt: string) => void;
   onStop?: () => void;
+  /** Whether the user is refining an existing diagram */
+  isRefining?: boolean;
+  /** Callback to start a new diagram (clears conversation) */
+  onNewDiagram?: () => void;
 }
 
-export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop }) => {
+export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop, isRefining, onNewDiagram }) => {
   const [value, setValue] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const isLoading = useAgentStore((state) => state.isLoading);
@@ -81,13 +92,29 @@ export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop }) => {
 
   return (
     <div style={styles.container}>
+      {isRefining && onNewDiagram && (
+        <div style={styles.refiningBar}>
+          <span style={styles.refiningLabel}>Refining diagram</span>
+          <button
+            onClick={onNewDiagram}
+            style={styles.newDiagramBtn}
+            title="Start a new diagram"
+          >
+            <span style={{ width: '14px', height: '14px', display: 'inline-flex' }}><NewDiagramIcon /></span>
+            New Diagram
+          </button>
+        </div>
+      )}
       <div style={styles.wrapper}>
         <textarea
           ref={textareaRef}
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          placeholder="Describe the diagram you want to create..."
+          placeholder={isRefining
+            ? "Describe changes to your diagram..."
+            : "Describe the diagram you want to create..."
+          }
           style={styles.textarea}
           disabled={isLoading}
           rows={1}
@@ -188,7 +215,36 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '4px',
     fontFamily: 'var(--font-mono)',
     fontSize: '10px'
-  }
+  },
+  refiningBar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 'var(--spacing-sm)',
+    padding: '6px 12px',
+    background: 'rgba(59, 130, 246, 0.08)',
+    borderRadius: '8px',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+  },
+  refiningLabel: {
+    fontSize: 'var(--font-size-xs)',
+    color: 'var(--accent-primary)',
+    fontWeight: 500,
+  },
+  newDiagramBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+    padding: '4px 10px',
+    fontSize: '12px',
+    fontWeight: 500,
+    background: 'transparent',
+    border: '1px solid var(--border-color)',
+    borderRadius: '6px',
+    color: 'var(--text-secondary)',
+    cursor: 'pointer',
+    transition: 'all var(--transition-fast)',
+  },
 };
 
 export default PromptInput;

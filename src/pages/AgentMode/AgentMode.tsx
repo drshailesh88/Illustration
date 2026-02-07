@@ -30,13 +30,24 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   const [showPreviewPane, setShowPreviewPane] = useState(true);
   const [piiWarning, setPiiWarning] = useState<{ prompt: string; issues: string[] } | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-  const { generate } = useDiagramGenerator();
+  const {
+    generate,
+    refine,
+    state: generatorState,
+    suggestions,
+    clearConversation,
+    reset: resetGenerator,
+  } = useDiagramGenerator();
+
+  // Whether we're in refinement mode (a diagram already exists)
+  const isRefinementMode = !!generatorState.svg;
 
   const {
     addMessage,
     setLoading,
     currentDiagram,
-    messages
+    messages,
+    clearMessages,
   } = useAgentStore();
 
   // Check API key availability on mount
@@ -55,6 +66,9 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
 
   // Internal generation logic (called after PII check passes)
   const executeGeneration = useCallback(async (prompt: string) => {
+    // Capture refinement state before the call
+    const wasRefining = !!generatorState.svg;
+
     // Add user message
     addMessage({
       role: 'user',
@@ -66,7 +80,10 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     abortControllerRef.current = new AbortController();
 
     try {
-      const result = await generate(prompt, { preferredBackend: 'mermaid' });
+      // Branch: refine existing diagram or generate new one
+      const result = wasRefining
+        ? await refine(prompt)
+        : await generate(prompt, { preferredBackend: 'mermaid' });
 
       if (abortControllerRef.current?.signal.aborted) {
         throw new Error('Generation cancelled');
@@ -75,7 +92,9 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       if (result?.svg) {
         addMessage({
           role: 'assistant',
-          content: 'I\'ve generated a diagram based on your request. You can customize it further in the Editor mode.',
+          content: wasRefining
+            ? 'I\'ve updated the diagram based on your feedback. You can continue refining or send it to the Editor.'
+            : 'I\'ve generated a diagram based on your request. You can refine it further or send it to the Editor.',
           diagram: result.svg
         });
         return;
@@ -84,15 +103,16 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       // No SVG returned - show user-friendly error with suggestions
       addMessage({
         role: 'assistant',
-        content: 'I wasn\'t able to generate a diagram from that prompt. Here are some suggestions:\n\n' +
-          '- Try rephrasing your request with more specific details\n' +
-          '- Use a template type like "PRISMA", "CONSORT", or "forest plot"\n' +
-          '- Example: "Create a PRISMA flow diagram with 500 records identified, 120 duplicates, 380 screened, 200 excluded, 130 included"',
+        content: wasRefining
+          ? 'I wasn\'t able to apply that change. Try rephrasing your request, or start a new diagram.'
+          : 'I wasn\'t able to generate a diagram from that prompt. Here are some suggestions:\n\n' +
+            '- Try rephrasing your request with more specific details\n' +
+            '- Use a template type like "PRISMA", "CONSORT", or "forest plot"\n' +
+            '- Example: "Create a PRISMA flow diagram with 500 records identified, 120 duplicates, 380 screened, 200 excluded, 130 included"',
         isError: true
       });
     } catch (error) {
       if ((error as Error).message !== 'Generation cancelled') {
-        // User-friendly error message - no raw error strings or stack traces
         addMessage({
           role: 'assistant',
           content: 'Something went wrong while generating your diagram. Please try again with a different prompt, or use a template-based diagram like PRISMA or CONSORT which work without an AI connection.',
@@ -103,7 +123,7 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       setLoading(false);
       abortControllerRef.current = null;
     }
-  }, [addMessage, setLoading, generate]);
+  }, [addMessage, setLoading, generate, refine, generatorState.svg]);
 
   // Handle sending a prompt (with PII detection)
   const handleSendPrompt = useCallback(async (prompt: string) => {
@@ -177,10 +197,17 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     }
   }, [messages, handleSendPrompt]);
 
-  // Handle prompt suggestion from welcome screen
+  // Handle prompt suggestion from welcome screen or AI suggestions
   const handlePromptSuggestion = useCallback((prompt: string) => {
     handleSendPrompt(prompt);
   }, [handleSendPrompt]);
+
+  // Handle starting a new diagram (clear conversation and reset)
+  const handleNewDiagram = useCallback(() => {
+    clearConversation();
+    resetGenerator();
+    clearMessages();
+  }, [clearConversation, resetGenerator, clearMessages]);
 
   return (
     <div style={styles.container}>
@@ -197,8 +224,16 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
             onSendToEditor={handleSendToEditor}
             onRegenerate={handleRegenerate}
             onPromptSuggestion={handlePromptSuggestion}
+            suggestions={suggestions}
+            onSuggestionClick={handlePromptSuggestion}
+            isRefining={generatorState.isRefining}
           />
-          <PromptInput onSend={handleSendPrompt} onStop={handleStop} />
+          <PromptInput
+            onSend={handleSendPrompt}
+            onStop={handleStop}
+            isRefining={isRefinementMode}
+            onNewDiagram={handleNewDiagram}
+          />
         </div>
       </main>
 
