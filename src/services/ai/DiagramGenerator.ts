@@ -204,6 +204,16 @@ export class DiagramGenerator {
         this.logger.warn('Vision-based generation failed, falling through to text pipeline');
       }
 
+      // Check for multi-panel figure
+      const multiPanel = this.parser.detectMultiPanel(prompt);
+      if (multiPanel && multiPanel.panels.length >= 2) {
+        this.logger.info('Multi-panel figure detected', {
+          panelCount: multiPanel.panels.length,
+          layout: multiPanel.layout,
+        });
+        return this.generateMultiPanel(multiPanel.panels, multiPanel.layout ?? '2x2', options, startTime);
+      }
+
       // Get conversation context if available
       const conversationContext = options.useConversationContext
         ? this.conversationManager.getContext(options.conversationId)
@@ -822,6 +832,135 @@ export class DiagramGenerator {
     }
 
     return prompt;
+  }
+
+  /**
+   * Generate a multi-panel composite figure.
+   * Generates each panel independently, then composes them into a grid SVG.
+   */
+  private async generateMultiPanel(
+    panels: string[],
+    layout: string,
+    options: GenerateOptions,
+    startTime: number
+  ): Promise<ExtendedGenerationResult> {
+    const panelLabels = 'ABCDEFGHI'.split('');
+    const panelResults: Array<{ label: string; svg: string }> = [];
+
+    // Generate each panel
+    for (let i = 0; i < panels.length; i++) {
+      const panelPrompt = panels[i];
+      this.logger.debug(`Generating panel ${panelLabels[i]}`, { prompt: panelPrompt });
+
+      try {
+        const result = await this.generate(panelPrompt, {
+          ...options,
+          useConversationContext: false,
+        });
+        panelResults.push({ label: panelLabels[i], svg: result.svg });
+      } catch (error) {
+        this.logger.warn(`Panel ${panelLabels[i]} generation failed`, {
+          error: (error as Error).message,
+        });
+        // Create placeholder for failed panel
+        panelResults.push({
+          label: panelLabels[i],
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+            <rect width="400" height="300" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="200" y="150" text-anchor="middle" fill="#6b7280" font-family="Inter, sans-serif" font-size="14">
+              Panel ${panelLabels[i]}: Generation failed
+            </text>
+          </svg>`,
+        });
+      }
+    }
+
+    // Compose into grid
+    const compositeSvg = this.composePanelGrid(panelResults, layout);
+
+    // Record in conversation
+    const conversationId = this.conversationManager.addTurn(
+      `Multi-panel figure: ${panels.join('; ')}`,
+      {
+        svg: compositeSvg,
+        backend: 'multi-panel',
+        metadata: {
+          generatedAt: new Date(),
+          promptTokens: 0,
+          completionTokens: 0,
+          generationTimeMs: Date.now() - startTime,
+        },
+      },
+      options.conversationId
+    );
+
+    return {
+      svg: compositeSvg,
+      backend: 'multi-panel',
+      conversationId,
+      suggestions: [
+        'Adjust panel sizes',
+        'Change layout arrangement',
+        'Refine individual panels',
+        'Add figure caption',
+      ],
+      metadata: {
+        generatedAt: new Date(),
+        promptTokens: 0,
+        completionTokens: 0,
+        generationTimeMs: Date.now() - startTime,
+      },
+    };
+  }
+
+  /**
+   * Compose panel SVGs into a grid layout with labels
+   */
+  private composePanelGrid(
+    panels: Array<{ label: string; svg: string }>,
+    layout: string
+  ): string {
+    const [rowsStr, colsStr] = layout.split('x');
+    const cols = parseInt(colsStr) || 2;
+    const rows = parseInt(rowsStr) || Math.ceil(panels.length / cols);
+
+    const panelWidth = 500;
+    const panelHeight = 400;
+    const padding = 20;
+    const labelSize = 24;
+    const labelOffset = 30;
+
+    const totalWidth = cols * panelWidth + (cols + 1) * padding;
+    const totalHeight = rows * (panelHeight + labelOffset) + (rows + 1) * padding;
+
+    let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${totalHeight}" viewBox="0 0 ${totalWidth} ${totalHeight}">
+  <rect width="${totalWidth}" height="${totalHeight}" fill="white"/>`;
+
+    panels.forEach((panel, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
+      const x = padding + col * (panelWidth + padding);
+      const y = padding + row * (panelHeight + labelOffset + padding);
+
+      // Panel label (A, B, C, D...)
+      svgContent += `
+  <text x="${x + 4}" y="${y + labelSize - 4}" font-family="Inter, Arial, sans-serif" font-size="${labelSize}" font-weight="700" fill="#111827">${panel.label}</text>`;
+
+      // Panel border
+      svgContent += `
+  <rect x="${x}" y="${y + labelOffset}" width="${panelWidth}" height="${panelHeight}" fill="none" stroke="#e5e7eb" stroke-width="1" rx="4"/>`;
+
+      // Embed panel SVG using foreignObject for proper rendering
+      svgContent += `
+  <foreignObject x="${x}" y="${y + labelOffset}" width="${panelWidth}" height="${panelHeight}">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="width:${panelWidth}px;height:${panelHeight}px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+      ${panel.svg}
+    </div>
+  </foreignObject>`;
+    });
+
+    svgContent += '\n</svg>';
+    return svgContent;
   }
 
   /**

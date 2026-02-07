@@ -668,6 +668,63 @@ export class PromptParser {
   }
 
   /**
+   * Detect if the prompt describes a multi-panel figure.
+   * Returns panel descriptions if detected, null otherwise.
+   */
+  detectMultiPanel(prompt: string): { panels: string[]; layout?: string } | null {
+    const normalizedPrompt = this.normalizePrompt(prompt);
+
+    // Pattern 1: "A) ... B) ... C) ..."
+    const letterPanelPattern = /([a-d])\)\s*([^,;]+?)(?=\s*[b-d]\)|$)/gi;
+    const letterMatches: string[] = [];
+    let match;
+    while ((match = letterPanelPattern.exec(normalizedPrompt)) !== null) {
+      letterMatches.push(match[2].trim());
+    }
+    if (letterMatches.length >= 2) {
+      return { panels: letterMatches, layout: this.inferLayout(letterMatches.length) };
+    }
+
+    // Pattern 2: "panel 1: ..., panel 2: ..."
+    const panelNumberPattern = /panel\s*(\d)[:\s]+([^,;]+?)(?=\s*panel\s*\d|$)/gi;
+    const panelMatches: string[] = [];
+    while ((match = panelNumberPattern.exec(normalizedPrompt)) !== null) {
+      panelMatches.push(match[2].trim());
+    }
+    if (panelMatches.length >= 2) {
+      return { panels: panelMatches, layout: this.inferLayout(panelMatches.length) };
+    }
+
+    // Pattern 3: "multi-panel", "4-panel figure", "composite figure"
+    const multiPanelKeyword = /(\d)[- ]panel|multi[- ]panel|composite\s+figure/i;
+    const keywordMatch = normalizedPrompt.match(multiPanelKeyword);
+    if (keywordMatch) {
+      // Try to split by numbered items or semicolons
+      const parts = normalizedPrompt
+        .replace(multiPanelKeyword, '')
+        .split(/;\s*|\d\)\s*/)
+        .map(s => s.trim())
+        .filter(s => s.length > 5);
+
+      if (parts.length >= 2) {
+        return { panels: parts, layout: this.inferLayout(parts.length) };
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Infer grid layout from panel count
+   */
+  private inferLayout(panelCount: number): string {
+    if (panelCount <= 2) return '1x2';
+    if (panelCount <= 4) return '2x2';
+    if (panelCount <= 6) return '2x3';
+    return '3x3';
+  }
+
+  /**
    * Check if the prompt explicitly requests a specific format
    */
   detectExplicitFormat(prompt: string): 'mermaid' | 'svg' | 'plotly' | 'tikz' | null {
