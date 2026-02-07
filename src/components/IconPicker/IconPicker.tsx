@@ -21,6 +21,7 @@ import {
   type UnifiedIconResult,
 } from '../../lib/icons';
 import { createSimpleIconSvg } from '../../lib/icons';
+import { CustomUploads, type CustomAsset } from './CustomUploads';
 
 // =============================================================================
 // TYPES
@@ -56,6 +57,7 @@ const CATEGORIES = [
   { id: 'science', name: 'Science', color: '#22c55e' },
   { id: 'general', name: 'General', color: '#3b82f6' },
   { id: 'brands', name: 'Brands', color: '#f59e0b' },
+  { id: 'uploads', name: 'My Uploads', color: '#8b5cf6' },
 ];
 
 // =============================================================================
@@ -275,6 +277,42 @@ export const IconPicker: React.FC<IconPickerProps> = ({
     setSearchQuery('');
   }, [showRecent]);
 
+  // Handle custom asset selection — create a temporary UnifiedIconResult-like entry
+  const handleCustomAssetSelect = useCallback(async (asset: CustomAsset) => {
+    if (!asset.url) return;
+
+    if (asset.mimeType === 'image/svg+xml') {
+      // Fetch the SVG content
+      try {
+        const response = await fetch(asset.url);
+        const svgContent = await response.text();
+        const iconResult: UnifiedIconResult = {
+          id: `custom-${asset._id}`,
+          name: asset.name,
+          category: 'custom',
+          keywords: [asset.name],
+          library: 'custom' as any,
+        };
+        onSelectIcon(iconResult, svgContent);
+      } catch (err) {
+        console.error('Failed to load custom SVG:', err);
+      }
+    } else {
+      // For raster images (PNG/JPG), create an SVG wrapper with embedded image
+      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <image href="${asset.url}" width="200" height="200" preserveAspectRatio="xMidYMid meet" />
+      </svg>`;
+      const iconResult: UnifiedIconResult = {
+        id: `custom-${asset._id}`,
+        name: asset.name,
+        category: 'custom',
+        keywords: [asset.name],
+        library: 'custom' as any,
+      };
+      onSelectIcon(iconResult, svgContent);
+    }
+  }, [onSelectIcon]);
+
   if (!isOpen) return null;
 
   const previewIcon = hoveredIcon || selectedIcon;
@@ -360,40 +398,51 @@ export const IconPicker: React.FC<IconPickerProps> = ({
         </div>
       )}
 
-      {/* Icon Grid */}
-      <div className="icon-picker-grid-wrapper">
-        <IconGrid
-          icons={displayedIcons}
-          onIconClick={handleIconClick}
-          onIconHover={handleIconHover}
-          selectedIconId={selectedIcon?.id}
-          columns={5}
-          iconSize={64}
-          showNames={true}
-          emptyMessage={
-            showRecent
-              ? 'No recent icons. Select an icon to add it here.'
-              : searchQuery
-              ? `No icons matching "${searchQuery}"`
-              : 'No icons in this category'
-          }
-          onDragStart={onDragStart}
-        />
-      </div>
+      {/* Custom Uploads Panel or Icon Grid */}
+      {selectedCategory === 'uploads' && !searchQuery && !showRecent ? (
+        <div className="icon-picker-grid-wrapper">
+          <CustomUploads
+            onSelectAsset={handleCustomAssetSelect}
+          />
+        </div>
+      ) : (
+        <>
+          {/* Icon Grid */}
+          <div className="icon-picker-grid-wrapper">
+            <IconGrid
+              icons={displayedIcons}
+              onIconClick={handleIconClick}
+              onIconHover={handleIconHover}
+              selectedIconId={selectedIcon?.id}
+              columns={5}
+              iconSize={64}
+              showNames={true}
+              emptyMessage={
+                showRecent
+                  ? 'No recent icons. Select an icon to add it here.'
+                  : searchQuery
+                  ? `No icons matching "${searchQuery}"`
+                  : 'No icons in this category'
+              }
+              onDragStart={onDragStart}
+            />
+          </div>
 
-      {/* Preview Panel */}
-      <div className="icon-picker-preview-wrapper">
-        <IconPreview
-          icon={previewIcon}
-          onCopySvg={handleCopySvg}
-          onInsert={handleInsert}
-        />
-      </div>
+          {/* Preview Panel */}
+          <div className="icon-picker-preview-wrapper">
+            <IconPreview
+              icon={previewIcon}
+              onCopySvg={handleCopySvg}
+              onInsert={handleInsert}
+            />
+          </div>
 
-      {/* Help Text */}
-      <div className="icon-picker-help">
-        Click to select, then Insert to add to canvas. Or drag icons directly to canvas.
-      </div>
+          {/* Help Text */}
+          <div className="icon-picker-help">
+            Click to select, then Insert to add to canvas. Or drag icons directly to canvas.
+          </div>
+        </>
+      )}
     </div>
   );
 };

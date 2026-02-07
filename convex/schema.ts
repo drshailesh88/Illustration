@@ -33,6 +33,17 @@ export default defineSchema({
     .index("by_email", ["email"])
     .index("by_signupDate", ["signupDate"]),
 
+  customAssets: defineTable({
+    userId: v.string(),
+    storageId: v.id("_storage"),
+    name: v.string(),
+    mimeType: v.string(), // "image/svg+xml" | "image/png" | "image/jpeg"
+    fileSize: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_userId", ["userId"])
+    .index("by_userId_createdAt", ["userId", "createdAt"]),
+
   users: defineTable({
     tokenIdentifier: v.string(),
     email: v.string(),

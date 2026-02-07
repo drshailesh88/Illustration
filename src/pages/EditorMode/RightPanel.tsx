@@ -461,11 +461,11 @@ export function RightPanel({
     e.preventDefault();
   }, []);
 
-  // Handle drop on canvas
+  // Handle drop on canvas (icons or files from filesystem)
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
 
-    if (!draggedIcon || !canvas) return;
+    if (!canvas) return;
 
     // Get drop position relative to canvas
     const canvasElement = canvas.getElement();
@@ -475,12 +475,58 @@ export function RightPanel({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Get SVG content
+    // Check for file drops from filesystem
+    const files = (e as any).dataTransfer?.files;
+    if (files && files.length > 0) {
+      const file = files[0] as File;
+      const isImage = file.type === 'image/svg+xml' || file.type === 'image/png' || file.type === 'image/jpeg';
+      if (isImage && file.size <= 5 * 1024 * 1024) {
+        const reader = new FileReader();
+        reader.onload = async () => {
+          if (file.type === 'image/svg+xml') {
+            const svgContent = reader.result as string;
+            const dummyIcon: UnifiedIconResult = {
+              id: `file-${Date.now()}`,
+              name: file.name.replace(/\.[^/.]+$/, ''),
+              category: 'custom',
+              keywords: [],
+              library: 'custom' as any,
+            };
+            handleIconSelect(dummyIcon, svgContent, { x, y });
+          } else {
+            // Raster image — wrap in SVG with embedded image data URL
+            const dataUrl = reader.result as string;
+            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+              <image href="${dataUrl}" width="200" height="200" preserveAspectRatio="xMidYMid meet" />
+            </svg>`;
+            const dummyIcon: UnifiedIconResult = {
+              id: `file-${Date.now()}`,
+              name: file.name.replace(/\.[^/.]+$/, ''),
+              category: 'custom',
+              keywords: [],
+              library: 'custom' as any,
+            };
+            handleIconSelect(dummyIcon, svgContent, { x, y });
+          }
+          toast.success(`Added "${file.name}" to canvas`);
+        };
+        if (file.type === 'image/svg+xml') {
+          reader.readAsText(file);
+        } else {
+          reader.readAsDataURL(file);
+        }
+        return;
+      }
+    }
+
+    // Otherwise handle icon drag from icon picker
+    if (!draggedIcon) return;
+
     const svgContent = (draggedIcon as any).svgContent;
     handleIconSelect(draggedIcon, svgContent, { x, y });
 
     setDraggedIcon(null);
-  }, [draggedIcon, canvas, handleIconSelect]);
+  }, [draggedIcon, canvas, handleIconSelect, toast]);
 
   // Setup drop handlers on canvas wrapper
   useEffect(() => {

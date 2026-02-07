@@ -29,6 +29,11 @@ declare const api: {
   storage: {
     generateUploadUrl: FunctionReference<"mutation", "public", Record<string, never>, any>;
   };
+  customAssets: {
+    saveAsset: FunctionReference<"mutation", "public", any, any>;
+    listAssets: FunctionReference<"query", "public", Record<string, never>, any>;
+    deleteAsset: FunctionReference<"mutation", "public", any, any>;
+  };
   waitlist: {
     joinWaitlist: FunctionReference<"mutation", "public", any, any>;
     getWaitlistCount: FunctionReference<"query", "public", Record<string, never>, any>;
