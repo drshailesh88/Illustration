@@ -4,12 +4,64 @@ import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
 import './WaitlistPage.css';
 
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
 interface FormResult {
   status: 'success' | 'already_exists' | 'error';
   message: string;
 }
 
 export function WaitlistPage() {
+  if (IS_TEST_MODE) {
+    return <WaitlistPageTestMode />;
+  }
+  return <WaitlistPageProduction />;
+}
+
+function WaitlistPageTestMode() {
+  const [email, setEmail] = useState('');
+  const [result, setResult] = useState<FormResult | null>(null);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setResult({ status: 'success', message: 'You have been added to the waitlist!' });
+    setEmail('');
+  };
+
+  const resultClass = result
+    ? result.status === 'success'
+      ? 'waitlist-result waitlist-result--success'
+      : 'waitlist-result waitlist-result--error'
+    : '';
+
+  return (
+    <div className="waitlist-page">
+      <section className="waitlist-hero">
+        <div className="waitlist-logo">FINNISH</div>
+        <h1 className="waitlist-headline">
+          One app that solves every illustration problem for the scientific community
+        </h1>
+      </section>
+      <section className="waitlist-form-section">
+        <form className="waitlist-form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            required
+            className="waitlist-email-input"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit" className="waitlist-submit-btn">Join the Waitlist</button>
+        </form>
+        {result && <div className={resultClass}>{result.message}</div>}
+      </section>
+    </div>
+  );
+}
+
+function WaitlistPageProduction() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<FormResult | null>(null);

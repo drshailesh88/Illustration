@@ -1,6 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
 import { useSubscription } from '../../hooks/useSubscription';
+
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
+// In test mode, mock useUser to avoid ClerkProvider dependency.
+let useUser: () => { user: any };
+if (IS_TEST_MODE) {
+  useUser = () => ({ user: { id: 'test-user', primaryEmailAddress: { emailAddress: 'test@example.com' } } });
+} else {
+  const clerk = await import('@clerk/clerk-react');
+  useUser = clerk.useUser as any;
+}
 
 /**
  * Lemon Squeezy checkout URL configuration.

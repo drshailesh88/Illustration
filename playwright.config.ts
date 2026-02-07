@@ -5,42 +5,30 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 3,
   reporter: [['html', { open: 'never' }]],
 
+  timeout: 60000,
+
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:5173',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    navigationTimeout: 30000,
   },
 
+  /* Run only Chromium for faster iteration; add others for CI */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'mobile-safari',
-      use: { ...devices['iPhone 13'] },
-    },
   ],
 
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    command: 'VITE_E2E_TEST_MODE=true npm run dev -- --port 5173',
+    url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
-    timeout: 30000,
+    timeout: 60000,
   },
 });

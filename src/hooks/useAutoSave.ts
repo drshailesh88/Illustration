@@ -5,13 +5,36 @@ import type { SaveStatus } from './useProject';
 import { useOnlineStatus } from './useOnlineStatus';
 
 const AUTO_SAVE_DELAY_MS = 30000; // 30 seconds
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
 
 /**
  * Auto-save hook with 30-second debounce and offline fallback.
  * Only active when projectId is non-null (project already saved once).
  * Falls back to localStorage when cloud save fails or device is offline.
+ * In E2E test mode, returns a no-op implementation.
  */
 export function useAutoSave(
+  projectId: string | null,
+  getCanvasState: () => string | null,
+  generateThumbnail: () => Blob | null,
+) {
+  // E2E test mode: no-op auto-save
+  if (IS_TEST_MODE) {
+    return useAutoSaveTestMode();
+  }
+
+  return useAutoSaveProduction(projectId, getCanvasState, generateThumbnail);
+}
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+function useAutoSaveTestMode() {
+  const [saveStatus] = useState<SaveStatus>('idle');
+  const markChanged = useCallback(() => {}, []);
+  return { saveStatus, lastSavedAt: null, markChanged };
+}
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+function useAutoSaveProduction(
   projectId: string | null,
   getCanvasState: () => string | null,
   generateThumbnail: () => Blob | null,

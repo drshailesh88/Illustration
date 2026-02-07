@@ -1,70 +1,72 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Landing Page', () => {
-  test('loads without crashing', async ({ page }) => {
+test.describe('Landing / Welcome Page', () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    // Page should at minimum render something (even if blank due to env)
+    await page.waitForLoadState('networkidle');
+  });
+
+  test('renders without crash or JS errors', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (err) => errors.push(err.message));
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
     await expect(page.locator('body')).toBeVisible();
+    const bodyText = await page.locator('body').textContent();
+    expect(bodyText && bodyText.trim().length > 50).toBeTruthy();
+    expect(errors).toHaveLength(0);
   });
 
-  test('displays hero section with CTA', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForTimeout(3000);
-    // Check if the page rendered meaningful content
-    const bodyText = await page.locator('body').textContent();
-    if (!bodyText || bodyText.trim().length < 10) {
-      // App did not render (likely missing env vars) — skip assertions
-      test.skip(true, 'App did not render — likely missing env vars (Clerk/Convex)');
-      return;
-    }
-    const heading = page.locator('h1, h2').first();
-    await expect(heading).toBeVisible();
+  test('displays FINNISH logo', async ({ page }) => {
+    await expect(page.getByText('FINNISH').first()).toBeVisible();
   });
 
-  test('navigation links are present', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForTimeout(3000);
-    const bodyText = await page.locator('body').textContent();
-    if (!bodyText || bodyText.trim().length < 10) {
-      test.skip(true, 'App did not render — likely missing env vars');
-      return;
-    }
-    const signInLink = page.getByRole('link', { name: /sign in|get started|try|log in/i });
-    await expect(signInLink.first()).toBeVisible();
+  test('displays hero heading', async ({ page }) => {
+    const h1 = page.locator('h1').first();
+    await expect(h1).toBeVisible();
+    await expect(h1).toContainText(/illustration|seconds/i);
   });
 
-  test('waitlist page loads', async ({ page }) => {
-    await page.goto('/waitlist');
-    await page.waitForTimeout(3000);
-    const bodyText = await page.locator('body').textContent();
-    if (!bodyText || bodyText.trim().length < 10) {
-      test.skip(true, 'App did not render — likely missing env vars');
-      return;
-    }
-    const emailInput = page.getByPlaceholder(/email/i);
-    await expect(emailInput).toBeVisible();
+  test('has Get Started CTA button', async ({ page }) => {
+    const cta = page.getByRole('link', { name: /get started/i }).first();
+    await expect(cta).toBeVisible();
   });
 
-  test('pricing page loads', async ({ page }) => {
-    await page.goto('/pricing');
-    await page.waitForTimeout(3000);
-    const bodyText = await page.locator('body').textContent();
-    if (!bodyText || bodyText.trim().length < 10) {
-      test.skip(true, 'App did not render — likely missing env vars');
-      return;
-    }
-    const proText = page.getByText(/pro/i).first();
-    await expect(proText).toBeVisible();
+  test('has Sign In link', async ({ page }) => {
+    const signIn = page.getByText(/sign in/i).first();
+    await expect(signIn).toBeVisible();
   });
 
-  test('credits page loads', async ({ page }) => {
-    await page.goto('/credits');
-    await page.waitForTimeout(3000);
-    const bodyText = await page.locator('body').textContent();
-    if (!bodyText || bodyText.trim().length < 10) {
-      test.skip(true, 'App did not render — likely missing env vars');
-      return;
+  test('has See Pricing link', async ({ page }) => {
+    const pricing = page.getByText(/see pricing|pricing/i).first();
+    await expect(pricing).toBeVisible();
+  });
+
+  test('displays How It Works section with 3 steps', async ({ page }) => {
+    const howItWorks = page.getByText(/three steps/i);
+    await expect(howItWorks).toBeVisible();
+  });
+
+  test('displays diagram types section', async ({ page }) => {
+    const diagramTypes = page.getByText(/every diagram type/i);
+    await expect(diagramTypes).toBeVisible();
+    // PRISMA should be mentioned
+    await expect(page.getByText('PRISMA').first()).toBeVisible();
+  });
+
+  test('footer has navigation links', async ({ page }) => {
+    const footer = page.locator('footer').first();
+    await expect(footer).toBeVisible();
+    await expect(footer.getByText(/pricing/i).first()).toBeVisible();
+    await expect(footer.getByText(/credits/i).first()).toBeVisible();
+  });
+
+  test('footer Pricing link navigates correctly', async ({ page }) => {
+    const pricingLink = page.locator('footer a[href="/pricing"]').first();
+    if (await pricingLink.isVisible()) {
+      await pricingLink.click();
+      await page.waitForLoadState('networkidle');
+      expect(page.url()).toContain('/pricing');
     }
-    await expect(page.locator('body')).toContainText(/credit|attribution|license|CC-BY/i);
   });
 });

@@ -8,11 +8,44 @@ import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import './ProjectsPage.css';
 
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
 /**
  * My Projects dashboard page.
  * Shows a grid of all saved projects with thumbnails, titles, and last-modified dates.
  */
 export function ProjectsPage() {
+  if (IS_TEST_MODE) {
+    return <ProjectsPageTestMode />;
+  }
+  return <ProjectsPageProduction />;
+}
+
+function ProjectsPageTestMode() {
+  const navigate = useNavigate();
+  const { projects, isLoading } = useProjects();
+
+  return (
+    <div className="projects-page">
+      <div className="projects-header">
+        <h1>My Projects</h1>
+        <div className="projects-header-actions">
+          <button className="projects-back-btn" onClick={() => navigate('/')}>Home</button>
+          <button className="projects-new-btn" onClick={() => navigate('/editor')}>New Diagram</button>
+        </div>
+      </div>
+      {!isLoading && projects.length === 0 && (
+        <div className="projects-empty">
+          <h2>No projects yet</h2>
+          <p>Create your first diagram to get started!</p>
+          <button className="projects-new-btn" onClick={() => navigate('/editor')}>Create Diagram</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ProjectsPageProduction() {
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { projects, status, loadMore, isLoading } = useProjects();

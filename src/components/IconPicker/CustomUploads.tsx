@@ -11,6 +11,7 @@ import { api } from '../../../convex/_generated/api';
 
 const ACCEPTED_TYPES = ['image/svg+xml', 'image/png', 'image/jpeg'];
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
 
 export interface CustomAsset {
   _id: string;
@@ -24,7 +25,24 @@ interface CustomUploadsProps {
   onDragStartAsset?: (asset: CustomAsset) => void;
 }
 
-export function CustomUploads({ onSelectAsset, onDragStartAsset }: CustomUploadsProps) {
+export function CustomUploads(props: CustomUploadsProps) {
+  if (IS_TEST_MODE) {
+    return <CustomUploadsTestMode {...props} />;
+  }
+  return <CustomUploadsProduction {...props} />;
+}
+
+function CustomUploadsTestMode({ }: CustomUploadsProps) {
+  return (
+    <div style={styles.container}>
+      <div style={styles.empty}>
+        Custom uploads not available in test mode.
+      </div>
+    </div>
+  );
+}
+
+function CustomUploadsProduction({ onSelectAsset, onDragStartAsset }: CustomUploadsProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);

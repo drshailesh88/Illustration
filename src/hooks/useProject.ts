@@ -5,12 +5,55 @@ import { useOnlineStatus } from './useOnlineStatus';
 
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error' | 'offline-saved';
 
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
 /**
  * Hook for loading and managing a single project.
  * Wraps Convex queries and mutations with save status tracking.
  * Falls back to localStorage when offline.
+ * In E2E test mode, uses mock save/load without Convex.
  */
 export function useProject(projectId?: string) {
+  // E2E test mode: mock implementation without Convex
+  if (IS_TEST_MODE) {
+    return useProjectTestMode(projectId);
+  }
+
+  return useProjectProduction(projectId);
+}
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+function useProjectTestMode(_projectId?: string) {
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
+  const { isOnline } = useOnlineStatus();
+
+  const save = useCallback(async (
+    _title: string,
+    _diagramData: string,
+    _thumbnailBlob?: Blob,
+  ): Promise<string | null> => {
+    setSaveStatus('saving');
+    // Simulate async save
+    await new Promise(r => setTimeout(r, 100));
+    setSaveStatus('saved');
+    return 'test-project-id';
+  }, []);
+
+  const remove = useCallback(async () => {}, []);
+
+  return {
+    project: null,
+    isLoading: false,
+    isOnline,
+    save,
+    remove,
+    saveStatus,
+    setSaveStatus,
+  };
+}
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+function useProjectProduction(projectId?: string) {
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   const { isOnline } = useOnlineStatus();
 

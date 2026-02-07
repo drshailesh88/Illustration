@@ -4,13 +4,26 @@ import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { useMigration } from '../../hooks/useMigration';
 import { MigrationPrompt } from '../MigrationPrompt/MigrationPrompt';
 
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
 /**
  * Layout component that protects nested routes behind authentication.
  * Redirects unauthenticated users to /sign-in with a return URL.
- * Also ensures the user record exists in Convex (lazy creation)
- * and offers localStorage migration on first sign-in.
+ * In E2E test mode, bypasses auth entirely.
  */
 export function ProtectedLayout() {
+  // E2E test mode: bypass all auth checks, render children directly
+  if (IS_TEST_MODE) {
+    return <Outlet />;
+  }
+
+  return <AuthenticatedLayout />;
+}
+
+/**
+ * Inner component that uses Clerk hooks (only rendered in production mode).
+ */
+function AuthenticatedLayout() {
   const { isLoaded, isSignedIn } = useAuth();
   const location = useLocation();
 

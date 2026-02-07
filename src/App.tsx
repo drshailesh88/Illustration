@@ -6,7 +6,7 @@
  */
 
 import { useCallback } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { SignIn, SignUp } from '@clerk/clerk-react';
 import { ToastProvider, useToast } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -21,6 +21,8 @@ import { CreditsPage } from './pages/CreditsPage';
 import { WaitlistPage } from './pages/WaitlistPage/WaitlistPage';
 import { PricingPage } from './pages/PricingPage/PricingPage';
 import { useTheme } from './hooks/useTheme';
+
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
 
 /** Initializes theme from persisted preference / system preference */
 function ThemeInit() {
@@ -74,21 +76,29 @@ function AppRoutes(): JSX.Element {
       <Route path="/waitlist" element={<WaitlistPage />} />
       <Route path="/pricing" element={<PricingPage />} />
 
-      {/* Auth pages */}
+      {/* Auth pages — redirect in test mode (no Clerk provider) */}
       <Route
         path="/sign-in/*"
         element={
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-            <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" fallbackRedirectUrl="/agent" />
-          </div>
+          IS_TEST_MODE ? (
+            <Navigate to="/agent" replace />
+          ) : (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+              <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" fallbackRedirectUrl="/agent" />
+            </div>
+          )
         }
       />
       <Route
         path="/sign-up/*"
         element={
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-            <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" fallbackRedirectUrl="/agent" />
-          </div>
+          IS_TEST_MODE ? (
+            <Navigate to="/agent" replace />
+          ) : (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+              <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" fallbackRedirectUrl="/agent" />
+            </div>
+          )
         }
       />
 

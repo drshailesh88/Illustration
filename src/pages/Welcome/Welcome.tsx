@@ -8,13 +8,31 @@
  */
 
 import { Link, Navigate } from 'react-router-dom';
-import {
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  useUser,
-} from '@clerk/clerk-react';
 import { useIsMobile } from '../../hooks/useMediaQuery';
+
+const IS_TEST_MODE = import.meta.env.VITE_E2E_TEST_MODE === 'true';
+
+// In test mode, provide mock Clerk components/hooks to avoid ClerkProvider dependency.
+// In production, use real Clerk.
+let useUser: () => { isSignedIn: boolean; isLoaded: boolean };
+let SignedOut: React.FC<{ children: React.ReactNode }>;
+let SignInButton: React.FC<{ children: React.ReactNode; mode?: string }>;
+let SignUpButton: React.FC<{ children: React.ReactNode; mode?: string }>;
+
+if (IS_TEST_MODE) {
+  useUser = () => ({ isSignedIn: false, isLoaded: true });
+  SignedOut = ({ children }) => <>{children}</>;
+  SignInButton = ({ children }) => <Link to="/agent">{children}</Link>;
+  SignUpButton = ({ children }) => <Link to="/agent">{children}</Link>;
+} else {
+  // Dynamic import is not possible here (synchronous needed), so use require-like pattern.
+  // These are safe because in production, @clerk/clerk-react is always available.
+  const clerk = await import('@clerk/clerk-react');
+  useUser = clerk.useUser as any;
+  SignedOut = clerk.SignedOut as any;
+  SignInButton = clerk.SignInButton as any;
+  SignUpButton = clerk.SignUpButton as any;
+}
 
 // ============================================================================
 // Icons
