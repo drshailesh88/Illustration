@@ -14,6 +14,14 @@ export default defineSchema({
     .index("by_userId", ["userId"])
     .index("by_userId_updatedAt", ["userId", "updatedAt"]),
 
+  waitlist: defineTable({
+    email: v.string(),
+    signupDate: v.number(),
+    referralSource: v.string(),
+  })
+    .index("by_email", ["email"])
+    .index("by_signupDate", ["signupDate"]),
+
   users: defineTable({
     tokenIdentifier: v.string(),
     email: v.string(),

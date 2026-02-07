@@ -23,6 +23,10 @@ declare const api: {
   storage: {
     generateUploadUrl: FunctionReference<"mutation", "public", Record<string, never>, any>;
   };
+  waitlist: {
+    joinWaitlist: FunctionReference<"mutation", "public", any, any>;
+    getWaitlistCount: FunctionReference<"query", "public", Record<string, never>, any>;
+  };
 };
 
 export { api };

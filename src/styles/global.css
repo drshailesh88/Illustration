@@ -1,7 +1,30 @@
 /**
  * FINNISH Global Styles
- * CSS reset, dark theme variables, typography, and utility classes
+ * Tailwind CSS v4 + design tokens + custom styles
  */
+
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* ============================================================================
+ * FINNISH Design Tokens (Tailwind v4 @theme)
+ * These tokens are the shared design system across all pages.
+ * Opus establishes these on first restyle; all pages inherit them.
+ * ============================================================================ */
+
+@theme {
+  /* FINNISH Color Palette - will be refined by Opus on first page restyle */
+  --color-finnish-bg-primary: #1e1e1e;
+  --color-finnish-bg-secondary: #252526;
+  --color-finnish-bg-tertiary: #2d2d2d;
+  --color-finnish-bg-elevated: #323232;
+  --color-finnish-accent: #0078d4;
+  --color-finnish-accent-hover: #1a8cde;
+  --color-finnish-success: #4caf50;
+  --color-finnish-warning: #ff9800;
+  --color-finnish-error: #f44336;
+  --color-finnish-info: #2196f3;
+}
 
 /* ============================================================================
  * CSS Reset / Normalize

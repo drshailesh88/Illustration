@@ -18,6 +18,7 @@ import { AgentMode } from './pages/AgentMode';
 import { EditorMode } from './pages/EditorMode';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { CreditsPage } from './pages/CreditsPage';
+import { WaitlistPage } from './pages/WaitlistPage/WaitlistPage';
 
 // ============================================================================
 // App Component
@@ -62,6 +63,7 @@ function AppRoutes(): JSX.Element {
       {/* Public routes */}
       <Route path="/" element={<Welcome />} />
       <Route path="/credits" element={<CreditsPage />} />
+      <Route path="/waitlist" element={<WaitlistPage />} />
 
       {/* Auth pages */}
       <Route
