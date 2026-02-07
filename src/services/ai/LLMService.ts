@@ -147,32 +147,57 @@ export class LLMService {
 
   /**
    * Parse a user prompt and extract structured diagram data.
-   * Fallback chain: Claude → OpenAI → regex
+   * Uses smart routing: simple prompts go to cheap model first, complex to Claude.
+   * @param prompt - User prompt
+   * @param diagramType - Optional diagram type hint
+   * @param complexity - 'simple' routes OpenAI first, 'complex' routes Claude first
    */
-  async parsePrompt(prompt: string, diagramType?: string): Promise<LLMResponse> {
+  async parsePrompt(prompt: string, diagramType?: string, complexity?: 'simple' | 'complex'): Promise<LLMResponse> {
     const systemPrompt = this.getSystemPrompt(diagramType);
 
-    // Tier 1: Try Claude (primary)
-    if (this.isClaudeAvailable()) {
-      try {
-        const response = await this.callClaude(systemPrompt, prompt);
-        if (response.success && response.data) {
-          return response;
+    if (complexity === 'simple') {
+      // Simple prompts: try cheap model (OpenAI) first, Claude as fallback
+      if (this.isAvailable()) {
+        try {
+          const response = await this.callOpenAI(systemPrompt, prompt);
+          if (response.success && response.data) {
+            return response;
+          }
+        } catch (error) {
+          console.warn('OpenAI parsePrompt failed for simple prompt, trying Claude:', error);
         }
-      } catch (error) {
-        console.warn('Claude parsePrompt failed, trying OpenAI fallback:', error);
       }
-    }
-
-    // Tier 2: Try OpenAI (fallback)
-    if (this.isAvailable()) {
-      try {
-        const response = await this.callOpenAI(systemPrompt, prompt);
-        if (response.success && response.data) {
-          return response;
+      if (this.isClaudeAvailable()) {
+        try {
+          const response = await this.callClaude(systemPrompt, prompt);
+          if (response.success && response.data) {
+            return response;
+          }
+        } catch (error) {
+          console.warn('Claude parsePrompt failed, using regex fallback:', error);
         }
-      } catch (error) {
-        console.warn('OpenAI parsePrompt failed, using regex fallback:', error);
+      }
+    } else {
+      // Complex prompts (default): Claude first, OpenAI fallback
+      if (this.isClaudeAvailable()) {
+        try {
+          const response = await this.callClaude(systemPrompt, prompt);
+          if (response.success && response.data) {
+            return response;
+          }
+        } catch (error) {
+          console.warn('Claude parsePrompt failed, trying OpenAI fallback:', error);
+        }
+      }
+      if (this.isAvailable()) {
+        try {
+          const response = await this.callOpenAI(systemPrompt, prompt);
+          if (response.success && response.data) {
+            return response;
+          }
+        } catch (error) {
+          console.warn('OpenAI parsePrompt failed, using regex fallback:', error);
+        }
       }
     }
 

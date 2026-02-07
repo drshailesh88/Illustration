@@ -253,6 +253,10 @@ export class DiagramGenerator {
         }
       }
 
+      // Classify complexity for smart model routing
+      const complexity = this.parser.classifyComplexity(parsedPrompt, prompt);
+      this.logger.debug('Prompt complexity classified', { complexity });
+
       // Select the best backend
       const backendName = this.selectBackend(parsedPrompt, options);
       const backend = this.backends.get(backendName);
@@ -266,13 +270,14 @@ export class DiagramGenerator {
 
       this.logger.debug(`Selected backend: ${backendName}`);
 
-      // Build the generation request
+      // Build the generation request (with complexity for smart routing)
       const request = this.buildRequest(
         prompt,
         parsedPrompt,
         options,
         conversationContext,
-        specialtyCtx
+        specialtyCtx,
+        complexity
       );
 
       // Generate the diagram
@@ -635,7 +640,8 @@ export class DiagramGenerator {
     parsedPrompt: ParsedPrompt,
     options: GenerateOptions,
     context?: ConversationContext | null,
-    specialtyContext?: SpecialtyContext
+    specialtyContext?: SpecialtyContext,
+    complexity?: 'simple' | 'complex'
   ): GenerationRequest {
     // Build enhanced prompt with context
     const enhancedPrompt = this.contextBuilder.buildGenerationPrompt(
@@ -658,7 +664,8 @@ export class DiagramGenerator {
         domain: options.domain ?? parsedPrompt.domain,
         isModification: parsedPrompt.isModification,
         specialty: specialtyContext?.specialty,
-      },
+        complexity,
+      } as any,
     };
   }
 

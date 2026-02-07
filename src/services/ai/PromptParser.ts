@@ -609,6 +609,58 @@ export class PromptParser {
   }
 
   /**
+   * Classify prompt complexity for smart model routing.
+   * Returns 'simple' (use cheap model) or 'complex' (use Claude Sonnet).
+   */
+  classifyComplexity(parsed: ParsedPrompt, prompt: string): 'simple' | 'complex' {
+    let complexityScore = 0;
+
+    // Complex diagram types always need the better model
+    const complexTypes: DiagramType[] = [
+      'pathway', 'anatomical', 'molecular', 'cell', 'consort',
+      'forest-plot', 'kaplan-meier', 'roc-curve', 'illustration',
+    ];
+    if (complexTypes.includes(parsed.diagramType)) {
+      complexityScore += 3;
+    }
+
+    // Specialty-specific content needs domain expertise
+    if (parsed.specialty) {
+      complexityScore += 2;
+    }
+
+    // Many entities/numbers suggest a data-rich diagram
+    const entityCount = (parsed.entities.nodes?.length ?? 0)
+      + (parsed.entities.numbers?.length ?? 0)
+      + (parsed.entities.connections?.length ?? 0);
+    if (entityCount > 5) {
+      complexityScore += 2;
+    } else if (entityCount > 2) {
+      complexityScore += 1;
+    }
+
+    // Long, detailed prompts need better understanding
+    if (prompt.length > 300) {
+      complexityScore += 2;
+    } else if (prompt.length > 150) {
+      complexityScore += 1;
+    }
+
+    // Domain-specific content (not general)
+    if (parsed.domain !== 'general') {
+      complexityScore += 1;
+    }
+
+    // Low confidence means ambiguous prompt - needs smarter model
+    if (parsed.confidence < 0.5) {
+      complexityScore += 1;
+    }
+
+    // Threshold: score >= 3 → complex
+    return complexityScore >= 3 ? 'complex' : 'simple';
+  }
+
+  /**
    * Suggest the best backend for the parsed prompt
    */
   suggestBackend(parsed: ParsedPrompt): 'mermaid' | 'svg' | 'plotly' | 'tikz' | 'image' {

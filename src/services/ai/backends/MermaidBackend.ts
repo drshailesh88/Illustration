@@ -336,7 +336,8 @@ export class MermaidBackend implements AIBackend {
     // Always try to parse the prompt - either with LLM or fallback regex
     try {
       this.logger.debug('Parsing prompt', { llmAvailable: llmService.isAvailable() });
-      const llmResponse = await llmService.parsePrompt(request.prompt, diagramType);
+      const complexity = (request.metadata as any)?.complexity as 'simple' | 'complex' | undefined;
+      const llmResponse = await llmService.parsePrompt(request.prompt, diagramType, complexity);
 
       if (llmResponse.success && llmResponse.data) {
         const parsedData = llmResponse.data;
