@@ -31,7 +31,7 @@
         "id": "3",
         "title": "Implement Send to Editor Flow (Agent Mode -> Editor Mode)",
         "description": "Wire the complete flow from Agent Mode diagram generation to Editor Mode editing. User generates diagram in Agent Mode, clicks 'Accept & Edit' or 'Send to Editor', diagram loads in Editor Mode as individually editable Fabric.js objects.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "1",
@@ -39,7 +39,8 @@
         ],
         "details": "1) Wire onSendToEditor prop from App.tsx to AgentMode, 2) Generate unique diagram ID, 3) Store diagram data (SVG + Fabric.js JSON) in state/localStorage, 4) Navigate to /editor/{id}, 5) EditorMode loads diagram using fabric.loadSVGFromString or Fabric.js JSON, 6) Every element must be individually selectable and editable. The diagram should NOT be a flat image - it must be decomposed into individual objects (boxes, text, arrows, icons).",
         "testStrategy": "Generate diagram in Agent Mode, click Send to Editor, verify: navigation to Editor Mode, diagram appears on canvas, individual elements (boxes, text, arrows) are independently selectable and editable.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T13:04:37.296Z"
       },
       {
         "id": "4",
@@ -100,14 +101,15 @@
         "id": "8",
         "title": "Verify and Fix All Editor Mode Features",
         "description": "Audit all 14 Editor Mode features against the PRD. Test each one, fix what's broken, wire what's disconnected. Features: drag & drop icons, text tool, shape tools, pen/freehand, alignment & snapping, layers, color picker, undo/redo, copy/paste, grouping, background removal, image filters, rulers & guides, zoom & pan.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "1"
         ],
         "details": "Systematically test each feature: 1) Drag & drop icons from IconPicker onto canvas, 2) Text tool adds/edits text, 3) Shapes (rect, circle, arrow, line, polygon) create and resize, 4) Pen tool draws freehand, 5) Alignment snaps objects to grid, 6) Layers panel shows z-order with reordering, 7) Color picker changes fill/stroke, 8) Undo/Redo works with Ctrl+Z/Y, 9) Copy/paste with Ctrl+C/V, 10) Group/ungroup with Ctrl+G, 11) Background removal works on uploaded images, 12) Image filters (brightness, contrast, blur) apply, 13) Rulers visible with guides, 14) Zoom/pan smooth with scroll/drag. Fix any broken features. This is Excalidraw-level baseline.",
         "testStrategy": "Create a test checklist. For each feature: perform the action, verify it works, verify undo works for it. Document pass/fail for each.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T12:36:35.855Z"
       },
       {
         "id": "9",
@@ -153,14 +155,15 @@
         "id": "12",
         "title": "Implement Lemon Squeezy Payment Integration",
         "description": "Integrate Lemon Squeezy for subscription billing. Support Free, Pro (~Rs 1,000/month), and Team/Lab tiers. Handle Indian + international payments. Annual billing with 20-30% discount.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "4"
         ],
         "details": "1) Create Lemon Squeezy account and products (Free, Pro monthly, Pro annual, Team monthly, Team annual), 2) Install Lemon Squeezy JS SDK, 3) Create pricing page showing tiers with feature comparison, 4) Implement checkout flow - redirect to Lemon Squeezy hosted checkout, 5) Handle webhooks for subscription created/updated/cancelled, 6) Store subscription status in Convex (synced via webhook), 7) Gate features based on tier: Free = Editor only + watermark + limited icons + no Agent Mode, Pro = everything, 8) Show upgrade CTAs in appropriate places, 9) Billing management link in user settings.",
         "testStrategy": "In test mode: create a Pro subscription, verify Agent Mode unlocks. Cancel subscription, verify Agent Mode locks. Test annual billing flow. Verify webhook updates Convex correctly.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T12:45:31.150Z"
       },
       {
         "id": "13",
@@ -192,7 +195,7 @@
         "id": "15",
         "title": "Implement Mobile-Responsive Design",
         "description": "Make the app mobile-responsive. Agent Mode fully functional on mobile. Editor Mode shows 'Open on desktop' message on mobile. My Projects dashboard responsive. Landing page mobile-first.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "1",
@@ -200,7 +203,8 @@
         ],
         "details": "1) Agent Mode on mobile: full prompt input, diagram preview, accept/reject buttons, conversation history - all touch-friendly, 2) Editor Mode on mobile: detect screen width, show message 'Open on desktop for the full editing experience' with link/button to save and continue on desktop, 3) My Projects: responsive grid (1 column on mobile, 2-3 on tablet, 4+ on desktop), 4) Landing/welcome page: mobile-first design, clear CTAs, 5) Navigation: hamburger menu on mobile, 6) All touch targets: minimum 44px, 7) Test on iPhone and Android viewport sizes.",
         "testStrategy": "Open app on mobile viewport (375px width). Verify: Agent Mode prompt works, diagrams display, My Projects grid adapts, Editor Mode shows desktop message. Test on 768px (tablet) and 1024px+ (desktop).",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T13:11:43.215Z"
       },
       {
         "id": "16",
@@ -259,20 +263,21 @@
         "id": "20",
         "title": "Curate and Verify Medical Icon Library",
         "description": "Audit all existing medical specialty icons for quality, accuracy, and categorization. Ensure all branches of medicine have deep, professionally organized icon coverage. This is the competitive moat.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "8"
         ],
         "details": "1) Audit all 35 medical specialty icon sets in src/data/icons/ for: accuracy (do they represent what they claim?), quality (are they clean SVGs?), categorization (are they in the right specialty?), searchability (do names/tags make them findable?), 2) Prioritize medicine branches: cardiology, neurology, surgery, orthopedics, pathology, radiology, dermatology, ophthalmology, ENT, pediatrics, OB/GYN, 3) Ensure unified search works across all libraries, 4) Add missing icons for common medical diagram needs, 5) Verify all icon licenses are commercial-safe, 6) Biology and Chemistry should have solid (not world-class) coverage.",
         "testStrategy": "Search for 'heart' - verify relevant cardiology icons appear. Search for 'neuron' - verify neurology icons. Search for 'cell' - verify biology icons. Verify no broken/missing SVGs across all specialties.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T12:50:08.756Z"
       },
       {
         "id": "21",
         "title": "Build First-Time User Experience and Landing Page",
         "description": "Create the first-time user experience: Agent Mode as default landing with prompt box, clear toggle to Editor Mode, and a compelling landing/marketing page for unauthenticated users.",
-        "status": "pending",
+        "status": "in-progress",
         "priority": "high",
         "dependencies": [
           "4",
@@ -280,7 +285,8 @@
         ],
         "details": "1) Unauthenticated users: see a landing page with value proposition, demo screenshots/video, pricing, CTA to sign up, 2) Authenticated users: land on Agent Mode by default with prompt box front and center ('Describe the diagram you need...'), 3) Clear toggle/tabs to switch between Agent Mode and Editor Mode, 4) No onboarding tutorial - app should be self-explanatory through clean design, 5) Mobile: landing page must be mobile-first (this is where discovery happens), 6) Include the demo moment messaging: 'Hours of illustration work in seconds'.",
         "testStrategy": "Open app unauthenticated, verify landing page shows with sign up CTA. Sign up, verify Agent Mode appears by default. Toggle to Editor Mode, verify canvas loads. Test on mobile viewport.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T13:11:51.259Z"
       },
       {
         "id": "22",
@@ -349,14 +355,15 @@
         "id": "26",
         "title": "Wire fal.ai FLUX Image Generation into Agent Mode",
         "description": "Connect fal.ai FLUX Turbo ($0.008/image) for photorealistic/artistic AI image generation in Agent Mode. @fal-ai/serverless-client is already installed.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "2"
         ],
         "details": "1) Create src/services/ai/backends/FalAIBackend.ts that sends scientific illustration prompts to fal-ai/flux/schnell, 2) Include style modifiers (clean vector style, scientific diagram, publication quality), 3) Handle loading states and errors, 4) Wire into Agent Mode's routing: when PromptParser detects an illustration/image request (not a structured diagram), route to FalAIBackend, 5) Structured diagrams (pathways, flowcharts) -> DiagramGenerator, Illustrations (cell, anatomy, custom art) -> fal.ai, 6) Track usage per user for billing/quota.",
         "testStrategy": "Enter 'Generate a detailed cell membrane illustration' in Agent Mode, verify fal.ai API is called, verify image displays in preview, verify usage is tracked.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T12:58:05.960Z"
       },
       {
         "id": "27",
@@ -389,9 +396,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-02-07T11:59:05.055Z",
+      "lastModified": "2026-02-07T13:11:51.259Z",
       "taskCount": 28,
-      "completedCount": 6,
+      "completedCount": 12,
       "tags": [
         "master"
       ]

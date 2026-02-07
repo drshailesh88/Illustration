@@ -72,7 +72,7 @@ function AppRoutes(): JSX.Element {
         path="/sign-in/*"
         element={
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-            <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" fallbackRedirectUrl="/editor" />
+            <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" fallbackRedirectUrl="/agent" />
           </div>
         }
       />
@@ -80,7 +80,7 @@ function AppRoutes(): JSX.Element {
         path="/sign-up/*"
         element={
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-            <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" fallbackRedirectUrl="/editor" />
+            <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" fallbackRedirectUrl="/agent" />
           </div>
         }
       />
