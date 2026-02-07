@@ -118,76 +118,125 @@ export class LLMService {
   private baseUrl: string;
   private model: string;
   private proxyUrl: string;
+  private claudeApiKey: string;
+  private claudeModel: string;
 
   constructor() {
     this.apiKey = config.ai.openaiApiKey;
     this.baseUrl = config.ai.openaiBaseUrl || 'https://api.openai.com/v1';
     this.model = config.ai.openaiModel || 'gpt-4-turbo-preview';
     this.proxyUrl = config.ai.openaiProxyUrl || '';
+    // Claude/Anthropic config - supports both VITE_CLAUDE_API_KEY and VITE_ANTHROPIC_API_KEY
+    this.claudeApiKey = config.ai.claudeApiKey || (import.meta.env.VITE_ANTHROPIC_API_KEY as string) || '';
+    this.claudeModel = config.ai.claudeModel || 'claude-sonnet-4-5-20250929';
   }
 
   /**
-   * Check if LLM service is available (API key configured)
+   * Check if OpenAI LLM service is available (API key configured)
    */
   isAvailable(): boolean {
     return this.apiKey.length > 0 || this.proxyUrl.length > 0;
   }
 
   /**
-   * Parse a user prompt and extract structured diagram data
+   * Check if Claude/Anthropic API is available
    */
-  async parsePrompt(prompt: string, diagramType?: string): Promise<LLMResponse> {
-    if (!this.isAvailable()) {
-      console.warn('LLM Service: No API key configured, falling back to regex parsing');
-      return this.fallbackParse(prompt, diagramType);
-    }
-
-    try {
-      const systemPrompt = this.getSystemPrompt(diagramType);
-      const response = await this.callOpenAI(systemPrompt, prompt);
-
-      if (response.success && response.data) {
-        return response;
-      }
-
-      // Fallback if LLM parsing fails
-      return this.fallbackParse(prompt, diagramType);
-    } catch (error) {
-      console.error('LLM Service Error:', error);
-      return this.fallbackParse(prompt, diagramType);
-    }
+  isClaudeAvailable(): boolean {
+    return this.claudeApiKey.length > 0;
   }
 
   /**
-   * Generate Mermaid DSL for a specific diagram type with data
+   * Parse a user prompt and extract structured diagram data.
+   * Fallback chain: Claude → OpenAI → regex
+   */
+  async parsePrompt(prompt: string, diagramType?: string): Promise<LLMResponse> {
+    const systemPrompt = this.getSystemPrompt(diagramType);
+
+    // Tier 1: Try Claude (primary)
+    if (this.isClaudeAvailable()) {
+      try {
+        const response = await this.callClaude(systemPrompt, prompt);
+        if (response.success && response.data) {
+          return response;
+        }
+      } catch (error) {
+        console.warn('Claude parsePrompt failed, trying OpenAI fallback:', error);
+      }
+    }
+
+    // Tier 2: Try OpenAI (fallback)
+    if (this.isAvailable()) {
+      try {
+        const response = await this.callOpenAI(systemPrompt, prompt);
+        if (response.success && response.data) {
+          return response;
+        }
+      } catch (error) {
+        console.warn('OpenAI parsePrompt failed, using regex fallback:', error);
+      }
+    }
+
+    // Tier 3: Regex fallback (always succeeds)
+    return this.fallbackParse(prompt, diagramType);
+  }
+
+  /**
+   * Generate Mermaid DSL for a specific diagram type with data.
+   * Fallback chain: Claude → OpenAI → hardcoded templates
    */
   async generateMermaidDSL(diagramType: string, data: Record<string, unknown>): Promise<string> {
-    if (!this.isAvailable()) {
-      return this.generateFallbackDSL(diagramType, data);
+    const userPrompt = `Generate Mermaid DSL for a ${diagramType} diagram with this data: ${JSON.stringify(data)}`;
+    const systemPrompt = `You are a Mermaid.js expert. Generate valid Mermaid DSL code only, no explanations.
+Use flowchart TB syntax for flow diagrams. Include proper subgraphs, node labels with data, and connections.
+Return ONLY the raw Mermaid DSL code without markdown code fences.`;
+
+    // Helper to clean DSL output
+    const cleanDSL = (dsl: string) => dsl.replace(/^```(?:mermaid)?\n?/i, '').replace(/\n?```$/i, '').trim();
+
+    // Tier 1: Try Claude (primary)
+    if (this.isClaudeAvailable()) {
+      try {
+        const response = await this.callClaude(systemPrompt, userPrompt);
+        if (response.success && response.rawResponse) {
+          // Claude returns JSON with the DSL; try to extract
+          const raw = response.rawResponse;
+          // If the response is a JSON object with a dsl/code field, extract it
+          try {
+            const parsed = JSON.parse(raw);
+            const dsl = parsed.mermaidDsl || parsed.dsl || parsed.code || raw;
+            return cleanDSL(typeof dsl === 'string' ? dsl : raw);
+          } catch {
+            return cleanDSL(raw);
+          }
+        }
+      } catch (error) {
+        console.warn('Claude generateMermaidDSL failed, trying OpenAI fallback:', error);
+      }
     }
 
-    try {
-      const prompt = `Generate Mermaid DSL for a ${diagramType} diagram with this data: ${JSON.stringify(data)}`;
-      const systemPrompt = `You are a Mermaid.js expert. Generate valid Mermaid DSL code only, no explanations.
-Use flowchart TB syntax for flow diagrams. Include proper subgraphs, node labels with data, and connections.`;
+    // Tier 2: Try OpenAI (fallback)
+    if (this.isAvailable()) {
+      try {
+        const result = await this.callChatCompletions({
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt },
+          ],
+          temperature: 0.3,
+          max_tokens: 2000,
+        });
 
-      const result = await this.callChatCompletions({
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: prompt },
-        ],
-        temperature: 0.3,
-        max_tokens: 2000,
-      });
-
-      const dsl = result.choices?.[0]?.message?.content?.trim() || '';
-
-      // Clean up the DSL (remove markdown code blocks if present)
-      return dsl.replace(/^```mermaid\n?/i, '').replace(/\n?```$/i, '').trim();
-    } catch (error) {
-      console.error('Generate DSL Error:', error);
-      return this.generateFallbackDSL(diagramType, data);
+        const dsl = result.choices?.[0]?.message?.content?.trim() || '';
+        if (dsl) {
+          return cleanDSL(dsl);
+        }
+      } catch (error) {
+        console.warn('OpenAI generateMermaidDSL failed, using template fallback:', error);
+      }
     }
+
+    // Tier 3: Hardcoded DSL templates (always succeeds)
+    return this.generateFallbackDSL(diagramType, data);
   }
 
   // ===========================================================================
@@ -225,6 +274,58 @@ Use flowchart TB syntax for flow diagrams. Include proper subgraphs, node labels
       return {
         success: false,
         error: 'Failed to parse LLM response as JSON',
+        rawResponse: content,
+      };
+    }
+  }
+
+  /**
+   * Call Claude/Anthropic Messages API
+   */
+  private async callClaude(systemPrompt: string, userPrompt: string): Promise<LLMResponse> {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': this.claudeApiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: this.claudeModel,
+        max_tokens: 4096,
+        system: [
+          {
+            type: 'text',
+            text: systemPrompt,
+            cache_control: { type: 'ephemeral' },
+          },
+        ],
+        messages: [{ role: 'user', content: userPrompt }],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Claude API Error: ${response.status} ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    const content = result.content?.[0]?.text;
+
+    if (!content) {
+      throw new Error('Empty response from Claude');
+    }
+
+    try {
+      const parsed = JSON.parse(content);
+      return {
+        success: true,
+        data: parsed,
+        rawResponse: content,
+      };
+    } catch {
+      return {
+        success: false,
+        error: 'Failed to parse Claude response as JSON',
         rawResponse: content,
       };
     }

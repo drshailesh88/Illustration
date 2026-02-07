@@ -16,6 +16,7 @@ import { UpgradeCTA } from './components/Auth/UpgradeCTA';
 import { Welcome } from './pages/Welcome';
 import { AgentMode } from './pages/AgentMode';
 import { EditorMode } from './pages/EditorMode';
+import { ProjectsPage } from './pages/ProjectsPage';
 import { CreditsPage } from './pages/CreditsPage';
 
 // ============================================================================
@@ -91,6 +92,9 @@ function AppRoutes(): JSX.Element {
             </ProGate>
           }
         />
+
+        {/* My Projects — any authenticated tier */}
+        <Route path="/projects" element={<ProjectsPage />} />
 
         {/* Editor Mode — any authenticated tier */}
         <Route path="/editor" element={<EditorMode />} />

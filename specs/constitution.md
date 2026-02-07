@@ -1,119 +1,107 @@
 # FINNISH Project Constitution
+## Version 3.0 | Updated: 2026-02-07 | Source: Founder Interview
 
-## Project Name
-**FINNISH** - Free Illustration for Natural, Novel, Intelligent Scientific Hierarchies
-
-## Mission Statement
-> "Kill Adobe Illustrator, BioRender, and Napkin.AI for academics"
-
-We are building an AI-powered, open-source illustration tool specifically designed for academic and scientific publication workflows. Our goal is to democratize professional-quality scientific illustration by making it accessible, intelligent, and publication-ready.
+## Mission
+Democratize scientific illustration. One app that solves every illustration problem for the scientific community - AI generates it, you edit it, done.
 
 ---
 
 ## Core Principles
 
-### 1. AI-First
-- Natural language commands drive illustration creation
-- Agent mode interprets intent and generates appropriate visuals
-- Continuous learning from user corrections and preferences
-- Smart suggestions based on scientific domain context
+### 1. The Combination IS the Product
+- Agent Mode (AI generation) + Editor Mode (manual editing) = FINNISH
+- Neither mode alone is valuable. Agent Mode alone = a Claude wrapper. Editor Mode alone = another BioRender clone.
+- The flow: Prompt → AI generates → accept/reject → optionally edit → export
 
-### 2. Publication-Ready
-- Export to LaTeX/TikZ for seamless journal integration
-- Vector-first approach ensuring infinite scalability
-- Compliant with major journal formatting requirements
-- High-DPI raster export when needed (300+ DPI)
+### 2. Verified Accuracy Over Speed
+- Curated icon library is the MOAT. Verified scientific icons are used FIRST.
+- AI-generated elements are labeled "AI-generated - verify accuracy"
+- Track what AI generates most often → add those as verified icons over time
 
-### 3. Domain-Specific
-- Pre-built libraries for biology, chemistry, physics, medicine
-- Scientific symbol palettes and notation support
-- Field-specific templates (flowcharts, pathways, anatomical diagrams)
-- Integration with academic standards (SI units, chemical notation)
+### 3. Users Own Everything
+- No forced attribution on paid tier. No licensing restrictions.
+- "You made it, it's yours." Full commercial use rights.
+- The opposite of BioRender's approach.
 
-### 4. Tweakable
-- Every AI-generated element is fully editable
-- Fine-grained control over positioning, styling, and layering
-- Non-destructive editing with full history
-- Export intermediate formats for external tool compatibility
+### 4. Cost Discipline from Day One
+- Prompt caching for system prompts (90% savings on repeated calls)
+- Smart model routing: cheap model for simple, capable model for complex
+- Template matching: known diagram types (PRISMA, CONSORT) skip AI entirely
+- No OpenRouter middleman. Direct API keys only.
 
-### 5. Open
-- Open-source core under permissive license
-- Community-contributed template libraries
-- Extensible plugin architecture
-- Transparent AI decision-making
+### 5. Simplicity Over Features
+- Excalidraw-level editor, NOT Adobe Illustrator complexity
+- No onboarding tutorial - the app speaks for itself through clean design
+- Fast: under 2 seconds to load, "this is going to be easy to use"
+- Fix first, add later. Never ship broken features.
+
+---
+
+## Non-Negotiable Rules
+
+1. **Never remove features** - Fix them. If it's broken, debug it.
+2. **No code without specs** - Every feature starts with specification, then plan, then tasks.
+3. **Test before done** - No task is complete without verification (build passes, feature works).
+4. **Commit frequently** - Small, atomic commits with clear messages.
+5. **Medical accuracy matters** - We serve doctors and researchers. Inaccurate icons/diagrams can mislead.
+6. **PII protection** - Warn users before processing prompts that contain patient-identifiable information.
+
+---
+
+## Tech Stack (Locked)
+
+| Component | Choice | Reason |
+|-----------|--------|--------|
+| Frontend | React 18 + Vite + TypeScript | Existing codebase, proven |
+| Canvas | Fabric.js 6.x | Full-featured, well-documented |
+| Auth | Clerk | Easy, familiar to founder |
+| Database + Storage | Convex | Pure TypeScript, LLM-debuggable, real-time capable |
+| Hosting | Vercel | Easy deployment, free tier sufficient |
+| Payments | Lemon Squeezy | Single integration, handles INR + international, taxes |
+| AI Primary | Claude Sonnet (Anthropic) | Best at scientific context, structured output |
+| AI Secondary | GPT-4o mini or Gemini Flash (paid) | Fast/cheap for simple tasks |
+| AI Fallback | DeepSeek | Cost optimization for high-volume |
+| AI Image Gen | fal.ai FLUX | Photorealistic/artistic, $0.008/image |
 
 ---
 
 ## Quality Standards
 
-### TypeScript Strict Mode
-- All code written in TypeScript with strict mode enabled
-- No `any` types without explicit justification
-- Comprehensive type definitions for all public APIs
-- Runtime validation at system boundaries
+### Code Quality
+- TypeScript strict mode - no `any` without justification
+- Build must pass (`tsc --noEmit && vite build`) before any commit
+- No console errors in production
 
-### 80% Test Coverage Minimum
-- Unit tests for all utility functions and services
-- Integration tests for editor operations
-- E2E tests for critical user workflows
-- Visual regression tests for rendering consistency
+### Performance
+- App loads in under 2 seconds
+- Agent Mode generates diagrams in under 30 seconds
+- No heavy splash screens or loading bars
 
-### Spec-First Development
-- Every feature begins with a specification document
-- Specs reviewed before implementation begins
-- Implementation must satisfy all spec requirements
-- Specs updated when requirements evolve
-
-### RALF Loop (Research, Articulate, Loop, Finalize)
-1. **Research**: Investigate problem space and existing solutions
-2. **Articulate**: Write clear specification with acceptance criteria
-3. **Loop**: Iterate on implementation with continuous feedback
-4. **Finalize**: Complete documentation and ensure test coverage
+### User Experience
+- English only
+- Dark mode available (V1)
+- Mobile-responsive landing + Agent Mode on mobile
+- Editor Mode shows "Open on desktop" on mobile
+- Offline Editor Mode works, syncs when connected
 
 ---
 
-## Target Users
+## Target Users (Priority Order)
 
-### Primary: Academics
-- Graduate students writing theses and dissertations
-- Researchers preparing journal submissions
-- Faculty creating lecture materials
-- Lab groups documenting experimental setups
-
-### Secondary: Medical Professionals
-- Clinicians creating patient education materials
-- Medical illustrators seeking faster workflows
-- Healthcare educators developing training content
-- Research hospitals documenting procedures
-
-### Tertiary: Students
-- Undergraduate students in STEM fields
-- Students learning scientific communication
-- Teaching assistants creating course materials
-- Science communicators and journalists
+1. **Medical professionals** - ALL branches of medicine (primary, go-to-market)
+2. **Scientists** - Biology, Chemistry, other disciplines (secondary)
+3. **Conference deadline**: July 2026 - live demo to medical audience
 
 ---
 
-## Technical Stack
+## Business Model
 
-- **Frontend**: React + TypeScript + Vite
-- **Canvas**: Fabric.js for vector editing
-- **Rendering**: SVG-native with canvas fallback
-- **AI Integration**: LLM-powered agent system
-- **Export**: Native LaTeX/TikZ, SVG, PNG, PDF
-- **Diagrams**: Mermaid.js for flowcharts
-- **Math**: KaTeX for equation rendering
+| Tier | Price | Includes |
+|------|-------|----------|
+| Free | ₹0 | Editor Mode only, limited icons, low-res PNG with subtle corner watermark, NO Agent Mode |
+| Pro | ~₹1,000/month (~$12 USD) | Agent Mode + full Editor, full icons, full-res PNG + SVG + PDF + PPTX, no watermark |
+| Team/Lab | ~₹3,000/month | 5 seats, shared assets, higher AI quota |
 
 ---
 
-## Success Metrics
-
-1. **Adoption**: 10,000 active academic users within first year
-2. **Quality**: 95% of exports pass journal submission checks
-3. **Speed**: 10x faster than manual illustration for common tasks
-4. **Satisfaction**: NPS > 50 among academic users
-5. **Community**: 100+ community-contributed templates
-
----
-
-*This constitution guides all development decisions for the FINNISH project.*
+*This constitution guides ALL development decisions. When in doubt, refer here.*

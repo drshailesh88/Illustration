@@ -19,8 +19,12 @@ import type {
   DiagramType,
   DiagramDomain,
   Logger,
+  LLMProvider,
 } from './types';
 import { createLogger, AIServiceError } from './types';
+import type { SpecialtyContext } from './types';
+import { llmService } from './LLMService';
+import { getSpecialtyContext } from './prompts';
 import type { ConversationContext } from './ConversationManager';
 
 // =============================================================================
@@ -161,12 +165,43 @@ export class DiagramGenerator {
         conversationContext?.summary
       );
 
+      // Look up specialty context if a specialty was detected
+      const specialtyCtx: SpecialtyContext | undefined = parsedPrompt.specialty
+        ? getSpecialtyContext(parsedPrompt.specialty)
+        : undefined;
+
       this.logger.debug('Prompt parsed', {
         diagramType: parsedPrompt.diagramType,
         domain: parsedPrompt.domain,
         confidence: parsedPrompt.confidence,
         isModification: parsedPrompt.isModification,
+        template: parsedPrompt.template,
+        specialty: parsedPrompt.specialty ?? 'none',
       });
+
+      // Template-first routing: skip AI call for known template types
+      if (parsedPrompt.template && parsedPrompt.confidence > 0.85) {
+        this.logger.info('Template match detected, using direct generation', {
+          template: parsedPrompt.template,
+          confidence: parsedPrompt.confidence,
+        });
+
+        try {
+          const templateResult = await this.generateFromTemplateMatch(
+            prompt,
+            parsedPrompt,
+            startTime,
+            options.conversationId
+          );
+          if (templateResult) {
+            return templateResult;
+          }
+        } catch (error) {
+          this.logger.warn('Template generation failed, falling through to AI', {
+            error: (error as Error).message,
+          });
+        }
+      }
 
       // Select the best backend
       const backendName = this.selectBackend(parsedPrompt, options);
@@ -186,7 +221,8 @@ export class DiagramGenerator {
         prompt,
         parsedPrompt,
         options,
-        conversationContext
+        conversationContext,
+        specialtyCtx
       );
 
       // Generate the diagram
@@ -199,6 +235,13 @@ export class DiagramGenerator {
         options.conversationId
       );
 
+      // Determine which provider was actually used
+      const provider: LLMProvider = llmService.isClaudeAvailable()
+        ? 'anthropic'
+        : llmService.isAvailable()
+          ? 'openai'
+          : 'fallback';
+
       // Build extended result
       const extendedResult: ExtendedGenerationResult = {
         ...result,
@@ -208,6 +251,8 @@ export class DiagramGenerator {
         metadata: {
           ...result.metadata,
           generationTimeMs: Date.now() - startTime,
+          provider,
+          fallbackUsed: provider !== 'anthropic' && llmService.isClaudeAvailable(),
         },
       };
 
@@ -430,6 +475,67 @@ export class DiagramGenerator {
   // ==========================================================================
 
   /**
+   * Generate diagram directly from template match using regex parsing + MermaidBackend generators.
+   * No AI API call is made.
+   */
+  private async generateFromTemplateMatch(
+    prompt: string,
+    parsedPrompt: ParsedPrompt,
+    startTime: number,
+    conversationId?: string
+  ): Promise<ExtendedGenerationResult | null> {
+    const templateType = parsedPrompt.template!;
+
+    // Use LLMService.fallbackParse (regex-based) to extract structured data
+    const parseResult = llmService.fallbackParse(prompt, templateType);
+    if (!parseResult.success || !parseResult.data) {
+      return null;
+    }
+
+    // Route to MermaidBackend template generators via DSL generation
+    const mermaidBackend = this.backends.get('mermaid');
+    if (!mermaidBackend) {
+      return null;
+    }
+
+    // Generate the DSL as a prompt and let MermaidBackend handle it
+    const dsl = await llmService.generateMermaidDSL(
+      templateType,
+      parseResult.data.data as Record<string, unknown>
+    );
+
+    if (!dsl) {
+      return null;
+    }
+
+    // Generate by passing DSL directly to MermaidBackend
+    const result = await mermaidBackend.generate({
+      prompt: dsl,
+      metadata: { domain: parsedPrompt.domain },
+    });
+
+    // Record in conversation history
+    const convId = this.conversationManager.addTurn(
+      prompt,
+      result,
+      conversationId
+    );
+
+    return {
+      ...result,
+      parsedPrompt,
+      conversationId: convId,
+      suggestions: this.generateSuggestions(parsedPrompt, result),
+      metadata: {
+        ...result.metadata,
+        generationTimeMs: Date.now() - startTime,
+        templateMatched: true,
+        provider: 'fallback' as LLMProvider,
+      },
+    };
+  }
+
+  /**
    * Select the best backend for the given prompt
    */
   private selectBackend(
@@ -478,7 +584,8 @@ export class DiagramGenerator {
     prompt: string,
     parsedPrompt: ParsedPrompt,
     options: GenerateOptions,
-    context?: ConversationContext | null
+    context?: ConversationContext | null,
+    specialtyContext?: SpecialtyContext
   ): GenerationRequest {
     // Build enhanced prompt with context
     const enhancedPrompt = this.contextBuilder.buildGenerationPrompt(
@@ -488,6 +595,7 @@ export class DiagramGenerator {
         diagramType: parsedPrompt.diagramType,
         domain: options.domain ?? parsedPrompt.domain,
         entities: parsedPrompt.entities,
+        specialtyContext,
       }
     );
 
@@ -499,6 +607,7 @@ export class DiagramGenerator {
       metadata: {
         domain: options.domain ?? parsedPrompt.domain,
         isModification: parsedPrompt.isModification,
+        specialty: specialtyContext?.specialty,
       },
     };
   }

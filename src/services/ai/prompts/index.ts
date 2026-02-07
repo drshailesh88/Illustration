@@ -6,7 +6,7 @@
  * These templates guide AI models to generate accurate diagram DSL.
  */
 
-import type { DiagramType, DiagramDomain } from '../types';
+import type { DiagramType, DiagramDomain, SpecialtyPromptSet, SpecialtyContext } from '../types';
 
 // =============================================================================
 // SYSTEM PROMPTS
@@ -531,6 +531,122 @@ export function isValidDSL(content: string): { valid: boolean; type: 'mermaid' |
   }
 
   return { valid: false, type: 'unknown' };
+}
+
+// =============================================================================
+// SPECIALTY REGISTRY
+// =============================================================================
+
+// Import specialty exports for the registry
+import { CARDIOLOGY_DOMAIN_PROMPT, CARDIOLOGY_PROMPTS, CARDIOLOGY_FEW_SHOT_EXAMPLES } from './cardiology-prompts';
+import { NEUROLOGY_DOMAIN_PROMPT, NEUROLOGY_PROMPTS, NEUROLOGY_FEW_SHOT_EXAMPLES } from './neurology-prompts';
+import { PULMONOLOGY_DOMAIN_PROMPT, PULMONOLOGY_PROMPTS, PULMONOLOGY_FEW_SHOT_EXAMPLES } from './pulmonology-prompts';
+import { EMERGENCY_MEDICINE_DOMAIN_PROMPT, EMERGENCY_MEDICINE_PROMPTS, EMERGENCY_MEDICINE_FEW_SHOT_EXAMPLES } from './emergency-medicine-prompts';
+import { GASTROENTEROLOGY_DOMAIN_PROMPT, GASTROENTEROLOGY_PROMPTS, GASTROENTEROLOGY_FEW_SHOT_EXAMPLES } from './gastroenterology-prompts';
+import { NEPHROLOGY_DOMAIN_PROMPT, NEPHROLOGY_PROMPTS, NEPHROLOGY_FEW_SHOT_EXAMPLES } from './nephrology-prompts';
+import { INFECTIOUS_DISEASE_DOMAIN_PROMPT, INFECTIOUS_DISEASE_PROMPTS, INFECTIOUS_DISEASE_FEW_SHOT_EXAMPLES } from './infectious-disease-prompts';
+import { ENDOCRINOLOGY_DOMAIN_PROMPT, ENDOCRINOLOGY_PROMPTS, ENDOCRINOLOGY_FEW_SHOT_EXAMPLES } from './endocrinology-prompts';
+import { ORTHOPEDICS_DOMAIN_PROMPT, ORTHOPEDICS_PROMPTS, ORTHOPEDICS_FEW_SHOT_EXAMPLES } from './orthopedics-prompts';
+import { ANESTHESIOLOGY_DOMAIN_PROMPT, ANESTHESIOLOGY_PROMPTS, ANESTHESIOLOGY_FEW_SHOT_EXAMPLES } from './anesthesiology-prompts';
+import { RADIOLOGY_DOMAIN_PROMPT, RADIOLOGY_PROMPTS, RADIOLOGY_FEW_SHOT_EXAMPLES } from './radiology-prompts';
+import { OPHTHALMOLOGY_DOMAIN_PROMPT, OPHTHALMOLOGY_PROMPTS, OPHTHALMOLOGY_FEW_SHOT_EXAMPLES } from './ophthalmology-prompts';
+import { DERMATOLOGY_DOMAIN_PROMPT, DERMATOLOGY_PROMPTS, DERMATOLOGY_FEW_SHOT_EXAMPLES } from './dermatology-prompts';
+import { ENT_DOMAIN_PROMPT, ENT_PROMPTS, ENT_FEW_SHOT_EXAMPLES } from './ent-prompts';
+import { PEDIATRICS_DOMAIN_PROMPT, PEDIATRICS_PROMPTS, PEDIATRICS_FEW_SHOT_EXAMPLES } from './pediatrics-prompts';
+import { OBGYN_DOMAIN_PROMPT, OBGYN_PROMPTS, OBGYN_FEW_SHOT_EXAMPLES } from './obgyn-prompts';
+import { PSYCHIATRY_DOMAIN_PROMPT, PSYCHIATRY_PROMPTS, PSYCHIATRY_FEW_SHOT_EXAMPLES } from './psychiatry-prompts';
+import { RHEUMATOLOGY_DOMAIN_PROMPT, RHEUMATOLOGY_PROMPTS, RHEUMATOLOGY_FEW_SHOT_EXAMPLES } from './rheumatology-prompts';
+import { PATHOLOGY_DOMAIN_PROMPT, PATHOLOGY_PROMPTS, PATHOLOGY_FEW_SHOT_EXAMPLES } from './pathology-prompts';
+import { PHYSIOLOGY_DOMAIN_PROMPT, PHYSIOLOGY_PROMPTS, PHYSIOLOGY_FEW_SHOT_EXAMPLES } from './physiology-prompts';
+import { BIOCHEMISTRY_DOMAIN_PROMPT, BIOCHEMISTRY_PROMPTS, BIOCHEMISTRY_FEW_SHOT_EXAMPLES } from './biochemistry-prompts';
+import { MATHEMATICS_DOMAIN_PROMPT, MATHEMATICS_PROMPTS, MATHEMATICS_FEW_SHOT_EXAMPLES } from './mathematics-prompts';
+import { MOLECULAR_BIOLOGY_DOMAIN_PROMPT, MOLECULAR_BIOLOGY_PROMPTS, MOLECULAR_BIOLOGY_FEW_SHOT_EXAMPLES } from './molecular-biology-prompts';
+import { ENGINEERING_DOMAIN_PROMPT, ENGINEERING_PROMPTS, ENGINEERING_FEW_SHOT_EXAMPLES } from './engineering-prompts';
+import { BIOMEDICAL_ENGINEERING_DOMAIN_PROMPT, BIOMEDICAL_ENGINEERING_PROMPTS, BIOMEDICAL_ENGINEERING_FEW_SHOT_EXAMPLES } from './biomedical-engineering-prompts';
+import { COMPUTER_SCIENCE_DOMAIN_PROMPT, computerSciencePrompts } from './computer-science-prompts';
+import { PHARMACOLOGY_DOMAIN_PROMPT, PHARMACOLOGY_PROMPTS, PHARMACOLOGY_FEW_SHOT_EXAMPLES } from './pharmacology-prompts';
+import { NEUROSCIENCE_DOMAIN_PROMPT, NEUROSCIENCE_PROMPTS, NEUROSCIENCE_FEW_SHOT_EXAMPLES } from './neuroscience-prompts';
+import { CELL_BIOLOGY_DOMAIN_PROMPT, CELL_BIOLOGY_PROMPTS, CELL_BIOLOGY_FEW_SHOT_EXAMPLES } from './cell-biology-prompts';
+import { CHEMISTRY_DOMAIN_PROMPT, CHEMISTRY_PROMPTS, CHEMISTRY_FEW_SHOT_EXAMPLES } from './chemistry-prompts';
+import { PHYSICS_DOMAIN_PROMPT, PHYSICS_PROMPTS, PHYSICS_FEW_SHOT_EXAMPLES } from './physics-prompts';
+import { MICROBIOLOGY_DOMAIN_PROMPT, MICROBIOLOGY_PROMPTS, MICROBIOLOGY_FEW_SHOT_EXAMPLES } from './microbiology-prompts';
+import { ANATOMY_DOMAIN_PROMPT, ANATOMY_PROMPTS, ANATOMY_FEW_SHOT_EXAMPLES } from './anatomy-prompts';
+import { BIOLOGY_DOMAIN_PROMPT, BIOLOGY_PROMPTS, BIOLOGY_FEW_SHOT_EXAMPLES } from './biology-prompts';
+import { AEROSPACE_DOMAIN_PROMPT, AEROSPACE_PROMPTS, AEROSPACE_FEW_SHOT_EXAMPLES } from './aerospace-prompts';
+import { AGRICULTURE_DOMAIN_PROMPT, AGRICULTURE_PROMPTS, AGRICULTURE_FEW_SHOT_EXAMPLES } from './agriculture-prompts';
+import { FORENSICS_DOMAIN_PROMPT, FORENSICS_PROMPTS, FORENSICS_FEW_SHOT_EXAMPLES } from './forensics-prompts';
+import { GEOLOGY_DOMAIN_PROMPT, GEOLOGY_PROMPTS, GEOLOGY_FEW_SHOT_EXAMPLES } from './geology-prompts';
+import { ASTRONOMY_DOMAIN_PROMPT, ASTRONOMY_PROMPTS, ASTRONOMY_FEW_SHOT_EXAMPLES } from './astronomy-prompts';
+import { ECOLOGY_DOMAIN_PROMPT, ECOLOGY_PROMPTS, ECOLOGY_FEW_SHOT_EXAMPLES } from './ecology-prompts';
+import { METEOROLOGY_DOMAIN_PROMPT, METEOROLOGY_PROMPTS, METEOROLOGY_FEW_SHOT_EXAMPLES } from './meteorology-prompts';
+import { OCEANOGRAPHY_DOMAIN_PROMPT, OCEANOGRAPHY_PROMPTS, OCEANOGRAPHY_FEW_SHOT_EXAMPLES } from './oceanography-prompts';
+import { BOTANY_DOMAIN_PROMPT, BOTANY_PROMPTS, BOTANY_FEW_SHOT_EXAMPLES } from './botany-prompts';
+import { ZOOLOGY_DOMAIN_PROMPT, ZOOLOGY_PROMPTS, ZOOLOGY_FEW_SHOT_EXAMPLES } from './zoology-prompts';
+
+/**
+ * Registry mapping specialty names to their prompt data.
+ * Connects the 45+ existing specialty prompt files.
+ */
+export const SPECIALTY_REGISTRY: Record<string, SpecialtyPromptSet> = {
+  cardiology: { domainPrompt: CARDIOLOGY_DOMAIN_PROMPT, prompts: CARDIOLOGY_PROMPTS, examples: CARDIOLOGY_FEW_SHOT_EXAMPLES },
+  neurology: { domainPrompt: NEUROLOGY_DOMAIN_PROMPT, prompts: NEUROLOGY_PROMPTS, examples: NEUROLOGY_FEW_SHOT_EXAMPLES },
+  pulmonology: { domainPrompt: PULMONOLOGY_DOMAIN_PROMPT, prompts: PULMONOLOGY_PROMPTS, examples: PULMONOLOGY_FEW_SHOT_EXAMPLES },
+  'emergency-medicine': { domainPrompt: EMERGENCY_MEDICINE_DOMAIN_PROMPT, prompts: EMERGENCY_MEDICINE_PROMPTS, examples: EMERGENCY_MEDICINE_FEW_SHOT_EXAMPLES },
+  gastroenterology: { domainPrompt: GASTROENTEROLOGY_DOMAIN_PROMPT, prompts: GASTROENTEROLOGY_PROMPTS, examples: GASTROENTEROLOGY_FEW_SHOT_EXAMPLES },
+  nephrology: { domainPrompt: NEPHROLOGY_DOMAIN_PROMPT, prompts: NEPHROLOGY_PROMPTS, examples: NEPHROLOGY_FEW_SHOT_EXAMPLES },
+  'infectious-disease': { domainPrompt: INFECTIOUS_DISEASE_DOMAIN_PROMPT, prompts: INFECTIOUS_DISEASE_PROMPTS, examples: INFECTIOUS_DISEASE_FEW_SHOT_EXAMPLES },
+  endocrinology: { domainPrompt: ENDOCRINOLOGY_DOMAIN_PROMPT, prompts: ENDOCRINOLOGY_PROMPTS, examples: ENDOCRINOLOGY_FEW_SHOT_EXAMPLES },
+  orthopedics: { domainPrompt: ORTHOPEDICS_DOMAIN_PROMPT, prompts: ORTHOPEDICS_PROMPTS, examples: ORTHOPEDICS_FEW_SHOT_EXAMPLES },
+  anesthesiology: { domainPrompt: ANESTHESIOLOGY_DOMAIN_PROMPT, prompts: ANESTHESIOLOGY_PROMPTS, examples: ANESTHESIOLOGY_FEW_SHOT_EXAMPLES },
+  radiology: { domainPrompt: RADIOLOGY_DOMAIN_PROMPT, prompts: RADIOLOGY_PROMPTS, examples: RADIOLOGY_FEW_SHOT_EXAMPLES },
+  ophthalmology: { domainPrompt: OPHTHALMOLOGY_DOMAIN_PROMPT, prompts: OPHTHALMOLOGY_PROMPTS, examples: OPHTHALMOLOGY_FEW_SHOT_EXAMPLES },
+  dermatology: { domainPrompt: DERMATOLOGY_DOMAIN_PROMPT, prompts: DERMATOLOGY_PROMPTS, examples: DERMATOLOGY_FEW_SHOT_EXAMPLES },
+  ent: { domainPrompt: ENT_DOMAIN_PROMPT, prompts: ENT_PROMPTS, examples: ENT_FEW_SHOT_EXAMPLES },
+  pediatrics: { domainPrompt: PEDIATRICS_DOMAIN_PROMPT, prompts: PEDIATRICS_PROMPTS, examples: PEDIATRICS_FEW_SHOT_EXAMPLES },
+  obgyn: { domainPrompt: OBGYN_DOMAIN_PROMPT, prompts: OBGYN_PROMPTS, examples: OBGYN_FEW_SHOT_EXAMPLES },
+  psychiatry: { domainPrompt: PSYCHIATRY_DOMAIN_PROMPT, prompts: PSYCHIATRY_PROMPTS, examples: PSYCHIATRY_FEW_SHOT_EXAMPLES },
+  rheumatology: { domainPrompt: RHEUMATOLOGY_DOMAIN_PROMPT, prompts: RHEUMATOLOGY_PROMPTS, examples: RHEUMATOLOGY_FEW_SHOT_EXAMPLES },
+  pathology: { domainPrompt: PATHOLOGY_DOMAIN_PROMPT, prompts: PATHOLOGY_PROMPTS, examples: PATHOLOGY_FEW_SHOT_EXAMPLES },
+  physiology: { domainPrompt: PHYSIOLOGY_DOMAIN_PROMPT, prompts: PHYSIOLOGY_PROMPTS, examples: PHYSIOLOGY_FEW_SHOT_EXAMPLES },
+  biochemistry: { domainPrompt: BIOCHEMISTRY_DOMAIN_PROMPT, prompts: BIOCHEMISTRY_PROMPTS, examples: BIOCHEMISTRY_FEW_SHOT_EXAMPLES },
+  mathematics: { domainPrompt: MATHEMATICS_DOMAIN_PROMPT, prompts: MATHEMATICS_PROMPTS, examples: MATHEMATICS_FEW_SHOT_EXAMPLES },
+  'molecular-biology': { domainPrompt: MOLECULAR_BIOLOGY_DOMAIN_PROMPT, prompts: MOLECULAR_BIOLOGY_PROMPTS, examples: MOLECULAR_BIOLOGY_FEW_SHOT_EXAMPLES },
+  engineering: { domainPrompt: ENGINEERING_DOMAIN_PROMPT, prompts: ENGINEERING_PROMPTS, examples: ENGINEERING_FEW_SHOT_EXAMPLES },
+  'biomedical-engineering': { domainPrompt: BIOMEDICAL_ENGINEERING_DOMAIN_PROMPT, prompts: BIOMEDICAL_ENGINEERING_PROMPTS, examples: BIOMEDICAL_ENGINEERING_FEW_SHOT_EXAMPLES },
+  'computer-science': { domainPrompt: COMPUTER_SCIENCE_DOMAIN_PROMPT, prompts: computerSciencePrompts as unknown as Record<string, string>, examples: [] },
+  pharmacology: { domainPrompt: PHARMACOLOGY_DOMAIN_PROMPT, prompts: PHARMACOLOGY_PROMPTS, examples: PHARMACOLOGY_FEW_SHOT_EXAMPLES },
+  neuroscience: { domainPrompt: NEUROSCIENCE_DOMAIN_PROMPT, prompts: NEUROSCIENCE_PROMPTS, examples: NEUROSCIENCE_FEW_SHOT_EXAMPLES },
+  'cell-biology': { domainPrompt: CELL_BIOLOGY_DOMAIN_PROMPT, prompts: CELL_BIOLOGY_PROMPTS, examples: CELL_BIOLOGY_FEW_SHOT_EXAMPLES },
+  chemistry: { domainPrompt: CHEMISTRY_DOMAIN_PROMPT, prompts: CHEMISTRY_PROMPTS, examples: CHEMISTRY_FEW_SHOT_EXAMPLES },
+  physics: { domainPrompt: PHYSICS_DOMAIN_PROMPT, prompts: PHYSICS_PROMPTS, examples: PHYSICS_FEW_SHOT_EXAMPLES },
+  microbiology: { domainPrompt: MICROBIOLOGY_DOMAIN_PROMPT, prompts: MICROBIOLOGY_PROMPTS, examples: MICROBIOLOGY_FEW_SHOT_EXAMPLES },
+  anatomy: { domainPrompt: ANATOMY_DOMAIN_PROMPT, prompts: ANATOMY_PROMPTS, examples: ANATOMY_FEW_SHOT_EXAMPLES },
+  biology: { domainPrompt: BIOLOGY_DOMAIN_PROMPT, prompts: BIOLOGY_PROMPTS, examples: BIOLOGY_FEW_SHOT_EXAMPLES },
+  aerospace: { domainPrompt: AEROSPACE_DOMAIN_PROMPT, prompts: AEROSPACE_PROMPTS, examples: AEROSPACE_FEW_SHOT_EXAMPLES },
+  agriculture: { domainPrompt: AGRICULTURE_DOMAIN_PROMPT, prompts: AGRICULTURE_PROMPTS, examples: AGRICULTURE_FEW_SHOT_EXAMPLES },
+  forensics: { domainPrompt: FORENSICS_DOMAIN_PROMPT, prompts: FORENSICS_PROMPTS, examples: FORENSICS_FEW_SHOT_EXAMPLES },
+  geology: { domainPrompt: GEOLOGY_DOMAIN_PROMPT, prompts: GEOLOGY_PROMPTS, examples: GEOLOGY_FEW_SHOT_EXAMPLES },
+  astronomy: { domainPrompt: ASTRONOMY_DOMAIN_PROMPT, prompts: ASTRONOMY_PROMPTS, examples: ASTRONOMY_FEW_SHOT_EXAMPLES },
+  ecology: { domainPrompt: ECOLOGY_DOMAIN_PROMPT, prompts: ECOLOGY_PROMPTS, examples: ECOLOGY_FEW_SHOT_EXAMPLES },
+  meteorology: { domainPrompt: METEOROLOGY_DOMAIN_PROMPT, prompts: METEOROLOGY_PROMPTS, examples: METEOROLOGY_FEW_SHOT_EXAMPLES },
+  oceanography: { domainPrompt: OCEANOGRAPHY_DOMAIN_PROMPT, prompts: OCEANOGRAPHY_PROMPTS, examples: OCEANOGRAPHY_FEW_SHOT_EXAMPLES },
+  botany: { domainPrompt: BOTANY_DOMAIN_PROMPT, prompts: BOTANY_PROMPTS, examples: BOTANY_FEW_SHOT_EXAMPLES },
+  zoology: { domainPrompt: ZOOLOGY_DOMAIN_PROMPT, prompts: ZOOLOGY_PROMPTS, examples: ZOOLOGY_FEW_SHOT_EXAMPLES },
+};
+
+/**
+ * Look up specialty prompt data by detected specialty name.
+ * Returns undefined if specialty not in registry.
+ */
+export function getSpecialtyContext(specialty: string): SpecialtyContext | undefined {
+  const entry = SPECIALTY_REGISTRY[specialty.toLowerCase()];
+  if (!entry) return undefined;
+  return {
+    specialty: specialty.toLowerCase(),
+    domainPrompt: entry.domainPrompt,
+    relevantExamples: entry.examples.slice(0, 3),
+    relevantPrompts: entry.prompts,
+  };
 }
 
 // =============================================================================

@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "color": "^5.0.3",
     "colorjs.io": "^0.6.1",
+    "convex": "^1.31.7",
     "fabric": "^6.5.1",
     "glfx": "^0.0.4",
     "healthicons-react": "^3.5.0",

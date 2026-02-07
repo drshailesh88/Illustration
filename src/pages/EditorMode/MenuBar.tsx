@@ -12,6 +12,8 @@ import { useToast } from '../../components/Toast/useToast';
 import { FilterDialog } from '../../components/FilterDialog/FilterDialog';
 import { AdjustmentsDialog, AdjustmentSettings } from '../../components/AdjustmentsDialog/AdjustmentsDialog';
 import { applyFilters, applyAdjustments } from '../../lib/image/filters';
+import { SaveButton } from '../../components/SaveButton/SaveButton';
+import type { SaveStatus } from '../../hooks/useProject';
 import './MenuBar.css';
 
 // ============================================================================
@@ -48,13 +50,17 @@ interface MenuBarProps {
   onOpenAIGeneration?: () => void;
   /** Callback to open the shape generator panel */
   onOpenShapeGenerator?: (shapeType?: string) => void;
+  /** Callback for cloud save */
+  onCloudSave?: () => void;
+  /** Current save status */
+  saveStatus?: SaveStatus;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle' }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [_isLoading, setIsLoading] = useState(false); // Used for async operations
   const [recentFiles, setRecentFiles] = useState<Array<{ id: string; name: string; path: string }>>([]);
@@ -836,6 +842,14 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
         </svg>
       </button>
+
+      {/* Cloud Save Button */}
+      {onCloudSave && (
+        <SaveButton
+          saveStatus={saveStatus}
+          onSave={onCloudSave}
+        />
+      )}
 
       {/* Filter Dialog */}
       <FilterDialog

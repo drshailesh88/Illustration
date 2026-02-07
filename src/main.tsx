@@ -7,7 +7,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ClerkProvider } from '@clerk/clerk-react';
+import { ClerkProvider, useAuth } from '@clerk/clerk-react';
+import { ConvexProviderWithClerk } from 'convex/react-clerk';
+import { ConvexReactClient } from 'convex/react';
 import App from './App';
 
 // Import global styles
@@ -21,6 +23,17 @@ if (!CLERK_PUBLISHABLE_KEY) {
     'Missing Clerk Publishable Key. Set VITE_CLERK_PUBLISHABLE_KEY in your .env.local file.'
   );
 }
+
+// Convex client
+const CONVEX_URL = import.meta.env.VITE_CONVEX_URL;
+
+if (!CONVEX_URL) {
+  throw new Error(
+    'Missing Convex URL. Run `npx convex dev` and ensure VITE_CONVEX_URL is set in .env.local.'
+  );
+}
+
+const convex = new ConvexReactClient(CONVEX_URL);
 
 // ============================================================================
 // Application Bootstrap
@@ -38,7 +51,9 @@ ReactDOM.createRoot(rootElement).render(
       publishableKey={CLERK_PUBLISHABLE_KEY}
       afterSignOutUrl="/"
     >
-      <App />
+      <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+        <App />
+      </ConvexProviderWithClerk>
     </ClerkProvider>
   </React.StrictMode>
 );

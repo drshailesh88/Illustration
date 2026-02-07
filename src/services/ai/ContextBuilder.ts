@@ -12,6 +12,7 @@ import type {
   DiagramDomain,
   ExtractedEntities,
   Logger,
+  SpecialtyContext,
 } from './types';
 import { createLogger } from './types';
 import type { ConversationContext } from './ConversationManager';
@@ -42,6 +43,8 @@ export interface GenerationContextOptions {
   maxLength?: number;
   /** Verbosity level */
   verbosity?: 'minimal' | 'standard' | 'detailed';
+  /** Specialty context from detected specialty (cardiology, neurology, etc.) */
+  specialtyContext?: SpecialtyContext;
 }
 
 /**
@@ -89,6 +92,7 @@ export class ContextBuilder {
       includeFewShot: _includeFewShot = true,
       maxLength = this.defaultMaxLength,
       verbosity = 'standard',
+      specialtyContext,
     } = options;
 
     const parts: string[] = [];
@@ -96,6 +100,11 @@ export class ContextBuilder {
     // Add system context based on verbosity
     if (verbosity !== 'minimal') {
       parts.push(this.buildSystemContext(diagramType, domain));
+    }
+
+    // Add specialty context if detected
+    if (specialtyContext) {
+      parts.push(this.buildSpecialtySection(specialtyContext));
     }
 
     // Add conversation context if available
@@ -356,6 +365,35 @@ export class ContextBuilder {
     // Add type-specific context
     if (diagramType && TYPE_PROMPTS[diagramType]) {
       parts.push(TYPE_PROMPTS[diagramType]!.trim());
+    }
+
+    return parts.join('\n');
+  }
+
+  /**
+   * Build specialty context section with domain prompt and few-shot examples
+   */
+  private buildSpecialtySection(specialtyContext: SpecialtyContext): string {
+    const parts: string[] = [];
+
+    parts.push(`## Specialty: ${specialtyContext.specialty}`);
+
+    // Inject domain-specific prompt
+    if (specialtyContext.domainPrompt) {
+      parts.push(specialtyContext.domainPrompt.trim());
+    }
+
+    // Add few-shot examples (up to 3)
+    if (specialtyContext.relevantExamples && specialtyContext.relevantExamples.length > 0) {
+      parts.push('### Examples');
+      for (const example of specialtyContext.relevantExamples.slice(0, 3)) {
+        parts.push(`**Prompt**: ${example.prompt}`);
+        parts.push(`**Output**: ${example.output}`);
+        if (example.reasoning) {
+          parts.push(`**Reasoning**: ${example.reasoning}`);
+        }
+        parts.push('');
+      }
     }
 
     return parts.join('\n');

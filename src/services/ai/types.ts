@@ -7,6 +7,55 @@
  */
 
 // =============================================================================
+// LLM PROVIDER TYPES
+// =============================================================================
+
+/**
+ * Identifies which AI provider generated the response
+ */
+export type LLMProvider = 'anthropic' | 'openai' | 'fallback';
+
+/**
+ * Configuration for each LLM provider
+ */
+export interface LLMProviderConfig {
+  provider: LLMProvider;
+  apiKey: string;
+  model: string;
+  baseUrl: string;
+  timeout: number;
+  enableCaching: boolean;
+}
+
+/**
+ * One specialty's complete prompt data (e.g., cardiology, neurology)
+ */
+export interface SpecialtyPromptSet {
+  domainPrompt: string;
+  prompts: Record<string, string>;
+  examples: FewShotExample[];
+}
+
+/**
+ * Resolved context injected into the AI prompt for a specific generation request
+ */
+export interface SpecialtyContext {
+  specialty: string;
+  domainPrompt: string;
+  relevantExamples: FewShotExample[];
+  relevantPrompts: Record<string, string>;
+}
+
+/**
+ * A few-shot example for prompt engineering
+ */
+export interface FewShotExample {
+  prompt: string;
+  output: string;
+  reasoning?: string;
+}
+
+// =============================================================================
 // GENERATION REQUEST/RESPONSE TYPES
 // =============================================================================
 
@@ -40,6 +89,8 @@ export interface RequestMetadata {
   style?: DiagramStyle;
   /** Whether this is a modification of an existing diagram */
   isModification?: boolean;
+  /** Detected specialty (cardiology, neurology, etc.) */
+  specialty?: string;
 }
 
 /**
@@ -90,6 +141,14 @@ export interface GenerationMetadata {
   confidence?: number;
   /** Version number for this diagram iteration */
   version?: number;
+  /** Which LLM provider generated this */
+  provider?: LLMProvider;
+  /** How many tokens were cache hits (Anthropic prompt caching) */
+  cachedTokens?: number;
+  /** Whether fallback was triggered */
+  fallbackUsed?: boolean;
+  /** Whether template matching was used (no AI call) */
+  templateMatched?: boolean;
 }
 
 // =============================================================================
@@ -200,6 +259,8 @@ export interface ParsedPrompt {
   entities: ExtractedEntities;
   /** Alternative interpretations */
   alternatives: AlternativeInterpretation[];
+  /** Detected medical/scientific specialty (e.g., 'cardiology', 'neurology') */
+  specialty?: string;
 }
 
 /**

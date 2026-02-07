@@ -1,136 +1,107 @@
-<!--
-Sync Impact Report:
-- Version change: 0.0.0 → 1.0.0
-- Initial constitution for FINNISH project
-- Added 7 core principles
-- Templates updated: pending first spec creation
--->
+# FINNISH Project Constitution
+## Version 3.0 | Updated: 2026-02-07 | Source: Founder Interview
 
-# FINNISH Constitution
+## Mission
+Democratize scientific illustration. One app that solves every illustration problem for the scientific community - AI generates it, you edit it, done.
 
-> "Finish your diagrams. Finish the competition."
-
-## Mission Statement
-
-FINNISH is an AI-powered illustration and diagram editor designed to replace Adobe Illustrator, BioRender, and Napkin.AI for academics and scientists. It enables users to generate publication-quality diagrams through natural language prompts, then refine them through an intuitive editor interface.
+---
 
 ## Core Principles
 
-### I. AI-First Generation
+### 1. The Combination IS the Product
+- Agent Mode (AI generation) + Editor Mode (manual editing) = FINNISH
+- Neither mode alone is valuable. Agent Mode alone = a Claude wrapper. Editor Mode alone = another BioRender clone.
+- The flow: Prompt → AI generates → accept/reject → optionally edit → export
 
-Every diagram starts with a prompt, not a blank canvas. Users describe what they need in natural language, and the system generates a complete first draft using the most appropriate rendering engine (Mermaid, Plotly, drawsvg, Manim, LaTeX/TikZ, or AI image generation).
+### 2. Verified Accuracy Over Speed
+- Curated icon library is the MOAT. Verified scientific icons are used FIRST.
+- AI-generated elements are labeled "AI-generated - verify accuracy"
+- Track what AI generates most often → add those as verified icons over time
 
-**Non-negotiable rules:**
-- MUST support natural language input for all diagram types
-- MUST intelligently route requests to the optimal generation backend
-- MUST provide immediate visual feedback within 5 seconds for simple diagrams
-- MUST allow regeneration with modified prompts
+### 3. Users Own Everything
+- No forced attribution on paid tier. No licensing restrictions.
+- "You made it, it's yours." Full commercial use rights.
+- The opposite of BioRender's approach.
 
-### II. Publication-Ready Output
+### 4. Cost Discipline from Day One
+- Prompt caching for system prompts (90% savings on repeated calls)
+- Smart model routing: cheap model for simple, capable model for complex
+- Template matching: known diagram types (PRISMA, CONSORT) skip AI entirely
+- No OpenRouter middleman. Direct API keys only.
 
-All output MUST meet international journal publication standards without additional processing.
+### 5. Simplicity Over Features
+- Excalidraw-level editor, NOT Adobe Illustrator complexity
+- No onboarding tutorial - the app speaks for itself through clean design
+- Fast: under 2 seconds to load, "this is going to be easy to use"
+- Fix first, add later. Never ship broken features.
 
-**Non-negotiable rules:**
-- MUST support 300 DPI minimum for raster exports
-- MUST produce WCAG AA compliant color combinations
-- MUST use Nature/Science journal-compliant typography defaults
-- MUST export to PNG, SVG, PDF, and LaTeX/TikZ formats
-- MUST preserve vector quality in all scalable formats
+---
 
-### III. Domain-Specific Templates
+## Non-Negotiable Rules
 
-The system MUST provide specialized templates and icon libraries for ALL scientific disciplines, not just cardiology.
+1. **Never remove features** - Fix them. If it's broken, debug it.
+2. **No code without specs** - Every feature starts with specification, then plan, then tasks.
+3. **Test before done** - No task is complete without verification (build passes, feature works).
+4. **Commit frequently** - Small, atomic commits with clear messages.
+5. **Medical accuracy matters** - We serve doctors and researchers. Inaccurate icons/diagrams can mislead.
+6. **PII protection** - Warn users before processing prompts that contain patient-identifiable information.
 
-**Non-negotiable rules:**
-- MUST include templates for: Medicine, Biology, Chemistry, Physics, Engineering, Mathematics, Computer Science, Earth Sciences, and General Science
-- MUST provide domain-specific diagram types (CONSORT, PRISMA, pathway diagrams, circuit diagrams, molecular structures, etc.)
-- MUST include curated icon libraries per domain (minimum 100 icons per major domain)
-- MUST allow users to save custom templates
+---
 
-### IV. Tweakable by Design
+## Tech Stack (Locked)
 
-AI generates the first draft; humans refine it. The editor MUST provide full manual control over every generated element.
+| Component | Choice | Reason |
+|-----------|--------|--------|
+| Frontend | React 18 + Vite + TypeScript | Existing codebase, proven |
+| Canvas | Fabric.js 6.x | Full-featured, well-documented |
+| Auth | Clerk | Easy, familiar to founder |
+| Database + Storage | Convex | Pure TypeScript, LLM-debuggable, real-time capable |
+| Hosting | Vercel | Easy deployment, free tier sufficient |
+| Payments | Lemon Squeezy | Single integration, handles INR + international, taxes |
+| AI Primary | Claude Sonnet (Anthropic) | Best at scientific context, structured output |
+| AI Secondary | GPT-4o mini or Gemini Flash (paid) | Fast/cheap for simple tasks |
+| AI Fallback | DeepSeek | Cost optimization for high-volume |
+| AI Image Gen | fal.ai FLUX | Photorealistic/artistic, $0.008/image |
 
-**Non-negotiable rules:**
-- MUST allow selection, movement, resizing, and rotation of any object
-- MUST support grouping and ungrouping of elements
-- MUST provide layer management (reorder, visibility, lock)
-- MUST support undo/redo with minimum 50 history states
-- MUST allow import of external SVG/PNG for editing (including infographics from other tools)
+---
 
-### V. Test-Driven Development (NON-NEGOTIABLE)
+## Quality Standards
 
-All features MUST be developed using TDD methodology with comprehensive test coverage.
+### Code Quality
+- TypeScript strict mode - no `any` without justification
+- Build must pass (`tsc --noEmit && vite build`) before any commit
+- No console errors in production
 
-**Non-negotiable rules:**
-- Tests MUST be written before implementation code
-- Red-Green-Refactor cycle MUST be strictly followed
-- Minimum 80% code coverage required for all modules
-- Integration tests MUST cover all user scenarios in specifications
-- RALF loop (max 20 iterations) MUST be applied for any failing feature
+### Performance
+- App loads in under 2 seconds
+- Agent Mode generates diagrams in under 30 seconds
+- No heavy splash screens or loading bars
 
-### VI. Spec-Driven Development
+### User Experience
+- English only
+- Dark mode available (V1)
+- Mobile-responsive landing + Agent Mode on mobile
+- Editor Mode shows "Open on desktop" on mobile
+- Offline Editor Mode works, syncs when connected
 
-All features MUST follow the spec-kit methodology: Constitution → Specification → Plan → Tasks → Implementation.
+---
 
-**Non-negotiable rules:**
-- NO feature implementation without a written specification
-- Specifications MUST focus on user scenarios, not technical details
-- Plans MUST be reviewed before task generation
-- Tasks MUST be atomic and independently testable
+## Target Users (Priority Order)
 
-### VII. Open and Self-Hostable
+1. **Medical professionals** - ALL branches of medicine (primary, go-to-market)
+2. **Scientists** - Biology, Chemistry, other disciplines (secondary)
+3. **Conference deadline**: July 2026 - live demo to medical audience
 
-FINNISH MUST remain open source and self-hostable, with no vendor lock-in.
+---
 
-**Non-negotiable rules:**
-- MUST use MIT/Apache 2.0/BSD licensed dependencies only
-- MUST NOT require proprietary services for core functionality
-- MUST be deployable on user's own infrastructure
-- MUST NOT include usage tracking without explicit opt-in
+## Business Model
 
-## Technology Constraints
+| Tier | Price | Includes |
+|------|-------|----------|
+| Free | ₹0 | Editor Mode only, limited icons, low-res PNG with subtle corner watermark, NO Agent Mode |
+| Pro | ~₹1,000/month (~$12 USD) | Agent Mode + full Editor, full icons, full-res PNG + SVG + PDF + PPTX, no watermark |
+| Team/Lab | ~₹3,000/month | 5 seats, shared assets, higher AI quota |
 
-### Approved Libraries (MIT/Apache 2.0/BSD)
-- **Editor Core**: Fabric.js (MIT)
-- **Diagrams**: Mermaid.js (MIT), D2, PlantUML
-- **Charts**: Plotly.js (MIT), Apache ECharts (Apache 2.0), AntV G2 (MIT)
-- **Math**: KaTeX (MIT), MathJax (Apache 2.0)
-- **Icons**: Bioicons (CC0), Health Icons (CC0), Lucide (MIT)
-- **Molecules**: Mol* (Apache 2.0), RDKit (BSD)
-- **Animation**: Manim (MIT)
+---
 
-### Prohibited
-- GPL-only dependencies without MIT alternatives
-- Proprietary libraries with usage restrictions
-- Dependencies with "Made with X" watermark requirements
-
-## Quality Gates
-
-### Before Merge
-- [ ] All tests pass (unit + integration)
-- [ ] Code coverage >= 80%
-- [ ] No TypeScript strict mode errors
-- [ ] Specification compliance verified
-- [ ] Manual QA on affected user scenarios
-
-### Before Release
-- [ ] All P1 user scenarios working
-- [ ] Performance benchmarks met (5s generation, 60fps editor)
-- [ ] Export quality verified (300 DPI, vector integrity)
-- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
-
-## Governance
-
-This constitution supersedes all other practices and guidelines. Any deviation requires:
-
-1. Written justification with impact analysis
-2. Amendment proposal reviewed by project lead
-3. Version increment following semantic versioning:
-   - MAJOR: Principle removal or fundamental redefinition
-   - MINOR: New principle or significant expansion
-   - PATCH: Clarification or wording improvement
-
-All code reviews MUST verify compliance with these principles. Complexity MUST be justified against the Simplicity principle.
-
-**Version**: 1.0.0 | **Ratified**: 2026-01-17 | **Last Amended**: 2026-01-17
+*This constitution guides ALL development decisions. When in doubt, refer here.*

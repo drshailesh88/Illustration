@@ -11,6 +11,9 @@ interface ImportMetaEnv {
   // Authentication (Clerk)
   readonly VITE_CLERK_PUBLISHABLE_KEY: string;
 
+  // Database (Convex)
+  readonly VITE_CONVEX_URL: string;
+
   // Application
   readonly VITE_APP_VERSION: string;
 

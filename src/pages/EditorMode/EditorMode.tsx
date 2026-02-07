@@ -29,6 +29,8 @@ import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { useIllustratorTools } from '../../hooks/useIllustratorTools';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import { useCanvas as useCanvasContext } from '../../components/Canvas/CanvasContext';
+import { useProject } from '../../hooks/useProject';
+import { useAutoSave } from '../../hooks/useAutoSave';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
 import { RightPanel } from './RightPanel';
@@ -151,6 +153,12 @@ function EditorModeContent(): JSX.Element {
   const [shapeGeneratorOpen, setShapeGeneratorOpen] = useState(false);
   const [initialShapeType, setInitialShapeType] = useState<ShapeType>('dna');
 
+  // Cloud project state
+  const [currentProjectId, setCurrentProjectId] = useState<string | undefined>(
+    id && !id.startsWith('agent-') ? id : undefined
+  );
+  const { project, save: saveToCloud, saveStatus } = useProject(currentProjectId);
+
   // Store state
   const isLoading = useEditorStore((state) => state.isLoading);
   const setLoading = useEditorStore((state) => state.setLoading);
@@ -249,20 +257,70 @@ function EditorModeContent(): JSX.Element {
     input.click();
   }, [importJSON, showToast]);
 
-  // Handle Save (Ctrl+S)
-  const handleSave = useCallback(() => {
+  // Generate a thumbnail blob from the canvas
+  const generateThumbnail = useCallback((): Blob | null => {
+    if (!canvas) return null;
+    try {
+      const dataUrl = canvas.toDataURL({ format: 'png', multiplier: 0.25 });
+      const byteString = atob(dataUrl.split(',')[1]);
+      const mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      return new Blob([ab], { type: mimeString });
+    } catch (err) {
+      console.error('Failed to generate thumbnail:', err);
+      return null;
+    }
+  }, [canvas]);
+
+  // Handle Save (Ctrl+S) — cloud save
+  const handleSave = useCallback(async () => {
     const json = exportJSON();
-    const blob = new Blob([JSON.stringify(json, null, 2)], {
-      type: 'application/json',
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'diagram.finnish';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast({ type: 'success', message: 'Saved: diagram.finnish' });
-  }, [exportJSON, showToast]);
+    const diagramData = JSON.stringify(json);
+    const thumbnailBlob = generateThumbnail();
+    const title = project?.title || 'Untitled Diagram';
+
+    try {
+      const savedId = await saveToCloud(
+        title,
+        diagramData,
+        thumbnailBlob || undefined,
+      );
+      if (savedId && !currentProjectId) {
+        setCurrentProjectId(savedId);
+        navigate(`/editor/${savedId}`, { replace: true });
+      }
+      showToast({ type: 'success', message: 'Saved to cloud' });
+    } catch (err: any) {
+      if (err?.message === 'FREE_TIER_LIMIT_REACHED') {
+        showToast({
+          type: 'error',
+          message: 'Project limit reached. Upgrade to Pro for unlimited projects.',
+        });
+      } else {
+        showToast({ type: 'error', message: 'Failed to save. Please try again.' });
+      }
+    }
+  }, [exportJSON, generateThumbnail, saveToCloud, currentProjectId, project, navigate, showToast]);
+
+  // Auto-save: get canvas state as JSON string
+  const getCanvasStateForAutoSave = useCallback((): string | null => {
+    try {
+      const json = exportJSON();
+      return JSON.stringify(json);
+    } catch {
+      return null;
+    }
+  }, [exportJSON]);
+
+  const { markChanged: markAutoSaveChanged, saveStatus: autoSaveStatus } = useAutoSave(
+    currentProjectId ?? null,
+    getCanvasStateForAutoSave,
+    generateThumbnail,
+  );
 
   // Handle Save As (Ctrl+Shift+S)
   const handleSaveAs = useCallback(() => {
@@ -437,7 +495,7 @@ function EditorModeContent(): JSX.Element {
     setLoading(true);
 
     try {
-      // Try to load from localStorage
+      // Try to load from localStorage (legacy and agent-created diagrams)
       const stored = localStorage.getItem(`finnish-diagram-${diagramId}`);
 
       if (stored) {
@@ -464,12 +522,9 @@ function EditorModeContent(): JSX.Element {
           throw new Error('Unsupported diagram format');
         }
       } else {
-        showToast({
-          type: 'warning',
-          message: `Diagram "${diagramId}" not found`,
-        });
-        // Redirect to editor without ID
-        navigate('/editor', { replace: true });
+        // Not in localStorage — it may be a Convex project ID
+        // The useProject hook will load it reactively
+        setCurrentProjectId(diagramId);
       }
     } catch (error) {
       console.error('Failed to load diagram:', error);
@@ -481,6 +536,25 @@ function EditorModeContent(): JSX.Element {
       setLoading(false);
     }
   }, [navigate, setLoading, showToast, importSVG, clearCanvas, importJSON]);
+
+  // ========================================================================
+  // Load from Convex project when data arrives
+  // ========================================================================
+
+  useEffect(() => {
+    if (project && project.diagramData && !isLoading) {
+      try {
+        const canvasData = JSON.parse(project.diagramData);
+        if (canvasRef.current) {
+          canvasRef.current.loadFromJSON(canvasData);
+        } else {
+          importJSON(canvasData);
+        }
+      } catch (err) {
+        console.error('Failed to load Convex project:', err);
+      }
+    }
+  }, [project?._id]); // Only re-run when the project ID changes, not on every data update
 
   // ========================================================================
   // Canvas Resize Handler
@@ -540,7 +614,9 @@ function EditorModeContent(): JSX.Element {
 
   const handleObjectModified = useCallback((_object: unknown) => {
     // Object was modified, history is automatically updated in Canvas component
-  }, []);
+    // Trigger auto-save timer
+    markAutoSaveChanged();
+  }, [markAutoSaveChanged]);
 
   // ========================================================================
   // Render
@@ -554,6 +630,8 @@ function EditorModeContent(): JSX.Element {
           onOpenBackgroundRemoval={handleOpenBackgroundRemoval}
           onOpenAIGeneration={handleOpenAIGeneration}
           onOpenShapeGenerator={handleOpenShapeGenerator}
+          onCloudSave={handleSave}
+          saveStatus={saveStatus !== 'idle' ? saveStatus : autoSaveStatus}
         />
 
         {/* Export Dialog */}

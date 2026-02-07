@@ -480,6 +480,21 @@ export function Welcome(): JSX.Element {
             </SignUpButton>
           </SignedOut>
           <SignedIn>
+            <a
+              href="/projects"
+              style={{
+                padding: '8px 16px',
+                backgroundColor: 'var(--bg-secondary, #2a2a3e)',
+                color: 'var(--text-primary, #e0e0e0)',
+                border: '1px solid var(--border-primary, #3a3a4e)',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: 500,
+              }}
+            >
+              My Projects
+            </a>
             <UserButton afterSignOutUrl="/" showName />
           </SignedIn>
         </div>

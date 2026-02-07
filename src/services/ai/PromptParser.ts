@@ -155,6 +155,56 @@ const MODIFICATION_KEYWORDS = [
 ];
 
 /**
+ * Keywords for detecting medical/scientific specialty
+ */
+const SPECIALTY_KEYWORD_MAP: Record<string, string[]> = {
+  cardiology: ['heart', 'cardiac', 'ecg', 'ekg', 'arrhythmia', 'coronary', 'myocardial', 'atrial', 'ventricular', 'aortic', 'valvular', 'pacemaker', 'stemi', 'nstemi'],
+  neurology: ['brain', 'neural', 'stroke', 'seizure', 'dementia', 'cerebrospinal', 'cortex', 'neuron', 'synapse', 'parkinson', 'alzheimer', 'epilepsy', 'neuropathy'],
+  pulmonology: ['lung', 'respiratory', 'asthma', 'copd', 'ventilator', 'bronchial', 'pneumonia', 'pulmonary', 'alveoli', 'oxygen', 'intubation'],
+  gastroenterology: ['liver', 'hepatic', 'gastric', 'intestinal', 'colon', 'pancreas', 'gi tract', 'endoscopy', 'bowel', 'esophageal', 'biliary'],
+  nephrology: ['kidney', 'renal', 'dialysis', 'nephron', 'glomerular', 'creatinine', 'proteinuria', 'ckd', 'aki'],
+  endocrinology: ['thyroid', 'diabetes', 'insulin', 'hormone', 'adrenal', 'pituitary', 'cortisol', 'endocrine', 'hba1c', 'glucose'],
+  'infectious-disease': ['infection', 'bacteria', 'virus', 'antibiotic', 'sepsis', 'hiv', 'tuberculosis', 'antimicrobial', 'pathogen', 'vaccine'],
+  'emergency-medicine': ['emergency', 'trauma', 'resuscitation', 'triage', 'acls', 'bls', 'intubation', 'airway', 'shock'],
+  orthopedics: ['bone', 'fracture', 'joint', 'spine', 'orthopedic', 'ligament', 'tendon', 'arthroplasty', 'musculoskeletal'],
+  ophthalmology: ['eye', 'retina', 'cornea', 'glaucoma', 'cataract', 'optic', 'visual', 'macular', 'intraocular'],
+  dermatology: ['skin', 'dermatitis', 'melanoma', 'psoriasis', 'rash', 'lesion', 'wound', 'epidermis', 'biopsy'],
+  psychiatry: ['mental', 'depression', 'anxiety', 'psychosis', 'schizophrenia', 'bipolar', 'psychiatric', 'behavioral'],
+  pediatrics: ['pediatric', 'child', 'neonatal', 'infant', 'growth', 'developmental', 'vaccination'],
+  obgyn: ['obstetric', 'gynecology', 'pregnancy', 'fetal', 'uterine', 'cervical', 'labor', 'delivery', 'prenatal'],
+  radiology: ['imaging', 'ct scan', 'mri', 'x-ray', 'ultrasound', 'radiograph', 'contrast', 'fluoroscopy'],
+  anesthesiology: ['anesthesia', 'sedation', 'airway', 'perioperative', 'analgesic', 'nerve block', 'intubation'],
+  rheumatology: ['arthritis', 'lupus', 'autoimmune', 'rheumatoid', 'inflammation', 'joint pain', 'sjogren'],
+  pathology: ['histology', 'biopsy', 'cytology', 'tissue', 'specimen', 'staining', 'microscopy'],
+  physiology: ['homeostasis', 'action potential', 'membrane potential', 'physiological', 'regulation'],
+  biochemistry: ['enzyme', 'metabolic', 'glycolysis', 'krebs', 'atp', 'amino acid', 'lipid', 'carbohydrate'],
+  pharmacology: ['drug', 'pharmacokinetics', 'pharmacodynamics', 'receptor', 'agonist', 'antagonist', 'dose-response'],
+  anatomy: ['anatomical', 'dissection', 'skeletal', 'muscular', 'organs', 'fascia', 'innervation'],
+  'cell-biology': ['cell cycle', 'mitosis', 'meiosis', 'organelle', 'cytoplasm', 'nucleus', 'endoplasmic'],
+  'molecular-biology': ['dna', 'rna', 'transcription', 'translation', 'gene expression', 'pcr', 'sequencing', 'crispr'],
+  neuroscience: ['neurotransmitter', 'synapse', 'cortical', 'hippocampus', 'dopamine', 'serotonin', 'neuronal'],
+  microbiology: ['bacteria', 'virus', 'fungus', 'microbe', 'culture', 'gram stain', 'antibiotic resistance'],
+  chemistry: ['reaction', 'compound', 'synthesis', 'catalyst', 'equilibrium', 'titration', 'molar'],
+  physics: ['force', 'momentum', 'quantum', 'electromagnetic', 'thermodynamic', 'wavelength', 'particle'],
+  biology: ['evolution', 'ecology', 'biodiversity', 'photosynthesis', 'ecosystem', 'population', 'habitat'],
+  mathematics: ['equation', 'theorem', 'proof', 'integral', 'derivative', 'matrix', 'topology'],
+  engineering: ['circuit', 'mechanical', 'structural', 'thermodynamic', 'fluid dynamics', 'control system'],
+  'computer-science': ['algorithm', 'data structure', 'binary', 'sorting', 'complexity', 'hash', 'graph theory'],
+  'biomedical-engineering': ['prosthetic', 'implant', 'biomaterial', 'medical device', 'biosensor', 'biocompatible'],
+  ecology: ['ecosystem', 'food web', 'biodiversity', 'habitat', 'population dynamics', 'trophic'],
+  astronomy: ['planet', 'star', 'galaxy', 'orbit', 'telescope', 'nebula', 'cosmic'],
+  geology: ['rock', 'mineral', 'tectonic', 'seismic', 'volcanic', 'sediment', 'stratigraphy'],
+  forensics: ['forensic', 'evidence', 'crime scene', 'toxicology', 'ballistic', 'dna analysis'],
+  aerospace: ['aircraft', 'propulsion', 'aerodynamic', 'satellite', 'orbital', 'rocket'],
+  agriculture: ['crop', 'soil', 'irrigation', 'fertilizer', 'harvest', 'livestock', 'agronomy'],
+  meteorology: ['weather', 'climate', 'atmospheric', 'precipitation', 'storm', 'wind', 'temperature'],
+  oceanography: ['ocean', 'marine', 'tide', 'current', 'coral', 'deep sea', 'salinity'],
+  botany: ['plant', 'flower', 'root', 'photosynthesis', 'chlorophyll', 'xylem', 'phloem'],
+  zoology: ['animal', 'species', 'vertebrate', 'invertebrate', 'mammal', 'behavior', 'migration'],
+  ent: ['ear', 'nose', 'throat', 'hearing', 'sinus', 'larynx', 'tonsil', 'cochlea'],
+};
+
+/**
  * Template patterns for specific scientific diagrams
  */
 const TEMPLATE_PATTERNS: Record<string, RegExp[]> = {
@@ -232,6 +282,9 @@ export class PromptParser {
     // Build alternatives
     const alternatives = this.buildAlternatives(typeResult.allMatches);
 
+    // Detect specialty
+    const specialty = this.detectSpecialty(normalizedPrompt);
+
     const result: ParsedPrompt = {
       diagramType: typeResult.type,
       domain,
@@ -241,6 +294,7 @@ export class PromptParser {
       template: template ?? undefined,
       entities,
       alternatives,
+      specialty,
     };
 
     this.logger.info('Prompt parsed', {
@@ -359,6 +413,32 @@ export class PromptParser {
     );
 
     return maxDomain.score > 0 ? maxDomain.domain : 'general';
+  }
+
+  /**
+   * Detect medical/scientific specialty from the prompt using keyword scoring.
+   * Returns the best matching specialty or undefined if score is below threshold.
+   */
+  private detectSpecialty(prompt: string): string | undefined {
+    let bestSpecialty: string | undefined;
+    let bestScore = 0;
+
+    for (const [specialty, keywords] of Object.entries(SPECIALTY_KEYWORD_MAP)) {
+      let matches = 0;
+      for (const keyword of keywords) {
+        if (prompt.includes(keyword.toLowerCase())) {
+          matches++;
+        }
+      }
+      const score = keywords.length > 0 ? matches / keywords.length : 0;
+      if (score > bestScore) {
+        bestScore = score;
+        bestSpecialty = specialty;
+      }
+    }
+
+    // Threshold: at least 30% of keywords match, or at least 2 keyword matches
+    return bestScore > 0.3 || (bestScore > 0 && bestSpecialty) ? bestSpecialty : undefined;
   }
 
   /**
