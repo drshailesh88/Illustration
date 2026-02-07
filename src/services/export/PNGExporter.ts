@@ -176,6 +176,40 @@ export class PNGExporter implements Exporter<PNGExportOptions> {
   }
 
   /**
+   * Add a subtle watermark to an exported PNG blob.
+   * Used for free tier exports.
+   */
+  async addWatermark(blob: Blob, text = 'Made with FINNISH'): Promise<Blob> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const offscreen = document.createElement('canvas');
+        offscreen.width = img.width;
+        offscreen.height = img.height;
+        const ctx = offscreen.getContext('2d');
+        if (!ctx) {
+          resolve(blob); // Fallback: return original
+          return;
+        }
+        ctx.drawImage(img, 0, 0);
+        // Subtle watermark in bottom-right corner
+        const fontSize = Math.max(14, Math.min(img.width * 0.018, 28));
+        ctx.font = `${fontSize}px sans-serif`;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'bottom';
+        const padding = fontSize * 0.8;
+        ctx.fillText(text, img.width - padding, img.height - padding);
+        offscreen.toBlob((resultBlob) => {
+          resolve(resultBlob || blob);
+        }, 'image/png');
+      };
+      img.onerror = () => reject(new Error('Failed to load image for watermark'));
+      img.src = URL.createObjectURL(blob);
+    });
+  }
+
+  /**
    * Export with high DPI for print quality
    * Convenience method for print-ready exports
    */

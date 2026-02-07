@@ -31,6 +31,8 @@ export interface ExportDialogProps {
   tikzPreview?: string;
   /** Callback for error handling (for toast notifications) */
   onError?: (message: string) => void;
+  /** Whether user has Pro subscription */
+  isPro?: boolean;
 }
 
 export type ExportSettings =
@@ -226,7 +228,9 @@ export function ExportDialog({
   filename = 'diagram',
   tikzPreview = '',
   onError,
+  isPro = false,
 }: ExportDialogProps): JSX.Element | null {
+  const lockedFormats: ExportFormat[] = isPro ? [] : ['svg', 'pdf', 'pptx', 'latex'];
   const [selectedFormat, setSelectedFormat] = useState<ExportFormat>('png');
   const [exportFilename, setExportFilename] = useState(filename);
   const [pngSettings, setPngSettings] = useState<PNGExportSettings>(defaultPNGSettings);
@@ -355,7 +359,23 @@ export function ExportDialog({
         {/* Content */}
         <div style={styles.content}>
           {/* Format Selection */}
-          <FormatTabs selectedFormat={selectedFormat} onFormatChange={setSelectedFormat} />
+          <FormatTabs selectedFormat={selectedFormat} onFormatChange={setSelectedFormat} lockedFormats={lockedFormats} />
+
+          {/* Free tier notice */}
+          {!isPro && (
+            <div style={{
+              padding: '10px 14px',
+              marginBottom: '16px',
+              backgroundColor: 'rgba(59, 130, 246, 0.08)',
+              borderRadius: '8px',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
+              fontSize: '13px',
+              color: 'var(--text-secondary, #9d9d9d)',
+              lineHeight: 1.5,
+            }}>
+              Free tier: PNG export at 72 DPI with watermark. Upgrade to Pro for full resolution, SVG, PDF, PPTX, and LaTeX exports.
+            </div>
+          )}
 
           {/* Filename Input */}
           <div style={styles.filenameSection}>

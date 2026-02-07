@@ -39,6 +39,8 @@ import { StatusBar } from './StatusBar';
 import { ToolType } from '../../types/index';
 import { VersionHistoryDialog } from '../../components/VersionHistoryDialog/VersionHistoryDialog';
 import { useVersionHistory } from '../../hooks/useVersionHistory';
+import { useSubscription } from '../../hooks/useSubscription';
+import { PNGExporter } from '../../services/export/PNGExporter';
 
 // ============================================================================
 // Types
@@ -244,6 +246,9 @@ function EditorModeContent(): JSX.Element {
   const [shapeGeneratorOpen, setShapeGeneratorOpen] = useState(false);
   const [initialShapeType, setInitialShapeType] = useState<ShapeType>('dna');
   const [versionHistoryOpen, setVersionHistoryOpen] = useState(false);
+
+  // Subscription tier
+  const { isPro, isFree } = useSubscription();
 
   // Cloud project state
   const [currentProjectId, setCurrentProjectId] = useState<string | undefined>(
@@ -473,6 +478,12 @@ function EditorModeContent(): JSX.Element {
       return;
     }
 
+    // Block Pro-only formats for free tier
+    if (isFree && ['svg', 'pdf', 'pptx', 'latex'].includes(format)) {
+      showToast({ type: 'error', message: `${format.toUpperCase()} export requires Pro. Upgrade to unlock all formats.` });
+      return;
+    }
+
     const exportService = getExportService();
     const filename = 'diagram';
 
@@ -480,15 +491,23 @@ function EditorModeContent(): JSX.Element {
       switch (format) {
         case 'png': {
           const pngSettings = settings as { dpi: number; quality: number; background: string };
+          // Free tier: cap DPI at 72
+          const effectiveDpi = isFree ? 72 : pngSettings.dpi;
           const result = await exportService.export(canvas, {
             format: 'png',
-            dpi: pngSettings.dpi as 72 | 150 | 300 | 600,
+            dpi: effectiveDpi as 72 | 150 | 300 | 600,
             quality: pngSettings.quality,
             transparent: pngSettings.background === 'transparent',
             filename,
           });
-          downloadExport(result.blob, result.filename);
-          showToast({ type: 'success', message: 'PNG exported successfully!' });
+          // Free tier: add watermark
+          let finalBlob = result.blob;
+          if (isFree) {
+            const pngExporter = new PNGExporter();
+            finalBlob = await pngExporter.addWatermark(result.blob);
+          }
+          downloadExport(finalBlob, result.filename);
+          showToast({ type: 'success', message: isFree ? 'PNG exported (72 DPI, watermarked)' : 'PNG exported successfully!' });
           break;
         }
         case 'svg': {
@@ -567,7 +586,7 @@ function EditorModeContent(): JSX.Element {
       console.error('Export failed:', error);
       showToast({ type: 'error', message: 'Export failed. Please try again.' });
     }
-  }, [canvas, downloadExport, mmToPoints, showToast]);
+  }, [canvas, downloadExport, mmToPoints, showToast, isFree]);
 
   // Initialize illustrator tools hook
   // The hook sets up event handlers and manages Paper.js integration
@@ -744,7 +763,7 @@ function EditorModeContent(): JSX.Element {
           onCloudSave={handleSave}
           saveStatus={saveStatus !== 'idle' ? saveStatus : autoSaveStatus}
           onOpenVersionHistory={() => setVersionHistoryOpen(true)}
-          hasVersionHistory={!!currentProjectId}
+          hasVersionHistory={!!currentProjectId && isPro}
         />
 
         {/* Export Dialog */}
@@ -754,6 +773,7 @@ function EditorModeContent(): JSX.Element {
           onExport={handleExport}
           filename="diagram"
           onError={(message) => showToast({ type: 'error', message })}
+          isPro={isPro}
         />
 
         {/* Background Removal Tool Modal */}

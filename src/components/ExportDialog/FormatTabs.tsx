@@ -18,6 +18,8 @@ export interface FormatTabsProps {
   selectedFormat: ExportFormat;
   /** Callback when format changes */
   onFormatChange: (format: ExportFormat) => void;
+  /** Formats that require Pro subscription */
+  lockedFormats?: ExportFormat[];
 }
 
 interface FormatOption {
@@ -26,6 +28,12 @@ interface FormatOption {
   description: string;
   icon: React.ReactNode;
 }
+
+const LockIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/>
+  </svg>
+);
 
 // ============================================================================
 // Icons
@@ -166,11 +174,13 @@ const styles = {
 export function FormatTabs({
   selectedFormat,
   onFormatChange,
+  lockedFormats = [],
 }: FormatTabsProps): JSX.Element {
   return (
     <div style={styles.container} role="tablist" aria-label="Export format selection">
       {formatOptions.map((option) => {
         const isActive = selectedFormat === option.id;
+        const isLocked = lockedFormats.includes(option.id);
 
         return (
           <button
@@ -180,8 +190,10 @@ export function FormatTabs({
             style={{
               ...styles.tab,
               ...(isActive ? styles.tabActive : {}),
+              ...(isLocked ? { opacity: 0.5, cursor: 'not-allowed' } : {}),
             }}
-            onClick={() => onFormatChange(option.id)}
+            onClick={() => !isLocked && onFormatChange(option.id)}
+            title={isLocked ? `${option.label} export requires Pro` : undefined}
           >
             <span
               style={{
@@ -191,8 +203,13 @@ export function FormatTabs({
             >
               {option.icon}
             </span>
-            <span style={styles.tabLabel}>{option.label}</span>
-            <span style={styles.tabDescription}>{option.description}</span>
+            <span style={{ ...styles.tabLabel, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              {option.label}
+              {isLocked && <LockIcon />}
+            </span>
+            <span style={styles.tabDescription}>
+              {isLocked ? 'Pro only' : option.description}
+            </span>
           </button>
         );
       })}
