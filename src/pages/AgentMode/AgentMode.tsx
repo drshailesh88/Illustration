@@ -18,12 +18,14 @@ import { ChatHistory } from './ChatHistory';
 import { PromptInput } from './PromptInput';
 import { DiagramPreview } from './DiagramPreview';
 import { useDiagramGenerator } from '../../hooks/useDiagramGenerator';
+import { useIsMobile } from '../../hooks/useMediaQuery';
 
 interface AgentModeProps {
   onSendToEditor?: (svg: string) => void;
 }
 
 export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
+  const isMobile = useIsMobile();
   const [showPreviewPane, setShowPreviewPane] = useState(true);
   const abortControllerRef = useRef<AbortController | null>(null);
   const { generate } = useDiagramGenerator();
@@ -151,12 +153,15 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
 
   return (
     <div style={styles.container}>
-      {/* Left Sidebar: Template Gallery */}
-      <TemplateGallery onSelectTemplate={handleSelectTemplate} />
+      {/* Left Sidebar: Template Gallery (hidden on mobile) */}
+      {!isMobile && <TemplateGallery onSelectTemplate={handleSelectTemplate} />}
 
       {/* Main Chat Area */}
       <main style={styles.main}>
-        <div style={styles.chatContainer}>
+        <div style={{
+          ...styles.chatContainer,
+          ...(isMobile ? { padding: '12px', maxWidth: '100%' } : {}),
+        }}>
           <ChatHistory
             onSendToEditor={handleSendToEditor}
             onRegenerate={handleRegenerate}
@@ -166,8 +171,8 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
         </div>
       </main>
 
-      {/* Right Preview Pane (optional) */}
-      {showPreviewPane && currentDiagram && (
+      {/* Right Preview Pane (hidden on mobile) */}
+      {!isMobile && showPreviewPane && currentDiagram && (
         <aside style={styles.previewPane}>
           <div style={styles.previewHeader}>
             <h3 style={styles.previewTitle}>Preview</h3>
@@ -237,8 +242,8 @@ const styles: Record<string, React.CSSProperties> = {
     margin: 0
   },
   closeBtn: {
-    width: '24px',
-    height: '24px',
+    width: '32px',
+    height: '32px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -255,31 +260,5 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: 'auto'
   }
 };
-
-// Add responsive styles
-const responsiveStyles = document.createElement('style');
-responsiveStyles.textContent = `
-  @media (max-width: 1200px) {
-    .agent-preview-pane {
-      width: 300px;
-    }
-  }
-  @media (max-width: 992px) {
-    .agent-sidebar {
-      display: none;
-    }
-    .agent-preview-pane {
-      display: none;
-    }
-  }
-  @media (max-width: 768px) {
-    .agent-chat-container {
-      padding: var(--spacing-md);
-    }
-  }
-`;
-if (typeof document !== 'undefined') {
-  document.head.appendChild(responsiveStyles);
-}
 
 export default AgentMode;

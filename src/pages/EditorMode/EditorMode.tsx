@@ -13,7 +13,8 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useIsMobile } from '../../hooks/useMediaQuery';
 import { useEditorStore } from '../../store/editorStore';
 import { useToast } from '../../components/Toast';
 import { Canvas, CanvasProvider, CanvasRef } from '../../components/Canvas';
@@ -124,6 +125,94 @@ const styles: Record<string, React.CSSProperties> = {
 // ============================================================================
 
 export function EditorMode(): JSX.Element {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: 'var(--bg-primary)',
+        padding: '24px',
+      }}>
+        <div style={{
+          maxWidth: '420px',
+          textAlign: 'center',
+          backgroundColor: 'var(--bg-secondary)',
+          borderRadius: '16px',
+          border: '1px solid var(--border-primary)',
+          padding: '48px 32px',
+        }}>
+          <div style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '16px',
+            backgroundColor: 'var(--bg-tertiary)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 24px',
+            fontSize: '28px',
+          }}>
+            &#128421;
+          </div>
+          <h2 style={{
+            fontSize: '22px',
+            fontWeight: 700,
+            color: 'var(--text-primary)',
+            marginBottom: '12px',
+          }}>
+            Editor works best on desktop
+          </h2>
+          <p style={{
+            fontSize: '15px',
+            color: 'var(--text-secondary)',
+            marginBottom: '28px',
+            lineHeight: 1.6,
+          }}>
+            The full editing experience with canvas tools, layers, and precision controls requires a larger screen. Open this page on a desktop or laptop for the best experience.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <Link
+              to="/agent"
+              style={{
+                display: 'block',
+                padding: '14px 24px',
+                fontSize: '15px',
+                fontWeight: 600,
+                color: 'white',
+                backgroundColor: 'var(--accent-primary)',
+                border: 'none',
+                borderRadius: '8px',
+                textAlign: 'center',
+              }}
+            >
+              Use Agent Mode instead
+            </Link>
+            <Link
+              to="/projects"
+              style={{
+                display: 'block',
+                padding: '14px 24px',
+                fontSize: '15px',
+                fontWeight: 600,
+                color: 'var(--text-secondary)',
+                backgroundColor: 'transparent',
+                border: '1px solid var(--border-primary)',
+                borderRadius: '8px',
+                textAlign: 'center',
+              }}
+            >
+              View My Projects
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <CanvasProvider>
       <EditorModeContent />
