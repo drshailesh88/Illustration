@@ -470,6 +470,29 @@ export type ConversationStore = ConversationState & ConversationActions;
 export type ExportStore = ExportState & ExportActions;
 
 // ============================================================================
+// Authentication & Subscription Types
+// ============================================================================
+
+/**
+ * Subscription tier levels for FINNISH
+ */
+export type SubscriptionTier = 'free' | 'pro' | 'team';
+
+/**
+ * Subscription info returned by useSubscription() hook
+ */
+export interface SubscriptionInfo {
+  tier: SubscriptionTier;
+  isLoaded: boolean;
+  isPro: boolean;
+  isFree: boolean;
+  isTeam: boolean;
+  canAccessAgentMode: boolean;
+  canExportFullRes: boolean;
+  canAccessFullIcons: boolean;
+}
+
+// ============================================================================
 // Utility Types
 // ============================================================================
 

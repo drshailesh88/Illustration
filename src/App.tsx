@@ -7,8 +7,12 @@
 
 import { useCallback } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { SignIn, SignUp } from '@clerk/clerk-react';
 import { ToastProvider, useToast } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { ProtectedLayout } from './components/Auth/ProtectedLayout';
+import { ProGate } from './components/Auth/ProGate';
+import { UpgradeCTA } from './components/Auth/UpgradeCTA';
 import { Welcome } from './pages/Welcome';
 import { AgentMode } from './pages/AgentMode';
 import { EditorMode } from './pages/EditorMode';
@@ -54,20 +58,44 @@ function AppRoutes(): JSX.Element {
 
   return (
     <Routes>
-      {/* Landing page */}
+      {/* Public routes */}
       <Route path="/" element={<Welcome />} />
-
-      {/* AI Agent mode for diagram generation */}
-      <Route path="/agent" element={<AgentMode onSendToEditor={handleSendToEditor} />} />
-
-      {/* Manual editor mode */}
-      <Route path="/editor" element={<EditorMode />} />
-
-      {/* Editor with loaded diagram by ID */}
-      <Route path="/editor/:id" element={<EditorMode />} />
-
-      {/* Credits and attribution page */}
       <Route path="/credits" element={<CreditsPage />} />
+
+      {/* Auth pages */}
+      <Route
+        path="/sign-in/*"
+        element={
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+            <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" fallbackRedirectUrl="/editor" />
+          </div>
+        }
+      />
+      <Route
+        path="/sign-up/*"
+        element={
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+            <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" fallbackRedirectUrl="/editor" />
+          </div>
+        }
+      />
+
+      {/* Protected routes — requires authentication */}
+      <Route element={<ProtectedLayout />}>
+        {/* Agent Mode — requires Pro tier */}
+        <Route
+          path="/agent"
+          element={
+            <ProGate fallback={<UpgradeCTA feature="Agent Mode" description="AI-powered diagram generation requires a Pro subscription. Upgrade to create diagrams with AI." />}>
+              <AgentMode onSendToEditor={handleSendToEditor} />
+            </ProGate>
+          }
+        />
+
+        {/* Editor Mode — any authenticated tier */}
+        <Route path="/editor" element={<EditorMode />} />
+        <Route path="/editor/:id" element={<EditorMode />} />
+      </Route>
 
       {/* Fallback to Welcome for unknown routes */}
       <Route path="*" element={<Welcome />} />

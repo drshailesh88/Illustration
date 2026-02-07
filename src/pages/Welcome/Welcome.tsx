@@ -7,6 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
 
 // ============================================================================
 // Types
@@ -446,6 +447,41 @@ export function Welcome(): JSX.Element {
             </svg>
           </div>
           <span style={styles.logoText}>FINNISH</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <SignedOut>
+            <SignInButton mode="redirect">
+              <button style={{
+                padding: '8px 16px',
+                fontSize: '14px',
+                fontWeight: 500,
+                color: 'var(--text-primary)',
+                backgroundColor: 'transparent',
+                border: '1px solid var(--border-primary)',
+                borderRadius: '8px',
+                cursor: 'pointer',
+              }}>
+                Sign In
+              </button>
+            </SignInButton>
+            <SignUpButton mode="redirect">
+              <button style={{
+                padding: '8px 16px',
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'white',
+                backgroundColor: 'var(--accent-primary)',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer',
+              }}>
+                Sign Up
+              </button>
+            </SignUpButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" showName />
+          </SignedIn>
         </div>
       </header>
 

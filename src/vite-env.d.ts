@@ -8,6 +8,9 @@
  */
 
 interface ImportMetaEnv {
+  // Authentication (Clerk)
+  readonly VITE_CLERK_PUBLISHABLE_KEY: string;
+
   // Application
   readonly VITE_APP_VERSION: string;
 
