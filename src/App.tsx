@@ -20,6 +20,13 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { CreditsPage } from './pages/CreditsPage';
 import { WaitlistPage } from './pages/WaitlistPage/WaitlistPage';
 import { PricingPage } from './pages/PricingPage/PricingPage';
+import { useTheme } from './hooks/useTheme';
+
+/** Initializes theme from persisted preference / system preference */
+function ThemeInit() {
+  useTheme();
+  return null;
+}
 
 // ============================================================================
 // App Component
@@ -122,6 +129,7 @@ function App(): JSX.Element {
       }}
     >
       <ToastProvider maxToasts={5}>
+        <ThemeInit />
         <BrowserRouter>
           <div className="finnish-app">
             <AppRoutes />

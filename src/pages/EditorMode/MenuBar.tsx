@@ -13,6 +13,7 @@ import { FilterDialog } from '../../components/FilterDialog/FilterDialog';
 import { AdjustmentsDialog, AdjustmentSettings } from '../../components/AdjustmentsDialog/AdjustmentsDialog';
 import { applyFilters, applyAdjustments } from '../../lib/image/filters';
 import { SaveButton } from '../../components/SaveButton/SaveButton';
+import { useTheme } from '../../hooks/useTheme';
 import type { SaveStatus } from '../../hooks/useProject';
 import './MenuBar.css';
 
@@ -72,6 +73,8 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
   const [showAdjustmentsDialog, setShowAdjustmentsDialog] = useState(false);
   const menuBarRef = useRef<HTMLDivElement>(null);
   const toast = useToast();
+  const { resolvedTheme, cycleTheme, mode } = useTheme();
+  const themeLabel = mode === 'system' ? `System (${resolvedTheme})` : resolvedTheme === 'dark' ? 'Dark' : 'Light';
 
   // Load recent files from localStorage on mount
   useEffect(() => {
@@ -362,6 +365,12 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           shortcut: 'Ctrl+R',
           checked: rulersVisible,
           action: () => toggleRulers(),
+        },
+        { id: 'divider3', label: '', divider: true },
+        {
+          id: 'theme-toggle',
+          label: `Theme: ${themeLabel}`,
+          action: () => cycleTheme(),
         },
       ],
     },
