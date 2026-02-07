@@ -4,23 +4,37 @@ interface SaveButtonProps {
   saveStatus: SaveStatus;
   onSave: () => void;
   disabled?: boolean;
+  isOnline?: boolean;
 }
 
 /**
  * Cloud save button with status indicator for the editor toolbar.
- * Shows different states: idle (Save), saving (spinner), saved (checkmark), error (retry).
+ * Shows different states: idle (Save), saving (spinner), saved (checkmark),
+ * offline-saved (offline icon), error (retry).
  */
-export function SaveButton({ saveStatus, onSave, disabled }: SaveButtonProps) {
+export function SaveButton({ saveStatus, onSave, disabled, isOnline = true }: SaveButtonProps) {
   const getLabel = () => {
+    if (!isOnline && saveStatus === 'idle') return 'Offline';
     switch (saveStatus) {
       case 'saving': return 'Saving...';
       case 'saved': return 'Saved';
+      case 'offline-saved': return 'Saved Locally';
       case 'error': return 'Save Failed';
-      default: return 'Save to Cloud';
+      default: return isOnline ? 'Save to Cloud' : 'Save Locally';
     }
   };
 
   const getIcon = () => {
+    if (!isOnline && saveStatus !== 'saving') {
+      // Offline icon (cloud with slash)
+      return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-warning, #f59e0b)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 2l20 20" />
+          <path d="M9.34 3.34A7.98 7.98 0 0 1 12 3a8 8 0 0 1 7.73 6h.27a5 5 0 0 1 3.9 8.11" />
+          <path d="M4.73 12.15A5 5 0 0 0 6 22h12a5 5 0 0 0 .59-.03" />
+        </svg>
+      );
+    }
     switch (saveStatus) {
       case 'saving':
         return (
@@ -31,6 +45,12 @@ export function SaveButton({ saveStatus, onSave, disabled }: SaveButtonProps) {
       case 'saved':
         return (
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-success, #4ade80)" strokeWidth="2">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        );
+      case 'offline-saved':
+        return (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-warning, #f59e0b)" strokeWidth="2">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         );
@@ -58,7 +78,7 @@ export function SaveButton({ saveStatus, onSave, disabled }: SaveButtonProps) {
       className="menu-action-btn"
       onClick={onSave}
       disabled={disabled || saveStatus === 'saving'}
-      title="Save to Cloud (Ctrl+S)"
+      title={isOnline ? 'Save to Cloud (Ctrl+S)' : 'Save Locally (Ctrl+S) — Will sync when online'}
       style={{
         display: 'flex',
         alignItems: 'center',

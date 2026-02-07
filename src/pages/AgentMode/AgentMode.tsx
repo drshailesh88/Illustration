@@ -19,6 +19,7 @@ import { PromptInput, type ImageAttachment } from './PromptInput';
 import { DiagramPreview } from './DiagramPreview';
 import { useDiagramGenerator } from '../../hooks/useDiagramGenerator';
 import { useIsMobile } from '../../hooks/useMediaQuery';
+import { useOnlineStatus } from '../../hooks/useOnlineStatus';
 import { detectPII } from '../../lib/piiDetector';
 
 interface AgentModeProps {
@@ -27,6 +28,7 @@ interface AgentModeProps {
 
 export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   const isMobile = useIsMobile();
+  const { isOnline } = useOnlineStatus();
   const [showPreviewPane, setShowPreviewPane] = useState(true);
   const [piiWarning, setPiiWarning] = useState<{ prompt: string; issues: string[] } | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -135,8 +137,20 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     }
   }, [addMessage, setLoading, generate, refine, generatorState.svg]);
 
-  // Handle sending a prompt (with PII detection)
+  // Handle sending a prompt (with PII detection and offline check)
   const handleSendPrompt = useCallback(async (prompt: string, imageAttachment?: ImageAttachment) => {
+    // Block generation when offline — AI requires connectivity
+    if (!isOnline) {
+      addMessage({ role: 'user', content: prompt || '(offline)' });
+      addMessage({
+        role: 'assistant',
+        content: 'You\'re currently offline. AI diagram generation requires an internet connection.\n\n' +
+          'You can still use the **Editor Mode** to work on existing diagrams — your changes will be saved locally and synced when you reconnect.',
+        isError: true,
+      });
+      return;
+    }
+
     // If no image and prompt is too short, reject
     if (!imageAttachment && (!prompt.trim() || prompt.trim().length < 5)) {
       addMessage({
@@ -163,7 +177,7 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     }
 
     await executeGeneration(prompt, imageAttachment);
-  }, [addMessage, executeGeneration]);
+  }, [addMessage, executeGeneration, isOnline]);
 
   // Handle PII warning: proceed anyway
   const handlePiiProceed = useCallback(() => {

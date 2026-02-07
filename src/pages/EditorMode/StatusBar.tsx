@@ -26,6 +26,7 @@ interface CanvasSize {
 interface StatusBarProps {
   mouseCoords?: MouseCoords;
   canvasSize?: CanvasSize;
+  isOnline?: boolean;
 }
 
 // ============================================================================
@@ -183,7 +184,7 @@ const CanvasSizeIcon = () => (
   </svg>
 );
 
-export function StatusBar({ mouseCoords, canvasSize }: StatusBarProps): JSX.Element {
+export function StatusBar({ mouseCoords, canvasSize, isOnline = true }: StatusBarProps): JSX.Element {
   const { zoom } = useViewport();
   const { selectionCount, hasSelection } = useSelection();
   const activeTool = useActiveTool();
@@ -213,6 +214,31 @@ export function StatusBar({ mouseCoords, canvasSize }: StatusBarProps): JSX.Elem
     <footer style={styles.statusBar}>
       {/* Left Section - Tool and Selection Info */}
       <div style={styles.leftSection}>
+        {/* Offline Indicator */}
+        {!isOnline && (
+          <>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 8px',
+              backgroundColor: 'rgba(245, 158, 11, 0.15)',
+              borderRadius: '4px',
+              fontSize: '10px',
+              fontWeight: 500,
+              color: 'var(--text-warning, #f59e0b)',
+            }}>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 2l20 20" />
+                <path d="M9.34 3.34A7.98 7.98 0 0 1 12 3a8 8 0 0 1 7.73 6h.27a5 5 0 0 1 3.9 8.11" />
+                <path d="M4.73 12.15A5 5 0 0 0 6 22h12a5 5 0 0 0 .59-.03" />
+              </svg>
+              Offline
+            </div>
+            <div style={styles.divider} />
+          </>
+        )}
+
         {/* Current Tool */}
         <div style={styles.toolBadge}>
           {toolDisplayNames[activeTool] || 'Select'}

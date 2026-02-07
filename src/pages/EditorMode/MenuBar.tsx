@@ -63,13 +63,15 @@ interface MenuBarProps {
   onOpenCanvasSize?: () => void;
   /** Callback to import SVG file */
   onImportSVG?: () => void;
+  /** Whether the browser is online */
+  isOnline?: boolean;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle', onOpenVersionHistory, hasVersionHistory = false, onOpenCanvasSize, onImportSVG }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle', onOpenVersionHistory, hasVersionHistory = false, onOpenCanvasSize, onImportSVG, isOnline = true }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [_isLoading, setIsLoading] = useState(false); // Used for async operations
   const [recentFiles, setRecentFiles] = useState<Array<{ id: string; name: string; path: string }>>([]);
@@ -884,6 +886,7 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
         <SaveButton
           saveStatus={saveStatus}
           onSave={onCloudSave}
+          isOnline={isOnline}
         />
       )}
 

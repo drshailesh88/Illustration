@@ -32,6 +32,7 @@ import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import { useCanvas as useCanvasContext } from '../../components/Canvas/CanvasContext';
 import { useProject } from '../../hooks/useProject';
 import { useAutoSave } from '../../hooks/useAutoSave';
+import { useOnlineStatus } from '../../hooks/useOnlineStatus';
 import { MenuBar } from './MenuBar';
 import { Toolbar } from './Toolbar';
 import { RightPanel } from './RightPanel';
@@ -252,6 +253,9 @@ function EditorModeContent(): JSX.Element {
   // Subscription tier
   const { isPro, isFree } = useSubscription();
 
+  // Online/offline detection
+  const { isOnline } = useOnlineStatus();
+
   // Cloud project state
   const [currentProjectId, setCurrentProjectId] = useState<string | undefined>(
     id && !id.startsWith('agent-') ? id : undefined
@@ -423,9 +427,16 @@ function EditorModeContent(): JSX.Element {
       );
       if (savedId && !currentProjectId) {
         setCurrentProjectId(savedId);
-        navigate(`/editor/${savedId}`, { replace: true });
+        // Only navigate for real Convex IDs, not offline IDs
+        if (!savedId.startsWith('offline-')) {
+          navigate(`/editor/${savedId}`, { replace: true });
+        }
       }
-      showToast({ type: 'success', message: 'Saved to cloud' });
+      if (saveStatus === 'offline-saved') {
+        showToast({ type: 'info', message: 'Saved locally — will sync when online' });
+      } else {
+        showToast({ type: 'success', message: 'Saved to cloud' });
+      }
     } catch (err: any) {
       if (err?.message === 'FREE_TIER_LIMIT_REACHED') {
         showToast({
@@ -436,7 +447,7 @@ function EditorModeContent(): JSX.Element {
         showToast({ type: 'error', message: 'Failed to save. Please try again.' });
       }
     }
-  }, [exportJSON, generateThumbnail, saveToCloud, currentProjectId, project, navigate, showToast]);
+  }, [exportJSON, generateThumbnail, saveToCloud, currentProjectId, project, navigate, showToast, saveStatus]);
 
   // Auto-save: get canvas state as JSON string
   const getCanvasStateForAutoSave = useCallback((): string | null => {
@@ -796,6 +807,7 @@ function EditorModeContent(): JSX.Element {
           hasVersionHistory={!!currentProjectId && isPro}
           onOpenCanvasSize={() => setCanvasSizeDialogOpen(true)}
           onImportSVG={handleImportSVG}
+          isOnline={isOnline}
         />
 
         {/* Export Dialog */}
@@ -1032,7 +1044,7 @@ function EditorModeContent(): JSX.Element {
         </div>
 
         {/* Bottom Status Bar */}
-        <StatusBar mouseCoords={mouseCoords} canvasSize={canvasSize} />
+        <StatusBar mouseCoords={mouseCoords} canvasSize={canvasSize} isOnline={isOnline} />
       </div>
   );
 }
