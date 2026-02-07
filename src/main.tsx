@@ -35,6 +35,14 @@ if (!CONVEX_URL) {
 
 const convex = new ConvexReactClient(CONVEX_URL);
 
+// fal.ai image generation (optional — only if API key is configured)
+const FAL_AI_API_KEY = import.meta.env.VITE_FAL_AI_API_KEY;
+if (FAL_AI_API_KEY) {
+  import('./lib/ai/image-generation').then(({ configureFalClient }) => {
+    configureFalClient(FAL_AI_API_KEY);
+  });
+}
+
 // ============================================================================
 // Application Bootstrap
 // ============================================================================

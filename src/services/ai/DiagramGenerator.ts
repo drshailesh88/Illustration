@@ -9,6 +9,7 @@
 import { PromptParser } from './PromptParser';
 import { MermaidBackend } from './backends/MermaidBackend';
 import { SVGBackend } from './backends/SVGBackend';
+import { ImageBackend } from './backends/ImageBackend';
 import { ContextBuilder } from './ContextBuilder';
 import { ConversationManager } from './ConversationManager';
 import type {
@@ -36,7 +37,7 @@ import type { ConversationContext } from './ConversationManager';
  */
 export interface GenerateOptions {
   /** Preferred backend override */
-  preferredBackend?: 'mermaid' | 'svg' | 'plotly' | 'tikz';
+  preferredBackend?: 'mermaid' | 'svg' | 'plotly' | 'tikz' | 'image';
   /** Domain context for specialized prompts */
   domain?: DiagramDomain;
   /** Whether to use conversation context */
@@ -95,6 +96,7 @@ export class DiagramGenerator {
     this.backends = new Map<string, AIBackend>([
       ['mermaid', new MermaidBackend()],
       ['svg', new SVGBackend()],
+      ['image', new ImageBackend()],
     ]);
   }
 

@@ -99,8 +99,17 @@ const DIAGRAM_TYPE_KEYWORDS: Record<DiagramType, { keywords: string[]; weight: n
     keywords: ['cell diagram', 'cellular', 'organelle', 'membrane', 'cytoplasm', 'cell structure'],
     weight: 0.85,
   },
+  illustration: {
+    keywords: [
+      'illustration', 'illustrate', 'render', 'photorealistic', 'realistic image',
+      '3d render', 'artistic', 'drawing of', 'painting of', 'sketch of',
+      'picture of', 'image of', 'depict', 'visualize', 'generate image',
+      'generate illustration', 'show me what', 'what does', 'look like',
+    ],
+    weight: 0.85,
+  },
   generic: {
-    keywords: ['diagram', 'chart', 'illustration', 'figure', 'visual'],
+    keywords: ['diagram', 'chart', 'figure', 'visual'],
     weight: 0.3,
   },
 };
@@ -579,6 +588,13 @@ export class PromptParser {
       'pathway', 'anatomical', 'molecular', 'cell',
     ];
 
+    const imageTypes: DiagramType[] = [
+      'illustration',
+    ];
+
+    if (imageTypes.includes(type)) {
+      return 'image';
+    }
     if (mermaidTypes.includes(type)) {
       return 'mermaid';
     }
@@ -595,8 +611,8 @@ export class PromptParser {
   /**
    * Suggest the best backend for the parsed prompt
    */
-  suggestBackend(parsed: ParsedPrompt): 'mermaid' | 'svg' | 'plotly' | 'tikz' {
-    return this.getBackendForType(parsed.diagramType) as 'mermaid' | 'svg' | 'plotly' | 'tikz';
+  suggestBackend(parsed: ParsedPrompt): 'mermaid' | 'svg' | 'plotly' | 'tikz' | 'image' {
+    return this.getBackendForType(parsed.diagramType) as 'mermaid' | 'svg' | 'plotly' | 'tikz' | 'image';
   }
 
   /**

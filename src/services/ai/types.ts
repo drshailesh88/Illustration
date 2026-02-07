@@ -68,7 +68,7 @@ export interface GenerationRequest {
   /** Previous conversation context for refinement requests */
   context?: string;
   /** Preferred backend for generation */
-  preferredBackend?: 'mermaid' | 'svg' | 'plotly' | 'tikz';
+  preferredBackend?: 'mermaid' | 'svg' | 'plotly' | 'tikz' | 'image';
   /** Optional existing diagram to modify */
   existingDiagram?: string;
   /** Conversation ID for tracking refinements */
@@ -224,6 +224,7 @@ export type DiagramType =
   | 'anatomical'
   | 'molecular'
   | 'cell'
+  | 'illustration'
   | 'generic';
 
 /**
