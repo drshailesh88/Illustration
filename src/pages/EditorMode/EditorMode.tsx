@@ -41,6 +41,7 @@ import { VersionHistoryDialog } from '../../components/VersionHistoryDialog/Vers
 import { useVersionHistory } from '../../hooks/useVersionHistory';
 import { useSubscription } from '../../hooks/useSubscription';
 import { PNGExporter } from '../../services/export/PNGExporter';
+import { CanvasSizeDialog } from '../../components/CanvasSizeDialog';
 
 // ============================================================================
 // Types
@@ -246,6 +247,7 @@ function EditorModeContent(): JSX.Element {
   const [shapeGeneratorOpen, setShapeGeneratorOpen] = useState(false);
   const [initialShapeType, setInitialShapeType] = useState<ShapeType>('dna');
   const [versionHistoryOpen, setVersionHistoryOpen] = useState(false);
+  const [canvasSizeDialogOpen, setCanvasSizeDialogOpen] = useState(false);
 
   // Subscription tier
   const { isPro, isFree } = useSubscription();
@@ -319,6 +321,12 @@ function EditorModeContent(): JSX.Element {
     setShapeGeneratorOpen(true);
   }, []);
 
+  // Handle canvas resize from CanvasSizeDialog
+  const handleCanvasResize = useCallback((width: number, height: number) => {
+    setCanvasSize({ width, height });
+    showToast({ type: 'success', message: `Canvas resized to ${width} x ${height} px` });
+  }, [showToast]);
+
   // ========================================================================
   // File Operation Handlers (for keyboard shortcuts)
   // ========================================================================
@@ -331,6 +339,26 @@ function EditorModeContent(): JSX.Element {
     importSVG,
     zoomToFit,
   } = useCanvasContext();
+
+  // Handle SVG file import
+  const handleImportSVG = useCallback(() => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.svg';
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        try {
+          const svgString = await file.text();
+          await importSVG(svgString);
+          showToast({ type: 'success', message: `Imported: ${file.name}` });
+        } catch {
+          showToast({ type: 'error', message: 'Failed to import SVG file.' });
+        }
+      }
+    };
+    input.click();
+  }, [importSVG, showToast]);
 
   // Handle New (Ctrl+N)
   const handleNew = useCallback(() => {
@@ -764,6 +792,8 @@ function EditorModeContent(): JSX.Element {
           saveStatus={saveStatus !== 'idle' ? saveStatus : autoSaveStatus}
           onOpenVersionHistory={() => setVersionHistoryOpen(true)}
           hasVersionHistory={!!currentProjectId && isPro}
+          onOpenCanvasSize={() => setCanvasSizeDialogOpen(true)}
+          onImportSVG={handleImportSVG}
         />
 
         {/* Export Dialog */}
@@ -836,6 +866,15 @@ function EditorModeContent(): JSX.Element {
           isLoading={versionsLoading}
           isRestoring={isRestoring}
           onRestore={handleRestoreVersion}
+        />
+
+        {/* Canvas Size Dialog */}
+        <CanvasSizeDialog
+          isOpen={canvasSizeDialogOpen}
+          onClose={() => setCanvasSizeDialogOpen(false)}
+          onApply={handleCanvasResize}
+          currentWidth={canvasSize.width}
+          currentHeight={canvasSize.height}
         />
 
         {/* Illustrator Toolbar (Pen, Brush, Shapes, Hand-drawn toggle) */}
@@ -991,7 +1030,7 @@ function EditorModeContent(): JSX.Element {
         </div>
 
         {/* Bottom Status Bar */}
-        <StatusBar mouseCoords={mouseCoords} />
+        <StatusBar mouseCoords={mouseCoords} canvasSize={canvasSize} />
       </div>
   );
 }

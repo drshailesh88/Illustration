@@ -18,8 +18,14 @@ interface MouseCoords {
   y: number;
 }
 
+interface CanvasSize {
+  width: number;
+  height: number;
+}
+
 interface StatusBarProps {
   mouseCoords?: MouseCoords;
+  canvasSize?: CanvasSize;
 }
 
 // ============================================================================
@@ -169,7 +175,15 @@ const toolDisplayNames: Record<ToolType, string> = {
 // StatusBar Component
 // ============================================================================
 
-export function StatusBar({ mouseCoords }: StatusBarProps): JSX.Element {
+const CanvasSizeIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <path d="M9 3v18" />
+    <path d="M3 15h18" />
+  </svg>
+);
+
+export function StatusBar({ mouseCoords, canvasSize }: StatusBarProps): JSX.Element {
   const { zoom } = useViewport();
   const { selectionCount, hasSelection } = useSelection();
   const activeTool = useActiveTool();
@@ -220,6 +234,21 @@ export function StatusBar({ mouseCoords }: StatusBarProps): JSX.Element {
 
       {/* Right Section - Coordinates and Zoom */}
       <div style={styles.rightSection}>
+        {/* Canvas Dimensions */}
+        {canvasSize && (
+          <>
+            <div style={styles.statusItem}>
+              <span style={styles.statusIcon}>
+                <CanvasSizeIcon />
+              </span>
+              <span style={styles.statusValue}>
+                {canvasSize.width} × {canvasSize.height} px
+              </span>
+            </div>
+            <div style={styles.divider} />
+          </>
+        )}
+
         {/* Mouse Coordinates */}
         <div style={styles.statusItem}>
           <span style={styles.statusIcon}>

@@ -226,7 +226,7 @@
         "id": "17",
         "title": "Implement PII Detection Warning for Medical Data",
         "description": "Detect potential patient-identifiable information in Agent Mode prompts and warn users before generating. Critical for medical audience trust.",
-        "status": "in-progress",
+        "status": "done",
         "priority": "medium",
         "dependencies": [
           "2"
@@ -234,20 +234,21 @@
         "details": "1) Before sending prompt to AI, scan for patterns: names with 'patient' or 'Mr./Mrs.', dates of birth, medical record numbers (MRN), phone numbers, email addresses, SSN-like patterns, 2) If detected: show warning dialog 'It looks like your prompt may contain patient-identifiable information. Please remove personal details before generating.' with options to 'Edit prompt' or 'Proceed anyway', 3) Log that warning was shown (but NOT the prompt content), 4) Add note in Terms of Service about PHI responsibility, 5) Keep detection client-side only - never send detected PII to analytics.",
         "testStrategy": "Type 'Create diagram for Patient John Smith DOB 01/15/1980 MRN 12345' - verify warning appears. Type 'Create a generic PRISMA diagram' - verify no warning.",
         "subtasks": [],
-        "updatedAt": "2026-02-07T15:56:00.162Z"
+        "updatedAt": "2026-02-07T16:01:28.353Z"
       },
       {
         "id": "18",
         "title": "Implement Canvas Presets and DPI Export Options",
         "description": "Add preset canvas sizes based on journal requirements (Nature, NEJM, etc.) and DPI selection for PNG export. Support importing existing SVG into editor.",
-        "status": "pending",
+        "status": "in-progress",
         "priority": "medium",
         "dependencies": [
           "8"
         ],
         "details": "1) Canvas presets: New Project dialog with options - Nature single column (89mm), Nature double column (183mm), NEJM (varies), Letter, A4, Custom (width x height in mm/px/inches), 2) DPI export: when exporting PNG, offer DPI options (72 screen, 150 web, 300 print, 600 high-quality), multiply canvas dimensions accordingly, 3) SVG import: File > Import SVG menu item, opens file picker, loads SVG into canvas using fabric.loadSVGFromString, decomposes into individual editable objects, 4) Show current canvas size and DPI in status bar.",
         "testStrategy": "Create new project with 'Nature single column' preset, verify canvas dimensions. Export PNG at 300 DPI, verify image resolution matches. Import an external SVG, verify elements are individually editable.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T16:01:40.715Z"
       },
       {
         "id": "19",
@@ -400,9 +401,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-02-07T15:56:00.162Z",
+      "lastModified": "2026-02-07T16:01:40.715Z",
       "taskCount": 28,
-      "completedCount": 16,
+      "completedCount": 17,
       "tags": [
         "master"
       ]

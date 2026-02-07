@@ -59,13 +59,17 @@ interface MenuBarProps {
   onOpenVersionHistory?: () => void;
   /** Whether version history is available (project exists in cloud) */
   hasVersionHistory?: boolean;
+  /** Callback to open canvas size dialog */
+  onOpenCanvasSize?: () => void;
+  /** Callback to import SVG file */
+  onImportSVG?: () => void;
 }
 
 // ============================================================================
 // Component
 // ============================================================================
 
-export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle', onOpenVersionHistory, hasVersionHistory = false }: MenuBarProps) {
+export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIGeneration, onOpenShapeGenerator, onCloudSave, saveStatus = 'idle', onOpenVersionHistory, hasVersionHistory = false, onOpenCanvasSize, onImportSVG }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [_isLoading, setIsLoading] = useState(false); // Used for async operations
   const [recentFiles, setRecentFiles] = useState<Array<{ id: string; name: string; path: string }>>([]);
@@ -162,7 +166,17 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           shortcut: 'Ctrl+O',
           action: () => handleOpen(),
         },
+        {
+          id: 'import-svg',
+          label: 'Import SVG...',
+          action: () => onImportSVG?.(),
+        },
         { id: 'divider1', label: '', divider: true },
+        {
+          id: 'canvas-size',
+          label: 'Canvas Size...',
+          action: () => onOpenCanvasSize?.(),
+        },
         {
           id: 'save',
           label: 'Save',
