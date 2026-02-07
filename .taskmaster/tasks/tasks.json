@@ -184,7 +184,7 @@
         "id": "14",
         "title": "Implement Dark Mode",
         "description": "Add full dark mode theme toggle. Persist preference. Apply to all pages: Agent Mode, Editor Mode, My Projects, Settings.",
-        "status": "in-progress",
+        "status": "done",
         "priority": "medium",
         "dependencies": [
           "1"
@@ -192,7 +192,7 @@
         "details": "1) Create theme context/store with light/dark toggle, 2) Define dark mode color palette (backgrounds, text, borders, panels, toolbar, canvas surround), 3) Use CSS custom properties or Tailwind dark mode, 4) Toggle in header/settings, 5) Persist preference in localStorage (and Convex user settings when available), 6) Respect system preference (prefers-color-scheme) as default, 7) Canvas itself stays white (or configurable) - dark mode applies to the UI chrome around it, 8) Ensure all components look good in both modes.",
         "testStrategy": "Toggle dark mode, verify all pages render correctly. Refresh page, verify preference persisted. Test in system dark mode, verify it's auto-detected.",
         "subtasks": [],
-        "updatedAt": "2026-02-07T15:49:02.739Z"
+        "updatedAt": "2026-02-07T15:55:50.283Z"
       },
       {
         "id": "15",
@@ -226,14 +226,15 @@
         "id": "17",
         "title": "Implement PII Detection Warning for Medical Data",
         "description": "Detect potential patient-identifiable information in Agent Mode prompts and warn users before generating. Critical for medical audience trust.",
-        "status": "pending",
+        "status": "in-progress",
         "priority": "medium",
         "dependencies": [
           "2"
         ],
         "details": "1) Before sending prompt to AI, scan for patterns: names with 'patient' or 'Mr./Mrs.', dates of birth, medical record numbers (MRN), phone numbers, email addresses, SSN-like patterns, 2) If detected: show warning dialog 'It looks like your prompt may contain patient-identifiable information. Please remove personal details before generating.' with options to 'Edit prompt' or 'Proceed anyway', 3) Log that warning was shown (but NOT the prompt content), 4) Add note in Terms of Service about PHI responsibility, 5) Keep detection client-side only - never send detected PII to analytics.",
         "testStrategy": "Type 'Create diagram for Patient John Smith DOB 01/15/1980 MRN 12345' - verify warning appears. Type 'Create a generic PRISMA diagram' - verify no warning.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T15:56:00.162Z"
       },
       {
         "id": "18",
@@ -399,9 +400,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-02-07T15:49:02.739Z",
+      "lastModified": "2026-02-07T15:56:00.162Z",
       "taskCount": 28,
-      "completedCount": 15,
+      "completedCount": 16,
       "tags": [
         "master"
       ]

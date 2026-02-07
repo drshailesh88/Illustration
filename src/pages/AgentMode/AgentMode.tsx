@@ -19,6 +19,7 @@ import { PromptInput } from './PromptInput';
 import { DiagramPreview } from './DiagramPreview';
 import { useDiagramGenerator } from '../../hooks/useDiagramGenerator';
 import { useIsMobile } from '../../hooks/useMediaQuery';
+import { detectPII } from '../../lib/piiDetector';
 
 interface AgentModeProps {
   onSendToEditor?: (svg: string) => void;
@@ -27,6 +28,7 @@ interface AgentModeProps {
 export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   const isMobile = useIsMobile();
   const [showPreviewPane, setShowPreviewPane] = useState(true);
+  const [piiWarning, setPiiWarning] = useState<{ prompt: string; issues: string[] } | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const { generate } = useDiagramGenerator();
 
@@ -51,21 +53,8 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle sending a prompt
-  const handleSendPrompt = useCallback(async (prompt: string) => {
-    // Validate prompt - reject empty or too-short prompts
-    if (!prompt.trim() || prompt.trim().length < 5) {
-      addMessage({
-        role: 'user',
-        content: prompt || '(empty)'
-      });
-      addMessage({
-        role: 'assistant',
-        content: 'Please describe the scientific diagram you\'d like to create. For example: "Create a PRISMA flow diagram with 500 records identified" or "Draw a signaling pathway for JAK-STAT".',
-      });
-      return;
-    }
-
+  // Internal generation logic (called after PII check passes)
+  const executeGeneration = useCallback(async (prompt: string) => {
     // Add user message
     addMessage({
       role: 'user',
@@ -115,6 +104,48 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       abortControllerRef.current = null;
     }
   }, [addMessage, setLoading, generate]);
+
+  // Handle sending a prompt (with PII detection)
+  const handleSendPrompt = useCallback(async (prompt: string) => {
+    // Validate prompt - reject empty or too-short prompts
+    if (!prompt.trim() || prompt.trim().length < 5) {
+      addMessage({
+        role: 'user',
+        content: prompt || '(empty)'
+      });
+      addMessage({
+        role: 'assistant',
+        content: 'Please describe the scientific diagram you\'d like to create. For example: "Create a PRISMA flow diagram with 500 records identified" or "Draw a signaling pathway for JAK-STAT".',
+      });
+      return;
+    }
+
+    // PII detection check
+    const piiMatches = detectPII(prompt);
+    if (piiMatches.length > 0) {
+      setPiiWarning({
+        prompt,
+        issues: piiMatches.map((m) => m.description),
+      });
+      return; // Wait for user decision
+    }
+
+    await executeGeneration(prompt);
+  }, [addMessage, executeGeneration]);
+
+  // Handle PII warning: proceed anyway
+  const handlePiiProceed = useCallback(() => {
+    if (piiWarning) {
+      const prompt = piiWarning.prompt;
+      setPiiWarning(null);
+      executeGeneration(prompt);
+    }
+  }, [piiWarning, executeGeneration]);
+
+  // Handle PII warning: go back to edit
+  const handlePiiEdit = useCallback(() => {
+    setPiiWarning(null);
+  }, []);
 
   // Handle stop generation
   const handleStop = useCallback(() => {
@@ -191,6 +222,61 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
             <DiagramPreview svg={currentDiagram} />
           </div>
         </aside>
+      )}
+
+      {/* PII Warning Dialog */}
+      {piiWarning && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex',
+          alignItems: 'center', justifyContent: 'center', zIndex: 1000,
+        }}>
+          <div style={{
+            backgroundColor: 'var(--bg-secondary, #252526)',
+            borderRadius: '12px', padding: '28px', maxWidth: '480px',
+            width: '90%', border: '1px solid var(--color-warning-border)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '24px', color: 'var(--color-warning)' }}>&#9888;</span>
+              <h3 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '18px', fontWeight: 600 }}>
+                Potential Patient Data Detected
+              </h3>
+            </div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6, marginBottom: '12px' }}>
+              Your prompt may contain patient-identifiable information:
+            </p>
+            <ul style={{ color: 'var(--color-warning)', fontSize: '13px', marginBottom: '20px', paddingLeft: '20px' }}>
+              {piiWarning.issues.map((issue, i) => (
+                <li key={i} style={{ marginBottom: '4px' }}>{issue}</li>
+              ))}
+            </ul>
+            <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: 1.5, marginBottom: '20px' }}>
+              Please remove personal details before generating. FINNISH does not store prompts, but patient data should never be shared with AI services.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+              <button
+                onClick={handlePiiProceed}
+                style={{
+                  padding: '8px 16px', fontSize: '14px', border: '1px solid var(--border-primary)',
+                  borderRadius: '6px', backgroundColor: 'transparent',
+                  color: 'var(--text-secondary)', cursor: 'pointer',
+                }}
+              >
+                Proceed Anyway
+              </button>
+              <button
+                onClick={handlePiiEdit}
+                style={{
+                  padding: '8px 16px', fontSize: '14px', border: 'none',
+                  borderRadius: '6px', backgroundColor: 'var(--accent-primary)',
+                  color: '#ffffff', cursor: 'pointer', fontWeight: 500,
+                }}
+              >
+                Edit Prompt
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
