@@ -46,6 +46,10 @@ export interface GenerateOptions {
   conversationId?: string;
   /** Additional metadata */
   metadata?: Record<string, unknown>;
+  /** Base64-encoded image for vision-based generation (sketch/photo upload) */
+  imageData?: string;
+  /** MIME type of the uploaded image */
+  imageMimeType?: string;
 }
 
 /**
@@ -154,6 +158,50 @@ export class DiagramGenerator {
           'Prompt cannot be empty',
           'INVALID_PROMPT'
         );
+      }
+
+      // Vision-based generation: convert uploaded image to Mermaid DSL first
+      if (options.imageData && options.imageMimeType) {
+        this.logger.info('Image uploaded, using vision-based generation');
+
+        const dsl = await llmService.generateMermaidDSLFromImage(
+          options.imageData,
+          options.imageMimeType,
+          prompt
+        );
+
+        if (dsl) {
+          const mermaidBackend = this.backends.get('mermaid');
+          if (mermaidBackend) {
+            const result = await mermaidBackend.generate({ prompt: dsl });
+
+            // Record in conversation history
+            const conversationId = this.conversationManager.addTurn(
+              prompt || 'Image upload',
+              result,
+              options.conversationId
+            );
+
+            return {
+              ...result,
+              conversationId,
+              suggestions: [
+                'Refine the layout',
+                'Add more detail',
+                'Change color scheme',
+                'Adjust labels',
+              ],
+              metadata: {
+                ...result.metadata,
+                generationTimeMs: Date.now() - startTime,
+                provider: llmService.isClaudeAvailable() ? 'anthropic' : 'openai',
+              },
+            };
+          }
+        }
+
+        // Vision failed - fall through to text-based generation
+        this.logger.warn('Vision-based generation failed, falling through to text pipeline');
       }
 
       // Get conversation context if available

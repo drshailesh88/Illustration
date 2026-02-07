@@ -15,7 +15,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useAgentStore } from '../../store/useAgentStore';
 import { TemplateGallery } from './TemplateGallery';
 import { ChatHistory } from './ChatHistory';
-import { PromptInput } from './PromptInput';
+import { PromptInput, type ImageAttachment } from './PromptInput';
 import { DiagramPreview } from './DiagramPreview';
 import { useDiagramGenerator } from '../../hooks/useDiagramGenerator';
 import { useIsMobile } from '../../hooks/useMediaQuery';
@@ -65,14 +65,15 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   }, []);
 
   // Internal generation logic (called after PII check passes)
-  const executeGeneration = useCallback(async (prompt: string) => {
+  const executeGeneration = useCallback(async (prompt: string, imageAttachment?: ImageAttachment) => {
     // Capture refinement state before the call
     const wasRefining = !!generatorState.svg;
+    const hasImage = !!imageAttachment;
 
-    // Add user message
+    // Add user message (include image indicator)
     addMessage({
       role: 'user',
-      content: prompt
+      content: hasImage ? `[Uploaded: ${imageAttachment.name}] ${prompt}` : prompt,
     });
 
     // Set loading state
@@ -80,10 +81,17 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
     abortControllerRef.current = new AbortController();
 
     try {
-      // Branch: refine existing diagram or generate new one
-      const result = wasRefining
-        ? await refine(prompt)
-        : await generate(prompt, { preferredBackend: 'mermaid' });
+      // Branch: refine, vision-based, or standard generation
+      let result;
+      if (wasRefining && !hasImage) {
+        result = await refine(prompt);
+      } else {
+        result = await generate(prompt, {
+          preferredBackend: 'mermaid',
+          imageData: imageAttachment?.base64,
+          imageMimeType: imageAttachment?.mimeType,
+        });
+      }
 
       if (abortControllerRef.current?.signal.aborted) {
         throw new Error('Generation cancelled');
@@ -92,9 +100,11 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       if (result?.svg) {
         addMessage({
           role: 'assistant',
-          content: wasRefining
-            ? 'I\'ve updated the diagram based on your feedback. You can continue refining or send it to the Editor.'
-            : 'I\'ve generated a diagram based on your request. You can refine it further or send it to the Editor.',
+          content: hasImage
+            ? 'I\'ve analyzed your image and generated a clean diagram. You can refine it further or send it to the Editor.'
+            : wasRefining
+              ? 'I\'ve updated the diagram based on your feedback. You can continue refining or send it to the Editor.'
+              : 'I\'ve generated a diagram based on your request. You can refine it further or send it to the Editor.',
           diagram: result.svg
         });
         return;
@@ -126,9 +136,9 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
   }, [addMessage, setLoading, generate, refine, generatorState.svg]);
 
   // Handle sending a prompt (with PII detection)
-  const handleSendPrompt = useCallback(async (prompt: string) => {
-    // Validate prompt - reject empty or too-short prompts
-    if (!prompt.trim() || prompt.trim().length < 5) {
+  const handleSendPrompt = useCallback(async (prompt: string, imageAttachment?: ImageAttachment) => {
+    // If no image and prompt is too short, reject
+    if (!imageAttachment && (!prompt.trim() || prompt.trim().length < 5)) {
       addMessage({
         role: 'user',
         content: prompt || '(empty)'
@@ -140,17 +150,19 @@ export const AgentMode: React.FC<AgentModeProps> = ({ onSendToEditor }) => {
       return;
     }
 
-    // PII detection check
-    const piiMatches = detectPII(prompt);
-    if (piiMatches.length > 0) {
-      setPiiWarning({
-        prompt,
-        issues: piiMatches.map((m) => m.description),
-      });
-      return; // Wait for user decision
+    // PII detection check (only on text, not images)
+    if (prompt.trim().length > 0) {
+      const piiMatches = detectPII(prompt);
+      if (piiMatches.length > 0) {
+        setPiiWarning({
+          prompt,
+          issues: piiMatches.map((m) => m.description),
+        });
+        return; // Wait for user decision
+      }
     }
 
-    await executeGeneration(prompt);
+    await executeGeneration(prompt, imageAttachment);
   }, [addMessage, executeGeneration]);
 
   // Handle PII warning: proceed anyway

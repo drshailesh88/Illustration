@@ -32,8 +32,30 @@ const NewDiagramIcon = () => (
   </svg>
 );
 
+const UploadIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="17 8 12 3 7 8" />
+    <line x1="12" y1="3" x2="12" y2="15" />
+  </svg>
+);
+
+const CloseSmallIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
+export interface ImageAttachment {
+  base64: string;
+  mimeType: string;
+  name: string;
+  previewUrl: string;
+}
+
 interface PromptInputProps {
-  onSend: (prompt: string) => void;
+  onSend: (prompt: string, image?: ImageAttachment) => void;
   onStop?: () => void;
   /** Whether the user is refining an existing diagram */
   isRefining?: boolean;
@@ -43,7 +65,9 @@ interface PromptInputProps {
 
 export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop, isRefining, onNewDiagram }) => {
   const [value, setValue] = useState('');
+  const [attachedImage, setAttachedImage] = useState<ImageAttachment | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const isLoading = useAgentStore((state) => state.isLoading);
 
   // Auto-resize textarea
@@ -73,9 +97,10 @@ export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop, isRefi
 
   const handleSend = () => {
     const trimmedValue = value.trim();
-    if (trimmedValue && !isLoading) {
-      onSend(trimmedValue);
+    if ((trimmedValue || attachedImage) && !isLoading) {
+      onSend(trimmedValue || 'Analyze this sketch and generate a clean diagram', attachedImage ?? undefined);
       setValue('');
+      setAttachedImage(null);
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
@@ -88,7 +113,48 @@ export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop, isRefi
     }
   };
 
-  const canSend = value.trim().length > 0 && !isLoading;
+  const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+      return;
+    }
+
+    // Validate file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      // Extract base64 from data URL
+      const base64 = dataUrl.split(',')[1];
+      setAttachedImage({
+        base64,
+        mimeType: file.type,
+        name: file.name,
+        previewUrl: dataUrl,
+      });
+    };
+    reader.readAsDataURL(file);
+
+    // Reset file input so the same file can be selected again
+    e.target.value = '';
+  }, []);
+
+  const handleRemoveImage = useCallback(() => {
+    setAttachedImage(null);
+  }, []);
+
+  const handleUploadClick = useCallback(() => {
+    fileInputRef.current?.click();
+  }, []);
+
+  const canSend = (value.trim().length > 0 || !!attachedImage) && !isLoading;
 
   return (
     <div style={styles.container}>
@@ -105,15 +171,50 @@ export const PromptInput: React.FC<PromptInputProps> = ({ onSend, onStop, isRefi
           </button>
         </div>
       )}
+      {/* Image preview */}
+      {attachedImage && (
+        <div style={styles.imagePreview}>
+          <img src={attachedImage.previewUrl} alt="Attached sketch" style={styles.previewImg} />
+          <div style={styles.previewInfo}>
+            <span style={styles.previewName}>{attachedImage.name}</span>
+            <button onClick={handleRemoveImage} style={styles.removeBtn} title="Remove image">
+              <span style={{ width: '14px', height: '14px', display: 'inline-flex' }}><CloseSmallIcon /></span>
+            </button>
+          </div>
+        </div>
+      )}
       <div style={styles.wrapper}>
+        {/* Hidden file input */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/png,image/jpeg,image/jpg,image/webp,image/gif"
+          onChange={handleFileSelect}
+          style={{ display: 'none' }}
+        />
+        {/* Upload button */}
+        <button
+          onClick={handleUploadClick}
+          style={{
+            ...styles.button,
+            ...styles.uploadButton,
+            ...(isLoading ? { opacity: 0.5, cursor: 'not-allowed' } : {}),
+          }}
+          disabled={isLoading}
+          title="Upload sketch or photo"
+        >
+          <UploadIcon />
+        </button>
         <textarea
           ref={textareaRef}
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          placeholder={isRefining
-            ? "Describe changes to your diagram..."
-            : "Describe the diagram you want to create..."
+          placeholder={attachedImage
+            ? "Describe what to generate from this image (optional)..."
+            : isRefining
+              ? "Describe changes to your diagram..."
+              : "Describe the diagram you want to create..."
           }
           style={styles.textarea}
           disabled={isLoading}
@@ -244,6 +345,56 @@ const styles: Record<string, React.CSSProperties> = {
     color: 'var(--text-secondary)',
     cursor: 'pointer',
     transition: 'all var(--transition-fast)',
+  },
+  uploadButton: {
+    background: 'var(--bg-tertiary)',
+    color: 'var(--text-muted)',
+    border: '1px solid var(--border-color)',
+  },
+  imagePreview: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--spacing-sm)',
+    marginBottom: 'var(--spacing-sm)',
+    padding: '8px',
+    background: 'var(--bg-tertiary)',
+    borderRadius: '8px',
+    border: '1px solid var(--border-color)',
+  },
+  previewImg: {
+    width: '48px',
+    height: '48px',
+    objectFit: 'cover' as const,
+    borderRadius: '6px',
+    border: '1px solid var(--border-color)',
+  },
+  previewInfo: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minWidth: 0,
+  },
+  previewName: {
+    fontSize: 'var(--font-size-xs)',
+    color: 'var(--text-secondary)',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap' as const,
+  },
+  removeBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '24px',
+    height: '24px',
+    padding: 0,
+    background: 'transparent',
+    border: 'none',
+    borderRadius: '4px',
+    color: 'var(--text-muted)',
+    cursor: 'pointer',
+    flexShrink: 0,
   },
 };
 

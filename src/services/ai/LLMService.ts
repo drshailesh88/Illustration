@@ -239,6 +239,103 @@ Return ONLY the raw Mermaid DSL code without markdown code fences.`;
     return this.generateFallbackDSL(diagramType, data);
   }
 
+  /**
+   * Generate Mermaid DSL from an uploaded image using AI vision.
+   * Sends the image to Claude or OpenAI with a system prompt requesting Mermaid DSL output.
+   */
+  async generateMermaidDSLFromImage(
+    imageBase64: string,
+    imageMimeType: string,
+    userPrompt?: string
+  ): Promise<string> {
+    const systemPrompt = `You are a Mermaid.js expert and scientific diagram analyst. Analyze the uploaded image which may be a rough sketch, photo of a whiteboard diagram, or an existing figure.
+Generate valid Mermaid DSL code that faithfully reproduces this diagram as a clean, structured version suitable for academic publication.
+Use flowchart TB syntax for flow diagrams. Include proper subgraphs, node labels with data, and connections.
+If the image shows a specific diagram type (CONSORT, PRISMA, pathway, etc.), use the appropriate Mermaid syntax.
+Return ONLY the raw Mermaid DSL code without markdown code fences or explanations.`;
+
+    const textPrompt = userPrompt && userPrompt.trim().length > 0
+      ? `User's instructions: "${userPrompt}". Analyze the uploaded image and generate Mermaid DSL for a clean, publication-quality version of this diagram.`
+      : 'Analyze this image and generate Mermaid DSL code for a clean, structured version of the diagram shown.';
+
+    const cleanDSL = (dsl: string) => dsl.replace(/^```(?:mermaid)?\n?/i, '').replace(/\n?```$/i, '').trim();
+
+    // Tier 1: Claude with vision (preferred)
+    if (this.isClaudeAvailable()) {
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'x-api-key': this.claudeApiKey,
+            'anthropic-version': '2023-06-01',
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: this.claudeModel,
+            max_tokens: 4096,
+            system: [{ type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral' } }],
+            messages: [{
+              role: 'user',
+              content: [
+                { type: 'image', source: { type: 'base64', media_type: imageMimeType, data: imageBase64 } },
+                { type: 'text', text: textPrompt },
+              ],
+            }],
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Claude Vision API Error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        const content = result.content?.[0]?.text;
+        if (content) {
+          // Try to extract DSL from JSON wrapper if present
+          try {
+            const parsed = JSON.parse(content);
+            const dsl = parsed.mermaidDsl || parsed.dsl || parsed.code || content;
+            return cleanDSL(typeof dsl === 'string' ? dsl : content);
+          } catch {
+            return cleanDSL(content);
+          }
+        }
+      } catch (error) {
+        console.warn('Claude vision failed, trying OpenAI fallback:', error);
+      }
+    }
+
+    // Tier 2: OpenAI with vision
+    if (this.isAvailable()) {
+      try {
+        const dataUrl = `data:${imageMimeType};base64,${imageBase64}`;
+        const result = await this.callChatCompletions({
+          messages: [
+            { role: 'system', content: systemPrompt },
+            {
+              role: 'user',
+              content: [
+                { type: 'image_url', image_url: { url: dataUrl } },
+                { type: 'text', text: textPrompt },
+              ] as any,
+            },
+          ],
+          temperature: 0.3,
+          max_tokens: 4096,
+        });
+
+        const dsl = result.choices?.[0]?.message?.content?.trim() || '';
+        if (dsl) {
+          return cleanDSL(dsl);
+        }
+      } catch (error) {
+        console.warn('OpenAI vision failed:', error);
+      }
+    }
+
+    return '';
+  }
+
   // ===========================================================================
   // PRIVATE METHODS
   // ===========================================================================

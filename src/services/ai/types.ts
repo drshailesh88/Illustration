@@ -75,6 +75,10 @@ export interface GenerationRequest {
   conversationId?: string;
   /** Additional metadata for the request */
   metadata?: RequestMetadata;
+  /** Base64-encoded image data for vision analysis (sketch/photo upload) */
+  imageData?: string;
+  /** MIME type of the uploaded image (e.g., 'image/png', 'image/jpeg') */
+  imageMimeType?: string;
 }
 
 /**
