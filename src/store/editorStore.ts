@@ -56,6 +56,9 @@ const initialState: EditorState = {
     future: [],
   },
 
+  // Rulers
+  rulersVisible: false,
+
   // UI state
   isLoading: false,
 };
@@ -263,6 +266,18 @@ export const useEditorStore = create<EditorStore>()(
         if (size > 0) {
           set({ gridSize: size }, false, 'setGridSize');
         }
+      },
+
+      // ========================================================================
+      // Rulers Management
+      // ========================================================================
+
+      toggleRulers: () => {
+        set(
+          (state) => ({ rulersVisible: !state.rulersVisible }),
+          false,
+          'toggleRulers'
+        );
       },
 
       // ========================================================================

@@ -99,6 +99,8 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
   const redo = useEditorStore((state) => state.redo);
   const toggleGrid = useEditorStore((state) => state.toggleGrid);
   const toggleSnap = useEditorStore((state) => state.toggleSnap);
+  const toggleRulers = useEditorStore((state) => state.toggleRulers);
+  const rulersVisible = useEditorStore((state) => state.rulersVisible);
   const setZoom = useEditorStore((state) => state.setZoom);
   const resetViewport = useEditorStore((state) => state.resetViewport);
   const clearSelection = useEditorStore((state) => state.clearSelection);
@@ -347,8 +349,8 @@ export function MenuBar({ onOpenExportDialog, onOpenBackgroundRemoval, onOpenAIG
           id: 'show-rulers',
           label: 'Show Rulers',
           shortcut: 'Ctrl+R',
-          checked: false,
-          disabled: true,
+          checked: rulersVisible,
+          action: () => toggleRulers(),
         },
       ],
     },

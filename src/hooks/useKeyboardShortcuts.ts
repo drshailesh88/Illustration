@@ -94,6 +94,7 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
   const resetViewport = useEditorStore((state) => state.resetViewport);
   const toggleGrid = useEditorStore((state) => state.toggleGrid);
   const toggleSnap = useEditorStore((state) => state.toggleSnap);
+  const toggleRulers = useEditorStore((state) => state.toggleRulers);
   const canvas = useEditorStore((state) => state.canvas);
 
   const { canUndo, canRedo } = useHistoryState();
@@ -476,6 +477,14 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
       shift: true,
       handler: toggleSnap,
       description: 'Toggle Snap to Grid',
+      category: 'view',
+      preventDefault: true,
+    },
+    {
+      key: 'r',
+      ctrlOrCmd: true,
+      handler: toggleRulers,
+      description: 'Toggle Rulers',
       category: 'view',
       preventDefault: true,
     },

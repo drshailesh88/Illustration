@@ -514,6 +514,29 @@ export const Canvas = forwardRef<CanvasRef, CanvasProps>(
     }, [zoom]);
 
     // ========================================================================
+    // Scroll Wheel Zoom
+    // ========================================================================
+
+    const setZoom = useEditorStore((state) => state.setZoom);
+
+    useEffect(() => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.05 : 0.05;
+        const newZoom = Math.min(Math.max(zoom + delta, 0.1), 10);
+        setZoom(newZoom);
+      };
+
+      container.addEventListener('wheel', handleWheel, { passive: false });
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+      };
+    }, [zoom, setZoom]);
+
+    // ========================================================================
     // Grid Drawing
     // ========================================================================
 

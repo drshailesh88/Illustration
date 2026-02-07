@@ -165,6 +165,7 @@ function EditorModeContent(): JSX.Element {
   const setCanvas = useEditorStore((state) => state.setCanvas);
   const canvas = useEditorStore((state) => state.canvas);
   const setActiveTool = useEditorStore((state) => state.setActiveTool);
+  const rulersVisible = useEditorStore((state) => state.rulersVisible);
 
   // Map illustrator tool to editor tool type
   const mapIllustratorToolToEditorTool = useCallback((tool: IllustratorTool): ToolType => {
@@ -719,7 +720,98 @@ function EditorModeContent(): JSX.Element {
             )}
 
             <div style={styles.canvasWrapper}>
-              <div style={styles.canvasShadow}>
+              {/* Rulers */}
+              {rulersVisible && (
+                <>
+                  {/* Horizontal Ruler */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 24,
+                    right: 0,
+                    height: 20,
+                    backgroundColor: 'var(--bg-secondary)',
+                    borderBottom: '1px solid var(--border-primary)',
+                    overflow: 'hidden',
+                    zIndex: 5,
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                  }}>
+                    {Array.from({ length: Math.ceil(canvasSize.width / 50) + 1 }, (_, i) => (
+                      <div key={`h-${i}`} style={{
+                        position: 'absolute',
+                        left: i * 50,
+                        bottom: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                      }}>
+                        <span style={{
+                          fontSize: '9px',
+                          color: 'var(--text-muted)',
+                          fontFamily: 'var(--font-mono)',
+                          paddingLeft: 2,
+                          lineHeight: 1,
+                        }}>{i * 50}</span>
+                        <div style={{
+                          width: 1,
+                          height: 6,
+                          backgroundColor: 'var(--text-muted)',
+                        }} />
+                      </div>
+                    ))}
+                  </div>
+                  {/* Vertical Ruler */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 20,
+                    left: 0,
+                    bottom: 0,
+                    width: 24,
+                    backgroundColor: 'var(--bg-secondary)',
+                    borderRight: '1px solid var(--border-primary)',
+                    overflow: 'hidden',
+                    zIndex: 5,
+                  }}>
+                    {Array.from({ length: Math.ceil(canvasSize.height / 50) + 1 }, (_, i) => (
+                      <div key={`v-${i}`} style={{
+                        position: 'absolute',
+                        top: i * 50,
+                        left: 0,
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                      }}>
+                        <span style={{
+                          fontSize: '9px',
+                          color: 'var(--text-muted)',
+                          fontFamily: 'var(--font-mono)',
+                          writingMode: 'vertical-rl',
+                          transform: 'rotate(180deg)',
+                          paddingBottom: 2,
+                          lineHeight: 1,
+                        }}>{i * 50}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Corner square */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 24,
+                    height: 20,
+                    backgroundColor: 'var(--bg-secondary)',
+                    borderBottom: '1px solid var(--border-primary)',
+                    borderRight: '1px solid var(--border-primary)',
+                    zIndex: 6,
+                  }} />
+                </>
+              )}
+              <div style={{
+                ...styles.canvasShadow,
+                marginTop: rulersVisible ? 20 : 0,
+                marginLeft: rulersVisible ? 24 : 0,
+              }}>
                 <Canvas
                   ref={canvasRef}
                   width={canvasSize.width}

@@ -360,6 +360,9 @@ export interface EditorState {
   // History state
   history: HistoryState;
 
+  // Rulers
+  rulersVisible: boolean;
+
   // UI state
   isLoading: boolean;
 }
@@ -389,6 +392,9 @@ export interface EditorActions {
   toggleGrid: () => void;
   toggleSnap: () => void;
   setGridSize: (size: number) => void;
+
+  // Rulers management
+  toggleRulers: () => void;
 
   // History management
   undo: () => Promise<void>;
