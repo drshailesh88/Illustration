@@ -557,6 +557,7 @@ function EditorModeContent(): JSX.Element {
             pageSize: 'a4' | 'letter' | 'custom';
             orientation: 'portrait' | 'landscape';
             margins: { top: number; right: number; bottom: number; left: number };
+            dpi?: 72 | 150 | 300 | 600;
             customWidth?: number;
             customHeight?: number;
             metadata?: { title?: string; author?: string; subject?: string };
@@ -574,6 +575,7 @@ function EditorModeContent(): JSX.Element {
             customWidth: pdfSettings.customWidth ? mmToPoints(pdfSettings.customWidth) : undefined,
             customHeight: pdfSettings.customHeight ? mmToPoints(pdfSettings.customHeight) : undefined,
             margin: mmToPoints(marginPoints),
+            dpi: pdfSettings.dpi || 300,
             title: pdfSettings.metadata?.title,
             author: pdfSettings.metadata?.author,
             subject: pdfSettings.metadata?.subject,

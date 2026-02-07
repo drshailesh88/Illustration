@@ -74,6 +74,8 @@ export interface PDFExportOptions extends BaseExportOptions {
   subject?: string;
   /** Margin in points */
   margin?: number;
+  /** Resolution DPI for raster content embedded in PDF */
+  dpi?: DPI;
 }
 
 /**

@@ -374,20 +374,21 @@
         "id": "27",
         "title": "Verify and Fix PDF and PPTX Export for V1",
         "description": "PDF export (jsPDF + svg2pdf) and PPTX export (pptxgenjs) already exist in the codebase. Verify they work correctly, fix any issues, and ensure they are accessible from the export dialog.",
-        "status": "pending",
+        "status": "in-progress",
         "priority": "medium",
         "dependencies": [
           "8"
         ],
         "details": "1) Test PDF export from services/export/PDFExporter.ts - verify it produces correct output, 2) Test PPTX export from lib/export/pptx.ts - verify it produces correct PowerPoint file, 3) Ensure both formats appear in the export dialog UI, 4) Test with various diagram types (simple shapes, complex SVGs, images), 5) Fix any issues found, 6) Add DPI options to PDF export (300 for print, 72 for screen).",
         "testStrategy": "Create a diagram with shapes, text, and icons. Export as PDF - open in viewer, verify content. Export as PPTX - open in PowerPoint/Google Slides, verify content. Test with different diagram complexities.",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T16:37:45.322Z"
       },
       {
         "id": "28",
         "title": "Set Up Playwright E2E Testing Framework",
         "description": "Install and configure Playwright for end-to-end browser testing. Create test suites for critical user flows. Integrate with CI.",
-        "status": "in-progress",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "2",
@@ -397,14 +398,14 @@
         "details": "1) Install @playwright/test, 2) Configure playwright.config.ts for React/Vite dev server, 3) Create test suites: auth flow (sign up, sign in, sign out), editor flow (create diagram, add shapes/text, save, export), agent mode flow (enter prompt, generate, send to editor), icon search (search, insert, position), 4) Screenshot comparison for canvas-based visual regression testing, 5) Test on Chromium, Firefox, WebKit, 6) Mobile viewport tests, 7) Add to CI pipeline.",
         "testStrategy": "Run npx playwright test --all. All tests pass. Screenshot baselines captured. CI pipeline runs tests on push.",
         "subtasks": [],
-        "updatedAt": "2026-02-07T16:20:53.048Z"
+        "updatedAt": "2026-02-07T16:37:41.197Z"
       }
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-02-07T16:20:53.048Z",
+      "lastModified": "2026-02-07T16:37:45.322Z",
       "taskCount": 28,
-      "completedCount": 18,
+      "completedCount": 19,
       "tags": [
         "master"
       ]

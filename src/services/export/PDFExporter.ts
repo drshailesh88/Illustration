@@ -138,11 +138,15 @@ export class PDFExporter implements Exporter<PDFExportOptions> {
 
     onProgress?.(30, 'Rendering canvas to PNG...');
 
-    // Render canvas as high-quality PNG for embedding
+    // Map DPI to raster multiplier: 72→1, 150→2, 300→3, 600→4
+    const dpiMultiplierMap: Record<number, number> = { 72: 1, 150: 2, 300: 3, 600: 4 };
+    const multiplier = dpiMultiplierMap[opts.dpi ?? 300] ?? 3;
+
+    // Render canvas as PNG for embedding at requested DPI
     const pngDataURL = canvas.toDataURL({
       format: 'png',
       quality: 1,
-      multiplier: 2, // 2x resolution for better quality
+      multiplier,
       enableRetinaScaling: false,
     });
 

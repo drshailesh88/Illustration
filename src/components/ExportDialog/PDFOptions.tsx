@@ -31,6 +31,8 @@ export interface PDFExportSettings {
   customWidth?: number;
   /** Custom page height in mm */
   customHeight?: number;
+  /** Resolution DPI for raster content in PDF */
+  dpi: 72 | 150 | 300 | 600;
   /** Compression level (0-9) */
   compression?: number;
   /** PDF metadata */
@@ -400,6 +402,28 @@ export function PDFOptions({ settings, onChange }: PDFOptionsProps): JSX.Element
             </span>
             <span style={styles.orientationLabel}>Landscape</span>
           </button>
+        </div>
+      </div>
+
+      {/* DPI / Resolution */}
+      <div style={styles.section}>
+        <label style={styles.label}>Resolution (DPI)</label>
+        <div style={styles.selectContainer}>
+          {([72, 150, 300, 600] as const).map((dpi) => (
+            <button
+              key={dpi}
+              style={{
+                ...styles.selectOption,
+                ...(settings.dpi === dpi ? styles.selectOptionActive : {}),
+              }}
+              onClick={() => onChange({ ...settings, dpi })}
+            >
+              <span style={styles.selectLabel}>{dpi}</span>
+              <span style={styles.selectDescription}>
+                {dpi === 72 ? 'Screen' : dpi === 150 ? 'Web' : dpi === 300 ? 'Print' : 'High-Q'}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
