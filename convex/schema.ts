@@ -29,7 +29,14 @@ export default defineSchema({
     aiGenerationsUsed: v.number(),
     aiGenerationsLimit: v.number(),
     exportCount: v.number(),
+    // Lemon Squeezy subscription fields
+    lemonSqueezyCustomerId: v.optional(v.string()),
+    lemonSqueezySubscriptionId: v.optional(v.string()),
+    subscriptionStatus: v.optional(v.string()),
+    currentPeriodEnd: v.optional(v.number()),
     createdAt: v.number(),
     updatedAt: v.number(),
-  }).index("by_tokenIdentifier", ["tokenIdentifier"]),
+  })
+    .index("by_tokenIdentifier", ["tokenIdentifier"])
+    .index("by_lemonSqueezyCustomerId", ["lemonSqueezyCustomerId"]),
 });

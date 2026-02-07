@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 interface UpgradeCTAProps {
   feature: string;
   description?: string;
@@ -5,8 +7,11 @@ interface UpgradeCTAProps {
 
 /**
  * Upgrade prompt shown to free-tier users when they attempt to access Pro features.
+ * Links to the /pricing page for Lemon Squeezy checkout.
  */
 export function UpgradeCTA({ feature, description }: UpgradeCTAProps) {
+  const navigate = useNavigate();
+
   return (
     <div style={{
       display: 'flex',
@@ -73,10 +78,7 @@ export function UpgradeCTA({ feature, description }: UpgradeCTAProps) {
               borderRadius: '8px',
               cursor: 'pointer',
             }}
-            onClick={() => {
-              // Placeholder: will link to pricing/Lemon Squeezy in Task 12
-              window.alert('Pro upgrade coming soon! For now, set subscriptionTier to "pro" in Clerk Dashboard.');
-            }}
+            onClick={() => navigate('/pricing')}
           >
             Upgrade to Pro
           </button>
@@ -85,7 +87,7 @@ export function UpgradeCTA({ feature, description }: UpgradeCTAProps) {
             fontSize: '14px',
             color: 'var(--text-muted)',
           }}>
-            Starting at ~&#8377;1,000/month
+            Starting at ~&#8377;999/month
           </span>
         </div>
       </div>

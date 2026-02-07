@@ -27,6 +27,10 @@ declare const api: {
     joinWaitlist: FunctionReference<"mutation", "public", any, any>;
     getWaitlistCount: FunctionReference<"query", "public", Record<string, never>, any>;
   };
+  lemonSqueezy: {
+    handleWebhookEvent: FunctionReference<"mutation", "public", any, any>;
+    getSubscriptionStatus: FunctionReference<"query", "public", Record<string, never>, any>;
+  };
 };
 
 export { api };
