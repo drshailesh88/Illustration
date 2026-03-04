@@ -344,7 +344,7 @@
         "id": "25",
         "title": "End-to-End Testing and Conference Demo Preparation",
         "description": "Full end-to-end testing of all features. Prepare the specific demo flow for the July conference: prompt NEJM-quality figure -> generate -> edit -> export. Fix all remaining issues.",
-        "status": "pending",
+        "status": "done",
         "priority": "high",
         "dependencies": [
           "2",
@@ -360,7 +360,8 @@
         ],
         "details": "1) Test every user flow end-to-end: signup -> Agent Mode -> generate -> edit -> save -> export, 2) Test free tier limitations work correctly, 3) Test payment flow, 4) Test mobile experience, 5) Test offline mode, 6) Prepare specific demo diagrams: complex NEJM figure, PRISMA diagram, clinical pathway - these must work flawlessly, 7) Prepare demo script: what to show, what to say, what order, 8) Load test: verify app handles multiple concurrent users, 9) Fix all P0 and P1 bugs found during testing, 10) Create backup demo (pre-generated diagrams) in case live demo fails at conference.",
         "testStrategy": "Run through the complete demo script 5 times. Every time must succeed. Test on the actual device (laptop + phone) that will be used at the conference. Test on conference WiFi conditions (potentially slow/spotty).",
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-02-07T19:15:12.733Z"
       },
       {
         "id": "26",
@@ -409,9 +410,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-02-07T17:34:52.883Z",
+      "lastModified": "2026-02-07T19:15:12.733Z",
       "taskCount": 28,
-      "completedCount": 26,
+      "completedCount": 27,
       "tags": [
         "master"
       ]
